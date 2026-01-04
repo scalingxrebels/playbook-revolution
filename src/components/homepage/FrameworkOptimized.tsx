@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Brain, Cpu, Users, BarChart3 } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const capabilities = [
   {
@@ -45,13 +46,17 @@ const capabilities = [
 const FrameworkOptimized: React.FC = () => {
   const { language } = useLanguage();
   const [activeCapability, setActiveCapability] = useState<string | null>(null);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const scrollToPlaybooks = () => {
     window.location.href = '/playbooks';
   };
 
   return (
-    <section className="relative min-h-[60vh] py-24 lg:py-32 overflow-hidden">
+    <section 
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[60vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />

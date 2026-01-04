@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const caseStudies = [
   {
@@ -35,9 +36,13 @@ const caseStudies = [
 
 const ProofOptimized: React.FC = () => {
   const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section className="relative min-h-[50vh] py-24 lg:py-32 overflow-hidden">
+    <section 
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-mesh" />
       

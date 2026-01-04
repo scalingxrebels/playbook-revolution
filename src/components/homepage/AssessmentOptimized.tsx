@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Calendar, CheckCircle2, RotateCcw } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const questions = [
   {
@@ -99,6 +100,7 @@ const AssessmentOptimized: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const handleAnswer = (score: number) => {
     const newAnswers = [...answers, score];
@@ -193,7 +195,11 @@ const AssessmentOptimized: React.FC = () => {
   const progress = ((currentQuestion) / questions.length) * 100;
 
   return (
-    <section id="assessment-section" className="relative min-h-[50vh] py-24 lg:py-32 overflow-hidden">
+    <section 
+      id="assessment-section" 
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
       

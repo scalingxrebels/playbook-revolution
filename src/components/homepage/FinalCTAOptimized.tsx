@@ -2,9 +2,11 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Calendar, Check, ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const FinalCTAOptimized: React.FC = () => {
   const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const trustSignals = [
     { en: 'Free', de: 'Kostenlos' },
@@ -18,7 +20,11 @@ const FinalCTAOptimized: React.FC = () => {
   };
 
   return (
-    <section id="final-cta" className="relative min-h-[40vh] py-24 lg:py-32 overflow-hidden">
+    <section 
+      id="final-cta" 
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[40vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="absolute inset-0 bg-mesh opacity-50" />
