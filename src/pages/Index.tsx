@@ -37,6 +37,8 @@ import GTMFunnelSection from '@/components/GTMFunnelSection';
 import WhatWeCreatedSection from '@/components/WhatWeCreatedSection';
 import SCQASection from '@/components/SCQASection';
 import BottleneckWizard from '@/components/BottleneckWizard';
+import PlaybooksPreview from '@/components/PlaybooksPreview';
+import CommunityTestimonials from '@/components/CommunityTestimonials';
 
 const Index = () => {
   return (
@@ -139,13 +141,19 @@ const Index = () => {
             {/* SECTION 27: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 28: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 28: PLAYBOOKS PREVIEW */}
+            <PlaybooksPreview />
+            
+            {/* SECTION 29: COMMUNITY TESTIMONIALS */}
+            <CommunityTestimonials />
+            
+            {/* SECTION 30: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 29: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 31: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 30: BOOKING CTA */}
+            {/* SECTION 32: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />
