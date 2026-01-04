@@ -1,100 +1,182 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, TrendingUp, Clock, Zap } from 'lucide-react';
+import { ArrowRight, ArrowDownRight } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
-  const { t } = useLanguage();
-
-  const stats = [
-    { value: '10-30x', label: t('stats.faster'), icon: <Zap className="w-5 h-5" /> },
-    { value: '+400%', label: t('stats.efficiency'), icon: <TrendingUp className="w-5 h-5" /> },
-    { value: '-75%', label: t('stats.timeTo100m'), icon: <Clock className="w-5 h-5" /> },
-  ];
+  const { t, language } = useLanguage();
 
   const scrollToCalculator = () => {
     document.getElementById('calculator')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/10 rounded-full" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-accent/5 rounded-full" />
+    <section className="relative min-h-screen flex flex-col justify-between pt-20 overflow-hidden noise">
+      {/* Background Mesh Gradient */}
+      <div className="absolute inset-0 bg-mesh" />
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-40" />
+      
+      {/* Diagonal Lines Accent */}
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-diagonal-lines opacity-20" />
+
+      {/* Main Content */}
+      <div className="container max-w-7xl mx-auto px-4 py-12 relative z-10 flex-1 flex flex-col justify-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Typography Heavy */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Overline */}
+            <div className="flex items-center gap-4 animate-slide-up">
+              <span className="h-px w-12 bg-gradient-primary" />
+              <span className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
+                AI-Native Scaling
+              </span>
+            </div>
+
+            {/* Main Headline - Brutalist Typography */}
+            <h1 className="font-display text-display-xl leading-none animate-blur-in">
+              <span className="block text-foreground italic">Your</span>
+              <span className="block text-gradient animate-gradient bg-gradient-primary">Scaling</span>
+              <span className="block text-foreground italic">Playbook</span>
+              <span className="block font-sans font-bold uppercase text-display-md mt-2 not-italic">
+                is Obsolete
+              </span>
+            </h1>
+
+            {/* Editorial Subheadline */}
+            <p className="text-editorial text-muted-foreground max-w-xl editorial-border animate-slide-up" style={{ animationDelay: '0.2s' }}>
+              {language === 'de' 
+                ? 'Die traditionellen Skalierungsmethoden sind tot. AI-Native Unternehmen erreichen €100M ARR in 18 Monaten statt 7 Jahren.'
+                : 'Traditional scaling methodologies are dead. AI-Native companies reach €100M ARR in 18 months instead of 7 years.'
+              }
+            </p>
+
+            {/* CTA Row */}
+            <div className="flex flex-wrap items-center gap-4 pt-4 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+              <Button 
+                size="lg" 
+                onClick={scrollToCalculator}
+                className="bg-foreground text-background hover:bg-foreground/90 font-semibold px-8 py-6 text-base shadow-brutal hover-brutal transition-all"
+              >
+                {t('hero.cta')}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="lg"
+                className="font-medium text-muted-foreground hover:text-foreground group"
+              >
+                {t('hero.learnMore')}
+                <ArrowDownRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Stats Panel */}
+          <div className="lg:col-span-4 animate-slide-in-right" style={{ animationDelay: '0.4s' }}>
+            <div className="border-2 border-foreground/10 bg-card/50 backdrop-blur-sm p-8 space-y-6">
+              {/* Stats Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-border">
+                <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  {language === 'de' ? 'Benchmark-Daten' : 'Benchmark Data'}
+                </span>
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              </div>
+
+              {/* Stat Items */}
+              <div className="space-y-6">
+                <StatItem 
+                  value="10-30x" 
+                  label={language === 'de' ? 'Schnellere Entwicklung' : 'Faster Development'} 
+                  highlight 
+                />
+                <StatItem 
+                  value="+400%" 
+                  label={language === 'de' ? 'Operative Effizienz' : 'Operational Efficiency'} 
+                />
+                <StatItem 
+                  value="-75%" 
+                  label={language === 'de' ? 'Time to €100M' : 'Time to €100M'} 
+                />
+                <StatItem 
+                  value="€4.6M" 
+                  label={language === 'de' ? 'ARR pro Mitarbeiter' : 'ARR per Employee'} 
+                  subtext="vs €150K traditional"
+                />
+              </div>
+
+              {/* Source */}
+              <div className="pt-4 border-t border-border">
+                <p className="text-xs text-muted-foreground">
+                  {language === 'de' ? 'Basierend auf n=22 AI-Native Unternehmen' : 'Based on n=22 AI-Native companies'}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.3)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.3)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
-
-      <div className="container max-w-6xl mx-auto px-4 py-20 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-8 animate-fade-in">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            AI-Native Scaling Playbook
-          </div>
-
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-slide-up">
-            <span className="text-gradient">{t('hero.headline')}</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            {t('hero.subheadline')}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-            <Button 
-              size="lg" 
-              onClick={scrollToCalculator}
-              className="bg-gradient-primary hover:opacity-90 text-primary-foreground shadow-glow transition-all duration-300 hover:scale-105 group"
-            >
-              {t('hero.cta')}
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              className="border-border/50 hover:border-primary/50 hover:bg-primary/5"
-            >
-              {t('hero.learnMore')}
-            </Button>
-          </div>
-
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            {stats.map((stat, index) => (
-              <div 
-                key={index}
-                className="group relative p-6 rounded-2xl glass hover:shadow-glow transition-all duration-500"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    <span className="text-accent">{stat.icon}</span>
-                    <span className="text-3xl font-bold text-gradient">{stat.value}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* Bottom Marquee */}
+      <div className="relative z-10 border-t border-border py-4 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 px-4">
+              <MarqueeItem text="MIDJOURNEY" />
+              <MarqueeItem text="CURSOR" />
+              <MarqueeItem text="PERPLEXITY" />
+              <MarqueeItem text="BOLT" />
+              <MarqueeItem text="V0" />
+              <MarqueeItem text="LOVABLE" />
+              <MarqueeItem text="REPLIT" />
+              <MarqueeItem text="JASPER" />
+            </div>
+          ))}
         </div>
+      </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
-            <div className="w-1.5 h-3 rounded-full bg-primary animate-pulse" />
-          </div>
-        </div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-24 left-8 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: '1s' }}>
+        <span className="text-xs uppercase tracking-widest text-muted-foreground rotate-90 origin-left translate-x-4">
+          Scroll
+        </span>
       </div>
     </section>
   );
 };
+
+interface StatItemProps {
+  value: string;
+  label: string;
+  highlight?: boolean;
+  subtext?: string;
+}
+
+const StatItem: React.FC<StatItemProps> = ({ value, label, highlight, subtext }) => (
+  <div className="group">
+    <div className="flex items-baseline gap-2">
+      <span className={`text-3xl font-bold tracking-tight ${highlight ? 'text-gradient' : 'text-foreground'}`}>
+        {value}
+      </span>
+      {subtext && (
+        <span className="text-xs text-muted-foreground">{subtext}</span>
+      )}
+    </div>
+    <p className="text-sm text-muted-foreground mt-1 group-hover:text-foreground transition-colors">
+      {label}
+    </p>
+  </div>
+);
+
+interface MarqueeItemProps {
+  text: string;
+}
+
+const MarqueeItem: React.FC<MarqueeItemProps> = ({ text }) => (
+  <span className="text-sm font-semibold uppercase tracking-widest text-muted-foreground/50 flex items-center gap-2">
+    <span className="w-1.5 h-1.5 rounded-full bg-gradient-primary" />
+    {text}
+  </span>
+);
 
 export default HeroSection;
