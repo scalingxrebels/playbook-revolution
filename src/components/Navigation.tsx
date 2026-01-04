@@ -31,14 +31,9 @@ const Navigation: React.FC = () => {
               alt="ScalingX" 
               className="h-8 w-auto"
             />
-            <div className="hidden sm:flex flex-col">
-              <span className="font-bold text-sm tracking-tight leading-none">
-                Scaling<span className="text-accent">X</span>
-              </span>
-              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">
-                Expertise × Speed = Impact
-              </span>
-            </div>
+            <span className="font-bold text-sm tracking-tight leading-none">
+              Scaling<span className="text-accent">X</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation - Editorial Style */}
