@@ -20,6 +20,10 @@ import Footer from '@/components/Footer';
 import InterventionModels from '@/components/InterventionModels';
 import GrowthEngines from '@/components/GrowthEngines';
 import OperatingSystem from '@/components/OperatingSystem';
+import ThetaIndexAssessment from '@/components/ThetaIndexAssessment';
+import ThreePillarsModel from '@/components/ThreePillarsModel';
+import BoardGovernanceSection from '@/components/BoardGovernanceSection';
+import C1StrategyDetail from '@/components/C1StrategyDetail';
 
 const Index = () => {
   return (
@@ -44,40 +48,52 @@ const Index = () => {
             {/* SECTION 5: AI-LEVERAGE BENCHMARKS */}
             <AILeverageBenchmarks />
             
-            {/* SECTION 6: FRAMEWORK - 4 Capabilities Interactive */}
+            {/* SECTION 6: THREE PILLARS MODEL */}
+            <ThreePillarsModel />
+            
+            {/* SECTION 7: FRAMEWORK - 4 Capabilities Interactive */}
             <CapabilitiesSection />
             
-            {/* SECTION 7: 8 DIMENSIONS GRID */}
+            {/* SECTION 8: C₁ STRATEGY DETAIL (4 Components) */}
+            <C1StrategyDetail />
+            
+            {/* SECTION 9: 8 DIMENSIONS GRID */}
             <DimensionsGrid />
             
-            {/* SECTION 8: SCALING STAGES */}
+            {/* SECTION 10: BOARD & GOVERNANCE */}
+            <BoardGovernanceSection />
+            
+            {/* SECTION 11: SCALING STAGES */}
             <ScalingStages />
             
-            {/* SECTION 9: 3 INTERVENTION MODELS */}
+            {/* SECTION 12: 3 INTERVENTION MODELS */}
             <InterventionModels />
             
-            {/* SECTION 10: 3 GROWTH ENGINES */}
+            {/* SECTION 13: 3 GROWTH ENGINES */}
             <GrowthEngines />
             
-            {/* SECTION 11: AI-NATIVE OPERATING SYSTEM (5 Dimensions) */}
+            {/* SECTION 14: AI-NATIVE OPERATING SYSTEM (5 Dimensions) */}
             <OperatingSystem />
             
-            {/* SECTION 12: LASR.io SCORECARD */}
+            {/* SECTION 15: θ_index ASSESSMENT (6 Dimensions) */}
+            <ThetaIndexAssessment />
+            
+            {/* SECTION 16: LASR.io SCORECARD */}
             <LASRScorecard />
             
-            {/* SECTION 13: TRANSFORMATION CASES - Before/After */}
+            {/* SECTION 17: TRANSFORMATION CASES - Before/After */}
             <TransformationCases />
             
-            {/* SECTION 14: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 18: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 15: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 19: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 16: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 20: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 17: BOOKING CTA */}
+            {/* SECTION 21: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />

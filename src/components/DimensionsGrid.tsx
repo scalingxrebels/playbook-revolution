@@ -20,8 +20,8 @@ const DimensionsGrid = () => {
   const dimensions = [
     {
       id: 'gtm',
-      name: 'GTM',
-      fullName: 'Go-to-Market',
+      name: 'GTM/Revenue',
+      fullName: 'Go-to-Market & Revenue',
       icon: Target,
       color: 'bg-blue-500/20 border-blue-500/30',
       applications: {
@@ -164,6 +164,35 @@ const DimensionsGrid = () => {
       }
     },
     {
+      id: 'customer-success',
+      name: 'Customer Success',
+      fullName: 'Customer Success & Retention',
+      icon: Heart,
+      color: 'bg-red-500/20 border-red-500/30',
+      applications: {
+        1: { 
+          title: 'Health Score Intelligence', 
+          desc: 'Predictive Customer Health Monitoring',
+          metric: '-40% Churn Risk'
+        },
+        2: { 
+          title: 'Automated Onboarding', 
+          desc: 'AI-gesteuerte Onboarding-Journeys',
+          metric: '2x Onboarding Speed'
+        },
+        3: { 
+          title: 'Proactive Intervention', 
+          desc: 'AI erkennt At-Risk Accounts automatisch',
+          metric: '+15-30pp NRR'
+        },
+        4: { 
+          title: 'Expansion Intelligence', 
+          desc: 'AI identifiziert Upsell-Opportunitäten',
+          metric: '3x Expansion Revenue'
+        },
+      }
+    },
+    {
       id: 'strategy',
       name: 'Strategy',
       fullName: 'Strategy & Planning',
@@ -193,60 +222,31 @@ const DimensionsGrid = () => {
       }
     },
     {
-      id: 'culture',
-      name: 'Culture',
-      fullName: 'Culture & Ways of Working',
-      icon: Heart,
-      color: 'bg-red-500/20 border-red-500/30',
-      applications: {
-        1: { 
-          title: 'Sentiment Intelligence', 
-          desc: 'Echtzeit-Kulturpuls messen',
-          metric: 'Daily Culture Score'
-        },
-        2: { 
-          title: 'AI-Learning Paths', 
-          desc: 'Personalisierte Skill-Entwicklung',
-          metric: '3x schnelleres Upskilling'
-        },
-        3: { 
-          title: 'Collaboration Analytics', 
-          desc: 'Netzwerk-Analyse für bessere Zusammenarbeit',
-          metric: '50% mehr Cross-Team-Arbeit'
-        },
-        4: { 
-          title: 'Culture Evolution', 
-          desc: 'AI-gesteuerte Kulturwandel-Begleitung',
-          metric: 'Adaptive Organization'
-        },
-      }
-    },
-    {
-      id: 'infrastructure',
-      name: 'Infrastructure',
-      fullName: 'Tech Infrastructure',
+      id: 'governance',
+      name: 'Governance',
+      fullName: 'Board & Governance',
       icon: Building,
       color: 'bg-slate-500/20 border-slate-500/30',
       applications: {
         1: { 
-          title: 'AI-Ops Monitoring', 
-          desc: 'Predictive System-Health',
-          metric: '99.99% Uptime'
+          title: 'Board Intelligence', 
+          desc: 'AI-powered Board Dashboards',
+          metric: '2x Strategic Agility'
         },
         2: { 
-          title: 'Auto-Scaling Intelligence', 
-          desc: 'Self-optimizing Infrastructure',
-          metric: '60% Kosten-Reduktion'
+          title: 'Risk Detection', 
+          desc: 'Predictive Risk Scoring',
+          metric: '50% Risk Reduction'
         },
         3: { 
-          title: 'Unified API Layer', 
-          desc: 'Seamless Integration aller Tools',
-          metric: 'Zero-Friction Stack'
+          title: 'Compliance Automation', 
+          desc: 'Regulatory Monitoring & Reporting',
+          metric: '-60% Compliance Overhead'
         },
         4: { 
-          title: 'Security AI', 
-          desc: 'Autonomous Threat Detection',
-          metric: '0 Breaches'
+          title: 'Investor Intelligence', 
+          desc: 'AI-gesteuerte Investor Relations',
+          metric: '+20% Investor Confidence'
         },
       }
     },
