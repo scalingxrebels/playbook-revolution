@@ -78,6 +78,12 @@ const translations: Translations = {
     en: 'Superlinear growth with near-zero coordination costs', 
     de: 'Superlineares Wachstum mit nahezu null Koordinationskosten' 
   },
+
+  // Capabilities (DimensionsGrid)
+  'capability1': { en: 'Strategy', de: 'Strategie' },
+  'capability2': { en: 'Setup', de: 'Setup' },
+  'capability3': { en: 'Execution', de: 'Execution' },
+  'capability4': { en: 'Operationalization', de: 'Operationalisierung' },
   
   // Footer
   'footer.rights': { en: 'All rights reserved', de: 'Alle Rechte vorbehalten' },
