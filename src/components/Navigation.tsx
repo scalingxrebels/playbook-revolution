@@ -24,16 +24,13 @@ const Navigation: React.FC = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - ScalingX with Yellow Accent */}
-          <Link to="/" className="flex items-center gap-3 group">
+          {/* Logo */}
+          <Link to="/" className="flex items-center group">
             <img 
               src="/images/scalingx-logo.png" 
               alt="ScalingX" 
               className="h-8 w-auto"
             />
-            <span className="font-bold text-sm tracking-tight leading-none">
-              Scaling<span className="text-accent">X</span>
-            </span>
           </Link>
 
           {/* Desktop Navigation - Editorial Style */}
