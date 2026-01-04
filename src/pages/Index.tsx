@@ -39,6 +39,11 @@ import SCQASection from '@/components/SCQASection';
 import BottleneckWizard from '@/components/BottleneckWizard';
 import PlaybooksPreview from '@/components/PlaybooksPreview';
 import CommunityTestimonials from '@/components/CommunityTestimonials';
+import TeamSection from '@/components/TeamSection';
+import HypergrowthSystem from '@/components/HypergrowthSystem';
+import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
+import OfferingsSection from '@/components/OfferingsSection';
+import ScalingXTestimonials from '@/components/ScalingXTestimonials';
 
 const Index = () => {
   return (
@@ -141,19 +146,34 @@ const Index = () => {
             {/* SECTION 27: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 28: PLAYBOOKS PREVIEW */}
+            {/* SECTION 28: SCALINGX CASE STUDIES */}
+            <ScalingXCaseStudies />
+            
+            {/* SECTION 29: HYPERGROWTH SYSTEM */}
+            <HypergrowthSystem />
+            
+            {/* SECTION 30: TEAM SECTION */}
+            <TeamSection />
+            
+            {/* SECTION 31: OFFERINGS */}
+            <OfferingsSection />
+            
+            {/* SECTION 32: SCALINGX TESTIMONIALS */}
+            <ScalingXTestimonials />
+            
+            {/* SECTION 33: PLAYBOOKS PREVIEW */}
             <PlaybooksPreview />
             
-            {/* SECTION 29: COMMUNITY TESTIMONIALS */}
+            {/* SECTION 34: COMMUNITY TESTIMONIALS */}
             <CommunityTestimonials />
             
-            {/* SECTION 30: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 35: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 31: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 36: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 32: BOOKING CTA */}
+            {/* SECTION 37: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />

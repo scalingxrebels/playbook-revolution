@@ -16,17 +16,21 @@ const translations: Translations = {
   'nav.frameworks': { en: 'Frameworks', de: 'Frameworks' },
   'nav.caseStudies': { en: 'Case Studies', de: 'Fallstudien' },
   'nav.knowledge': { en: 'Knowledge Base', de: 'Wissensdatenbank' },
+  'nav.playbooks': { en: 'Playbooks', de: 'Playbooks' },
+  'nav.community': { en: 'Community', de: 'Community' },
+  'nav.research': { en: 'Research', de: 'Forschung' },
   
-  // Hero
+  // Hero - ScalingX
+  'hero.tagline': { en: 'EXPERTISE × SPEED = IMPACT', de: 'EXPERTISE × SPEED = IMPACT' },
   'hero.headline': { 
-    en: 'Your Scaling Playbook is obsolete', 
-    de: 'Dein Scaling Playbook ist veraltet' 
+    en: 'Scaling fails at the system.', 
+    de: 'Skalierung scheitert am System.' 
   },
   'hero.subheadline': { 
-    en: 'Discover how AI-Powered and AI-Native Scaling revolutionizes your growth', 
-    de: 'Entdecke wie AI-Powered und AI-Native Scaling dein Wachstum revolutioniert' 
+    en: "We deliver systems and create impact. Growth shouldn't be a struggle, it should have a system.", 
+    de: 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben.' 
   },
-  'hero.cta': { en: 'Start ROI Calculator', de: 'ROI-Rechner starten' },
+  'hero.cta': { en: 'Book Inflection Call', de: 'Inflection Call buchen' },
   'hero.learnMore': { en: 'Learn More', de: 'Mehr erfahren' },
   
   // Stats
@@ -85,6 +89,19 @@ const translations: Translations = {
   'capability3': { en: 'Execution', de: 'Execution' },
   'capability4': { en: 'Operationalization', de: 'Operationalisierung' },
   
+  // Team Section
+  'team.title': { en: 'The Team', de: 'Das Team' },
+  'team.subtitle': { en: "We're not consultants.", de: 'Wir sind keine Berater.' },
+  'team.description': { en: "We're walking Inflection Points.", de: 'Wir sind wandelnde Inflection Points.' },
+  
+  // Hypergrowth System
+  'hypergrowth.title': { en: 'Scaling Systems:', de: 'Scaling Systems:' },
+  'hypergrowth.subtitle': { en: 'Growth engines that roar.', de: 'Wachstumsmotoren, die brummen.' },
+  
+  // Offerings
+  'offerings.title': { en: 'Strategies', de: 'Strategies' },
+  'offerings.subtitle': { en: 'Three paths to measurable impact', de: 'Drei Wege zu messbarem Impact' },
+  
   // Footer
   'footer.rights': { en: 'All rights reserved', de: 'Alle Rechte vorbehalten' },
   'footer.privacy': { en: 'Privacy', de: 'Datenschutz' },
@@ -97,6 +114,24 @@ const translations: Translations = {
   // General
   'general.loading': { en: 'Loading...', de: 'Laden...' },
   'general.error': { en: 'Error', de: 'Fehler' },
+  'general.readMore': { en: 'Read More', de: 'Mehr erfahren' },
+  'general.bookCall': { en: 'Book Call', de: 'Call buchen' },
+  'general.download': { en: 'Download', de: 'Herunterladen' },
+  'general.filter': { en: 'Filter', de: 'Filtern' },
+  'general.search': { en: 'Search', de: 'Suchen' },
+  'general.all': { en: 'All', de: 'Alle' },
+  
+  // Playbooks
+  'playbooks.title': { en: 'Playbook Library', de: 'Playbook-Bibliothek' },
+  'playbooks.subtitle': { en: 'Battle-tested frameworks for AI-Native scaling', de: 'Praxiserprobte Frameworks für AI-Native Scaling' },
+  
+  // Community
+  'community.title': { en: 'Community Hub', de: 'Community Hub' },
+  'community.subtitle': { en: 'Connect with scaling experts', de: 'Vernetze dich mit Scaling-Experten' },
+  
+  // Research
+  'research.title': { en: 'Research Foundation', de: 'Research Foundation' },
+  'research.subtitle': { en: 'Academic foundations of AI-Native Scaling', de: 'Akademische Grundlagen des AI-Native Scaling' },
 };
 
 interface LanguageContextType {
