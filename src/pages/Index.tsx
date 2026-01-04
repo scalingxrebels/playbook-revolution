@@ -7,6 +7,7 @@ import ProblemSection from '@/components/ProblemSection';
 import ComparisonSection from '@/components/ComparisonSection';
 import CapabilitiesSection from '@/components/CapabilitiesSection';
 import DimensionsGrid from '@/components/DimensionsGrid';
+import LASRScorecard from '@/components/LASRScorecard';
 import TransformationCases from '@/components/TransformationCases';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
 import SolutionSection from '@/components/SolutionSection';
@@ -36,7 +37,10 @@ const Index = () => {
             {/* SECTION 5: 8 DIMENSIONS GRID */}
             <DimensionsGrid />
             
-            {/* SECTION 6: TRANSFORMATION CASES - Before/After */}
+            {/* SECTION 6: LASR.io SCORECARD */}
+            <LASRScorecard />
+            
+            {/* SECTION 7: TRANSFORMATION CASES - Before/After */}
             <TransformationCases />
             
             {/* SECTION 7: CASE STUDIES - Midjourney, Cursor, Perplexity */}
