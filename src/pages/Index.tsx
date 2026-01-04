@@ -6,6 +6,7 @@ import ROICalculator from '@/components/ROICalculator';
 import ProblemSection from '@/components/ProblemSection';
 import ComparisonSection from '@/components/ComparisonSection';
 import CapabilitiesSection from '@/components/CapabilitiesSection';
+import DimensionsGrid from '@/components/DimensionsGrid';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
 import SolutionSection from '@/components/SolutionSection';
 import ProofSection from '@/components/ProofSection';
@@ -31,7 +32,10 @@ const Index = () => {
             {/* SECTION 4: FRAMEWORK - 4 Capabilities Interactive */}
             <CapabilitiesSection />
             
-            {/* SECTION 5: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 5: 8 DIMENSIONS GRID */}
+            <DimensionsGrid />
+            
+            {/* SECTION 6: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
             {/* SECTION 6: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
