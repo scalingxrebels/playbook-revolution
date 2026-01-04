@@ -24,6 +24,10 @@ import ThetaIndexAssessment from '@/components/ThetaIndexAssessment';
 import ThreePillarsModel from '@/components/ThreePillarsModel';
 import BoardGovernanceSection from '@/components/BoardGovernanceSection';
 import C1StrategyDetail from '@/components/C1StrategyDetail';
+import SuperlinearGrowthSection from '@/components/SuperlinearGrowthSection';
+import AIBoardGovernancePillars from '@/components/AIBoardGovernancePillars';
+import SquadModelSection from '@/components/SquadModelSection';
+import CapitalStrategySection from '@/components/CapitalStrategySection';
 
 const Index = () => {
   return (
@@ -81,19 +85,31 @@ const Index = () => {
             {/* SECTION 16: LASR.io SCORECARD */}
             <LASRScorecard />
             
-            {/* SECTION 17: TRANSFORMATION CASES - Before/After */}
+            {/* SECTION 17: SUPER-LINEAR GROWTH VALIDATION */}
+            <SuperlinearGrowthSection />
+            
+            {/* SECTION 18: 7 PILLARS AI BOARD GOVERNANCE */}
+            <AIBoardGovernancePillars />
+            
+            {/* SECTION 19: SQUAD MODEL (Organizational Architecture) */}
+            <SquadModelSection />
+            
+            {/* SECTION 20: CAPITAL STRATEGY (VC Playbook) */}
+            <CapitalStrategySection />
+            
+            {/* SECTION 21: TRANSFORMATION CASES - Before/After */}
             <TransformationCases />
             
-            {/* SECTION 18: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 22: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 19: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 23: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 20: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 24: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 21: BOOKING CTA */}
+            {/* SECTION 25: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />
