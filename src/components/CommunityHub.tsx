@@ -10,6 +10,7 @@ import {
   Calendar, Users, Video, Award, TrendingUp, CheckCircle2,
   Clock, Star, ArrowUp, MessageCircle
 } from 'lucide-react';
+import { toast } from 'sonner';
 
 interface ForumPost {
   id: string;
@@ -128,6 +129,33 @@ const forumPosts: ForumPost[] = [
     timestamp: '2d ago',
     tags: ['Case Study', 'Scaling', 'ARR'],
     isExpert: true
+  },
+  {
+    id: '7',
+    category: 'cases',
+    title: 'How we achieved 46% CAGR post Series B',
+    author: 'Anna Schmidt',
+    authorRole: 'CEO @ TechScale',
+    content: 'Scaling from €3.6M to €7.7M in 24 months through GTM redesign and AI prototype introduction...',
+    replies: 89,
+    upvotes: 567,
+    views: 4521,
+    timestamp: '1w ago',
+    tags: ['Case Study', 'Series B', 'GTM'],
+    isExpert: true
+  },
+  {
+    id: '8',
+    category: 'cases',
+    title: '+425k€ New ARR in 6 months: Our GTM-Engine story',
+    author: 'Max Weber',
+    authorRole: 'CRO @ SaaSCo',
+    content: 'Development of a scalable GTM-Engine for a B2B-SaaS-Startup in expansion phase...',
+    replies: 156,
+    upvotes: 423,
+    views: 6789,
+    timestamp: '2w ago',
+    tags: ['Case Study', 'Revenue', 'GTM-Engine']
   },
   {
     id: '5',
@@ -282,6 +310,23 @@ const CommunityHub: React.FC = () => {
     'office-hours': 'bg-green-500/20 text-green-400 border-green-500/30'
   };
 
+  const handleReply = (postTitle: string) => {
+    toast.info(language === 'de' ? `Antwort auf: ${postTitle}` : `Reply to: ${postTitle}`);
+  };
+
+  const handleUpvote = (postTitle: string) => {
+    toast.success(language === 'de' ? 'Upvote hinzugefügt!' : 'Upvote added!');
+  };
+
+  const handleSave = (postTitle: string) => {
+    toast.success(language === 'de' ? 'Gespeichert!' : 'Saved!');
+  };
+
+  const handleShare = (postTitle: string) => {
+    navigator.clipboard.writeText(window.location.href);
+    toast.success(language === 'de' ? 'Link kopiert!' : 'Link copied!');
+  };
+
   return (
     <section className="py-16 px-4">
       <div className="container max-w-7xl mx-auto">
@@ -419,19 +464,19 @@ const CommunityHub: React.FC = () => {
                           </div>
                         </div>
                         <div className="flex gap-2 mt-4">
-                          <Button size="sm" variant="outline">
+                          <Button size="sm" variant="outline" onClick={() => handleReply(post.title)}>
                             <MessageSquare className="w-4 h-4 mr-1" />
                             Reply
                           </Button>
-                          <Button size="sm" variant="ghost">
+                          <Button size="sm" variant="ghost" onClick={() => handleUpvote(post.title)}>
                             <ThumbsUp className="w-4 h-4 mr-1" />
                             Upvote
                           </Button>
-                          <Button size="sm" variant="ghost">
+                          <Button size="sm" variant="ghost" onClick={() => handleSave(post.title)}>
                             <Bookmark className="w-4 h-4 mr-1" />
                             Save
                           </Button>
-                          <Button size="sm" variant="ghost">
+                          <Button size="sm" variant="ghost" onClick={() => handleShare(post.title)}>
                             <Share2 className="w-4 h-4 mr-1" />
                             Share
                           </Button>
