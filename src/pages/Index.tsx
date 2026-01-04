@@ -1,49 +1,17 @@
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import ROICalculator from '@/components/ROICalculator';
-import ProblemSection from '@/components/ProblemSection';
-import ComparisonSection from '@/components/ComparisonSection';
-import GrowthChart from '@/components/GrowthChart';
-import AILeverageBenchmarks from '@/components/AILeverageBenchmarks';
-import CapabilitiesSection from '@/components/CapabilitiesSection';
-import DimensionsGrid from '@/components/DimensionsGrid';
-import ScalingStages from '@/components/ScalingStages';
-import LASRScorecard from '@/components/LASRScorecard';
-import TransformationCases from '@/components/TransformationCases';
-import CaseStudiesSection from '@/components/CaseStudiesSection';
-import SolutionSection from '@/components/SolutionSection';
-import ProofSection from '@/components/ProofSection';
-import BookingCTA from '@/components/BookingCTA';
 import Footer from '@/components/Footer';
-import InterventionModels from '@/components/InterventionModels';
-import GrowthEngines from '@/components/GrowthEngines';
-import OperatingSystem from '@/components/OperatingSystem';
-import ThetaIndexAssessment from '@/components/ThetaIndexAssessment';
-import ThetaSelfTest from '@/components/ThetaSelfTest';
-import ThreePillarsModel from '@/components/ThreePillarsModel';
-import BoardGovernanceSection from '@/components/BoardGovernanceSection';
-import C1StrategyDetail from '@/components/C1StrategyDetail';
-import SuperlinearGrowthSection from '@/components/SuperlinearGrowthSection';
-import AIBoardGovernancePillars from '@/components/AIBoardGovernancePillars';
-import SquadModelSection from '@/components/SquadModelSection';
-import CapitalStrategySection from '@/components/CapitalStrategySection';
-import EcosystemMap from '@/components/EcosystemMap';
-import MarketAnalysisSection from '@/components/MarketAnalysisSection';
-import ServiceMatrixSection from '@/components/ServiceMatrixSection';
-import BenefitsDashboard from '@/components/BenefitsDashboard';
-import GTMFunnelSection from '@/components/GTMFunnelSection';
-import WhatWeCreatedSection from '@/components/WhatWeCreatedSection';
-import SCQASection from '@/components/SCQASection';
-import BottleneckWizard from '@/components/BottleneckWizard';
-import PlaybooksPreview from '@/components/PlaybooksPreview';
-import CommunityTestimonials from '@/components/CommunityTestimonials';
-import TeamSection from '@/components/TeamSection';
-import HypergrowthSystem from '@/components/HypergrowthSystem';
-import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
-import OfferingsSection from '@/components/OfferingsSection';
-import ScalingXTestimonials from '@/components/ScalingXTestimonials';
+
+// Optimized Homepage Components - 7 Essential Sections
+import HeroOptimized from '@/components/homepage/HeroOptimized';
+import ProblemOptimized from '@/components/homepage/ProblemOptimized';
+import SolutionOptimized from '@/components/homepage/SolutionOptimized';
+import FrameworkOptimized from '@/components/homepage/FrameworkOptimized';
+import ProofOptimized from '@/components/homepage/ProofOptimized';
+import AssessmentOptimized from '@/components/homepage/AssessmentOptimized';
+import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
+import BookingCTA from '@/components/BookingCTA';
 
 const Index = () => {
   return (
@@ -52,129 +20,31 @@ const Index = () => {
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
           <main>
-            {/* SECTION 1: TRIGGER - Hero + ROI Calculator */}
-            <HeroSection />
-            <ROICalculator />
+            {/* SECTION 1: HERO (100vh) */}
+            <HeroOptimized />
             
-            {/* SECTION 2: SCQA - Situation, Complication, Question, Answer */}
-            <SCQASection />
+            {/* SECTION 2: THE PROBLEM (50vh) */}
+            <ProblemOptimized />
             
-            {/* SECTION 3: WHAT WE CREATED - Deductive Derivation */}
-            <WhatWeCreatedSection />
+            {/* SECTION 3: THE SOLUTION (50vh) */}
+            <SolutionOptimized />
             
-            {/* SECTION 4: PROBLEM - CEO Observable Facts */}
-            <ProblemSection />
+            {/* SECTION 4: THE FRAMEWORK (60vh) */}
+            <FrameworkOptimized />
             
-            {/* SECTION 5: PROOF - Old vs New (Level 1 vs Level 3) */}
-            <ComparisonSection />
+            {/* SECTION 5: PROOF & VALIDATION (50vh) */}
+            <ProofOptimized />
             
-            {/* SECTION 4: GROWTH VISUALIZATION */}
-            <GrowthChart />
+            {/* SECTION 6: ASSESSMENT & ACTION (50vh) */}
+            <AssessmentOptimized />
             
-            {/* SECTION 5: AI-LEVERAGE BENCHMARKS */}
-            <AILeverageBenchmarks />
+            {/* SECTION 7: FINAL CTA (40vh) */}
+            <FinalCTAOptimized />
             
-            {/* SECTION 6: THREE PILLARS MODEL */}
-            <ThreePillarsModel />
-            
-            {/* SECTION 7: FRAMEWORK - 4 Capabilities Interactive */}
-            <CapabilitiesSection />
-            
-            {/* SECTION 7b: BOTTLENECK WIZARD - Identify weakest capability */}
-            <BottleneckWizard />
-            
-            {/* SECTION 8: C₁ STRATEGY DETAIL (4 Components) */}
-            <C1StrategyDetail />
-            
-            {/* SECTION 9: 8 DIMENSIONS GRID */}
-            <DimensionsGrid />
-            
-            {/* SECTION 10: BOARD & GOVERNANCE */}
-            <BoardGovernanceSection />
-            
-            {/* SECTION 11: SCALING STAGES */}
-            <ScalingStages />
-            
-            {/* SECTION 12: 3 INTERVENTION MODELS */}
-            <InterventionModels />
-            
-            {/* SECTION 13: 3 GROWTH ENGINES */}
-            <GrowthEngines />
-            
-            {/* SECTION 14: AI-NATIVE OPERATING SYSTEM (5 Dimensions) */}
-            <OperatingSystem />
-            
-            {/* SECTION 15: θ_index ASSESSMENT (6 Dimensions) */}
-            <ThetaIndexAssessment />
-            
-            {/* SECTION 16: θ_index SELF-TEST (Interactive Quiz) */}
-            <ThetaSelfTest />
-            
-            {/* SECTION 17: LASR.io SCORECARD */}
-            <LASRScorecard />
-            
-            {/* SECTION 17: SUPER-LINEAR GROWTH VALIDATION */}
-            <SuperlinearGrowthSection />
-            
-            {/* SECTION 18: 7 PILLARS AI BOARD GOVERNANCE */}
-            <AIBoardGovernancePillars />
-            
-            {/* SECTION 19: SQUAD MODEL (Organizational Architecture) */}
-            <SquadModelSection />
-            
-            {/* SECTION 20: CAPITAL STRATEGY (VC Playbook) */}
-            <CapitalStrategySection />
-            
-            {/* SECTION 21: ECOSYSTEM MAP (16 Documents Overview) */}
-            <EcosystemMap />
-            
-            {/* SECTION 22: MARKET ANALYSIS (TAM/SAM/SOM, ICP) */}
-            <MarketAnalysisSection />
-            
-            {/* SECTION 23: 3×3 SERVICE MATRIX */}
-            <ServiceMatrixSection />
-            
-            {/* SECTION 24: BENEFITS DASHBOARD (7 Categories, 32+ Benefits) */}
-            <BenefitsDashboard />
-            
-            {/* SECTION 25: GTM FUNNEL (Tool-First Strategy) */}
-            <GTMFunnelSection />
-            
-            {/* SECTION 26: TRANSFORMATION CASES - Before/After */}
-            <TransformationCases />
-            
-            {/* SECTION 27: CASE STUDIES - Midjourney, Cursor, Perplexity */}
-            <CaseStudiesSection />
-            
-            {/* SECTION 28: SCALINGX CASE STUDIES */}
-            <ScalingXCaseStudies />
-            
-            {/* SECTION 29: HYPERGROWTH SYSTEM */}
-            <HypergrowthSystem />
-            
-            {/* SECTION 30: TEAM SECTION */}
-            <TeamSection />
-            
-            {/* SECTION 31: OFFERINGS */}
-            <OfferingsSection />
-            
-            {/* SECTION 32: SCALINGX TESTIMONIALS */}
-            <ScalingXTestimonials />
-            
-            {/* SECTION 33: PLAYBOOKS PREVIEW */}
-            <PlaybooksPreview />
-            
-            {/* SECTION 34: COMMUNITY TESTIMONIALS */}
-            <CommunityTestimonials />
-            
-            {/* SECTION 35: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
-            <SolutionSection />
-            
-            {/* SECTION 36: CONVICTION - Proof & Guarantees */}
-            <ProofSection />
-            
-            {/* SECTION 37: BOOKING CTA */}
-            <BookingCTA />
+            {/* BOOKING FORM */}
+            <div id="booking-form">
+              <BookingCTA />
+            </div>
           </main>
           <Footer />
         </div>
