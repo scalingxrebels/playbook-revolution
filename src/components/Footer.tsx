@@ -1,13 +1,14 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowUpRight, BookOpen, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const { t, language } = useLanguage();
 
-  const links = [
-    { label: t('footer.privacy'), href: '#' },
-    { label: t('footer.terms'), href: '#' },
+  const legalLinks = [
+    { label: language === 'de' ? 'Datenschutz' : 'Privacy Policy', href: '/datenschutz' },
+    { label: 'Impressum', href: '/impressum' },
   ];
 
   const socialLinks = [
@@ -169,14 +170,14 @@ const Footer: React.FC = () => {
             </p>
 
             <div className="flex items-center gap-6">
-              {links.map((link) => (
-                <a
+              {legalLinks.map((link) => (
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
