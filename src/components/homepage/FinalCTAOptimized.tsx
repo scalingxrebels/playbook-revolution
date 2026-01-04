@@ -3,10 +3,12 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Calendar, Check, ArrowRight } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
 
 const FinalCTAOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.15, 0.3] });
 
   const trustSignals = [
     { en: 'Free', de: 'Kostenlos' },
@@ -22,12 +24,22 @@ const FinalCTAOptimized: React.FC = () => {
   return (
     <section 
       id="final-cta" 
-      ref={ref as React.RefObject<HTMLElement>}
+      ref={(node) => {
+        // Combine refs
+        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      }}
       className={`relative min-h-[40vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
-      <div className="absolute inset-0 bg-mesh opacity-50" />
+      {/* Background with Parallax Layers */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+      />
+      <div 
+        className="absolute inset-0 bg-mesh opacity-50 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.1)` }}
+      />
       
       <div className="container max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center animate-slide-up">

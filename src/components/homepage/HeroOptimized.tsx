@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { useParallaxLayers } from '@/hooks/useParallax';
 
 const HeroOptimized: React.FC = () => {
   const { language } = useLanguage();
   const [particles, setParticles] = useState<{ x: number; y: number; delay: number }[]>([]);
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
   useEffect(() => {
     const newParticles = Array.from({ length: 20 }, () => ({
@@ -25,12 +27,21 @@ const HeroOptimized: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise">
-      {/* Background Mesh Gradient */}
-      <div className="absolute inset-0 bg-mesh" />
+    <section 
+      ref={containerRef as React.RefObject<HTMLElement>}
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
+    >
+      {/* Background Mesh Gradient - Slow Parallax */}
+      <div 
+        className="absolute inset-0 bg-mesh transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+      />
       
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated Particles - Medium Parallax */}
+      <div 
+        className="absolute inset-0 overflow-hidden pointer-events-none transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px)` }}
+      >
         {particles.map((particle, i) => (
           <div
             key={i}
@@ -45,8 +56,11 @@ const HeroOptimized: React.FC = () => {
         ))}
       </div>
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-30" />
+      {/* Grid Pattern - Fast Parallax */}
+      <div 
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-30 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
+      />
 
       {/* Main Content */}
       <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
