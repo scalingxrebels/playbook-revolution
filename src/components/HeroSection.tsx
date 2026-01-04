@@ -26,11 +26,11 @@ const HeroSection: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column - Typography Heavy */}
           <div className="lg:col-span-8 space-y-8">
-            {/* Overline with ScalingX Tagline */}
+            {/* Overline */}
             <div className="flex items-center gap-4 animate-slide-up">
               <span className="h-px w-12 bg-gradient-primary" />
               <span className="text-sm font-medium uppercase tracking-widest text-accent">
-                🚀 EXPERTISE × SPEED = IMPACT 🚀
+                ScalingX
               </span>
             </div>
 
