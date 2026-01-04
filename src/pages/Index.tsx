@@ -21,6 +21,7 @@ import InterventionModels from '@/components/InterventionModels';
 import GrowthEngines from '@/components/GrowthEngines';
 import OperatingSystem from '@/components/OperatingSystem';
 import ThetaIndexAssessment from '@/components/ThetaIndexAssessment';
+import ThetaSelfTest from '@/components/ThetaSelfTest';
 import ThreePillarsModel from '@/components/ThreePillarsModel';
 import BoardGovernanceSection from '@/components/BoardGovernanceSection';
 import C1StrategyDetail from '@/components/C1StrategyDetail';
@@ -95,7 +96,10 @@ const Index = () => {
             {/* SECTION 15: θ_index ASSESSMENT (6 Dimensions) */}
             <ThetaIndexAssessment />
             
-            {/* SECTION 16: LASR.io SCORECARD */}
+            {/* SECTION 16: θ_index SELF-TEST (Interactive Quiz) */}
+            <ThetaSelfTest />
+            
+            {/* SECTION 17: LASR.io SCORECARD */}
             <LASRScorecard />
             
             {/* SECTION 17: SUPER-LINEAR GROWTH VALIDATION */}
