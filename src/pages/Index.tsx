@@ -7,6 +7,7 @@ import ProblemSection from '@/components/ProblemSection';
 import ComparisonSection from '@/components/ComparisonSection';
 import CapabilitiesSection from '@/components/CapabilitiesSection';
 import DimensionsGrid from '@/components/DimensionsGrid';
+import TransformationCases from '@/components/TransformationCases';
 import CaseStudiesSection from '@/components/CaseStudiesSection';
 import SolutionSection from '@/components/SolutionSection';
 import ProofSection from '@/components/ProofSection';
@@ -35,7 +36,10 @@ const Index = () => {
             {/* SECTION 5: 8 DIMENSIONS GRID */}
             <DimensionsGrid />
             
-            {/* SECTION 6: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 6: TRANSFORMATION CASES - Before/After */}
+            <TransformationCases />
+            
+            {/* SECTION 7: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
             {/* SECTION 6: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
