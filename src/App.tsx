@@ -8,6 +8,8 @@ import NotFound from "./pages/NotFound";
 import Playbooks from "./pages/Playbooks";
 import Community from "./pages/Community";
 import Research from "./pages/Research";
+import Impressum from "./pages/Impressum";
+import Datenschutz from "./pages/Datenschutz";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/playbooks" element={<Playbooks />} />
           <Route path="/community" element={<Community />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
