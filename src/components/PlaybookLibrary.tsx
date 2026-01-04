@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -481,10 +481,11 @@ interface PlaybookCardProps {
   index: number;
   language: 'en' | 'de';
   onOpen: (playbook: Playbook) => void;
+  onDownload: (playbook: Playbook) => void;
   getDifficultyColor: (difficulty: string) => string;
 }
 
-const PlaybookCard: React.FC<PlaybookCardProps> = ({ playbook, index, language, onOpen, getDifficultyColor }) => {
+const PlaybookCard: React.FC<PlaybookCardProps> = ({ playbook, index, language, onOpen, onDownload, getDifficultyColor }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -568,13 +569,20 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({ playbook, index, language, 
           size="sm"
           variant="outline"
           className="flex-1"
-          onClick={() => onOpen(playbook)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen(playbook);
+          }}
         >
           {language === 'en' ? 'Read' : 'Lesen'}
         </Button>
         <Button
           size="sm"
           className="flex-1 bg-gradient-to-r from-primary to-primary/80"
+          onClick={(e) => {
+            e.stopPropagation();
+            onDownload(playbook);
+          }}
         >
           {language === 'en' ? 'Template' : 'Vorlage'}
           <Download className="w-3 h-3 ml-1" />
@@ -589,6 +597,7 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({ playbook, index, language, 
 
 const PlaybookLibrary: React.FC = () => {
   const { language } = useLanguage();
+  const { toast } = useToast();
   const [selectedDimension, setSelectedDimension] = useState('All');
   const [selectedCapability, setSelectedCapability] = useState('All');
   const [selectedStage, setSelectedStage] = useState('All');
@@ -612,6 +621,15 @@ const PlaybookLibrary: React.FC = () => {
   const openPlaybookDetail = (playbook: Playbook) => {
     setSelectedPlaybook(playbook);
     setIsDialogOpen(true);
+  };
+
+  const handleDownloadTemplate = (playbook: Playbook) => {
+    toast({
+      title: language === 'en' ? 'Template Download' : 'Vorlage Download',
+      description: language === 'en' 
+        ? `"${playbook.title.en}" template will be available soon. Contact us for early access.`
+        : `"${playbook.title.de}" Vorlage wird bald verfügbar sein. Kontaktieren Sie uns für frühen Zugang.`,
+    });
   };
 
   const getDifficultyColor = (difficulty: string) => {
@@ -773,6 +791,7 @@ const PlaybookLibrary: React.FC = () => {
               index={index} 
               language={language}
               onOpen={openPlaybookDetail}
+              onDownload={handleDownloadTemplate}
               getDifficultyColor={getDifficultyColor}
             />
           ))}
