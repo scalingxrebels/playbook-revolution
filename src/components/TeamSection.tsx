@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowUpRight, Sparkles, Zap, Target, Bot, Rocket } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface TeamMember {
   id: string;
@@ -20,11 +20,22 @@ interface TeamMember {
     de: string;
   };
   image: string;
-  isHighlighted?: boolean;
   specialties: string[];
 }
 
 const teamMembers: TeamMember[] = [
+  {
+    id: 'alban',
+    name: 'Alban Halili',
+    role: { en: 'AI Expert', de: 'AI Expert' },
+    tagline: { en: 'Growth. AI Solutions. Automation.', de: 'Growth. AI Solutions. Automation.' },
+    description: {
+      en: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.',
+      de: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.'
+    },
+    image: '/images/team-alban.png',
+    specialties: ['AI Agents', 'Automation', 'Growth']
+  },
   {
     id: 'michel',
     name: 'Michel Lason',
@@ -36,19 +47,6 @@ const teamMembers: TeamMember[] = [
     },
     image: '/images/team-michel.png',
     specialties: ['Strategy', 'Scaling', 'Leadership']
-  },
-  {
-    id: 'alban',
-    name: 'Alban Halili',
-    role: { en: 'AI Expert', de: 'AI Expert' },
-    tagline: { en: 'Growth. AI Solutions. Automation.', de: 'Growth. AI Solutions. Automation.' },
-    description: {
-      en: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.',
-      de: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.'
-    },
-    image: '/images/team-alban.png',
-    isHighlighted: true,
-    specialties: ['AI Agents', 'Automation', 'Multi-Agent Systems']
   },
   {
     id: 'florian',
@@ -95,57 +93,23 @@ const TeamSection: React.FC = () => {
         {/* Team Grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {teamMembers.map((member) => (
-            <div
-              key={member.id}
-              className={`relative group ${
-                member.isHighlighted 
-                  ? 'md:-mt-8 md:mb-8' 
-                  : ''
-              }`}
-            >
-              {/* Highlighted Badge for Alban */}
-              {member.isHighlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-                  <Badge className="bg-accent text-accent-foreground shadow-lg animate-pulse flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" />
-                    AI EXPERT
-                    <Sparkles className="w-3 h-3" />
-                  </Badge>
-                </div>
-              )}
-              
-              <div className={`
-                border-2 bg-card p-6 h-full transition-all duration-300
-                ${member.isHighlighted 
-                  ? 'border-accent shadow-[0_0_30px_rgba(234,179,8,0.3)] hover:shadow-[0_0_50px_rgba(234,179,8,0.5)]' 
-                  : 'border-border hover:border-foreground/30 shadow-brutal-sm hover:-translate-y-1'
-                }
-              `}>
+            <div key={member.id} className="relative group">
+              <div className="border-2 bg-card p-6 h-full transition-all duration-300 border-border hover:border-foreground/30 shadow-brutal-sm hover:-translate-y-1">
                 {/* Image */}
                 <div className="relative mb-6">
-                  <div className={`
-                    aspect-square rounded-full overflow-hidden border-4
-                    ${member.isHighlighted ? 'border-accent' : 'border-foreground/10'}
-                  `}>
+                  <div className="aspect-square rounded-full overflow-hidden border-4 border-foreground/10">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  
-                  {/* Floating Icon for Alban */}
-                  {member.isHighlighted && (
-                    <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-lg">
-                      <Bot className="w-6 h-6 text-accent-foreground" />
-                    </div>
-                  )}
                 </div>
 
                 {/* Content */}
                 <div className="space-y-3 text-center">
                   <h3 className="font-display text-2xl font-bold">{member.name}</h3>
-                  <Badge variant={member.isHighlighted ? 'default' : 'secondary'}>
+                  <Badge variant="secondary">
                     {member.role[language as 'en' | 'de']}
                   </Badge>
                   <p className="text-accent font-medium italic">
@@ -169,70 +133,6 @@ const TeamSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Alban Highlight Section */}
-        <div className="border-2 border-accent bg-gradient-to-br from-accent/10 to-accent/5 p-8 md:p-12">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <Badge className="bg-accent text-accent-foreground">
-                <Sparkles className="w-3 h-3 mr-1" />
-                {language === 'de' ? 'AI-Spezialist im Fokus' : 'Spotlight: AI Specialist'}
-              </Badge>
-              
-              <h3 className="font-display text-3xl md:text-4xl italic">
-                Alban Halili
-              </h3>
-              
-              <p className="text-xl text-accent font-semibold">
-                King of Agents & Automations
-              </p>
-              
-              <p className="text-muted-foreground">
-                {language === 'de'
-                  ? 'Alban ist unser AI-Experte und bringt Sales, Marketing und Operations mit AI-Agents auf das nächste Level. Seine Multi-Agentic Systems automatisieren komplexe Workflows und schaffen messbaren Impact ab Tag 1.'
-                  : 'Alban is our AI expert who elevates Sales, Marketing, and Operations with AI-Agents to the next level. His Multi-Agentic Systems automate complex workflows and deliver measurable impact from day 1.'
-                }
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-2">
-                  <Bot className="w-5 h-5 text-accent" />
-                  <span className="text-sm">AI Agents</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Zap className="w-5 h-5 text-accent" />
-                  <span className="text-sm">Automation</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Target className="w-5 h-5 text-accent" />
-                  <span className="text-sm">Growth Hacking</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Rocket className="w-5 h-5 text-accent" />
-                  <span className="text-sm">Multi-Agent Systems</span>
-                </div>
-              </div>
-              
-              <Button 
-                className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-brutal-sm"
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {language === 'de' ? 'AI-Session buchen' : 'Book AI Session'}
-                <ArrowUpRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-            
-            <div className="relative">
-              <div className="aspect-square max-w-md mx-auto">
-                <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl animate-pulse" />
-                <img
-                  src="/images/team-alban.png"
-                  alt="Alban Halili - AI Expert"
-                  className="relative z-10 w-full h-full object-cover rounded-full border-4 border-accent shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
 
         {/* Scaling Rebels Network */}
         <div className="mt-16 text-center space-y-8">
