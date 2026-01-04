@@ -33,6 +33,8 @@ import MarketAnalysisSection from '@/components/MarketAnalysisSection';
 import ServiceMatrixSection from '@/components/ServiceMatrixSection';
 import BenefitsDashboard from '@/components/BenefitsDashboard';
 import GTMFunnelSection from '@/components/GTMFunnelSection';
+import WhatWeCreatedSection from '@/components/WhatWeCreatedSection';
+import SCQASection from '@/components/SCQASection';
 
 const Index = () => {
   return (
@@ -45,10 +47,16 @@ const Index = () => {
             <HeroSection />
             <ROICalculator />
             
-            {/* SECTION 2: PROBLEM - CEO Observable Facts */}
+            {/* SECTION 2: SCQA - Situation, Complication, Question, Answer */}
+            <SCQASection />
+            
+            {/* SECTION 3: WHAT WE CREATED - Deductive Derivation */}
+            <WhatWeCreatedSection />
+            
+            {/* SECTION 4: PROBLEM - CEO Observable Facts */}
             <ProblemSection />
             
-            {/* SECTION 3: PROOF - Old vs New (Level 1 vs Level 3) */}
+            {/* SECTION 5: PROOF - Old vs New (Level 1 vs Level 3) */}
             <ComparisonSection />
             
             {/* SECTION 4: GROWTH VISUALIZATION */}
