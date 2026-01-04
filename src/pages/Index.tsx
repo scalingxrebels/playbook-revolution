@@ -17,6 +17,9 @@ import SolutionSection from '@/components/SolutionSection';
 import ProofSection from '@/components/ProofSection';
 import BookingCTA from '@/components/BookingCTA';
 import Footer from '@/components/Footer';
+import InterventionModels from '@/components/InterventionModels';
+import GrowthEngines from '@/components/GrowthEngines';
+import OperatingSystem from '@/components/OperatingSystem';
 
 const Index = () => {
   return (
@@ -50,22 +53,31 @@ const Index = () => {
             {/* SECTION 8: SCALING STAGES */}
             <ScalingStages />
             
-            {/* SECTION 9: LASR.io SCORECARD */}
+            {/* SECTION 9: 3 INTERVENTION MODELS */}
+            <InterventionModels />
+            
+            {/* SECTION 10: 3 GROWTH ENGINES */}
+            <GrowthEngines />
+            
+            {/* SECTION 11: AI-NATIVE OPERATING SYSTEM (5 Dimensions) */}
+            <OperatingSystem />
+            
+            {/* SECTION 12: LASR.io SCORECARD */}
             <LASRScorecard />
             
-            {/* SECTION 10: TRANSFORMATION CASES - Before/After */}
+            {/* SECTION 13: TRANSFORMATION CASES - Before/After */}
             <TransformationCases />
             
-            {/* SECTION 11: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 14: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 12: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 15: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 13: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 16: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 14: BOOKING CTA */}
+            {/* SECTION 17: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />
