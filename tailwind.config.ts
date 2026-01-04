@@ -14,8 +14,16 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Quattrocento Sans"', 'system-ui', 'sans-serif'],
-        sans: ['"Quattrocento Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+      },
+      fontSize: {
+        'display-xl': ['clamp(4rem, 12vw, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.03em' }],
+        'display-lg': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '0.95', letterSpacing: '-0.02em' }],
+        'display-md': ['clamp(2rem, 5vw, 4rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
+        'editorial': ['clamp(1.25rem, 2vw, 1.75rem)', { lineHeight: '1.4', letterSpacing: '0' }],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -61,7 +69,6 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Custom mode colors for ROI calculator
         mode: {
           traditional: "hsl(var(--mode-traditional))",
           "ai-powered": "hsl(var(--mode-ai-powered))",
@@ -83,11 +90,15 @@ export default {
           to: { height: "0" },
         },
         "slide-up": {
-          from: { transform: "translateY(20px)", opacity: "0" },
+          from: { transform: "translateY(30px)", opacity: "0" },
           to: { transform: "translateY(0)", opacity: "1" },
         },
         "slide-in-right": {
-          from: { transform: "translateX(20px)", opacity: "0" },
+          from: { transform: "translateX(30px)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "slide-in-left": {
+          from: { transform: "translateX(-30px)", opacity: "0" },
           to: { transform: "translateX(0)", opacity: "1" },
         },
         "fade-in": {
@@ -98,18 +109,34 @@ export default {
           from: { transform: "scale(0.95)", opacity: "0" },
           to: { transform: "scale(1)", opacity: "1" },
         },
-        "counter": {
-          from: { "--num": "0" },
-          to: { "--num": "var(--target)" },
+        "blur-in": {
+          from: { filter: "blur(10px)", opacity: "0" },
+          to: { filter: "blur(0)", opacity: "1" },
+        },
+        "reveal-up": {
+          from: { transform: "translateY(100%)", opacity: "0" },
+          to: { transform: "translateY(0)", opacity: "1" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "slide-up": "slide-up 0.5s ease-out",
-        "slide-in-right": "slide-in-right 0.5s ease-out",
+        "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        "slide-in-right": "slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        "slide-in-left": "slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         "fade-in": "fade-in 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
+        "blur-in": "blur-in 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+        "reveal-up": "reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+      },
+      backgroundImage: {
+        'grid-pattern': 'linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px)',
+        'diagonal-lines': 'repeating-linear-gradient(45deg, transparent, transparent 10px, hsl(var(--border) / 0.3) 10px, hsl(var(--border) / 0.3) 11px)',
+      },
+      backgroundSize: {
+        'grid-lg': '80px 80px',
+        'grid-md': '40px 40px',
+        'grid-sm': '20px 20px',
       },
     },
   },
