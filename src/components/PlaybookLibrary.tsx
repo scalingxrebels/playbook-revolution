@@ -4,10 +4,13 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { useToast } from '@/hooks/use-toast';
 import { 
   Search, Filter, BookOpen, Download, Calendar, Clock, 
   Target, TrendingUp, Users, Zap, BarChart3, Settings,
-  DollarSign, Brain, Code, Database, Shield, Megaphone
+  DollarSign, Brain, Code, Database, Shield, Megaphone,
+  X, CheckCircle, ArrowRight, ExternalLink
 } from 'lucide-react';
 
 type Dimension = 'GTM' | 'Product' | 'Ops' | 'Finance' | 'Talent' | 'Tech' | 'Data' | 'Culture';
@@ -432,12 +435,34 @@ const difficultyColors: Record<string, string> = {
 
 const PlaybookLibrary: React.FC = () => {
   const { language } = useLanguage();
+  const { toast } = useToast();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDimensions, setSelectedDimensions] = useState<Dimension[]>([]);
   const [selectedCapabilities, setSelectedCapabilities] = useState<Capability[]>([]);
   const [selectedStages, setSelectedStages] = useState<Stage[]>([]);
   const [selectedIndustries, setSelectedIndustries] = useState<Industry[]>([]);
   const [showFilters, setShowFilters] = useState(true);
+  const [selectedPlaybook, setSelectedPlaybook] = useState<Playbook | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleOpenPlaybook = (playbook: Playbook) => {
+    setSelectedPlaybook(playbook);
+    setIsDialogOpen(true);
+  };
+
+  const handleDownloadTemplate = (playbook: Playbook) => {
+    toast({
+      title: language === 'de' ? 'Template Download' : 'Template Download',
+      description: language === 'de' 
+        ? `${playbook.titleDe} Template wird vorbereitet...`
+        : `Preparing ${playbook.title} template...`,
+    });
+  };
+
+  const handleBookCall = () => {
+    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+    setIsDialogOpen(false);
+  };
 
   const filteredPlaybooks = useMemo(() => {
     return playbooks.filter(playbook => {
@@ -738,15 +763,28 @@ const PlaybookLibrary: React.FC = () => {
 
               {/* Action Buttons */}
               <div className="flex gap-2 mt-auto pt-4 border-t border-border/50">
-                <Button size="sm" className="flex-1 bg-gradient-accent hover:opacity-90">
+                <Button 
+                  size="sm" 
+                  className="flex-1 bg-gradient-accent hover:opacity-90"
+                  onClick={() => handleOpenPlaybook(playbook)}
+                >
                   <BookOpen className="w-4 h-4 mr-1" />
                   {language === 'de' ? 'Lesen' : 'Read'}
                 </Button>
-                <Button size="sm" variant="outline" className="flex-1">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="flex-1"
+                  onClick={() => handleDownloadTemplate(playbook)}
+                >
                   <Download className="w-4 h-4 mr-1" />
                   {language === 'de' ? 'Template' : 'Template'}
                 </Button>
-                <Button size="sm" variant="outline">
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  onClick={handleBookCall}
+                >
                   <Calendar className="w-4 h-4" />
                 </Button>
               </div>
@@ -767,6 +805,143 @@ const PlaybookLibrary: React.FC = () => {
             </Button>
           </div>
         )}
+
+        {/* Playbook Detail Dialog */}
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            {selectedPlaybook && (
+              <>
+                <DialogHeader>
+                  <div className="flex items-start gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-accent flex items-center justify-center text-accent-foreground flex-shrink-0">
+                      {selectedPlaybook.icon}
+                    </div>
+                    <div>
+                      <DialogTitle className="text-2xl font-bold mb-2">
+                        {language === 'de' ? selectedPlaybook.titleDe : selectedPlaybook.title}
+                      </DialogTitle>
+                      <div className="flex flex-wrap gap-2">
+                        <Badge variant="outline">{selectedPlaybook.dimension}</Badge>
+                        {selectedPlaybook.capabilities.map(c => (
+                          <Badge key={c} variant="outline" className="border-accent/30 text-accent">{c}</Badge>
+                        ))}
+                        <Badge className={difficultyColors[selectedPlaybook.difficulty]}>
+                          {selectedPlaybook.difficulty}
+                        </Badge>
+                      </div>
+                    </div>
+                  </div>
+                </DialogHeader>
+
+                <div className="space-y-6 mt-6">
+                  {/* Description */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      {language === 'de' ? 'Überblick' : 'Overview'}
+                    </h3>
+                    <p className="text-foreground">
+                      {language === 'de' ? selectedPlaybook.descriptionDe : selectedPlaybook.description}
+                    </p>
+                  </div>
+
+                  {/* Meta */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="p-4 bg-muted/30 rounded-lg">
+                      <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                        <Clock className="w-4 h-4" />
+                        <span className="text-xs uppercase">Timeline</span>
+                      </div>
+                      <p className="font-semibold">{selectedPlaybook.timeline}</p>
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-lg">
+                      <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                        <Target className="w-4 h-4" />
+                        <span className="text-xs uppercase">Stage</span>
+                      </div>
+                      <p className="font-semibold">{selectedPlaybook.stage.join(', ')}</p>
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-lg">
+                      <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                        <Users className="w-4 h-4" />
+                        <span className="text-xs uppercase">Industry</span>
+                      </div>
+                      <p className="font-semibold text-sm">{selectedPlaybook.industry.join(', ')}</p>
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-lg">
+                      <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                        <Zap className="w-4 h-4" />
+                        <span className="text-xs uppercase">Difficulty</span>
+                      </div>
+                      <p className="font-semibold">{selectedPlaybook.difficulty}</p>
+                    </div>
+                  </div>
+
+                  {/* What You'll Build */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      {language === 'de' ? 'Was du bauen wirst' : "What You'll Build"}
+                    </h3>
+                    <div className="grid md:grid-cols-2 gap-2">
+                      {(language === 'de' ? selectedPlaybook.whatYouBuildDe : selectedPlaybook.whatYouBuild).map((item, i) => (
+                        <div key={i} className="flex items-center gap-2 p-3 bg-muted/20 rounded-lg">
+                          <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Expected Outcomes */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      {language === 'de' ? 'Erwartete Ergebnisse' : 'Expected Outcomes'}
+                    </h3>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                      {(language === 'de' ? selectedPlaybook.outcomesDe : selectedPlaybook.outcomes).map((outcome, i) => (
+                        <div key={i} className="p-3 bg-accent/10 rounded-lg text-center">
+                          <p className="font-bold text-accent text-lg">{outcome}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Case Studies */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                      {language === 'de' ? 'Erfolgreiche Implementierungen' : 'Successful Implementations'}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedPlaybook.caseStudies.map(cs => (
+                        <Badge key={cs} variant="outline" className="px-4 py-2">
+                          {cs}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-border">
+                    <Button 
+                      className="flex-1 bg-gradient-accent hover:opacity-90"
+                      onClick={() => handleDownloadTemplate(selectedPlaybook)}
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      {language === 'de' ? 'Template herunterladen' : 'Download Template'}
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      className="flex-1"
+                      onClick={handleBookCall}
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      {language === 'de' ? 'Implementierung besprechen' : 'Discuss Implementation'}
+                    </Button>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
