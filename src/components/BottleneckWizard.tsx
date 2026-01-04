@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -18,8 +18,20 @@ import {
   TrendingUp,
   Clock,
   DollarSign,
-  Users
+  Users,
+  Save,
+  History,
+  Trash2
 } from 'lucide-react';
+
+interface SavedResult {
+  answers: Record<string, number>;
+  scores: Record<string, number>;
+  bottleneck: { capability: string; score: number };
+  timestamp: string;
+}
+
+const STORAGE_KEY = 'sxh-bottleneck-diagnosis';
 
 interface DiagnosticQuestion {
   id: string;
@@ -410,6 +422,51 @@ const BottleneckWizard: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<'intro' | 'questions' | 'results'>('intro');
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [savedResult, setSavedResult] = useState<SavedResult | null>(null);
+  const [showSavedBanner, setShowSavedBanner] = useState(false);
+
+  // Load saved results on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved) as SavedResult;
+        setSavedResult(parsed);
+      }
+    } catch (e) {
+      console.error('Error loading saved diagnosis:', e);
+    }
+  }, []);
+
+  // Save results when entering results screen
+  useEffect(() => {
+    if (currentStep === 'results' && Object.keys(answers).length > 0) {
+      const scores = calculateCapabilityScores();
+      const bottleneck = getBottleneck();
+      const result: SavedResult = {
+        answers,
+        scores,
+        bottleneck,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(result));
+      setSavedResult(result);
+      setShowSavedBanner(true);
+      setTimeout(() => setShowSavedBanner(false), 3000);
+    }
+  }, [currentStep, answers]);
+
+  const loadSavedResult = () => {
+    if (savedResult) {
+      setAnswers(savedResult.answers);
+      setCurrentStep('results');
+    }
+  };
+
+  const deleteSavedResult = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setSavedResult(null);
+  };
 
   const handleAnswer = (questionId: string, value: number) => {
     setAnswers(prev => ({ ...prev, [questionId]: value }));
@@ -490,6 +547,47 @@ const BottleneckWizard: React.FC = () => {
         {currentStep === 'intro' && (
           <Card className="p-8 glass border-primary/30 animate-fade-in">
             <div className="text-center">
+              {/* Saved Result Banner */}
+              {savedResult && (
+                <div className="mb-6 p-4 rounded-xl bg-accent/10 border border-accent/30">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <History className="w-4 h-4 text-accent" />
+                    <span className="text-sm font-medium text-accent">
+                      {language === 'de' ? 'Gespeicherte Diagnose gefunden' : 'Saved Diagnosis Found'}
+                    </span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    {language === 'de' ? 'Vom' : 'From'} {new Date(savedResult.timestamp).toLocaleDateString(language === 'de' ? 'de-DE' : 'en-US', { 
+                      day: 'numeric', 
+                      month: 'long', 
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}
+                  </p>
+                  <div className="flex items-center justify-center gap-2">
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      onClick={loadSavedResult}
+                      className="gap-1 border-accent/30 text-accent hover:bg-accent/10"
+                    >
+                      <History className="w-3 h-3" />
+                      {language === 'de' ? 'Ergebnisse laden' : 'Load Results'}
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      variant="ghost"
+                      onClick={deleteSavedResult}
+                      className="gap-1 text-muted-foreground hover:text-destructive"
+                    >
+                      <Trash2 className="w-3 h-3" />
+                      {language === 'de' ? 'Löschen' : 'Delete'}
+                    </Button>
+                  </div>
+                </div>
+              )}
+
               <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <Target className="w-10 h-10 text-primary" />
               </div>
@@ -602,6 +700,18 @@ const BottleneckWizard: React.FC = () => {
 
           return (
             <div className="space-y-8 animate-fade-in">
+              {/* Saved Banner */}
+              {showSavedBanner && (
+                <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-accent text-accent-foreground shadow-lg">
+                    <Save className="w-4 h-4" />
+                    <span className="text-sm font-medium">
+                      {language === 'de' ? 'Ergebnisse gespeichert!' : 'Results saved!'}
+                    </span>
+                  </div>
+                </div>
+              )}
+
               {/* Bottleneck Alert */}
               <Card className="p-8 glass border-destructive/30 bg-destructive/5">
                 <div className="flex flex-col md:flex-row items-center gap-6">
