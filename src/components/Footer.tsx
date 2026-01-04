@@ -7,6 +7,7 @@ const Footer: React.FC = () => {
   const { t, language } = useLanguage();
 
   const legalLinks = [
+    { label: language === 'de' ? 'AGB' : 'Terms', href: '/agb' },
     { label: language === 'de' ? 'Datenschutz' : 'Privacy Policy', href: '/datenschutz' },
     { label: 'Impressum', href: '/impressum' },
   ];
