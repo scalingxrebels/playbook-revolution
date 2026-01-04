@@ -26,29 +26,32 @@ const HeroSection: React.FC = () => {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column - Typography Heavy */}
           <div className="lg:col-span-8 space-y-8">
-            {/* Overline */}
+            {/* Overline with ScalingX Tagline */}
             <div className="flex items-center gap-4 animate-slide-up">
               <span className="h-px w-12 bg-gradient-primary" />
-              <span className="text-sm font-medium uppercase tracking-widest text-muted-foreground">
-                AI-Native Scaling
+              <span className="text-sm font-medium uppercase tracking-widest text-accent">
+                🚀 EXPERTISE × SPEED = IMPACT 🚀
               </span>
             </div>
 
             {/* Main Headline - Brutalist Typography */}
             <h1 className="font-display text-display-xl leading-none animate-blur-in">
-              <span className="block text-foreground italic">Your</span>
-              <span className="block text-gradient animate-gradient bg-gradient-primary">Scaling</span>
-              <span className="block text-foreground italic">Playbook</span>
-              <span className="block font-sans font-bold uppercase text-display-md mt-2 not-italic">
-                is Obsolete
+              <span className="block text-foreground italic">
+                {language === 'de' ? 'Skalierung' : 'Scaling'}
+              </span>
+              <span className="block text-gradient animate-gradient bg-gradient-primary">
+                {language === 'de' ? 'scheitert' : 'fails'}
+              </span>
+              <span className="block text-foreground italic">
+                {language === 'de' ? 'am System.' : 'at the system.'}
               </span>
             </h1>
 
             {/* Editorial Subheadline */}
             <p className="text-editorial text-muted-foreground max-w-xl editorial-border animate-slide-up" style={{ animationDelay: '0.2s' }}>
               {language === 'de' 
-                ? 'Die traditionellen Skalierungsmethoden sind tot. AI-Native Unternehmen erreichen €100M ARR in 18 Monaten statt 7 Jahren.'
-                : 'Traditional scaling methodologies are dead. AI-Native companies reach €100M ARR in 18 months instead of 7 years.'
+                ? 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben.'
+                : 'We deliver systems and create impact. Growth shouldn\'t be a struggle, it should have a system.'
               }
             </p>
 

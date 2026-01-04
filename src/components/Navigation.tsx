@@ -24,22 +24,22 @@ const Navigation: React.FC = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Brutalist Style */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="w-10 h-10 bg-foreground flex items-center justify-center shadow-brutal-sm group-hover:-translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
-                <span className="text-background font-bold text-lg tracking-tighter">SX</span>
-              </div>
-            </div>
+          {/* Logo - ScalingX with Yellow Accent */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src="/images/scalingx-logo.png" 
+              alt="ScalingX" 
+              className="h-8 w-auto"
+            />
             <div className="hidden sm:flex flex-col">
-              <span className="font-bold text-sm uppercase tracking-widest leading-none">
-                ScalingX
+              <span className="font-bold text-sm tracking-tight leading-none">
+                Scaling<span className="text-accent">X</span>
               </span>
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider">
-                Hub
+              <span className="text-[9px] text-muted-foreground uppercase tracking-wider">
+                Expertise × Speed = Impact
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation - Editorial Style */}
           <div className="hidden md:flex items-center gap-1">

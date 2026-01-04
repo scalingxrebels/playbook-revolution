@@ -11,15 +11,13 @@ const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
-    { label: 'Twitter', href: '#' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/company/scalingxhypergrowth/' },
-    { label: 'GitHub', href: '#' },
   ];
 
   const authors = [
-    { name: 'Michel Lason', role: 'Lead' },
-    { name: 'Alban Halili', role: 'Co-Author' },
-    { name: 'Florian Metzger', role: 'Co-Author' },
+    { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
+    { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
+    { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
   ];
 
   return (
@@ -29,13 +27,19 @@ const Footer: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-end">
           {/* Big Brand Text */}
           <div>
-            <h2 className="font-display text-display-lg italic text-foreground leading-none mb-4">
-              ScalingX<span className="text-gradient">.</span>
-            </h2>
+            <div className="flex items-center gap-4 mb-4">
+              <img src="/images/scalingx-logo.png" alt="ScalingX" className="h-10 w-auto" />
+              <h2 className="font-display text-display-md italic text-foreground leading-none">
+                Scaling<span className="text-accent">X</span><span className="text-gradient">.</span>
+              </h2>
+            </div>
+            <p className="text-xs uppercase tracking-widest text-accent mb-2">
+              EXPERTISE × SPEED = IMPACT
+            </p>
             <p className="text-editorial text-muted-foreground max-w-md editorial-border">
               {language === 'de' 
-                ? 'Das AI-Native Scaling Playbook. Von linearem zu superlinearem Wachstum.'
-                : 'The AI-Native Scaling Playbook. From linear to superlinear growth.'}
+                ? 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben.'
+                : "We deliver systems and create impact. Growth shouldn't be a struggle, it should have a system."}
             </p>
           </div>
 
@@ -111,14 +115,14 @@ const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="mailto:hello@scalingstack.com" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    hello@scalingstack.com
+                  <a href="mailto:hello@scalingx.io" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    hello@scalingx.io
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://scalingstack.com" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    scalingstack.com
+                  <a href="https://scalingx.io" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    scalingx.io
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
