@@ -28,6 +28,11 @@ import SuperlinearGrowthSection from '@/components/SuperlinearGrowthSection';
 import AIBoardGovernancePillars from '@/components/AIBoardGovernancePillars';
 import SquadModelSection from '@/components/SquadModelSection';
 import CapitalStrategySection from '@/components/CapitalStrategySection';
+import EcosystemMap from '@/components/EcosystemMap';
+import MarketAnalysisSection from '@/components/MarketAnalysisSection';
+import ServiceMatrixSection from '@/components/ServiceMatrixSection';
+import BenefitsDashboard from '@/components/BenefitsDashboard';
+import GTMFunnelSection from '@/components/GTMFunnelSection';
 
 const Index = () => {
   return (
@@ -97,19 +102,34 @@ const Index = () => {
             {/* SECTION 20: CAPITAL STRATEGY (VC Playbook) */}
             <CapitalStrategySection />
             
-            {/* SECTION 21: TRANSFORMATION CASES - Before/After */}
+            {/* SECTION 21: ECOSYSTEM MAP (16 Documents Overview) */}
+            <EcosystemMap />
+            
+            {/* SECTION 22: MARKET ANALYSIS (TAM/SAM/SOM, ICP) */}
+            <MarketAnalysisSection />
+            
+            {/* SECTION 23: 3×3 SERVICE MATRIX */}
+            <ServiceMatrixSection />
+            
+            {/* SECTION 24: BENEFITS DASHBOARD (7 Categories, 32+ Benefits) */}
+            <BenefitsDashboard />
+            
+            {/* SECTION 25: GTM FUNNEL (Tool-First Strategy) */}
+            <GTMFunnelSection />
+            
+            {/* SECTION 26: TRANSFORMATION CASES - Before/After */}
             <TransformationCases />
             
-            {/* SECTION 22: CASE STUDIES - Midjourney, Cursor, Perplexity */}
+            {/* SECTION 27: CASE STUDIES - Midjourney, Cursor, Perplexity */}
             <CaseStudiesSection />
             
-            {/* SECTION 23: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
+            {/* SECTION 28: SOLUTION - 3 Steps: Diagnose, Design, Deploy */}
             <SolutionSection />
             
-            {/* SECTION 24: CONVICTION - Proof & Guarantees */}
+            {/* SECTION 29: CONVICTION - Proof & Guarantees */}
             <ProofSection />
             
-            {/* SECTION 25: BOOKING CTA */}
+            {/* SECTION 30: BOOKING CTA */}
             <BookingCTA />
           </main>
           <Footer />
