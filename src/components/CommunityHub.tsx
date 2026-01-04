@@ -5,12 +5,26 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Textarea } from '@/components/ui/textarea';
+import { 
+  Dialog, DialogContent, DialogHeader, DialogTitle 
+} from '@/components/ui/dialog';
 import { 
   MessageSquare, ThumbsUp, Bookmark, Share2, Search, 
   Calendar, Users, Video, Award, TrendingUp, CheckCircle2,
-  Clock, Star, ArrowUp, MessageCircle
+  Clock, Star, ArrowUp, MessageCircle, Send, User
 } from 'lucide-react';
 import { toast } from 'sonner';
+
+interface Reply {
+  id: string;
+  author: string;
+  authorRole: string;
+  content: string;
+  timestamp: string;
+  upvotes: number;
+  isExpert?: boolean;
+}
 
 interface ForumPost {
   id: string;
@@ -19,12 +33,14 @@ interface ForumPost {
   author: string;
   authorRole: string;
   content: string;
+  fullContent?: string;
   replies: number;
   upvotes: number;
   views: number;
   timestamp: string;
   tags: string[];
   isExpert?: boolean;
+  replyThread?: Reply[];
 }
 
 interface QAItem {
@@ -82,12 +98,33 @@ const forumPosts: ForumPost[] = [
     author: 'Sarah Chen',
     authorRole: 'VP Sales @ Notion',
     content: 'After implementing our custom AI lead scoring model, we saw dramatic improvements in sales efficiency...',
+    fullContent: `After implementing our custom AI lead scoring model, we saw dramatic improvements in sales efficiency. Here's our complete journey:
+
+**The Problem:**
+Our sales team was spending 70% of their time on leads that never converted. CAC was climbing, and we knew something had to change.
+
+**Our Solution:**
+1. Built a custom ML model trained on 3 years of conversion data
+2. Integrated with our CRM for real-time scoring
+3. Automated follow-up sequences based on score tiers
+
+**Results after 6 months:**
+- CAC reduced by 60%
+- Sales cycle shortened by 40%
+- Win rate increased from 15% to 28%
+
+Happy to answer any questions about our implementation!`,
     replies: 47,
     upvotes: 234,
     views: 1893,
     timestamp: '2h ago',
     tags: ['AI', 'Sales', 'CAC'],
-    isExpert: true
+    isExpert: true,
+    replyThread: [
+      { id: 'r1', author: 'Tom Harris', authorRole: 'Sales Director @ Stripe', content: 'This is exactly what we needed to hear. What ML framework did you use?', timestamp: '1h ago', upvotes: 23, isExpert: true },
+      { id: 'r2', author: 'Sarah Chen', authorRole: 'VP Sales @ Notion', content: 'We used a combination of XGBoost for scoring and GPT-4 for lead enrichment. Happy to share more details!', timestamp: '45m ago', upvotes: 45, isExpert: true },
+      { id: 'r3', author: 'Lisa Park', authorRole: 'Growth @ Figma', content: 'How long did the initial training take? We have similar data but unsure about timeline.', timestamp: '30m ago', upvotes: 12 }
+    ]
   },
   {
     id: '2',
@@ -96,12 +133,31 @@ const forumPosts: ForumPost[] = [
     author: 'Marcus Lee',
     authorRole: 'CTO @ Linear',
     content: 'We rebuilt our entire development workflow around AI assistance. Here is what we learned...',
+    fullContent: `We rebuilt our entire development workflow around AI assistance. Here's our complete framework:
+
+**The 10x Velocity Framework:**
+
+1. **AI-First Design** - All specs start with AI-generated prototypes
+2. **Automated Code Review** - GPT-4 reviews every PR before human review
+3. **Smart Testing** - AI generates test cases based on code changes
+4. **Continuous Refactoring** - Weekly AI-powered codebase improvements
+
+**Key Metrics:**
+- Development velocity increased 10x
+- Bug rate decreased by 65%
+- Time-to-production reduced from 2 weeks to 2 days
+
+The secret is not replacing developers, but augmenting their capabilities.`,
     replies: 89,
     upvotes: 412,
     views: 3241,
     timestamp: '5h ago',
     tags: ['Product', 'Engineering', 'Velocity'],
-    isExpert: true
+    isExpert: true,
+    replyThread: [
+      { id: 'r1', author: 'Alex Kim', authorRole: 'Engineering Lead @ Vercel', content: 'Incredible results! How did you handle the initial learning curve for the team?', timestamp: '4h ago', upvotes: 34 },
+      { id: 'r2', author: 'Marcus Lee', authorRole: 'CTO @ Linear', content: 'We ran 2-week sprints with dedicated AI training. The ROI was visible within the first month.', timestamp: '3h ago', upvotes: 56, isExpert: true }
+    ]
   },
   {
     id: '3',
@@ -110,11 +166,32 @@ const forumPosts: ForumPost[] = [
     author: 'Emma Wilson',
     authorRole: 'Founder @ ScaleAI',
     content: 'We tested 50+ AI tools across our stack. Here are the clear winners by category...',
+    fullContent: `We tested 50+ AI tools across our stack. Here are the clear winners:
+
+**Sales & Marketing:**
+- Lead scoring: Clay + GPT-4
+- Content: Jasper for long-form, Copy.ai for ads
+- Email: Lavender for personalization
+
+**Engineering:**
+- Code: GitHub Copilot + Cursor
+- Testing: Testim.io
+- Documentation: Mintlify
+
+**Operations:**
+- Data: Hex + AI features
+- Support: Intercom Fin
+- Finance: Runway for FP&A
+
+Each tool was evaluated on: accuracy, speed, integration ease, and ROI.`,
     replies: 156,
     upvotes: 567,
     views: 8923,
     timestamp: '1d ago',
-    tags: ['Tools', 'Stack', 'Comparison']
+    tags: ['Tools', 'Stack', 'Comparison'],
+    replyThread: [
+      { id: 'r1', author: 'Mike Chen', authorRole: 'VP Ops @ Notion', content: 'Great list! Any thoughts on AI tools for customer success?', timestamp: '20h ago', upvotes: 28 }
+    ]
   },
   {
     id: '4',
@@ -123,12 +200,37 @@ const forumPosts: ForumPost[] = [
     author: 'David Kim',
     authorRole: 'CEO @ Cursor',
     content: 'A detailed breakdown of our scaling journey and the key decisions that mattered...',
+    fullContent: `A detailed breakdown of our scaling journey from €0 to €100M ARR in just 18 months.
+
+**Phase 1: Product-Market Fit (Months 1-3)**
+- Focused on developer experience
+- Built in public, gathered constant feedback
+- Pivoted twice before finding the right angle
+
+**Phase 2: Growth Engine (Months 4-9)**
+- Implemented PLG motion
+- Viral loops through sharing
+- Community-led growth
+
+**Phase 3: Enterprise Scale (Months 10-18)**
+- Added enterprise features
+- Built sales team
+- Expanded globally
+
+**Key Decisions:**
+1. Bet everything on AI-native from day 1
+2. Hired senior people early
+3. Maintained engineering velocity despite growth`,
     replies: 234,
     upvotes: 891,
     views: 12453,
     timestamp: '2d ago',
     tags: ['Case Study', 'Scaling', 'ARR'],
-    isExpert: true
+    isExpert: true,
+    replyThread: [
+      { id: 'r1', author: 'Anna Schmidt', authorRole: 'CEO @ TechScale', content: 'Inspiring story! How did you maintain culture during hypergrowth?', timestamp: '1d ago', upvotes: 67, isExpert: true },
+      { id: 'r2', author: 'David Kim', authorRole: 'CEO @ Cursor', content: 'Culture is set by who you hire. We were extremely selective, even when it slowed us down.', timestamp: '1d ago', upvotes: 89, isExpert: true }
+    ]
   },
   {
     id: '7',
@@ -137,12 +239,31 @@ const forumPosts: ForumPost[] = [
     author: 'Anna Schmidt',
     authorRole: 'CEO @ TechScale',
     content: 'Scaling from €3.6M to €7.7M in 24 months through GTM redesign and AI prototype introduction...',
+    fullContent: `Scaling from €3.6M to €7.7M ARR in 24 months. Here's our complete playbook:
+
+**GTM Redesign:**
+- Shifted from outbound-heavy to product-led
+- Implemented AI-powered qualification
+- Built self-serve trial experience
+
+**AI Integration:**
+- Introduced AI features that became key differentiators
+- Used AI internally for sales and support
+- Automated 60% of customer onboarding
+
+**Results:**
+- 46% CAGR maintained for 2 years
+- CAC:LTV improved from 1:3 to 1:8
+- NRR increased to 135%`,
     replies: 89,
     upvotes: 567,
     views: 4521,
     timestamp: '1w ago',
     tags: ['Case Study', 'Series B', 'GTM'],
-    isExpert: true
+    isExpert: true,
+    replyThread: [
+      { id: 'r1', author: 'Max Weber', authorRole: 'CRO @ SaaSCo', content: 'The NRR improvement is impressive. What drove that specifically?', timestamp: '5d ago', upvotes: 34 }
+    ]
   },
   {
     id: '8',
@@ -151,11 +272,32 @@ const forumPosts: ForumPost[] = [
     author: 'Max Weber',
     authorRole: 'CRO @ SaaSCo',
     content: 'Development of a scalable GTM-Engine for a B2B-SaaS-Startup in expansion phase...',
+    fullContent: `Building a GTM-Engine that generated €425k new ARR in 6 months.
+
+**The Framework:**
+1. **ICP Definition** - Used AI to analyze best customers
+2. **Content Engine** - Automated thought leadership
+3. **Outbound Machine** - Personalized at scale
+4. **Sales Enablement** - AI-assisted demos and proposals
+
+**Tech Stack:**
+- Clay for enrichment
+- GPT-4 for personalization
+- HubSpot for automation
+- Gong for intelligence
+
+**Monthly Breakdown:**
+- Month 1-2: Foundation (€35k)
+- Month 3-4: Optimization (€120k)
+- Month 5-6: Scale (€270k)`,
     replies: 156,
     upvotes: 423,
     views: 6789,
     timestamp: '2w ago',
-    tags: ['Case Study', 'Revenue', 'GTM-Engine']
+    tags: ['Case Study', 'Revenue', 'GTM-Engine'],
+    replyThread: [
+      { id: 'r1', author: 'Sarah Chen', authorRole: 'VP Sales @ Notion', content: 'Love the monthly breakdown. How big was the team executing this?', timestamp: '1w ago', upvotes: 45, isExpert: true }
+    ]
   },
   {
     id: '5',
@@ -164,12 +306,34 @@ const forumPosts: ForumPost[] = [
     author: 'Jennifer Park',
     authorRole: 'CFO @ Figma',
     content: 'Our finance team is 2 people supporting a $3B company. Here is our entire tech stack...',
+    fullContent: `Our finance team of 2 supports a $3B company. Here's how:
+
+**Our Stack:**
+- Runway for FP&A and modeling
+- Brex for spend management
+- Ramp for expense automation
+- Hex + AI for ad-hoc analysis
+
+**5-Day Close Process:**
+Day 1: Automated data aggregation
+Day 2: AI-flagged anomalies review
+Day 3: Variance analysis
+Day 4: Board deck generation
+Day 5: Final review and sign-off
+
+**Key Automations:**
+- 95% of journal entries automated
+- AI-generated variance explanations
+- Automated compliance checks`,
     replies: 78,
     upvotes: 345,
     views: 4521,
     timestamp: '3d ago',
     tags: ['Finance', 'FP&A', 'Automation'],
-    isExpert: true
+    isExpert: true,
+    replyThread: [
+      { id: 'r1', author: 'Tom Wilson', authorRole: 'CFO @ Stripe', content: 'The 5-day close is impressive. What was the biggest challenge in implementation?', timestamp: '2d ago', upvotes: 23, isExpert: true }
+    ]
   },
   {
     id: '6',
@@ -178,11 +342,31 @@ const forumPosts: ForumPost[] = [
     author: 'Community Team',
     authorRole: 'Moderator',
     content: 'Drop your wins from this week - big or small!',
+    fullContent: `Welcome to this week's wins thread! 🎉
+
+Share your scaling victories from this week - whether it's:
+- Hit a revenue milestone
+- Shipped a key feature
+- Improved a metric
+- Learned something valuable
+- Got great customer feedback
+
+No win is too small. Let's celebrate together and learn from each other!
+
+**Previous Top Wins:**
+- @startup_jane: "Crossed €1M ARR this week!"
+- @dev_mike: "Reduced deploy time from 30min to 2min"
+- @sales_tom: "Closed our biggest deal ever"`,
     replies: 312,
     upvotes: 189,
     views: 2341,
     timestamp: '4h ago',
-    tags: ['Community', 'Wins']
+    tags: ['Community', 'Wins'],
+    replyThread: [
+      { id: 'r1', author: 'Jane Cooper', authorRole: 'Founder @ StartupX', content: 'Crossed €1M ARR this week! 🎉', timestamp: '3h ago', upvotes: 89 },
+      { id: 'r2', author: 'Mike Dev', authorRole: 'CTO @ BuildFast', content: 'Finally shipped our AI feature after 3 months. Users love it!', timestamp: '2h ago', upvotes: 56 },
+      { id: 'r3', author: 'Tom Sales', authorRole: 'AE @ ScaleCo', content: 'Closed a 6-figure enterprise deal. Biggest in company history!', timestamp: '1h ago', upvotes: 78 }
+    ]
   }
 ];
 
@@ -302,12 +486,20 @@ const CommunityHub: React.FC = () => {
   const [activeTab, setActiveTab] = useState('forum');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedPost, setSelectedPost] = useState<ForumPost | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [newReply, setNewReply] = useState('');
 
   const eventTypeColors: Record<string, string> = {
     'webinar': 'bg-primary/20 text-primary border-primary/30',
     'meetup': 'bg-accent/20 text-accent border-accent/30',
     'conference': 'bg-orange-500/20 text-orange-400 border-orange-500/30',
     'office-hours': 'bg-green-500/20 text-green-400 border-green-500/30'
+  };
+
+  const handleOpenPost = (post: ForumPost) => {
+    setSelectedPost(post);
+    setIsDialogOpen(true);
   };
 
   const handleReply = (postTitle: string) => {
@@ -325,6 +517,12 @@ const CommunityHub: React.FC = () => {
   const handleShare = (postTitle: string) => {
     navigator.clipboard.writeText(window.location.href);
     toast.success(language === 'de' ? 'Link kopiert!' : 'Link copied!');
+  };
+
+  const handleSubmitReply = () => {
+    if (!newReply.trim()) return;
+    toast.success(language === 'de' ? 'Antwort gepostet!' : 'Reply posted!');
+    setNewReply('');
   };
 
   return (
@@ -437,7 +635,12 @@ const CommunityHub: React.FC = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-start justify-between mb-2">
-                          <h3 className="font-bold text-lg hover:text-accent cursor-pointer">{post.title}</h3>
+                          <h3 
+                            className="font-bold text-lg hover:text-accent cursor-pointer"
+                            onClick={() => handleOpenPost(post)}
+                          >
+                            {post.title}
+                          </h3>
                           {post.isExpert && (
                             <Badge className="bg-accent/20 text-accent border-accent/30">Expert</Badge>
                           )}
@@ -610,6 +813,123 @@ const CommunityHub: React.FC = () => {
           </TabsContent>
         </Tabs>
       </div>
+      {/* Post Detail Dialog */}
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+          {selectedPost && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-2 mb-2">
+                  {selectedPost.tags.map(tag => (
+                    <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
+                  ))}
+                  {selectedPost.isExpert && (
+                    <Badge className="bg-accent/20 text-accent border-accent/30">Expert</Badge>
+                  )}
+                </div>
+                <DialogTitle className="text-2xl">{selectedPost.title}</DialogTitle>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
+                  <User className="w-4 h-4" />
+                  <span className="font-medium text-foreground">{selectedPost.author}</span>
+                  <span>•</span>
+                  <span>{selectedPost.authorRole}</span>
+                  <span>•</span>
+                  <span>{selectedPost.timestamp}</span>
+                </div>
+              </DialogHeader>
+
+              {/* Post Content */}
+              <div className="mt-4 p-4 bg-muted/30 rounded-lg">
+                <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+                  {selectedPost.fullContent || selectedPost.content}
+                </div>
+              </div>
+
+              {/* Post Actions */}
+              <div className="flex items-center gap-4 mt-4 py-4 border-y border-border/50">
+                <Button size="sm" variant="outline" onClick={() => handleUpvote(selectedPost.title)}>
+                  <ThumbsUp className="w-4 h-4 mr-1" />
+                  {selectedPost.upvotes}
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => handleSave(selectedPost.title)}>
+                  <Bookmark className="w-4 h-4 mr-1" />
+                  {language === 'de' ? 'Speichern' : 'Save'}
+                </Button>
+                <Button size="sm" variant="ghost" onClick={() => handleShare(selectedPost.title)}>
+                  <Share2 className="w-4 h-4 mr-1" />
+                  {language === 'de' ? 'Teilen' : 'Share'}
+                </Button>
+                <span className="text-sm text-muted-foreground ml-auto">
+                  {selectedPost.views} {language === 'de' ? 'Aufrufe' : 'views'}
+                </span>
+              </div>
+
+              {/* Reply Thread */}
+              <div className="mt-4">
+                <h4 className="font-bold mb-4 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5" />
+                  {selectedPost.replies} {language === 'de' ? 'Antworten' : 'Replies'}
+                </h4>
+
+                {selectedPost.replyThread && selectedPost.replyThread.length > 0 ? (
+                  <div className="space-y-4">
+                    {selectedPost.replyThread.map((reply) => (
+                      <div key={reply.id} className="p-4 bg-muted/20 rounded-lg border border-border/30">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
+                            <User className="w-4 h-4 text-accent" />
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-medium text-sm">{reply.author}</span>
+                              {reply.isExpert && (
+                                <Badge className="bg-accent/20 text-accent border-accent/30 text-xs">Expert</Badge>
+                              )}
+                            </div>
+                            <span className="text-xs text-muted-foreground">{reply.authorRole} • {reply.timestamp}</span>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground ml-10">{reply.content}</p>
+                        <div className="flex items-center gap-2 mt-2 ml-10">
+                          <Button size="sm" variant="ghost" className="h-7 px-2" onClick={() => handleUpvote(reply.author)}>
+                            <ThumbsUp className="w-3 h-3 mr-1" />
+                            {reply.upvotes}
+                          </Button>
+                          <Button size="sm" variant="ghost" className="h-7 px-2">
+                            <MessageSquare className="w-3 h-3 mr-1" />
+                            {language === 'de' ? 'Antworten' : 'Reply'}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground text-sm">
+                    {language === 'de' ? 'Noch keine Antworten. Sei der Erste!' : 'No replies yet. Be the first!'}
+                  </p>
+                )}
+
+                {/* New Reply Input */}
+                <div className="mt-6 p-4 bg-muted/20 rounded-lg border border-border/30">
+                  <h5 className="font-medium mb-3">
+                    {language === 'de' ? 'Deine Antwort' : 'Your Reply'}
+                  </h5>
+                  <Textarea
+                    placeholder={language === 'de' ? 'Schreibe eine Antwort...' : 'Write a reply...'}
+                    value={newReply}
+                    onChange={(e) => setNewReply(e.target.value)}
+                    className="mb-3 min-h-[100px]"
+                  />
+                  <Button onClick={handleSubmitReply} className="bg-gradient-accent">
+                    <Send className="w-4 h-4 mr-2" />
+                    {language === 'de' ? 'Antwort senden' : 'Post Reply'}
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
