@@ -36,6 +36,7 @@ import BenefitsDashboard from '@/components/BenefitsDashboard';
 import GTMFunnelSection from '@/components/GTMFunnelSection';
 import WhatWeCreatedSection from '@/components/WhatWeCreatedSection';
 import SCQASection from '@/components/SCQASection';
+import BottleneckWizard from '@/components/BottleneckWizard';
 
 const Index = () => {
   return (
@@ -71,6 +72,9 @@ const Index = () => {
             
             {/* SECTION 7: FRAMEWORK - 4 Capabilities Interactive */}
             <CapabilitiesSection />
+            
+            {/* SECTION 7b: BOTTLENECK WIZARD - Identify weakest capability */}
+            <BottleneckWizard />
             
             {/* SECTION 8: C₁ STRATEGY DETAIL (4 Components) */}
             <C1StrategyDetail />
