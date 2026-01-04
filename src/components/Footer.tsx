@@ -27,13 +27,10 @@ const Footer: React.FC = () => {
       {/* Top Section - Big Brand */}
       <div className="container max-w-7xl mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-2 gap-12 items-end">
-          {/* Big Brand Text */}
+          {/* Logo */}
           <div>
             <div className="flex items-center gap-4 mb-4">
               <img src="/images/scalingx-logo.png" alt="ScalingX" className="h-10 w-auto" />
-              <h2 className="font-display text-display-md italic text-foreground leading-none">
-                Scaling<span className="text-accent">X</span><span className="text-gradient">.</span>
-              </h2>
             </div>
             <p className="text-xs uppercase tracking-widest text-accent mb-2">
               EXPERTISE × SPEED = IMPACT
