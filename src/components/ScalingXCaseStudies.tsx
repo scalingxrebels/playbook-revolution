@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Image, Code, Search, Bot, CreditCard, Palette, FileText,
@@ -484,10 +485,14 @@ const ScalingXCaseStudies = () => {
                 </p>
 
                 {/* View Details */}
-                <div className="mt-4 flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  {language === 'en' ? 'View Details' : 'Details ansehen'}
+                <Link 
+                  to={`/case-study/${study.id}`}
+                  className="mt-4 flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {language === 'en' ? 'View Full Case Study' : 'Vollständige Fallstudie ansehen'}
                   <ArrowRight className="w-4 h-4 ml-1" />
-                </div>
+                </Link>
               </div>
             );
           })}
