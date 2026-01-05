@@ -23,19 +23,19 @@ const ThetaIndexRadial = ({ c1, c2, c3, c4, overall, color = 'hsl(var(--primary)
     <div className="space-y-3">
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm font-medium text-muted-foreground">θ_index</span>
-        <span className="text-2xl font-bold" style={{ color }}>{overall}/10</span>
+        <span className="text-2xl font-bold" style={{ color }}>{overall.toFixed(2)}</span>
       </div>
       {capabilities.map((cap) => (
         <div key={cap.key} className="space-y-1">
           <div className="flex items-center justify-between text-sm">
             <span className="text-muted-foreground">{cap.key} {cap.label}</span>
-            <span className="font-medium">{cap.score}/10</span>
+            <span className="font-medium">{cap.score.toFixed(1)}</span>
           </div>
           <div className="h-2 bg-muted rounded-full overflow-hidden">
             <div 
               className="h-full rounded-full transition-all duration-500"
               style={{ 
-                width: `${cap.score * 10}%`,
+                width: `${cap.score * 100}%`,
                 backgroundColor: color
               }}
             />
