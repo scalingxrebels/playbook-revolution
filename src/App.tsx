@@ -16,6 +16,7 @@ const Research = lazy(() => import("./pages/Research"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
+const CaseStudy = lazy(() => import("./pages/CaseStudy"));
 
 const queryClient = new QueryClient();
 
@@ -42,6 +43,7 @@ const App = () => (
               <Route path="/playbooks" element={<Playbooks />} />
               <Route path="/community" element={<Community />} />
               <Route path="/research" element={<Research />} />
+              <Route path="/case-study/:id" element={<CaseStudy />} />
               <Route path="/impressum" element={<Impressum />} />
               <Route path="/datenschutz" element={<Datenschutz />} />
               <Route path="/agb" element={<AGB />} />
