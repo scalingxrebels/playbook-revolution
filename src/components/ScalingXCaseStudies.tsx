@@ -46,7 +46,7 @@ const caseStudies: CaseStudy[] = [
       { value: '26.8%', label: { en: 'Market Share', de: 'Marktanteil' } },
       { value: '10x', label: { en: '3 Year Growth', de: '3 Jahre Wachstum' } },
     ],
-    thetaIndex: { overall: 8.5, c1: 9, c2: 8, c3: 8, c4: 7 },
+    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.8, c3: 0.8, c4: 0.7 },
     thetaLabels: {
       c1: { en: 'Best-in-class image quality', de: 'Beste Bildqualität' },
       c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
@@ -91,7 +91,7 @@ const caseStudies: CaseStudy[] = [
       { value: '2M+', label: { en: 'Monthly Active Users', de: 'Monatl. aktive Nutzer' } },
       { value: '85%+', label: { en: 'Retention Rate', de: 'Retention Rate' } },
     ],
-    thetaIndex: { overall: 9.2, c1: 9, c2: 9, c3: 9, c4: 9 },
+    thetaIndex: { overall: 0.92, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.9 },
     thetaLabels: {
       c1: { en: 'Exceptional developer experience', de: 'Außergewöhnliche Developer Experience' },
       c2: { en: 'Organic developer adoption', de: 'Organische Developer-Adoption' },
@@ -136,7 +136,7 @@ const caseStudies: CaseStudy[] = [
       { value: '18x', label: { en: '2 Year Growth', de: '2 Jahre Wachstum' } },
       { value: '10M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
     ],
-    thetaIndex: { overall: 8.8, c1: 9, c2: 9, c3: 8, c4: 8 },
+    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.9, c3: 0.8, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Superior search quality', de: 'Überlegene Suchqualität' },
       c2: { en: 'Aggressive growth hacking', de: 'Aggressives Growth Hacking' },
@@ -181,7 +181,7 @@ const caseStudies: CaseStudy[] = [
       { value: '$3.4B', label: { en: 'Revenue 2024', de: 'Umsatz 2024' } },
       { value: '80%+', label: { en: 'Fortune 500 Adoption', de: 'Fortune 500 Adoption' } },
     ],
-    thetaIndex: { overall: 9.5, c1: 10, c2: 9, c3: 9, c4: 9 },
+    thetaIndex: { overall: 0.95, c1: 1.0, c2: 0.9, c3: 0.9, c4: 0.9 },
     thetaLabels: {
       c1: { en: 'Best-in-class LLMs', de: 'Beste LLMs der Klasse' },
       c2: { en: 'API + Consumer + Enterprise', de: 'API + Consumer + Enterprise' },
@@ -225,7 +225,7 @@ const caseStudies: CaseStudy[] = [
       { value: '$1T+', label: { en: 'Processed Annually', de: 'Jährlich verarbeitet' } },
       { value: '80%+', label: { en: 'Startup Adoption', de: 'Startup Adoption' } },
     ],
-    thetaIndex: { overall: 9.0, c1: 9, c2: 8, c3: 9, c4: 9 },
+    thetaIndex: { overall: 0.90, c1: 0.9, c2: 0.8, c3: 0.9, c4: 0.9 },
     thetaLabels: {
       c1: { en: 'Best developer experience', de: 'Beste Developer Experience' },
       c2: { en: 'Developer-first, enterprise expansion', de: 'Developer-first, Enterprise-Expansion' },
@@ -269,7 +269,7 @@ const caseStudies: CaseStudy[] = [
       { value: '4M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
       { value: '90%+', label: { en: 'Design Team Adoption', de: 'Design Team Adoption' } },
     ],
-    thetaIndex: { overall: 8.7, c1: 9, c2: 8, c3: 8, c4: 8 },
+    thetaIndex: { overall: 0.87, c1: 0.9, c2: 0.8, c3: 0.8, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Best collaborative design tool', de: 'Bestes kollaboratives Design-Tool' },
       c2: { en: 'Viral adoption among designers', de: 'Virale Adoption unter Designern' },
@@ -313,7 +313,7 @@ const caseStudies: CaseStudy[] = [
       { value: '$100M+', label: { en: 'Revenue 2024', de: 'Umsatz 2024' } },
       { value: '100%+', label: { en: 'YoY Growth', de: 'YoY Wachstum' } },
     ],
-    thetaIndex: { overall: 8.5, c1: 8, c2: 9, c3: 8, c4: 8 },
+    thetaIndex: { overall: 0.85, c1: 0.8, c2: 0.9, c3: 0.8, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Flexible, powerful workspace', de: 'Flexibler, leistungsstarker Workspace' },
       c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
