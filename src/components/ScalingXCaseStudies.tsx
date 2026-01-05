@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Button } from '@/components/ui/button';
 import ThetaIndexRadial from './ThetaIndexRadial';
 import CaseStudyComparisonTable from './CaseStudyComparisonTable';
+import GrowthTimelineVisualization from './GrowthTimelineVisualization';
 
 interface CaseStudy {
   id: string;
@@ -490,6 +491,11 @@ const ScalingXCaseStudies = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Growth Timeline Visualization */}
+        <div className="mb-16">
+          <GrowthTimelineVisualization />
         </div>
 
         {/* Comparison Table */}
