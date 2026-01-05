@@ -4,6 +4,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
 import { 
   FileText, Download, ExternalLink, BookOpen, 
   BarChart3, Brain, Layers, Settings, ChevronRight,
@@ -340,8 +341,13 @@ const ResearchHub: React.FC = () => {
           </div>
         </Card>
 
+        {/* Case Studies Section */}
+        <div id="cases" className="scroll-mt-24">
+          <ScalingXCaseStudies />
+        </div>
+
         {/* CTA Section */}
-        <div className="text-center">
+        <div className="text-center py-16">
           <h2 className="text-2xl font-bold mb-4">
             {language === 'de' ? 'Möchtest du die Forschung anwenden?' : 'Want to Apply the Research?'}
           </h2>
