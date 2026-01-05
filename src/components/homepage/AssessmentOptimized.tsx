@@ -29,13 +29,13 @@ const questions = [
   },
   {
     id: 3,
-    en: 'How does coordination cost scale with team size in traditional orgs?',
-    de: 'Wie skalieren Koordinationskosten mit der Teamgröße in traditionellen Organisationen?',
+    en: 'How do coordination costs scale in your organization as you grow?',
+    de: 'Wie skalieren Koordinationskosten in Ihrer Organisation beim Wachstum?',
     options: [
-      { label: 'O(n²)', score: 4, correct: true },
-      { label: 'O(n)', score: 2 },
-      { label: 'O(n log n)', score: 3 },
-      { label: 'O(log n)', score: 1 },
+      { label: 'O(n²) – explodieren', score: 1 },
+      { label: 'O(n) – linear', score: 2 },
+      { label: 'O(n log n) – moderat', score: 3 },
+      { label: 'O(log n) – minimal', score: 4 },
     ],
   },
   {
