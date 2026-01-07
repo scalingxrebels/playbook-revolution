@@ -14,10 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-        heading: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"League Spartan"', 'system-ui', 'sans-serif'],
+        heading: ['"League Spartan"', 'system-ui', 'sans-serif'],
+        display: ['"League Spartan"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['clamp(4rem, 12vw, 10rem)', { lineHeight: '0.9', letterSpacing: '-0.03em' }],
