@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import LeadCaptureModal from '@/components/LeadCaptureModal';
 import { 
   ChevronRight, 
   Download, 
@@ -14,8 +15,6 @@ import {
   TrendingUp, 
   Shield, 
   ArrowRight,
-  Play,
-  Pause,
   CheckCircle2,
   AlertTriangle,
   Users,
@@ -47,6 +46,21 @@ const PlaybookPage: React.FC = () => {
   const { language } = useLanguage();
   const [activeChapter, setActiveChapter] = useState('executive');
   const [isScrolling, setIsScrolling] = useState(false);
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+
+  const handleDownloadClick = () => {
+    setIsLeadModalOpen(true);
+  };
+
+  const handleDownloadSuccess = () => {
+    setIsLeadModalOpen(false);
+    // Trigger actual PDF download (placeholder URL)
+    const pdfUrl = '/AI-Native-Scaling-Playbook.pdf';
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = 'AI-Native-Scaling-Playbook.pdf';
+    link.click();
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -118,7 +132,7 @@ const PlaybookPage: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal">
+                <Button size="lg" className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal" onClick={handleDownloadClick}>
                   <Download className="w-5 h-5 mr-2" />
                   {language === 'de' ? 'PDF herunterladen' : 'Download PDF'}
                 </Button>
@@ -195,7 +209,7 @@ const PlaybookPage: React.FC = () => {
                   <p className="text-sm text-muted-foreground mb-3">
                     {language === 'de' ? 'Das komplette Playbook als PDF' : 'The complete playbook as PDF'}
                   </p>
-                  <Button size="sm" className="w-full">
+                  <Button size="sm" className="w-full" onClick={handleDownloadClick}>
                     <Download className="w-4 h-4 mr-2" />
                     {language === 'de' ? 'Download' : 'Download'}
                   </Button>
@@ -707,7 +721,7 @@ const PlaybookPage: React.FC = () => {
                     : 'Download the complete playbook or book an Inflection Call with our team.'}
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button size="lg" className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal">
+                  <Button size="lg" className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal" onClick={handleDownloadClick}>
                     <Download className="w-5 h-5 mr-2" />
                     {language === 'de' ? 'Playbook herunterladen' : 'Download Playbook'}
                   </Button>
@@ -721,6 +735,13 @@ const PlaybookPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isLeadModalOpen}
+        onClose={() => setIsLeadModalOpen(false)}
+        onSuccess={handleDownloadSuccess}
+      />
 
       <Footer />
     </div>
