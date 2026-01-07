@@ -45,22 +45,22 @@ const GrowthTrails: React.FC = () => {
     const spawnTrail = () => {
       const trail: GrowthTrail = {
         id: nextIdRef.current++,
-        startX: Math.random() * 0.3 - 0.1, // -10% to 20%
-        startY: 0.7 + Math.random() * 0.3, // 70% to 100%
+        startX: Math.random() * 1.0 - 0.2, // -20% to 80% (full width coverage)
+        startY: 0.6 + Math.random() * 0.5, // 60% to 110%
         progress: 0,
-        speed: 0.0008 + Math.random() * 0.0012, // Varied speeds
-        opacity: 0.6 + Math.random() * 0.4,
+        speed: 0.0006 + Math.random() * 0.001, // Slightly slower for visibility
+        opacity: 0.7 + Math.random() * 0.3,
         hue: Math.random() > 0.7 ? 280 : 35, // Purple or Gold
         steepness: 4 + Math.random() * 4, // How steep the S-curve is
-        thickness: 1.5 + Math.random() * 2,
+        thickness: 8 + Math.random() * 12, // 10x thicker (8-20px)
       };
       trailsRef.current.push(trail);
     };
 
-    // Initial trails
-    for (let i = 0; i < 3; i++) {
+    // Initial trails - more for immediate visibility
+    for (let i = 0; i < 6; i++) {
       spawnTrail();
-      trailsRef.current[i].progress = Math.random() * 0.5;
+      trailsRef.current[i].progress = Math.random() * 0.6;
     }
 
     let animationId: number;
@@ -70,8 +70,8 @@ const GrowthTrails: React.FC = () => {
       ctx.clearRect(0, 0, rect.width, rect.height);
 
       // Spawn new trails periodically
-      if (timestamp - lastSpawnRef.current > 2500 + Math.random() * 2000) {
-        if (trailsRef.current.length < 8) {
+      if (timestamp - lastSpawnRef.current > 2000 + Math.random() * 1500) {
+        if (trailsRef.current.length < 12) {
           spawnTrail();
         }
         lastSpawnRef.current = timestamp;
@@ -104,14 +104,14 @@ const GrowthTrails: React.FC = () => {
           const t = trail.progress - (trailLength * i) / segments;
           if (t < 0) continue;
 
-          const x = trail.startX + t * 1.2; // Move right
-          const y = trail.startY - sigmoid(t, trail.steepness) * 0.9; // Move up with S-curve
+          const x = trail.startX + t * 1.5; // Move right (wider coverage)
+          const y = trail.startY - sigmoid(t, trail.steepness) * 1.0; // Move up with S-curve
 
           const screenX = x * rect.width;
           const screenY = y * rect.height;
 
           // Gradient opacity along trail (head bright, tail fades)
-          const segmentOpacity = currentOpacity * (1 - i / segments) * 0.5;
+          const segmentOpacity = currentOpacity * (1 - i / segments) * 0.85;
 
           if (i === 0) {
             ctx.moveTo(screenX, screenY);
@@ -161,7 +161,7 @@ const GrowthTrails: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 0.7 }}
+      style={{ opacity: 1 }}
     />
   );
 };
