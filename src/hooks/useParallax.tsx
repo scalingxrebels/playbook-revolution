@@ -71,6 +71,9 @@ export const useParallaxLayers = (options: ParallaxLayerOptions) => {
   const [offsets, setOffsets] = useState<number[]>(speeds.map(() => 0));
   const containerRef = useRef<HTMLElement>(null);
 
+  // Stabilize speeds array reference to prevent infinite loops
+  const speedsKey = JSON.stringify(speeds);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!containerRef.current) return;
@@ -97,7 +100,7 @@ export const useParallaxLayers = (options: ParallaxLayerOptions) => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
     };
-  }, [speeds]);
+  }, [speedsKey]);
 
   return { containerRef, offsets };
 };
