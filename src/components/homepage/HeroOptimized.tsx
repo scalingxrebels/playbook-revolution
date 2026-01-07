@@ -76,13 +76,10 @@ const HeroOptimized: React.FC = () => {
         {/* Main Headline - Large Serif Typography */}
         <h1 className="font-display text-display-xl leading-[0.9] mb-8 animate-blur-in">
           <span className="block text-foreground">
-            {language === 'de' ? 'Skalierung' : 'Scaling'}
+            {language === 'de' ? 'Dein Scaling-Playbook' : 'Your Scaling Playbook'}
           </span>
           <span className="block text-gradient animate-gradient bg-gradient-primary italic">
-            {language === 'de' ? 'scheitert' : 'fails'}
-          </span>
-          <span className="block text-foreground">
-            {language === 'de' ? 'am System.' : 'at the system.'}
+            {language === 'de' ? 'ist hinfällig.' : 'is obsolete.'}
           </span>
         </h1>
 
