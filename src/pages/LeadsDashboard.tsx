@@ -9,6 +9,7 @@ import { Download, Building2, Users, TrendingUp, Calendar, BarChart3, LogOut, Sh
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import AdminUserManagement from '@/components/AdminUserManagement';
 
 interface LeadStats {
   totalDownloads: number;
@@ -395,6 +396,11 @@ export default function LeadsDashboard() {
               )}
             </CardContent>
           </Card>
+        </div>
+
+        {/* Admin User Management */}
+        <div className="mt-8">
+          <AdminUserManagement currentUserId={user?.id || ''} />
         </div>
       </main>
 
