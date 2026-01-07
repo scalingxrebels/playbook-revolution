@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Download, Building2, Users, TrendingUp, Calendar } from 'lucide-react';
+import { Download, Building2, Users, TrendingUp, Calendar, BarChart3 } from 'lucide-react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
@@ -26,6 +27,11 @@ interface RecentLead {
   created_at: string;
 }
 
+interface DailyDownload {
+  date: string;
+  downloads: number;
+}
+
 export default function LeadsDashboard() {
   const [stats, setStats] = useState<LeadStats>({
     totalDownloads: 0,
@@ -35,6 +41,7 @@ export default function LeadsDashboard() {
   });
   const [topCompanies, setTopCompanies] = useState<CompanyCount[]>([]);
   const [recentLeads, setRecentLeads] = useState<RecentLead[]>([]);
+  const [dailyDownloads, setDailyDownloads] = useState<DailyDownload[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -74,6 +81,31 @@ export default function LeadsDashboard() {
           .sort((a, b) => b.count - a.count)
           .slice(0, 10);
 
+        // Calculate daily downloads for chart (last 30 days)
+        const dailyCounts: Record<string, number> = {};
+        const thirtyDaysAgo = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000);
+        
+        // Initialize all days with 0
+        for (let d = new Date(thirtyDaysAgo); d <= today; d.setDate(d.getDate() + 1)) {
+          const dateKey = d.toISOString().split('T')[0];
+          dailyCounts[dateKey] = 0;
+        }
+        
+        // Count actual downloads
+        leads.forEach(lead => {
+          const dateKey = new Date(lead.created_at).toISOString().split('T')[0];
+          if (dailyCounts[dateKey] !== undefined) {
+            dailyCounts[dateKey]++;
+          }
+        });
+
+        const chartData = Object.entries(dailyCounts)
+          .map(([date, downloads]) => ({
+            date: new Date(date).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit' }),
+            downloads
+          }))
+          .sort((a, b) => a.date.localeCompare(b.date));
+
         setStats({
           totalDownloads: leads.length,
           uniqueCompanies,
@@ -82,6 +114,7 @@ export default function LeadsDashboard() {
         });
         setTopCompanies(sortedCompanies);
         setRecentLeads(leads.slice(0, 10));
+        setDailyDownloads(chartData);
       }
     } catch (error) {
       console.error('Error fetching dashboard data:', error);
@@ -166,6 +199,67 @@ export default function LeadsDashboard() {
                 </CardContent>
               </Card>
             </div>
+
+            {/* Downloads Chart */}
+            <Card className="mb-8">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <BarChart3 className="h-5 w-5" />
+                  Downloads der letzten 30 Tage
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {dailyDownloads.length > 0 ? (
+                  <div className="h-[300px] w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={dailyDownloads} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="colorDownloads" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                            <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+                        <XAxis 
+                          dataKey="date" 
+                          tick={{ fontSize: 12 }} 
+                          tickLine={false}
+                          axisLine={false}
+                          className="text-muted-foreground"
+                        />
+                        <YAxis 
+                          tick={{ fontSize: 12 }} 
+                          tickLine={false}
+                          axisLine={false}
+                          allowDecimals={false}
+                          className="text-muted-foreground"
+                        />
+                        <Tooltip 
+                          contentStyle={{ 
+                            backgroundColor: 'hsl(var(--card))', 
+                            border: '1px solid hsl(var(--border))',
+                            borderRadius: '8px'
+                          }}
+                          labelStyle={{ color: 'hsl(var(--foreground))' }}
+                        />
+                        <Area 
+                          type="monotone" 
+                          dataKey="downloads" 
+                          stroke="hsl(var(--primary))" 
+                          strokeWidth={2}
+                          fill="url(#colorDownloads)" 
+                          name="Downloads"
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                ) : (
+                  <p className="text-muted-foreground text-center py-8">
+                    Noch keine Daten für den Zeitraum vorhanden
+                  </p>
+                )}
+              </CardContent>
+            </Card>
 
             {/* Two Column Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
