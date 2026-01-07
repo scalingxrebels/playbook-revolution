@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { useParallaxLayers } from '@/hooks/useParallax';
+import GrowthTrails from '@/components/GrowthTrails';
 
 const HeroOptimized: React.FC = () => {
   const { language } = useLanguage();
@@ -36,6 +37,9 @@ const HeroOptimized: React.FC = () => {
         className="absolute inset-0 bg-mesh transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
+
+      {/* Superlinear Growth Trajectories - S-Curves */}
+      <GrowthTrails />
       
       {/* Animated Particles - Medium Parallax */}
       <div 
