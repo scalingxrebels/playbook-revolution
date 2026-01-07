@@ -68,7 +68,7 @@ const HeroOptimized: React.FC = () => {
         <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
           <span className="h-px w-12 bg-gradient-primary" />
           <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
-            ScalingX
+            {language === 'de' ? 'AI-Native Execution Consulting' : 'AI-Native Execution Consulting'}
           </span>
           <span className="h-px w-12 bg-gradient-primary" />
         </div>
