@@ -40,16 +40,20 @@ export function useAuth() {
   }, []);
 
   const checkAdminRole = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('user_roles')
-      .select('role')
-      .eq('user_id', userId)
-      .eq('role', 'admin')
-      .maybeSingle();
-    
-    if (!error && data) {
-      setIsAdmin(true);
-    } else {
+    try {
+      const { data, error } = await supabase
+        .from('user_roles' as any)
+        .select('role')
+        .eq('user_id', userId)
+        .eq('role', 'admin')
+        .maybeSingle();
+      
+      if (!error && data) {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+    } catch {
       setIsAdmin(false);
     }
   };
