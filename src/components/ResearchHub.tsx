@@ -8,7 +8,7 @@ import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
 import { 
   FileText, Download, ExternalLink, BookOpen, 
   BarChart3, Brain, Layers, Settings, ChevronRight,
-  Clock, Users, Star
+  Clock, Users, Star, Code2
 } from 'lucide-react';
 
 interface ResearchPaper {
@@ -137,6 +137,35 @@ const researchPapers: ResearchPaper[] = [
     citations: 34,
     downloads: 1892,
     icon: <BarChart3 className="w-6 h-6" />
+  },
+  {
+    id: 'ai-native-dev',
+    title: 'AI-Native Software Development',
+    titleDe: 'AI-Native Software Development',
+    shortTitle: 'AI-Dev',
+    wordCount: '25,000',
+    summary: 'Research-based framework for CTOs: Can a single developer orchestrating AI match a 5-person team? Empirical evidence from a 10-week case study with θ_observed = 6.0.',
+    summaryDe: 'Forschungsbasiertes Framework für CTOs: Kann ein einzelner Entwickler mit AI-Orchestrierung ein 5-Personen-Team ersetzen? Empirische Evidenz aus einer 10-Wochen-Fallstudie mit θ_observed = 6.0.',
+    keyFindings: [
+      '95% AI-generated code, 5% human-written in production SaaS',
+      '6x efficiency gain (θ_observed = 6.0) vs. traditional teams',
+      '60% of gains from coordination reduction, 40% from faster implementation',
+      'AI-Native requires architectural clarity, not just AI tools',
+      'Comprehension debt accumulates 5x faster than traditional development'
+    ],
+    keyFindingsDe: [
+      '95% AI-generierter Code, 5% menschlich geschrieben in Produktions-SaaS',
+      '6x Effizienzgewinn (θ_observed = 6.0) vs. traditionelle Teams',
+      '60% der Gewinne durch Koordinationsreduktion, 40% durch schnellere Implementierung',
+      'AI-Native erfordert architektonische Klarheit, nicht nur AI-Tools',
+      'Comprehension Debt akkumuliert 5x schneller als traditionelle Entwicklung'
+    ],
+    methodology: ['10-week empirical case study', 'Quantitative output tracking', 'Comparison with n=22 AI-native companies'],
+    version: '1.0.0',
+    lastUpdated: 'January 2026',
+    citations: 12,
+    downloads: 856,
+    icon: <Code2 className="w-6 h-6" />
   }
 ];
 
@@ -159,27 +188,31 @@ const ResearchHub: React.FC = () => {
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             {language === 'de' 
-              ? 'Die wissenschaftliche Grundlage des AI-Native Scaling Frameworks. 170,000+ Wörter empirisch validierter Forschung.'
-              : 'The scientific foundation of the AI-Native Scaling Framework. 170,000+ words of empirically validated research.'}
+              ? 'Die wissenschaftliche Grundlage des AI-Native Scaling Frameworks. 195,000+ Wörter empirisch validierter Forschung.'
+              : 'The scientific foundation of the AI-Native Scaling Framework. 195,000+ words of empirically validated research.'}
           </p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
           <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">170K+</p>
+            <p className="text-2xl font-bold text-accent">195K+</p>
             <p className="text-sm text-muted-foreground">{language === 'de' ? 'Wörter' : 'Words'}</p>
           </Card>
           <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">22</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Unternehmen analysiert' : 'Companies Analyzed'}</p>
+            <p className="text-2xl font-bold text-accent">5</p>
+            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Papers' : 'Papers'}</p>
           </Card>
           <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">226</p>
+            <p className="text-2xl font-bold text-accent">22</p>
+            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Unternehmen' : 'Companies'}</p>
+          </Card>
+          <Card className="p-4 glass text-center">
+            <p className="text-2xl font-bold text-accent">238</p>
             <p className="text-sm text-muted-foreground">{language === 'de' ? 'Zitierungen' : 'Citations'}</p>
           </Card>
           <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">12K+</p>
+            <p className="text-2xl font-bold text-accent">13K+</p>
             <p className="text-sm text-muted-foreground">Downloads</p>
           </Card>
         </div>
