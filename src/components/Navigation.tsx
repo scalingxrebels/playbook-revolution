@@ -14,6 +14,7 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { key: 'nav.home', href: '/', label: { en: 'Home', de: 'Start' }, isRoute: true },
+    { key: 'nav.playbook', href: '/playbook', label: { en: 'Playbook', de: 'Playbook' }, isRoute: true },
     { key: 'nav.playbooks', href: '/playbooks', label: { en: 'Playbooks', de: 'Playbooks' }, isRoute: true },
     { key: 'nav.community', href: '/community', label: { en: 'Community', de: 'Community' }, isRoute: true },
     { key: 'nav.research', href: '/research', label: { en: 'Research', de: 'Forschung' }, isRoute: true },

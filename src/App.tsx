@@ -11,6 +11,7 @@ import CookieBanner from "./components/CookieBanner";
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
+const Playbook = lazy(() => import("./pages/Playbook"));
 const Community = lazy(() => import("./pages/Community"));
 const Research = lazy(() => import("./pages/Research"));
 const Impressum = lazy(() => import("./pages/Impressum"));
@@ -41,6 +42,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/playbooks" element={<Playbooks />} />
+              <Route path="/playbook" element={<Playbook />} />
               <Route path="/community" element={<Community />} />
               <Route path="/research" element={<Research />} />
               <Route path="/case-study/:id" element={<CaseStudy />} />
