@@ -17,78 +17,55 @@ const SolutionCheatSheet: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="py-24 lg:py-32 relative bg-muted/30">
-      <div className="absolute inset-0 noise opacity-20" />
-      
-      <div className="container max-w-6xl mx-auto px-6 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
-            {language === 'de' ? 'Quick Reference' : 'Quick Reference'}
-          </span>
-          <h2 className="font-display text-display-sm text-foreground mb-4">
-            {language === 'de' ? 'Solution Cheat Sheet' : 'Solution Cheat Sheet'}
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {language === 'de' 
-              ? 'Schneller Überblick: Wann welche Kategorie wählen?'
-              : 'Quick overview: When to choose which category?'
-            }
-          </p>
-        </div>
-
-        {/* Cheat Sheet Table */}
-        <div className="bg-card/80 backdrop-blur-sm border-2 border-border overflow-hidden">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-muted/50 hover:bg-muted/50">
-                <TableHead className="font-bold text-foreground">
-                  {language === 'de' ? 'Kategorie' : 'Category'}
-                </TableHead>
-                <TableHead className="font-bold text-foreground">
-                  {language === 'de' ? 'Wann wählen?' : 'When to Choose'}
-                </TableHead>
-                <TableHead className="font-bold text-foreground hidden md:table-cell">
-                  {language === 'de' ? 'Typischer Käufer' : 'Typical Buyer'}
-                </TableHead>
-                <TableHead className="font-bold text-foreground text-right">
-                  {language === 'de' ? 'Investition' : 'Investment'}
-                </TableHead>
+    <div className="bg-card/80 backdrop-blur-sm border-2 border-border overflow-hidden">
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-muted/50 hover:bg-muted/50">
+            <TableHead className="font-bold text-foreground">
+              {language === 'de' ? 'Kategorie' : 'Category'}
+            </TableHead>
+            <TableHead className="font-bold text-foreground">
+              {language === 'de' ? 'Wann wählen?' : 'When to Choose'}
+            </TableHead>
+            <TableHead className="font-bold text-foreground hidden md:table-cell">
+              {language === 'de' ? 'Typischer Käufer' : 'Typical Buyer'}
+            </TableHead>
+            <TableHead className="font-bold text-foreground text-right">
+              {language === 'de' ? 'Investition' : 'Investment'}
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {solutionCategories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <TableRow 
+                key={category.id}
+                className="cursor-pointer hover:bg-accent/5 transition-colors group"
+                onClick={() => navigate(`/solutions/${category.id}`)}
+              >
+                <TableCell className="font-semibold">
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-5 h-5 text-primary" />
+                    <span>{language === 'de' ? category.titleDe : category.titleEn}</span>
+                    <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  </div>
+                </TableCell>
+                <TableCell className="text-muted-foreground">
+                  {language === 'de' ? category.whenToChooseDe : category.whenToChooseEn}
+                </TableCell>
+                <TableCell className="text-muted-foreground hidden md:table-cell">
+                  {language === 'de' ? category.typicalBuyerDe : category.typicalBuyerEn}
+                </TableCell>
+                <TableCell className="text-right font-mono text-sm">
+                  €{category.pricingMin === 0 ? '0' : `${category.pricingMin/1000}K`} - €{category.pricingMax/1000}K{category.pricingUnit}
+                </TableCell>
               </TableRow>
-            </TableHeader>
-            <TableBody>
-              {solutionCategories.map((category) => {
-                const Icon = category.icon;
-                return (
-                  <TableRow 
-                    key={category.id}
-                    className="cursor-pointer hover:bg-accent/5 transition-colors group"
-                    onClick={() => navigate(`/solutions/${category.id}`)}
-                  >
-                    <TableCell className="font-semibold">
-                      <div className="flex items-center gap-3">
-                        <Icon className="w-5 h-5 text-primary" />
-                        <span>{language === 'de' ? category.titleDe : category.titleEn}</span>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                      </div>
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {language === 'de' ? category.whenToChooseDe : category.whenToChooseEn}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground hidden md:table-cell">
-                      {language === 'de' ? category.typicalBuyerDe : category.typicalBuyerEn}
-                    </TableCell>
-                    <TableCell className="text-right font-mono text-sm">
-                      €{category.pricingMin === 0 ? '0' : `${category.pricingMin/1000}K`} - €{category.pricingMax/1000}K{category.pricingUnit}
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </div>
-      </div>
-    </section>
+            );
+          })}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
