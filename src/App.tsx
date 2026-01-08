@@ -11,13 +11,15 @@ import CookieBanner from "./components/CookieBanner";
 const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
-const Playbook = lazy(() => import("./pages/Playbook"));
+const Solutions = lazy(() => import("./pages/Solutions"));
+const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
-const Research = lazy(() => import("./pages/Research"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
 const CaseStudy = lazy(() => import("./pages/CaseStudy"));
+const Cases = lazy(() => import("./pages/Cases"));
+const About = lazy(() => import("./pages/About"));
 const LeadsDashboard = lazy(() => import("./pages/LeadsDashboard"));
 const Auth = lazy(() => import("./pages/Auth"));
 
@@ -44,9 +46,11 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/playbooks" element={<Playbooks />} />
-              <Route path="/playbook" element={<Playbook />} />
+              <Route path="/solutions" element={<Solutions />} />
+              <Route path="/expertise" element={<Expertise />} />
               <Route path="/community" element={<Community />} />
-              <Route path="/research" element={<Research />} />
+              <Route path="/cases" element={<Cases />} />
+              <Route path="/about" element={<About />} />
               <Route path="/case-study/:id" element={<CaseStudy />} />
               <Route path="/leads-dashboard" element={<LeadsDashboard />} />
               <Route path="/auth" element={<Auth />} />
