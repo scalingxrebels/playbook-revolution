@@ -139,17 +139,40 @@
     @apply bg-background text-foreground font-sans antialiased;
   }
   
-  /* BRUTALIST TYPOGRAPHY */
+  /* TYPOGRAPHY SYSTEM: DM Sans (Body) + League Spartan (Headlines) */
+  
+  /* H1: Hero Headlines - League Spartan Bold/ExtraBold */
   h1 {
-    @apply font-serif font-normal tracking-tight;
+    @apply font-display font-bold;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
   
+  /* H2: Section Headlines - League Spartan Bold */
   h2 {
-    @apply font-sans font-bold tracking-tight uppercase;
+    @apply font-display font-bold;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
   }
   
-  h3, h4, h5, h6 {
-    @apply font-sans font-semibold tracking-tight;
+  /* H3: Subsection Headlines - League Spartan SemiBold */
+  h3 {
+    @apply font-display font-semibold;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+  
+  /* H4-H6: Smaller Headlines - DM Sans SemiBold */
+  h4, h5, h6 {
+    @apply font-sans font-semibold;
+    letter-spacing: 0;
+    line-height: 1.4;
+  }
+  
+  /* Body text defaults */
+  p {
+    @apply font-sans font-normal;
+    line-height: 1.7;
   }
   
   /* Selection */
