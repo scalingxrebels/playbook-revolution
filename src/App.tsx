@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
 
 // Lazy load pages for code splitting
@@ -38,35 +39,37 @@ const PageLoader = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/playbooks" element={<Playbooks />} />
-              <Route path="/solutions" element={<Solutions />} />
-              <Route path="/solutions/:category" element={<SolutionCategory />} />
-              <Route path="/expertise" element={<Expertise />} />
-              <Route path="/community" element={<Community />} />
-              <Route path="/cases" element={<Cases />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/case-study/:id" element={<CaseStudy />} />
-              <Route path="/leads-dashboard" element={<LeadsDashboard />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/impressum" element={<Impressum />} />
-              <Route path="/datenschutz" element={<Datenschutz />} />
-              <Route path="/agb" element={<AGB />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-          <CookieBanner />
-        </BrowserRouter>
-      </TooltipProvider>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/playbooks" element={<Playbooks />} />
+                <Route path="/solutions" element={<Solutions />} />
+                <Route path="/solutions/:category" element={<SolutionCategory />} />
+                <Route path="/expertise" element={<Expertise />} />
+                <Route path="/community" element={<Community />} />
+                <Route path="/cases" element={<Cases />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/case-study/:id" element={<CaseStudy />} />
+                <Route path="/leads-dashboard" element={<LeadsDashboard />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/impressum" element={<Impressum />} />
+                <Route path="/datenschutz" element={<Datenschutz />} />
+                <Route path="/agb" element={<AGB />} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+            <CookieBanner />
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
