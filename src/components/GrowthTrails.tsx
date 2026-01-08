@@ -110,20 +110,25 @@ function selectCurveType(): CurveType {
 // ============================================
 
 function growthTrajectory(x: number, curveType: CurveType): number {
+  const L = 0.5;
+  const k = curveType.k;
+  const x0 = curveType.x0;
+  
+  // Calculate the y-value at inflection point (x=0.5) for continuity
+  const yAtInflection = L / (1 + Math.exp(-k * (0.5 - x0)));
+  
   if (x < 0.5) {
     // PHASE 1-2: Initial Growth + Plateau (Sigmoid)
-    const L = 0.5;
-    const k = curveType.k;
-    const x0 = curveType.x0;
     return L / (1 + Math.exp(-k * (x - x0)));
   } else {
-    // PHASE 4: Hypergrowth (after intervention)
-    const xStart = 0.5;
-    const yStart = 0.5;
-    const t = (x - xStart) / 0.5;
+    // PHASE 3-4: Hypergrowth (after spark/intervention)
+    // Start exactly where the sigmoid left off (no jump!)
+    const t = (x - 0.5) / 0.5; // 0 to 1 over second half
     const growthRate = curveType.growthRate;
     
-    return yStart + (1 - yStart) * 
+    // Smooth exponential growth from inflection point to top
+    const remaining = 1 - yAtInflection;
+    return yAtInflection + remaining * 
            (Math.exp(growthRate * t) - 1) / 
            (Math.exp(growthRate) - 1);
   }
