@@ -97,9 +97,17 @@ const SolutionCategoryContent: React.FC = () => {
                   <h3 className="font-bold text-xl mb-2">
                     {language === 'de' ? program.nameDe : program.nameEn}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-muted-foreground mb-3">
                     {language === 'de' ? program.whatDe : program.whatEn}
                   </p>
+                  
+                  {/* Impact Line */}
+                  <div className="flex items-start gap-2 text-sm bg-primary/5 p-3 rounded-lg mb-4">
+                    <ArrowRight className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    <p className="font-medium text-foreground/90">
+                      {language === 'de' ? program.impactDe : program.impactEn}
+                    </p>
+                  </div>
                   
                   <div className="font-mono text-2xl text-primary font-bold mb-6">
                     {program.pricing}
