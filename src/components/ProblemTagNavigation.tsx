@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { problemTags, ProblemTag } from '@/data/solutions';
 import { cn } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProblemTagNavigationProps {
   context: 'solutions' | 'playbooks';
@@ -20,7 +21,7 @@ const ProblemTagNavigation: React.FC<ProblemTagNavigationProps> = ({
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto">
+      <div className="flex flex-wrap gap-3 justify-center">
         {problemTags.map((tag) => {
           const isActive = activeTag === tag.id;
           const label = language === 'de' ? tag.labelDe : tag.labelEn;
@@ -45,6 +46,12 @@ const ProblemTagNavigation: React.FC<ProblemTagNavigationProps> = ({
         })}
       </div>
       
+      {/* Mobile: Horizontal scroll hint */}
+      <div className="md:hidden mt-2 text-center text-xs text-muted-foreground flex items-center justify-center gap-1">
+        <ChevronLeft className="w-3 h-3" />
+        {language === 'de' ? 'Scrollen für mehr' : 'Scroll for more'}
+        <ChevronRight className="w-3 h-3" />
+      </div>
     </div>
   );
 };

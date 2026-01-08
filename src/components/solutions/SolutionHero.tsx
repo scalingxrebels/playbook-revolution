@@ -1,15 +1,15 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Search } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Phone } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 
-interface SolutionHeroProps {
-  searchQuery: string;
-  setSearchQuery: (query: string) => void;
-}
-
-const SolutionHero: React.FC<SolutionHeroProps> = ({ searchQuery, setSearchQuery }) => {
+const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
+
+  const scrollToCategories = () => {
+    document.getElementById('solution-categories')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const stats = [
     { value: '92%', label: { en: 'Outcome Delivery', de: 'Outcome Delivery' }, color: 'primary' as const },
@@ -29,15 +29,24 @@ const SolutionHero: React.FC<SolutionHeroProps> = ({ searchQuery, setSearchQuery
       subheadlineDe="Von Advisory bis Transformation – wähle das richtige Format für deinen aktuellen Need."
       stats={stats}
     >
-      <div className="relative max-w-xl mx-auto">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-        <input
-          type="text"
-          placeholder={language === 'de' ? 'Lösungen suchen...' : 'Search solutions...'}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 text-foreground placeholder:text-muted-foreground"
-        />
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button 
+          size="lg" 
+          onClick={scrollToCategories}
+          className="shadow-brutal hover-brutal group"
+        >
+          {language === 'de' ? 'Kategorien erkunden' : 'Explore Categories'}
+          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </Button>
+        <Button 
+          size="lg" 
+          variant="outline"
+          className="shadow-brutal-sm hover-brutal"
+          onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+        >
+          <Phone className="mr-2 w-4 h-4" />
+          {language === 'de' ? 'Beratung buchen' : 'Book a Call'}
+        </Button>
       </div>
     </SharedHero>
   );
