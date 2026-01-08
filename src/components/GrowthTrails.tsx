@@ -191,8 +191,14 @@ const GrowthTrails: React.FC = () => {
       progress: number, // 0-1 animation progress
       color: string
     ) => {
-      const rays = 10;
-      const maxSize = 14;
+      // Smaller on mobile
+      const isMobile = width < 768;
+      const rays = isMobile ? 8 : 10;
+      const maxSize = isMobile ? 8 : 14;
+      const glowSize = isMobile ? 8 : 15;
+      const particleBaseDistance = isMobile ? 6 : 10;
+      const particleMaxDistance = isMobile ? 15 : 25;
+      const particleBaseSize = isMobile ? 1.2 : 2;
       
       // Animation phases
       let scale: number, opacity: number;
@@ -210,14 +216,14 @@ const GrowthTrails: React.FC = () => {
         opacity = 1 - ((progress - 0.4) / 0.6);
       }
 
-      const innerRadius = 4 * scale;
+      const innerRadius = (isMobile ? 2.5 : 4) * scale;
       const outerRadius = maxSize * scale;
 
       ctx.save();
       ctx.globalAlpha = opacity;
 
       // Glow effect
-      ctx.shadowBlur = 15 * scale;
+      ctx.shadowBlur = glowSize * scale;
       ctx.shadowColor = '#F59E0B';
 
       // Draw starburst shape
@@ -248,15 +254,15 @@ const GrowthTrails: React.FC = () => {
       // Particle burst
       if (progress > 0.1 && progress < 0.7) {
         const particleProgress = (progress - 0.1) / 0.6;
-        const particleCount = 5;
+        const particleCount = isMobile ? 3 : 5;
         
         for (let i = 0; i < particleCount; i++) {
           const angle = (Math.PI * 2 * i) / particleCount + Math.random() * 0.3;
-          const distance = 10 + particleProgress * 25;
+          const distance = particleBaseDistance + particleProgress * particleMaxDistance;
           const particleX = x + Math.cos(angle) * distance;
           const particleY = y + Math.sin(angle) * distance;
           const particleOpacity = opacity * (1 - particleProgress);
-          const particleSize = 2 * (1 - particleProgress * 0.5);
+          const particleSize = particleBaseSize * (1 - particleProgress * 0.5);
 
           ctx.globalAlpha = particleOpacity;
           ctx.fillStyle = '#F59E0B';
@@ -289,9 +295,11 @@ const GrowthTrails: React.FC = () => {
       trailsRef.current.push(trail);
     };
 
-    // Initial trails
+    // Initial trails - fewer on mobile
     const now = performance.now();
-    for (let i = 0; i < 3; i++) {
+    const isMobileInit = window.innerWidth < 768;
+    const initialCount = isMobileInit ? 2 : 3;
+    for (let i = 0; i < initialCount; i++) {
       spawnTrail(now - Math.random() * 4000);
     }
     lastSpawnRef.current = now;
@@ -305,9 +313,13 @@ const GrowthTrails: React.FC = () => {
     const animate = (timestamp: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      // Spawn new trajectories (every 2-3.5s)
-      if (timestamp - lastSpawnRef.current > 2500 + Math.random() * 1000) {
-        if (trailsRef.current.length < 5) {
+      // Spawn new trajectories - less frequent (every 4-6s instead of 2-3.5s)
+      const isMobile = width < 768;
+      const spawnInterval = isMobile ? 5000 + Math.random() * 2000 : 4000 + Math.random() * 2000;
+      const maxTrails = isMobile ? 3 : 4;
+      
+      if (timestamp - lastSpawnRef.current > spawnInterval) {
+        if (trailsRef.current.length < maxTrails) {
           spawnTrail(timestamp);
         }
         lastSpawnRef.current = timestamp;
