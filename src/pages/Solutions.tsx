@@ -13,6 +13,7 @@ import { ProblemTag } from '@/data/solutions';
 const Solutions: React.FC = () => {
   const { language } = useLanguage();
   const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleTagClick = (tag: ProblemTag) => {
     if (activeTag === tag.id) {
@@ -29,7 +30,7 @@ const Solutions: React.FC = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <SolutionHero />
+      <SolutionHero searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       
       {/* Problem Tag Navigation */}
       <section className="py-12 bg-muted/30 border-y border-border">
