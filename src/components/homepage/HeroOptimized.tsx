@@ -1,23 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import GrowthTrails from '@/components/GrowthTrails';
+import TwinklingStars from '@/components/TwinklingStars';
 
 const HeroOptimized: React.FC = () => {
   const { language } = useLanguage();
-  const [particles, setParticles] = useState<{ x: number; y: number; delay: number }[]>([]);
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
-
-  useEffect(() => {
-    const newParticles = Array.from({ length: 20 }, () => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      delay: Math.random() * 5,
-    }));
-    setParticles(newParticles);
-  }, []);
 
   const scrollToNext = () => {
     document.getElementById('problem-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -32,37 +23,32 @@ const HeroOptimized: React.FC = () => {
       ref={containerRef as React.RefObject<HTMLElement>}
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
     >
-      {/* Background Mesh Gradient - Slow Parallax */}
+      {/* Deep Space Background */}
       <div 
-        className="absolute inset-0 bg-mesh transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
 
-      {/* Superlinear Growth Trajectories - S-Curves */}
-      <GrowthTrails />
-      
-      {/* Animated Particles - Medium Parallax */}
+      {/* Mesh Gradient Overlay */}
       <div 
-        className="absolute inset-0 overflow-hidden pointer-events-none transition-transform duration-100"
+        className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+      />
+
+      {/* Twinkling Stars - Medium Parallax */}
+      <div 
+        className="absolute inset-0 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px)` }}
       >
-        {particles.map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-accent/30 animate-float"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              animationDelay: `${particle.delay}s`,
-              animationDuration: `${4 + Math.random() * 4}s`,
-            }}
-          />
-        ))}
+        <TwinklingStars />
       </div>
 
-      {/* Grid Pattern - Fast Parallax */}
+      {/* Superlinear Growth Trajectories - S-Curves */}
+      <GrowthTrails />
+
+      {/* Subtle Grid Pattern - Fast Parallax */}
       <div 
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-30 transition-transform duration-100"
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
       />
 
