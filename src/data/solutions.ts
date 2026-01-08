@@ -5,12 +5,19 @@ import {
   GraduationCap, 
   Lightbulb, 
   Building2,
-  LucideIcon
+  LucideIcon,
+  Flame,
+  TrendingDown,
+  Target,
+  Settings,
+  Bot,
+  DollarSign,
+  Building
 } from 'lucide-react';
 
 export interface ProblemTag {
   id: string;
-  emoji: string;
+  icon: LucideIcon;
   labelEn: string;
   labelDe: string;
   solutionCategories: string[];
@@ -63,7 +70,7 @@ export interface ProofPoint {
 export const problemTags: ProblemTag[] = [
   { 
     id: 'cac-crisis', 
-    emoji: '🔥', 
+    icon: Flame,
     labelEn: 'CAC Crisis', 
     labelDe: 'CAC Krise',
     solutionCategories: ['advisory', 'transformation'],
@@ -71,7 +78,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'growth-stalled', 
-    emoji: '📉', 
+    icon: TrendingDown,
     labelEn: 'Growth Stalled',
     labelDe: 'Wachstum stagniert',
     solutionCategories: ['decision-reports', 'transformation'],
@@ -79,7 +86,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'board-pressure', 
-    emoji: '🎯', 
+    icon: Target,
     labelEn: 'Board Pressure',
     labelDe: 'Board-Druck',
     solutionCategories: ['decision-reports', 'bespoke-strategy'],
@@ -87,7 +94,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'scaling-chaos', 
-    emoji: '⚙️', 
+    icon: Settings,
     labelEn: 'Scaling Chaos',
     labelDe: 'Skalierungs-Chaos',
     solutionCategories: ['transformation', 'training'],
@@ -95,7 +102,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'ai-transformation', 
-    emoji: '🤖', 
+    icon: Bot,
     labelEn: 'AI Transformation',
     labelDe: 'KI Transformation',
     solutionCategories: ['transformation', 'training'],
@@ -103,7 +110,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'pricing', 
-    emoji: '💰', 
+    icon: DollarSign,
     labelEn: 'Pricing',
     labelDe: 'Pricing',
     solutionCategories: ['bespoke-strategy', 'decision-reports'],
@@ -111,7 +118,7 @@ export const problemTags: ProblemTag[] = [
   },
   { 
     id: 'portfolio', 
-    emoji: '🏢', 
+    icon: Building,
     labelEn: 'Portfolio Transformation',
     labelDe: 'Portfolio Transformation',
     solutionCategories: ['portfolio-solutions'],

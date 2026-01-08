@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { problemTags, ProblemTag } from '@/data/solutions';
 import { cn } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ProblemTagNavigationProps {
   context: 'solutions' | 'playbooks';
@@ -24,6 +25,7 @@ const ProblemTagNavigation: React.FC<ProblemTagNavigationProps> = ({
         {problemTags.map((tag) => {
           const isActive = activeTag === tag.id;
           const label = language === 'de' ? tag.labelDe : tag.labelEn;
+          const Icon = tag.icon;
           
           return (
             <button
@@ -37,7 +39,7 @@ const ProblemTagNavigation: React.FC<ProblemTagNavigationProps> = ({
                   : "bg-accent/5 border-accent/20 text-muted-foreground hover:border-accent hover:bg-accent/10 hover:text-foreground"
               )}
             >
-              <span className="text-lg">{tag.emoji}</span>
+              <Icon className="w-4 h-4" />
               <span>{label}</span>
             </button>
           );
@@ -45,8 +47,10 @@ const ProblemTagNavigation: React.FC<ProblemTagNavigationProps> = ({
       </div>
       
       {/* Mobile: Horizontal scroll hint */}
-      <div className="md:hidden mt-2 text-center text-xs text-muted-foreground">
-        {language === 'de' ? '← Scrollen für mehr →' : '← Scroll for more →'}
+      <div className="md:hidden mt-2 text-center text-xs text-muted-foreground flex items-center justify-center gap-1">
+        <ChevronLeft className="w-3 h-3" />
+        {language === 'de' ? 'Scrollen für mehr' : 'Scroll for more'}
+        <ChevronRight className="w-3 h-3" />
       </div>
     </div>
   );

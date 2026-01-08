@@ -2,14 +2,17 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   TrendingUp, Zap, Users, DollarSign, 
-  CheckCircle, ArrowUpRight, Building, BarChart3
+  CheckCircle, ArrowUpRight, Building, BarChart3,
+  Bot, Brain, Palette, Search, ArrowRight
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+import { LucideIcon } from 'lucide-react';
+
 interface CompanyData {
   name: string;
-  logo: string;
+  icon: LucideIcon;
   year2023Revenue: string;
   year2025Revenue: string;
   revenueGrowth: string;
@@ -34,7 +37,7 @@ const SuperlinearGrowthSection: React.FC = () => {
   const companies: CompanyData[] = [
     {
       name: 'OpenAI',
-      logo: '🤖',
+      icon: Bot,
       year2023Revenue: '$2.0B',
       year2025Revenue: '$12.7B',
       revenueGrowth: '535%',
@@ -45,7 +48,7 @@ const SuperlinearGrowthSection: React.FC = () => {
     },
     {
       name: 'Anthropic',
-      logo: '🧠',
+      icon: Brain,
       year2023Revenue: '$100M',
       year2025Revenue: '$7-9B',
       revenueGrowth: '7000-9000%',
@@ -56,7 +59,7 @@ const SuperlinearGrowthSection: React.FC = () => {
     },
     {
       name: 'Midjourney',
-      logo: '🎨',
+      icon: Palette,
       year2023Revenue: '$200M',
       year2025Revenue: '$500M',
       revenueGrowth: '150%',
@@ -67,7 +70,7 @@ const SuperlinearGrowthSection: React.FC = () => {
     },
     {
       name: 'Perplexity',
-      logo: '🔍',
+      icon: Search,
       year2023Revenue: '$5M',
       year2025Revenue: '$148M',
       revenueGrowth: '2860%',
@@ -187,10 +190,14 @@ const SuperlinearGrowthSection: React.FC = () => {
               className="p-6 glass border-emerald-500/20 hover:border-emerald-500/40 transition-all"
             >
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">{company.logo}</span>
+                <div className="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                  <company.icon className="w-6 h-6 text-emerald-400" />
+                </div>
                 <div>
                   <h4 className="text-xl font-bold">{company.name}</h4>
-                  <p className="text-sm text-muted-foreground">2023 → 2025</p>
+                  <p className="text-sm text-muted-foreground flex items-center gap-1">
+                    2023 <ArrowRight className="w-3 h-3" /> 2025
+                  </p>
                 </div>
                 <Badge className="ml-auto bg-emerald-500/20 text-emerald-400 border-emerald-500/30">
                   {company.superlinearRatio} Super-Linear
