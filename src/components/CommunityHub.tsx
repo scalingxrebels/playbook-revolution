@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { 
   Dialog, DialogContent, DialogHeader, DialogTitle 
 } from '@/components/ui/dialog';
+import SharedHero from '@/components/shared/SharedHero';
 import { 
   MessageSquare, ThumbsUp, Bookmark, Share2, Search, 
   Calendar, Users, Video, Award, TrendingUp, CheckCircle2,
@@ -80,6 +81,13 @@ interface BestPractice {
   upvotes: number;
   verified: boolean;
 }
+
+const communityStats = [
+  { value: '2,847', label: { en: 'Members', de: 'Mitglieder' }, color: 'primary' as const },
+  { value: '1,234', label: { en: 'Discussions', de: 'Diskussionen' }, color: 'accent' as const },
+  { value: '456', label: { en: 'Answers', de: 'Antworten' }, color: 'primary' as const },
+  { value: '89', label: { en: 'Events', de: 'Events' }, color: 'accent' as const },
+];
 
 const forumCategories = [
   { id: 'general', name: 'General Discussion', nameDE: 'Allgemeine Diskussion', icon: <MessageSquare className="w-4 h-4" /> },
@@ -526,42 +534,20 @@ const CommunityHub: React.FC = () => {
   };
 
   return (
-    <section className="py-16 px-4">
-      <div className="container max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4 border-accent/30 text-accent font-mono">
-            {language === 'de' ? 'COMMUNITY' : 'COMMUNITY'}
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">
-            {language === 'de' ? 'Scaling Community' : 'Scaling Community'}
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {language === 'de' 
-              ? 'Verbinde dich mit AI-Native Founders, teile Learnings und lerne von den Besten.'
-              : 'Connect with AI-Native founders, share learnings, and learn from the best.'}
-          </p>
-        </div>
+    <section className="pb-16">
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="Scaling Community"
+        headlineLine1De="Scaling Community"
+        headlineLine2En="Learn from the Best"
+        headlineLine2De="Lerne von den Besten"
+        subheadlineEn="Connect with AI-Native founders, share learnings, and learn from the best."
+        subheadlineDe="Verbinde dich mit AI-Native Founders, teile Learnings und lerne von den Besten."
+        stats={communityStats}
+      />
 
-        {/* Stats Bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">2,847</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Mitglieder' : 'Members'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">1,234</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Diskussionen' : 'Discussions'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">456</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Antworten heute' : 'Answers today'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">89</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Events' : 'Events'}</p>
-          </Card>
-        </div>
+      <div className="container max-w-7xl mx-auto px-4">
 
         {/* Main Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">

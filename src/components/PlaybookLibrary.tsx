@@ -4,6 +4,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import SharedHero from '@/components/shared/SharedHero';
 import { 
   Rocket, Target, Users, Zap, Brain, TrendingUp, Shield, 
   BarChart3, Layers, GitBranch, Database, Globe, Settings,
@@ -641,32 +642,28 @@ const PlaybookLibrary: React.FC = () => {
     }
   };
 
-  return (
-    <section className="py-20 px-6 bg-background relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
-      </div>
+  const playbookStats = [
+    { value: '22+', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
+    { value: '6', label: { en: 'Dimensions', de: 'Dimensionen' }, color: 'accent' as const },
+    { value: '4', label: { en: 'Stages', de: 'Stufen' }, color: 'primary' as const },
+    { value: '3', label: { en: 'Difficulty Levels', de: 'Schwierigkeitsgrade' }, color: 'accent' as const },
+  ];
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 px-4 py-2">
-            <BookOpen className="w-4 h-4 mr-2 inline" />
-            {language === 'en' ? '22+ Playbooks' : '22+ Playbooks'}
-          </Badge>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6">
-            {language === 'en' ? 'Scaling Playbook Library' : 'Scaling Playbook Bibliothek'}
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {language === 'en' 
-              ? 'Comprehensive playbooks for AI-native scaling across all dimensions.'
-              : 'Umfassende Playbooks für AI-natives Skalieren in allen Dimensionen.'}
-          </p>
-        </div>
+  return (
+    <section className="pb-20 bg-background relative overflow-hidden">
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="Playbook Library"
+        headlineLine1De="Playbook Bibliothek"
+        headlineLine2En="for AI-Native Scaling"
+        headlineLine2De="für AI-Native Scaling"
+        subheadlineEn="Comprehensive playbooks for AI-native scaling across all dimensions."
+        subheadlineDe="Umfassende Playbooks für AI-natives Skalieren in allen Dimensionen."
+        stats={playbookStats}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
 
         {/* Search & Filters */}
         <div className="mb-12 space-y-6">

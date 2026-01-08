@@ -6,6 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Linkedin, Twitter, Mail, Target, Zap, Users, Globe } from 'lucide-react';
+import SharedHero from '@/components/shared/SharedHero';
 
 interface TeamMember {
   name: string;
@@ -93,23 +94,19 @@ const About: React.FC = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
-      <main className="pt-32 pb-20">
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="We are"
+        headlineLine1De="Wir sind"
+        headlineLine2En="ScalingX"
+        headlineLine2De="ScalingX"
+        subheadlineEn="A team of operators, investors, and AI experts with one mission: Preparing European scale-ups for superlinear growth."
+        subheadlineDe="Ein Team von Operators, Investoren und AI-Experten mit einer Mission: Europäische Scale-ups auf superlineares Wachstum vorbereiten."
+      />
+      
+      <main className="pb-20">
         <div className="container max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="max-w-3xl mb-20">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              {language === 'de' ? 'Über uns' : 'About Us'}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-              {language === 'de' ? 'Wir sind' : 'We are'}
-              <span className="block text-primary italic">ScalingX</span>
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              {language === 'de'
-                ? 'Ein Team von Operators, Investoren und AI-Experten mit einer Mission: Europäische Scale-ups auf superlineares Wachstum vorbereiten.'
-                : 'A team of operators, investors, and AI experts with one mission: Preparing European scale-ups for superlinear growth.'}
-            </p>
-          </div>
 
           {/* Mission Statement */}
           <Card className="p-8 md:p-12 mb-20 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">

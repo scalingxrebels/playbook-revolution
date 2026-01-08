@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
+import SharedHero from '@/components/shared/SharedHero';
 import { 
   FileText, Download, ExternalLink, BookOpen, 
   BarChart3, Brain, Layers, Settings, ChevronRight,
@@ -169,6 +170,13 @@ const researchPapers: ResearchPaper[] = [
   }
 ];
 
+const researchStats = [
+  { value: '195K+', label: { en: 'Words', de: 'Wörter' }, color: 'primary' as const },
+  { value: '5', label: { en: 'Papers', de: 'Papers' }, color: 'accent' as const },
+  { value: '22', label: { en: 'Companies', de: 'Unternehmen' }, color: 'primary' as const },
+  { value: '238', label: { en: 'Citations', de: 'Zitierungen' }, color: 'accent' as const },
+];
+
 const ResearchHub: React.FC = () => {
   const { language } = useLanguage();
   const [selectedPaper, setSelectedPaper] = useState<string | null>(null);
@@ -176,48 +184,20 @@ const ResearchHub: React.FC = () => {
   const activePaper = researchPapers.find(p => p.id === selectedPaper);
 
   return (
-    <section className="py-16 px-4">
-      <div className="container max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <Badge variant="outline" className="mb-4 border-accent/30 text-accent font-mono">
-            RESEARCH FOUNDATION
-          </Badge>
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-4">
-            {language === 'de' ? 'Forschungs-Hub' : 'Research Hub'}
-          </h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {language === 'de' 
-              ? 'Die wissenschaftliche Grundlage des AI-Native Scaling Frameworks. 195,000+ Wörter empirisch validierter Forschung.'
-              : 'The scientific foundation of the AI-Native Scaling Framework. 195,000+ words of empirically validated research.'}
-          </p>
-        </div>
+    <section className="pb-16">
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="Research Hub"
+        headlineLine1De="Forschungs-Hub"
+        headlineLine2En="The Science of Scaling"
+        headlineLine2De="Die Wissenschaft des Skalierens"
+        subheadlineEn="The scientific foundation of the AI-Native Scaling Framework. 195,000+ words of empirically validated research."
+        subheadlineDe="Die wissenschaftliche Grundlage des AI-Native Scaling Frameworks. 195,000+ Wörter empirisch validierter Forschung."
+        stats={researchStats}
+      />
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-12">
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">195K+</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Wörter' : 'Words'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">5</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Papers' : 'Papers'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">22</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Unternehmen' : 'Companies'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">238</p>
-            <p className="text-sm text-muted-foreground">{language === 'de' ? 'Zitierungen' : 'Citations'}</p>
-          </Card>
-          <Card className="p-4 glass text-center">
-            <p className="text-2xl font-bold text-accent">13K+</p>
-            <p className="text-sm text-muted-foreground">Downloads</p>
-          </Card>
-        </div>
-
-        {/* Papers Grid */}
+      <div className="container max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {researchPapers.map(paper => (
             <Card 
