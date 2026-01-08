@@ -128,6 +128,14 @@ export const problemTags: ProblemTag[] = [
     solutionCategories: ['portfolio-solutions'],
     playbookDimensions: ['All'] 
   },
+  { 
+    id: 'scaling-velocity', 
+    icon: Rocket,
+    labelEn: 'Scaling Velocity',
+    labelDe: 'Skalierungs-Velocity',
+    solutionCategories: ['transformation', 'training'],
+    playbookDimensions: ['GTM', 'Operations', 'Technology'] 
+  },
 ];
 
 export const solutionCategories: SolutionCategory[] = [
