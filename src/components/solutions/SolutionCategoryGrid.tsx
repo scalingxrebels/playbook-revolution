@@ -59,9 +59,15 @@ const SolutionCategoryGrid: React.FC<SolutionCategoryGridProps> = ({ activeTag }
             </h3>
 
             {/* Purpose */}
-            <p className="text-muted-foreground mb-4">
+            <p className="text-muted-foreground mb-2">
               {language === 'de' ? category.purposeDe : category.purposeEn}
             </p>
+
+            {/* Impact Line - Concrete, measurable outcomes */}
+            <div className="flex items-start gap-2 text-sm text-foreground/80 mb-4">
+              <ArrowRight className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+              <p>{language === 'de' ? category.impactDe : category.impactEn}</p>
+            </div>
 
             {/* Playbook Links */}
             <SolutionPlaybookLink 
