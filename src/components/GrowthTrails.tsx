@@ -1,18 +1,147 @@
 import React, { useEffect, useRef } from 'react';
 
+// ============================================
+// CURVE TYPE DEFINITIONS
+// ============================================
+
+interface CurveType {
+  name: string;
+  k: number;
+  x0: number;
+  growthRate: number;
+  color: {
+    start: string;
+    mid: string;
+    end: string;
+  };
+  weight: number;
+}
+
+const CURVE_TYPES: Record<string, CurveType> = {
+  slowBurn: {
+    name: 'Slow Burn',
+    k: 6,
+    x0: 0.3,
+    growthRate: 4,
+    color: {
+      start: '#8B5CF6', // Violet
+      mid: '#EC4899',   // Pink
+      end: '#F59E0B'    // Orange
+    },
+    weight: 0.2
+  },
+  fastMover: {
+    name: 'Fast Mover',
+    k: 10,
+    x0: 0.2,
+    growthRate: 2.5,
+    color: {
+      start: '#3B82F6', // Blue
+      mid: '#8B5CF6',   // Violet
+      end: '#EC4899'    // Pink
+    },
+    weight: 0.2
+  },
+  balanced: {
+    name: 'Balanced',
+    k: 8,
+    x0: 0.25,
+    growthRate: 3,
+    color: {
+      start: '#8B5CF6', // Violet
+      mid: '#F59E0B',   // Orange
+      end: '#FFFFFF'    // White
+    },
+    weight: 0.6
+  }
+};
+
 interface GrowthTrail {
   id: number;
-  startX: number;
+  type: CurveType;
   startY: number;
   progress: number;
-  speed: number;
-  opacity: number;
-  hue: number;
-  thickness: number;
-  inflectionPoint: number;
+  duration: number;
+  startTime: number;
   sparkTriggered: boolean;
-  sparkOpacity: number;
+  sparkData: { x: number; y: number; startTime: number } | null;
+  opacity: number;
+  isAccelerated: boolean;
 }
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+function hexToRgb(hex: string): { r: number; g: number; b: number } {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : { r: 255, g: 255, b: 255 };
+}
+
+function lerpColor(color1: string, color2: string, t: number): string {
+  const c1 = hexToRgb(color1);
+  const c2 = hexToRgb(color2);
+  const r = Math.round(c1.r + (c2.r - c1.r) * t);
+  const g = Math.round(c1.g + (c2.g - c1.g) * t);
+  const b = Math.round(c1.b + (c2.b - c1.b) * t);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function selectCurveType(): CurveType {
+  const rand = Math.random();
+  let cumulative = 0;
+  
+  for (const type of Object.values(CURVE_TYPES)) {
+    cumulative += type.weight;
+    if (rand < cumulative) {
+      return type;
+    }
+  }
+  
+  return CURVE_TYPES.balanced;
+}
+
+// ============================================
+// GROWTH TRAJECTORY FUNCTION
+// ============================================
+
+function growthTrajectory(x: number, curveType: CurveType): number {
+  if (x < 0.5) {
+    // PHASE 1-2: Initial Growth + Plateau (Sigmoid)
+    const L = 0.5;
+    const k = curveType.k;
+    const x0 = curveType.x0;
+    return L / (1 + Math.exp(-k * (x - x0)));
+  } else {
+    // PHASE 4: Hypergrowth (after intervention)
+    const xStart = 0.5;
+    const yStart = 0.5;
+    const t = (x - xStart) / 0.5;
+    const growthRate = curveType.growthRate;
+    
+    return yStart + (1 - yStart) * 
+           (Math.exp(growthRate * t) - 1) / 
+           (Math.exp(growthRate) - 1);
+  }
+}
+
+function getGradientColor(x: number, curveType: CurveType): string {
+  const colors = curveType.color;
+  
+  if (x < 0.5) {
+    return lerpColor(colors.start, colors.mid, x / 0.5);
+  } else {
+    return lerpColor(colors.mid, colors.end, (x - 0.5) / 0.5);
+  }
+}
+
+// ============================================
+// COMPONENT
+// ============================================
 
 const GrowthTrails: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -27,9 +156,18 @@ const GrowthTrails: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    let width = 0;
+    let height = 0;
+
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
       const rect = canvas.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
       canvas.width = rect.width * dpr;
       canvas.height = rect.height * dpr;
       ctx.scale(dpr, dpr);
@@ -38,202 +176,241 @@ const GrowthTrails: React.FC = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Hockey-stick curve: slow start, plateau, then superlinear growth
-    const hockeyStick = (t: number, inflectionPoint: number = 0.5) => {
-      const phase1End = inflectionPoint * 0.8;
-      const phase2End = inflectionPoint * 1.2;
+    // ============================================
+    // STARBURST SPARK
+    // ============================================
+    
+    const drawStarburst = (
+      x: number, 
+      y: number, 
+      progress: number, // 0-1 animation progress
+      color: string
+    ) => {
+      const rays = 10;
+      const maxSize = 14;
       
-      if (t < phase1End) {
-        // Phase 1: Slow linear growth
-        return t * 0.3;
-      } else if (t < phase2End) {
-        // Phase 2: Plateau / flattening
-        const phase1Value = phase1End * 0.3;
-        return phase1Value + (t - phase1End) * 0.08;
+      // Animation phases
+      let scale: number, opacity: number;
+      if (progress < 0.2) {
+        // Scale up
+        scale = progress / 0.2;
+        opacity = 1;
+      } else if (progress < 0.4) {
+        // Hold
+        scale = 1;
+        opacity = 1;
       } else {
-        // Phase 3: Superlinear growth (exponential)
-        const phase1Value = phase1End * 0.3;
-        const phase2Value = phase1Value + (phase2End - phase1End) * 0.08;
-        const superlinearT = t - phase2End;
-        return phase2Value + Math.pow(superlinearT * 2.5, 1.8);
+        // Fade out
+        scale = 1;
+        opacity = 1 - ((progress - 0.4) / 0.6);
       }
+
+      const innerRadius = 4 * scale;
+      const outerRadius = maxSize * scale;
+
+      ctx.save();
+      ctx.globalAlpha = opacity;
+
+      // Glow effect
+      ctx.shadowBlur = 15 * scale;
+      ctx.shadowColor = '#F59E0B';
+
+      // Draw starburst shape
+      ctx.beginPath();
+      for (let i = 0; i < rays * 2; i++) {
+        const radius = i % 2 === 0 ? outerRadius : innerRadius;
+        const angle = (Math.PI * 2 * i) / (rays * 2) - Math.PI / 2;
+        const rayX = x + Math.cos(angle) * radius;
+        const rayY = y + Math.sin(angle) * radius;
+        
+        if (i === 0) {
+          ctx.moveTo(rayX, rayY);
+        } else {
+          ctx.lineTo(rayX, rayY);
+        }
+      }
+      ctx.closePath();
+
+      // Gradient fill
+      const gradient = ctx.createRadialGradient(x, y, 0, x, y, outerRadius);
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      gradient.addColorStop(0.3, 'rgba(245, 158, 11, 1)');
+      gradient.addColorStop(1, color);
+
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      // Particle burst
+      if (progress > 0.1 && progress < 0.7) {
+        const particleProgress = (progress - 0.1) / 0.6;
+        const particleCount = 5;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const angle = (Math.PI * 2 * i) / particleCount + Math.random() * 0.3;
+          const distance = 10 + particleProgress * 25;
+          const particleX = x + Math.cos(angle) * distance;
+          const particleY = y + Math.sin(angle) * distance;
+          const particleOpacity = opacity * (1 - particleProgress);
+          const particleSize = 2 * (1 - particleProgress * 0.5);
+
+          ctx.globalAlpha = particleOpacity;
+          ctx.fillStyle = '#F59E0B';
+          ctx.beginPath();
+          ctx.arc(particleX, particleY, particleSize, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      ctx.restore();
     };
 
-    // Draw spark effect at inflection point
-    const drawSpark = (x: number, y: number, opacity: number) => {
-      const sparkSize = 6 + Math.random() * 4;
-      
-      // Outer glow
-      const glow = ctx.createRadialGradient(x, y, 0, x, y, sparkSize * 3);
-      glow.addColorStop(0, `hsla(45, 100%, 95%, ${opacity})`);
-      glow.addColorStop(0.2, `hsla(40, 100%, 75%, ${opacity * 0.7})`);
-      glow.addColorStop(0.5, `hsla(35, 100%, 60%, ${opacity * 0.3})`);
-      glow.addColorStop(1, `hsla(35, 100%, 50%, 0)`);
-      
-      ctx.fillStyle = glow;
-      ctx.beginPath();
-      ctx.arc(x, y, sparkSize * 3, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Inner bright core
-      const core = ctx.createRadialGradient(x, y, 0, x, y, sparkSize);
-      core.addColorStop(0, `hsla(50, 100%, 100%, ${opacity})`);
-      core.addColorStop(0.5, `hsla(45, 100%, 85%, ${opacity * 0.8})`);
-      core.addColorStop(1, `hsla(40, 100%, 70%, 0)`);
-      
-      ctx.fillStyle = core;
-      ctx.beginPath();
-      ctx.arc(x, y, sparkSize, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Small rays
-      ctx.strokeStyle = `hsla(45, 100%, 80%, ${opacity * 0.6})`;
-      ctx.lineWidth = 1.5;
-      for (let i = 0; i < 6; i++) {
-        const angle = (i / 6) * Math.PI * 2 + Math.random() * 0.2;
-        const rayLength = sparkSize * (1.5 + Math.random() * 1.5);
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(
-          x + Math.cos(angle) * rayLength,
-          y + Math.sin(angle) * rayLength
-        );
-        ctx.stroke();
-      }
-    };
+    // ============================================
+    // SPAWN TRAJECTORY
+    // ============================================
 
-    // Spawn a new trail
-    const spawnTrail = () => {
+    const spawnTrail = (timestamp: number) => {
       const trail: GrowthTrail = {
         id: nextIdRef.current++,
-        startX: Math.random() * 0.2 - 0.05, // -5% to 15% (left third)
-        startY: 0.75 + Math.random() * 0.25, // 75% to 100% (bottom area)
+        type: selectCurveType(),
+        startY: 0.3 + Math.random() * 0.4, // 30-70% height
         progress: 0,
-        speed: 0.0006 + Math.random() * 0.0008,
-        opacity: 0.7 + Math.random() * 0.3,
-        hue: Math.random() > 0.6 ? 280 : 35, // Purple or Gold
-        thickness: 2 + Math.random() * 3, // 2-5px
-        inflectionPoint: 0.4 + Math.random() * 0.15, // 40-55%
+        duration: 7000 + Math.random() * 2000, // 7-9s
+        startTime: timestamp,
         sparkTriggered: false,
-        sparkOpacity: 0,
+        sparkData: null,
+        opacity: 0.3 + Math.random() * 0.3, // 0.3-0.6 (subtle)
+        isAccelerated: false,
       };
       trailsRef.current.push(trail);
     };
 
     // Initial trails
-    for (let i = 0; i < 4; i++) {
-      spawnTrail();
-      trailsRef.current[i].progress = Math.random() * 0.3;
+    const now = performance.now();
+    for (let i = 0; i < 3; i++) {
+      spawnTrail(now - Math.random() * 4000);
     }
+    lastSpawnRef.current = now;
+
+    // ============================================
+    // ANIMATION LOOP
+    // ============================================
 
     let animationId: number;
 
     const animate = (timestamp: number) => {
-      const rect = canvas.getBoundingClientRect();
-      ctx.clearRect(0, 0, rect.width, rect.height);
+      ctx.clearRect(0, 0, width, height);
 
-      // Spawn new trails periodically
-      if (timestamp - lastSpawnRef.current > 3000 + Math.random() * 2000) {
-        if (trailsRef.current.length < 6) {
-          spawnTrail();
+      // Spawn new trajectories (every 2-3.5s)
+      if (timestamp - lastSpawnRef.current > 2500 + Math.random() * 1000) {
+        if (trailsRef.current.length < 5) {
+          spawnTrail(timestamp);
         }
         lastSpawnRef.current = timestamp;
       }
 
       // Update and draw trails
       trailsRef.current = trailsRef.current.filter((trail) => {
-        trail.progress += trail.speed;
+        const elapsed = timestamp - trail.startTime;
+        const duration = trail.isAccelerated ? trail.duration * 0.5 : trail.duration;
+        trail.progress = Math.min(elapsed / duration, 1);
 
-        // Check if we should trigger spark
-        const sparkTriggerPoint = trail.inflectionPoint * 1.1;
-        if (!trail.sparkTriggered && trail.progress >= sparkTriggerPoint) {
+        // Trigger spark at 50%
+        if (trail.progress >= 0.5 && !trail.sparkTriggered) {
           trail.sparkTriggered = true;
-          trail.sparkOpacity = 1;
+          // Calculate spark position
+          const x = 0.5;
+          const y = growthTrajectory(x, trail.type);
+          trail.sparkData = {
+            x: x * width,
+            y: (1 - y) * height * 0.6 + trail.startY * height * 0.4,
+            startTime: timestamp
+          };
         }
 
-        // Fade out spark
-        if (trail.sparkTriggered && trail.sparkOpacity > 0) {
-          trail.sparkOpacity -= 0.015;
+        // Calculate fade opacity
+        const fadeStart = 0.75;
+        let currentOpacity = trail.opacity;
+        if (trail.progress > fadeStart) {
+          currentOpacity = trail.opacity * (1 - (trail.progress - fadeStart) / (1 - fadeStart));
         }
 
-        // Calculate opacity fade based on progress
-        const fadeStart = 0.8;
-        const currentOpacity =
-          trail.progress > fadeStart
-            ? trail.opacity * (1 - (trail.progress - fadeStart) / (1 - fadeStart))
-            : trail.opacity;
-
-        if (currentOpacity <= 0.02 || trail.progress > 1.3) {
-          return false; // Remove trail
+        // Remove if faded or complete
+        if (currentOpacity <= 0.01 || trail.progress >= 1) {
+          return false;
         }
 
-        // Draw the hockey-stick curve trail
-        const trailLength = 0.2;
-        const segments = 50;
+        // ============================================
+        // DRAW TRAJECTORY WITH GRADIENT
+        // ============================================
 
-        ctx.beginPath();
+        const trailLength = 0.25; // 25% chemtrail
+        const segments = 80;
+
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
 
-        let lastX = 0, lastY = 0;
-        let sparkX = 0, sparkY = 0;
+        let prevX = 0, prevY = 0;
 
         for (let i = 0; i <= segments; i++) {
           const t = trail.progress - (trailLength * i) / segments;
           if (t < 0) continue;
+          if (t > trail.progress) continue;
 
-          // Hockey-stick curve: right and up
-          const curveY = hockeyStick(t, trail.inflectionPoint);
-          const x = trail.startX + t * 0.9; // Move right
-          const y = trail.startY - curveY * 0.8; // Move up with hockey-stick curve
+          // Calculate position on curve
+          const curveY = growthTrajectory(t, trail.type);
+          const x = t;
+          const y = (1 - curveY) * 0.6 + trail.startY * 0.4;
 
-          const screenX = x * rect.width;
-          const screenY = y * rect.height;
+          const screenX = x * width;
+          const screenY = y * height;
 
-          // Track spark position
-          if (Math.abs(t - trail.inflectionPoint * 1.1) < 0.02) {
-            sparkX = screenX;
-            sparkY = screenY;
-          }
-
-          // Gradient opacity along trail (head bright, tail fades)
-          const segmentOpacity = currentOpacity * (1 - i / segments) * 0.7;
+          // Segment opacity (chemtrail fade)
+          const trailFade = 1 - (i / segments);
+          const segmentOpacity = currentOpacity * trailFade;
 
           if (i === 0) {
-            ctx.moveTo(screenX, screenY);
-            lastX = screenX;
-            lastY = screenY;
-          } else {
-            // Draw segment with gradient
-            const gradient = ctx.createLinearGradient(
-              lastX, lastY, screenX, screenY
-            );
-
-            if (trail.hue === 35) {
-              // Gold gradient
-              gradient.addColorStop(0, `hsla(35, 100%, 65%, ${segmentOpacity})`);
-              gradient.addColorStop(1, `hsla(45, 100%, 55%, ${segmentOpacity * 0.8})`);
-            } else {
-              // Purple gradient
-              gradient.addColorStop(0, `hsla(280, 80%, 65%, ${segmentOpacity})`);
-              gradient.addColorStop(1, `hsla(300, 80%, 55%, ${segmentOpacity * 0.8})`);
-            }
-
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = trail.thickness * (1 - i / segments / 1.5);
-            ctx.lineTo(screenX, screenY);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(screenX, screenY);
-            
-            lastX = screenX;
-            lastY = screenY;
+            prevX = screenX;
+            prevY = screenY;
+            continue;
           }
+
+          // Get gradient color for this position
+          const color = getGradientColor(t, trail.type);
+
+          // Draw segment
+          ctx.beginPath();
+          ctx.moveTo(prevX, prevY);
+          ctx.lineTo(screenX, screenY);
+          ctx.strokeStyle = color;
+          ctx.globalAlpha = segmentOpacity;
+          ctx.lineWidth = 2 * trailFade + 0.5; // 0.5-2.5px
+          ctx.stroke();
+
+          prevX = screenX;
+          prevY = screenY;
         }
 
-        // Draw spark if active
-        if (trail.sparkTriggered && trail.sparkOpacity > 0 && sparkX > 0) {
-          drawSpark(sparkX, sparkY, trail.sparkOpacity);
+        // Reset alpha
+        ctx.globalAlpha = 1;
+
+        // ============================================
+        // DRAW SPARK IF ACTIVE
+        // ============================================
+
+        if (trail.sparkData) {
+          const sparkElapsed = timestamp - trail.sparkData.startTime;
+          const sparkDuration = 600; // 600ms
+          const sparkProgress = Math.min(sparkElapsed / sparkDuration, 1);
+
+          if (sparkProgress < 1) {
+            const midColor = trail.type.color.mid;
+            drawStarburst(
+              trail.sparkData.x,
+              trail.sparkData.y,
+              sparkProgress,
+              midColor
+            );
+          }
         }
 
         return true;
@@ -244,8 +421,73 @@ const GrowthTrails: React.FC = () => {
 
     animationId = requestAnimationFrame(animate);
 
+    // ============================================
+    // CLICK INTERACTION (Optional)
+    // ============================================
+
+    const handleClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+
+      // Check if click is near any trajectory
+      trailsRef.current.forEach((trail) => {
+        if (trail.isAccelerated || trail.progress >= 0.5) return;
+
+        // Simple hit detection
+        const t = clickX / width;
+        if (t > trail.progress) return;
+
+        const curveY = growthTrajectory(t, trail.type);
+        const expectedY = ((1 - curveY) * 0.6 + trail.startY * 0.4) * height;
+        const distance = Math.abs(clickY - expectedY);
+
+        if (distance < 30) {
+          // Accelerate this trajectory
+          trail.isAccelerated = true;
+          trail.sparkTriggered = true;
+          trail.sparkData = {
+            x: clickX,
+            y: clickY,
+            startTime: performance.now()
+          };
+        }
+      });
+    };
+
+    canvas.addEventListener('click', handleClick);
+
+    // Hover cursor
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      let onCurve = false;
+      trailsRef.current.forEach((trail) => {
+        if (trail.isAccelerated || trail.progress >= 0.5) return;
+
+        const t = mouseX / width;
+        if (t > trail.progress) return;
+
+        const curveY = growthTrajectory(t, trail.type);
+        const expectedY = ((1 - curveY) * 0.6 + trail.startY * 0.4) * height;
+        const distance = Math.abs(mouseY - expectedY);
+
+        if (distance < 30) {
+          onCurve = true;
+        }
+      });
+
+      canvas.style.cursor = onCurve ? 'pointer' : 'default';
+    };
+
+    canvas.addEventListener('mousemove', handleMouseMove);
+
     return () => {
       window.removeEventListener('resize', resizeCanvas);
+      canvas.removeEventListener('click', handleClick);
+      canvas.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -253,7 +495,7 @@ const GrowthTrails: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="absolute inset-0 w-full h-full"
       style={{ opacity: 1 }}
     />
   );
