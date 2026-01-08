@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, TrendingUp, Users, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SharedHero from '@/components/shared/SharedHero';
 
 interface CaseStudy {
   id: string;
@@ -116,6 +117,13 @@ const caseStudies: CaseStudy[] = [
   }
 ];
 
+const casesStats = [
+  { value: '22+', label: { en: 'Transformations', de: 'Transformationen' }, color: 'primary' as const },
+  { value: '8.3x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
+  { value: '€2.1B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'primary' as const },
+  { value: '94%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
+];
+
 const Cases: React.FC = () => {
   const { language } = useLanguage();
 
@@ -123,55 +131,21 @@ const Cases: React.FC = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       
-      <main className="pt-32 pb-20">
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="Transformations,"
+        headlineLine1De="Transformationen,"
+        headlineLine2En="not theories"
+        headlineLine2De="nicht Theorien"
+        subheadlineEn="Real results from companies that made the leap from linear to superlinear growth."
+        subheadlineDe="Echte Ergebnisse von Unternehmen, die den Sprung von linearem zu superlinearem Wachstum geschafft haben."
+        stats={casesStats}
+      />
+      
+      <main className="pb-20">
         <div className="container max-w-7xl mx-auto px-4">
-          {/* Header */}
-          <div className="max-w-3xl mb-16">
-            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">
-              {language === 'de' ? 'Case Studies' : 'Case Studies'}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">
-              {language === 'de' ? 'Transformationen,' : 'Transformations,'}
-              <span className="block text-primary italic">
-                {language === 'de' ? 'nicht Theorien' : 'not theories'}
-              </span>
-            </h1>
-            <p className="text-xl text-muted-foreground">
-              {language === 'de'
-                ? 'Echte Ergebnisse von Unternehmen, die den Sprung von linearem zu superlinearem Wachstum geschafft haben.'
-                : 'Real results from companies that made the leap from linear to superlinear growth.'}
-            </p>
-          </div>
 
-          {/* Stats Overview */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-            <Card className="p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary">22+</p>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' ? 'Transformationen' : 'Transformations'}
-              </p>
-            </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary">8.3x</p>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' ? 'Ø ROI' : 'Avg ROI'}
-              </p>
-            </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary">€2.1B</p>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' ? 'Wert geschaffen' : 'Value Created'}
-              </p>
-            </Card>
-            <Card className="p-6 text-center">
-              <p className="text-3xl md:text-4xl font-bold text-primary">94%</p>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' ? 'Erfolgsrate' : 'Success Rate'}
-              </p>
-            </Card>
-          </div>
-
-          {/* Case Studies Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {caseStudies.map((study) => (
               <Card 
