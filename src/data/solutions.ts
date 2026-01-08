@@ -31,6 +31,8 @@ export interface SolutionCategory {
   titleDe: string;
   purposeEn: string;
   purposeDe: string;
+  impactEn: string;
+  impactDe: string;
   descriptionEn: string;
   descriptionDe: string;
   pricingMin: number;
@@ -134,6 +136,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Advisory',
     purposeEn: 'Create clarity fast and decide what truly matters',
     purposeDe: 'Schnell Klarheit schaffen und entscheiden, was wirklich zählt',
+    impactEn: 'Identify your bottleneck in 45 min and get a prioritized 90-day roadmap with predicted 2-5x ROI.',
+    impactDe: 'Identifiziere deinen Engpass in 45 Min und erhalte eine priorisierte 90-Tage-Roadmap mit 2-5x ROI-Prognose.',
     descriptionEn: 'Strategic guidance for founders and leadership teams navigating critical decisions.',
     descriptionDe: 'Strategische Beratung für Gründer und Führungsteams bei kritischen Entscheidungen.',
     pricingMin: 0,
@@ -198,6 +202,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Decision Reports',
     purposeEn: 'Get Board-ready answers to your toughest questions',
     purposeDe: 'Board-ready Antworten auf die schwierigsten Fragen',
+    impactEn: 'Present your strategy to the board with 95% confidence and clear ROI projections (CAC -30-50%, LTV/CAC +50-100%, Rule of 40 +15-30pp).',
+    impactDe: 'Präsentiere deine Strategie mit 95% Konfidenz und klaren ROI-Projektionen (CAC -30-50%, LTV/CAC +50-100%, Rule of 40 +15-30pp).',
     descriptionEn: 'Deep-dive analyses and actionable recommendations for specific strategic challenges.',
     descriptionDe: 'Tiefgehende Analysen und umsetzbare Empfehlungen für spezifische strategische Herausforderungen.',
     pricingMin: 9000,
@@ -249,6 +255,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Transformation',
     purposeEn: 'Fix bottlenecks and unlock your next growth phase',
     purposeDe: 'Engpässe beheben und die nächste Wachstumsphase freischalten',
+    impactEn: 'Fix your bottleneck in 30-90 days: CAC -30-50%, LTV/CAC +50-100%, Decision Velocity +100%. Guaranteed: 2 of 3 or 50% refund.',
+    impactDe: 'Behebe deinen Engpass in 30-90 Tagen: CAC -30-50%, LTV/CAC +50-100%, Decision Velocity +100%. Garantie: 2 von 3 oder 50% Rückerstattung.',
     descriptionEn: 'Hands-on transformation programs that deliver measurable business outcomes.',
     descriptionDe: 'Hands-on Transformationsprogramme mit messbaren Business-Ergebnissen.',
     pricingMin: 23600,
@@ -313,6 +321,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Training',
     purposeEn: 'Upgrade your team\'s capabilities at scale',
     purposeDe: 'Team-Capabilities skalierbar upgraden',
+    impactEn: 'Train your team to execute AI-native playbooks: 3x faster feature velocity, 50% fewer meetings, 80% reduction in coordination cost within 6-12 weeks.',
+    impactDe: 'Trainiere dein Team für AI-native Playbooks: 3x schnellere Feature Velocity, 50% weniger Meetings, 80% weniger Koordinationskosten in 6-12 Wochen.',
     descriptionEn: 'Structured programs to build AI-native skills across your organization.',
     descriptionDe: 'Strukturierte Programme zum Aufbau von AI-native Skills in der gesamten Organisation.',
     pricingMin: 3000,
@@ -377,6 +387,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Bespoke Strategy',
     purposeEn: 'Solve unique challenges that don\'t fit a box',
     purposeDe: 'Einzigartige Herausforderungen lösen, die nicht in eine Box passen',
+    impactEn: 'Get a custom playbook for your specific challenge (Pricing, M&A, Board Prep) with clear success metrics and 3-5 week delivery.',
+    impactDe: 'Erhalte ein maßgeschneidertes Playbook für deine spezifische Herausforderung (Pricing, M&A, Board Prep) mit klaren Erfolgsmetriken in 3-5 Wochen.',
     descriptionEn: 'Custom-designed engagements for complex, multi-dimensional strategic challenges.',
     descriptionDe: 'Maßgeschneiderte Engagements für komplexe, mehrdimensionale strategische Herausforderungen.',
     pricingMin: 50000,
@@ -415,6 +427,8 @@ export const solutionCategories: SolutionCategory[] = [
     titleDe: 'Portfolio Solutions',
     purposeEn: 'Transform 5-30 companies with systematic approach',
     purposeDe: '5-30 Unternehmen mit systematischem Ansatz transformieren',
+    impactEn: 'Transform 10-15 companies in 12 months: Average θ-index +60%, ARR/Employee +150%, Portfolio valuation +2-3x.',
+    impactDe: 'Transformiere 10-15 Unternehmen in 12 Monaten: Ø θ-Index +60%, ARR/Mitarbeiter +150%, Portfolio-Bewertung +2-3x.',
     descriptionEn: 'Tailored solutions for VCs, PE firms, and corporate portfolios.',
     descriptionDe: 'Maßgeschneiderte Lösungen für VCs, PE-Firmen und Corporate Portfolios.',
     pricingMin: 150000,

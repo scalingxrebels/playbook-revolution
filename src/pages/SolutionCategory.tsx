@@ -57,9 +57,14 @@ const SolutionCategoryContent: React.FC = () => {
                 <h1 className="font-display text-display-md tracking-tight mb-2">
                   {language === 'de' ? solution.titleDe : solution.titleEn}
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-xl text-muted-foreground mb-3">
                   {language === 'de' ? solution.purposeDe : solution.purposeEn}
                 </p>
+                {/* Impact Line */}
+                <div className="flex items-start gap-2 text-base text-foreground/80">
+                  <ArrowRight className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <p>{language === 'de' ? solution.impactDe : solution.impactEn}</p>
+                </div>
               </div>
             </div>
             
