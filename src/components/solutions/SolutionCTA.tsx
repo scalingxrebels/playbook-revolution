@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Phone, FileText } from 'lucide-react';
+import { ArrowRight, Phone, FileText, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const SolutionCTA: React.FC = () => {
@@ -66,12 +66,20 @@ const SolutionCTA: React.FC = () => {
           </div>
           
           {/* Trust Signal */}
-          <p className="text-sm text-muted-foreground">
-            {language === 'de' 
-              ? '✓ Unverbindlich  ✓ 30 Minuten  ✓ Konkrete nächste Schritte'
-              : '✓ No commitment  ✓ 30 minutes  ✓ Concrete next steps'
-            }
-          </p>
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-primary" />
+              {language === 'de' ? 'Unverbindlich' : 'No commitment'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-primary" />
+              {language === 'de' ? '30 Minuten' : '30 minutes'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-primary" />
+              {language === 'de' ? 'Konkrete nächste Schritte' : 'Concrete next steps'}
+            </span>
+          </div>
         </div>
       </div>
     </section>

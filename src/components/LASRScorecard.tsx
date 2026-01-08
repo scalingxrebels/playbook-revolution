@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Zap, Brain, Network, TrendingUp, ArrowRight, CheckCircle,
-  AlertTriangle, Target, Gauge, BarChart3, Sparkles
+  AlertTriangle, Target, Gauge, BarChart3, Sparkles, ArrowLeft
 } from 'lucide-react';
 
 const LASRScorecard = () => {
@@ -385,9 +385,10 @@ const LASRScorecard = () => {
             {currentQuestion > 0 && (
               <button
                 onClick={() => setCurrentQuestion(currentQuestion - 1)}
-                className="mt-6 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="mt-6 text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
               >
-                ← Zurück zur vorherigen Frage
+                <ArrowLeft className="w-4 h-4" />
+                Zurück zur vorherigen Frage
               </button>
             )}
           </div>

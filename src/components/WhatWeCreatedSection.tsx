@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Lightbulb, Target, Map, Rocket, Shield, ArrowRight, CheckCircle, Database, FileText, Globe } from 'lucide-react';
+import { Lightbulb, Target, Map, Rocket, Shield, ArrowRight, CheckCircle, Database, FileText, Globe, TrendingDown, RefreshCw, DollarSign, Clock, HeartCrack, LucideIcon } from 'lucide-react';
 
 const WhatWeCreatedSection = () => {
   const { language } = useLanguage();
@@ -27,29 +27,29 @@ const WhatWeCreatedSection = () => {
     },
   ];
 
-  const ceoObservableFacts = [
+  const ceoObservableFacts: { icon: LucideIcon; fact: string; detail: string }[] = [
     {
-      icon: '📉',
+      icon: TrendingDown,
       fact: language === 'de' ? 'Wachstum stagniert' : 'Growth is stagnating',
       detail: '150% → 80% YoY',
     },
     {
-      icon: '🔄',
+      icon: RefreshCw,
       fact: language === 'de' ? 'Chaos nimmt zu' : 'Chaos is increasing',
       detail: '80 Leute = 4,950 coordination pairs',
     },
     {
-      icon: '💰',
+      icon: DollarSign,
       fact: language === 'de' ? 'Kapital knapp' : 'Capital is scarce',
       detail: language === 'de' ? '18 Monate Runway, braucht 5-7 Jahre' : '18 months runway, needs 5-7 years',
     },
     {
-      icon: '⏱️',
+      icon: Clock,
       fact: 'Board Pressure',
       detail: language === 'de' ? '6-12 Monate für Turnaround' : '6-12 months for turnaround',
     },
     {
-      icon: '💔',
+      icon: HeartCrack,
       fact: language === 'de' ? 'Kultur zerbricht' : 'Culture is breaking',
       detail: '20% Churn, 60h/Woche',
     },
@@ -142,18 +142,21 @@ const WhatWeCreatedSection = () => {
             {language === 'de' ? 'Was der CEO SIEHT (Observable Facts)' : 'What the CEO SEES (Observable Facts)'}
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {ceoObservableFacts.map((item, idx) => (
-              <div 
-                key={idx}
-                className="bg-destructive/5 border border-destructive/30 p-4 rounded-xl flex items-center gap-3 min-w-[200px]"
-              >
-                <span className="text-2xl">{item.icon}</span>
-                <div>
-                  <p className="font-semibold text-sm">{item.fact}</p>
-                  <p className="text-xs text-muted-foreground">{item.detail}</p>
+            {ceoObservableFacts.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="bg-destructive/5 border border-destructive/30 p-4 rounded-xl flex items-center gap-3 min-w-[200px]"
+                >
+                  <Icon className="w-6 h-6 text-destructive" />
+                  <div>
+                    <p className="font-semibold text-sm">{item.fact}</p>
+                    <p className="text-xs text-muted-foreground">{item.detail}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
