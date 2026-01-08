@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone } from 'lucide-react';
-
+import TwinklingStars from '@/components/TwinklingStars';
 const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
@@ -11,35 +11,40 @@ const SolutionHero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center py-24 lg:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-mesh" />
-      <div className="absolute inset-0 noise opacity-30" />
+    <section className="relative min-h-[90vh] flex flex-col justify-center items-center overflow-hidden noise pt-20">
+      {/* Background - consistent with Home */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       
-      {/* Decorative Elements */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      {/* Mesh Gradient Overlay */}
+      <div className="absolute inset-0 bg-mesh opacity-60" />
+
+      {/* Twinkling Stars */}
+      <div className="absolute inset-0">
+        <TwinklingStars />
+      </div>
+
+      {/* Subtle Grid Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
       
-      <div className="container max-w-6xl mx-auto px-6 relative z-10">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Eyebrow */}
-          <span className="inline-block text-sm font-semibold uppercase tracking-widest text-accent mb-6 animate-slide-up">
-            {language === 'de' ? 'Finde deine Lösung' : 'Find Your Solution'}
-          </span>
+      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
+        <div className="text-center">
+          {/* Overline - consistent with Home "AI-Native Execution Consulting" style */}
+          <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
+            <span className="h-px w-12 bg-gradient-primary" />
+            <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
+              Expertise × Speed = Impact
+            </span>
+            <span className="h-px w-12 bg-gradient-primary" />
+          </div>
           
-          {/* Headline */}
-          <h1 className="font-display text-display-lg tracking-tight mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            {language === 'de' ? (
-              <>
-                Die richtige Lösung
-                <span className="block italic text-gradient">für deine Wachstums-Challenge</span>
-              </>
-            ) : (
-              <>
-                Find the Right Solution
-                <span className="block italic text-gradient">for Your Growth Challenge</span>
-              </>
-            )}
+          {/* Headline - same size as Home (text-hero-lg) */}
+          <h1 className="font-display text-hero-lg mb-8 animate-blur-in">
+            <span className="block text-foreground">
+              {language === 'de' ? 'Finde die richtige Lösung' : 'Find the Right Solution'}
+            </span>
+            <span className="block text-gradient animate-gradient bg-gradient-primary">
+              {language === 'de' ? 'für deine Growth Challenge' : 'for Your Growth Challenge'}
+            </span>
           </h1>
           
           {/* Subheadline */}
