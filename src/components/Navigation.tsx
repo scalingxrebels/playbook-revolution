@@ -13,12 +13,13 @@ const Navigation: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { key: 'nav.home', href: '/', label: { en: 'Home', de: 'Start' }, isRoute: true },
-    { key: 'nav.playbook', href: '/playbook', label: { en: 'Playbook', de: 'Playbook' }, isRoute: true },
-    { key: 'nav.playbooks', href: '/playbooks', label: { en: 'Playbooks', de: 'Playbooks' }, isRoute: true },
-    { key: 'nav.community', href: '/community', label: { en: 'Community', de: 'Community' }, isRoute: true },
-    { key: 'nav.research', href: '/research', label: { en: 'Research', de: 'Forschung' }, isRoute: true },
-    { key: 'nav.cases', href: '#cases', label: { en: 'Cases', de: 'Cases' }, isRoute: false },
+    { key: 'nav.home', href: '/', label: 'Home', isRoute: true },
+    { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
+    { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
+    { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
+    { key: 'nav.community', href: '/community', label: 'Community', isRoute: true },
+    { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
+    { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
   ];
 
   return (
@@ -49,7 +50,7 @@ const Navigation: React.FC = () => {
                     }`}
                   >
                     <span className="relative z-10">
-                      {item.label[language as 'en' | 'de']}
+                      {item.label}
                     </span>
                     <span className="absolute inset-0 bg-muted/50 opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span className={`absolute bottom-0 left-4 right-4 h-px bg-foreground transition-transform origin-left ${
@@ -66,7 +67,7 @@ const Navigation: React.FC = () => {
                   className="relative px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group"
                 >
                   <span className="relative z-10">
-                    {item.label[language as 'en' | 'de']}
+                    {item.label}
                   </span>
                   <span className="absolute inset-0 bg-muted/50 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <span className="absolute bottom-0 left-4 right-4 h-px bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
@@ -141,7 +142,7 @@ const Navigation: React.FC = () => {
                         onClick={() => setMobileMenuOpen(false)}
                         style={{ animationDelay: `${index * 0.05}s` }}
                       >
-                        <span>{item.label[language as 'en' | 'de']}</span>
+                        <span>{item.label}</span>
                         <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
                       </Link>
                     );
@@ -155,7 +156,7 @@ const Navigation: React.FC = () => {
                       onClick={() => setMobileMenuOpen(false)}
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
-                      <span>{item.label[language as 'en' | 'de']}</span>
+                      <span>{item.label}</span>
                       <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
                     </a>
                   );
