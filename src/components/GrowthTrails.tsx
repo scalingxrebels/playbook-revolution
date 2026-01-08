@@ -331,11 +331,13 @@ const GrowthTrails: React.FC = () => {
         const duration = trail.isAccelerated ? trail.duration * 0.5 : trail.duration;
         trail.progress = Math.min(elapsed / duration, 1);
 
-        // Trigger spark at 50%
-        if (trail.progress >= 0.5 && !trail.sparkTriggered) {
+        // Trigger spark at 60% - at the SECOND inflection point (before hypergrowth rise)
+        // Not at 50% which is the END of the plateau (first inflection)
+        const sparkTriggerPoint = 0.6;
+        if (trail.progress >= sparkTriggerPoint && !trail.sparkTriggered) {
           trail.sparkTriggered = true;
-          // Calculate spark position
-          const x = 0.5;
+          // Calculate spark position at the trigger point
+          const x = sparkTriggerPoint;
           const y = growthTrajectory(x, trail.type);
           trail.sparkData = {
             x: x * width,
