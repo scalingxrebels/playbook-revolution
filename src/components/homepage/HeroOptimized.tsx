@@ -77,30 +77,30 @@ const HeroOptimized: React.FC = () => {
           <span className="h-px w-12 bg-gradient-primary" />
         </div>
 
-        {/* Main Headline - Large Serif Typography */}
-        <h1 className="font-display text-display-xl leading-[0.9] mb-8 animate-blur-in">
+        {/* Main Headline - League Spartan Bold */}
+        <h1 className="font-display text-hero-lg mb-8 animate-blur-in">
           <span className="block text-foreground">
             {language === 'de' ? 'Dein Scaling-Playbook' : 'Your Scaling Playbook'}
           </span>
-          <span className="block text-gradient animate-gradient bg-gradient-primary italic">
+          <span className="block text-gradient animate-gradient bg-gradient-primary">
             {language === 'de' ? 'ist hinfällig.' : 'is obsolete.'}
           </span>
         </h1>
 
-        {/* Subheadline */}
-        <p className="text-editorial text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+        {/* Subheadline - DM Sans Regular */}
+        <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de' 
             ? 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein – es sollte System haben.'
             : 'We deliver systems and create impact. Growth shouldn\'t be a struggle – it should have a system.'
           }
         </p>
 
-        {/* CTA Button - Liquid Gold Style */}
+        {/* CTA Button - League Spartan Bold */}
         <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button 
             size="lg" 
             onClick={scrollToAssessment}
-            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-lg shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
           >
             {language === 'de' ? 'Starte deine Journey' : 'Start Your Journey'}
             <ArrowRight className="w-5 h-5 ml-2" />
