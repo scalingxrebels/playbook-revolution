@@ -85,9 +85,13 @@ const ML = () => {
 
           {/* Hero Content */}
           <div className="space-y-8 order-2 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-medium">
-              <Sparkles className="w-4 h-4" />
-              {t('ml.hero.badge')}
+            {/* Overline - consistent with homepage */}
+            <div className="flex items-center gap-4 mb-8 animate-fade-in">
+              <span className="h-px w-12 bg-gradient-primary" />
+              <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
+                {t('ml.hero.badge')}
+              </span>
+              <span className="h-px w-12 bg-gradient-primary" />
             </div>
             
             <h1 className="text-section font-display font-bold">
