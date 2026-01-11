@@ -688,7 +688,7 @@ const ML = () => {
 
       {/* Booking Dialog */}
       <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-hidden">
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden">
           <DialogHeader>
             <DialogTitle className="text-center">
               {popupBookingType === '30min' ? t('ml.booking.30min') : t('ml.booking.60min')}
