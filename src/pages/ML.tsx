@@ -604,7 +604,7 @@ const ML = () => {
                 src="/images/ml-closeup.png" 
                 alt="Michel Lason - Closeup Portrait" 
                 className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 10%' }}
+                style={{ objectPosition: 'center 5%' }}
               />
             </div>
 
