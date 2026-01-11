@@ -77,7 +77,8 @@ const ML = () => {
               <img 
                 src="/images/ml-hero.png" 
                 alt="Michel Lason - AI-Native Renaissance Leader" 
-                className="w-full h-full object-cover object-top rounded-3xl border-2 border-accent/30 shadow-accent-glow"
+                className="w-full h-full object-cover rounded-3xl border-2 border-accent/30 shadow-accent-glow"
+                style={{ objectPosition: 'center 20%' }}
               />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-accent rounded-2xl blur-2xl opacity-40" />
             </div>
