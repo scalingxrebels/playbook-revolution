@@ -1,27 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SolutionHero from '@/components/solutions/SolutionHero';
-import SolutionCategoryGrid from '@/components/solutions/SolutionCategoryGrid';
-import SolutionDecisionTree from '@/components/solutions/SolutionDecisionTree';
+import ChallengeTabNavigation from '@/components/solutions/ChallengeTabNavigation';
+import ChallengeCard from '@/components/solutions/ChallengeCard';
+import ChallengeDetailModal from '@/components/solutions/ChallengeDetailModal';
 import SolutionCheatSheet from '@/components/solutions/SolutionCheatSheet';
 import SolutionCTA from '@/components/solutions/SolutionCTA';
-import ProblemTagNavigation from '@/components/ProblemTagNavigation';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ProblemTag } from '@/data/solutions';
+import { challenges, getDefaultChallenge, getChallengeById, Challenge } from '@/data/challenges';
 
 const Solutions: React.FC = () => {
   const { language } = useLanguage();
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // Get challenge from URL or use default
+  const challengeParam = searchParams.get('challenge');
+  const [activeChallenge, setActiveChallenge] = useState<string>(
+    challengeParam || getDefaultChallenge().id
+  );
+  const [detailModalOpen, setDetailModalOpen] = useState<boolean>(
+    searchParams.get('detail') === 'true'
+  );
 
-  const handleTagClick = (tag: ProblemTag) => {
-    if (activeTag === tag.id) {
-      setActiveTag(null);
+  // Get current challenge object
+  const currentChallenge: Challenge | undefined = getChallengeById(activeChallenge);
+
+  // Sync URL with state
+  useEffect(() => {
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('challenge', activeChallenge);
+    if (detailModalOpen) {
+      newParams.set('detail', 'true');
     } else {
-      setActiveTag(tag.id);
-      // Scroll to categories
-      document.getElementById('solution-categories')?.scrollIntoView({ behavior: 'smooth' });
+      newParams.delete('detail');
     }
+    setSearchParams(newParams, { replace: true });
+  }, [activeChallenge, detailModalOpen]);
+
+  // Handle tab change
+  const handleChallengeChange = (challengeId: string) => {
+    setActiveChallenge(challengeId);
+  };
+
+  // Handle modal open
+  const handleOpenDetail = () => {
+    setDetailModalOpen(true);
+  };
+
+  // Handle modal close
+  const handleCloseDetail = (open: boolean) => {
+    setDetailModalOpen(open);
   };
 
   return (
@@ -31,64 +61,54 @@ const Solutions: React.FC = () => {
       {/* Hero Section */}
       <SolutionHero />
       
-      {/* Problem Tag Navigation */}
-      <section className="py-12 bg-muted/30 border-y border-border">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-8">
+      {/* Challenge Tab Navigation */}
+      <section id="challenge-navigation" className="py-8 md:py-12 bg-muted/30 border-y border-border">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-6 md:mb-8">
             <h2 className="text-lg font-semibold text-foreground mb-2">
               {language === 'de' ? 'Was ist deine größte Challenge?' : "What's Your Biggest Challenge?"}
             </h2>
             <p className="text-sm text-muted-foreground">
-              {language === 'de' ? 'Klicke auf ein Problem, um passende Lösungen zu sehen' : 'Click a problem to see matching solutions'}
+              {language === 'de' ? 'Wähle eine Challenge, um passende Lösungen zu sehen' : 'Select a challenge to see matching solutions'}
             </p>
           </div>
-          <ProblemTagNavigation
-            context="solutions"
-            activeTag={activeTag}
-            onTagClick={handleTagClick}
+          <ChallengeTabNavigation
+            activeChallenge={activeChallenge}
+            onChallengeChange={handleChallengeChange}
           />
         </div>
       </section>
       
-      {/* Solution Categories Grid */}
-      <section id="solution-categories" className="py-24 lg:py-32">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="inline-block text-sm font-semibold uppercase tracking-widest text-accent mb-4">
-              {language === 'de' ? '6 Kategorien' : '6 Categories'}
-            </span>
-            <h2 className="font-display text-display-md tracking-tight mb-4">
-              {language === 'de' ? 'Wähle dein Format' : 'Choose Your Format'}
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {language === 'de' 
-                ? 'Von punktueller Beratung bis zur vollständigen Transformation – finde das richtige Engagement-Modell.'
-                : 'From point advisory to full transformation – find the right engagement model.'
-              }
-            </p>
-          </div>
-          <SolutionCategoryGrid activeTag={activeTag} />
+      {/* Challenge Card */}
+      <section className="py-12 md:py-16 lg:py-20">
+        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+          {currentChallenge && (
+            <ChallengeCard
+              challenge={currentChallenge}
+              onOpenDetail={handleOpenDetail}
+            />
+          )}
         </div>
       </section>
       
-      {/* Decision Tree */}
-      <section className="py-24 lg:py-32 bg-muted/30 border-y border-border">
-        <div className="container max-w-5xl mx-auto px-6">
-          <SolutionDecisionTree />
-        </div>
-      </section>
+      {/* Challenge Detail Modal */}
+      <ChallengeDetailModal
+        challenge={currentChallenge || null}
+        open={detailModalOpen}
+        onOpenChange={handleCloseDetail}
+      />
       
       {/* Cheat Sheet */}
-      <section className="py-24 lg:py-32">
-        <div className="container max-w-6xl mx-auto px-6">
-          <div className="text-center mb-12">
+      <section className="py-16 md:py-24 lg:py-32 bg-muted/30 border-y border-border">
+        <div className="container max-w-6xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-8 md:mb-12">
             <span className="inline-block text-sm font-semibold uppercase tracking-widest text-accent mb-4">
               {language === 'de' ? 'Quick Reference' : 'Quick Reference'}
             </span>
-            <h2 className="font-display text-display-md tracking-tight mb-4">
+            <h2 className="font-display text-2xl md:text-display-md tracking-tight mb-4">
               {language === 'de' ? 'Solution Cheat Sheet' : 'Solution Cheat Sheet'}
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
               {language === 'de' 
                 ? 'Auf einen Blick: Wann welche Kategorie wählen.'
                 : 'At a glance: When to choose which category.'
