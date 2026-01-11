@@ -24,6 +24,7 @@ const Cases = lazy(() => import("./pages/Cases"));
 const About = lazy(() => import("./pages/About"));
 const LeadsDashboard = lazy(() => import("./pages/LeadsDashboard"));
 const Auth = lazy(() => import("./pages/Auth"));
+const ML = lazy(() => import("./pages/ML"));
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,7 @@ const App = () => (
                 <Route path="/impressum" element={<Impressum />} />
                 <Route path="/datenschutz" element={<Datenschutz />} />
                 <Route path="/agb" element={<AGB />} />
+                <Route path="/ml" element={<ML />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
