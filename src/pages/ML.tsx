@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ArrowRight, Calendar, Clock, Zap, Heart, Lightbulb, Target, Users, Sparkles, Quote, X, Smile, Eye, Rocket, Brain, Star, ChevronRight, Linkedin, BookOpen, Globe } from "lucide-react";
+import { ArrowRight, Calendar, Clock, Zap, Heart, Lightbulb, Target, Users, Sparkles, Quote, X, Smile, Eye, Rocket, Brain, Star, ChevronRight, Linkedin, BookOpen, Globe, Check } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TwinklingStars from "@/components/TwinklingStars";
@@ -15,14 +15,14 @@ const ML = () => {
   const [popupBookingType, setPopupBookingType] = useState<'30min' | '60min'>('30min');
 
   const testimonials = [
-    t('ml.testimonial1'),
-    t('ml.testimonial2'),
-    t('ml.testimonial3'),
-    t('ml.testimonial4'),
-    t('ml.testimonial5'),
-    t('ml.testimonial6'),
-    t('ml.testimonial7'),
-    t('ml.testimonial8')
+    { quote: t('ml.testimonial1'), author: t('ml.testimonial1.author'), initial: 'K', color: 'bg-accent' },
+    { quote: t('ml.testimonial2'), author: t('ml.testimonial2.author'), initial: 'M', color: 'bg-primary' },
+    { quote: t('ml.testimonial3'), author: t('ml.testimonial3.author'), initial: 'S', color: 'bg-purple-500' },
+    { quote: t('ml.testimonial4'), author: t('ml.testimonial4.author'), initial: 'A', color: 'bg-green-500' },
+    { quote: t('ml.testimonial5'), author: t('ml.testimonial5.author'), initial: 'T', color: 'bg-accent' },
+    { quote: t('ml.testimonial6'), author: t('ml.testimonial6.author'), initial: 'L', color: 'bg-primary' },
+    { quote: t('ml.testimonial7'), author: t('ml.testimonial7.author'), initial: 'R', color: 'bg-purple-500' },
+    { quote: t('ml.testimonial8'), author: t('ml.testimonial8.author'), initial: 'D', color: 'bg-green-500' },
   ];
 
   const principles = [
@@ -44,6 +44,12 @@ const ML = () => {
     { title: t('ml.section7.item3.title'), desc: t('ml.section7.item3.text') },
     { title: t('ml.section7.item4.title'), desc: t('ml.section7.item4.text') },
     { title: t('ml.section7.item5.title'), desc: t('ml.section7.item5.text') }
+  ];
+
+  const joyItems = [
+    { title: t('ml.section8.joy1.title'), text: t('ml.section8.joy1.text'), icon: Sparkles, color: 'text-accent' },
+    { title: t('ml.section8.joy2.title'), text: t('ml.section8.joy2.text'), icon: Heart, color: 'text-primary' },
+    { title: t('ml.section8.joy3.title'), text: t('ml.section8.joy3.text'), icon: Target, color: 'text-green-500' },
   ];
 
   const filloutUrl = selectedBooking === '30min'
@@ -82,7 +88,6 @@ const ML = () => {
           {/* Hero Content */}
           <div className="order-1 lg:order-2 text-center lg:text-left">
             <span className="inline-block px-4 py-2 bg-primary/20 text-primary rounded-full text-sm font-medium mb-6">
-              <Users className="w-4 h-4 inline mr-2" />
               {t('ml.hero.badge')}
             </span>
 
@@ -94,19 +99,19 @@ const ML = () => {
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
               <span className="flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm">
-                <Zap className="w-4 h-4 text-accent" />
+                <Check className="w-4 h-4 text-accent" />
                 {t('ml.hero.value1')}
               </span>
               <span className="flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm">
-                <Brain className="w-4 h-4 text-primary" />
+                <Check className="w-4 h-4 text-accent" />
                 {t('ml.hero.value2')}
               </span>
               <span className="flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm">
-                <Rocket className="w-4 h-4 text-accent" />
+                <Check className="w-4 h-4 text-accent" />
                 {t('ml.hero.value3')}
               </span>
               <span className="flex items-center gap-2 px-4 py-2 bg-muted rounded-full text-sm">
-                <Heart className="w-4 h-4 text-primary" />
+                <Check className="w-4 h-4 text-accent" />
                 {t('ml.hero.value4')}
               </span>
             </div>
@@ -127,9 +132,10 @@ const ML = () => {
                 </Button>
                 <Button
                   onClick={() => setSelectedBooking('60min')}
+                  variant="outline"
                   className={`flex-1 ${selectedBooking === '60min'
-                    ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                    ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25 border-0'
+                    : 'border-primary/50 text-primary hover:bg-primary/10'
                   }`}
                 >
                   <Calendar className="w-4 h-4 mr-2" />
@@ -141,47 +147,47 @@ const ML = () => {
         </div>
       </section>
 
-      {/* BOOKING FILLOUT SECTION */}
-      <section id="booking" className="relative z-10 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          {/* Booking Selection - Mobile only */}
-          <div className="lg:hidden mb-6">
-            <p className="text-sm text-muted-foreground mb-3 text-center">{t('ml.booking.select')}</p>
-            <div className="flex gap-4">
-              <Button
-                onClick={() => setSelectedBooking('30min')}
-                className={`flex-1 ${selectedBooking === '30min'
-                  ? 'bg-gradient-to-r from-accent to-accent/80 text-accent-foreground shadow-lg shadow-accent/25'
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                }`}
-              >
-                <Clock className="w-4 h-4 mr-2" />
-                {t('ml.booking.30min')}
-              </Button>
-              <Button
-                onClick={() => setSelectedBooking('60min')}
-                className={`flex-1 ${selectedBooking === '60min'
-                  ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25'
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                }`}
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                {t('ml.booking.60min')}
-              </Button>
-            </div>
+      {/* BOOKING FILLOUT SECTION - FULL WIDTH */}
+      <section id="booking" className="relative z-10 py-12">
+        {/* Booking Selection - Mobile only */}
+        <div className="lg:hidden mb-6 px-4">
+          <p className="text-sm text-muted-foreground mb-3 text-center">{t('ml.booking.select')}</p>
+          <div className="flex gap-4 max-w-md mx-auto">
+            <Button
+              onClick={() => setSelectedBooking('30min')}
+              className={`flex-1 ${selectedBooking === '30min'
+                ? 'bg-gradient-to-r from-accent to-accent/80 text-accent-foreground shadow-lg shadow-accent/25'
+                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+              }`}
+            >
+              <Clock className="w-4 h-4 mr-2" />
+              {t('ml.booking.30min')}
+            </Button>
+            <Button
+              onClick={() => setSelectedBooking('60min')}
+              variant="outline"
+              className={`flex-1 ${selectedBooking === '60min'
+                ? 'bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-lg shadow-primary/25 border-0'
+                : 'border-primary/50 text-primary hover:bg-primary/10'
+              }`}
+            >
+              <Calendar className="w-4 h-4 mr-2" />
+              {t('ml.booking.60min')}
+            </Button>
           </div>
+        </div>
 
-          <div className="bg-card rounded-2xl border border-border overflow-hidden shadow-xl">
-            <iframe
-              src={filloutUrl}
-              className="w-full h-[600px] border-0"
-              title="Booking Form"
-            />
-          </div>
+        {/* Full Width Fillout iframe */}
+        <div className="w-full">
+          <iframe
+            src={filloutUrl}
+            className="w-full h-[600px] border-0"
+            title="Booking Form"
+          />
         </div>
       </section>
 
-      {/* SECTION 1: WHO I AM */}
+      {/* SECTION 1: RENAISSANCE THINKING */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -216,15 +222,12 @@ const ML = () => {
                     <ChevronRight className="w-4 h-4 text-primary" />
                     {t('ml.section1.skill3')}
                   </li>
+                  <li className="flex items-center gap-2">
+                    <ChevronRight className="w-4 h-4 text-primary" />
+                    {t('ml.section1.skill4')}
+                  </li>
                 </ul>
               </div>
-
-              <Card className="bg-card border-accent/30 p-6 mt-6">
-                <p className="text-muted-foreground font-sans">
-                  <strong className="text-accent">{t('ml.section1.why')}</strong><br />
-                  {t('ml.section1.whyAnswer')}
-                </p>
-              </Card>
             </div>
 
             {/* Speaking Image */}
@@ -239,12 +242,12 @@ const ML = () => {
         </div>
       </section>
 
-      {/* SECTION 2: WHAT DRIVES ME */}
+      {/* SECTION 2: LEADERSHIP IS LOVE */}
       <section className="relative z-10 py-24 px-4 bg-accent/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-accent to-destructive bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                 {t('ml.section2.title')}
               </span>
             </h2>
@@ -263,14 +266,8 @@ const ML = () => {
             <div className="space-y-6">
               <p className="text-lg text-muted-foreground font-sans">{t('ml.section2.intro')}</p>
               <p className="text-xl text-foreground font-medium font-sans">{t('ml.section2.key')}</p>
-              <ul className="space-y-2 text-muted-foreground font-sans">
-                <li>{t('ml.section2.condition1')}</li>
-                <li>{t('ml.section2.condition2')}</li>
-                <li>{t('ml.section2.condition3')}</li>
-              </ul>
-              <p className="text-accent font-semibold">{t('ml.section2.definition')}</p>
 
-              <div className="grid gap-6 pt-6">
+              <div className="grid gap-6 pt-4">
                 <Card className="bg-card border-accent/30 p-6">
                   <h3 className="text-accent font-semibold mb-2 flex items-center gap-2">
                     <Heart className="w-5 h-5" />
@@ -292,7 +289,7 @@ const ML = () => {
         </div>
       </section>
 
-      {/* SECTION 3: MY FORMULAS */}
+      {/* SECTION 3: EQUATIONS */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -311,11 +308,9 @@ const ML = () => {
                   {t('ml.section3.formula1')}
                 </p>
               </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans">
+              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans text-center">
                 <p>{t('ml.section3.formula1.text1')}</p>
                 <p>{t('ml.section3.formula1.text2')}</p>
-                <p className="italic">{t('ml.section3.formula1.text3')}</p>
-                <p className="text-foreground font-semibold">{t('ml.section3.formula1.result')}</p>
               </div>
             </Card>
 
@@ -326,31 +321,29 @@ const ML = () => {
                   {t('ml.section3.formula2')}
                 </p>
               </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans">
+              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans text-center">
                 <p>{t('ml.section3.formula2.text1')}</p>
                 <p>{t('ml.section3.formula2.text2')}</p>
-                <p className="text-primary font-semibold">{t('ml.section3.formula2.result')}</p>
               </div>
             </Card>
 
             {/* Formula 3 */}
             <Card className="bg-card border-accent/30 p-8">
               <div className="text-center mb-6">
-                <p className="text-2xl md:text-3xl font-mono font-bold bg-gradient-to-r from-accent to-destructive bg-clip-text text-transparent">
+                <p className="text-2xl md:text-3xl font-mono font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                   {t('ml.section3.formula3')}
                 </p>
               </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans">
+              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto font-sans text-center">
                 <p>{t('ml.section3.formula3.text1')}</p>
                 <p>{t('ml.section3.formula3.text2')}</p>
-                <p className="text-accent font-semibold">{t('ml.section3.formula3.result')}</p>
               </div>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: MY PRINCIPLES (PRICEPLAQE) */}
+      {/* SECTION 4: PRICEPLAQE */}
       <section className="relative z-10 py-24 px-4 bg-primary/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -380,7 +373,7 @@ const ML = () => {
         </div>
       </section>
 
-      {/* SECTION 5: MY JOURNEY */}
+      {/* SECTION 5: JOURNEY */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -451,7 +444,7 @@ const ML = () => {
         </div>
       </section>
 
-      {/* SECTION 6: WHAT PEOPLE SAY */}
+      {/* SECTION 6: TESTIMONIALS */}
       <section className="relative z-10 py-24 px-4 bg-accent/5">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -463,17 +456,25 @@ const ML = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((quote, index) => (
+            {testimonials.map((testimonial, index) => (
               <Card key={index} className="bg-card border-border p-6 hover:border-accent/30 transition-colors">
-                <Quote className="w-8 h-8 text-accent/50 mb-4" />
-                <p className="text-muted-foreground italic font-sans">"{quote}"</p>
+                <div className="flex gap-4">
+                  <div className={`w-12 h-12 rounded-full ${testimonial.color} flex items-center justify-center text-white font-bold text-xl flex-shrink-0`}>
+                    {testimonial.initial}
+                  </div>
+                  <div className="flex-1">
+                    <Quote className="w-6 h-6 text-accent/50 mb-2" />
+                    <p className="text-muted-foreground italic font-sans mb-3">{testimonial.quote}</p>
+                    <p className="text-foreground text-sm font-medium">{testimonial.author}</p>
+                  </div>
+                </div>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 7: WHAT I CAN'T TOLERATE */}
+      {/* SECTION 7: WHAT I DON'T STAND FOR */}
       <section className="relative z-10 py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -503,7 +504,7 @@ const ML = () => {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-accent to-yellow-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                 {t('ml.section8.title')}
               </span>
             </h2>
@@ -511,35 +512,17 @@ const ML = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Smile className="w-6 h-6 text-accent" />
+              {joyItems.map((item, index) => (
+                <div key={index} className="flex gap-4 items-start">
+                  <div className={`w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0`}>
+                    <item.icon className={`w-6 h-6 ${item.color}`} />
+                  </div>
+                  <div>
+                    <h3 className="text-foreground font-semibold mb-1">{item.title}</h3>
+                    <p className="text-muted-foreground font-sans">{item.text}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 1</h3>
-                  <p className="text-muted-foreground font-sans">{t('ml.section8.joy1')}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 2</h3>
-                  <p className="text-muted-foreground font-sans">{t('ml.section8.joy2')}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-6 h-6 text-green-500" />
-                </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 3</h3>
-                  <p className="text-muted-foreground font-sans">{t('ml.section8.joy3')}</p>
-                </div>
-              </div>
+              ))}
 
               <Card className="bg-gradient-to-br from-accent/20 to-primary/20 border-accent/30 p-6 mt-8">
                 <p className="text-xl text-foreground font-semibold mb-2">{t('ml.section8.motto')}</p>
@@ -690,15 +673,6 @@ const ML = () => {
               {t('ml.closing.cta.linkedin')}
             </a>
           </div>
-        </div>
-      </section>
-
-      {/* ML-specific Footer Quotes */}
-      <section className="relative z-10 py-12 px-4 border-t border-border bg-muted/30">
-        <div className="max-w-4xl mx-auto text-center space-y-4">
-          <p className="text-accent font-medium">{t('ml.footer.quote1')}</p>
-          <p className="text-primary font-mono">{t('ml.footer.quote2')}</p>
-          <p className="text-muted-foreground font-sans">{t('ml.footer.quote3')}</p>
         </div>
       </section>
 
