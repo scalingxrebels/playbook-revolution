@@ -7,14 +7,15 @@ import SharedHero from '@/components/shared/SharedHero';
 const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
-  const scrollToCategories = () => {
-    document.getElementById('solution-categories')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToChallenges = () => {
+    document.getElementById('challenge-navigation')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const stats = [
-    { value: '92%', label: { en: 'Outcome Delivery', de: 'Outcome Delivery' }, color: 'primary' as const },
-    { value: '6', label: { en: 'Solution Categories', de: 'Solution-Kategorien' }, color: 'accent' as const },
-    { value: '€0-500K', label: { en: 'Investment Range', de: 'Investitionsspanne' }, color: 'primary' as const },
+    { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'primary' as const },
+    { value: '30+', label: { en: 'Solutions', de: 'Lösungen' }, color: 'accent' as const },
+    { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
+    { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
   ];
 
   return (
@@ -32,10 +33,10 @@ const SolutionHero: React.FC = () => {
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Button 
           size="lg" 
-          onClick={scrollToCategories}
+          onClick={scrollToChallenges}
           className="shadow-brutal hover-brutal group"
         >
-          {language === 'de' ? 'Kategorien erkunden' : 'Explore Categories'}
+          {language === 'de' ? 'Challenges erkunden' : 'Explore Challenges'}
           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Button>
         <Button 
