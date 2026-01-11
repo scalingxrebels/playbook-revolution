@@ -73,12 +73,12 @@ const ML = () => {
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           {/* Hero Portrait */}
           <div className="flex justify-center lg:justify-start order-1 lg:order-1">
-            <div className="relative aspect-square max-w-md w-full">
+            <div className="relative aspect-[3/4] max-w-md w-full">
               <img 
                 src="/images/ml-hero.png" 
                 alt="Michel Lason - AI-Native Renaissance Leader" 
                 className="w-full h-full object-cover rounded-3xl border-2 border-accent/30 shadow-accent-glow"
-                style={{ objectPosition: 'center 20%' }}
+                style={{ objectPosition: 'center 10%' }}
               />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-accent rounded-2xl blur-2xl opacity-40" />
             </div>
