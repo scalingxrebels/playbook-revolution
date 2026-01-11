@@ -603,7 +603,8 @@ const ML = () => {
               <img 
                 src="/images/ml-closeup.png" 
                 alt="Michel Lason - Closeup Portrait" 
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'center 15%' }}
               />
             </div>
 
