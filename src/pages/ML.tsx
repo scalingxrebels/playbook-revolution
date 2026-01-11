@@ -146,7 +146,7 @@ const ML = () => {
 
       {/* BOOKING FILLOUT SECTION */}
       <section className="relative z-10 py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Booking Selection - Mobile only */}
           <div className="md:hidden space-y-4 mb-8">
             <p className="text-sm text-muted-foreground text-center">{t('ml.booking.select')}</p>
