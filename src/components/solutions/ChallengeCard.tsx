@@ -67,35 +67,22 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onOpenDetail }
           </div>
           
           {/* Solution Tier Cards */}
-          <div className="relative">
-            {/* Visual journey line */}
-            <div className="absolute left-[18px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-green-500 via-primary to-accent hidden md:block" />
-            
-            <div className="space-y-3">
-              {challenge.solutions.map((solution: ChallengeSolution, idx) => {
-                const config = solutionTypeConfig[solution.type];
-                const premium = isPremium(solution.type);
-                
-                return (
-                  <div
-                    key={solution.id}
-                    onClick={onOpenDetail}
-                    className={cn(
-                      "group relative flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all duration-200",
-                      "md:ml-8",
-                      premium
-                        ? "bg-primary/5 border-primary/20 hover:border-primary/40 hover:bg-primary/10"
-                        : "bg-background border-border hover:border-primary/30 hover:bg-muted/30"
-                    )}
-                  >
-                    {/* Tier indicator dot */}
-                    <div className={cn(
-                      "absolute -left-8 w-4 h-4 rounded-full border-2 hidden md:flex items-center justify-center",
-                      solution.type === 'free' ? "bg-green-500 border-green-500" :
-                      premium ? "bg-primary border-primary" : "bg-blue-500 border-blue-500"
-                    )}>
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                    </div>
+          <div className="space-y-3">
+            {challenge.solutions.map((solution: ChallengeSolution, idx) => {
+              const config = solutionTypeConfig[solution.type];
+              const premium = isPremium(solution.type);
+              
+              return (
+                <div
+                  key={solution.id}
+                  onClick={onOpenDetail}
+                  className={cn(
+                    "group relative flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all duration-200",
+                    premium
+                      ? "bg-primary/5 border-primary/20 hover:border-primary/40 hover:bg-primary/10"
+                      : "bg-background border-border hover:border-primary/30 hover:bg-muted/30"
+                  )}
+                >
 
                     {/* Tier Badge */}
                     <Badge 
@@ -146,8 +133,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onOpenDetail }
                     <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
                   </div>
                 );
-              })}
-            </div>
+            })}
           </div>
         </div>
 

@@ -87,7 +87,7 @@ const Solutions: React.FC = () => {
       
       {/* Challenge Card */}
       <section className="py-12 md:py-16 lg:py-20">
-        <div className="container max-w-4xl mx-auto px-4 md:px-6">
+        <div className="container max-w-7xl mx-auto px-4 md:px-6">
           {currentChallenge && (
             <ChallengeCard
               challenge={currentChallenge}
