@@ -62,14 +62,20 @@ const Solutions: React.FC = () => {
       <SolutionHero />
       
       {/* Challenge Tab Navigation */}
-      <section id="challenge-navigation" className="py-8 md:py-12 bg-muted/30 border-y border-border">
+      <section id="challenges" className="py-8 md:py-12 bg-muted/30 border-y border-border">
         <div className="container max-w-7xl mx-auto px-4 md:px-6">
           <div className="text-center mb-6 md:mb-8">
-            <h2 className="text-lg font-semibold text-foreground mb-2">
+            <span className="inline-block text-xs font-semibold uppercase tracking-widest text-accent mb-2">
+              {language === 'de' ? '9 Challenges · 45 Lösungen' : '9 Challenges · 45 Solutions'}
+            </span>
+            <h2 className="text-xl md:text-2xl font-display font-bold text-foreground mb-2">
               {language === 'de' ? 'Was ist deine größte Challenge?' : "What's Your Biggest Challenge?"}
             </h2>
-            <p className="text-sm text-muted-foreground">
-              {language === 'de' ? 'Wähle eine Challenge, um passende Lösungen zu sehen' : 'Select a challenge to see matching solutions'}
+            <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+              {language === 'de' 
+                ? 'Wähle eine Challenge und entdecke passende Lösungen von FREE bis Full Transformation.'
+                : 'Select a challenge and discover matching solutions from FREE to Full Transformation.'
+              }
             </p>
           </div>
           <ChallengeTabNavigation
