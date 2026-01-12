@@ -56,6 +56,7 @@ const SolutionAccordion: React.FC<SolutionAccordionProps> = ({ solution, isExpan
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
+            <solution.icon className="w-4 h-4 text-primary shrink-0" />
             <h4 className="font-display text-lg font-bold text-foreground">
               {language === 'de' ? solution.nameDe : solution.nameEn}
             </h4>
