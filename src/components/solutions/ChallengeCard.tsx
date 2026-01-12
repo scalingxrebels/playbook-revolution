@@ -105,9 +105,9 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onOpenDetail }
                       {config.badge}
                     </Badge>
 
-                    {/* Solution Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
+                        <solution.icon className="w-4 h-4 text-primary shrink-0" />
                         <span className="font-semibold text-foreground">
                           {language === 'de' ? solution.nameDe : solution.nameEn}
                         </span>
