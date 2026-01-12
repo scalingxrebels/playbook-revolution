@@ -14,8 +14,8 @@ const HeroOptimized: React.FC = () => {
     document.getElementById('problem-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const scrollToAssessment = () => {
-    document.getElementById('assessment-section')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToROICalculator = () => {
+    document.getElementById('roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -85,10 +85,10 @@ const HeroOptimized: React.FC = () => {
         <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button 
             size="lg" 
-            onClick={scrollToAssessment}
+            onClick={scrollToROICalculator}
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
           >
-            {language === 'de' ? 'Starte deine Journey' : 'Start Your Journey'}
+            {language === 'de' ? 'Erlebe AI-Native Scaling (ROI)' : 'Experience AI-Native Scaling (ROI)'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>

@@ -9,7 +9,7 @@ import ProblemOptimized from '@/components/homepage/ProblemOptimized';
 import SolutionOptimized from '@/components/homepage/SolutionOptimized';
 import FrameworkOptimized from '@/components/homepage/FrameworkOptimized';
 import ProofOptimized from '@/components/homepage/ProofOptimized';
-import AssessmentOptimized from '@/components/homepage/AssessmentOptimized';
+import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
 import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
 import BookingCTA from '@/components/BookingCTA';
 
@@ -35,8 +35,8 @@ const Index = () => {
             {/* SECTION 5: PROOF & VALIDATION (50vh) */}
             <ProofOptimized />
             
-            {/* SECTION 6: ASSESSMENT & ACTION (50vh) */}
-            <AssessmentOptimized />
+            {/* SECTION 6: ROI CALCULATOR (70vh) */}
+            <ROICalculatorOptimized />
             
             {/* SECTION 7: FINAL CTA (40vh) */}
             <FinalCTAOptimized />
