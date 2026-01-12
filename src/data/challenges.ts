@@ -1,7 +1,10 @@
 import { LucideIcon, TrendingDown, TrendingUp, DollarSign, Users, Workflow, Bot, Building2, Briefcase, Compass } from 'lucide-react';
 
+export type SolutionType = 'free' | 'diagnostic' | 'sprint' | 'transformation' | 'advisory';
+
 export interface ChallengeSolution {
   id: string;
+  type: SolutionType;
   nameEn: string;
   nameDe: string;
   duration: string;
@@ -13,6 +16,8 @@ export interface ChallengeSolution {
   guaranteeEn?: string;
   guaranteeDe?: string;
   roi?: string;
+  relatedPlaybooks?: string[];
+  relatedCases?: string[];
 }
 
 export interface Challenge {
@@ -28,8 +33,12 @@ export interface Challenge {
   // Card content
   problemEn: string;
   problemDe: string;
+  whyThisHappensHeadlineEn: string;
+  whyThisHappensHeadlineDe: string;
   whyThisHappensEn: string[];
   whyThisHappensDe: string[];
+  symptomsEn: string[];
+  symptomsDe: string[];
   
   // CTA
   ctaTextEn: string;
@@ -38,6 +47,39 @@ export interface Challenge {
   // Solutions
   solutions: ChallengeSolution[];
 }
+
+export const solutionTypeConfig: Record<SolutionType, { labelEn: string; labelDe: string; badge: string; colorClass: string }> = {
+  free: {
+    labelEn: 'Free',
+    labelDe: 'Kostenlos',
+    badge: 'Entry',
+    colorClass: 'bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20'
+  },
+  diagnostic: {
+    labelEn: 'Diagnostic',
+    labelDe: 'Diagnose',
+    badge: 'Core',
+    colorClass: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20'
+  },
+  sprint: {
+    labelEn: 'Sprint',
+    labelDe: 'Sprint',
+    badge: 'Premium',
+    colorClass: 'bg-primary/10 text-primary border-primary/20'
+  },
+  transformation: {
+    labelEn: 'Transformation',
+    labelDe: 'Transformation',
+    badge: 'Premium',
+    colorClass: 'bg-accent/10 text-accent border-accent/20'
+  },
+  advisory: {
+    labelEn: 'Advisory',
+    labelDe: 'Beratung',
+    badge: 'Core',
+    colorClass: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20'
+  }
+};
 
 export const challenges: Challenge[] = [
   {
@@ -50,6 +92,8 @@ export const challenges: Challenge[] = [
     order: 1,
     problemEn: 'Your customer acquisition costs are spiraling out of control, eating into margins and threatening sustainable growth.',
     problemDe: 'Deine Kundenakquisitionskosten steigen unkontrolliert, fressen Margen und gefährden nachhaltiges Wachstum.',
+    whyThisHappensHeadlineEn: 'Your GTM strategy lacks focus and efficiency',
+    whyThisHappensHeadlineDe: 'Deiner GTM-Strategie fehlt Fokus und Effizienz',
     whyThisHappensEn: [
       'Channel saturation without diversification strategy',
       'Weak positioning leads to expensive customer education',
@@ -60,11 +104,24 @@ export const challenges: Challenge[] = [
       'Schwache Positionierung führt zu teurer Kundenaufklärung',
       'Fehlende Conversion-Optimierung im gesamten Funnel'
     ],
+    symptomsEn: [
+      'CAC/LTV ratio below 1:3',
+      'Rising cost per lead quarter over quarter',
+      'Sales closing below 15%',
+      'No clear attribution'
+    ],
+    symptomsDe: [
+      'CAC/LTV-Verhältnis unter 1:3',
+      'Steigende Cost-per-Lead von Quartal zu Quartal',
+      'Sales schließt unter 15%',
+      'Keine klare Attribution'
+    ],
     ctaTextEn: 'Fix CAC',
     ctaTextDe: 'CAC fixen',
     solutions: [
       {
         id: 'cac-diagnostic',
+        type: 'free',
         nameEn: 'CAC Diagnostic Call',
         nameDe: 'CAC Diagnostic Call',
         duration: '60 Min',
@@ -78,6 +135,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'gtm-audit',
+        type: 'diagnostic',
         nameEn: 'GTM Audit',
         nameDe: 'GTM Audit',
         duration: '5-7 Days',
@@ -86,10 +144,12 @@ export const challenges: Challenge[] = [
         impactDe: 'Komplette Funnel-Analyse mit Fix-Roadmap',
         whatWeDoEn: ['Full-funnel audit', 'Channel efficiency scoring', 'CAC reduction playbook'],
         whatWeDoDe: ['Full-Funnel Audit', 'Kanal-Effizienz-Scoring', 'CAC-Reduktions-Playbook'],
-        roi: '3-5x within 90 days'
+        roi: '3-5x within 90 days',
+        relatedPlaybooks: ['gtm-optimization']
       },
       {
         id: 'gtm-transformation',
+        type: 'transformation',
         nameEn: 'GTM Transformation',
         nameDe: 'GTM Transformation',
         duration: '3-6 Months',
@@ -100,7 +160,8 @@ export const challenges: Challenge[] = [
         whatWeDoDe: ['Kanalstrategie-Überholung', 'Conversion-Optimierung', 'Team-Enablement'],
         guaranteeEn: 'Minimum 30% CAC reduction or extended engagement',
         guaranteeDe: 'Minimum 30% CAC-Reduktion oder verlängertes Engagement',
-        roi: '15-25x over 12 months'
+        roi: '15-25x over 12 months',
+        relatedCases: ['b2b-saas-cac']
       }
     ]
   },
@@ -115,6 +176,8 @@ export const challenges: Challenge[] = [
     isDefault: true,
     problemEn: 'You hit a ceiling. What worked to get you here won\'t get you to the next level. Growth has plateaued despite increased effort.',
     problemDe: 'Du hast eine Decke erreicht. Was dich hierher gebracht hat, bringt dich nicht zum nächsten Level. Wachstum stagniert trotz erhöhtem Einsatz.',
+    whyThisHappensHeadlineEn: 'Your growth engine needs a fundamental redesign',
+    whyThisHappensHeadlineDe: 'Dein Wachstumsmotor braucht ein fundamentales Redesign',
     whyThisHappensEn: [
       'Market positioning no longer differentiates',
       'Operational bottlenecks limit scale capacity',
@@ -125,11 +188,24 @@ export const challenges: Challenge[] = [
       'Operative Engpässe begrenzen Skalierungskapazität',
       'GTM-Playbook für aktuelle Phase erschöpft'
     ],
+    symptomsEn: [
+      'MoM growth below 5%',
+      'Same efforts yield declining results',
+      'Team morale dropping',
+      'Board asking hard questions'
+    ],
+    symptomsDe: [
+      'MoM-Wachstum unter 5%',
+      'Gleicher Einsatz bringt sinkende Ergebnisse',
+      'Team-Moral sinkt',
+      'Board stellt harte Fragen'
+    ],
     ctaTextEn: 'Unlock Growth',
     ctaTextDe: 'Wachstum freischalten',
     solutions: [
       {
         id: 'theta-assessment',
+        type: 'free',
         nameEn: 'Theta Assessment',
         nameDe: 'Theta Assessment',
         duration: '30 Min',
@@ -141,6 +217,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'growth-diagnostic',
+        type: 'diagnostic',
         nameEn: 'Growth Diagnostic',
         nameDe: 'Growth Diagnostic',
         duration: '90 Min',
@@ -150,10 +227,12 @@ export const challenges: Challenge[] = [
         whatWeDoEn: ['Deep strategic review', 'Bottleneck identification', 'Action prioritization'],
         whatWeDoDe: ['Tiefe strategische Review', 'Engpass-Identifikation', 'Action-Priorisierung'],
         guaranteeEn: 'Clarity or refund',
-        guaranteeDe: 'Klarheit oder Erstattung'
+        guaranteeDe: 'Klarheit oder Erstattung',
+        relatedPlaybooks: ['growth-diagnostic']
       },
       {
         id: 'scale-sprint',
+        type: 'sprint',
         nameEn: 'Scale Sprint',
         nameDe: 'Scale Sprint',
         duration: '30 Days',
@@ -164,10 +243,12 @@ export const challenges: Challenge[] = [
         whatWeDoDe: ['Fokussierte Intervention', 'Hands-on Umsetzung', 'Messbares Outcome'],
         guaranteeEn: 'Defined outcome or money back',
         guaranteeDe: 'Definiertes Outcome oder Geld zurück',
-        roi: '10-20x within 6 months'
+        roi: '10-20x within 6 months',
+        relatedCases: ['fintech-growth']
       },
       {
         id: 'hypergrowth-program',
+        type: 'transformation',
         nameEn: 'Hypergrowth Program',
         nameDe: 'Hypergrowth Program',
         duration: '6-12 Months',
@@ -178,7 +259,8 @@ export const challenges: Challenge[] = [
         whatWeDoDe: ['Multi-dimensionale Transformation', 'Embedded Team-Support', 'Board-Level Reporting'],
         guaranteeEn: 'Growth milestones or extended engagement',
         guaranteeDe: 'Wachstumsmeilensteine oder verlängertes Engagement',
-        roi: '25-80x over program duration'
+        roi: '25-80x over program duration',
+        relatedCases: ['series-b-hypergrowth']
       }
     ]
   },
@@ -192,6 +274,8 @@ export const challenges: Challenge[] = [
     order: 3,
     problemEn: 'Your pricing doesn\'t capture the value you deliver. You\'re leaving money on the table or losing deals to cheaper alternatives.',
     problemDe: 'Dein Pricing erfasst nicht den Wert, den du lieferst. Du lässt Geld liegen oder verlierst Deals an günstigere Alternativen.',
+    whyThisHappensHeadlineEn: 'Pricing evolved organically without a strategic framework',
+    whyThisHappensHeadlineDe: 'Pricing entwickelte sich organisch ohne strategisches Framework',
     whyThisHappensEn: [
       'Cost-plus pricing instead of value-based',
       'No price segmentation for different customer types',
@@ -202,11 +286,24 @@ export const challenges: Challenge[] = [
       'Keine Preis-Segmentierung für verschiedene Kundentypen',
       'Pricing entwickelte sich organisch ohne Strategie'
     ],
+    symptomsEn: [
+      'Win rates vary wildly by deal size',
+      'Constant discounting pressure',
+      'Competitors winning on price',
+      'Revenue growth lags user growth'
+    ],
+    symptomsDe: [
+      'Win-Rates variieren stark nach Deal-Größe',
+      'Konstanter Rabattdruck',
+      'Wettbewerber gewinnen über Preis',
+      'Umsatzwachstum hinkt Nutzerwachstum hinterher'
+    ],
     ctaTextEn: 'Fix Pricing',
     ctaTextDe: 'Pricing fixen',
     solutions: [
       {
         id: 'pricing-diagnostic',
+        type: 'free',
         nameEn: 'Pricing Diagnostic',
         nameDe: 'Pricing Diagnostic',
         duration: '60 Min',
@@ -218,6 +315,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'pricing-strategy',
+        type: 'sprint',
         nameEn: 'Pricing Strategy Sprint',
         nameDe: 'Pricing Strategy Sprint',
         duration: '2-3 Weeks',
@@ -226,7 +324,8 @@ export const challenges: Challenge[] = [
         impactDe: 'Neue Pricing-Architektur mit 15-30% Umsatzsteigerung',
         whatWeDoEn: ['Value driver analysis', 'Competitive positioning', 'Implementation roadmap'],
         whatWeDoDe: ['Value-Driver Analyse', 'Wettbewerbspositionierung', 'Implementierungs-Roadmap'],
-        roi: '20-50x within first year'
+        roi: '20-50x within first year',
+        relatedPlaybooks: ['value-based-pricing']
       }
     ]
   },
@@ -240,6 +339,8 @@ export const challenges: Challenge[] = [
     order: 4,
     problemEn: 'Churn is killing your growth. Net revenue retention is below 100%, and your best customers aren\'t expanding.',
     problemDe: 'Churn killt dein Wachstum. Net Revenue Retention ist unter 100%, und deine besten Kunden expandieren nicht.',
+    whyThisHappensHeadlineEn: 'CS is reactive instead of proactive and strategic',
+    whyThisHappensHeadlineDe: 'CS ist reaktiv statt proaktiv und strategisch',
     whyThisHappensEn: [
       'Reactive support instead of proactive success',
       'No clear customer health scoring',
@@ -250,11 +351,24 @@ export const challenges: Challenge[] = [
       'Kein klares Customer Health Scoring',
       'Expansionsmöglichkeiten nicht systematisch erfasst'
     ],
+    symptomsEn: [
+      'NRR below 100%',
+      'Churn spikes unpredictable',
+      'Support tickets as first warning',
+      'Low NPS scores'
+    ],
+    symptomsDe: [
+      'NRR unter 100%',
+      'Churn-Spikes unvorhersehbar',
+      'Support-Tickets als erste Warnung',
+      'Niedrige NPS-Scores'
+    ],
     ctaTextEn: 'Fix Retention',
     ctaTextDe: 'Retention fixen',
     solutions: [
       {
         id: 'cs-diagnostic',
+        type: 'free',
         nameEn: 'CS Diagnostic',
         nameDe: 'CS Diagnostic',
         duration: '60 Min',
@@ -266,6 +380,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'cs-transformation',
+        type: 'transformation',
         nameEn: 'CS Transformation',
         nameDe: 'CS Transformation',
         duration: '3-6 Months',
@@ -276,7 +391,8 @@ export const challenges: Challenge[] = [
         whatWeDoDe: ['CS-Playbook Entwicklung', 'Health-Scoring System', 'Team-Training'],
         guaranteeEn: 'NRR improvement or extended engagement',
         guaranteeDe: 'NRR-Verbesserung oder verlängertes Engagement',
-        roi: '15-40x over 12 months'
+        roi: '15-40x over 12 months',
+        relatedCases: ['saas-nrr-boost']
       }
     ]
   },
@@ -290,6 +406,8 @@ export const challenges: Challenge[] = [
     order: 5,
     problemEn: 'Growth is breaking your operations. What worked with 10 people doesn\'t work with 50. Chaos increases with every hire.',
     problemDe: 'Wachstum bricht deine Operations. Was mit 10 Leuten funktionierte, funktioniert nicht mit 50. Chaos steigt mit jeder Einstellung.',
+    whyThisHappensHeadlineEn: 'Your org structure hasn\'t evolved with your growth',
+    whyThisHappensHeadlineDe: 'Deine Org-Struktur hat sich nicht mit deinem Wachstum entwickelt',
     whyThisHappensEn: [
       'Processes not designed for scale',
       'Key person dependencies everywhere',
@@ -300,11 +418,24 @@ export const challenges: Challenge[] = [
       'Key-Person-Abhängigkeiten überall',
       'Kein klarer Operating Rhythm oder Kadenz'
     ],
+    symptomsEn: [
+      'Everything takes 3x longer than it should',
+      'Same problems solved differently',
+      'New hires take months to onboard',
+      'Decisions bottleneck at founders'
+    ],
+    symptomsDe: [
+      'Alles dauert 3x länger als es sollte',
+      'Gleiche Probleme werden unterschiedlich gelöst',
+      'Neue Mitarbeiter brauchen Monate zum Onboarding',
+      'Entscheidungen stauen sich bei Gründern'
+    ],
     ctaTextEn: 'Fix Operations',
     ctaTextDe: 'Operations fixen',
     solutions: [
       {
         id: 'ops-diagnostic',
+        type: 'free',
         nameEn: 'Ops Diagnostic',
         nameDe: 'Ops Diagnostic',
         duration: '60 Min',
@@ -316,6 +447,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'ops-sprint',
+        type: 'sprint',
         nameEn: 'Ops Sprint',
         nameDe: 'Ops Sprint',
         duration: '30 Days',
@@ -326,7 +458,8 @@ export const challenges: Challenge[] = [
         whatWeDoDe: ['Fokussierte Intervention', 'Prozess-Neudesign', 'Team-Enablement'],
         guaranteeEn: 'Defined outcome or money back',
         guaranteeDe: 'Definiertes Outcome oder Geld zurück',
-        roi: '10-15x within 6 months'
+        roi: '10-15x within 6 months',
+        relatedPlaybooks: ['ops-excellence']
       }
     ]
   },
@@ -340,6 +473,8 @@ export const challenges: Challenge[] = [
     order: 6,
     problemEn: 'You know AI will change everything, but you don\'t know where to start or how to avoid the hype trap.',
     problemDe: 'Du weißt, dass KI alles verändern wird, aber du weißt nicht, wo du anfangen sollst oder wie du die Hype-Falle vermeidest.',
+    whyThisHappensHeadlineEn: 'AI requires a strategic approach, not just tools',
+    whyThisHappensHeadlineDe: 'AI erfordert einen strategischen Ansatz, nicht nur Tools',
     whyThisHappensEn: [
       'AI landscape is overwhelming and fast-moving',
       'ROI of AI initiatives is unclear',
@@ -350,11 +485,24 @@ export const challenges: Challenge[] = [
       'ROI von AI-Initiativen ist unklar',
       'Team fehlen AI-native Skills und Mindset'
     ],
+    symptomsEn: [
+      'Competitors shipping AI features faster',
+      'Pilot projects that don\'t scale',
+      'Team confused about priorities',
+      'Board asking about AI strategy'
+    ],
+    symptomsDe: [
+      'Wettbewerber launchen AI-Features schneller',
+      'Pilot-Projekte die nicht skalieren',
+      'Team verwirrt über Prioritäten',
+      'Board fragt nach AI-Strategie'
+    ],
     ctaTextEn: 'Start AI Journey',
     ctaTextDe: 'AI-Journey starten',
     solutions: [
       {
         id: 'ai-readiness',
+        type: 'free',
         nameEn: 'AI Readiness Assessment',
         nameDe: 'AI Readiness Assessment',
         duration: '20 Min',
@@ -366,6 +514,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'ai-strategy',
+        type: 'sprint',
         nameEn: 'AI Strategy Sprint',
         nameDe: 'AI Strategy Sprint',
         duration: '2-4 Weeks',
@@ -374,10 +523,12 @@ export const challenges: Challenge[] = [
         impactDe: 'Klare AI-Roadmap mit priorisierten Use Cases',
         whatWeDoEn: ['Use case mapping', 'Build vs buy analysis', 'Implementation roadmap'],
         whatWeDoDe: ['Use-Case Mapping', 'Build vs Buy Analyse', 'Implementierungs-Roadmap'],
-        roi: '5-20x over 12 months'
+        roi: '5-20x over 12 months',
+        relatedPlaybooks: ['ai-strategy']
       },
       {
         id: 'ai-enablement',
+        type: 'advisory',
         nameEn: 'AI Team Enablement',
         nameDe: 'AI Team Enablement',
         duration: '4-8 Weeks',
@@ -399,6 +550,8 @@ export const challenges: Challenge[] = [
     order: 7,
     problemEn: 'Investors are demanding answers. You need data-driven insights and a credible plan to regain confidence.',
     problemDe: 'Investoren verlangen Antworten. Du brauchst datengetriebene Insights und einen glaubwürdigen Plan, um Vertrauen zurückzugewinnen.',
+    whyThisHappensHeadlineEn: 'Execution gaps between strategy and results',
+    whyThisHappensHeadlineDe: 'Execution-Gaps zwischen Strategie und Ergebnissen',
     whyThisHappensEn: [
       'Metrics don\'t tell a compelling story',
       'Growth plan lacks conviction and specificity',
@@ -409,11 +562,24 @@ export const challenges: Challenge[] = [
       'Wachstumsplan fehlt Überzeugung und Spezifität',
       'Board-Kommunikation nicht strategisch genug'
     ],
+    symptomsEn: [
+      'Board meetings feel adversarial',
+      'Constant requests for more data',
+      'Next funding round at risk',
+      'Credibility questioned'
+    ],
+    symptomsDe: [
+      'Board-Meetings fühlen sich konfrontativ an',
+      'Ständige Anfragen nach mehr Daten',
+      'Nächste Funding-Runde in Gefahr',
+      'Glaubwürdigkeit in Frage gestellt'
+    ],
     ctaTextEn: 'Prepare for Board',
     ctaTextDe: 'Board-Vorbereitung',
     solutions: [
       {
         id: 'board-prep',
+        type: 'diagnostic',
         nameEn: 'Board Prep Session',
         nameDe: 'Board Prep Session',
         duration: '2-3 Hours',
@@ -425,6 +591,7 @@ export const challenges: Challenge[] = [
       },
       {
         id: 'strategic-advisory',
+        type: 'advisory',
         nameEn: 'Strategic Advisory Retainer',
         nameDe: 'Strategic Advisory Retainer',
         duration: '12+ Months',
@@ -446,41 +613,59 @@ export const challenges: Challenge[] = [
     order: 8,
     problemEn: 'You need to assess, prioritize, and accelerate value creation across your portfolio companies.',
     problemDe: 'Du musst Portfolio-Companies bewerten, priorisieren und Value Creation beschleunigen.',
+    whyThisHappensHeadlineEn: 'Limited visibility and inconsistent support',
+    whyThisHappensHeadlineDe: 'Begrenzte Sichtbarkeit und inkonsistenter Support',
     whyThisHappensEn: [
-      'Limited visibility into portfolio health',
-      'No standardized assessment framework',
-      'Value creation playbooks not systematized'
+      'Inconsistent data across portfolio companies',
+      'No systematic approach to value creation',
+      'Limited operating partner bandwidth'
     ],
     whyThisHappensDe: [
-      'Begrenzte Sichtbarkeit in Portfolio-Gesundheit',
-      'Kein standardisiertes Assessment-Framework',
-      'Value Creation Playbooks nicht systematisiert'
+      'Inkonsistente Daten über Portfolio-Companies',
+      'Kein systematischer Ansatz für Value Creation',
+      'Begrenzte Operating Partner Bandbreite'
     ],
-    ctaTextEn: 'Optimize Portfolio',
-    ctaTextDe: 'Portfolio optimieren',
+    symptomsEn: [
+      'Portfolio companies miss milestones',
+      'Surprises at board meetings',
+      'Unclear which companies need help',
+      'Limited time for hands-on support'
+    ],
+    symptomsDe: [
+      'Portfolio-Companies verpassen Meilensteine',
+      'Überraschungen bei Board-Meetings',
+      'Unklar welche Companies Hilfe brauchen',
+      'Begrenzte Zeit für Hands-on Support'
+    ],
+    ctaTextEn: 'Boost Portfolio',
+    ctaTextDe: 'Portfolio boosten',
     solutions: [
       {
         id: 'portfolio-scan',
+        type: 'diagnostic',
         nameEn: 'Portfolio Scan',
         nameDe: 'Portfolio Scan',
-        duration: '2-4 Weeks',
-        investment: '€9.8K-€25K',
-        impactEn: 'Full health assessment of portfolio companies',
-        impactDe: 'Volle Health-Bewertung der Portfolio-Companies',
-        whatWeDoEn: ['Standardized scoring', 'Priority ranking', 'Intervention roadmap'],
-        whatWeDoDe: ['Standardisiertes Scoring', 'Prioritäts-Ranking', 'Interventions-Roadmap'],
+        duration: '1-2 Weeks',
+        investment: '€5.9K-€11K',
+        impactEn: 'Systematic health check across portfolio',
+        impactDe: 'Systematischer Health-Check über Portfolio',
+        whatWeDoEn: ['Standardized assessment', 'Priority ranking', 'Intervention recommendations'],
+        whatWeDoDe: ['Standardisiertes Assessment', 'Prioritäts-Ranking', 'Interventions-Empfehlungen'],
+        roi: '2-5x through focused interventions'
       },
       {
-        id: 'portfolio-partnership',
-        nameEn: 'Portfolio Partnership',
-        nameDe: 'Portfolio Partnership',
-        duration: '12-24 Months',
-        investment: '€75K-€250K+',
+        id: 'portfolio-program',
+        type: 'transformation',
+        nameEn: 'Portfolio Acceleration',
+        nameDe: 'Portfolio Acceleration',
+        duration: 'Ongoing',
+        investment: '€15K-€35K/Mo',
         impactEn: 'Systematic value creation across portfolio',
         impactDe: 'Systematische Value Creation über Portfolio',
-        whatWeDoEn: ['Ongoing assessments', 'Targeted interventions', 'Best practice sharing'],
-        whatWeDoDe: ['Laufende Assessments', 'Gezielte Interventionen', 'Best Practice Sharing'],
-        roi: '25-50x over partnership duration'
+        whatWeDoEn: ['Operating model implementation', 'Best practice sharing', 'Hands-on support'],
+        whatWeDoDe: ['Operating Model Implementierung', 'Best Practice Sharing', 'Hands-on Support'],
+        guaranteeEn: 'Measurable portfolio performance improvement',
+        guaranteeDe: 'Messbare Portfolio-Performance-Verbesserung'
       }
     ]
   },
@@ -494,62 +679,68 @@ export const challenges: Challenge[] = [
     order: 9,
     problemEn: 'You don\'t know where to start. You need clarity on your situation before making strategic decisions.',
     problemDe: 'Du weißt nicht, wo du anfangen sollst. Du brauchst Klarheit über deine Situation, bevor du strategische Entscheidungen triffst.',
+    whyThisHappensHeadlineEn: 'Too close to the problem to see it clearly',
+    whyThisHappensHeadlineDe: 'Zu nah am Problem um es klar zu sehen',
     whyThisHappensEn: [
-      'Multiple challenges competing for attention',
-      'Unclear which problem to solve first',
-      'Need external perspective to cut through noise'
+      'Multiple competing priorities',
+      'Information overload from all directions',
+      'No external benchmark or perspective'
     ],
     whyThisHappensDe: [
-      'Mehrere Challenges konkurrieren um Aufmerksamkeit',
-      'Unklar, welches Problem zuerst gelöst werden soll',
-      'Externe Perspektive nötig, um durch den Lärm zu schneiden'
+      'Mehrere konkurrierende Prioritäten',
+      'Informationsüberflutung von allen Seiten',
+      'Kein externer Benchmark oder Perspektive'
     ],
-    ctaTextEn: 'Get Oriented',
-    ctaTextDe: 'Orientierung bekommen',
+    symptomsEn: [
+      'Feeling stuck but unsure why',
+      'Team has different diagnoses',
+      'Trying many things, nothing sticks',
+      'Analysis paralysis'
+    ],
+    symptomsDe: [
+      'Gefühl festzustecken, aber unsicher warum',
+      'Team hat unterschiedliche Diagnosen',
+      'Vieles ausprobiert, nichts funktioniert',
+      'Analyse-Paralyse'
+    ],
+    ctaTextEn: 'Get Clarity',
+    ctaTextDe: 'Klarheit gewinnen',
     solutions: [
       {
-        id: 'theta-free',
-        nameEn: 'Theta Self-Assessment',
-        nameDe: 'Theta Self-Assessment',
-        duration: '12 Min',
+        id: 'orientation-call',
+        type: 'free',
+        nameEn: 'Orientation Call',
+        nameDe: 'Orientierungs-Call',
+        duration: '30 Min',
         investment: 'FREE',
-        impactEn: 'AI-powered diagnostic of your situation',
-        impactDe: 'KI-gestützte Diagnose deiner Situation',
-        whatWeDoEn: ['8-dimension analysis', 'Bottleneck identification', 'Peer benchmarking'],
-        whatWeDoDe: ['8-Dimensionen-Analyse', 'Engpass-Identifikation', 'Peer-Benchmarking'],
+        impactEn: 'Get initial clarity on your situation',
+        impactDe: 'Erste Klarheit über deine Situation gewinnen',
+        whatWeDoEn: ['Quick diagnostic', 'Challenge identification', 'Next step recommendation'],
+        whatWeDoDe: ['Schnelle Diagnose', 'Challenge-Identifikation', 'Nächste-Schritt-Empfehlung'],
       },
       {
-        id: 'diagnostic-call',
-        nameEn: 'Diagnostic Call',
-        nameDe: 'Diagnostic Call',
-        duration: '60 Min',
-        investment: 'FREE',
-        impactEn: 'Clarity conversation with experienced operator',
-        impactDe: 'Klarheitsgespräch mit erfahrenem Operator',
-        whatWeDoEn: ['Situation review', 'Priority identification', 'Recommended next steps'],
-        whatWeDoDe: ['Situations-Review', 'Prioritäts-Identifikation', 'Empfohlene nächste Schritte'],
-      },
-      {
-        id: 'clarity-session',
-        nameEn: 'Clarity Session',
-        nameDe: 'Clarity Session',
-        duration: '90 Min',
-        investment: '€890',
-        impactEn: 'Deep strategic session with actionable roadmap',
-        impactDe: 'Tiefe strategische Session mit umsetzbarer Roadmap',
-        whatWeDoEn: ['Comprehensive review', 'Strategic prioritization', 'Action plan'],
-        whatWeDoDe: ['Umfassende Review', 'Strategische Priorisierung', 'Action Plan'],
-        guaranteeEn: 'Clarity or full refund',
-        guaranteeDe: 'Klarheit oder volle Erstattung'
+        id: 'deep-diagnostic',
+        type: 'diagnostic',
+        nameEn: 'Deep Diagnostic',
+        nameDe: 'Deep Diagnostic',
+        duration: '3-5 Days',
+        investment: '€5.9K-€9.5K',
+        impactEn: 'Comprehensive analysis with prioritized roadmap',
+        impactDe: 'Umfassende Analyse mit priorisierter Roadmap',
+        whatWeDoEn: ['Full business audit', 'Stakeholder interviews', 'Strategic recommendations'],
+        whatWeDoDe: ['Vollständiges Business-Audit', 'Stakeholder-Interviews', 'Strategische Empfehlungen'],
+        guaranteeEn: 'Clarity and actionable roadmap',
+        guaranteeDe: 'Klarheit und umsetzbare Roadmap',
+        roi: 'Priceless clarity'
       }
     ]
   }
 ];
 
-export const getDefaultChallenge = (): Challenge => {
-  return challenges.find(c => c.isDefault) || challenges[0];
-};
-
 export const getChallengeById = (id: string): Challenge | undefined => {
   return challenges.find(c => c.id === id);
+};
+
+export const getDefaultChallenge = (): Challenge => {
+  return challenges.find(c => c.isDefault) || challenges[0];
 };
