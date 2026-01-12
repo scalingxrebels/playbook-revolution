@@ -20,8 +20,8 @@ const SolutionHero: React.FC = () => {
 
   return (
     <SharedHero
-      overlineEn="Expertise × Speed = Impact"
-      overlineDe="Expertise × Speed = Impact"
+      overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
+      overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
       headlineLine1En="Find the Right Solution"
       headlineLine1De="Finde die richtige Lösung"
       headlineLine2En="for Your Growth Challenge"
