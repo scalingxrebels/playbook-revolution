@@ -224,6 +224,7 @@ const ROICalculatorOptimized = () => {
 
   return (
     <section
+      id="roi-calculator"
       ref={ref}
       className="relative min-h-[70vh] py-16 md:py-24 bg-background overflow-hidden"
     >
