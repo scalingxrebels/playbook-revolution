@@ -1,10 +1,11 @@
 import React from 'react';
-import { Challenge, ChallengeSolution } from '@/data/challenges';
+import { Challenge, ChallengeSolution, solutionTypeConfig } from '@/data/challenges';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Clock, AlertTriangle, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock, AlertTriangle, Zap, ChevronRight } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -15,13 +16,15 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onOpenDetail }
   const { language } = useLanguage();
   const Icon = challenge.icon;
 
+  const isPremium = (type: string) => type === 'sprint' || type === 'transformation';
+
   return (
-    <Card className="shadow-brutal border-2 border-border bg-card overflow-hidden">
+    <Card className="shadow-brutal border-2 border-border bg-card overflow-hidden animate-fade-in">
       <CardContent className="p-6 md:p-8 lg:p-10">
         {/* Header */}
         <div className="flex items-start gap-4 mb-6">
-          <div className="p-3 rounded-xl bg-primary/10 text-primary">
-            <Icon className="w-6 h-6" />
+          <div className="p-3 rounded-xl bg-primary/10 text-primary shrink-0">
+            <Icon className="w-6 h-6 md:w-7 md:h-7" />
           </div>
           <div className="flex-1">
             <h2 className="font-display text-xl md:text-2xl font-bold text-foreground mb-2">
@@ -34,69 +37,117 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ challenge, onOpenDetail }
         </div>
 
         {/* Why This Happens */}
-        <div className="mb-8 p-4 md:p-6 rounded-xl bg-muted/50 border border-border">
-          <div className="flex items-center gap-2 mb-4">
-            <AlertTriangle className="w-4 h-4 text-accent" />
-            <h3 className="font-semibold text-foreground">
+        <div className="mb-8 p-4 md:p-6 rounded-xl bg-destructive/5 border border-destructive/10">
+          <div className="flex items-center gap-2 mb-2">
+            <AlertTriangle className="w-4 h-4 text-destructive" />
+            <h3 className="font-semibold text-foreground text-sm uppercase tracking-wide">
               {language === 'de' ? 'Warum das passiert' : 'Why This Happens'}
             </h3>
           </div>
+          <p className="text-foreground font-medium mb-3">
+            {language === 'de' ? challenge.whyThisHappensHeadlineDe : challenge.whyThisHappensHeadlineEn}
+          </p>
           <ul className="space-y-2">
             {(language === 'de' ? challenge.whyThisHappensDe : challenge.whyThisHappensEn).map((reason, idx) => (
               <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0" />
+                <ChevronRight className="w-4 h-4 text-destructive/50 mt-0.5 shrink-0" />
                 {reason}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Solutions Preview */}
+        {/* Solutions Journey */}
         <div className="mb-8">
           <div className="flex items-center gap-2 mb-4">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <h3 className="font-semibold text-foreground">
-              {language === 'de' ? 'Lösungsoptionen' : 'Solution Options'}
+            <Zap className="w-4 h-4 text-primary" />
+            <h3 className="font-semibold text-foreground text-sm uppercase tracking-wide">
+              {language === 'de' ? 'Deine Lösungswege' : 'Your Solution Paths'}
             </h3>
           </div>
-          <div className="grid gap-3">
-            {challenge.solutions.slice(0, 4).map((solution: ChallengeSolution) => (
-              <div
-                key={solution.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 rounded-lg bg-background border border-border hover:border-primary/30 transition-colors"
-              >
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-medium text-foreground text-sm">
-                      {language === 'de' ? solution.nameDe : solution.nameEn}
-                    </span>
-                    <Badge variant="secondary" className="text-xs">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {solution.duration}
-                    </Badge>
-                  </div>
-                  <p className="text-xs text-muted-foreground mt-1 truncate">
-                    {language === 'de' ? solution.impactDe : solution.impactEn}
-                  </p>
-                </div>
-                <div className="flex-shrink-0">
-                  <Badge 
-                    variant={solution.investment === 'FREE' ? 'default' : 'outline'}
-                    className={solution.investment === 'FREE' ? 'bg-green-500/10 text-green-600 border-green-500/20' : ''}
+          
+          {/* Solution Tier Cards */}
+          <div className="relative">
+            {/* Visual journey line */}
+            <div className="absolute left-[18px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-green-500 via-primary to-accent hidden md:block" />
+            
+            <div className="space-y-3">
+              {challenge.solutions.map((solution: ChallengeSolution, idx) => {
+                const config = solutionTypeConfig[solution.type];
+                const premium = isPremium(solution.type);
+                
+                return (
+                  <div
+                    key={solution.id}
+                    onClick={onOpenDetail}
+                    className={cn(
+                      "group relative flex items-center gap-4 p-4 rounded-lg border-2 cursor-pointer transition-all duration-200",
+                      "md:ml-8",
+                      premium
+                        ? "bg-primary/5 border-primary/20 hover:border-primary/40 hover:bg-primary/10"
+                        : "bg-background border-border hover:border-primary/30 hover:bg-muted/30"
+                    )}
                   >
-                    {solution.investment === 'FREE' 
-                      ? (language === 'de' ? 'KOSTENLOS' : 'FREE')
-                      : solution.investment
-                    }
-                  </Badge>
-                </div>
-              </div>
-            ))}
-            {challenge.solutions.length > 4 && (
-              <p className="text-xs text-muted-foreground text-center">
-                +{challenge.solutions.length - 4} {language === 'de' ? 'weitere Optionen' : 'more options'}
-              </p>
-            )}
+                    {/* Tier indicator dot */}
+                    <div className={cn(
+                      "absolute -left-8 w-4 h-4 rounded-full border-2 hidden md:flex items-center justify-center",
+                      solution.type === 'free' ? "bg-green-500 border-green-500" :
+                      premium ? "bg-primary border-primary" : "bg-blue-500 border-blue-500"
+                    )}>
+                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    </div>
+
+                    {/* Tier Badge */}
+                    <Badge 
+                      variant="outline" 
+                      className={cn("shrink-0 text-xs font-bold", config.colorClass)}
+                    >
+                      {config.badge}
+                    </Badge>
+
+                    {/* Solution Info */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-semibold text-foreground">
+                          {language === 'de' ? solution.nameDe : solution.nameEn}
+                        </span>
+                        {premium && (
+                          <Badge variant="secondary" className="text-[10px] bg-primary/10 text-primary border-0">
+                            {language === 'de' ? 'EMPFOHLEN' : 'RECOMMENDED'}
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-sm text-muted-foreground mt-0.5 line-clamp-1">
+                        {language === 'de' ? solution.impactDe : solution.impactEn}
+                      </p>
+                    </div>
+
+                    {/* Meta */}
+                    <div className="hidden sm:flex items-center gap-3 shrink-0">
+                      <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                        <Clock className="w-3.5 h-3.5" />
+                        {solution.duration}
+                      </div>
+                      <Badge 
+                        variant={solution.investment === 'FREE' ? 'default' : 'outline'}
+                        className={cn(
+                          "font-bold",
+                          solution.investment === 'FREE' && "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20"
+                        )}
+                      >
+                        {solution.investment === 'FREE' 
+                          ? (language === 'de' ? 'KOSTENLOS' : 'FREE')
+                          : solution.investment
+                        }
+                      </Badge>
+                    </div>
+
+                    {/* Arrow */}
+                    <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
