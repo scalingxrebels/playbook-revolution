@@ -50,9 +50,6 @@ const SolutionAccordion: React.FC<SolutionAccordionProps> = ({ solution, isExpan
         onClick={onToggle}
         className="w-full p-4 md:p-5 flex items-center gap-4 text-left hover:bg-muted/30 transition-colors"
       >
-        <Badge variant="outline" className={cn("shrink-0 font-bold", config.colorClass)}>
-          {config.badge}
-        </Badge>
         
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
