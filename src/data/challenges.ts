@@ -20,6 +20,8 @@ export interface Challenge {
   icon: LucideIcon;
   nameEn: string;
   nameDe: string;
+  shortNameEn: string;
+  shortNameDe: string;
   order: number;
   isDefault?: boolean;
   
@@ -43,6 +45,8 @@ export const challenges: Challenge[] = [
     icon: TrendingDown,
     nameEn: 'CAC Crisis',
     nameDe: 'CAC Crisis',
+    shortNameEn: 'CAC',
+    shortNameDe: 'CAC',
     order: 1,
     problemEn: 'Your customer acquisition costs are spiraling out of control, eating into margins and threatening sustainable growth.',
     problemDe: 'Deine Kundenakquisitionskosten steigen unkontrolliert, fressen Margen und gefährden nachhaltiges Wachstum.',
@@ -105,6 +109,8 @@ export const challenges: Challenge[] = [
     icon: TrendingUp,
     nameEn: 'Growth Stalled',
     nameDe: 'Growth Stalled',
+    shortNameEn: 'Growth',
+    shortNameDe: 'Growth',
     order: 2,
     isDefault: true,
     problemEn: 'You hit a ceiling. What worked to get you here won\'t get you to the next level. Growth has plateaued despite increased effort.',
@@ -181,6 +187,8 @@ export const challenges: Challenge[] = [
     icon: DollarSign,
     nameEn: 'Pricing Breakdown',
     nameDe: 'Pricing Breakdown',
+    shortNameEn: 'Pricing',
+    shortNameDe: 'Pricing',
     order: 3,
     problemEn: 'Your pricing doesn\'t capture the value you deliver. You\'re leaving money on the table or losing deals to cheaper alternatives.',
     problemDe: 'Dein Pricing erfasst nicht den Wert, den du lieferst. Du lässt Geld liegen oder verlierst Deals an günstigere Alternativen.',
@@ -227,6 +235,8 @@ export const challenges: Challenge[] = [
     icon: Users,
     nameEn: 'Customer Success Broken',
     nameDe: 'Customer Success Broken',
+    shortNameEn: 'CS',
+    shortNameDe: 'CS',
     order: 4,
     problemEn: 'Churn is killing your growth. Net revenue retention is below 100%, and your best customers aren\'t expanding.',
     problemDe: 'Churn killt dein Wachstum. Net Revenue Retention ist unter 100%, und deine besten Kunden expandieren nicht.',
@@ -275,6 +285,8 @@ export const challenges: Challenge[] = [
     icon: Workflow,
     nameEn: 'Scaling Chaos',
     nameDe: 'Scaling Chaos',
+    shortNameEn: 'Ops',
+    shortNameDe: 'Ops',
     order: 5,
     problemEn: 'Growth is breaking your operations. What worked with 10 people doesn\'t work with 50. Chaos increases with every hire.',
     problemDe: 'Wachstum bricht deine Operations. Was mit 10 Leuten funktionierte, funktioniert nicht mit 50. Chaos steigt mit jeder Einstellung.',
@@ -323,6 +335,8 @@ export const challenges: Challenge[] = [
     icon: Bot,
     nameEn: 'AI Transformation',
     nameDe: 'AI Transformation',
+    shortNameEn: 'AI',
+    shortNameDe: 'AI',
     order: 6,
     problemEn: 'You know AI will change everything, but you don\'t know where to start or how to avoid the hype trap.',
     problemDe: 'Du weißt, dass KI alles verändern wird, aber du weißt nicht, wo du anfangen sollst oder wie du die Hype-Falle vermeidest.',
@@ -380,6 +394,8 @@ export const challenges: Challenge[] = [
     icon: Building2,
     nameEn: 'Board Pressure',
     nameDe: 'Board Pressure',
+    shortNameEn: 'Board',
+    shortNameDe: 'Board',
     order: 7,
     problemEn: 'Investors are demanding answers. You need data-driven insights and a credible plan to regain confidence.',
     problemDe: 'Investoren verlangen Antworten. Du brauchst datengetriebene Insights und einen glaubwürdigen Plan, um Vertrauen zurückzugewinnen.',
@@ -425,6 +441,8 @@ export const challenges: Challenge[] = [
     icon: Briefcase,
     nameEn: 'Portfolio Performance',
     nameDe: 'Portfolio Performance',
+    shortNameEn: 'Portfolio',
+    shortNameDe: 'Portfolio',
     order: 8,
     problemEn: 'You need to assess, prioritize, and accelerate value creation across your portfolio companies.',
     problemDe: 'Du musst Portfolio-Companies bewerten, priorisieren und Value Creation beschleunigen.',
@@ -471,6 +489,8 @@ export const challenges: Challenge[] = [
     icon: Compass,
     nameEn: 'Orientation',
     nameDe: 'Orientierung',
+    shortNameEn: 'Start',
+    shortNameDe: 'Start',
     order: 9,
     problemEn: 'You don\'t know where to start. You need clarity on your situation before making strategic decisions.',
     problemDe: 'Du weißt nicht, wo du anfangen sollst. Du brauchst Klarheit über deine Situation, bevor du strategische Entscheidungen triffst.',
