@@ -75,8 +75,8 @@ const ML = () => {
           <div className="flex justify-center lg:justify-start order-1 lg:order-1">
             <div className="relative aspect-[3/4] max-w-md w-full">
               <img 
-                src="/images/ml-hero.png" 
-                alt="Michel Lason - AI-Native Renaissance Leader" 
+                src="/images/ml-hero-new.png" 
+                alt="Michel Lason - AI-Native Renaissance Leader"
                 className="w-full h-full object-cover rounded-3xl border-2 border-accent/30 shadow-accent-glow"
                 style={{ objectPosition: 'center 10%' }}
               />
@@ -543,10 +543,10 @@ const ML = () => {
               </Card>
             </div>
 
-            {/* Joy Image */}
+            {/* Joy/Shine Image */}
             <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-accent/30">
               <img 
-                src="/images/ml-joy.png" 
+                src="/images/ml-shine.png" 
                 alt="Michel Lason expressing joy" 
                 className="w-full h-full object-cover object-center"
               />
@@ -601,7 +601,7 @@ const ML = () => {
             {/* Closeup Image */}
             <div className="aspect-[3/4] max-w-md mx-auto rounded-3xl overflow-hidden border-2 border-accent/30 shadow-accent-glow">
               <img 
-                src="/images/ml-closeup.png" 
+                src="/images/ml-portrait-closeup.png" 
                 alt="Michel Lason - Closeup Portrait" 
                 className="w-full h-full object-cover"
                 style={{ objectPosition: 'center 5%' }}
