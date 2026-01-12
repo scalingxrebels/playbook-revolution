@@ -237,7 +237,7 @@ const ChallengeDetailModal: React.FC<ChallengeDetailModalProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
+      <DialogContent className="max-w-7xl max-h-[90vh] overflow-y-auto p-0">
         {/* Sticky Header */}
         <DialogHeader className="p-6 pb-4 sticky top-0 bg-background/95 backdrop-blur-sm z-10 border-b border-border">
           <div className="flex items-center gap-3 mb-4">
