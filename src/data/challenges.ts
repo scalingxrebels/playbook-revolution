@@ -84,7 +84,7 @@ export const solutionTypeConfig: Record<SolutionType, { labelEn: string; labelDe
 export const challenges: Challenge[] = [
   {
     id: 'cac-crisis',
-    icon: TrendingDown,
+    icon: TrendingUp,
     nameEn: 'CAC Crisis',
     nameDe: 'CAC Crisis',
     shortNameEn: 'CAC',
@@ -167,7 +167,7 @@ export const challenges: Challenge[] = [
   },
   {
     id: 'growth-stalled',
-    icon: TrendingUp,
+    icon: TrendingDown,
     nameEn: 'Growth Stalled',
     nameDe: 'Growth Stalled',
     shortNameEn: 'Growth',
