@@ -12,7 +12,8 @@ import {
   ChallengeId, 
   SolutionTypeId, 
   getFilteredTiles,
-  solutionTiles
+  solutionTiles,
+  challenges
 } from '@/data/solutionTiles';
 
 const Solutions: React.FC = () => {
@@ -32,7 +33,9 @@ const Solutions: React.FC = () => {
 
   // Get filtered tiles
   const filteredTiles = useMemo(() => {
-    return getFilteredTiles(challengeFilter, solutionTypeFilter);
+    const challenge = challengeFilter === 'all' ? null : challengeFilter;
+    const type = solutionTypeFilter === 'all' ? null : solutionTypeFilter;
+    return getFilteredTiles(challenge, type);
   }, [challengeFilter, solutionTypeFilter]);
 
   // Sync URL with state
@@ -55,6 +58,15 @@ const Solutions: React.FC = () => {
   // Handle solution type filter change
   const handleSolutionTypeChange = (typeId: SolutionTypeId) => {
     setSolutionTypeFilter(typeId);
+  };
+
+  // Get label for active challenge
+  const getActiveFilterLabel = (id: ChallengeId | SolutionTypeId, type: 'challenge' | 'type') => {
+    if (type === 'challenge') {
+      const challenge = challenges.find(c => c.id === id);
+      return language === 'de' ? challenge?.labelDe : challenge?.labelEn;
+    }
+    return id;
   };
 
   return (
@@ -118,7 +130,7 @@ const Solutions: React.FC = () => {
                   onClick={() => setChallengeFilter('all')}
                   className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-accent/10 text-accent border border-accent/30 hover:bg-accent/20 transition-colors"
                 >
-                  {challengeFilter}
+                  {getActiveFilterLabel(challengeFilter, 'challenge')}
                   <span className="ml-1">×</span>
                 </button>
               )}

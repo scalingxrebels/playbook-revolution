@@ -1,9 +1,10 @@
 // Solution Tiles Data - Complete briefing-compliant version
 // Last updated: 2026-01-22 (Briefing 04b)
 
-export type SolutionTypeId = 'insights' | 'decision-support' | 'transformation' | 'training' | 'advisory' | 'retainer' | 'keynote' | 'tools';
+export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'transformation' | 'training' | 'advisory' | 'retainer' | 'keynote' | 'tools';
 
 export type ChallengeId = 
+  | 'all'
   | 'cac-crisis'
   | 'growth-stalled'
   | 'pricing-breakdown'
@@ -29,9 +30,9 @@ export interface Challenge {
 export interface SolutionTile {
   id: number;
   slug: string;
-  solutionType: SolutionTypeId;
+  solutionType: Exclude<SolutionTypeId, 'all'>;
   transformationTier?: 'power-up' | 'boost' | 'accelerate';
-  challenges: ChallengeId[] | 'universal';
+  challenges: Exclude<ChallengeId, 'all'>[] | 'universal';
   price: string;
   priceTag: 'free' | 'paid' | 'custom';
   headlineEn: string;
@@ -46,7 +47,7 @@ export interface SolutionTile {
   impactDe: string;
   primaryCtaEn: string;
   primaryCtaDe: string;
-  primaryCtaAction: 'book-call' | 'open-tool' | 'download' | 'learn-more';
+  primaryCtaAction: 'book-call' | 'open-tool' | 'download' | 'learn-more' | 'external';
   primaryCtaUrl: string;
   secondaryCtaEn?: string;
   secondaryCtaDe?: string;
@@ -58,6 +59,7 @@ export interface SolutionTile {
 }
 
 export const solutionTypes: SolutionType[] = [
+  { id: 'all', labelEn: 'All Types', labelDe: 'Alle Typen' },
   { id: 'insights', labelEn: 'Insights & Clarity', labelDe: 'Insights & Klarheit' },
   { id: 'decision-support', labelEn: 'Decision Support', labelDe: 'Decision Support' },
   { id: 'transformation', labelEn: 'Transformation', labelDe: 'Transformation' },
@@ -69,6 +71,7 @@ export const solutionTypes: SolutionType[] = [
 ];
 
 export const challenges: Challenge[] = [
+  { id: 'all', labelEn: 'All Challenges', labelDe: 'Alle Challenges' },
   { id: 'cac-crisis', labelEn: 'CAC Crisis', labelDe: 'CAC-Krise' },
   { id: 'growth-stalled', labelEn: 'Growth Stalled', labelDe: 'Wachstum stagniert' },
   { id: 'pricing-breakdown', labelEn: 'Pricing Breakdown', labelDe: 'Pricing-Problem' },
@@ -1547,18 +1550,18 @@ export const solutionTiles: SolutionTile[] = [
 ];
 
 // Helper functions
-export const getTilesByChallenge = (challengeId: ChallengeId): SolutionTile[] => {
+export const getTilesByChallenge = (challengeId: Exclude<ChallengeId, 'all'>): SolutionTile[] => {
   return solutionTiles.filter(tile => 
     tile.challenges === 'universal' || 
     (Array.isArray(tile.challenges) && tile.challenges.includes(challengeId))
   );
 };
 
-export const getTilesBySolutionType = (typeId: SolutionTypeId): SolutionTile[] => {
+export const getTilesBySolutionType = (typeId: Exclude<SolutionTypeId, 'all'>): SolutionTile[] => {
   return solutionTiles.filter(tile => tile.solutionType === typeId);
 };
 
-export const getFilteredTiles = (challengeId: ChallengeId | null, typeId: SolutionTypeId | null): SolutionTile[] => {
+export const getFilteredTiles = (challengeId: Exclude<ChallengeId, 'all'> | null, typeId: Exclude<SolutionTypeId, 'all'> | null): SolutionTile[] => {
   return solutionTiles.filter(tile => {
     const matchesChallenge = !challengeId || tile.challenges === 'universal' || 
       (Array.isArray(tile.challenges) && tile.challenges.includes(challengeId));
