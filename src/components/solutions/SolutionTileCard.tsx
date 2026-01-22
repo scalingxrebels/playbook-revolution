@@ -24,13 +24,10 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
   const secondaryCta = lang === 'de' ? tile.secondaryCtaDe : tile.secondaryCtaEn;
 
   const handlePrimaryClick = () => {
-    if (tile.primaryCtaAction === 'external' && tile.primaryCtaUrl) {
+    if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'book-call' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
-    } else if (tile.primaryCtaAction === 'book-call' && tile.primaryCtaUrl) {
-      window.open(tile.primaryCtaUrl, '_blank');
-    } else {
-      // For 'request' action, could open a modal or navigate
-      window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank');
+    } else if (tile.primaryCtaUrl) {
+      window.location.href = tile.primaryCtaUrl;
     }
   };
 
@@ -43,13 +40,15 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
       'decision-support': { en: 'Decision Support', de: 'Decision Support' },
       'transformation': { en: 'Transformation', de: 'Transformation' },
       'training': { en: 'Training', de: 'Training' },
-      'bespoke': { en: 'Bespoke', de: 'Bespoke' },
+      'advisory': { en: 'Advisory', de: 'Advisory' },
       'retainer': { en: 'Retainer', de: 'Retainer' },
       'keynote': { en: 'Keynote', de: 'Keynote' },
       'tools': { en: 'Tools', de: 'Tools' }
     };
     return typeLabels[tile.solutionType]?.[lang] || tile.solutionType;
   };
+
+  const isExternalAction = tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool';
 
   return (
     <Card className={cn(
@@ -123,15 +122,15 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
           <div className="mt-3 p-2 bg-muted/50 rounded-md text-xs">
             <div className="flex justify-between">
               <span className="text-muted-foreground">
-                {lang === 'de' ? tile.addOnPricing.baseLabelDe : tile.addOnPricing.baseLabelEn}:
+                {lang === 'de' ? 'Basis:' : 'Base:'}
               </span>
-              <span className="font-semibold">{tile.addOnPricing.basePrice}</span>
+              <span className="font-semibold">{tile.addOnPricing.base}</span>
             </div>
             <div className="flex justify-between mt-1">
               <span className="text-muted-foreground">
-                {lang === 'de' ? tile.addOnPricing.bridgeLabelDe : tile.addOnPricing.bridgeLabelEn}:
+                {lang === 'de' ? 'Mit Roadmap:' : 'With Roadmap:'}
               </span>
-              <span className="font-semibold text-accent">{tile.addOnPricing.bridgePrice}</span>
+              <span className="font-semibold text-accent">{tile.addOnPricing.bridge}</span>
             </div>
           </div>
         )}
@@ -144,19 +143,21 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
             variant={tile.priceTag === 'free' ? 'default' : 'outline'}
           >
             {primaryCta}
-            {tile.primaryCtaAction === 'external' ? (
+            {isExternalAction ? (
               <ExternalLink className="w-4 h-4 ml-2" />
             ) : (
               <ArrowRight className="w-4 h-4 ml-2" />
             )}
           </Button>
           
-          <a 
-            href={tile.secondaryCtaUrl}
-            className="block text-center text-sm text-muted-foreground hover:text-accent transition-colors"
-          >
-            {secondaryCta}
-          </a>
+          {secondaryCta && tile.secondaryCtaUrl && (
+            <a 
+              href={tile.secondaryCtaUrl}
+              className="block text-center text-sm text-muted-foreground hover:text-accent transition-colors"
+            >
+              {secondaryCta}
+            </a>
+          )}
         </div>
       </CardContent>
     </Card>
