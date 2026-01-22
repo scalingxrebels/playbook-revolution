@@ -1,13 +1,27 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { challenges, Challenge } from '@/data/challenges';
+import { challenges, ChallengeId } from '@/data/solutionTiles';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Layers, TrendingDown, TrendingUp, DollarSign, Users, Zap, Bot, Briefcase, PieChart, HelpCircle } from 'lucide-react';
 
 interface ChallengeTabNavigationProps {
-  activeChallenge: string;
-  onChallengeChange: (challengeId: string) => void;
+  activeChallenge: ChallengeId;
+  onChallengeChange: (challengeId: ChallengeId) => void;
 }
+
+// Icon mapping for challenges
+const challengeIcons: Record<ChallengeId, React.ElementType> = {
+  'all': Layers,
+  'cac-crisis': TrendingDown,
+  'growth-stalled': TrendingUp,
+  'pricing-breakdown': DollarSign,
+  'customer-success-broken': Users,
+  'scaling-chaos': Zap,
+  'ai-transformation': Bot,
+  'board-pressure': Briefcase,
+  'portfolio-performance': PieChart,
+  'orientation': HelpCircle,
+};
 
 const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
   activeChallenge,
@@ -17,8 +31,6 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [showLeftFade, setShowLeftFade] = useState(false);
   const [showRightFade, setShowRightFade] = useState(false);
-
-  const sortedChallenges = [...challenges].sort((a, b) => a.order - b.order);
 
   // Check scroll position to show/hide fade indicators
   const updateScrollIndicators = () => {
@@ -53,8 +65,8 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
       e.preventDefault();
       const newIndex = e.key === 'ArrowLeft' 
         ? Math.max(0, currentIndex - 1)
-        : Math.min(sortedChallenges.length - 1, currentIndex + 1);
-      onChallengeChange(sortedChallenges[newIndex].id);
+        : Math.min(challenges.length - 1, currentIndex + 1);
+      onChallengeChange(challenges[newIndex].id);
     }
   };
 
@@ -70,7 +82,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full" id="challenge-navigation">
       {/* Left scroll button */}
       <button
         onClick={() => scroll('left')}
@@ -100,9 +112,10 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
         className="w-full overflow-x-auto scrollbar-hide scroll-smooth"
       >
         <div className="flex items-center gap-1.5 md:gap-2 min-w-max px-6 md:px-0 md:justify-center py-1">
-          {sortedChallenges.map((challenge: Challenge, index: number) => {
-            const Icon = challenge.icon;
+          {challenges.map((challenge, index) => {
+            const Icon = challengeIcons[challenge.id];
             const isActive = activeChallenge === challenge.id;
+            const label = language === 'de' ? challenge.labelDe : challenge.labelEn;
 
             return (
               <button
@@ -115,22 +128,17 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
                 onClick={() => onChallengeChange(challenge.id)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
                 className={cn(
-                  "group flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                  "group flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
                   isActive
-                    ? "bg-primary text-primary-foreground shadow-brutal-sm scale-[1.02]"
-                    : "bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/30 hover:scale-[1.01]"
+                    ? "bg-accent text-accent-foreground shadow-md scale-[1.02]"
+                    : "bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-accent/30 hover:scale-[1.01]"
                 )}
               >
                 <Icon className={cn(
                   "w-4 h-4 flex-shrink-0 transition-transform duration-200",
                   isActive ? "" : "group-hover:scale-110"
                 )} />
-                <span className="hidden sm:inline">
-                  {language === 'de' ? challenge.shortNameDe : challenge.shortNameEn}
-                </span>
-                <span className="sm:hidden">
-                  {language === 'de' ? challenge.shortNameDe : challenge.shortNameEn}
-                </span>
+                <span>{label}</span>
               </button>
             );
           })}
