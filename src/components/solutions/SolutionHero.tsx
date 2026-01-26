@@ -8,12 +8,12 @@ const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
   const scrollToChallenges = () => {
-    document.getElementById('challenge-navigation')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('challenges')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const stats = [
-    { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'primary' as const },
-    { value: '30+', label: { en: 'Solutions', de: 'Lösungen' }, color: 'accent' as const },
+    { value: '41', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
+    { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
     { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
     { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
   ];
@@ -26,8 +26,8 @@ const SolutionHero: React.FC = () => {
       headlineLine1De="Finde die richtige Lösung"
       headlineLine2En="for Your Growth Challenge"
       headlineLine2De="für deine Growth Challenge"
-      subheadlineEn="From Advisory to Transformation – choose the right format for your current need."
-      subheadlineDe="Von Advisory bis Transformation – wähle das richtige Format für deinen aktuellen Need."
+      subheadlineEn="41 solutions across 9 challenges. Filter by challenge or solution type to find what you need."
+      subheadlineDe="41 Lösungen für 9 Challenges. Filtere nach Challenge oder Solution Type, um das Richtige zu finden."
       stats={stats}
     >
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -36,17 +36,17 @@ const SolutionHero: React.FC = () => {
           onClick={scrollToChallenges}
           className="shadow-brutal hover-brutal group"
         >
-          {language === 'de' ? 'Challenges erkunden' : 'Explore Challenges'}
+          {language === 'de' ? 'Solutions erkunden' : 'Explore Solutions'}
           <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Button>
         <Button 
           size="lg" 
           variant="outline"
           className="shadow-brutal-sm hover-brutal"
-          onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+          onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
         >
           <Phone className="mr-2 w-4 h-4" />
-          {language === 'de' ? 'Beratung buchen' : 'Book a Call'}
+          {language === 'de' ? 'Kostenloses Gespräch' : 'Free Inflection Call'}
         </Button>
       </div>
     </SharedHero>
