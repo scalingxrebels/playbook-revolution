@@ -8,7 +8,8 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { 
   ArrowRight, Linkedin, Mail, Target, Users, Code2, 
-  BookOpen, Rocket, TrendingUp, CheckCircle2, ExternalLink 
+  BookOpen, Rocket, TrendingUp, CheckCircle2, ExternalLink,
+  Zap, Handshake
 } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 
@@ -525,21 +526,27 @@ const About: React.FC = () => {
             
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center p-4">
-                <span className="text-3xl mb-2 block">🎯</span>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
+                  <Target className="w-6 h-6 text-primary" />
+                </div>
                 <h4 className="font-semibold mb-1">Execution-First</h4>
                 <p className="text-sm text-muted-foreground">
                   {lang === 'de' ? 'Wir liefern Systeme, keine Slides.' : 'We ship systems, not slides.'}
                 </p>
               </div>
               <div className="text-center p-4">
-                <span className="text-3xl mb-2 block">⚡</span>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
+                  <Zap className="w-6 h-6 text-primary" />
+                </div>
                 <h4 className="font-semibold mb-1">Speed Matters</h4>
                 <p className="text-sm text-muted-foreground">
                   {lang === 'de' ? '90 Tage, nicht 12 Monate.' : '90 days, not 12 months.'}
                 </p>
               </div>
               <div className="text-center p-4">
-                <span className="text-3xl mb-2 block">🤝</span>
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
+                  <Handshake className="w-6 h-6 text-primary" />
+                </div>
                 <h4 className="font-semibold mb-1">Partnership</h4>
                 <p className="text-sm text-muted-foreground">
                   {lang === 'de' ? 'Wir sind Co-Pilots, keine Consultants.' : "We're co-pilots, not consultants."}
