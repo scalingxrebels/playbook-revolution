@@ -516,11 +516,17 @@ const About: React.FC = () => {
               <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
                 {lang === 'de' ? 'Unsere Mission' : 'Our Mission'}
               </h2>
-              <p className="text-xl md:text-2xl font-display font-bold text-primary max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
                 {lang === 'de' 
-                  ? '100 Unternehmen bis 2030 zu €100M ARR durch AI-Native Transformation verhelfen'
-                  : 'Help 100 companies reach €100M ARR by 2030 through AI-Native Transformation'
+                  ? 'Wir glauben, die nächste Generation europäischer Unicorns wird AI-native sein. Unser Ziel ist es, bestehenden Scale-ups bei dieser Transformation zu helfen – bevor es ihre Wettbewerber tun.'
+                  : 'We believe the next generation of European unicorns will be AI-native. Our goal is to help existing scale-ups make this transition – before their competitors do.'
                 }
+              </p>
+              <p className="text-xl md:text-2xl font-display font-bold text-primary max-w-3xl mx-auto italic">
+                "{lang === 'de' 
+                  ? 'Die Frage ist nicht, ob KI Ihr Unternehmen transformieren wird, sondern wer diese Transformation anführen wird.'
+                  : 'The question is not if AI will transform your business, but who will lead that transformation.'
+                }"
               </p>
             </div>
             
