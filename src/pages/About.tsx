@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -24,6 +25,7 @@ interface TeamMember {
   expertise: string[];
   image: string;
   linkedin?: string;
+  profileLink?: string;
 }
 
 interface Value {
@@ -59,7 +61,8 @@ const teamMembers: TeamMember[] = [
     },
     expertise: ['Revenue Architecture', 'AI/LCNC', 'GTM Motions', 'Investor Readiness'],
     image: '/images/team-michel.png',
-    linkedin: 'https://www.linkedin.com/in/michellason/'
+    linkedin: 'https://www.linkedin.com/in/michellason/',
+    profileLink: '/ml'
   },
   {
     name: 'Alban Halili',
@@ -269,6 +272,20 @@ const About: React.FC = () => {
                       <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                       <p className="text-xs text-muted-foreground">{member.highlight[lang]}</p>
                     </div>
+                    
+                    {/* Learn More Button */}
+                    {member.profileLink ? (
+                      <Link to={member.profileLink}>
+                        <Button variant="ghost" size="sm" className="w-full mt-4 group">
+                          {lang === 'de' ? 'Mehr erfahren' : 'Learn more'}
+                          <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button variant="ghost" size="sm" className="w-full mt-4 opacity-50 cursor-not-allowed" disabled>
+                        {lang === 'de' ? 'Bald verfügbar' : 'Coming soon'}
+                      </Button>
+                    )}
                   </div>
                 </Card>
               ))}
