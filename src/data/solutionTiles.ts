@@ -1,7 +1,7 @@
 // Solution Tiles Data - Complete briefing-compliant version
 // Last updated: 2026-01-22 (Briefing 04b)
 
-export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'transformation' | 'training' | 'advisory' | 'retainer' | 'keynote' | 'tools';
+export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote' | 'portfolio';
 
 export type ChallengeId = 
   | 'all'
@@ -60,14 +60,13 @@ export interface SolutionTile {
 
 export const solutionTypes: SolutionType[] = [
   { id: 'all', labelEn: 'All Types', labelDe: 'Alle Typen' },
-  { id: 'insights', labelEn: 'Insights & Clarity', labelDe: 'Insights & Klarheit' },
+  { id: 'insights', labelEn: 'Insights & Clarity', labelDe: 'Insights & Clarity' },
   { id: 'decision-support', labelEn: 'Decision Support', labelDe: 'Decision Support' },
+  { id: 'tools', labelEn: 'AI-Powered Tools', labelDe: 'AI-Powered Tools' },
   { id: 'transformation', labelEn: 'Transformation', labelDe: 'Transformation' },
-  { id: 'training', labelEn: 'Training & Enablement', labelDe: 'Training & Enablement' },
-  { id: 'advisory', labelEn: 'Bespoke Strategy', labelDe: 'Maßgeschneiderte Strategie' },
-  { id: 'retainer', labelEn: 'Retainer', labelDe: 'Retainer' },
-  { id: 'keynote', labelEn: 'Keynote', labelDe: 'Keynote' },
-  { id: 'tools', labelEn: 'Tools', labelDe: 'Tools' }
+  { id: 'advisory', labelEn: 'Strategic Advisory', labelDe: 'Strategic Advisory' },
+  { id: 'keynote', labelEn: 'Workshops & Keynotes', labelDe: 'Workshops & Keynotes' },
+  { id: 'portfolio', labelEn: 'Portfolio & Investment Decisions', labelDe: 'Portfolio & Investment Decisions' }
 ];
 
 export const challenges: Challenge[] = [
@@ -1270,7 +1269,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 34,
     slug: 'workshop',
-    solutionType: 'training',
+    solutionType: 'keynote',
     challenges: 'universal',
     price: '€2.5K-€5K',
     priceTag: 'paid',
@@ -1344,7 +1343,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 36,
     slug: 'retainer-advisory',
-    solutionType: 'retainer',
+    solutionType: 'advisory',
     challenges: 'universal',
     price: '€3.9K–€11K/month',
     priceTag: 'custom',
