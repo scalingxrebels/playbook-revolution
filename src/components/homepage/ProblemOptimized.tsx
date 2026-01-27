@@ -11,7 +11,7 @@ const problems = [
     titleDe: 'Ein schwacher Bereich blockiert alles',
     descEn: 'Your sales is running well, but operations can\'t keep up. Or vice versa. One area is slowing down your entire company.',
     descDe: 'Dein Sales läuft gut, aber Operations kommt nicht nach. Oder umgekehrt. Ein Bereich bremst das ganze Unternehmen.',
-    stat: '1',
+    stat: 'Growth Plateau',
     statLabel: { en: 'Weak spot is enough', de: 'Schwachstelle reicht' },
   },
   {
@@ -20,7 +20,7 @@ const problems = [
     titleDe: 'Chaos wächst schneller als dein Team',
     descEn: 'With every new employee, coordination becomes more complex. Meetings explode. Decisions take forever.',
     descDe: 'Mit jedem neuen Mitarbeiter wird die Koordination komplexer. Meetings explodieren. Entscheidungen dauern ewig.',
-    stat: '2x Team = 4x',
+    stat: 'Coordination Costs',
     statLabel: { en: 'Complexity', de: 'Chaos' },
   },
   {
@@ -29,7 +29,7 @@ const problems = [
     titleDe: 'Deine Competitors sind schneller',
     descEn: 'Other startups reach €100M ARR in 18 months. You need 72 months. The difference? They use AI differently.',
     descDe: 'Andere Startups erreichen €100M ARR in 18 Monaten. Du brauchst 72 Monate. Der Unterschied? Sie nutzen AI anders.',
-    stat: '4x',
+    stat: 'Falling Behind',
     statLabel: { en: 'slower than AI-Native', de: 'langsamer als AI-Native' },
   },
 ];
