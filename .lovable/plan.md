@@ -1,39 +1,56 @@
 
 
-# Plan: CTA-Button in "Die Formel" Section anpassen
+# Plan: Community aus der Navigation entfernen
 
 ## Übersicht
 
-Der CTA-Button in der Formula-Section wird farblich an den Proof-Section-Button angepasst (Outline-Variante) und erhält neuen Text.
+Der "Community"-Link wird aus der Haupt- und Mobil-Navigation entfernt. Die Community-Seite bleibt bestehen und kann später wieder integriert werden.
 
 ---
 
 ## Änderung
 
-### Datei: `src/components/homepage/FormulaOptimized.tsx`
+### Datei: `src/components/Navigation.tsx`
 
-**Zeilen 137-144 ersetzen:**
-
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| Variant | (kein variant, custom classes) | `variant="outline"` |
-| className | `bg-foreground text-background hover:bg-foreground/90 font-semibold px-8 py-6 shadow-brutal hover-brutal` | `border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6` |
-| Text DE | "Finde deine Schwachstelle (kostenlos)" | "Deine Roadmap zu Hypergrowth" |
-| Text EN | "Find Your Weakness (free)" | "Your Roadmap to Hypergrowth" |
-
-**Neuer Code:**
+**Zeilen 19-20 entfernen:**
 
 ```tsx
-<Button 
-  variant="outline"
-  size="lg"
-  onClick={scrollToCalculator}
-  className="border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6"
->
-  {language === 'de' ? 'Deine Roadmap zu Hypergrowth' : 'Your Roadmap to Hypergrowth'}
-  <ArrowRight className="w-5 h-5 ml-2" />
-</Button>
+// ENTFERNEN:
+{ key: 'nav.community', href: '/community', label: 'Community', isRoute: true },
 ```
+
+**Vorher (navItems Array):**
+```tsx
+const navItems = [
+  { key: 'nav.home', href: '/', label: 'Home', isRoute: true },
+  { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
+  { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
+  { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
+  { key: 'nav.community', href: '/community', label: 'Community', isRoute: true },  // ← ENTFERNEN
+  { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
+  { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
+];
+```
+
+**Nachher (navItems Array):**
+```tsx
+const navItems = [
+  { key: 'nav.home', href: '/', label: 'Home', isRoute: true },
+  { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
+  { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
+  { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
+  { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
+  { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
+];
+```
+
+---
+
+## Hinweis
+
+- Die Route `/community` in `App.tsx` bleibt erhalten
+- Die Seite `src/pages/Community.tsx` bleibt erhalten
+- Der Link kann später einfach wieder zum navItems-Array hinzugefügt werden
 
 ---
 
@@ -41,5 +58,5 @@ Der CTA-Button in der Formula-Section wird farblich an den Proof-Section-Button 
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/homepage/FormulaOptimized.tsx` | Button-Styling und Text (Zeilen 137-144) |
+| `src/components/Navigation.tsx` | Community-Eintrag aus navItems entfernen (Zeile 19) |
 
