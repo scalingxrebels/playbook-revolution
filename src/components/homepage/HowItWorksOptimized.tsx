@@ -81,12 +81,15 @@ const HowItWorksOptimized: React.FC = () => {
               : 'Four Areas That Determine Your Success'
             }
           </h2>
-          <p className="text-editorial text-muted-foreground max-w-3xl mx-auto">
-            {language === 'de'
-              ? 'Erfolgreiche Startups exzellieren in allen vier Bereichen. Stagnierende Startups haben 1-2 Schwachstellen. Wir finden deine Schwachstelle in 15 Minuten – und beheben sie in 90 Tagen.'
-              : 'Successful startups excel in all four areas. Stagnating startups have 1-2 weaknesses. We find your weakness in 15 minutes – and fix it in 90 days.'
-            }
-          </p>
+          {/* Trust badge instead of large subheadline - matches Problem/Solution pattern */}
+          <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-lg">
+            <span className="text-sm text-muted-foreground">
+              {language === 'de'
+                ? 'Schwachstelle finden in 15 Min. → Beheben in 90 Tagen'
+                : 'Find weakness in 15 min. → Fix in 90 days'
+              }
+            </span>
+          </div>
         </div>
 
         {/* Areas Grid */}
