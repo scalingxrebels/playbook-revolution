@@ -1,61 +1,50 @@
 
-# Plan: Stats-Reihenfolge und Icon-Korrektur
 
-## Änderung 1: Stats-Reihenfolge im Hero
+# Plan: Hero & Problem Section Feedback-Umsetzung (korrigiert)
 
-### Datei: `src/components/solutions/SolutionHero.tsx`
+## Änderung 1: Hero Subheadline
 
-**Zeilen 8-13 ändern:**
+### Datei: `src/components/homepage/HeroOptimized.tsx`
+
+**Zeilen 77-82 ändern:**
 
 ```tsx
 // VORHER:
-const stats = [
-  { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
-  { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
-  { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
-  { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
-];
+<p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+  {language === 'de' 
+    ? '3-5x schneller wachsen. 2-4x bessere Profitabilität. Mit Systemen, die skalieren – nicht brechen.'
+    : '3-5x faster growth. 2-4x better profitability. With systems that scale – not break.'
+  }
+</p>
 
 // NACHHER:
-const stats = [
-  { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
-  { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
-  { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
-  { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
-];
+<p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+  {language === 'de' 
+    ? <>3-5x schneller wachsen. 2-4x bessere Unit Economics.<br />Mit Systemen, die skalieren und nicht brechen.</>
+    : <>3-5x faster growth. 2-4x better profitability.<br />With systems that scale and don't break.</>
+  }
+</p>
 ```
 
-**Logik:** Challenges → Solutions → ROI → Erfolgsrate (Problem → Lösung → Ergebnis)
+**Änderungen im Detail:**
+- DE: "Profitabilität" → "Unit Economics"
+- DE: "die skalieren – nicht brechen" → "die skalieren und nicht brechen"
+- EN: "scale – not break" → "scale and don't break"
+- Beide: Zeilenumbruch mit `<br />` nach den Metriken
 
 ---
 
-## Änderung 2: Icons für CAC Crisis und Growth Stalled tauschen
+## Änderung 2: Problem Cards Stats
 
-### Datei: `src/components/solutions/ChallengeTabNavigation.tsx`
+### Datei: `src/components/homepage/ProblemOptimized.tsx`
 
-**Zeilen 15-16 ändern:**
+**Zeilen 7-35 ändern (problems Array):**
 
-```tsx
-// VORHER:
-const challengeIcons: Record<ChallengeId, React.ElementType> = {
-  'all': Layers,
-  'cac-crisis': TrendingDown,      // FALSCH
-  'growth-stalled': TrendingUp,    // FALSCH
-  // ...
-};
-
-// NACHHER:
-const challengeIcons: Record<ChallengeId, React.ElementType> = {
-  'all': Layers,
-  'cac-crisis': TrendingUp,        // RICHTIG: CAC steigt
-  'growth-stalled': TrendingDown,  // RICHTIG: Wachstum sinkt
-  // ...
-};
-```
-
-**Logik:**
-- **CAC Crisis** = Customer Acquisition Cost steigt → `TrendingUp` (Pfeil nach oben = Kosten steigen)
-- **Growth Stalled** = Wachstumsrate sinkt → `TrendingDown` (Pfeil nach unten = Wachstum sinkt)
+| Card | Vorher | Nachher |
+|------|--------|---------|
+| Card 1 | `stat: '1'` | `stat: 'Growth Plateau'` |
+| Card 2 | `stat: '2x Team = 4x'` | `stat: 'Coordination Costs'` |
+| Card 3 | `stat: '4x'` | `stat: 'Falling Behind'` (großes B) |
 
 ---
 
@@ -63,22 +52,25 @@ const challengeIcons: Record<ChallengeId, React.ElementType> = {
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/solutions/SolutionHero.tsx` | Stats-Reihenfolge: Challenges vor Solutions |
-| `src/components/solutions/ChallengeTabNavigation.tsx` | Icons tauschen: CAC → TrendingUp, Growth → TrendingDown |
+| `src/components/homepage/HeroOptimized.tsx` | Subheadline mit Unit Economics, Zeilenumbruch, "und nicht brechen" |
+| `src/components/homepage/ProblemOptimized.tsx` | Stats: "Growth Plateau", "Coordination Costs", "Falling Behind" |
 
 ## Visuelles Ergebnis
 
-**Hero Stats (vorher):**
+**Hero Subheadline (DE):**
 ```
-[40 Solutions] [9 Challenges] [15-80x ROI] [92% Erfolg]
-```
-
-**Hero Stats (nachher):**
-```
-[9 Challenges] [40 Solutions] [15-80x ROI] [92% Erfolg]
+3-5x schneller wachsen. 2-4x bessere Unit Economics.
+Mit Systemen, die skalieren und nicht brechen.
 ```
 
-**Challenge Icons (nachher):**
+**Hero Subheadline (EN):**
 ```
-[CAC Crisis ↗] [Growth Stalled ↘]
+3-5x faster growth. 2-4x better profitability.
+With systems that scale and don't break.
 ```
+
+**Problem Cards Badges:**
+```
+[Growth Plateau] [Coordination Costs] [Falling Behind]
+```
+
