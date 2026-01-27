@@ -17,7 +17,6 @@ const Navigation: React.FC = () => {
     { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
     { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
     { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
-    { key: 'nav.community', href: '/community', label: 'Community', isRoute: true },
     { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
     { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
   ];

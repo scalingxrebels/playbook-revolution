@@ -20,7 +20,6 @@ const typeGradients: Record<Exclude<SolutionTypeId, 'all'>, string> = {
   'transformation': 'from-orange-500 to-amber-500',
   'advisory': 'from-rose-500 to-pink-500',
   'keynote': 'from-yellow-500 to-orange-500',
-  'portfolio': 'from-green-500 to-emerald-500',
 };
 
 // Icon mapping per solution type
@@ -31,7 +30,6 @@ const typeIcons: Record<Exclude<SolutionTypeId, 'all'>, React.ElementType> = {
   'transformation': Rocket,
   'advisory': Compass,
   'keynote': Mic,
-  'portfolio': Building2,
 };
 
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {

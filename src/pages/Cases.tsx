@@ -143,7 +143,7 @@ const Cases: React.FC = () => {
         stats={casesStats}
       />
       
-      <main className="pb-20">
+      <main className="pt-6 md:pt-8 pb-20">
         <div className="container max-w-7xl mx-auto px-4">
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
