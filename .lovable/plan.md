@@ -1,39 +1,30 @@
 
-
-# Plan: Footer komplett überarbeiten
+# Plan: Footer-Beschreibungstext aktualisieren
 
 ## Übersicht
 
-Der Footer wird umfassend überarbeitet mit neuen Stats, Social Icons, Sitemap-Navigation und bereinigter Struktur.
+Der Beschreibungstext unter dem Logo im Footer wird mit dem neuen, zweizeiligen Text aktualisiert.
 
 ---
 
-## Aktuelle Struktur vs. Neue Struktur
+## Aktuelle Situation
 
-### Sektion 1: Top Section (Links unter Logo)
+**Zeilen 49-53** enthalten den aktuellen Text:
 
-| Element | Aktuell | Neu |
-|---------|---------|-----|
-| Tagline | "EXPERTISE × SPEED = IMPACT" | "GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS" |
-| Social Icons | Keine | LinkedIn, YouTube, Mail (mit Lucide Icons) |
+| Sprache | Aktueller Text |
+|---------|----------------|
+| Deutsch | "Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben." |
+| Englisch | "We deliver systems and create impact. Growth shouldn't be a struggle, it should have a system." |
 
-### Sektion 2: Top Section (Rechts - Stats)
+---
 
-| Aktuell | Neu |
-|---------|-----|
-| 250K+ Words Research | 80+ Companies Scaled |
-| n=22 Validated Cases | 140+ Engagements |
-| 16 Documents | €2.5B+ Valuation |
-| – | 92% Success Rate |
+## Neuer Text
 
-### Sektion 3: Middle Section (4-Spalten-Grid → 3-Spalten-Grid)
+**Zeile 1:**
+> "VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes."
 
-| Spalte | Aktuell | Neu |
-|--------|---------|-----|
-| 1 | Resources (ROI Calculator, Frameworks, Case Studies, θ_index Test) | Sitemap (Home, Solutions, Playbooks, Expertise, Cases, About) |
-| 2 | Authors (Michel, Alban, Florian) | Team (Michel, Alban, Florian) – nur Label-Änderung |
-| 3 | Contact (hello@scalingx.io, scalingx.io, lasr.io) | Contact (Book a Call, team@scalingx.io, lasr.io) |
-| 4 | Social (LinkedIn) | **ENTFERNEN** (Social Icons wandern nach oben) |
+**Zeile 2:**
+> "Growth shouldn't be a struggle. It should be a system."
 
 ---
 
@@ -41,93 +32,40 @@ Der Footer wird umfassend überarbeitet mit neuen Stats, Social Icons, Sitemap-N
 
 ### Datei: `src/components/Footer.tsx`
 
-#### 1. Imports erweitern (Zeile 3)
-Neue Lucide Icons hinzufügen:
-- `Linkedin` 
-- `Youtube`
-- `Mail`
+**Zeilen 49-53** werden angepasst:
 
-#### 2. Tagline aktualisieren (Zeile 35-37)
-```text
-Vorher: "EXPERTISE × SPEED = IMPACT"
-Nachher: "GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS"
+Der Text wird in zwei separate `<p>` Elemente aufgeteilt für bessere Lesbarkeit:
+
+```tsx
+<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+  {language === 'de' 
+    ? 'VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern.'
+    : 'VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes.'}
+</p>
+<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
+  {language === 'de' 
+    ? 'Wachstum sollte kein Kampf sein. Es sollte ein System sein.'
+    : "Growth shouldn't be a struggle. It should be a system."}
+</p>
 ```
 
-#### 3. Social Icons unter Tagline hinzufügen (nach Zeile 42)
-Neue Icon-Leiste mit:
-- LinkedIn Icon → https://www.linkedin.com/company/scalingxhypergrowth/
-- YouTube Icon → https://www.youtube.com/@ScalingXRebels
-- Mail Icon → mailto:info@scalingx.io
+### Texte (DE/EN):
 
-#### 4. Stats komplett ersetzen (Zeilen 46-65)
-Neue Stats (4 statt 3):
-- 80+ / Companies Scaled
-- 140+ / Engagements
-- €2.5B+ / Valuation
-- 92% / Success Rate
-
-#### 5. Middle Section: Grid von 4 auf 3 Spalten ändern (Zeile 72)
-```text
-Vorher: lg:grid-cols-4
-Nachher: lg:grid-cols-3
-```
-
-#### 6. Resources → Sitemap (Zeilen 73-93)
-Label: "Sitemap" statt "Resources"
-Links: Home, Solutions, Playbooks, Expertise, Cases, About (als React Router `<Link>`)
-
-#### 7. Authors → Team (Zeile 97-98)
-Label: "Team" statt "Authors"/"Autoren"
-
-#### 8. Contact aktualisieren (Zeilen 115-134)
-- "Book a Call" → scrollt zu #booking
-- team@scalingx.io → mailto:team@scalingx.io
-- lasr.io → https://lasr.io
-
-#### 9. Social-Spalte entfernen (Zeilen 137-157)
-Die vierte Spalte wird komplett entfernt.
-
----
-
-## Vorschau der neuen Struktur
-
-```text
-┌─────────────────────────────────────────────────────────────────────────┐
-│  TOP SECTION                                                            │
-│                                                                         │
-│  [Logo]                                    80+        140+      €2.5B+  │
-│  GROWTH ENGINES × SCALING                  Companies  Engagements  Val. │
-│  SYSTEMS × AI = SCALING SUCCESS            Scaled                       │
-│  [Beschreibungstext]                                           92%      │
-│  [LinkedIn] [YouTube] [Mail]                                   Success  │
-│                                                                Rate     │
-├─────────────────────────────────────────────────────────────────────────┤
-│  MIDDLE SECTION (3 Spalten)                                             │
-│                                                                         │
-│  SITEMAP          │  TEAM              │  CONTACT                       │
-│  Home             │  Michel Lason      │  Book a Call                   │
-│  Solutions        │  Alban Halili      │  team@scalingx.io              │
-│  Playbooks        │  Florian Metzger   │  lasr.io                       │
-│  Expertise        │                    │                                │
-│  Cases            │                    │                                │
-│  About            │                    │                                │
-├─────────────────────────────────────────────────────────────────────────┤
-│  BOTTOM BAR                                                             │
-│  © 2026 ScalingX. All rights reserved.    Terms | Privacy | Impressum  │
-└─────────────────────────────────────────────────────────────────────────┘
-```
+| Zeile | Englisch | Deutsch |
+|-------|----------|---------|
+| 1 | "VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes." | "VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern." |
+| 2 | "Growth shouldn't be a struggle. It should be a system." | "Wachstum sollte kein Kampf sein. Es sollte ein System sein." |
 
 ---
 
 ## Betroffene Datei
 
-| Datei | Änderungen |
-|-------|------------|
-| `src/components/Footer.tsx` | Komplette Überarbeitung: Icons, Stats, Sitemap, Team-Label, Contact, Social-Spalte entfernen |
+| Datei | Änderung |
+|-------|----------|
+| `src/components/Footer.tsx` | Zeilen 49-53: Beschreibungstext ersetzen und in 2 Absätze aufteilen |
 
 ---
 
-## Auswirkung
+## Ergebnis
 
-Da der Footer als zentrale Komponente in allen Seiten eingebunden ist (Index, About, Solutions, Playbooks, etc.), werden die Änderungen automatisch auf der gesamten Website wirksam.
-
+Der Footer zeigt nun den neuen, zielgruppenspezifischen Text der klar kommuniziert, für wen ScalingX arbeitet (VC/PE-backed Startups Series A-D) – mit dem prägnanten Slogan in einer separaten Zeile für mehr Wirkung.
