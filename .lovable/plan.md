@@ -1,62 +1,77 @@
 
 
-# Plan: Community aus der Navigation entfernen
+# Plan: Challenge-Mappings für 4 Kacheln korrigieren
 
 ## Übersicht
 
-Der "Community"-Link wird aus der Haupt- und Mobil-Navigation entfernt. Die Community-Seite bleibt bestehen und kann später wieder integriert werden.
+Korrektur der Challenge-Zuordnungen für 4 Solution Tiles gemäß Briefing.
 
 ---
 
-## Änderung
+## Änderungen
 
-### Datei: `src/components/Navigation.tsx`
+### Datei: `src/data/solutionTiles.ts`
 
-**Zeilen 19-20 entfernen:**
+#### 1. ID 8: VC Due Diligence Simulation (Zeile 357)
 
+| Element | Vorher | Nachher |
+|---------|--------|---------|
+| challenges | `['board-pressure']` | `['board-pressure', 'portfolio-performance']` |
+
+**Code:**
 ```tsx
-// ENTFERNEN:
-{ key: 'nav.community', href: '/community', label: 'Community', isRoute: true },
+challenges: ['board-pressure', 'portfolio-performance'],
 ```
 
-**Vorher (navItems Array):**
+#### 2. ID 38: lasr.io (Zeile 1384)
+
+| Element | Vorher | Nachher |
+|---------|--------|---------|
+| challenges | `['orientation', 'scaling-chaos']` | `'universal'` |
+
+**Code:**
 ```tsx
-const navItems = [
-  { key: 'nav.home', href: '/', label: 'Home', isRoute: true },
-  { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
-  { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
-  { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
-  { key: 'nav.community', href: '/community', label: 'Community', isRoute: true },  // ← ENTFERNEN
-  { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
-  { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
-];
+challenges: 'universal',
 ```
 
-**Nachher (navItems Array):**
+#### 3. ID 39: ROI Calculator (Zeile 1417)
+
+| Element | Vorher | Nachher |
+|---------|--------|---------|
+| challenges | `['orientation']` | `'universal'` |
+
+**Code:**
 ```tsx
-const navItems = [
-  { key: 'nav.home', href: '/', label: 'Home', isRoute: true },
-  { key: 'nav.solutions', href: '/solutions', label: 'Solutions', isRoute: true },
-  { key: 'nav.playbooks', href: '/playbooks', label: 'Playbooks', isRoute: true },
-  { key: 'nav.expertise', href: '/expertise', label: 'Expertise', isRoute: true },
-  { key: 'nav.cases', href: '/cases', label: 'Cases', isRoute: true },
-  { key: 'nav.about', href: '/about', label: 'About', isRoute: true },
-];
+challenges: 'universal',
+```
+
+#### 4. ID 41: KeyPitchs (Zeile 1483)
+
+| Element | Vorher | Nachher |
+|---------|--------|---------|
+| challenges | `['board-pressure', 'orientation']` | `['cac-crisis']` |
+
+**Code:**
+```tsx
+challenges: ['cac-crisis'],
 ```
 
 ---
 
-## Hinweis
+## Auswirkungen
 
-- Die Route `/community` in `App.tsx` bleibt erhalten
-- Die Seite `src/pages/Community.tsx` bleibt erhalten
-- Der Link kann später einfach wieder zum navItems-Array hinzugefügt werden
+- **VC Due Diligence Simulation** erscheint nun bei "Board Pressure" UND "Portfolio Performance"
+- **lasr.io** und **ROI Calculator** erscheinen bei ALLEN Challenge-Kategorien
+- **KeyPitchs** erscheint nur noch bei "CAC Crisis" (nicht mehr bei Board Pressure)
 
 ---
 
 ## Betroffene Datei
 
-| Datei | Änderung |
-|-------|----------|
-| `src/components/Navigation.tsx` | Community-Eintrag aus navItems entfernen (Zeile 19) |
+| Datei | Zeilen | Änderung |
+|-------|--------|----------|
+| `src/data/solutionTiles.ts` | 357 | VC DD Simulation → + portfolio-performance |
+| `src/data/solutionTiles.ts` | 1384 | lasr.io → universal |
+| `src/data/solutionTiles.ts` | 1417 | ROI Calculator → universal |
+| `src/data/solutionTiles.ts` | 1483 | KeyPitchs → cac-crisis |
 
