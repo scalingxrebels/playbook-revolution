@@ -1,77 +1,92 @@
 
+# Plan: Harmonisierung des Hero-zu-Sektion-Abstands
 
-# Plan: Challenge-Mappings für 4 Kacheln korrigieren
+## Analyse
 
-## Übersicht
+Der optimale Abstand bei **Solutions** ergibt sich aus:
+- `SharedHero` endet mit `pb-16`
+- Erste Sektion startet mit `py-6 md:py-8`
+- **Gesamtabstand: ~6-8 Einheiten (24-32px)**
 
-Korrektur der Challenge-Zuordnungen für 4 Solution Tiles gemäß Briefing.
+Bei den anderen Seiten fehlt dieser konsistente Abstand:
 
----
-
-## Änderungen
-
-### Datei: `src/data/solutionTiles.ts`
-
-#### 1. ID 8: VC Due Diligence Simulation (Zeile 357)
-
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| challenges | `['board-pressure']` | `['board-pressure', 'portfolio-performance']` |
-
-**Code:**
-```tsx
-challenges: ['board-pressure', 'portfolio-performance'],
-```
-
-#### 2. ID 38: lasr.io (Zeile 1384)
-
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| challenges | `['orientation', 'scaling-chaos']` | `'universal'` |
-
-**Code:**
-```tsx
-challenges: 'universal',
-```
-
-#### 3. ID 39: ROI Calculator (Zeile 1417)
-
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| challenges | `['orientation']` | `'universal'` |
-
-**Code:**
-```tsx
-challenges: 'universal',
-```
-
-#### 4. ID 41: KeyPitchs (Zeile 1483)
-
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| challenges | `['board-pressure', 'orientation']` | `['cac-crisis']` |
-
-**Code:**
-```tsx
-challenges: ['cac-crisis'],
-```
+| Seite | Aktueller Zustand | Problem |
+|-------|-------------------|---------|
+| Playbooks | Direkt `<div>` ohne Padding | Inkonsistenter Abstand |
+| Expertise | Direkt `<div>` ohne Padding | Inkonsistenter Abstand |
+| Cases | `<main className="pb-20">` | Kein `py-X` nach Hero |
+| About | `<main className="pb-20">` | Kein `py-X` nach Hero |
 
 ---
 
-## Auswirkungen
+## Technische Änderungen
 
-- **VC Due Diligence Simulation** erscheint nun bei "Board Pressure" UND "Portfolio Performance"
-- **lasr.io** und **ROI Calculator** erscheinen bei ALLEN Challenge-Kategorien
-- **KeyPitchs** erscheint nur noch bei "CAC Crisis" (nicht mehr bei Board Pressure)
+### 1. Playbooks-Seite: `src/components/PlaybookLibrary.tsx`
+
+**Zeile 666** - Container nach SharedHero erhält top-padding:
+
+```tsx
+// VORHER:
+<div className="max-w-7xl mx-auto px-6 relative z-10">
+
+// NACHHER:
+<div className="max-w-7xl mx-auto px-6 relative z-10 pt-6 md:pt-8">
+```
+
+### 2. Expertise-Seite: `src/components/ResearchHub.tsx`
+
+**Zeile 200** - Container nach SharedHero erhält top-padding:
+
+```tsx
+// VORHER:
+<div className="container max-w-7xl mx-auto px-4">
+
+// NACHHER:
+<div className="container max-w-7xl mx-auto px-4 pt-6 md:pt-8">
+```
+
+### 3. Cases-Seite: `src/pages/Cases.tsx`
+
+**Zeile 146** - Main-Element erhält top-padding:
+
+```tsx
+// VORHER:
+<main className="pb-20">
+
+// NACHHER:
+<main className="py-6 md:py-8 pb-20">
+```
+
+Alternativ (sauberer):
+```tsx
+<main className="pt-6 md:pt-8 pb-20">
+```
+
+### 4. About-Seite: `src/pages/About.tsx`
+
+**Zeile 108** - Main-Element erhält top-padding:
+
+```tsx
+// VORHER:
+<main className="pb-20">
+
+// NACHHER:
+<main className="pt-6 md:pt-8 pb-20">
+```
 
 ---
 
-## Betroffene Datei
+## Betroffene Dateien
 
-| Datei | Zeilen | Änderung |
-|-------|--------|----------|
-| `src/data/solutionTiles.ts` | 357 | VC DD Simulation → + portfolio-performance |
-| `src/data/solutionTiles.ts` | 1384 | lasr.io → universal |
-| `src/data/solutionTiles.ts` | 1417 | ROI Calculator → universal |
-| `src/data/solutionTiles.ts` | 1483 | KeyPitchs → cac-crisis |
+| Datei | Zeile | Änderung |
+|-------|-------|----------|
+| `src/components/PlaybookLibrary.tsx` | 666 | `pt-6 md:pt-8` zu Container hinzufügen |
+| `src/components/ResearchHub.tsx` | 200 | `pt-6 md:pt-8` zu Container hinzufügen |
+| `src/pages/Cases.tsx` | 146 | `pt-6 md:pt-8` zu main hinzufügen |
+| `src/pages/About.tsx` | 108 | `pt-6 md:pt-8` zu main hinzufügen |
 
+---
+
+## Ergebnis
+
+Nach der Implementierung haben alle Seiten einen konsistenten Abstand von `py-6 md:py-8` (24px / 32px auf md+) zwischen Hero und erster Sektion - identisch mit der Solutions-Seite.
