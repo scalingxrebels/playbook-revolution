@@ -1,30 +1,24 @@
 
-# Plan: Footer-Beschreibungstext aktualisieren
+# Plan: Schriftgröße der Beschreibungstexte verkleinern
 
 ## Übersicht
 
-Der Beschreibungstext unter dem Logo im Footer wird mit dem neuen, zweizeiligen Text aktualisiert.
+Die beiden Beschreibungstexte im Footer-Header werden von `text-editorial` auf `text-sm` geändert, um eine kleinere, passendere Schriftgröße zu erhalten.
 
 ---
 
 ## Aktuelle Situation
 
-**Zeilen 49-53** enthalten den aktuellen Text:
+**Zeilen 49 und 54** verwenden `text-editorial`:
 
-| Sprache | Aktueller Text |
-|---------|----------------|
-| Deutsch | "Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben." |
-| Englisch | "We deliver systems and create impact. Growth shouldn't be a struggle, it should have a system." |
-
----
-
-## Neuer Text
-
-**Zeile 1:**
-> "VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes."
-
-**Zeile 2:**
-> "Growth shouldn't be a struggle. It should be a system."
+```tsx
+<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+  ...VC/PE-backed startups...
+</p>
+<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
+  ...Growth shouldn't be a struggle...
+</p>
+```
 
 ---
 
@@ -32,40 +26,35 @@ Der Beschreibungstext unter dem Logo im Footer wird mit dem neuen, zweizeiligen 
 
 ### Datei: `src/components/Footer.tsx`
 
-**Zeilen 49-53** werden angepasst:
+| Zeile | Änderung |
+|-------|----------|
+| 49 | `text-editorial` → `text-sm` (und `editorial-border` entfernen) |
+| 54 | `text-editorial` → `text-sm` |
 
-Der Text wird in zwei separate `<p>` Elemente aufgeteilt für bessere Lesbarkeit:
+### Vorher/Nachher:
 
+**Zeile 49 (vorher):**
 ```tsx
 <p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
-  {language === 'de' 
-    ? 'VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern.'
-    : 'VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes.'}
-</p>
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-  {language === 'de' 
-    ? 'Wachstum sollte kein Kampf sein. Es sollte ein System sein.'
-    : "Growth shouldn't be a struggle. It should be a system."}
-</p>
 ```
 
-### Texte (DE/EN):
+**Zeile 49 (nachher):**
+```tsx
+<p className="text-sm text-muted-foreground max-w-md mb-2">
+```
 
-| Zeile | Englisch | Deutsch |
-|-------|----------|---------|
-| 1 | "VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes." | "VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern." |
-| 2 | "Growth shouldn't be a struggle. It should be a system." | "Wachstum sollte kein Kampf sein. Es sollte ein System sein." |
+**Zeile 54 (vorher):**
+```tsx
+<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
+```
 
----
-
-## Betroffene Datei
-
-| Datei | Änderung |
-|-------|----------|
-| `src/components/Footer.tsx` | Zeilen 49-53: Beschreibungstext ersetzen und in 2 Absätze aufteilen |
+**Zeile 54 (nachher):**
+```tsx
+<p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
+```
 
 ---
 
 ## Ergebnis
 
-Der Footer zeigt nun den neuen, zielgruppenspezifischen Text der klar kommuniziert, für wen ScalingX arbeitet (VC/PE-backed Startups Series A-D) – mit dem prägnanten Slogan in einer separaten Zeile für mehr Wirkung.
+Die Beschreibungstexte werden in einer kleineren Schriftgröße (`text-sm` = 14px) dargestellt, was besser zur kompakten Struktur des Footers passt.
