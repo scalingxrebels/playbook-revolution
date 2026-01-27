@@ -1,41 +1,76 @@
 
 
-# Plan: CTAs aus SolutionHero entfernen
+# Plan: Responsive Zwei-Zeilen-Navigation für Challenges
 
-## Ziel
-Die Solutions-Seite an die Playbooks-Seite angleichen, indem die beiden CTA-Buttons ("Solutions erkunden" / "Kostenloses Gespräch") unter der Hero-Subheadline entfernt werden.
+## Problem
+Die 10 Challenge-Tabs passen auf Desktop nicht in eine Zeile (ca. 1100px benötigt), aber `md:flex-nowrap` erzwingt eine einzeilige Darstellung mit horizontalem Scrollen.
 
-## Aenderung
+## Lösung
+Einfach `flex-wrap` auf allen Bildschirmgrößen erlauben. Die Tabs verteilen sich automatisch auf 2 Zeilen, wenn nötig.
 
-### Datei: `src/components/solutions/SolutionHero.tsx`
+## Änderung
 
-**Zu entfernen:**
-- Zeilen 33-51: Der komplette `<div>` Block mit den zwei Buttons
-- Zeilen 4: Der Import `Button` (wird nicht mehr benoetigt)
-- Zeilen 4: Die Imports `ArrowRight, Phone` (werden nicht mehr benoetigt)
-- Zeilen 10-12: Die Funktion `scrollToChallenges` (wird nicht mehr benoetigt)
+### Datei: `src/components/solutions/ChallengeTabNavigation.tsx`
 
-**Vorher:**
+**Zeile 122 ändern:**
+
 ```tsx
-<SharedHero ...props stats={stats}>
-  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-    <Button ...>Solutions erkunden</Button>
-    <Button ...>Kostenloses Gespraech</Button>
-  </div>
-</SharedHero>
+// VORHER:
+<div className="flex items-center gap-2 min-w-max px-6 md:px-0 md:justify-center py-1 flex-wrap md:flex-nowrap">
+
+// NACHHER:
+<div className="flex items-center gap-2 px-6 md:px-0 justify-center py-1 flex-wrap">
 ```
 
-**Nachher:**
+**Zusätzlich entfernen:**
+- `min-w-max` (verhindert Umbruch)
+- `md:flex-nowrap` (erzwingt einzeilige Darstellung)
+- Scroll-Buttons und Fade-Indikatoren (werden nicht mehr benötigt auf Desktop)
+
+**Aufräumen (optional aber empfohlen):**
+- Scroll-Logik (`showLeftFade`, `showRightFade`, `scroll()`) kann vereinfacht werden
+- Fade-Indikatoren nur noch für Mobile behalten
+
+## Vereinfachte Version
+
 ```tsx
-<SharedHero ...props stats={stats} />
+// Container - zentriert, wrap erlaubt
+<div className="flex items-center gap-2 justify-center flex-wrap py-2">
+  {challenges.map(...)}
+</div>
 ```
 
-## Ergebnis
+## Visuelles Ergebnis
 
-| Seite | Vorher | Nachher |
-|-------|--------|---------|
-| /solutions | 2 CTAs unter Hero-Subheadline | Keine CTAs - direkt Stats |
-| /playbooks | Keine CTAs | Keine CTAs (unveraendert) |
+**Desktop (1920px):**
+```
+┌─────────────────────────────────────────────────────────────┐
+│  [All] [CAC Crisis] [Growth Stalled] [Pricing] [CS Broken] │
+│        [Scaling Chaos] [AI Transform] [Board] [Portfolio]  │
+│                        [Orientation]                        │
+└─────────────────────────────────────────────────────────────┘
+```
 
-Die Hero-Sections beider Seiten sind dann visuell konsistent.
+Oder bei breiterem Container (2 Zeilen):
+```
+┌─────────────────────────────────────────────────────────────┐
+│  [All] [CAC Crisis] [Growth Stalled] [Pricing] [CS Broken] │
+│  [Scaling Chaos] [AI Transform] [Board] [Portfolio] [Orient]│
+└─────────────────────────────────────────────────────────────┘
+```
+
+**Mobile:** Bleibt horizontal scrollbar (wie bisher)
+
+## Betroffene Dateien
+
+| Datei | Änderung |
+|-------|----------|
+| `src/components/solutions/ChallengeTabNavigation.tsx` | `flex-wrap` auf Desktop, `min-w-max` entfernen |
+
+## Vorteile
+
+- **Minimal-invasiv**: Eine Zeile Code ändern
+- **Automatisch responsive**: Browser entscheidet, wann umgebrochen wird
+- **Sofort sichtbar**: Alle Challenges above the fold
+- **Kein JavaScript**: Rein CSS-basierte Lösung
 
