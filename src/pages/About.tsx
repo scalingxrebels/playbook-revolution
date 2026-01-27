@@ -79,7 +79,8 @@ const teamMembers: TeamMember[] = [
     },
     expertise: ['B2B Sales', 'AI Agents', 'Automation', 'Performance Analytics'],
     image: '/images/team-alban.png',
-    linkedin: 'https://www.linkedin.com/in/alban-halili/'
+    linkedin: 'https://www.linkedin.com/in/alban-halili/',
+    profileLink: '/ah'
   },
   {
     name: 'Florian Metzger',
@@ -499,7 +500,15 @@ const About: React.FC = () => {
                 </p>
                 <div className="flex items-center justify-between">
                   <Badge variant="muted">Portfolio Company</Badge>
-                  <span className="text-sm text-muted-foreground">Coming Soon</span>
+                  <a 
+                    href="https://www.pigtie.de/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm text-primary hover:underline"
+                  >
+                    Visit Pigtie
+                    <ExternalLink className="w-3 h-3 ml-1" />
+                  </a>
                 </div>
               </Card>
             </div>

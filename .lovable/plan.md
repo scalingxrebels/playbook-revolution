@@ -1,60 +1,84 @@
 
-# Plan: Schriftgröße der Beschreibungstexte verkleinern
+# Plan: About-Seite Links aktualisieren
 
 ## Übersicht
 
-Die beiden Beschreibungstexte im Footer-Header werden von `text-editorial` auf `text-sm` geändert, um eine kleinere, passendere Schriftgröße zu erhalten.
+Zwei Änderungen an der About-Seite:
+1. "Learn more" Button für Alban Halili aktivieren → verlinkt zu `/ah`
+2. Pigtie Link in "What we build" Sektion hinzufügen → `https://www.pigtie.de/`
 
 ---
 
-## Aktuelle Situation
+## Änderung 1: Alban Halili Profile Link
 
-**Zeilen 49 und 54** verwenden `text-editorial`:
-
+### Aktuelle Situation (Zeile 69-83)
 ```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
-  ...VC/PE-backed startups...
-</p>
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-  ...Growth shouldn't be a struggle...
-</p>
+{
+  name: 'Alban Halili',
+  role: { de: 'Partner', en: 'Partner' },
+  // ... weitere Properties
+  linkedin: 'https://www.linkedin.com/in/alban-halili/'
+  // profileLink fehlt → Button zeigt "Coming soon"
+}
 ```
+
+### Neue Situation
+```tsx
+{
+  name: 'Alban Halili',
+  role: { de: 'Partner', en: 'Partner' },
+  // ... weitere Properties
+  linkedin: 'https://www.linkedin.com/in/alban-halili/',
+  profileLink: '/ah'  // NEU
+}
+```
+
+**Ergebnis:** Der "Bald verfügbar" / "Coming soon" Button wird zu einem aktiven "Mehr erfahren" / "Learn more" Link zu `/ah`.
 
 ---
 
-## Technische Umsetzung
+## Änderung 2: Pigtie Link hinzufügen
 
-### Datei: `src/components/Footer.tsx`
-
-| Zeile | Änderung |
-|-------|----------|
-| 49 | `text-editorial` → `text-sm` (und `editorial-border` entfernen) |
-| 54 | `text-editorial` → `text-sm` |
-
-### Vorher/Nachher:
-
-**Zeile 49 (vorher):**
+### Aktuelle Situation (Zeilen 500-503)
 ```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+<div className="flex items-center justify-between">
+  <Badge variant="muted">Portfolio Company</Badge>
+  <span className="text-sm text-muted-foreground">Coming Soon</span>
+</div>
 ```
 
-**Zeile 49 (nachher):**
+### Neue Situation
 ```tsx
-<p className="text-sm text-muted-foreground max-w-md mb-2">
+<div className="flex items-center justify-between">
+  <Badge variant="muted">Portfolio Company</Badge>
+  <a 
+    href="https://www.pigtie.de/" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-flex items-center text-sm text-primary hover:underline"
+  >
+    Visit Pigtie
+    <ExternalLink className="w-3 h-3 ml-1" />
+  </a>
+</div>
 ```
 
-**Zeile 54 (vorher):**
-```tsx
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-```
+**Ergebnis:** Der "Coming Soon" Text wird durch einen klickbaren Link zu `https://www.pigtie.de/` ersetzt (analog zum lasr.io Link).
 
-**Zeile 54 (nachher):**
-```tsx
-<p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
-```
+---
+
+## Betroffene Datei
+
+| Datei | Änderungen |
+|-------|------------|
+| `src/pages/About.tsx` | Zeile 82: `profileLink: '/ah'` hinzufügen |
+| `src/pages/About.tsx` | Zeilen 500-503: "Coming Soon" → Link zu pigtie.de |
 
 ---
 
 ## Ergebnis
 
-Die Beschreibungstexte werden in einer kleineren Schriftgröße (`text-sm` = 14px) dargestellt, was besser zur kompakten Struktur des Footers passt.
+| Element | Vorher | Nachher |
+|---------|--------|---------|
+| Alban "Learn more" Button | Grau, disabled, "Coming soon" | Aktiv, verlinkt zu `/ah` |
+| Pigtie in "What we build" | "Coming Soon" Text | Klickbarer Link zu `https://www.pigtie.de/` |
