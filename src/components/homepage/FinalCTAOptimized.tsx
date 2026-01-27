@@ -52,6 +52,14 @@ const FinalCTAOptimized: React.FC = () => {
     { value: '92%', labelDe: 'Success Rate', labelEn: 'Success Rate' },
   ];
 
+  const clients = [
+    'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
+    '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
+    'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
+    'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
+    'START', 'Elba', 'Semigator', 'Umantis', 'Sage'
+  ];
+
   return (
     <section 
       id="booking-form" 
@@ -136,6 +144,23 @@ const FinalCTAOptimized: React.FC = () => {
                       {language === 'de' ? stat.labelDe : stat.labelEn}
                     </div>
                   </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Clients Section */}
+            <div className="mt-6 p-6 rounded-xl bg-muted/30 border-2 border-border">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 text-center">
+                {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who We\'ve Worked With'}
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {clients.map((client, index) => (
+                  <span 
+                    key={index}
+                    className="text-xs text-muted-foreground px-2 py-1 rounded-full bg-background/50 border border-border"
+                  >
+                    {client}
+                  </span>
                 ))}
               </div>
             </div>
