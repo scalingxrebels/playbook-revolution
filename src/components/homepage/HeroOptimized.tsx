@@ -76,8 +76,8 @@ const HeroOptimized: React.FC = () => {
         {/* Subheadline - Quantified */}
         <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de' 
-            ? '3-5x schneller wachsen. 2-4x bessere Profitabilität. Mit Systemen, die skalieren – nicht brechen.'
-            : '3-5x faster growth. 2-4x better profitability. With systems that scale – not break.'
+            ? <>3-5x schneller wachsen. 2-4x bessere Unit Economics.<br />Mit Systemen, die skalieren und nicht brechen.</>
+            : <>3-5x faster growth. 2-4x better profitability.<br />With systems that scale and don't break.</>
           }
         </p>
 
