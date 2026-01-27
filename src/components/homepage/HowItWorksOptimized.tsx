@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, Cpu, Users, Zap } from 'lucide-react';
+import { Brain, Cpu, Users, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const areas = [
@@ -54,10 +53,6 @@ const areas = [
 const HowItWorksOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-
-  const scrollToCalculator = () => {
-    document.getElementById('roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section 
@@ -133,17 +128,6 @@ const HowItWorksOptimized: React.FC = () => {
           })}
         </div>
 
-        {/* CTA */}
-        <div className="text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          <Button 
-            size="lg"
-            onClick={scrollToCalculator}
-            className="bg-foreground text-background hover:bg-foreground/90 font-semibold px-8 py-6 shadow-brutal hover-brutal"
-          >
-            {language === 'de' ? 'Finde deine Schwachstelle (kostenlos)' : 'Find Your Weakness (free)'}
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
       </div>
     </section>
   );
