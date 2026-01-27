@@ -240,7 +240,7 @@ const About: React.FC = () => {
                       alt={member.name}
                       className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
                         member.name === 'Florian Metzger' 
-                          ? 'scale-150 translate-y-[15%]' 
+                          ? 'scale-[1.3] translate-y-[20%]' 
                           : member.name === 'Alban Halili' 
                             ? 'object-top' 
                             : ''
