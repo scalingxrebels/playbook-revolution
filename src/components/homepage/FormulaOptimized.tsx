@@ -135,11 +135,12 @@ const FormulaOptimized: React.FC = () => {
         {/* CTA */}
         <div className="text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button 
+            variant="outline"
             size="lg"
             onClick={scrollToCalculator}
-            className="bg-foreground text-background hover:bg-foreground/90 font-semibold px-8 py-6 shadow-brutal hover-brutal"
+            className="border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6"
           >
-            {language === 'de' ? 'Finde deine Schwachstelle (kostenlos)' : 'Find Your Weakness (free)'}
+            {language === 'de' ? 'Deine Roadmap zu Hypergrowth' : 'Your Roadmap to Hypergrowth'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
