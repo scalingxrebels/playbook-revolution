@@ -197,7 +197,7 @@ const About: React.FC = () => {
         stats={[
           { value: '80+', label: { en: 'Companies Scaled', de: 'Unternehmen skaliert' } },
           { value: '140+', label: { en: 'Engagements', de: 'Mandate' } },
-          { value: '€2.5B+', label: { en: 'Valuation Managed', de: 'Bewertung verwaltet' }, color: 'accent' },
+          { value: '€2.5B+', label: { en: 'Valuation', de: 'Bewertung' }, color: 'accent' },
           { value: '90 Days', label: { en: 'Time to Results', de: 'Bis zu Ergebnissen' } }
         ]}
       />
