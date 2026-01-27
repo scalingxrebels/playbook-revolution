@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ExternalLink, CheckCircle } from 'lucide-react';
+import { ArrowRight, ExternalLink, CheckCircle, Palette, Code, Search } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallax } from '@/hooks/useParallax';
 
@@ -9,7 +9,7 @@ const caseStudies = [
   {
     name: 'Midjourney',
     industry: { en: 'AI Image Generation', de: 'AI Bildgenerierung' },
-    logo: '🎨',
+    Icon: Palette,
     before: { 
       label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
       value: { en: '200 employees for €200M ARR', de: '200 Mitarbeiter für €200M ARR' }
@@ -25,7 +25,7 @@ const caseStudies = [
   {
     name: 'Cursor',
     industry: { en: 'AI Code Editor', de: 'AI Code Editor' },
-    logo: '💻',
+    Icon: Code,
     before: { 
       label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
       value: { en: '100 employees for €100M ARR', de: '100 Mitarbeiter für €100M ARR' }
@@ -41,7 +41,7 @@ const caseStudies = [
   {
     name: 'Perplexity',
     industry: { en: 'AI Search', de: 'AI Suche' },
-    logo: '🔍',
+    Icon: Search,
     before: { 
       label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
       value: { en: '100 employees for €50M ARR', de: '100 Mitarbeiter für €50M ARR' }
@@ -130,7 +130,7 @@ const ProofOptimized: React.FC = () => {
 
               {/* Logo & Name */}
               <div className="flex items-center gap-4 mb-6">
-                <span className="text-4xl">{study.logo}</span>
+                <study.Icon className="w-10 h-10 text-primary" />
                 <div>
                   <h3 className="font-sans text-xl font-bold text-foreground">{study.name}</h3>
                   <p className="text-sm text-muted-foreground">
