@@ -496,13 +496,13 @@ const About: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">Pigtie</h3>
-                    <p className="text-sm text-muted-foreground">AI-Powered Sales Intelligence</p>
+                    <p className="text-sm text-muted-foreground">The Agentic OS for Personal Finance.</p>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
                   {lang === 'de' 
-                    ? 'Hilft B2B Sales Teams, High-Intent Buyer zu identifizieren und Deal Velocity mit KI-gestützten Insights zu beschleunigen.'
-                    : 'Helping B2B sales teams identify high-intent buyers and accelerate deal velocity with AI-powered insights.'
+                    ? 'Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen.'
+                    : 'Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers.'
                   }
                 </p>
                 <div className="flex items-center justify-between">
