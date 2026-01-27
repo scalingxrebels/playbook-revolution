@@ -105,7 +105,7 @@ const About: React.FC = () => {
         subheadlineDe="Ein Team von Operators, Investoren und AI-Experten mit einer Mission: Europäische Scale-ups auf superlineares Wachstum vorbereiten."
       />
       
-      <main className="pb-20">
+      <main className="pt-6 md:pt-8 pb-20">
         <div className="container max-w-7xl mx-auto px-4">
 
           {/* Mission Statement */}

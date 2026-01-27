@@ -197,7 +197,7 @@ const ResearchHub: React.FC = () => {
         stats={researchStats}
       />
 
-      <div className="container max-w-7xl mx-auto px-4">
+      <div className="container max-w-7xl mx-auto px-4 pt-6 md:pt-8">
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {researchPapers.map(paper => (
             <Card 
