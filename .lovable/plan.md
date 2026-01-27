@@ -1,60 +1,91 @@
 
-# Plan: Schriftgröße der Beschreibungstexte verkleinern
+# Plan: Emoji-Symbole durch Lucide-Icons ersetzen
 
 ## Übersicht
 
-Die beiden Beschreibungstexte im Footer-Header werden von `text-editorial` auf `text-sm` geändert, um eine kleinere, passendere Schriftgröße zu erhalten.
+Die drei Case Study-Karten in der "Proof"-Sektion verwenden aktuell Emoji-Symbole. Diese werden durch passende Lucide-Icons ersetzt für ein konsistenteres, professionelleres Design.
 
 ---
 
 ## Aktuelle Situation
 
-**Zeilen 49 und 54** verwenden `text-editorial`:
+| Unternehmen | Aktuelles Symbol | Beschreibung |
+|-------------|------------------|--------------|
+| Midjourney | 🎨 | Emoji Palette |
+| Cursor | 💻 | Emoji Laptop |
+| Perplexity | 🔍 | Emoji Lupe |
 
-```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
-  ...VC/PE-backed startups...
-</p>
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-  ...Growth shouldn't be a struggle...
-</p>
-```
+---
+
+## Neue Lucide-Icons
+
+| Unternehmen | Lucide-Icon | Begründung |
+|-------------|-------------|------------|
+| Midjourney | `Palette` | AI Bildgenerierung → Künstlerische Palette |
+| Cursor | `Code` | AI Code Editor → Code-Symbol |
+| Perplexity | `Search` | AI Suche → Such-Symbol |
 
 ---
 
 ## Technische Umsetzung
 
-### Datei: `src/components/Footer.tsx`
+### Datei: `src/components/homepage/ProofOptimized.tsx`
 
-| Zeile | Änderung |
-|-------|----------|
-| 49 | `text-editorial` → `text-sm` (und `editorial-border` entfernen) |
-| 54 | `text-editorial` → `text-sm` |
+**1. Import erweitern (Zeile 4):**
 
-### Vorher/Nachher:
-
-**Zeile 49 (vorher):**
 ```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+import { ArrowRight, ExternalLink, CheckCircle, Palette, Code, Search } from 'lucide-react';
 ```
 
-**Zeile 49 (nachher):**
+**2. Datenstruktur anpassen (Zeilen 8-57):**
+
+Das `logo`-Feld wird von einem String-Emoji zu einer React-Komponente geändert:
+
 ```tsx
-<p className="text-sm text-muted-foreground max-w-md mb-2">
+const caseStudies = [
+  {
+    name: 'Midjourney',
+    industry: { en: 'AI Image Generation', de: 'AI Bildgenerierung' },
+    Icon: Palette,
+    // ... rest bleibt gleich
+  },
+  {
+    name: 'Cursor',
+    industry: { en: 'AI Code Editor', de: 'AI Code Editor' },
+    Icon: Code,
+    // ... rest bleibt gleich
+  },
+  {
+    name: 'Perplexity',
+    industry: { en: 'AI Search', de: 'AI Suche' },
+    Icon: Search,
+    // ... rest bleibt gleich
+  },
+];
 ```
 
-**Zeile 54 (vorher):**
+**3. Rendering anpassen (Zeile 133):**
+
+Von:
 ```tsx
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
+<span className="text-4xl">{study.logo}</span>
 ```
 
-**Zeile 54 (nachher):**
+Zu:
 ```tsx
-<p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
+<study.Icon className="w-10 h-10 text-primary" />
 ```
+
+---
+
+## Betroffene Datei
+
+| Datei | Änderungen |
+|-------|------------|
+| `src/components/homepage/ProofOptimized.tsx` | Import erweitern, `logo` → `Icon` in Daten, Rendering aktualisieren |
 
 ---
 
 ## Ergebnis
 
-Die Beschreibungstexte werden in einer kleineren Schriftgröße (`text-sm` = 14px) dargestellt, was besser zur kompakten Struktur des Footers passt.
+Die Case Study-Karten zeigen nun einheitliche Lucide-Icons statt Emojis, was ein professionelleres und konsistenteres Erscheinungsbild mit dem Rest der Website gewährleistet.
