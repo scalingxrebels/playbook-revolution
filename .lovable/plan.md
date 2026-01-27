@@ -1,84 +1,65 @@
 
-# Plan: About-Seite Links aktualisieren
 
-## Übersicht
+# Plan: Team-Fotos Korrekturen
 
-Zwei Änderungen an der About-Seite:
-1. "Learn more" Button für Alban Halili aktivieren → verlinkt zu `/ah`
-2. Pigtie Link in "What we build" Sektion hinzufügen → `https://www.pigtie.de/`
+## Problem
 
----
-
-## Änderung 1: Alban Halili Profile Link
-
-### Aktuelle Situation (Zeile 69-83)
-```tsx
-{
-  name: 'Alban Halili',
-  role: { de: 'Partner', en: 'Partner' },
-  // ... weitere Properties
-  linkedin: 'https://www.linkedin.com/in/alban-halili/'
-  // profileLink fehlt → Button zeigt "Coming soon"
-}
-```
-
-### Neue Situation
-```tsx
-{
-  name: 'Alban Halili',
-  role: { de: 'Partner', en: 'Partner' },
-  // ... weitere Properties
-  linkedin: 'https://www.linkedin.com/in/alban-halili/',
-  profileLink: '/ah'  // NEU
-}
-```
-
-**Ergebnis:** Der "Bald verfügbar" / "Coming soon" Button wird zu einem aktiven "Mehr erfahren" / "Learn more" Link zu `/ah`.
+Die vorherige Änderung hat nicht das gewünschte Ergebnis erzielt:
+- **Alban Halili**: `object-bottom` hat das Bild nach oben geschoben statt nach unten
+- **Florian Metzger**: Fehlt die Verschiebung nach unten (nur Zoom war angewendet)
 
 ---
 
-## Änderung 2: Pigtie Link hinzufügen
+## Korrigierte Umsetzung
 
-### Aktuelle Situation (Zeilen 500-503)
+### Änderung in `src/pages/About.tsx` (Zeilen 241-247)
+
+**Aktuell (falsch):**
 ```tsx
-<div className="flex items-center justify-between">
-  <Badge variant="muted">Portfolio Company</Badge>
-  <span className="text-sm text-muted-foreground">Coming Soon</span>
-</div>
+className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+  member.name === 'Florian Metzger' 
+    ? 'scale-125' 
+    : member.name === 'Alban Halili' 
+      ? 'object-bottom' 
+      : ''
+}`}
 ```
 
-### Neue Situation
+**Korrigiert:**
 ```tsx
-<div className="flex items-center justify-between">
-  <Badge variant="muted">Portfolio Company</Badge>
-  <a 
-    href="https://www.pigtie.de/" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    className="inline-flex items-center text-sm text-primary hover:underline"
-  >
-    Visit Pigtie
-    <ExternalLink className="w-3 h-3 ml-1" />
-  </a>
-</div>
+className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+  member.name === 'Florian Metzger' 
+    ? 'scale-125 translate-y-[15%]' 
+    : member.name === 'Alban Halili' 
+      ? 'object-top' 
+      : ''
+}`}
 ```
 
-**Ergebnis:** Der "Coming Soon" Text wird durch einen klickbaren Link zu `https://www.pigtie.de/` ersetzt (analog zum lasr.io Link).
+---
+
+## Erklärung der Korrekturen
+
+| Team-Mitglied | Vorher | Nachher | Effekt |
+|---------------|--------|---------|--------|
+| Michel Lason | (keine) | (keine) | Bleibt unverändert |
+| Florian Metzger | `scale-125` | `scale-125 translate-y-[15%]` | Zoom + Bild 15% nach unten verschieben |
+| Alban Halili | `object-bottom` | `object-top` | Bild fokussiert auf den oberen Bereich → Kopf wird nach unten in den sichtbaren Bereich geschoben |
 
 ---
 
 ## Betroffene Datei
 
-| Datei | Änderungen |
-|-------|------------|
-| `src/pages/About.tsx` | Zeile 82: `profileLink: '/ah'` hinzufügen |
-| `src/pages/About.tsx` | Zeilen 500-503: "Coming Soon" → Link zu pigtie.de |
+| Datei | Änderung |
+|-------|----------|
+| `src/pages/About.tsx` | Zeilen 241-247: Korrigierte CSS-Klassen |
 
 ---
 
 ## Ergebnis
 
-| Element | Vorher | Nachher |
-|---------|--------|---------|
-| Alban "Learn more" Button | Grau, disabled, "Coming soon" | Aktiv, verlinkt zu `/ah` |
-| Pigtie in "What we build" | "Coming Soon" Text | Klickbarer Link zu `https://www.pigtie.de/` |
+Nach der Korrektur:
+- Michel Lason: Unverändert
+- Florian Metzger: Gezoomt (125%) + 15% nach unten verschoben
+- Alban Halili: Fokus auf oberen Bildbereich (Kopf rutscht nach unten in den sichtbaren Bereich)
+

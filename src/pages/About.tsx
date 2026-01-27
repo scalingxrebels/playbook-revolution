@@ -96,7 +96,8 @@ const teamMembers: TeamMember[] = [
     },
     expertise: ['RevOps', 'GTM Engineering', 'Marketing Automation'],
     image: '/images/team-florian.png',
-    linkedin: 'https://www.linkedin.com/in/florianmetzger/'
+    linkedin: 'https://www.linkedin.com/in/florianmetzger/',
+    profileLink: '/fm'
   }
 ];
 
@@ -237,7 +238,13 @@ const About: React.FC = () => {
                     <img 
                       src={member.image} 
                       alt={member.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                        member.name === 'Florian Metzger' 
+                          ? 'scale-125 translate-y-[15%]' 
+                          : member.name === 'Alban Halili' 
+                            ? 'object-top' 
+                            : ''
+                      }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4 gap-3">
                       {member.linkedin && (
