@@ -1,75 +1,60 @@
 
 
-# Plan: Neues Florian-Foto ersetzen und anpassen
+# Plan: Florians Foto anpassen - Größerer Kopf + nach unten verschieben
 
-## Zusammenfassung
+## Problem
 
-Das Bild von Michel und Alban ist perfekt. Jetzt wird das neue Foto von Florian hinzugefügt und mit Zoom + Object-Top-Ausrichtung angepasst.
-
----
-
-## Schritt 1: Neues Bild kopieren
-
-Das hochgeladene Bild wird in den public-Ordner kopiert und ersetzt das bestehende Florian-Foto:
-
-| Quelle | Ziel |
-|--------|------|
-| `user-uploads://Bild_Flo.jpg` | `public/images/team-florian.png` |
+Im Screenshot ist sichtbar:
+- **Michel Lason**: Kopf groß und gut positioniert ✓
+- **Alban Halili**: Kopf groß und gut positioniert ✓
+- **Florian Metzger**: Kopf zu klein, Bild zu weit oben ✗
 
 ---
 
-## Schritt 2: CSS-Klassen anpassen
+## Lösung
 
-### Änderung in `src/pages/About.tsx` (Zeilen 241-247)
+Die CSS-Klassen für Florian anpassen:
+
+| Eigenschaft | Aktuell | Neu | Effekt |
+|-------------|---------|-----|--------|
+| Zoom | `scale-125` | `scale-150` | Stärkerer Zoom (150%) für größeren Kopf |
+| Positionierung | `object-top` | `translate-y-[15%]` | Bild nach unten verschieben |
+
+---
+
+## Änderung in `src/pages/About.tsx` (Zeile 243)
 
 **Aktuell:**
 ```tsx
-className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-  member.name === 'Florian Metzger' 
-    ? 'scale-125 translate-y-[15%]' 
-    : member.name === 'Alban Halili' 
-      ? 'object-top' 
-      : ''
-}`}
+member.name === 'Florian Metzger' 
+  ? 'scale-125 object-top'
 ```
 
 **Neu:**
 ```tsx
-className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-  member.name === 'Florian Metzger' 
-    ? 'scale-125 object-top' 
-    : member.name === 'Alban Halili' 
-      ? 'object-top' 
-      : ''
-}`}
+member.name === 'Florian Metzger' 
+  ? 'scale-150 translate-y-[15%]'
 ```
 
 ---
 
-## Erklärung der Änderungen
+## Technische Erklärung
 
-| Aktion | Beschreibung |
-|--------|--------------|
-| Neues Bild | Das hochgeladene professionelle Foto ersetzt das alte |
-| `scale-125` | Bild auf 125% gezoomt (reinzoomen) |
-| `object-top` | Bild am oberen Rand ausgerichtet (Kopf im Fokus) |
-| `translate-y-[15%]` entfernt | Nicht mehr nötig mit dem neuen Bild |
+- `scale-150`: Zoomt das Bild auf 150% (statt 125%), wodurch der Kopf größer erscheint
+- `translate-y-[15%]`: Verschiebt das gezoomte Bild um 15% nach unten, sodass der Kopf in den sichtbaren Bereich rückt
+- `object-top` wird entfernt, da `translate-y` eine präzisere Kontrolle bietet
 
 ---
 
-## Betroffene Dateien
+## Betroffene Datei
 
-| Datei | Änderung |
-|-------|----------|
-| `public/images/team-florian.png` | Neues Bild ersetzen |
-| `src/pages/About.tsx` | Zeile 243: `scale-125 object-top` statt `scale-125 translate-y-[15%]` |
+| Datei | Zeile | Änderung |
+|-------|-------|----------|
+| `src/pages/About.tsx` | 243 | `scale-150 translate-y-[15%]` statt `scale-125 object-top` |
 
 ---
 
 ## Ergebnis
 
-Nach der Änderung:
-- Michel Lason: Unverändert (perfekt)
-- Alban Halili: Unverändert (perfekt)
-- Florian Metzger: Neues Foto mit Zoom (125%) und Top-Ausrichtung
+Nach der Änderung sollten alle drei Team-Mitglieder harmonische Kopfgrößen und Positionierungen haben.
 
