@@ -1,7 +1,7 @@
 // Solution Tiles Data - Complete briefing-compliant version
 // Last updated: 2026-01-22 (Briefing 04b)
 
-export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote' | 'portfolio';
+export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote';
 
 export type ChallengeId = 
   | 'all'
@@ -65,8 +65,7 @@ export const solutionTypes: SolutionType[] = [
   { id: 'tools', labelEn: 'AI-Powered Tools', labelDe: 'AI-Powered Tools' },
   { id: 'transformation', labelEn: 'Transformation', labelDe: 'Transformation' },
   { id: 'advisory', labelEn: 'Strategic Advisory', labelDe: 'Strategic Advisory' },
-  { id: 'keynote', labelEn: 'Workshops & Keynotes', labelDe: 'Workshops & Keynotes' },
-  { id: 'portfolio', labelEn: 'Portfolio & Investment Decisions', labelDe: 'Portfolio & Investment Decisions' }
+  { id: 'keynote', labelEn: 'Workshops & Keynotes', labelDe: 'Workshops & Keynotes' }
 ];
 
 export const challenges: Challenge[] = [
@@ -356,7 +355,7 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'vc-dd-simulation',
     solutionType: 'decision-support',
     challenges: ['board-pressure'],
-    price: '€5.9K-€3.9K',
+    price: '€3.9K-€5.9K',
     priceTag: 'paid',
     headlineEn: 'VC Due Diligence Simulation',
     headlineDe: 'VC Due Diligence Simulation',
@@ -386,14 +385,14 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaDe: 'Beispiel ansehen',
     secondaryCtaUrl: '/cases/vc-dd-simulation',
     addOnPricing: {
-      base: '€5.9K',
-      bridge: '€3.9K'
+      base: '€3.9K',
+      bridge: '€5.9K'
     }
   },
   {
     id: 9,
     slug: 'portfolio-assessment',
-    solutionType: 'portfolio',
+    solutionType: 'decision-support',
     challenges: ['portfolio-performance'],
     price: '€3.9K-€5.9K',
     priceTag: 'paid',
@@ -713,7 +712,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 18,
     slug: 'power-up-portfolio',
-    solutionType: 'portfolio',
+    solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['portfolio-performance'],
     price: '€23.6K',
@@ -1023,7 +1022,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 27,
     slug: 'boost-portfolio',
-    solutionType: 'portfolio',
+    solutionType: 'transformation',
     transformationTier: 'boost',
     challenges: ['portfolio-performance'],
     price: '€58K',
@@ -1231,7 +1230,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 33,
     slug: 'accelerate-portfolio',
-    solutionType: 'portfolio',
+    solutionType: 'transformation',
     transformationTier: 'accelerate',
     challenges: ['portfolio-performance'],
     price: '€153K',
