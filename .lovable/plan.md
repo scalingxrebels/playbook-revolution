@@ -1,24 +1,21 @@
 
 
-# Plan: Florians Foto anpassen - Größerer Kopf + nach unten verschieben
+# Plan: Florians Bild feinjustieren
 
 ## Problem
 
-Im Screenshot ist sichtbar:
-- **Michel Lason**: Kopf groß und gut positioniert ✓
-- **Alban Halili**: Kopf groß und gut positioniert ✓
-- **Florian Metzger**: Kopf zu klein, Bild zu weit oben ✗
+Aktuell:
+- **Zoom zu stark**: `scale-150` ist deutlich stärker als bei Michel und Alban
+- **Bild noch etwas zu hoch**: Muss 5% weiter nach unten
 
 ---
 
 ## Lösung
 
-Die CSS-Klassen für Florian anpassen:
-
 | Eigenschaft | Aktuell | Neu | Effekt |
 |-------------|---------|-----|--------|
-| Zoom | `scale-125` | `scale-150` | Stärkerer Zoom (150%) für größeren Kopf |
-| Positionierung | `object-top` | `translate-y-[15%]` | Bild nach unten verschieben |
+| Zoom | `scale-150` | `scale-130` | Reduzierter Zoom, harmonischer mit den anderen |
+| Position | `translate-y-[15%]` | `translate-y-[20%]` | 5% weiter nach unten |
 
 ---
 
@@ -27,22 +24,21 @@ Die CSS-Klassen für Florian anpassen:
 **Aktuell:**
 ```tsx
 member.name === 'Florian Metzger' 
-  ? 'scale-125 object-top'
+  ? 'scale-150 translate-y-[15%]'
 ```
 
 **Neu:**
 ```tsx
 member.name === 'Florian Metzger' 
-  ? 'scale-150 translate-y-[15%]'
+  ? 'scale-[1.3] translate-y-[20%]'
 ```
 
 ---
 
-## Technische Erklärung
+## Technische Details
 
-- `scale-150`: Zoomt das Bild auf 150% (statt 125%), wodurch der Kopf größer erscheint
-- `translate-y-[15%]`: Verschiebt das gezoomte Bild um 15% nach unten, sodass der Kopf in den sichtbaren Bereich rückt
-- `object-top` wird entfernt, da `translate-y` eine präzisere Kontrolle bietet
+- `scale-[1.3]`: Tailwind-Notation für 130% Zoom (zwischen scale-125 und scale-150)
+- `translate-y-[20%]`: Verschiebt das Bild um 20% nach unten (5% mehr als vorher)
 
 ---
 
@@ -50,11 +46,13 @@ member.name === 'Florian Metzger'
 
 | Datei | Zeile | Änderung |
 |-------|-------|----------|
-| `src/pages/About.tsx` | 243 | `scale-150 translate-y-[15%]` statt `scale-125 object-top` |
+| `src/pages/About.tsx` | 243 | `scale-[1.3] translate-y-[20%]` statt `scale-150 translate-y-[15%]` |
 
 ---
 
 ## Ergebnis
 
-Nach der Änderung sollten alle drei Team-Mitglieder harmonische Kopfgrößen und Positionierungen haben.
+Nach der Änderung:
+- Florians Zoom ist weniger extrem und passt besser zu Michel und Alban
+- Das Bild sitzt 5% tiefer im Rahmen
 
