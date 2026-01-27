@@ -1,80 +1,67 @@
 
-# Plan: Emoji-Symbole durch Lucide-Icons ersetzen
+# Plan: "Who We've Worked With" Bereich hinzufügen
 
 ## Übersicht
 
-Die drei Case Study-Karten in der "Proof"-Sektion verwenden aktuell Emoji-Symbole. Diese werden durch passende Lucide-Icons ersetzt für ein konsistenteres, professionelleres Design.
+Unter dem bestehenden Stats-Grid in der FinalCTAOptimized-Komponente wird ein neuer Bereich eingefügt, der die Referenzkunden im gleichen visuellen Stil anzeigt.
 
 ---
 
-## Aktuelle Situation
+## Unternehmensliste
 
-| Unternehmen | Aktuelles Symbol | Beschreibung |
-|-------------|------------------|--------------|
-| Midjourney | 🎨 | Emoji Palette |
-| Cursor | 💻 | Emoji Laptop |
-| Perplexity | 🔍 | Emoji Lupe |
+Die folgenden 21 Unternehmen werden angezeigt:
 
----
-
-## Neue Lucide-Icons
-
-| Unternehmen | Lucide-Icon | Begründung |
-|-------------|-------------|------------|
-| Midjourney | `Palette` | AI Bildgenerierung → Künstlerische Palette |
-| Cursor | `Code` | AI Code Editor → Code-Symbol |
-| Perplexity | `Search` | AI Suche → Such-Symbol |
+> Pigtie, the beautiful unleashed truth, KODE®, FILADOS, 2p Team, Microsoft, XING e-Recruiting, Lexware, Haufe Group, smapOne, SBB E-Business, Swarovski, local.ch, BWK Group, DBA, Burda Media, START, Elba, Semigator, Umantis, Sage
 
 ---
 
 ## Technische Umsetzung
 
-### Datei: `src/components/homepage/ProofOptimized.tsx`
+### Datei: `src/components/homepage/FinalCTAOptimized.tsx`
 
-**1. Import erweitern (Zeile 4):**
-
-```tsx
-import { ArrowRight, ExternalLink, CheckCircle, Palette, Code, Search } from 'lucide-react';
-```
-
-**2. Datenstruktur anpassen (Zeilen 8-57):**
-
-Das `logo`-Feld wird von einem String-Emoji zu einer React-Komponente geändert:
+**1. Clients-Array hinzufügen (nach Zeile 53):**
 
 ```tsx
-const caseStudies = [
-  {
-    name: 'Midjourney',
-    industry: { en: 'AI Image Generation', de: 'AI Bildgenerierung' },
-    Icon: Palette,
-    // ... rest bleibt gleich
-  },
-  {
-    name: 'Cursor',
-    industry: { en: 'AI Code Editor', de: 'AI Code Editor' },
-    Icon: Code,
-    // ... rest bleibt gleich
-  },
-  {
-    name: 'Perplexity',
-    industry: { en: 'AI Search', de: 'AI Suche' },
-    Icon: Search,
-    // ... rest bleibt gleich
-  },
+const clients = [
+  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
+  '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
+  'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
+  'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
+  'START', 'Elba', 'Semigator', 'Umantis', 'Sage'
 ];
 ```
 
-**3. Rendering anpassen (Zeile 133):**
+**2. Neuer Bereich nach dem Stats-Grid (nach Zeile 141):**
 
-Von:
 ```tsx
-<span className="text-4xl">{study.logo}</span>
+{/* Clients Section */}
+<div className="mt-6 p-6 rounded-xl bg-muted/30 border-2 border-border">
+  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4 text-center">
+    {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who We\'ve Worked With'}
+  </p>
+  <div className="flex flex-wrap justify-center gap-2">
+    {clients.map((client, index) => (
+      <span 
+        key={index}
+        className="text-xs text-muted-foreground px-2 py-1 rounded-full bg-background/50 border border-border"
+      >
+        {client}
+      </span>
+    ))}
+  </div>
+</div>
 ```
 
-Zu:
-```tsx
-<study.Icon className="w-10 h-10 text-primary" />
-```
+---
+
+## Visuelles Design
+
+| Element | Stil |
+|---------|------|
+| Container | Gleicher Stil wie Stats-Grid (`bg-muted/30`, `border-2 border-border`, `rounded-xl`) |
+| Überschrift | Uppercase, klein, zentriert (`text-xs`, `tracking-widest`) |
+| Client-Chips | Kleine Tags mit Hintergrund und Border (`text-xs`, `rounded-full`) |
+| Layout | Flex-Wrap für automatische Anordnung |
 
 ---
 
@@ -82,10 +69,10 @@ Zu:
 
 | Datei | Änderungen |
 |-------|------------|
-| `src/components/homepage/ProofOptimized.tsx` | Import erweitern, `logo` → `Icon` in Daten, Rendering aktualisieren |
+| `src/components/homepage/FinalCTAOptimized.tsx` | Clients-Array + neuer JSX-Block für Kundenreferenzen |
 
 ---
 
 ## Ergebnis
 
-Die Case Study-Karten zeigen nun einheitliche Lucide-Icons statt Emojis, was ein professionelleres und konsistenteres Erscheinungsbild mit dem Rest der Website gewährleistet.
+Unter den Stats erscheint ein visuell konsistenter Bereich mit allen Referenzkunden als kompakte Chips, die automatisch umbrechen und so auf allen Bildschirmgrößen gut dargestellt werden.
