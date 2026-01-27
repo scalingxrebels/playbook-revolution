@@ -96,7 +96,8 @@ const teamMembers: TeamMember[] = [
     },
     expertise: ['RevOps', 'GTM Engineering', 'Marketing Automation'],
     image: '/images/team-florian.png',
-    linkedin: 'https://www.linkedin.com/in/florianmetzger/'
+    linkedin: 'https://www.linkedin.com/in/florianmetzger/',
+    profileLink: '/fm'
   }
 ];
 
