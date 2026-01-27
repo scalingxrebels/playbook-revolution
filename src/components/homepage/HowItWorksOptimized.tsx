@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, Cpu, Users, BarChart3 } from 'lucide-react';
+import { ArrowRight, Brain, Cpu, Users, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const areas = [
@@ -10,43 +10,43 @@ const areas = [
     icon: Brain,
     titleEn: 'Strategy',
     titleDe: 'Strategie',
-    descEn: 'Clarity about your target audience, positioning, and growth strategy. Without clear strategy, you\'re running in circles.',
-    descDe: 'Klarheit über deine Zielgruppe, Positionierung und Wachstumsstrategie. Ohne klare Strategie läufst du im Kreis.',
-    exampleEn: 'Who is your ideal customer? How do you win against competitors?',
-    exampleDe: 'Wer ist dein idealer Kunde? Wie gewinnst du gegen Wettbewerber?',
+    descEn: 'Where do you want to go? How do you win? Clear strategy is the starting point for everything else.',
+    descDe: 'Wo willst du hin? Wie gewinnst du? Klare Strategie ist der Startpunkt für alles andere.',
+    exampleEn: '• Who is your ideal customer?\n• How do you position against competitors?\n• Which markets are you targeting?',
+    exampleDe: '• Wer ist dein idealer Kunde?\n• Wie positionierst du dich gegen Wettbewerber?\n• Welche Märkte greifst du an?',
     color: 'from-violet-500 to-purple-600',
   },
   {
     id: '2',
     icon: Cpu,
-    titleEn: 'Systems & Processes',
-    titleDe: 'Systeme & Prozesse',
-    descEn: 'Automated workflows that work without you. Without systems, you\'re the bottleneck.',
-    descDe: 'Automatisierte Abläufe, die ohne dich funktionieren. Ohne Systeme bist du der Flaschenhals.',
-    exampleEn: 'How does your sales process run? How do you onboard new customers?',
-    exampleDe: 'Wie läuft dein Sales-Prozess? Wie onboardest du neue Kunden?',
+    titleEn: 'Setup',
+    titleDe: 'Setup',
+    descEn: 'How do you organize for growth? Structure, systems and processes that scale.',
+    descDe: 'Wie organisierst du dich für Wachstum? Struktur, Systeme und Prozesse, die skalieren.',
+    exampleEn: '• How is your team organized?\n• What tools and systems do you use?\n• How do you make decisions?',
+    exampleDe: '• Wie ist dein Team organisiert?\n• Welche Tools und Systeme nutzt du?\n• Wie triffst du Entscheidungen?',
     color: 'from-blue-500 to-cyan-500',
   },
   {
     id: '3',
     icon: Users,
-    titleEn: 'Team & Organization',
-    titleDe: 'Team & Organisation',
-    descEn: 'The right people in the right places. Without a strong team, you won\'t get far.',
-    descDe: 'Die richtigen Leute an den richtigen Stellen. Ohne starkes Team kommst du nicht weit.',
-    exampleEn: 'Do you have the right leaders? Is your team efficiently organized?',
-    exampleDe: 'Hast du die richtigen Führungskräfte? Ist dein Team effizient organisiert?',
+    titleEn: 'Execution',
+    titleDe: 'Execution',
+    descEn: 'How fast do you deliver? From idea to execution – without delay.',
+    descDe: 'Wie schnell lieferst du? Von der Idee zur Umsetzung – ohne Verzögerung.',
+    exampleEn: '• How fast do you acquire customers?\n• How fast do you develop features?\n• How fast do you respond to feedback?',
+    exampleDe: '• Wie schnell gewinnst du Kunden?\n• Wie schnell entwickelst du Features?\n• Wie schnell reagierst du auf Feedback?',
     color: 'from-orange-500 to-amber-500',
   },
   {
     id: '4',
-    icon: BarChart3,
-    titleEn: 'Finances & Capital',
-    titleDe: 'Finanzen & Kapital',
-    descEn: 'Healthy unit economics and enough runway. Without capital, it\'s game over.',
-    descDe: 'Gesunde Unit Economics und genug Runway. Ohne Kapital ist Game Over.',
-    exampleEn: 'How long does your money last? Are your unit economics profitable?',
-    exampleDe: 'Wie lange reicht dein Geld? Sind deine Unit Economics profitabel?',
+    icon: Zap,
+    titleEn: 'Operationalization',
+    titleDe: 'Operationalisierung',
+    descEn: 'How do you make it repeatable? Automation and systems that run without you.',
+    descDe: 'Wie machst du es wiederholbar? Automatisierung und Systeme, die ohne dich laufen.',
+    exampleEn: '• Are your processes automated?\n• Do you have dashboards and metrics?\n• Does the business run without you?',
+    exampleDe: '• Sind deine Prozesse automatisiert?\n• Hast du Dashboards und Metriken?\n• Läuft der Laden auch ohne dich?',
     color: 'from-emerald-500 to-teal-500',
   },
 ];
@@ -122,9 +122,11 @@ const HowItWorksOptimized: React.FC = () => {
 
                 {/* Example */}
                 <div className="pt-4 border-t border-border">
-                  <p className="text-xs text-muted-foreground italic">
-                    {language === 'de' ? area.exampleDe : area.exampleEn}
-                  </p>
+                  <div className="text-xs text-muted-foreground space-y-1">
+                    {(language === 'de' ? area.exampleDe : area.exampleEn).split('\n').map((line, i) => (
+                      <p key={i}>{line}</p>
+                    ))}
+                  </div>
                 </div>
               </div>
             );
