@@ -77,7 +77,7 @@ const ProofOptimized: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {language === 'de' ? 'Beweis' : 'Proof'}
           </span>
           
