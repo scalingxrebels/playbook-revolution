@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import HeroOptimized from '@/components/homepage/HeroOptimized';
 import ProblemOptimized from '@/components/homepage/ProblemOptimized';
 import SolutionOptimized from '@/components/homepage/SolutionOptimized';
-import FrameworkOptimized from '@/components/homepage/FrameworkOptimized';
+import HowItWorksOptimized from '@/components/homepage/HowItWorksOptimized';
 import ProofOptimized from '@/components/homepage/ProofOptimized';
 import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
 import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
@@ -29,8 +29,8 @@ const Index = () => {
             {/* SECTION 3: THE SOLUTION (50vh) */}
             <SolutionOptimized />
             
-            {/* SECTION 4: THE FRAMEWORK (60vh) */}
-            <FrameworkOptimized />
+            {/* SECTION 4: HOW IT WORKS (60vh) */}
+            <HowItWorksOptimized />
             
             {/* SECTION 5: PROOF & VALIDATION (50vh) */}
             <ProofOptimized />
