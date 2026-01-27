@@ -29,18 +29,18 @@ const BookingCTA = () => {
   const benefits = [
     {
       icon: Target,
-      title: { de: 'Bottleneck-Diagnose', en: 'Bottleneck Diagnosis' },
-      desc: { de: 'Identifiziere deinen C_min in 15 Minuten', en: 'Identify your C_min in 15 minutes' },
+      title: { de: 'Schwachstelle identifizieren', en: 'Identify Weakness' },
+      desc: { de: 'Wir finden heraus, welcher Bereich dich bremst – in 15 Minuten', en: 'We find out which area is slowing you down – in 15 minutes' },
     },
     {
       icon: Zap,
-      title: { de: 'θ_index Bestimmung', en: 'θ_index Assessment' },
-      desc: { de: 'Erfahre deinen AI-Maturity Level', en: 'Learn your AI-Maturity Level' },
+      title: { de: 'Reifegrad bestimmen', en: 'Determine Maturity' },
+      desc: { de: 'Wo stehst du? Traditional, AI-Powered, AI-Enabled oder AI-Native?', en: 'Where are you? Traditional, AI-Powered, AI-Enabled or AI-Native?' },
     },
     {
       icon: Users,
-      title: { de: 'Individueller Aktionsplan', en: 'Custom Action Plan' },
-      desc: { de: 'Konkrete nächste Schritte für dich', en: 'Concrete next steps for you' },
+      title: { de: 'Konkreter Aktionsplan', en: 'Concrete Action Plan' },
+      desc: { de: '3 konkrete nächste Schritte, die du sofort umsetzen kannst', en: '3 concrete next steps you can implement immediately' },
     },
   ];
 
@@ -60,11 +60,6 @@ const BookingCTA = () => {
                 ? 'Wir melden uns innerhalb von 24 Stunden bei dir mit einem Terminvorschlag.'
                 : 'We\'ll get back to you within 24 hours with a meeting proposal.'}
             </p>
-            <p className="text-sm text-muted-foreground">
-              {language === 'de'
-                ? 'In der Zwischenzeit: Nutze den LASR.io Scorecard oben, um deinen θ_index zu ermitteln.'
-                : 'In the meantime: Use the LASR.io Scorecard above to determine your θ_index.'}
-            </p>
           </div>
         </div>
       </section>
@@ -79,21 +74,31 @@ const BookingCTA = () => {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-              <Calendar className="w-4 h-4 text-accent" />
-              <span className="text-sm font-medium text-accent">
-                {language === 'de' ? 'Kostenlos & Unverbindlich' : 'Free & No Obligation'}
+            {/* Badge with Urgency */}
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+              <span className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-accent" />
+                <span className="text-sm font-medium text-accent">
+                  {language === 'de' ? 'Kostenlos & Unverbindlich' : 'Free & No Obligation'}
+                </span>
+              </span>
+              <span className="w-px h-4 bg-accent/30" />
+              <span className="text-sm font-medium text-destructive">
+                {language === 'de' ? 'Nur 10 Plätze pro Monat' : 'Only 10 spots per month'}
               </span>
             </div>
+            
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-foreground via-accent to-foreground bg-clip-text text-transparent">
-                {language === 'de' ? 'Diagnose-Gespräch buchen' : 'Book Diagnosis Call'}
+                {language === 'de' 
+                  ? 'Gespräch buchen – bevor deine Competitors schneller werden' 
+                  : 'Book a Call – Before Your Competitors Get Faster'}
               </span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {language === 'de'
-                ? '30 Minuten. Kein Sales-Pitch. Nur Klarheit über deinen Bottleneck.'
-                : '30 minutes. No sales pitch. Just clarity about your bottleneck.'}
+                ? '30 Minuten. Kein Verkaufsgespräch. Nur Klarheit über deine größte Schwachstelle. Wer jetzt startet, hat 10-100x Vorteil. Wer wartet, verliert.'
+                : '30 minutes. No sales pitch. Just clarity about your biggest weakness. Those who start now have a 10-100x advantage. Those who wait, lose.'}
             </p>
           </div>
 
@@ -126,16 +131,16 @@ const BookingCTA = () => {
                     <div className="text-xs text-muted-foreground">{language === 'de' ? 'Wörter Forschung' : 'Words of Research'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-primary">n=22</div>
+                    <div className="text-2xl font-bold text-primary">22</div>
                     <div className="text-xs text-muted-foreground">{language === 'de' ? 'Analysierte Unternehmen' : 'Companies Analyzed'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-primary">R²=0.76</div>
-                    <div className="text-xs text-muted-foreground">{language === 'de' ? 'Prognose-Genauigkeit' : 'Prediction Accuracy'}</div>
+                    <div className="text-2xl font-bold text-primary">✓</div>
+                    <div className="text-xs text-muted-foreground">{language === 'de' ? 'Wissenschaftlich validiert' : 'Scientifically Validated'}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-primary">85%</div>
-                    <div className="text-xs text-muted-foreground">{language === 'de' ? 'Erfolgsrate Model 1' : 'Success Rate Model 1'}</div>
+                    <div className="text-2xl font-bold text-primary">10-100x</div>
+                    <div className="text-xs text-muted-foreground">{language === 'de' ? 'First Mover Advantage' : 'First Mover Advantage'}</div>
                   </div>
                 </div>
               </div>
@@ -174,7 +179,7 @@ const BookingCTA = () => {
                   <div>
                     <label className="block text-sm font-medium mb-2">
                       <Building2 className="w-4 h-4 inline mr-1" />
-                      {language === 'de' ? 'Unternehmen' : 'Company'} *
+                      {language === 'de' ? 'Firma' : 'Company'} *
                     </label>
                     <Input
                       required
@@ -185,7 +190,7 @@ const BookingCTA = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium mb-2">
-                      ARR ({language === 'de' ? 'ungefähr' : 'approx.'})
+                      {language === 'de' ? 'Umsatz' : 'Revenue'}
                     </label>
                     <select
                       className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm"
@@ -205,21 +210,21 @@ const BookingCTA = () => {
 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    {language === 'de' ? 'Größte Herausforderung' : 'Biggest Challenge'}
+                    {language === 'de' ? 'Größte Herausforderung' : 'Biggest Challenge'} ({language === 'de' ? 'optional' : 'optional'})
                   </label>
                   <Textarea
                     value={formData.challenge}
                     onChange={(e) => setFormData({ ...formData, challenge: e.target.value })}
                     placeholder={language === 'de' 
-                      ? 'z.B. "CAC steigt, Team wächst aber Output sinkt, Board macht Druck..."'
-                      : 'e.g. "CAC is rising, team is growing but output is declining, board is pushing..."'}
+                      ? 'z.B. "Unser Team wächst, aber der Output sinkt. Meetings dauern ewig..."'
+                      : 'e.g. "Our team is growing but output is declining. Meetings take forever..."'}
                     rows={4}
                   />
                 </div>
 
                 <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
                   <Calendar className="w-5 h-5 mr-2" />
-                  {language === 'de' ? 'Diagnose-Call anfragen' : 'Request Diagnosis Call'}
+                  {language === 'de' ? 'Gespräch anfragen' : 'Request Call'}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
 

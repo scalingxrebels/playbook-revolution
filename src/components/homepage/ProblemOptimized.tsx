@@ -1,36 +1,36 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { TrendingDown, Zap, Users } from 'lucide-react';
+import { Target, TrendingDown, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallax } from '@/hooks/useParallax';
 
 const problems = [
   {
+    icon: Target,
+    titleEn: 'One weak area blocks everything',
+    titleDe: 'Ein schwacher Bereich blockiert alles',
+    descEn: 'Your sales is running well, but operations can\'t keep up. Or vice versa. One area is slowing down your entire company.',
+    descDe: 'Dein Sales läuft gut, aber Operations kommt nicht nach. Oder umgekehrt. Ein Bereich bremst das ganze Unternehmen.',
+    stat: '1',
+    statLabel: { en: 'Weak spot is enough', de: 'Schwachstelle reicht' },
+  },
+  {
     icon: TrendingDown,
-    titleEn: 'Stagnation',
-    titleDe: 'Stagnation',
-    descEn: 'Revenue plateaus despite increasing effort',
-    descDe: 'Umsatz stagniert trotz steigendem Aufwand',
-    stat: '-40%',
-    statLabel: 'Growth Rate',
+    titleEn: 'Chaos grows faster than your team',
+    titleDe: 'Chaos wächst schneller als dein Team',
+    descEn: 'With every new employee, coordination becomes more complex. Meetings explode. Decisions take forever.',
+    descDe: 'Mit jedem neuen Mitarbeiter wird die Koordination komplexer. Meetings explodieren. Entscheidungen dauern ewig.',
+    stat: '2x Team = 4x',
+    statLabel: { en: 'Complexity', de: 'Chaos' },
   },
   {
     icon: Zap,
-    titleEn: 'Chaos',
-    titleDe: 'Chaos',
-    descEn: 'Coordination costs explode with scale',
-    descDe: 'Koordinationskosten explodieren mit der Skalierung',
-    stat: 'O(n²)',
-    statLabel: 'Complexity',
-  },
-  {
-    icon: Users,
-    titleEn: 'Board Pressure',
-    titleDe: 'Board-Druck',
-    descEn: 'Investors demand faster growth',
-    descDe: 'Investoren fordern schnelleres Wachstum',
-    stat: '3x',
-    statLabel: 'Expectations',
+    titleEn: 'Your competitors are faster',
+    titleDe: 'Deine Competitors sind schneller',
+    descEn: 'Other startups reach €100M ARR in 18 months. You need 72 months. The difference? They use AI differently.',
+    descDe: 'Andere Startups erreichen €100M ARR in 18 Monaten. Du brauchst 72 Monate. Der Unterschied? Sie nutzen AI anders.',
+    stat: '4x',
+    statLabel: { en: 'slower than AI-Native', de: 'langsamer als AI-Native' },
   },
 ];
 
@@ -60,8 +60,8 @@ const ProblemOptimized: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
             {language === 'de' 
-              ? 'Warum traditionelle Skalierung scheitert' 
-              : 'Why Traditional Scaling Fails'
+              ? 'Warum Wachstum sich so schwer anfühlt' 
+              : 'Why Growth Feels So Hard'
             }
           </h2>
         </div>
@@ -97,7 +97,7 @@ const ProblemOptimized: React.FC = () => {
                 {/* Stat Label */}
                 <div className="mt-4 pt-4 border-t border-border">
                   <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                    {problem.statLabel}
+                    {language === 'de' ? problem.statLabel.de : problem.statLabel.en}
                   </span>
                 </div>
               </div>

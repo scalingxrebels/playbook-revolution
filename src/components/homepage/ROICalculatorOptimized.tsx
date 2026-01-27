@@ -239,15 +239,24 @@ const ROICalculatorOptimized = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Calculator className="w-4 h-4" />
-            {t.badge}
-          </span>
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+              <Calculator className="w-4 h-4" />
+              {t.badge}
+            </span>
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
+              {language === 'de' ? '2 von 3 Ergebnissen garantiert' : '2 of 3 results guaranteed'}
+            </span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {t.title}
+            {language === 'de' 
+              ? 'Wie schnell kannst du auf €100M skalieren – mit Garantie?' 
+              : 'How fast can you scale to €100M – with a guarantee?'}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t.subtitle}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+            {language === 'de' 
+              ? 'Wir garantieren 2 von 3 Ergebnissen – oder du bekommst 50% zurück. Kein anderer Consultant bietet das.'
+              : 'We guarantee 2 out of 3 results – or you get 50% back. No other consultant offers this.'}
           </p>
         </div>
 

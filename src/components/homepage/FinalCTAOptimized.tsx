@@ -46,16 +46,16 @@ const FinalCTAOptimized: React.FC = () => {
           {/* Headline */}
           <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-6">
             {language === 'de' 
-              ? 'Bereit für die Transformation?' 
-              : 'Ready to Transform Your Scaling?'
+              ? 'Bereit für systematisches Wachstum?' 
+              : 'Ready for Systematic Growth?'
             }
           </h2>
           
           {/* Subheadline */}
           <p className="text-editorial text-muted-foreground max-w-2xl mx-auto mb-10">
             {language === 'de' 
-              ? 'Erhalten Sie eine personalisierte Scaling-Roadmap in 30 Minuten'
-              : 'Get a personalized scaling roadmap in 30 minutes'
+              ? 'Erhalte eine personalisierte Roadmap in 30 Minuten'
+              : 'Get a personalized roadmap in 30 minutes'
             }
           </p>
 
@@ -67,7 +67,7 @@ const FinalCTAOptimized: React.FC = () => {
               className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-12 py-8 text-xl shadow-accent-glow hover:shadow-glow transition-all duration-400 hover-brutal"
             >
               <Calendar className="w-6 h-6 mr-3" />
-              {language === 'de' ? 'Beratung buchen' : 'Book Your Consultation'}
+              {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book Free Consultation'}
               <ArrowRight className="w-6 h-6 ml-3" />
             </Button>
           </div>

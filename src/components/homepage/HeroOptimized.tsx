@@ -63,32 +63,32 @@ const HeroOptimized: React.FC = () => {
           <span className="h-px w-12 bg-gradient-primary" />
         </div>
 
-        {/* Main Headline - League Spartan Bold */}
+        {/* Main Headline - Outcome-First */}
         <h1 className="font-display text-hero-lg mb-8 animate-blur-in">
           <span className="block text-foreground">
-            {language === 'de' ? 'Dein Scaling-Playbook' : 'Your Scaling Playbook'}
+            {language === 'de' ? 'Von €2M auf €100M ARR' : 'From €2M to €100M ARR'}
           </span>
           <span className="block text-gradient animate-gradient bg-gradient-primary">
-            {language === 'de' ? 'ist hinfällig.' : 'is obsolete.'}
+            {language === 'de' ? 'in 18-30 Monaten.' : 'in 18-30 months.'}
           </span>
         </h1>
 
-        {/* Subheadline - DM Sans Regular */}
+        {/* Subheadline - Quantified */}
         <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de' 
-            ? 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein – es sollte System haben.'
-            : 'We deliver systems and create impact. Growth shouldn\'t be a struggle – it should have a system.'
+            ? '3-5x schneller wachsen. 2-4x bessere Profitabilität. Mit Systemen, die skalieren – nicht brechen.'
+            : '3-5x faster growth. 2-4x better profitability. With systems that scale – not break.'
           }
         </p>
 
-        {/* CTA Button - League Spartan Bold */}
+        {/* CTA Button */}
         <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button 
             size="lg" 
             onClick={scrollToROICalculator}
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
           >
-            {language === 'de' ? 'Erlebe AI-Native Scaling (ROI)' : 'Experience AI-Native Scaling (ROI)'}
+            {language === 'de' ? 'Wie schnell kannst du auf €100M skalieren?' : 'How fast can you scale to €100M?'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
