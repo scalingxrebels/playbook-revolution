@@ -6,8 +6,8 @@ const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
   const stats = [
-    { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
     { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
+    { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
     { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
     { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
   ];
