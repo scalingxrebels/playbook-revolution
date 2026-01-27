@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
   const team = [
     { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
     { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
-    { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
+    { name: 'Florian Metzger', role: 'RevOps. GTM. Partner.' },
   ];
 
   return (
