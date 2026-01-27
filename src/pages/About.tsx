@@ -83,7 +83,7 @@ const teamMembers: TeamMember[] = [
   },
   {
     name: 'Florian Metzger',
-    role: { de: 'Venture Architect', en: 'Venture Architect' },
+    role: { de: 'Partner', en: 'Partner' },
     tagline: { de: 'RevOps. GTM. Venture Architect.', en: 'RevOps. GTM. Venture Architect.' },
     bio: {
       de: '4+ Jahre SaaS-Businesses aufbauen. Design Thinking (HPI), lasr.io Architekt. Co-Founder Mindset.',
