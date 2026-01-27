@@ -50,8 +50,8 @@ const teamMembers: TeamMember[] = [
     role: { de: 'Gründer & CEO', en: 'Founder & CEO' },
     tagline: { de: 'Strategy. Scaling. Impact.', en: 'Strategy. Scaling. Impact.' },
     bio: {
-      de: '18 Jahre Startups aufbauen, skalieren und reparieren. Ex-Berater (Microsoft, XING), SaaS Executive (smapOne: €1,3M → €13,7M ARR in 2 Jahren). Autor "Fix Growth. Scale Faster."',
-      en: '18 years building, scaling, and fixing startups. Ex-consultant (Microsoft, XING), SaaS executive (smapOne: €1.3M → €13.7M ARR in 2 years). Author "Fix Growth. Scale Faster."'
+      de: '18 Jahre Startups aufbauen, skalieren und reparieren. Ex-Berater (Microsoft, XING), SaaS Executive (€1,3M → €13,7M ARR in 2 Jahren). Autor "Fix Growth. Scale Faster."',
+      en: '18 years building, scaling, and fixing startups. Ex-consultant (Microsoft, XING), SaaS executive (€1.3M → €13.7M ARR in 2 years). Author "Fix Growth. Scale Faster."'
     },
     highlight: { 
       de: 'Rule of 40 +10 Pkt, EBITDA –€300k → +€150k', 
