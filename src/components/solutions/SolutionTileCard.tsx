@@ -4,7 +4,7 @@ import { SolutionTile, getTransformationTierLabel, SolutionTypeId } from '@/data
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, GraduationCap, Compass, Clock, Mic, Wrench } from 'lucide-react';
+import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SolutionTileCardProps {
@@ -16,24 +16,22 @@ interface SolutionTileCardProps {
 const typeGradients: Record<Exclude<SolutionTypeId, 'all'>, string> = {
   'insights': 'from-blue-500 to-cyan-500',
   'decision-support': 'from-purple-500 to-violet-500',
-  'transformation': 'from-orange-500 to-amber-500',
-  'training': 'from-green-500 to-emerald-500',
-  'advisory': 'from-rose-500 to-pink-500',
-  'retainer': 'from-indigo-500 to-blue-500',
-  'keynote': 'from-yellow-500 to-orange-500',
   'tools': 'from-slate-500 to-zinc-500',
+  'transformation': 'from-orange-500 to-amber-500',
+  'advisory': 'from-rose-500 to-pink-500',
+  'keynote': 'from-yellow-500 to-orange-500',
+  'portfolio': 'from-green-500 to-emerald-500',
 };
 
 // Icon mapping per solution type
 const typeIcons: Record<Exclude<SolutionTypeId, 'all'>, React.ElementType> = {
   'insights': Lightbulb,
   'decision-support': Target,
-  'transformation': Rocket,
-  'training': GraduationCap,
-  'advisory': Compass,
-  'retainer': Clock,
-  'keynote': Mic,
   'tools': Wrench,
+  'transformation': Rocket,
+  'advisory': Compass,
+  'keynote': Mic,
+  'portfolio': Building2,
 };
 
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
@@ -64,14 +62,13 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
       return getTransformationTierLabel(tile.transformationTier, lang);
     }
     const typeLabels: Record<string, { en: string; de: string }> = {
-      'insights': { en: 'Insights', de: 'Insights' },
+      'insights': { en: 'Insights & Clarity', de: 'Insights & Clarity' },
       'decision-support': { en: 'Decision Support', de: 'Decision Support' },
+      'tools': { en: 'AI-Powered Tools', de: 'AI-Powered Tools' },
       'transformation': { en: 'Transformation', de: 'Transformation' },
-      'training': { en: 'Training', de: 'Training' },
-      'advisory': { en: 'Advisory', de: 'Advisory' },
-      'retainer': { en: 'Retainer', de: 'Retainer' },
-      'keynote': { en: 'Keynote', de: 'Keynote' },
-      'tools': { en: 'Tools', de: 'Tools' }
+      'advisory': { en: 'Strategic Advisory', de: 'Strategic Advisory' },
+      'keynote': { en: 'Workshops & Keynotes', de: 'Workshops & Keynotes' },
+      'portfolio': { en: 'Portfolio & Investment', de: 'Portfolio & Investment' }
     };
     return typeLabels[tile.solutionType]?.[lang] || tile.solutionType;
   };
