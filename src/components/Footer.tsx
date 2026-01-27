@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             </p>
             <p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
               {language === 'de' 
-                ? 'Wachstum sollte kein Kampf sein. Es sollte ein System sein.'
+                ? 'Wachstum sollte kein Kampf sein. Es sollte System haben.'
                 : "Growth shouldn't be a struggle. It should be a system."}
             </p>
             {/* Social Icons */}
