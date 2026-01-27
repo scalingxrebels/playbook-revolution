@@ -1,24 +1,9 @@
 
-# Plan: Schriftgröße der Beschreibungstexte verkleinern
+# Plan: Florians Rolle im Footer aktualisieren
 
 ## Übersicht
 
-Die beiden Beschreibungstexte im Footer-Header werden von `text-editorial` auf `text-sm` geändert, um eine kleinere, passendere Schriftgröße zu erhalten.
-
----
-
-## Aktuelle Situation
-
-**Zeilen 49 und 54** verwenden `text-editorial`:
-
-```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
-  ...VC/PE-backed startups...
-</p>
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-  ...Growth shouldn't be a struggle...
-</p>
-```
+Die Rollenbezeichnung von Florian Metzger im Footer-Team-Bereich wird von "Venture Architect" zu "Partner" geändert.
 
 ---
 
@@ -26,35 +11,34 @@ Die beiden Beschreibungstexte im Footer-Header werden von `text-editorial` auf `
 
 ### Datei: `src/components/Footer.tsx`
 
-| Zeile | Änderung |
-|-------|----------|
-| 49 | `text-editorial` → `text-sm` (und `editorial-border` entfernen) |
-| 54 | `text-editorial` → `text-sm` |
+**Zeile 32** im `team` Array wird angepasst:
 
-### Vorher/Nachher:
+| Vorher | Nachher |
+|--------|---------|
+| `{ name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' }` | `{ name: 'Florian Metzger', role: 'RevOps. GTM. Partner.' }` |
 
-**Zeile 49 (vorher):**
-```tsx
-<p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+---
+
+## Kontext
+
+Das Team-Array (Zeilen 28-33) zeigt aktuell:
+
+```text
+Michel Lason    → Strategy. Scaling. Impact.
+Alban Halili    → Growth. AI Solutions. Automation.
+Florian Metzger → RevOps. GTM. Venture Architect.  ← wird geändert
 ```
 
-**Zeile 49 (nachher):**
-```tsx
-<p className="text-sm text-muted-foreground max-w-md mb-2">
-```
+Nach der Änderung:
 
-**Zeile 54 (vorher):**
-```tsx
-<p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
-```
-
-**Zeile 54 (nachher):**
-```tsx
-<p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
+```text
+Michel Lason    → Strategy. Scaling. Impact.
+Alban Halili    → Growth. AI Solutions. Automation.
+Florian Metzger → RevOps. GTM. Partner.  ← neu
 ```
 
 ---
 
 ## Ergebnis
 
-Die Beschreibungstexte werden in einer kleineren Schriftgröße (`text-sm` = 14px) dargestellt, was besser zur kompakten Struktur des Footers passt.
+Florian Metzger wird im Footer mit der aktualisierten Rolle "RevOps. GTM. Partner." angezeigt, analog zur Darstellung der anderen Teammitglieder.
