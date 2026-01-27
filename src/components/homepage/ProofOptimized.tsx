@@ -188,7 +188,7 @@ const ProofOptimized: React.FC = () => {
             onClick={() => window.location.href = '/cases'}
             className="border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6"
           >
-            {language === 'de' ? 'Alle Erfolgsgeschichten ansehen' : 'View All Success Stories'}
+            {language === 'de' ? 'Alle Case Studies ansehen' : 'View All Case Studies'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
