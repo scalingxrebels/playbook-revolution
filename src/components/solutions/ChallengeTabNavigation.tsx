@@ -119,7 +119,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
         aria-label={language === 'de' ? 'Challenge-Navigation' : 'Challenge navigation'}
         className="w-full overflow-x-auto scrollbar-hide scroll-smooth"
       >
-        <div className="flex items-center gap-2 min-w-max px-6 md:px-0 md:justify-center py-1 flex-wrap md:flex-nowrap">
+        <div className="flex items-center gap-2 px-6 md:px-0 justify-center py-1 flex-wrap">
           {challenges.map((challenge, index) => {
             const Icon = challengeIcons[challenge.id];
             const isActive = activeChallenge === challenge.id;
