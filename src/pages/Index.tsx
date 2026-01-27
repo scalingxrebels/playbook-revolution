@@ -12,7 +12,6 @@ import FormulaOptimized from '@/components/homepage/FormulaOptimized';
 import ProofOptimized from '@/components/homepage/ProofOptimized';
 import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
 import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
-import BookingCTA from '@/components/BookingCTA';
 
 const Index = () => {
   return (
@@ -42,13 +41,8 @@ const Index = () => {
             {/* SECTION 7: ROI CALCULATOR (70vh) */}
             <ROICalculatorOptimized />
             
-            {/* SECTION 8: FINAL CTA (40vh) */}
+            {/* SECTION 8: FINAL CTA with BOOKING FORM (60vh) */}
             <FinalCTAOptimized />
-            
-            {/* BOOKING FORM */}
-            <div id="booking-form">
-              <BookingCTA />
-            </div>
           </main>
           <Footer />
         </div>
