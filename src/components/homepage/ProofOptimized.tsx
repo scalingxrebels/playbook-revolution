@@ -82,17 +82,17 @@ const ProofOptimized: React.FC = () => {
           </span>
           
           {/* Before/After Headline */}
-          <h2 className="font-display text-display-md text-foreground mb-6">
-            <span className="block text-muted-foreground">
+          <h2 className="font-display text-display-md mb-6">
+            <span className="block text-foreground/50 line-through decoration-destructive/50">
               {language === 'de' 
-                ? 'Traditionell: 500 Mitarbeiter für €100M ARR.' 
-                : 'Traditional: 500 employees for €100M ARR.'
+                ? 'Traditionell: 500 Mitarbeiter für €100M ARR' 
+                : 'Traditional: 500 employees for €100M ARR'
               }
             </span>
-            <span className="block text-gradient">
+            <span className="block text-foreground">
               {language === 'de' 
-                ? 'AI-Native: 40 Mitarbeiter für €200M ARR.' 
-                : 'AI-Native: 40 employees for €200M ARR.'
+                ? 'AI-Native: 40 Mitarbeiter für €200M ARR' 
+                : 'AI-Native: 40 employees for €200M ARR'
               }
             </span>
           </h2>
