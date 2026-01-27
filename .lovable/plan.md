@@ -1,31 +1,28 @@
 
 
-# Plan: Team-Fotos Korrekturen
+# Plan: Neues Florian-Foto ersetzen und anpassen
 
-## Problem
+## Zusammenfassung
 
-Die vorherige Änderung hat nicht das gewünschte Ergebnis erzielt:
-- **Alban Halili**: `object-bottom` hat das Bild nach oben geschoben statt nach unten
-- **Florian Metzger**: Fehlt die Verschiebung nach unten (nur Zoom war angewendet)
+Das Bild von Michel und Alban ist perfekt. Jetzt wird das neue Foto von Florian hinzugefügt und mit Zoom + Object-Top-Ausrichtung angepasst.
 
 ---
 
-## Korrigierte Umsetzung
+## Schritt 1: Neues Bild kopieren
+
+Das hochgeladene Bild wird in den public-Ordner kopiert und ersetzt das bestehende Florian-Foto:
+
+| Quelle | Ziel |
+|--------|------|
+| `user-uploads://Bild_Flo.jpg` | `public/images/team-florian.png` |
+
+---
+
+## Schritt 2: CSS-Klassen anpassen
 
 ### Änderung in `src/pages/About.tsx` (Zeilen 241-247)
 
-**Aktuell (falsch):**
-```tsx
-className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-  member.name === 'Florian Metzger' 
-    ? 'scale-125' 
-    : member.name === 'Alban Halili' 
-      ? 'object-bottom' 
-      : ''
-}`}
-```
-
-**Korrigiert:**
+**Aktuell:**
 ```tsx
 className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
   member.name === 'Florian Metzger' 
@@ -36,30 +33,43 @@ className={`w-full h-full object-cover transition-transform duration-500 group-h
 }`}
 ```
 
+**Neu:**
+```tsx
+className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+  member.name === 'Florian Metzger' 
+    ? 'scale-125 object-top' 
+    : member.name === 'Alban Halili' 
+      ? 'object-top' 
+      : ''
+}`}
+```
+
 ---
 
-## Erklärung der Korrekturen
+## Erklärung der Änderungen
 
-| Team-Mitglied | Vorher | Nachher | Effekt |
-|---------------|--------|---------|--------|
-| Michel Lason | (keine) | (keine) | Bleibt unverändert |
-| Florian Metzger | `scale-125` | `scale-125 translate-y-[15%]` | Zoom + Bild 15% nach unten verschieben |
-| Alban Halili | `object-bottom` | `object-top` | Bild fokussiert auf den oberen Bereich → Kopf wird nach unten in den sichtbaren Bereich geschoben |
+| Aktion | Beschreibung |
+|--------|--------------|
+| Neues Bild | Das hochgeladene professionelle Foto ersetzt das alte |
+| `scale-125` | Bild auf 125% gezoomt (reinzoomen) |
+| `object-top` | Bild am oberen Rand ausgerichtet (Kopf im Fokus) |
+| `translate-y-[15%]` entfernt | Nicht mehr nötig mit dem neuen Bild |
 
 ---
 
-## Betroffene Datei
+## Betroffene Dateien
 
 | Datei | Änderung |
 |-------|----------|
-| `src/pages/About.tsx` | Zeilen 241-247: Korrigierte CSS-Klassen |
+| `public/images/team-florian.png` | Neues Bild ersetzen |
+| `src/pages/About.tsx` | Zeile 243: `scale-125 object-top` statt `scale-125 translate-y-[15%]` |
 
 ---
 
 ## Ergebnis
 
-Nach der Korrektur:
-- Michel Lason: Unverändert
-- Florian Metzger: Gezoomt (125%) + 15% nach unten verschoben
-- Alban Halili: Fokus auf oberen Bildbereich (Kopf rutscht nach unten in den sichtbaren Bereich)
+Nach der Änderung:
+- Michel Lason: Unverändert (perfekt)
+- Alban Halili: Unverändert (perfekt)
+- Florian Metzger: Neues Foto mit Zoom (125%) und Top-Ausrichtung
 
