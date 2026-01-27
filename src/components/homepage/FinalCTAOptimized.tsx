@@ -41,8 +41,13 @@ const FinalCTAOptimized: React.FC = () => {
         style={{ transform: `translateY(${offsets[1]}px) scale(1.1)` }}
       />
       
-      <div className="container max-w-4xl mx-auto px-6 relative z-10">
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center animate-slide-up">
+          {/* Overline */}
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Nächster Schritt' : 'Next Step'}
+          </span>
+          
           {/* Headline */}
           <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-6">
             {language === 'de' 

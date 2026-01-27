@@ -46,11 +46,11 @@ const BookingCTA = () => {
 
   if (submitted) {
     return (
-      <section id="contact" className="py-24 relative overflow-hidden">
+      <section id="booking-form" className="py-24 lg:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl mx-auto text-center p-12 rounded-3xl bg-accent/10 border border-accent/30">
+          <div className="max-w-2xl mx-auto text-center p-12 rounded-3xl bg-accent/10 border-2 border-accent/30">
             <CheckCircle className="w-16 h-16 text-accent mx-auto mb-6" />
             <h2 className="text-3xl font-bold mb-4">
               {language === 'de' ? 'Anfrage erhalten!' : 'Request Received!'}
@@ -67,13 +67,18 @@ const BookingCTA = () => {
   }
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="booking-form" className="py-24 lg:py-32 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
+            {/* Overline */}
+            <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+              {language === 'de' ? 'Gespräch buchen' : 'Book a Call'}
+            </span>
+            
             {/* Badge with Urgency */}
             <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
               <span className="flex items-center gap-2">
@@ -111,7 +116,7 @@ const BookingCTA = () => {
               
               <div className="space-y-6 mb-8">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border border-border">
+                  <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-card/50 border-2 border-border hover:border-primary/50 transition-all duration-200">
                     <div className="p-3 rounded-xl bg-accent/10">
                       <benefit.icon className="w-6 h-6 text-accent" />
                     </div>
@@ -124,7 +129,7 @@ const BookingCTA = () => {
               </div>
 
               {/* Trust Signals */}
-              <div className="p-6 rounded-xl bg-muted/30 border border-border">
+              <div className="p-6 rounded-xl bg-muted/30 border-2 border-border">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
                     <div className="text-2xl font-bold text-primary">250K+</div>
@@ -147,7 +152,7 @@ const BookingCTA = () => {
             </div>
 
             {/* Form */}
-            <div className="p-8 rounded-3xl bg-card/50 border border-border backdrop-blur-sm">
+            <div className="p-8 rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>

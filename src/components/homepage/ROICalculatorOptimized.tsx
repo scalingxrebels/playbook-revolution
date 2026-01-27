@@ -226,7 +226,7 @@ const ROICalculatorOptimized = () => {
     <section
       id="roi-calculator"
       ref={ref}
-      className="relative min-h-[70vh] py-16 md:py-24 bg-background overflow-hidden"
+      className="relative min-h-[70vh] py-24 lg:py-32 bg-background overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-mesh opacity-50" />
@@ -270,7 +270,7 @@ const ROICalculatorOptimized = () => {
           {/* LEFT: Inputs */}
           <div className="space-y-6">
             {/* Phase Presets */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.phasePreset}
               </h3>
@@ -293,7 +293,7 @@ const ROICalculatorOptimized = () => {
             </div>
 
             {/* Current AI Maturity */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.currentLevel}
               </h3>
@@ -325,7 +325,7 @@ const ROICalculatorOptimized = () => {
             </div>
 
             {/* Sliders */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card space-y-6">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card space-y-6 transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                 {t.inputs}
               </h3>
@@ -439,7 +439,7 @@ const ROICalculatorOptimized = () => {
           {/* RIGHT: Results */}
           <div className="space-y-6">
             {/* Target AI Maturity */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.targetLevel}
               </h3>
@@ -473,7 +473,7 @@ const ROICalculatorOptimized = () => {
             {/* Comparison Cards */}
             <div className="grid grid-cols-2 gap-4">
               {/* Current State */}
-              <div className="bg-card border border-border rounded-lg p-4 shadow-card">
+              <div className="bg-card border-2 border-border rounded-lg p-4 shadow-card">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   {t.currentState}
                 </h4>

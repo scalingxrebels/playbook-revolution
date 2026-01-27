@@ -100,7 +100,7 @@ const HowItWorksOptimized: React.FC = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Area Number Badge */}
-                <div className={`absolute -top-3 left-4 px-3 py-1 text-xs font-bold tracking-wider bg-gradient-to-r ${area.color} text-white`}>
+                <div className={`absolute -top-3 -right-3 px-3 py-1 text-xs font-bold tracking-wider bg-gradient-to-r ${area.color} text-white shadow-brutal-sm`}>
                   {area.id}
                 </div>
 
