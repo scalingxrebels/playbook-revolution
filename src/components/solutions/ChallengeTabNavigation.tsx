@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { challenges, ChallengeId } from '@/data/solutionTiles';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight, Layers, TrendingDown, TrendingUp, DollarSign, Users, Zap, Bot, Briefcase, PieChart, HelpCircle } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Layers, TrendingDown, TrendingUp, DollarSign, Users, Zap, Bot, Briefcase, PieChart, HelpCircle, Filter } from 'lucide-react';
 
 interface ChallengeTabNavigationProps {
   activeChallenge: ChallengeId;
@@ -83,11 +83,19 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
 
   return (
     <div className="relative w-full" id="challenge-navigation">
+      {/* Filter Label */}
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <Filter className="w-4 h-4 text-muted-foreground" />
+        <span className="text-sm font-medium text-muted-foreground">
+          {language === 'de' ? 'Challenge:' : 'Challenge:'}
+        </span>
+      </div>
+
       {/* Left scroll button */}
       <button
         onClick={() => scroll('left')}
         className={cn(
-          "absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-background/90 border border-border shadow-md transition-opacity duration-200 md:hidden",
+          "absolute left-0 top-1/2 mt-3 -translate-y-1/2 z-10 p-1.5 rounded-full bg-background/90 border border-border shadow-md transition-opacity duration-200 md:hidden",
           showLeftFade ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
         aria-label="Scroll left"
@@ -98,7 +106,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
       {/* Left fade indicator */}
       <div 
         className={cn(
-          "absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-muted/30 to-transparent pointer-events-none z-[5] transition-opacity duration-200",
+          "absolute left-0 top-8 bottom-0 w-12 bg-gradient-to-r from-muted/30 to-transparent pointer-events-none z-[5] transition-opacity duration-200",
           showLeftFade ? "opacity-100" : "opacity-0"
         )}
       />
@@ -111,7 +119,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
         aria-label={language === 'de' ? 'Challenge-Navigation' : 'Challenge navigation'}
         className="w-full overflow-x-auto scrollbar-hide scroll-smooth"
       >
-        <div className="flex items-center gap-1.5 md:gap-2 min-w-max px-6 md:px-0 md:justify-center py-1">
+        <div className="flex items-center gap-2 min-w-max px-6 md:px-0 md:justify-center py-1 flex-wrap md:flex-nowrap">
           {challenges.map((challenge, index) => {
             const Icon = challengeIcons[challenge.id];
             const isActive = activeChallenge === challenge.id;
@@ -128,10 +136,10 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
                 onClick={() => onChallengeChange(challenge.id)}
                 onKeyDown={(e) => handleKeyDown(e, index)}
                 className={cn(
-                  "group flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2.5 md:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
+                  "group flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2",
                   isActive
-                    ? "bg-accent text-accent-foreground shadow-md scale-[1.02]"
-                    : "bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-accent/30 hover:scale-[1.01]"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50"
                 )}
               >
                 <Icon className={cn(
@@ -148,7 +156,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
       {/* Right fade indicator */}
       <div 
         className={cn(
-          "absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-muted/30 to-transparent pointer-events-none z-[5] transition-opacity duration-200",
+          "absolute right-0 top-8 bottom-0 w-12 bg-gradient-to-l from-muted/30 to-transparent pointer-events-none z-[5] transition-opacity duration-200",
           showRightFade ? "opacity-100" : "opacity-0"
         )}
       />
@@ -157,7 +165,7 @@ const ChallengeTabNavigation: React.FC<ChallengeTabNavigationProps> = ({
       <button
         onClick={() => scroll('right')}
         className={cn(
-          "absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-background/90 border border-border shadow-md transition-opacity duration-200 md:hidden",
+          "absolute right-0 top-1/2 mt-3 -translate-y-1/2 z-10 p-1.5 rounded-full bg-background/90 border border-border shadow-md transition-opacity duration-200 md:hidden",
           showRightFade ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
         aria-label="Scroll right"
