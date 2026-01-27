@@ -46,12 +46,12 @@ const Footer: React.FC = () => {
             <p className="text-xs uppercase tracking-widest text-accent mb-2">
               GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS
             </p>
-            <p className="text-editorial text-muted-foreground max-w-md editorial-border mb-2">
+            <p className="text-sm text-muted-foreground max-w-md mb-2">
               {language === 'de' 
                 ? 'VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern.'
                 : 'VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes.'}
             </p>
-            <p className="text-editorial text-muted-foreground max-w-md font-medium mb-4">
+            <p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
               {language === 'de' 
                 ? 'Wachstum sollte kein Kampf sein. Es sollte System haben.'
                 : "Growth shouldn't be a struggle. It should be a system."}
