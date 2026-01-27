@@ -1,55 +1,50 @@
 
 
-# Plan: Team-Fotos individuell anpassen
+# Plan: Team-Fotos Korrekturen
 
-## Anforderung
+## Problem
 
-Die drei Team-Fotos sollen individuell angepasst werden:
-- **Michel Lason**: Bleibt unverändert
-- **Florian Metzger**: Reinzoomen (Kopf größer darstellen)
-- **Alban Halili**: Bild nach unten schieben (mehr vom Kopf sichtbar)
+Die vorherige Änderung hat nicht das gewünschte Ergebnis erzielt:
+- **Alban Halili**: `object-bottom` hat das Bild nach oben geschoben statt nach unten
+- **Florian Metzger**: Fehlt die Verschiebung nach unten (nur Zoom war angewendet)
 
 ---
 
-## Technische Umsetzung
+## Korrigierte Umsetzung
 
-### Änderung in `src/pages/About.tsx` (Zeilen 238-241)
+### Änderung in `src/pages/About.tsx` (Zeilen 241-247)
 
-Die `img`-Klasse wird dynamisch basierend auf dem Team-Mitglied gesetzt:
-
-**Vorher:**
+**Aktuell (falsch):**
 ```tsx
-<img 
-  src={member.image} 
-  alt={member.name}
-  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-/>
+className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+  member.name === 'Florian Metzger' 
+    ? 'scale-125' 
+    : member.name === 'Alban Halili' 
+      ? 'object-bottom' 
+      : ''
+}`}
 ```
 
-**Nachher:**
+**Korrigiert:**
 ```tsx
-<img 
-  src={member.image} 
-  alt={member.name}
-  className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-    member.name === 'Florian Metzger' 
-      ? 'scale-125' 
-      : member.name === 'Alban Halili' 
-        ? 'object-bottom' 
-        : ''
-  }`}
-/>
+className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+  member.name === 'Florian Metzger' 
+    ? 'scale-125 translate-y-[15%]' 
+    : member.name === 'Alban Halili' 
+      ? 'object-top' 
+      : ''
+}`}
 ```
 
 ---
 
-## Erklärung der CSS-Klassen
+## Erklärung der Korrekturen
 
-| Team-Mitglied | Klasse | Effekt |
-|---------------|--------|--------|
-| Michel Lason | (keine) | Bleibt wie bisher |
-| Florian Metzger | `scale-125` | Bild wird auf 125% gezoomt → Kopf erscheint größer |
-| Alban Halili | `object-bottom` | Bild wird am unteren Rand ausgerichtet → oberer Bereich (Kopf) wird mehr sichtbar |
+| Team-Mitglied | Vorher | Nachher | Effekt |
+|---------------|--------|---------|--------|
+| Michel Lason | (keine) | (keine) | Bleibt unverändert |
+| Florian Metzger | `scale-125` | `scale-125 translate-y-[15%]` | Zoom + Bild 15% nach unten verschieben |
+| Alban Halili | `object-bottom` | `object-top` | Bild fokussiert auf den oberen Bereich → Kopf wird nach unten in den sichtbaren Bereich geschoben |
 
 ---
 
@@ -57,14 +52,14 @@ Die `img`-Klasse wird dynamisch basierend auf dem Team-Mitglied gesetzt:
 
 | Datei | Änderung |
 |-------|----------|
-| `src/pages/About.tsx` | Zeilen 238-241: Dynamische Bildklasse pro Team-Mitglied |
+| `src/pages/About.tsx` | Zeilen 241-247: Korrigierte CSS-Klassen |
 
 ---
 
 ## Ergebnis
 
-Nach der Änderung:
-- Michel Lason bleibt unverändert
-- Florian Metzger erscheint näher/größer
-- Alban Halili zeigt mehr vom oberen Bildbereich (Kopf)
+Nach der Korrektur:
+- Michel Lason: Unverändert
+- Florian Metzger: Gezoomt (125%) + 15% nach unten verschoben
+- Alban Halili: Fokus auf oberen Bildbereich (Kopf rutscht nach unten in den sichtbaren Bereich)
 
