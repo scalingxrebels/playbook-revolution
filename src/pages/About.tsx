@@ -401,7 +401,7 @@ const About: React.FC = () => {
                 </p>
               </Card>
               <Card className="p-6 text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">80%</p>
+                <p className="text-3xl md:text-4xl font-bold text-primary">92%</p>
                 <p className="text-sm text-muted-foreground">
                   {lang === 'de' ? 'Erfolgsrate' : 'Success Rate'}
                 </p>
