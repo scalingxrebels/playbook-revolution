@@ -1,76 +1,84 @@
 
+# Plan: Stats-Reihenfolge und Icon-Korrektur
 
-# Plan: Responsive Zwei-Zeilen-Navigation für Challenges
+## Änderung 1: Stats-Reihenfolge im Hero
 
-## Problem
-Die 10 Challenge-Tabs passen auf Desktop nicht in eine Zeile (ca. 1100px benötigt), aber `md:flex-nowrap` erzwingt eine einzeilige Darstellung mit horizontalem Scrollen.
+### Datei: `src/components/solutions/SolutionHero.tsx`
 
-## Lösung
-Einfach `flex-wrap` auf allen Bildschirmgrößen erlauben. Die Tabs verteilen sich automatisch auf 2 Zeilen, wenn nötig.
-
-## Änderung
-
-### Datei: `src/components/solutions/ChallengeTabNavigation.tsx`
-
-**Zeile 122 ändern:**
+**Zeilen 8-13 ändern:**
 
 ```tsx
 // VORHER:
-<div className="flex items-center gap-2 min-w-max px-6 md:px-0 md:justify-center py-1 flex-wrap md:flex-nowrap">
+const stats = [
+  { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
+  { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
+  { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
+  { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
+];
 
 // NACHHER:
-<div className="flex items-center gap-2 px-6 md:px-0 justify-center py-1 flex-wrap">
+const stats = [
+  { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
+  { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
+  { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
+  { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
+];
 ```
 
-**Zusätzlich entfernen:**
-- `min-w-max` (verhindert Umbruch)
-- `md:flex-nowrap` (erzwingt einzeilige Darstellung)
-- Scroll-Buttons und Fade-Indikatoren (werden nicht mehr benötigt auf Desktop)
+**Logik:** Challenges → Solutions → ROI → Erfolgsrate (Problem → Lösung → Ergebnis)
 
-**Aufräumen (optional aber empfohlen):**
-- Scroll-Logik (`showLeftFade`, `showRightFade`, `scroll()`) kann vereinfacht werden
-- Fade-Indikatoren nur noch für Mobile behalten
+---
 
-## Vereinfachte Version
+## Änderung 2: Icons für CAC Crisis und Growth Stalled tauschen
+
+### Datei: `src/components/solutions/ChallengeTabNavigation.tsx`
+
+**Zeilen 15-16 ändern:**
 
 ```tsx
-// Container - zentriert, wrap erlaubt
-<div className="flex items-center gap-2 justify-center flex-wrap py-2">
-  {challenges.map(...)}
-</div>
+// VORHER:
+const challengeIcons: Record<ChallengeId, React.ElementType> = {
+  'all': Layers,
+  'cac-crisis': TrendingDown,      // FALSCH
+  'growth-stalled': TrendingUp,    // FALSCH
+  // ...
+};
+
+// NACHHER:
+const challengeIcons: Record<ChallengeId, React.ElementType> = {
+  'all': Layers,
+  'cac-crisis': TrendingUp,        // RICHTIG: CAC steigt
+  'growth-stalled': TrendingDown,  // RICHTIG: Wachstum sinkt
+  // ...
+};
 ```
 
-## Visuelles Ergebnis
+**Logik:**
+- **CAC Crisis** = Customer Acquisition Cost steigt → `TrendingUp` (Pfeil nach oben = Kosten steigen)
+- **Growth Stalled** = Wachstumsrate sinkt → `TrendingDown` (Pfeil nach unten = Wachstum sinkt)
 
-**Desktop (1920px):**
-```
-┌─────────────────────────────────────────────────────────────┐
-│  [All] [CAC Crisis] [Growth Stalled] [Pricing] [CS Broken] │
-│        [Scaling Chaos] [AI Transform] [Board] [Portfolio]  │
-│                        [Orientation]                        │
-└─────────────────────────────────────────────────────────────┘
-```
-
-Oder bei breiterem Container (2 Zeilen):
-```
-┌─────────────────────────────────────────────────────────────┐
-│  [All] [CAC Crisis] [Growth Stalled] [Pricing] [CS Broken] │
-│  [Scaling Chaos] [AI Transform] [Board] [Portfolio] [Orient]│
-└─────────────────────────────────────────────────────────────┘
-```
-
-**Mobile:** Bleibt horizontal scrollbar (wie bisher)
+---
 
 ## Betroffene Dateien
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/solutions/ChallengeTabNavigation.tsx` | `flex-wrap` auf Desktop, `min-w-max` entfernen |
+| `src/components/solutions/SolutionHero.tsx` | Stats-Reihenfolge: Challenges vor Solutions |
+| `src/components/solutions/ChallengeTabNavigation.tsx` | Icons tauschen: CAC → TrendingUp, Growth → TrendingDown |
 
-## Vorteile
+## Visuelles Ergebnis
 
-- **Minimal-invasiv**: Eine Zeile Code ändern
-- **Automatisch responsive**: Browser entscheidet, wann umgebrochen wird
-- **Sofort sichtbar**: Alle Challenges above the fold
-- **Kein JavaScript**: Rein CSS-basierte Lösung
+**Hero Stats (vorher):**
+```
+[40 Solutions] [9 Challenges] [15-80x ROI] [92% Erfolg]
+```
 
+**Hero Stats (nachher):**
+```
+[9 Challenges] [40 Solutions] [15-80x ROI] [92% Erfolg]
+```
+
+**Challenge Icons (nachher):**
+```
+[CAC Crisis ↗] [Growth Stalled ↘]
+```
