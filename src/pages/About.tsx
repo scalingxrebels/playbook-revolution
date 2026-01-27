@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { 
   ArrowRight, Linkedin, Mail, Target, Users, Code2, 
   BookOpen, Rocket, TrendingUp, CheckCircle2, ExternalLink,
-  Zap, Handshake
+  Zap, Handshake, PiggyBank
 } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 
@@ -491,8 +491,8 @@ const About: React.FC = () => {
               {/* Pigtie */}
               <Card className="p-6 hover:shadow-brutal transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
+                    <PiggyBank className="w-6 h-6 text-pink-500" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">Pigtie</h3>
