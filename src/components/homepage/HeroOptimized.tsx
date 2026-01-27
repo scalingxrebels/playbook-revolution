@@ -77,7 +77,7 @@ const HeroOptimized: React.FC = () => {
         <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de' 
             ? <>3-5x schneller wachsen. 2-4x bessere Unit Economics.<br />Mit Systemen, die skalieren und nicht brechen.</>
-            : <>3-5x faster growth. 2-4x better profitability.<br />With systems that scale and don't break.</>
+            : <>3-5x faster growth. 2-4x better Unit Economics.<br />With systems that scale and don't break.</>
           }
         </p>
 
