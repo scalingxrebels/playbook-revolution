@@ -1,60 +1,33 @@
 
+# Plan: Echte Harmonisierung der Homepage Sections
 
-# Harmonisierung der Homepage Sections
+## Identifizierte Inkonsistenzen (Dein Feedback bestätigt)
 
-## Analyse der Inkonsistenzen
-
-Nach detaillierter Prüfung aller 8 Sections habe ich folgende Design-Inkonsistenzen identifiziert:
-
-| Bereich | Problem Section (Referenz) | Solution | How It Works | Proof | ROI Calculator | Final CTA | Booking |
-|---------|---------------------------|----------|--------------|-------|----------------|-----------|---------|
-| **Overline Style** | `text-destructive` | `text-accent` | `text-primary` | `text-accent` | Badge-Style | Fehlt | Badge-Style |
-| **Container Width** | `max-w-6xl` | `max-w-6xl` | `max-w-6xl` | `max-w-6xl` | `max-w-6xl` | `max-w-4xl` | `max-w-5xl` |
-| **Padding** | `py-24 lg:py-32` | `py-24 lg:py-32` | `py-24 lg:py-32` | `py-24 lg:py-32` | `py-16 md:py-24` | `py-24 lg:py-32` | `py-24` |
-| **Card Border** | `border-2 border-border` | `border-2 border-primary/30` | `border-2 border-border` | `border-2 border-border` | `border border-border` | — | `border border-border` |
-| **Badge Position** | `-top-4 -right-4` | `-top-4 -right-4` | `-top-3 left-4` | `-top-3 -right-3` | — | — | — |
-| **Background** | `from-background to-secondary/30` | `bg-mesh` | `from-secondary/30 to-background` | `bg-mesh` | `bg-mesh opacity-50` | `from-secondary/30 to-background` | `from-background via-accent/5` |
-| **Section ID** | `problem-section` | `solution` | `how-it-works` | `proof` | `roi-calculator` | `final-cta` | `contact` |
+| Section | Problem | Lösung |
+|---------|---------|--------|
+| **How It Works** | Subheadline (`text-editorial`) zu groß – bricht das Muster anderer Sections | Subheadline entfernen oder auf `text-muted-foreground` verkleinern |
+| **Proof** | H2 zweifarbig (`text-muted-foreground` + `text-gradient`) – inkonsistent | Auf einheitliche `text-foreground` ändern oder bewusst als "Highlight-Section" kennzeichnen |
+| **ROI Calculator** | Badges statt Overline, andere H2-Klassen, andere Subheadline-Größe | Auf Standard-Header-Pattern umstellen |
 
 ---
 
-## Harmonisierungs-Strategie
+## Einheitliches Header-Pattern (Referenz: Problem + Solution Sections)
 
-### Design-System-Regeln (konsistent für alle Sections)
-
-**1. Container & Spacing**
-- `max-w-6xl` für alle Content Sections
-- `py-24 lg:py-32` als Standard-Padding
-- `px-6` horizontales Padding
-
-**2. Section Header Pattern**
-```
-Overline → text-sm font-semibold uppercase tracking-widest text-primary
-Headline → font-display text-display-md text-foreground mb-6
-Subheadline → text-editorial text-muted-foreground max-w-3xl mx-auto
-```
-
-**3. Card Pattern**
-- `bg-card border-2 border-border hover:border-primary/50`
-- Badge: `absolute -top-3 -right-3` (einheitliche Position)
-- Icon: `w-14 h-14 rounded-lg bg-primary/10`
-
-**4. Background-Rhythmus (Wechsel für visuellen Fluss)**
-```
-Hero       → Dark gradient + Stars
-Problem    → from-background to-secondary/30
-Solution   → bg-mesh
-How It Works → from-secondary/30 to-background
-Proof      → bg-mesh
-ROI        → bg-background + bg-mesh opacity-50
-Final CTA  → from-secondary/30 to-background
-Booking    → from-background via-accent/5 to-background
+```text
+┌─────────────────────────────────────────────────────────────┐
+│  OVERLINE                                                   │
+│  text-sm font-semibold uppercase tracking-widest            │
+│  Farbe: je nach Semantik (destructive/accent/primary)       │
+├─────────────────────────────────────────────────────────────┤
+│  HEADLINE (H2)                                              │
+│  font-display text-display-md text-foreground mb-6          │
+├─────────────────────────────────────────────────────────────┤
+│  OPTIONAL: Trust-Badge (wie bei Proof)                      │
+│  Kein großer Subheadline-Text                               │
+└─────────────────────────────────────────────────────────────┘
 ```
 
-**5. Farb-Semantik**
-- `primary` → Positiv, How It Works, Standard
-- `accent` → Proof, Results, Highlights
-- `destructive` → Problem, Negativ
+**Wichtig:** Problem und Solution haben **keine** Subheadline unter der H2. How It Works sollte das auch nicht haben.
 
 ---
 
@@ -62,132 +35,136 @@ Booking    → from-background via-accent/5 to-background
 
 ### 1. HowItWorksOptimized.tsx
 
-**Problem:** Inkonsistente Badge-Position (`-top-3 left-4` statt `-top-3 -right-3`)
+**Zeilen 84-89 entfernen oder stark verkleinern:**
 
-**Änderungen:**
-- Badge nach `-top-3 -right-3` verschieben (wie bei anderen Sections)
-- Overline-Farbe auf `text-primary` vereinheitlichen
-- Card-Hover auf `hover:border-primary/50` standardisieren
+```tsx
+// VORHER (Zeile 84-89):
+<p className="text-editorial text-muted-foreground max-w-3xl mx-auto">
+  {language === 'de'
+    ? 'Erfolgreiche Startups exzellieren...'
+    : 'Successful startups excel...'
+  }
+</p>
+
+// NACHHER (entfernen ODER verkleinern):
+// Option A: Komplett entfernen (wie Problem/Solution)
+// Option B: Verkleinern auf text-sm:
+<p className="text-sm text-muted-foreground max-w-2xl mx-auto">
+  {language === 'de'
+    ? 'Erfolgreiche Startups exzellieren...'
+    : 'Successful startups excel...'
+  }
+</p>
+```
+
+---
 
 ### 2. ProofOptimized.tsx
 
-**Problem:** Badge-Größe (`-top-3 -right-3`) leicht anders
+**Zeilen 85-98 – H2 vereinheitlichen:**
 
-**Änderungen:**
-- Badge-Styling auf `shadow-brutal-sm` vereinheitlichen
-- Overline auf `text-primary` ändern (Proof ist positiv, nicht accent)
-- Research Badge konsistent mit Card-Style gestalten
+```tsx
+// VORHER (Zeile 85-98):
+<h2 className="font-display text-display-md text-foreground mb-6">
+  <span className="block text-muted-foreground">
+    {language === 'de' ? 'Traditionell: 500...' : 'Traditional: 500...'}
+  </span>
+  <span className="block text-gradient">
+    {language === 'de' ? 'AI-Native: 40...' : 'AI-Native: 40...'}
+  </span>
+</h2>
+
+// NACHHER – Zwei Optionen:
+
+// Option A: Einheitliche Farbe (wie andere Sections)
+<h2 className="font-display text-display-md text-foreground mb-6">
+  {language === 'de' 
+    ? 'Von 500 auf 40 Mitarbeiter bei €200M ARR' 
+    : 'From 500 to 40 employees at €200M ARR'
+  }
+</h2>
+
+// Option B: Before/After mit Kontrast aber subtiler
+<h2 className="font-display text-display-md mb-6">
+  <span className="block text-foreground/60 line-through">
+    {language === 'de' ? 'Traditionell: 500 Mitarbeiter' : 'Traditional: 500 employees'}
+  </span>
+  <span className="block text-foreground">
+    {language === 'de' ? 'AI-Native: 40 Mitarbeiter für €200M ARR' : 'AI-Native: 40 employees for €200M ARR'}
+  </span>
+</h2>
+```
+
+---
 
 ### 3. ROICalculatorOptimized.tsx
 
-**Problem:** 
-- Padding inkonsistent (`py-16 md:py-24` statt `py-24 lg:py-32`)
-- Card-Border nur `border` statt `border-2`
-- Header-Struktur anders (Badges statt Overline)
+**Zeilen 236-261 – Header komplett umstrukturieren:**
 
-**Änderungen:**
-- Padding auf `py-24 lg:py-32` anpassen
-- Card-Border auf `border-2 border-border` vereinheitlichen
-- Overline-Pattern für Section-Header hinzufügen
-
-### 4. FinalCTAOptimized.tsx
-
-**Problem:**
-- Container `max-w-4xl` statt `max-w-6xl`
-- Keine Overline vorhanden
-
-**Änderungen:**
-- Container auf `max-w-6xl` erweitern (für Konsistenz)
-- Alternativ: Bewusst kleiner für "Fokus-Effekt" → dokumentieren
-
-### 5. BookingCTA.tsx
-
-**Problem:**
-- Section ID `contact` statt `booking-form` (wird von CTAs referenziert!)
-- Container `max-w-5xl` inkonsistent
-- Card-Border nur `border` statt `border-2`
-- Anderer Header-Style (Badge + Large Headline)
-
-**Änderungen:**
-- Card-Border auf `border-2 border-border` vereinheitlichen
-- Header-Pattern angleichen aber Urgency-Element beibehalten
-
----
-
-## Implementierungs-Reihenfolge
-
-### Phase 1: Container & Spacing (alle Dateien)
-1. `ROICalculatorOptimized.tsx` → Padding anpassen
-2. `FinalCTAOptimized.tsx` → Optional Container anpassen
-
-### Phase 2: Card-Konsistenz
-1. `HowItWorksOptimized.tsx` → Badge-Position, Hover-State
-2. `ProofOptimized.tsx` → Badge-Style vereinheitlichen
-3. `ROICalculatorOptimized.tsx` → Border-Stärke
-4. `BookingCTA.tsx` → Border-Stärke
-
-### Phase 3: Header-Pattern
-1. `HowItWorksOptimized.tsx` → Overline-Farbe
-2. `ProofOptimized.tsx` → Overline-Farbe
-3. `ROICalculatorOptimized.tsx` → Overline hinzufügen (optional)
-
-### Phase 4: Feinschliff
-1. Hover-States überprüfen
-2. Animation-Delays konsistent machen
-3. Shadow-Styles vereinheitlichen
-
----
-
-## Technische Details
-
-### Betroffene Dateien
-
-| Datei | Änderungen |
-|-------|------------|
-| `src/components/homepage/HowItWorksOptimized.tsx` | Badge-Position: `left-4` → `-right-3`, Hover-State |
-| `src/components/homepage/ProofOptimized.tsx` | Overline: `text-accent` → `text-primary` |
-| `src/components/homepage/ROICalculatorOptimized.tsx` | Padding, Border-Stärke, Overline-Pattern |
-| `src/components/homepage/FinalCTAOptimized.tsx` | Optional: Container-Breite |
-| `src/components/BookingCTA.tsx` | Border-Stärke auf `border-2` |
-
-### Code-Beispiele
-
-**HowItWorksOptimized.tsx - Badge-Position (Zeile 103):**
 ```tsx
-// VORHER:
-<div className={`absolute -top-3 left-4 px-3 py-1 ...`}>
+// VORHER (Zeile 242-261):
+<div className="flex flex-wrap items-center justify-center gap-3 mb-4">
+  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+    <Calculator className="w-4 h-4" />
+    {t.badge}
+  </span>
+  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
+    {language === 'de' ? '2 von 3 Ergebnissen garantiert' : '2 of 3 results guaranteed'}
+  </span>
+</div>
+<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+  ...
+</h2>
+<p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+  ...
+</p>
 
-// NACHHER:
-<div className={`absolute -top-3 -right-3 px-3 py-1 ...`}>
-```
-
-**ROICalculatorOptimized.tsx - Padding (Zeile 229):**
-```tsx
-// VORHER:
-className="relative min-h-[70vh] py-16 md:py-24 bg-background overflow-hidden"
-
-// NACHHER:
-className="relative min-h-[70vh] py-24 lg:py-32 bg-background overflow-hidden"
-```
-
-**ROICalculatorOptimized.tsx - Card Border (Zeile 273, 296, 328, 442):**
-```tsx
-// VORHER:
-className="bg-card border border-border rounded-lg p-6 shadow-card"
-
-// NACHHER:
-className="bg-card border-2 border-border rounded-lg p-6 shadow-card"
+// NACHHER (Standard-Pattern):
+<span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+  {t.badge}
+</span>
+<h2 className="font-display text-display-md text-foreground mb-6">
+  {language === 'de' 
+    ? 'Wie schnell kannst du auf €100M skalieren?' 
+    : 'How fast can you scale to €100M?'}
+</h2>
+{/* Trust-Badge darunter (optional, wie bei Proof) */}
+<div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-lg mb-6">
+  <CheckCircle className="w-4 h-4 text-accent" />
+  <span className="text-sm text-muted-foreground">
+    {language === 'de' ? '2 von 3 Ergebnissen garantiert' : '2 of 3 results guaranteed'}
+  </span>
+</div>
 ```
 
 ---
 
-## Erwartetes Ergebnis
+## Überblick der Änderungen
 
-Nach der Harmonisierung wird die Homepage einen konsistenten visuellen Rhythmus haben:
+| Datei | Änderung | Zeilen |
+|-------|----------|--------|
+| `HowItWorksOptimized.tsx` | Subheadline entfernen oder auf `text-sm` verkleinern | 84-89 |
+| `ProofOptimized.tsx` | H2 auf einheitliche Farbe ändern (Option wählen) | 85-98 |
+| `ROICalculatorOptimized.tsx` | Header komplett auf Standard-Pattern umbauen | 242-261 |
 
-1. **Alle Cards** haben `border-2 border-border` und `hover:border-primary/50`
-2. **Alle Badges** sitzen `-top-3 -right-3` mit `shadow-brutal-sm`
-3. **Alle Section Headers** folgen dem Overline → Headline → Subheadline Pattern
-4. **Spacing** ist durchgehend `py-24 lg:py-32`
-5. **Container** sind `max-w-6xl` (außer bewusste Ausnahmen für Fokus)
+---
 
+## Ergebnis nach Harmonisierung
+
+Alle Sections folgen dann diesem Muster:
+
+```text
+[Overline: text-sm uppercase tracking-widest]
+[H2: font-display text-display-md text-foreground]
+[Optional: Trust-Badge in Card-Style]
+[Content Cards/Grid]
+[CTA Button]
+```
+
+---
+
+## Technische Notizen
+
+- **Keine weiteren Änderungen** an Card-Borders, Badge-Positionen oder Padding nötig (die sind bereits konsistent)
+- **Fokus liegt auf Header-Pattern** – das ist der sichtbare "rote Faden", der fehlt
+- **Semantische Farben** bleiben erhalten: `destructive` für Problem, `accent` für Solution/Proof, `primary` für How It Works
