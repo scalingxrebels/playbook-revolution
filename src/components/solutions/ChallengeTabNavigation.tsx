@@ -12,8 +12,8 @@ interface ChallengeTabNavigationProps {
 // Icon mapping for challenges
 const challengeIcons: Record<ChallengeId, React.ElementType> = {
   'all': Layers,
-  'cac-crisis': TrendingDown,
-  'growth-stalled': TrendingUp,
+  'cac-crisis': TrendingUp,
+  'growth-stalled': TrendingDown,
   'pricing-breakdown': DollarSign,
   'customer-success-broken': Users,
   'scaling-chaos': Zap,
