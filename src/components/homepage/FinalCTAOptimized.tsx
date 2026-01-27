@@ -47,10 +47,9 @@ const FinalCTAOptimized: React.FC = () => {
 
   const stats = [
     { value: '80+', labelDe: 'Companies Scaled', labelEn: 'Companies Scaled' },
-    { value: '140+', labelDe: 'Erfolgreiche Projekte', labelEn: 'Successful Projects' },
-    { value: '1,53x', labelDe: 'Valuation Growth', labelEn: 'Valuation Growth' },
-    { value: '+20pp', labelDe: 'Rule of 40', labelEn: 'Rule of 40' },
-    { value: '+15pp', labelDe: 'ARR Growth', labelEn: 'ARR Growth' },
+    { value: '140+', labelDe: 'Engagements', labelEn: 'Engagements' },
+    { value: '€2.5B+', labelDe: 'Valuation', labelEn: 'Valuation' },
+    { value: '92%', labelDe: 'Success Rate', labelEn: 'Success Rate' },
   ];
 
   return (
@@ -129,7 +128,7 @@ const FinalCTAOptimized: React.FC = () => {
 
             {/* Stats Grid */}
             <div className="p-6 rounded-xl bg-muted/30 border-2 border-border">
-              <div className="grid grid-cols-5 gap-4 text-center">
+              <div className="grid grid-cols-4 gap-4 text-center">
                 {stats.map((stat, index) => (
                   <div key={index}>
                     <div className="text-xl lg:text-2xl font-bold text-primary">{stat.value}</div>
