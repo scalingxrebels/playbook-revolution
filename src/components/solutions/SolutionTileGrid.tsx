@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { SolutionTile } from '@/data/solutionTiles';
 import SolutionTileCard from './SolutionTileCard';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { cn } from '@/lib/utils';
 
 interface SolutionTileGridProps {
   tiles: SolutionTile[];
@@ -14,9 +15,41 @@ const SolutionTileGrid: React.FC<SolutionTileGridProps> = ({
 }) => {
   const { language } = useLanguage();
   const [showAll, setShowAll] = React.useState(false);
+  const [visibleIndices, setVisibleIndices] = useState<Set<number>>(new Set());
+  const gridRef = useRef<HTMLDivElement>(null);
   
   const visibleTiles = showAll ? tiles : tiles.slice(0, maxVisible);
   const hasMore = tiles.length > maxVisible;
+
+  // Intersection Observer for staggered animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            if (!isNaN(index)) {
+              setVisibleIndices((prev) => new Set([...prev, index]));
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.1,
+        rootMargin: '50px'
+      }
+    );
+
+    const cards = gridRef.current?.querySelectorAll('[data-index]');
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, [visibleTiles]);
+
+  // Reset visible indices when tiles change
+  useEffect(() => {
+    setVisibleIndices(new Set());
+  }, [tiles]);
 
   if (tiles.length === 0) {
     return (
@@ -40,9 +73,26 @@ const SolutionTileGrid: React.FC<SolutionTileGridProps> = ({
   return (
     <div className="space-y-8">
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-        {visibleTiles.map((tile) => (
-          <SolutionTileCard key={tile.id} tile={tile} />
+      <div 
+        ref={gridRef}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        {visibleTiles.map((tile, index) => (
+          <div
+            key={tile.id}
+            data-index={index}
+            className={cn(
+              "transition-all duration-500 ease-out",
+              visibleIndices.has(index)
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-4"
+            )}
+            style={{
+              transitionDelay: `${(index % 6) * 75}ms`
+            }}
+          >
+            <SolutionTileCard tile={tile} index={index} />
+          </div>
         ))}
       </div>
 
@@ -51,7 +101,7 @@ const SolutionTileGrid: React.FC<SolutionTileGridProps> = ({
         <div className="text-center pt-4">
           <button
             onClick={() => setShowAll(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-accent hover:text-accent/80 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-primary hover:text-primary/80 transition-colors border border-primary/30 rounded-full hover:bg-primary/5"
           >
             {language === 'de' 
               ? `Alle ${tiles.length} Lösungen anzeigen` 
@@ -66,7 +116,10 @@ const SolutionTileGrid: React.FC<SolutionTileGridProps> = ({
       {showAll && hasMore && (
         <div className="text-center pt-4">
           <button
-            onClick={() => setShowAll(false)}
+            onClick={() => {
+              setShowAll(false);
+              setVisibleIndices(new Set());
+            }}
             className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
             {language === 'de' ? 'Weniger anzeigen' : 'Show less'}
@@ -74,14 +127,6 @@ const SolutionTileGrid: React.FC<SolutionTileGridProps> = ({
           </button>
         </div>
       )}
-
-      {/* Results Count */}
-      <div className="text-center text-sm text-muted-foreground">
-        {language === 'de' 
-          ? `${visibleTiles.length} von ${tiles.length} Lösungen`
-          : `${visibleTiles.length} of ${tiles.length} solutions`
-        }
-      </div>
     </div>
   );
 };
