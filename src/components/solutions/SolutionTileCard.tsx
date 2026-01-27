@@ -1,17 +1,40 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { SolutionTile, getTransformationTierLabel } from '@/data/solutionTiles';
+import { SolutionTile, getTransformationTierLabel, SolutionTypeId } from '@/data/solutionTiles';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, ArrowRight, ExternalLink } from 'lucide-react';
+import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SolutionTileCardProps {
   tile: SolutionTile;
+  index?: number;
 }
 
-const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
+// Gradient mapping per solution type
+const typeGradients: Record<Exclude<SolutionTypeId, 'all'>, string> = {
+  'insights': 'from-blue-500 to-cyan-500',
+  'decision-support': 'from-purple-500 to-violet-500',
+  'tools': 'from-slate-500 to-zinc-500',
+  'transformation': 'from-orange-500 to-amber-500',
+  'advisory': 'from-rose-500 to-pink-500',
+  'keynote': 'from-yellow-500 to-orange-500',
+  'portfolio': 'from-green-500 to-emerald-500',
+};
+
+// Icon mapping per solution type
+const typeIcons: Record<Exclude<SolutionTypeId, 'all'>, React.ElementType> = {
+  'insights': Lightbulb,
+  'decision-support': Target,
+  'tools': Wrench,
+  'transformation': Rocket,
+  'advisory': Compass,
+  'keynote': Mic,
+  'portfolio': Building2,
+};
+
+const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
   const { language } = useLanguage();
   const lang = language as 'en' | 'de';
 
@@ -22,6 +45,9 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
   const impact = lang === 'de' ? tile.impactDe : tile.impactEn;
   const primaryCta = lang === 'de' ? tile.primaryCtaDe : tile.primaryCtaEn;
   const secondaryCta = lang === 'de' ? tile.secondaryCtaDe : tile.secondaryCtaEn;
+
+  const gradient = typeGradients[tile.solutionType];
+  const Icon = typeIcons[tile.solutionType];
 
   const handlePrimaryClick = () => {
     if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'book-call' || tile.primaryCtaAction === 'open-tool') {
@@ -36,14 +62,13 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
       return getTransformationTierLabel(tile.transformationTier, lang);
     }
     const typeLabels: Record<string, { en: string; de: string }> = {
-      'insights': { en: 'Insights', de: 'Insights' },
+      'insights': { en: 'Insights & Clarity', de: 'Insights & Clarity' },
       'decision-support': { en: 'Decision Support', de: 'Decision Support' },
+      'tools': { en: 'AI-Powered Tools', de: 'AI-Powered Tools' },
       'transformation': { en: 'Transformation', de: 'Transformation' },
-      'training': { en: 'Training', de: 'Training' },
-      'advisory': { en: 'Advisory', de: 'Advisory' },
-      'retainer': { en: 'Retainer', de: 'Retainer' },
-      'keynote': { en: 'Keynote', de: 'Keynote' },
-      'tools': { en: 'Tools', de: 'Tools' }
+      'advisory': { en: 'Strategic Advisory', de: 'Strategic Advisory' },
+      'keynote': { en: 'Workshops & Keynotes', de: 'Workshops & Keynotes' },
+      'portfolio': { en: 'Portfolio & Investment', de: 'Portfolio & Investment' }
     };
     return typeLabels[tile.solutionType]?.[lang] || tile.solutionType;
   };
@@ -51,16 +76,38 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
   const isExternalAction = tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool';
 
   return (
-    <Card className={cn(
-      "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
-      "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-      tile.priceTag === 'free' && "border-accent/50"
-    )}>
-      <CardContent className="p-5 flex flex-col h-full">
+    <Card 
+      className={cn(
+        "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
+        "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
+        tile.priceTag === 'free' && "border-accent/50"
+      )}
+      style={{
+        animationDelay: `${index * 50}ms`
+      }}
+    >
+      {/* Gradient Accent on hover */}
+      <div className={cn(
+        "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 rounded-xl transition-opacity duration-300",
+        gradient
+      )} />
+
+      {/* Hover Arrow */}
+      <ArrowRight className="absolute top-5 right-5 w-5 h-5 text-muted-foreground opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 z-10" />
+
+      <CardContent className="p-5 flex flex-col h-full relative">
+        {/* Gradient Icon */}
+        <div className={cn(
+          "w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300",
+          gradient
+        )}>
+          <Icon className="w-6 h-6" />
+        </div>
+
         {/* Badges */}
         <div className="flex flex-wrap gap-2 mb-3">
           <Badge 
-            variant="secondary" 
+            variant="outline" 
             className="text-xs font-medium"
           >
             {getSolutionTypeLabel()}
@@ -77,7 +124,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
         </div>
 
         {/* Headline */}
-        <h3 className="text-lg font-display font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
+        <h3 className="text-lg font-display font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
           {headline}
         </h3>
 
@@ -101,8 +148,8 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
 
           {/* Deliverables */}
           <div className="space-y-1.5">
-            {deliverables.slice(0, 3).map((item, index) => (
-              <div key={index} className="flex items-start gap-2">
+            {deliverables.slice(0, 3).map((item, idx) => (
+              <div key={idx} className="flex items-start gap-2">
                 <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
                 <span className="text-muted-foreground text-sm">{item}</span>
               </div>
@@ -139,7 +186,12 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile }) => {
         <div className="mt-4 pt-4 border-t border-border space-y-2">
           <Button 
             onClick={handlePrimaryClick}
-            className="w-full"
+            className={cn(
+              "w-full",
+              tile.priceTag === 'free' 
+                ? "bg-gradient-to-r from-primary to-primary/80" 
+                : ""
+            )}
             variant={tile.priceTag === 'free' ? 'default' : 'outline'}
           >
             {primaryCta}

@@ -1,37 +1,58 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, CheckCircle } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallax } from '@/hooks/useParallax';
 
 const caseStudies = [
   {
     name: 'Midjourney',
-    industry: 'AI Image Generation',
-    arr: '$200M+',
-    employees: '~40',
-    timeToScale: '18 months',
-    thetaIndex: 0.91,
+    industry: { en: 'AI Image Generation', de: 'AI Bildgenerierung' },
     logo: '🎨',
+    before: { 
+      label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
+      value: { en: '200 employees for €200M ARR', de: '200 Mitarbeiter für €200M ARR' }
+    },
+    after: { 
+      label: { en: 'Actual (AI-Native)', de: 'Tatsächlich (AI-Native)' },
+      value: { en: '40 employees for €200M ARR', de: '40 Mitarbeiter für €200M ARR' }
+    },
+    result: '5x',
+    resultLabel: { en: 'more efficient', de: 'effizienter' },
+    timeToScale: '18',
   },
   {
     name: 'Cursor',
-    industry: 'AI Code Editor',
-    arr: '$100M+',
-    employees: '~20',
-    timeToScale: '24 months',
-    thetaIndex: 0.88,
+    industry: { en: 'AI Code Editor', de: 'AI Code Editor' },
     logo: '💻',
+    before: { 
+      label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
+      value: { en: '100 employees for €100M ARR', de: '100 Mitarbeiter für €100M ARR' }
+    },
+    after: { 
+      label: { en: 'Actual (AI-Native)', de: 'Tatsächlich (AI-Native)' },
+      value: { en: '20 employees for €100M ARR', de: '20 Mitarbeiter für €100M ARR' }
+    },
+    result: '5x',
+    resultLabel: { en: 'more efficient', de: 'effizienter' },
+    timeToScale: '24',
   },
   {
     name: 'Perplexity',
-    industry: 'AI Search',
-    arr: '$50M+',
-    employees: '~50',
-    timeToScale: '20 months',
-    thetaIndex: 0.85,
+    industry: { en: 'AI Search', de: 'AI Suche' },
     logo: '🔍',
+    before: { 
+      label: { en: 'Projected (traditional)', de: 'Projiziert (traditionell)' },
+      value: { en: '100 employees for €50M ARR', de: '100 Mitarbeiter für €50M ARR' }
+    },
+    after: { 
+      label: { en: 'Actual (AI-Native)', de: 'Tatsächlich (AI-Native)' },
+      value: { en: '50 employees for €50M ARR', de: '50 Mitarbeiter für €50M ARR' }
+    },
+    result: '2x',
+    resultLabel: { en: 'more efficient', de: 'effizienter' },
+    timeToScale: '20',
   },
 ];
 
@@ -42,6 +63,7 @@ const ProofOptimized: React.FC = () => {
 
   return (
     <section 
+      id="proof"
       ref={ref as React.RefObject<HTMLElement>}
       className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
@@ -55,31 +77,40 @@ const ProofOptimized: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
-            {language === 'de' ? 'Validierung' : 'Validation'}
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Beweis' : 'Proof'}
           </span>
-          <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' 
-              ? 'Validiert durch 22+ AI-Native Unternehmen' 
-              : 'Validated by 22+ AI-Native Companies'
-            }
+          
+          {/* Before/After Headline */}
+          <h2 className="font-display text-display-md mb-6">
+            <span className="block text-foreground/50 line-through decoration-destructive/50">
+              {language === 'de' 
+                ? 'Traditionell: 500 Mitarbeiter für €100M ARR' 
+                : 'Traditional: 500 employees for €100M ARR'
+              }
+            </span>
+            <span className="block text-foreground">
+              {language === 'de' 
+                ? 'AI-Native: 40 Mitarbeiter für €200M ARR' 
+                : 'AI-Native: 40 employees for €200M ARR'
+              }
+            </span>
           </h2>
           
-          {/* Research Stats */}
-          <div className="inline-flex items-center gap-6 bg-card/80 backdrop-blur-sm border border-border px-6 py-3 rounded-lg">
-            <div className="text-center">
-              <span className="block text-2xl font-bold text-gradient">R² = 0.76</span>
-              <span className="text-xs text-muted-foreground uppercase tracking-wider">Correlation</span>
+          {/* Research Badge */}
+          <div className="inline-flex items-center gap-4 bg-card/80 backdrop-blur-sm border border-border px-6 py-3 rounded-lg">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-accent" />
+              <span className="text-sm text-muted-foreground">
+                {language === 'de' ? 'Basierend auf 22 analysierten Unternehmen' : 'Based on 22 analyzed companies'}
+              </span>
             </div>
-            <div className="w-px h-10 bg-border" />
-            <div className="text-center">
-              <span className="block text-2xl font-bold text-foreground">n = 22</span>
-              <span className="text-xs text-muted-foreground uppercase tracking-wider">Companies</span>
-            </div>
-            <div className="w-px h-10 bg-border" />
-            <div className="text-center">
-              <span className="block text-2xl font-bold text-accent">p &lt; 0.001</span>
-              <span className="text-xs text-muted-foreground uppercase tracking-wider">Significance</span>
+            <div className="w-px h-6 bg-border" />
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-accent" />
+              <span className="text-sm text-muted-foreground">
+                {language === 'de' ? 'Wissenschaftlich validiert' : 'Scientifically validated'}
+              </span>
             </div>
           </div>
         </div>
@@ -92,34 +123,53 @@ const ProofOptimized: React.FC = () => {
               className="group relative bg-card border-2 border-border hover:border-accent/50 p-6 transition-all duration-400 animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* θ_index Badge */}
+              {/* Result Badge */}
               <div className="absolute -top-3 -right-3 bg-gradient-accent text-accent-foreground px-3 py-1 text-sm font-bold shadow-brutal-sm">
-                θ = {study.thetaIndex}
+                {study.result} {language === 'de' ? study.resultLabel.de : study.resultLabel.en}
               </div>
 
               {/* Logo & Name */}
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-4 mb-6">
                 <span className="text-4xl">{study.logo}</span>
                 <div>
                   <h3 className="font-sans text-xl font-bold text-foreground">{study.name}</h3>
-                  <p className="text-sm text-muted-foreground">{study.industry}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {language === 'de' ? study.industry.de : study.industry.en}
+                  </p>
                 </div>
               </div>
 
-              {/* Stats Grid */}
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div>
-                  <span className="text-lg font-bold text-foreground">{study.arr}</span>
-                  <span className="block text-xs text-muted-foreground uppercase tracking-wider">ARR</span>
+              {/* Before/After */}
+              <div className="space-y-4 mb-6">
+                {/* Before */}
+                <div className="p-3 bg-destructive/5 border border-destructive/20 rounded-lg">
+                  <span className="text-xs text-destructive uppercase tracking-wider font-semibold">
+                    {language === 'de' ? study.before.label.de : study.before.label.en}
+                  </span>
+                  <p className="text-sm text-muted-foreground mt-1">
+                    {language === 'de' ? study.before.value.de : study.before.value.en}
+                  </p>
                 </div>
-                <div>
-                  <span className="text-lg font-bold text-foreground">{study.employees}</span>
-                  <span className="block text-xs text-muted-foreground uppercase tracking-wider">{language === 'de' ? 'Mitarbeiter' : 'Employees'}</span>
+                
+                {/* After */}
+                <div className="p-3 bg-accent/5 border border-accent/20 rounded-lg">
+                  <span className="text-xs text-accent uppercase tracking-wider font-semibold">
+                    {language === 'de' ? study.after.label.de : study.after.label.en}
+                  </span>
+                  <p className="text-sm text-foreground font-medium mt-1">
+                    {language === 'de' ? study.after.value.de : study.after.value.en}
+                  </p>
                 </div>
-                <div className="col-span-2">
-                  <span className="text-lg font-bold text-accent">{study.timeToScale}</span>
-                  <span className="block text-xs text-muted-foreground uppercase tracking-wider">Time to Scale</span>
-                </div>
+              </div>
+
+              {/* Time to Scale */}
+              <div className="pt-4 border-t border-border flex items-center justify-between">
+                <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                  {language === 'de' ? 'Zeit bis zur Skalierung' : 'Time to Scale'}
+                </span>
+                <span className="text-lg font-bold text-accent">
+                  {study.timeToScale} {language === 'de' ? 'Monate' : 'months'}
+                </span>
               </div>
 
               {/* Hover Link */}
@@ -135,7 +185,7 @@ const ProofOptimized: React.FC = () => {
           <Button 
             variant="outline"
             size="lg"
-            onClick={() => window.location.href = '/research'}
+            onClick={() => window.location.href = '/cases'}
             className="border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6"
           >
             {language === 'de' ? 'Alle Case Studies ansehen' : 'View All Case Studies'}

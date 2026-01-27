@@ -1,7 +1,7 @@
 // Solution Tiles Data - Complete briefing-compliant version
 // Last updated: 2026-01-22 (Briefing 04b)
 
-export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'transformation' | 'training' | 'advisory' | 'retainer' | 'keynote' | 'tools';
+export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote' | 'portfolio';
 
 export type ChallengeId = 
   | 'all'
@@ -60,14 +60,13 @@ export interface SolutionTile {
 
 export const solutionTypes: SolutionType[] = [
   { id: 'all', labelEn: 'All Types', labelDe: 'Alle Typen' },
-  { id: 'insights', labelEn: 'Insights & Clarity', labelDe: 'Insights & Klarheit' },
+  { id: 'insights', labelEn: 'Insights & Clarity', labelDe: 'Insights & Clarity' },
   { id: 'decision-support', labelEn: 'Decision Support', labelDe: 'Decision Support' },
+  { id: 'tools', labelEn: 'AI-Powered Tools', labelDe: 'AI-Powered Tools' },
   { id: 'transformation', labelEn: 'Transformation', labelDe: 'Transformation' },
-  { id: 'training', labelEn: 'Training & Enablement', labelDe: 'Training & Enablement' },
-  { id: 'advisory', labelEn: 'Bespoke Strategy', labelDe: 'Maßgeschneiderte Strategie' },
-  { id: 'retainer', labelEn: 'Retainer', labelDe: 'Retainer' },
-  { id: 'keynote', labelEn: 'Keynote', labelDe: 'Keynote' },
-  { id: 'tools', labelEn: 'Tools', labelDe: 'Tools' }
+  { id: 'advisory', labelEn: 'Strategic Advisory', labelDe: 'Strategic Advisory' },
+  { id: 'keynote', labelEn: 'Workshops & Keynotes', labelDe: 'Workshops & Keynotes' },
+  { id: 'portfolio', labelEn: 'Portfolio & Investment Decisions', labelDe: 'Portfolio & Investment Decisions' }
 ];
 
 export const challenges: Challenge[] = [
@@ -394,7 +393,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 9,
     slug: 'portfolio-assessment',
-    solutionType: 'decision-support',
+    solutionType: 'portfolio',
     challenges: ['portfolio-performance'],
     price: '€3.9K-€5.9K',
     priceTag: 'paid',
@@ -714,7 +713,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 18,
     slug: 'power-up-portfolio',
-    solutionType: 'transformation',
+    solutionType: 'portfolio',
     transformationTier: 'power-up',
     challenges: ['portfolio-performance'],
     price: '€23.6K',
@@ -1024,7 +1023,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 27,
     slug: 'boost-portfolio',
-    solutionType: 'transformation',
+    solutionType: 'portfolio',
     transformationTier: 'boost',
     challenges: ['portfolio-performance'],
     price: '€58K',
@@ -1232,7 +1231,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 33,
     slug: 'accelerate-portfolio',
-    solutionType: 'transformation',
+    solutionType: 'portfolio',
     transformationTier: 'accelerate',
     challenges: ['portfolio-performance'],
     price: '€153K',
@@ -1270,7 +1269,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 34,
     slug: 'workshop',
-    solutionType: 'training',
+    solutionType: 'keynote',
     challenges: 'universal',
     price: '€2.5K-€5K',
     priceTag: 'paid',
@@ -1338,42 +1337,6 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaUrl: '/cases/advisory'
   },
 
-  // ============================================
-  // RETAINER (1 Kachel)
-  // ============================================
-  {
-    id: 36,
-    slug: 'retainer-advisory',
-    solutionType: 'retainer',
-    challenges: 'universal',
-    price: '€3.9K–€11K/month',
-    priceTag: 'custom',
-    headlineEn: 'Retainer Advisory',
-    headlineDe: 'Retainer Advisory',
-    problemEn: "You need ongoing strategic guidance—not a one-time project. You want a trusted advisor who knows your business and can help you navigate challenges as they arise.",
-    problemDe: 'Du brauchst laufende strategische Beratung—kein einmaliges Projekt. Du willst einen vertrauenswürdigen Berater, der dein Business kennt und dir hilft, Herausforderungen zu navigieren, wenn sie auftreten.',
-    solutionEn: 'We provide ongoing advisory (6-12 months). Choose tier: 1 Day/Month (€3.9K), 2 Days/Month (€7.8K), or 3 Days/Month (€11K). Includes monthly strategy sessions, quarterly reviews, and ad-hoc support.',
-    solutionDe: 'Wir bieten laufende Beratung (6-12 Monate). Wähle Tier: 1 Tag/Monat (€3.9K), 2 Tage/Monat (€7.8K), oder 3 Tage/Monat (€11K). Beinhaltet monatliche Strategy Sessions, quartalsweise Reviews und Ad-hoc Support.',
-    deliverablesEn: [
-      'Monthly strategy sessions (4-8 hours)',
-      'Quarterly reviews (half-day)',
-      'Ad-hoc support (email, Slack)'
-    ],
-    deliverablesDe: [
-      'Monatliche Strategy Sessions (4-8 Stunden)',
-      'Quartalsweise Reviews (halber Tag)',
-      'Ad-hoc Support (E-Mail, Slack)'
-    ],
-    impactEn: 'Get continuous strategic guidance. Navigate challenges as they arise. Predict 3-5x ROI over 6-12 months.',
-    impactDe: 'Erhalte kontinuierliche strategische Beratung. Navigiere Herausforderungen, wenn sie auftreten. Prognostiziere 3-5x ROI über 6-12 Monate.',
-    primaryCtaEn: 'Request Retainer',
-    primaryCtaDe: 'Retainer anfragen',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/retainer',
-    secondaryCtaEn: 'Learn more',
-    secondaryCtaDe: 'Mehr erfahren',
-    secondaryCtaUrl: '/about'
-  },
 
   // ============================================
   // KEYNOTE (1 Kachel)

@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { solutionTypes, SolutionTypeId } from '@/data/solutionTiles';
 import { cn } from '@/lib/utils';
+import { Layers } from 'lucide-react';
 
 interface SolutionTypeChipsProps {
   activeSolutionType: SolutionTypeId;
@@ -15,8 +16,17 @@ const SolutionTypeChips: React.FC<SolutionTypeChipsProps> = ({
   const { language } = useLanguage();
 
   return (
-    <div className="w-full overflow-x-auto scrollbar-hide py-2">
-      <div className="flex gap-2 min-w-max px-1">
+    <div className="w-full">
+      {/* Label */}
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <Layers className="w-4 h-4 text-muted-foreground" />
+        <span className="text-sm font-medium text-muted-foreground">
+          {language === 'de' ? 'Typ:' : 'Type:'}
+        </span>
+      </div>
+
+      {/* Chips */}
+      <div className="flex flex-wrap gap-2 justify-center">
         {solutionTypes.map((type) => {
           const isActive = activeSolutionType === type.id;
           const label = language === 'de' ? type.labelDe : type.labelEn;
@@ -26,11 +36,11 @@ const SolutionTypeChips: React.FC<SolutionTypeChipsProps> = ({
               key={type.id}
               onClick={() => onSolutionTypeChange(type.id)}
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap",
-                "border focus:outline-none focus:ring-2 focus:ring-accent/50",
+                "px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 whitespace-nowrap",
+                "focus:outline-none focus:ring-2 focus:ring-accent/50",
                 isActive
-                  ? "bg-accent text-accent-foreground border-accent shadow-md"
-                  : "bg-background text-muted-foreground border-border hover:border-accent/50 hover:text-foreground"
+                  ? "bg-primary/20 text-primary border border-primary/30"
+                  : "bg-card text-muted-foreground border border-border hover:border-primary/50 hover:text-foreground"
               )}
             >
               {label}

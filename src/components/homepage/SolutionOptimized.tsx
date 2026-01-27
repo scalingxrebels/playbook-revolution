@@ -7,30 +7,35 @@ import { useParallax } from '@/hooks/useParallax';
 const solutions = [
   {
     icon: Rocket,
-    titleEn: '10-30x Faster',
-    titleDe: '10-30x Schneller',
-    descEn: 'Development velocity through AI-native workflows',
-    descDe: 'Entwicklungsgeschwindigkeit durch AI-native Workflows',
-    stat: '10-30x',
+    titleEn: 'Strategy + Execution + AI',
+    titleDe: 'Strategie + Umsetzung + AI',
+    descEn: 'Other consultants deliver PowerPoint. We build with you. Hands-on. In 8-12 weeks, not 6-18 months.',
+    descDe: 'Andere Consultants liefern PowerPoint. Wir bauen mit dir zusammen. Hands-on. In 8-12 Wochen, nicht 6-18 Monaten.',
+    stat: '8-12',
+    statSuffix: { en: 'weeks', de: 'Wochen' },
+    contrast: { en: 'instead of 6-18 months', de: 'statt 6-18 Monate' },
     color: 'primary',
   },
   {
     icon: Target,
-    titleEn: '€100M in 18-30 Months',
-    titleDe: '€100M in 18-30 Monaten',
-    descEn: 'Accelerated path to scale with proven systems',
-    descDe: 'Beschleunigter Weg zur Skalierung mit bewährten Systemen',
-    stat: '18-30',
-    statSuffix: 'mo',
+    titleEn: 'Guaranteed Results',
+    titleDe: 'Garantierte Ergebnisse',
+    descEn: 'We guarantee 2 out of 3 results – or you get 50% back. No other consultant does that.',
+    descDe: 'Wir garantieren 2 von 3 Ergebnissen – oder du bekommst 50% zurück. Kein anderer Consultant macht das.',
+    stat: '2 of 3',
+    statSuffix: { en: 'guaranteed', de: 'garantiert' },
+    contrast: { en: 'or money back', de: 'oder Geld zurück' },
     color: 'accent',
   },
   {
     icon: GitBranch,
-    titleEn: 'O(n log n) Coordination',
-    titleDe: 'O(n log n) Koordination',
-    descEn: 'Efficient scaling without complexity explosion',
-    descDe: 'Effiziente Skalierung ohne Komplexitätsexplosion',
-    stat: 'O(n log n)',
+    titleEn: 'From 0 to 100 in 90 days',
+    titleDe: 'Von 0 auf 100 in 90 Tagen',
+    descEn: 'We transform your company in 90 days. From chaotic growth to systematic hypergrowth.',
+    descDe: 'Wir transformieren dein Unternehmen in 90 Tagen. Von chaotischem Wachstum zu systematischem Hypergrowth.',
+    stat: '90',
+    statSuffix: { en: 'days', de: 'Tage' },
+    contrast: { en: 'instead of 12-18 months', de: 'statt 12-18 Monate' },
     color: 'primary',
   },
 ];
@@ -42,6 +47,7 @@ const SolutionOptimized: React.FC = () => {
 
   return (
     <section 
+      id="solution"
       ref={ref as React.RefObject<HTMLElement>}
       className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
@@ -60,8 +66,8 @@ const SolutionOptimized: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
             {language === 'de' 
-              ? 'AI-Native Scaling Systeme' 
-              : 'AI-Native Scaling Systems'
+              ? 'Systeme, die mit dir skalieren' 
+              : 'Systems That Scale With You'
             }
           </h2>
         </div>
@@ -79,7 +85,12 @@ const SolutionOptimized: React.FC = () => {
               >
                 {/* Stat Badge */}
                 <div className={`absolute -top-4 -right-4 ${isAccent ? 'bg-gradient-accent' : 'bg-gradient-primary'} text-primary-foreground px-4 py-2 font-bold text-lg shadow-brutal-sm`}>
-                  {solution.stat}{solution.statSuffix && <span className="text-sm ml-1">{solution.statSuffix}</span>}
+                  {solution.stat}
+                  {solution.statSuffix && (
+                    <span className="text-sm ml-1">
+                      {language === 'de' ? solution.statSuffix.de : solution.statSuffix.en}
+                    </span>
+                  )}
                 </div>
 
                 {/* Icon */}
@@ -91,9 +102,16 @@ const SolutionOptimized: React.FC = () => {
                 <h3 className="font-sans text-xl font-bold text-foreground mb-3">
                   {language === 'de' ? solution.titleDe : solution.titleEn}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground mb-4">
                   {language === 'de' ? solution.descDe : solution.descEn}
                 </p>
+
+                {/* Contrast Label */}
+                <div className="pt-4 border-t border-border">
+                  <span className={`text-xs font-semibold uppercase tracking-widest ${isAccent ? 'text-accent' : 'text-primary'}`}>
+                    {language === 'de' ? solution.contrast.de : solution.contrast.en}
+                  </span>
+                </div>
 
                 {/* Glow Effect on Hover */}
                 <div className={`absolute inset-0 ${isAccent ? 'shadow-accent-glow' : 'shadow-glow'} opacity-0 group-hover:opacity-50 transition-opacity pointer-events-none`} />

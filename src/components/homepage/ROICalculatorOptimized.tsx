@@ -226,7 +226,7 @@ const ROICalculatorOptimized = () => {
     <section
       id="roi-calculator"
       ref={ref}
-      className="relative min-h-[70vh] py-16 md:py-24 bg-background overflow-hidden"
+      className="relative min-h-[70vh] py-24 lg:py-32 bg-background overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-mesh opacity-50" />
@@ -239,16 +239,21 @@ const ROICalculatorOptimized = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           )}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            <Calculator className="w-4 h-4" />
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {t.badge}
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {t.title}
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' 
+              ? 'Wie schnell kannst du auf €100M skalieren?' 
+              : 'How fast can you scale to €100M?'}
           </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t.subtitle}
-          </p>
+          {/* Trust badge - matches Proof section pattern */}
+          <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-lg">
+            <Target className="w-4 h-4 text-accent" />
+            <span className="text-sm text-muted-foreground">
+              {language === 'de' ? '2 von 3 Ergebnissen garantiert – oder 50% zurück' : '2 of 3 results guaranteed – or 50% back'}
+            </span>
+          </div>
         </div>
 
         {/* Calculator Grid */}
@@ -261,7 +266,7 @@ const ROICalculatorOptimized = () => {
           {/* LEFT: Inputs */}
           <div className="space-y-6">
             {/* Phase Presets */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.phasePreset}
               </h3>
@@ -284,7 +289,7 @@ const ROICalculatorOptimized = () => {
             </div>
 
             {/* Current AI Maturity */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.currentLevel}
               </h3>
@@ -316,7 +321,7 @@ const ROICalculatorOptimized = () => {
             </div>
 
             {/* Sliders */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card space-y-6">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card space-y-6 transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                 {t.inputs}
               </h3>
@@ -430,7 +435,7 @@ const ROICalculatorOptimized = () => {
           {/* RIGHT: Results */}
           <div className="space-y-6">
             {/* Target AI Maturity */}
-            <div className="bg-card border border-border rounded-lg p-6 shadow-card">
+            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
               <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
                 {t.targetLevel}
               </h3>
@@ -464,7 +469,7 @@ const ROICalculatorOptimized = () => {
             {/* Comparison Cards */}
             <div className="grid grid-cols-2 gap-4">
               {/* Current State */}
-              <div className="bg-card border border-border rounded-lg p-4 shadow-card">
+              <div className="bg-card border-2 border-border rounded-lg p-4 shadow-card">
                 <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   {t.currentState}
                 </h4>
