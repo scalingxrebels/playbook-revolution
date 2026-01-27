@@ -1,63 +1,41 @@
 
-# Umsetzungsplan: Portfolio-Zuordnung und Kachel-Entfernung
 
-## Zusammenfassung
+# Plan: CTAs aus SolutionHero entfernen
 
-Einfache Aenderungen in einer Datei:
-1. **Kacheln 9, 18, 27, 33** → `solutionType` von aktuell zu `'portfolio'` aendern
-2. **Kachel 36** → komplett entfernen
+## Ziel
+Die Solutions-Seite an die Playbooks-Seite angleichen, indem die beiden CTA-Buttons ("Solutions erkunden" / "Kostenloses Gespräch") unter der Hero-Subheadline entfernt werden.
 
----
+## Aenderung
 
-## Aenderungen im Detail
+### Datei: `src/components/solutions/SolutionHero.tsx`
 
-### Datei: `src/data/solutionTiles.ts`
+**Zu entfernen:**
+- Zeilen 33-51: Der komplette `<div>` Block mit den zwei Buttons
+- Zeilen 4: Der Import `Button` (wird nicht mehr benoetigt)
+- Zeilen 4: Die Imports `ArrowRight, Phone` (werden nicht mehr benoetigt)
+- Zeilen 10-12: Die Funktion `scrollToChallenges` (wird nicht mehr benoetigt)
 
-| Kachel | Zeile | Aktuelle Zuordnung | Neue Zuordnung |
-|--------|-------|-------------------|----------------|
-| ID 9 | ~396 | `solutionType: 'decision-support'` | `solutionType: 'portfolio'` |
-| ID 18 | ~716 | `solutionType: 'transformation'` | `solutionType: 'portfolio'` |
-| ID 27 | ~1026 | `solutionType: 'transformation'` | `solutionType: 'portfolio'` |
-| ID 33 | ~1234 | `solutionType: 'transformation'` | `solutionType: 'portfolio'` |
-| ID 36 | 1343-1375 | Komplett loeschen | - |
+**Vorher:**
+```tsx
+<SharedHero ...props stats={stats}>
+  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    <Button ...>Solutions erkunden</Button>
+    <Button ...>Kostenloses Gespraech</Button>
+  </div>
+</SharedHero>
+```
 
----
+**Nachher:**
+```tsx
+<SharedHero ...props stats={stats} />
+```
 
-## Ergebnis nach Umsetzung
+## Ergebnis
 
-### Kachel-Verteilung:
+| Seite | Vorher | Nachher |
+|-------|--------|---------|
+| /solutions | 2 CTAs unter Hero-Subheadline | Keine CTAs - direkt Stats |
+| /playbooks | Keine CTAs | Keine CTAs (unveraendert) |
 
-| Solution Type | Vorher | Nachher |
-|---------------|--------|---------|
-| Insights & Clarity | 2 | 2 |
-| Decision Support | 8 | **7** (-1) |
-| AI-Powered Tools | 4 | 4 |
-| Transformation | 23 | **20** (-3) |
-| Strategic Advisory | 2 | **1** (-1) |
-| Workshops & Keynotes | 2 | 2 |
-| Portfolio & Investment | 0 | **4** (+4) |
-| **Total** | **41** | **40** |
+Die Hero-Sections beider Seiten sind dann visuell konsistent.
 
-### Portfolio-Kategorie wird gefuellt mit:
-
-| ID | Headline | Ursprung |
-|----|----------|----------|
-| 9 | Portfolio Assessment | war Decision Support |
-| 18 | Power Up: Portfolio Value-Up | war Transformation |
-| 27 | Boost: Portfolio Acceleration | war Transformation |
-| 33 | Accelerate: Portfolio Dominance | war Transformation |
-
----
-
-## Technische Details
-
-### Betroffene Dateien:
-- `src/data/solutionTiles.ts` (4 Zeilen aendern + 36 Zeilen loeschen)
-
-### Keine Aenderungen erforderlich an:
-- `SolutionTileCard.tsx` (Portfolio-Gradient und Icon bereits definiert)
-- `SolutionTypeChips.tsx` (liest dynamisch aus solutionTypes)
-- `Solutions.tsx` (Filter-Logik bleibt gleich)
-
-### Kommentar-Anpassung:
-Der Kommentar "// RETAINER (1 Kachel)" (Zeilen 1340-1342) wird ebenfalls entfernt.
