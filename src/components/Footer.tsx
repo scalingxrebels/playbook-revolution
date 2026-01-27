@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ArrowUpRight, BookOpen, Users } from 'lucide-react';
+import { ArrowUpRight, Linkedin, Youtube, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -12,11 +12,22 @@ const Footer: React.FC = () => {
     { label: 'Impressum', href: '/impressum' },
   ];
 
-  const socialLinks = [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/scalingxhypergrowth/' },
+  const sitemapLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Solutions', href: '/solutions' },
+    { label: 'Playbooks', href: '/playbooks' },
+    { label: 'Expertise', href: '/expertise' },
+    { label: 'Cases', href: '/cases' },
+    { label: 'About', href: '/about' },
   ];
 
-  const authors = [
+  const socialLinks = [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/company/scalingxhypergrowth/', icon: Linkedin },
+    { label: 'YouTube', href: 'https://www.youtube.com/@ScalingXRebels', icon: Youtube },
+    { label: 'Mail', href: 'mailto:info@scalingx.io', icon: Mail },
+  ];
+
+  const team = [
     { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
     { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
     { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
@@ -33,33 +44,54 @@ const Footer: React.FC = () => {
               <img src="/images/scalingx-logo.png" alt="ScalingX" className="h-10 w-auto" />
             </div>
             <p className="text-xs uppercase tracking-widest text-accent mb-2">
-              EXPERTISE × SPEED = IMPACT
+              GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS
             </p>
-            <p className="text-editorial text-muted-foreground max-w-md editorial-border">
+            <p className="text-editorial text-muted-foreground max-w-md editorial-border mb-4">
               {language === 'de' 
                 ? 'Wir liefern Systeme und schaffen Impact. Wachstum sollte kein Kampf sein, es sollte System haben.'
                 : "We deliver systems and create impact. Growth shouldn't be a struggle, it should have a system."}
             </p>
+            {/* Social Icons */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={link.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                  aria-label={link.label}
+                >
+                  <link.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Stats */}
           <div className="flex flex-wrap gap-8 lg:justify-end">
             <div className="text-right">
-              <div className="text-3xl font-bold text-gradient">250K+</div>
+              <div className="text-3xl font-bold text-gradient">80+</div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                {language === 'de' ? 'Wörter Forschung' : 'Words Research'}
+                Companies Scaled
               </p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-gradient-accent">n=22</div>
+              <div className="text-3xl font-bold text-gradient-accent">140+</div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                {language === 'de' ? 'Validierte Cases' : 'Validated Cases'}
+                Engagements
               </p>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-foreground">16</div>
+              <div className="text-3xl font-bold text-foreground">€2.5B+</div>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">
-                {language === 'de' ? 'Dokumente' : 'Documents'}
+                Valuation
+              </p>
+            </div>
+            <div className="text-right">
+              <div className="text-3xl font-bold text-primary">92%</div>
+              <p className="text-xs uppercase tracking-widest text-muted-foreground">
+                Success Rate
               </p>
             </div>
           </div>
@@ -69,59 +101,54 @@ const Footer: React.FC = () => {
       {/* Middle Section - Links Grid */}
       <div className="border-t-2 border-border">
         <div className="container max-w-7xl mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border">
-            {/* Resources */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+            {/* Sitemap */}
             <div className="py-8 sm:pr-8">
               <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
-                {language === 'de' ? 'Ressourcen' : 'Resources'}
+                Sitemap
               </h4>
               <ul className="space-y-3">
-                {[
-                  { label: 'ROI Calculator', href: '#calculator' },
-                  { label: language === 'de' ? 'Frameworks' : 'Frameworks', href: '#frameworks' },
-                  { label: language === 'de' ? 'Fallstudien' : 'Case Studies', href: '#cases' },
-                  { label: 'θ_index Test', href: '#theta-assessment' },
-                ].map((item) => (
+                {sitemapLinks.map((item) => (
                   <li key={item.label}>
-                    <a href={item.href} className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    <Link to={item.href} className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
                       <span>{item.label}</span>
                       <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* Authors */}
+            {/* Team */}
             <div className="py-8 sm:px-8">
               <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
-                {language === 'de' ? 'Autoren' : 'Authors'}
+                Team
               </h4>
               <ul className="space-y-3">
-                {authors.map((author) => (
-                  <li key={author.name} className="text-sm">
-                    <span className="text-foreground font-medium">{author.name}</span>
-                    <span className="text-muted-foreground ml-2 text-xs">/ {author.role}</span>
+                {team.map((member) => (
+                  <li key={member.name} className="text-sm">
+                    <span className="text-foreground font-medium">{member.name}</span>
+                    <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Contact */}
-            <div className="py-8 sm:px-8">
+            <div className="py-8 sm:pl-8">
               <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
                 {language === 'de' ? 'Kontakt' : 'Contact'}
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="mailto:hello@scalingx.io" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    hello@scalingx.io
+                  <a href="#booking" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    Book a Call
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://scalingx.io" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    scalingx.io
+                  <a href="mailto:team@scalingx.io" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    team@scalingx.io
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
@@ -131,28 +158,6 @@ const Footer: React.FC = () => {
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
-              </ul>
-            </div>
-
-            {/* Social */}
-            <div className="py-8 sm:pl-8">
-              <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4">
-                Social
-              </h4>
-              <ul className="space-y-3">
-                {socialLinks.map((link) => (
-                  <li key={link.label}>
-                    <a 
-                      href={link.href} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
               </ul>
             </div>
           </div>
