@@ -52,6 +52,7 @@ const AccelerateAINativeScaling = lazy(() => import("./pages/AccelerateAINativeS
 const AcceleratePortfolioTransformation = lazy(() => import("./pages/AcceleratePortfolioTransformation"));
 const StrategicAdvisory = lazy(() => import("./pages/StrategicAdvisory"));
 const VCDueDiligenceSimulation = lazy(() => import("./pages/VCDueDiligenceSimulation"));
+const GTMEffectivenessReview = lazy(() => import("./pages/GTMEffectivenessReview"));
 
 const queryClient = new QueryClient();
 
@@ -117,6 +118,7 @@ const App = () => (
                 <Route path="/solutions/accelerate/portfolio-transformation" element={<AcceleratePortfolioTransformation />} />
                 <Route path="/solutions/strategic-advisory" element={<StrategicAdvisory />} />
                 <Route path="/solutions/vc-dd-simulation" element={<VCDueDiligenceSimulation />} />
+                <Route path="/solutions/gtm-effectiveness-review" element={<GTMEffectivenessReview />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
