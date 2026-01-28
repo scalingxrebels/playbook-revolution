@@ -1,48 +1,55 @@
 
 
-# Plan: Boost Scaling OS - Landing Page + Kachel-Update
+# Plan: Boost AI Maturity - Landing Page + Kachel-Umbenennung
 
 ## Briefing Review
 
 ### URL-Korrektur erforderlich
 
-Das Briefing gibt `/solutions/boost-scaling-os` an, aber gemaess etabliertem Pattern (analog zu anderen Boost Pages) sollte die URL lauten:
+Das Briefing gibt `/solutions/boost-ai-maturity` an, aber gemaess etabliertem Pattern (analog zu anderen Boost Pages) sollte die URL lauten:
 
-**Korrekt:** `/solutions/boost/scaling-os`
+**Korrekt:** `/solutions/boost/ai-maturity`
+
+### Umbenennung der Kachel
+
+Die Kachel muss von "Boost: AI Foundation" zu "Boost: AI Maturity" umbenannt werden - ein staerkerer, outcome-fokussierter Name der den theta_index-Ansatz betont.
 
 ### Metriken-Alignment: Kachel vs. Briefing
 
-| Metrik | Aktuelle Kachel (ID 24) | Briefing | Empfehlung |
+| Metrik | Aktuelle Kachel (ID 25) | Briefing | Empfehlung |
 |--------|-------------------------|----------|------------|
-| Metrik 1 | ARR/Employee: +40-60% | Decision Velocity: +50-100% | Briefing uebernehmen |
-| Metrik 2 | Hiring velocity: 2x | Operational Debt: -30-50% | Briefing uebernehmen |
-| Metrik 3 | Operating cadence installed | ARR/Employee: +30-50% | Briefing uebernehmen |
+| Headline | Boost: AI Foundation | Boost: AI Maturity | Briefing uebernehmen |
+| Metrik 1 | AI use-cases deployed: 3-5 | theta_index: +0.3-0.5 | Briefing uebernehmen |
+| Metrik 2 | theta_index improvement: +0.2-0.3 | AI Use Cases: +10-20 | Briefing uebernehmen |
+| Metrik 3 | AI roadmap (12 months) | Process Automation: +40-60% | Briefing uebernehmen |
 | Duration | 8-10 weeks | 90 days (12 weeks) | Briefing uebernehmen |
 | Price | EUR58K | EUR60K-EUR78K | Briefing uebernehmen |
-| slug | boost-scaling | boost-scaling-os | Aktualisieren |
+| slug | boost-ai | boost-ai-maturity | Aktualisieren |
 
-Die Metriken im Briefing sind outcome-fokussierter (messbare Ergebnisse statt qualitative Deliverables) und beinhalten die "2 of 3 Outcomes Guaranteed" Struktur konsistent mit anderen Boost Pages.
+Die Metriken im Briefing sind aggressiver und beinhalten die "2 of 3 Outcomes Guaranteed" Struktur konsistent mit anderen Boost Pages.
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 24, Zeilen 920-953)
+**Datei:** `src/data/solutionTiles.ts` (ID 25, Zeilen 955-987)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | boost-scaling | boost-scaling-os |
+| slug | boost-ai | boost-ai-maturity |
+| headlineEn | Boost: AI Foundation | Boost: AI Maturity |
+| headlineDe | Boost: AI-Foundation | Boost: AI Maturity |
 | price | EUR58K | EUR60K-EUR78K |
-| problemEn | "You're about to 3x headcount..." | "Your scaling is chaotic. Team grew 200% but revenue only 50%. Decision velocity collapsed to 7 days. Operational debt at 40%. Board asking: Why isn't revenue scaling with headcount?" |
+| problemEn | "You want AI woven into your product and ops..." | "You're AI-Powered, not AI-Native. theta_index is 0.3 (Level 1), competitors are 0.8+ (Level 3). Time to EUR100M is 60-84 months (benchmark: 8-18 months). Board asking: When will we become AI-native?" |
 | problemDe | (entsprechend) | (entsprechend) |
-| solutionEn | "We install your scaling OS in 8-10 weeks..." | "We rebuild your entire operating system in 90 days: Decision Velocity +50-100%, Operational Debt -30-50%, ARR/Employee +30-50% - with 2 of 3 outcomes guaranteed." |
+| solutionEn | "We build AI capability across multiple use-cases in 8-10 weeks..." | "We rebuild your entire AI maturity in 90 days: theta_index +0.3-0.5, AI Use Cases +10-20, Process Automation +40-60% - with 2 of 3 outcomes guaranteed." |
 | solutionDe | (entsprechend) | (entsprechend) |
-| deliverablesEn | [ARR/Employee: +40-60%, Hiring velocity: 2x, Operating cadence installed] | [Decision Velocity: +50-100%, Operational Debt: -30-50%, ARR/Employee: +30-50%] |
+| deliverablesEn | [AI use-cases: 3-5, theta_index +0.2-0.3, AI roadmap] | [theta_index: +0.3-0.5, AI Use Cases: +10-20, Automation: +40-60%] |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Start Boost | More About Scaling OS |
-| primaryCtaDe | Boost starten | Mehr ueber Scaling OS |
+| primaryCtaEn | Start Boost | More About AI Maturity |
+| primaryCtaDe | Boost starten | Mehr ueber AI Maturity |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/boost/scaling-os |
+| primaryCtaUrl | Calendly-Link | /solutions/boost/ai-maturity |
 
 ---
 
@@ -51,81 +58,81 @@ Die Metriken im Briefing sind outcome-fokussierter (messbare Ergebnisse statt qu
 **Datei:** `src/App.tsx`
 
 ```tsx
-const BoostScalingOS = lazy(() => import("./pages/BoostScalingOS"));
+const BoostAIMaturity = lazy(() => import("./pages/BoostAIMaturity"));
 
 // Route:
-<Route path="/solutions/boost/scaling-os" element={<BoostScalingOS />} />
+<Route path="/solutions/boost/ai-maturity" element={<BoostAIMaturity />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/BoostScalingOS.tsx`
+**Datei:** `src/pages/BoostAIMaturity.tsx`
 
-Struktur analog zu `BoostNRRMachine.tsx` und anderen Boost Pages mit 7 Sektionen:
+Struktur analog zu `BoostScalingOS.tsx` und anderen Boost Pages mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Boost Scaling OS`
+- **Breadcrumb:** `Solutions > Boost AI Maturity`
 - **Badge:** `Boost . 90 Days . EUR60K-EUR78K`
-- **Headline:** `Scaling Chaos -> Scaling OS Built`
-- **Subheadline:** Build your scaling OS in 90 days...
-- **Stats:** Decision Velocity +50-100% | Operational Debt -30-50% | ARR/Employee +30-50%
+- **Headline:** `AI-Powered -> AI-Native Built`
+- **Subheadline:** Build your AI maturity in 90 days...
+- **Stats:** theta_index +0.3-0.5 | AI Use Cases +10-20 | Automation +40-60%
 - **Trust Badges:** 2 of 3 Outcomes Guaranteed (or 50% Refund), 90-Day Transformation, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `Your Scaling Is Chaotic`
+- **Headline:** `You're AI-Powered, Not AI-Native`
 - **Symptome:**
-  - Headcount grew faster than revenue: Team +200% (50 to 150), Revenue +50%
-  - Decision velocity collapsed: 7 days (benchmark: 24-48h)
-  - Operational debt exploded: 40% (benchmark: <15%)
-  - ARR/Employee dropped: EUR200K (benchmark: EUR400K+)
-  - Board pressure: "Why isn't revenue scaling with headcount?"
+  - Low AI maturity: theta_index 0.3 (Level 1: AI-Powered)
+  - Few AI use cases: 2-5 use cases (benchmark: 20-50+)
+  - Low automation: 10-20% (benchmark: 60-80%+)
+  - Slow time to market: 60-84 months to EUR100M (benchmark: 8-18 months)
+  - Board pressure: "When will we become AI-native?"
 
 ### Section 3: Solution
-- **Headline:** `How We Build Your Scaling OS`
+- **Headline:** `How We Build Your AI Maturity`
 - **3-Phasen-Ansatz (90 Days):**
-  - Week 1-2: Diagnose (Operations Analysis, Decision Velocity Analysis, Efficiency Analysis, AI Readiness)
-  - Week 3-8: Build (Process Standardization, OKR System, Meeting Architecture)
+  - Week 1-2: Diagnose (theta_index Assessment, AI Use Case Analysis, AI Capability Analysis, AI Readiness)
+  - Week 3-8: Build (AI Strategy C1, AI Setup C2, AI Execution C3, AI Operationalization C4)
   - Week 9-12: Validate & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Decision Velocity +50-100% (Beispiel: 7 days to 24-48 hours)
-  - Operational Debt -30-50% (Beispiel: 40% to 15-20%)
-  - ARR/Employee +30-50% (Beispiel: EUR200K to EUR280K-EUR300K)
-- **Real Example:** Series B SaaS, EUR25M ARR, Decision Velocity +88%, Operational Debt -44%, ARR/Employee +40%
+  - theta_index +0.3-0.5 (Beispiel: 0.3 -> 0.6-0.8, Level 1 -> Level 2)
+  - AI Use Cases +10-20 (Beispiel: 2-5 -> 15-25)
+  - Process Automation +40-60% (Beispiel: 10-20% -> 50-80%)
+- **Real Example:** Series B SaaS, EUR20M ARR, theta_index +0.42, AI Use Cases +14, Automation +52pp
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown (90 Days)
 - Time Commitment (12-16h, 20-30h, 10-15h)
 - **2 of 3 Outcomes Guaranteed** (oder 50% Refund)
-- Primary Metrics: Decision Velocity (days), Operational Debt (%), ARR/Employee (EUR)
-- ROI: 15-30x (etwas niedriger als bei Growth-fokussierten Boosts)
+- Primary Metrics: theta_index (0-1 scale), AI Use Cases (number), Process Automation (%)
+- ROI: 20-40x
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Scaling chaotic (team grew faster than revenue, slow decisions, high operational debt)
-  - Multiple operations problems (ad-hoc processes, unclear OKRs, broken meeting culture, manual workflows)
+  - AI-Powered, not AI-Native (theta_index 0.2-0.5, Level 1)
+  - Multiple AI problems (no AI strategy, limited use cases, low automation, slow adoption)
   - Series A-C, EUR10M-EUR50M ARR, 50-200 people
   - Budget: EUR60K-EUR78K
 - **Not a Fit:**
-  - Only one operations issue (e.g. Power Up: Scaling Velocity for single fix)
-  - Needs full AI-native transformation (Accelerate)
-  - Just wants operations strategy deck
+  - Only needs AI tools (-> Power Up: AI Quick Wins for single use cases)
+  - Needs full AI-native transformation Level 3 (-> Accelerate)
+  - Just wants AI strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Build Your Scaling OS?`
+- **Headline:** `Ready to Build Your AI Maturity?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Operations Audit (EUR3.9K-EUR5.9K)
-- **FAQ:** Duration (90 days), Investment (EUR60K-EUR78K stage-based), Risk Sharing (2 of 3 guaranteed), References (CEOs), ROI (15-30x), Leadership Team Training
+- **Secondary:** AI Maturity Assessment (EUR3.9K-EUR5.9K)
+- **FAQ:** Duration (90 days), Investment (EUR60K-EUR78K stage-based), Risk Sharing (2 of 3 guaranteed), References (CEOs), ROI (20-40x), Difference Boost vs. Accelerate
 
 ---
 
 ## Technische Details
 
 ### Komponenten-Wiederverwendung
-Die neue Landing Page verwendet die gleichen Patterns wie `BoostNRRMachine.tsx`:
+Die neue Landing Page verwendet die gleichen Patterns wie `BoostScalingOS.tsx`:
 - `TwinklingStars` fuer Hero-Hintergrund
 - `useParallaxLayers` fuer Parallax-Effekte
 - `useScrollAnimation` fuer Scroll-basierte Animationen
@@ -138,35 +145,34 @@ Die neue Landing Page verwendet die gleichen Patterns wie `BoostNRRMachine.tsx`:
 - **Duration:** 90 Days
 - **Price:** EUR60K-EUR78K
 - **Guarantee:** "2 of 3 Outcomes Guaranteed (or 50% Refund)"
-- **Scope:** Full Operating System Rebuild (Processes + OKRs + Meetings)
+- **Scope:** Full AI Maturity Rebuild (Strategy + Setup + Execution + Operationalization)
 
-### Spezifische Icons fuer Scaling OS
-- `Zap` - Decision Velocity
-- `TrendingDown` - Operational Debt Reduction
-- `BarChart3` - ARR/Employee Efficiency
-- `Settings` - Process Standardization
-- `Target` - OKR System
-- `Calendar` - Meeting Architecture
-- `Users` - Team/Leadership
-- `Brain` - AI-Powered Automation
-- `Layers` - Operating Model
+### Spezifische Icons fuer AI Maturity
+- `Brain` - AI/theta_index
+- `Layers` - AI Use Cases / Multi-Use-Case Deployment
+- `Zap` - Automation
+- `Target` - AI Strategy
+- `Settings` - AI Setup
+- `Rocket` - AI Execution
+- `Users` - AI Team/Culture
+- `BarChart3` - AI Metrics
+- `Sparkles` - AI-Native Transformation
 
 ### Dateistruktur
 ```text
 src/
   App.tsx                              # Neue Route hinzufuegen
   data/
-    solutionTiles.ts                   # Kachel ID 24: Slug + Metriken + CTA aktualisieren
+    solutionTiles.ts                   # Kachel ID 25: Umbenennung + Metriken + CTA aktualisieren
   pages/
-    BoostEfficientHypergrowth.tsx      # Referenz fuer Section-Struktur
-    BoostGrowthEngine.tsx              # Referenz fuer Section-Struktur
-    BoostPricingDominance.tsx          # Referenz fuer Section-Struktur
+    BoostScalingOS.tsx                 # Referenz fuer Section-Struktur
     BoostNRRMachine.tsx                # Referenz fuer Section-Struktur
-    BoostScalingOS.tsx                 # NEU - Fuenfte Boost Page
+    BoostPricingDominance.tsx          # Referenz fuer Section-Struktur
+    BoostAIMaturity.tsx                # NEU - Sechste Boost Page
 ```
 
 ### URL-Pattern
-Gemaess etablierter Boost-Logik: `/solutions/boost/scaling-os` (nicht `/solutions/boost-scaling-os`)
+Gemaess etablierter Boost-Logik: `/solutions/boost/ai-maturity` (nicht `/solutions/boost-ai-maturity`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -176,10 +182,30 @@ Gemaess etablierter Boost-Logik: `/solutions/boost/scaling-os` (nicht `/solution
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Boost Scaling OS</span>
+    <span className="text-foreground font-medium">Boost AI Maturity</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
+
+---
+
+## Besonderheiten dieser Seite
+
+### theta_index-Framework als Kernkonzept
+Diese Seite nutzt das theta_index-Framework (AI Maturity Index, 0-1 Skala) als Hauptmetrik:
+- **Level 1 (0.0-0.4):** AI-Powered - AI als Tool
+- **Level 2 (0.4-0.7):** AI-Enabled - AI als System
+- **Level 3 (0.7-1.0):** AI-Native - AI als Core
+
+### Transformation von Level 1 zu Level 2
+Die Boost-Seite fokussiert auf die Transformation von Level 1 (AI-Powered) zu Level 2 (AI-Enabled). Fuer Level 3 (AI-Native) wird auf Accelerate (12 Monate) verwiesen.
+
+### Alle 4 Capabilities (C1-C4) werden adressiert
+Im Gegensatz zu anderen Boost-Seiten, die typischerweise 2-3 Capabilities transformieren, adressiert AI Maturity alle 4:
+- C1: AI Strategy
+- C2: AI Setup
+- C3: AI Execution
+- C4: AI Operationalization
 
 ---
 
@@ -187,7 +213,7 @@ Gemaess etablierter Boost-Logik: `/solutions/boost/scaling-os` (nicht `/solution
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 24: Slug + Metriken + Price + CTA + Duration aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 25: Umbenennung zu "AI Maturity" + Slug + Metriken + Price + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/BoostScalingOS.tsx` | Neue Datei (7 Sektionen) - Fuenfte Boost Landing Page |
+| `src/pages/BoostAIMaturity.tsx` | Neue Datei (7 Sektionen) - Sechste Boost Landing Page |
 
