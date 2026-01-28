@@ -1127,7 +1127,7 @@ export const solutionTiles: SolutionTile[] = [
   },
   {
     id: 30,
-    slug: 'accelerate-sustainable',
+    slug: 'accelerate-sustainable-growth',
     solutionType: 'transformation',
     transformationTier: 'accelerate',
     challenges: ['growth-stalled', 'scaling-chaos'],
@@ -1135,26 +1135,26 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'Accelerate: Sustainable Growth',
     headlineDe: 'Accelerate: Nachhaltiges Wachstum',
-    problemEn: "You want growth that compounds—not growth that burns out. You need efficient, durable growth mechanics.",
-    problemDe: 'Du willst Wachstum, das compoundiert—nicht Wachstum, das ausbrennt. Du brauchst effiziente, dauerhafte Growth-Mechaniken.',
-    solutionEn: 'We build sustainable growth mechanics in 12-16 weeks: efficiency playbook, sustainable unit economics, team resilience.',
-    solutionDe: 'Wir bauen nachhaltige Growth-Mechaniken in 12-16 Wochen: Effizienz-Playbook, nachhaltige Unit Economics, Team Resilience.',
+    problemEn: "Your growth is inefficient—and unsustainable. Rule of 40 is 15-25% (benchmark: 50%+). Burn multiple is 2.5-4.0 (benchmark: <1.5). Board is asking: When will we see a path to profitability?",
+    problemDe: 'Dein Wachstum ist ineffizient—und nicht nachhaltig. Rule of 40 liegt bei 15-25% (Benchmark: 50%+). Burn Multiple liegt bei 2.5-4.0 (Benchmark: <1.5). Der Vorstand fragt: Wann sehen wir einen Weg zur Profitabilität?',
+    solutionEn: 'We transform your entire growth model from Level 1 to Level 2 in 12 months: Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%—with 2 of 3 outcomes guaranteed.',
+    solutionDe: 'Wir transformieren dein gesamtes Growth-Modell von Level 1 zu Level 2 in 12 Monaten: Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%—mit 2 von 3 Ergebnissen garantiert.',
     deliverablesEn: [
-      'Rule of 40: 40%+',
-      'Burn multiple: <1.5x',
-      'Team resilience index: +30-50%'
+      'Rule of 40: +30-50pp',
+      'ARR Growth: +100-200%',
+      'Burn Multiple: -60-80%'
     ],
     deliverablesDe: [
-      'Rule of 40: 40%+',
-      'Burn Multiple: <1.5x',
-      'Team Resilience Index: +30-50%'
+      'Rule of 40: +30-50pp',
+      'ARR Growth: +100-200%',
+      'Burn Multiple: -60-80%'
     ],
-    impactEn: 'Achieve Rule of 40 of 40%+, burn multiple below 1.5x, improve team resilience by 30-50% in 12-16 weeks.',
-    impactDe: 'Erreiche Rule of 40 von 40%+, Burn Multiple unter 1.5x, verbessere Team Resilience um 30-50% in 12-16 Wochen.',
-    primaryCtaEn: 'Start Accelerate',
-    primaryCtaDe: 'Accelerate starten',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/accelerate',
+    impactEn: 'Transform from Level 1 (AI-Powered) to Level 2 (AI-Enabled) in 12 months. Improve Rule of 40 by 30-50pp, ARR Growth by 100-200%, reduce Burn Multiple by 60-80%.',
+    impactDe: 'Transformiere von Level 1 (AI-Powered) zu Level 2 (AI-Enabled) in 12 Monaten. Verbessere Rule of 40 um 30-50pp, ARR Growth um 100-200%, reduziere Burn Multiple um 60-80%.',
+    primaryCtaEn: 'More About Sustainable Growth',
+    primaryCtaDe: 'Mehr über Sustainable Growth',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/accelerate/sustainable-growth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
     secondaryCtaUrl: '/cases/sustainable-accelerate'
