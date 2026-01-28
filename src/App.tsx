@@ -48,6 +48,7 @@ const BoostCustomProgram = lazy(() => import("./pages/BoostCustomProgram"));
 const AccelerateHypergrowth = lazy(() => import("./pages/AccelerateHypergrowth"));
 const AccelerateSustainableGrowth = lazy(() => import("./pages/AccelerateSustainableGrowth"));
 const AccelerateExitReadiness = lazy(() => import("./pages/AccelerateExitReadiness"));
+const AccelerateAINativeScaling = lazy(() => import("./pages/AccelerateAINativeScaling"));
 
 const queryClient = new QueryClient();
 
@@ -109,6 +110,7 @@ const App = () => (
                 <Route path="/solutions/accelerate/hypergrowth" element={<AccelerateHypergrowth />} />
                 <Route path="/solutions/accelerate/sustainable-growth" element={<AccelerateSustainableGrowth />} />
                 <Route path="/solutions/accelerate/exit-readiness" element={<AccelerateExitReadiness />} />
+                <Route path="/solutions/accelerate/ai-native-scaling" element={<AccelerateAINativeScaling />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
