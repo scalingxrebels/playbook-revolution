@@ -1,9 +1,9 @@
 
-# Plan: Button-Text aktualisieren
+# Plan: Button-Text korrigieren
 
 ## Übersicht
 
-Einfache Textänderung für den Primary CTA Button der "Power Up: Predictable Acquisition" Kachel.
+Korrektur des Button-Texts - "Solving" entfernen.
 
 ---
 
@@ -11,8 +11,8 @@ Einfache Textänderung für den Primary CTA Button der "Power Up: Predictable Ac
 
 | Element | Aktuell | Neu |
 |---------|---------|-----|
-| Button (EN) | "Learn More About Predictable Acquisition" | "More About Solving Predictable Acquisition" |
-| Button (DE) | "Mehr über Predictable Acquisition" | "Mehr über Solving Predictable Acquisition" |
+| Button (EN) | "More About Solving Predictable Acquisition" | "More About Predictable Acquisition" |
+| Button (DE) | "Mehr über Solving Predictable Acquisition" | "Mehr über Predictable Acquisition" |
 
 ---
 
@@ -22,16 +22,10 @@ Einfache Textänderung für den Primary CTA Button der "Power Up: Predictable Ac
 
 ```tsx
 // Aktuell:
-primaryCtaEn: 'Learn More About Predictable Acquisition',
-primaryCtaDe: 'Mehr über Predictable Acquisition',
-
-// Neu:
 primaryCtaEn: 'More About Solving Predictable Acquisition',
 primaryCtaDe: 'Mehr über Solving Predictable Acquisition',
+
+// Neu:
+primaryCtaEn: 'More About Predictable Acquisition',
+primaryCtaDe: 'Mehr über Predictable Acquisition',
 ```
-
----
-
-## Hinweis
-
-Die deutsche Übersetzung behält "Solving" bei (statt einer deutschen Übersetzung), um konsistent mit dem englischen Branding zu bleiben.
