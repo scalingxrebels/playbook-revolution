@@ -78,7 +78,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
       className={cn(
         "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
         "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-        tile.priceTag === 'free' && "border-accent/50"
+        (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50"
       )}
       style={{
         animationDelay: `${index * 50}ms`
@@ -181,34 +181,37 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
         )}
 
         {/* CTAs */}
-        <div className="mt-4 pt-4 border-t border-border space-y-2">
-          <Button 
-            onClick={handlePrimaryClick}
-            className={cn(
-              "w-full",
-              tile.priceTag === 'free' 
-                ? "bg-gradient-to-r from-primary to-primary/80" 
-                : ""
-            )}
-            variant={tile.priceTag === 'free' ? 'default' : 'outline'}
-          >
-            {primaryCta}
-            {isExternalAction ? (
-              <ExternalLink className="w-4 h-4 ml-2" />
-            ) : (
-              <ArrowRight className="w-4 h-4 ml-2" />
-            )}
-          </Button>
-          
-          {secondaryCta && tile.secondaryCtaUrl && (
-            <a 
-              href={tile.secondaryCtaUrl}
-              className="block text-center text-sm text-muted-foreground hover:text-accent transition-colors"
-            >
-              {secondaryCta}
-            </a>
-          )}
-        </div>
+        {(() => {
+          const useAccentStyle = tile.priceTag === 'free' || tile.solutionType === 'tools';
+          return (
+            <div className="mt-4 pt-4 border-t border-border space-y-2">
+              <Button 
+                onClick={handlePrimaryClick}
+                className={cn(
+                  "w-full",
+                  useAccentStyle && "bg-gradient-to-r from-primary to-primary/80"
+                )}
+                variant={useAccentStyle ? 'default' : 'outline'}
+              >
+                {primaryCta}
+                {isExternalAction ? (
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                ) : (
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                )}
+              </Button>
+              
+              {secondaryCta && tile.secondaryCtaUrl && (
+                <a 
+                  href={tile.secondaryCtaUrl}
+                  className="block text-center text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  {secondaryCta}
+                </a>
+              )}
+            </div>
+          );
+        })()}
       </CardContent>
     </Card>
   );
