@@ -585,24 +585,24 @@ export const solutionTiles: SolutionTile[] = [
     headlineDe: 'Power Up: NRR-Engine',
     problemEn: "Churn is eating your growth. NRR is below 100%, and upsells are random acts of heroism.",
     problemDe: 'Churn frisst dein Wachstum. NRR ist unter 100%, und Upsells sind zufällige Heldenaktionen.',
-    solutionEn: 'We fix your NRR in 30 days: install health-scoring, expansion playbooks, early-warning triggers. You get 3 guaranteed outcomes (2 of 3 or 50% refund).',
-    solutionDe: 'Wir reparieren dein NRR in 30 Tagen: installieren Health-Scoring, Expansion Playbooks, Frühwarnsysteme. Du erhältst 3 garantierte Ergebnisse (2 von 3 oder 50% Rückerstattung).',
+    solutionEn: 'We build your NRR engine in 4-6 weeks: install health-scoring, expansion playbooks, early-warning triggers. You get 3 guaranteed outcomes (2 of 3 or 50% refund).',
+    solutionDe: 'Wir bauen deine NRR-Engine in 4-6 Wochen: installieren Health-Scoring, Expansion Playbooks, Frühwarnsysteme. Du erhältst 3 garantierte Ergebnisse (2 von 3 oder 50% Rückerstattung).',
     deliverablesEn: [
       'NRR improvement: +10-20pp',
       'Churn reduction: -20-40%',
-      'Expansion revenue: +20-40%'
+      'Expansion Rate: +50-100%'
     ],
     deliverablesDe: [
       'NRR-Verbesserung: +10-20pp',
       'Churn-Reduktion: -20-40%',
-      'Expansion Revenue: +20-40%'
+      'Expansion Rate: +50-100%'
     ],
-    impactEn: 'Improve NRR by 10-20pp, reduce churn by 20-40%, increase expansion revenue by 20-40% in 30 days. Guaranteed: 2 of 3 or 50% refund.',
-    impactDe: 'Verbessere NRR um 10-20pp, reduziere Churn um 20-40%, steigere Expansion Revenue um 20-40% in 30 Tagen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
-    primaryCtaEn: 'Start Transformation',
-    primaryCtaDe: 'Transformation starten',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/transformation',
+    impactEn: 'Improve NRR by 10-20pp, reduce churn by 20-40%, increase expansion rate by 50-100% in 4-6 weeks. Guaranteed: 2 of 3 or 50% refund.',
+    impactDe: 'Verbessere NRR um 10-20pp, reduziere Churn um 20-40%, steigere Expansion Rate um 50-100% in 4-6 Wochen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
+    primaryCtaEn: 'More About NRR Engine',
+    primaryCtaDe: 'Mehr über NRR Engine',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/power-up/nrr-engine',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
     secondaryCtaUrl: '/cases/nrr-transformation'
