@@ -1,83 +1,75 @@
 
-
-# Plan: Workshop - Landing Page + Kachel-Update
+# Plan: Keynote - Landing Page + Kachel-Update
 
 ## Briefing Review
 
 ### Wichtige Feststellungen
 
 **1. URL-Format:**
-- **Aktueller Slug (ID 34):** `workshop`
-- **Briefing URL:** `/solutions/workshop`
-- **Status:** Bereits korrekt - keine Aenderung erforderlich
+- **Aktueller Slug (ID 37):** `keynote`
+- **Briefing URL:** `/solutions/keynote`
+- **Status:** Slug korrekt, Route fehlt noch
 
 **2. Duration:**
-- **Aktuell:** 1-day (6-8 hours)
-- **Briefing:** 1-2 Days
-- **Empfehlung:** Briefing uebernehmen (erweitert auf 1-2 Tage Option)
+- **Aktuell:** 60-90 min keynote + 30 min Q&A
+- **Briefing:** 60-90 min keynote + 15-30 min Q&A
+- **Empfehlung:** Briefing uebernehmen (15-30 min Q&A)
 
 **3. Pricing:**
 | Quelle | Preis |
 |--------|-------|
-| Aktuelle Kachel | €2.5K-€5K |
-| Briefing | €9.6K-€12.9K |
+| Aktuelle Kachel | €5K–€15K |
+| Briefing | €4.9K (+€500 Recording) |
 
-**Kritische Diskrepanz:** Briefing hat signifikant hoehere Preise. Briefing-Preis uebernehmen, da konsistent mit challenge-spezifischen Workshop-Preisen in challenges.ts.
+**Kritische Diskrepanz:** Briefing hat festen Preis statt Range. Briefing-Preis uebernehmen.
 
 **4. Neue Metriken (Outcome-fokussiert):**
-- **Team Alignment:** +80%
-- **Playbook Delivered:** 30-40 Pages
-- **Execution Ready:** Day 1 (Immediate)
+- **Audience:** 50-500 People (Scalable)
+- **Inspiration:** High Impact (Memorable)
+- **Takeaways:** 3-5 Actions (Actionable)
 
-**5. Framework-Struktur:**
-| Aktuell | Briefing |
-|---------|----------|
-| 9 Workshop Types erwaehnt | 9 Workshop Types + Bespoke Workshop (Custom) |
+**5. Keynote Topics:**
+| Aktuell (7 Topics) | Briefing (5 Topics) |
+|-------------------|---------------------|
+| AI-Native Scaling | AI-Native Scaling |
+| Growth Momentum | Efficient Hypergrowth |
+| Pricing Optimization | Pricing Strategy |
+| Retention Excellence | Customer Success Excellence |
+| Operational Excellence | (entfernt) |
+| Board Excellence | Board Governance |
+| Portfolio Excellence | (entfernt) |
 
-**Workshop Types:**
-1. GTM Strategy Workshop
-2. Growth Strategy Workshop
-3. Pricing Strategy Workshop
-4. Customer Success Workshop
-5. Operations Excellence Workshop
-6. Scaling Workshop
-7. AI Transformation Workshop
-8. Board Governance Workshop
-9. Portfolio Excellence Workshop
-+ Bespoke Workshop (Custom Topic)
+**Empfehlung:** Briefing-Topics uebernehmen (5 Topics + Bespoke)
 
-**6. solutionType:**
-- **Aktuell:** `keynote` (Workshops & Keynotes)
-- **Briefing:** Badge zeigt "Training & Enablement"
-- **Empfehlung:** Aktuellen solutionType `keynote` beibehalten (konsistent mit Filter-Kategorien), aber Badge-Text auf "Training & Enablement" aendern
-
-**7. Workshop Format:**
-- **Pre-Workshop:** 1-2 Wochen vorher (Questionnaire, Materials, Call)
-- **Workshop Day:** 6-16 Stunden total (Morning + Afternoon)
-- **Post-Workshop:** 1-2 Wochen danach (Finalize playbook, Recording, Follow-up call)
+**6. Deliverables im Briefing:**
+- 60-90 Min Keynote (on-site or remote)
+- Q&A Session (15-30 min)
+- Keynote Slides (40-60 slides, PDF)
+- Recording (optional, +€500)
+- Post-Keynote Resources (frameworks, templates)
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 34, Zeilen 1252-1284)
+**Datei:** `src/data/solutionTiles.ts` (ID 37, Zeilen 1327-1359)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| price | €2.5K-€5K | €9.6K-€12.9K |
-| Duration | 1-day (6-8 hours) | 1-2 Days (6-16 hours) |
-| problemEn | "Your team needs tactical training on a specific challenge—GTM, pricing, scaling, AI—but doesn't have the frameworks or playbooks to execute." | "Your team isn't aligned—and you're losing velocity. Marketing says one thing, Sales says another, Product is building the wrong features. Your team doesn't have the frameworks to execute. You need team alignment. Fast." |
-| problemDe | (entsprechend) | "Dein Team ist nicht aligned—und ihr verliert Velocity. Marketing sagt das Eine, Sales das Andere, Product baut die falschen Features. Dein Team hat keine Frameworks zur Umsetzung. Du brauchst Team Alignment. Schnell." |
-| solutionEn | "We deliver a 1-day tactical workshop (6-8 hours) for 10-30 participants..." | "We deliver tactical workshops in 1-2 days (6-16 hours) for 10-30 participants. Choose from 9 workshop types: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence. You get: Team Alignment +80%, Playbook (30-40 pages), Execution Ready Day 1." |
-| solutionDe | (entsprechend) | "Wir liefern taktische Workshops in 1-2 Tagen (6-16 Stunden) fuer 10-30 Teilnehmer. Waehle aus 9 Workshop-Typen: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence. Du erhaeltst: Team Alignment +80%, Playbook (30-40 Seiten), Execution Ready Tag 1." |
-| deliverablesEn | [1-day workshop, Workshop playbook, Recording] | [Team Alignment: +80%, Playbook: 30-40 Pages, Execution Ready: Day 1] |
-| deliverablesDe | (entsprechend) | [Team Alignment: +80%, Playbook: 30-40 Seiten, Execution Ready: Tag 1] |
-| impactEn | "Train 10-30 participants in 1 day..." | "Align 10-30 participants in 1-2 days. Get tactical frameworks and playbooks to execute immediately. Predict 5-10x ROI from team alignment and execution velocity." |
-| impactDe | (entsprechend) | "Aligniere 10-30 Teilnehmer in 1-2 Tagen. Erhalte taktische Frameworks und Playbooks zur sofortigen Umsetzung. Prognostiziere 5-10x ROI durch Team Alignment und Execution Velocity." |
-| primaryCtaEn | Book Workshop | More About Workshop |
-| primaryCtaDe | Workshop buchen | Mehr ueber Workshop |
+| price | €5K–€15K | €4.9K |
+| Topics | 7 Topics | 5 Topics + Bespoke |
+| problemEn | "You need to inspire your team or event with a high-impact keynote—but generic motivational talks don't cut it..." | "Your event needs inspiration—not generic motivation. Generic speakers don't understand your business. You need tactical inspiration with frameworks, stories, and actionable takeaways. You need expert keynote. Fast." |
+| problemDe | (entsprechend) | "Dein Event braucht Inspiration—keine generische Motivation. Generische Speaker verstehen dein Business nicht. Du brauchst taktische Inspiration mit Frameworks, Stories und umsetzbaren Takeaways. Du brauchst eine Experten-Keynote. Schnell." |
+| solutionEn | "We deliver a 60-90 min keynote + Q&A. Choose topic: AI-Native Scaling, Growth Momentum, Pricing Optimization, Retention Excellence, Operational Excellence, Board Excellence, Portfolio Excellence." | "We deliver tactical keynotes in 60-90 minutes for 50-500 participants. Choose from 5 topics: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance. You get: High Impact Inspiration, 3-5 Actionable Takeaways, Keynote Slides (40-60 pages)." |
+| solutionDe | (entsprechend) | "Wir liefern taktische Keynotes in 60-90 Minuten fuer 50-500 Teilnehmer. Waehle aus 5 Themen: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance. Du erhaeltst: High Impact Inspiration, 3-5 umsetzbare Takeaways, Keynote Slides (40-60 Seiten)." |
+| deliverablesEn | [Keynote (60-90 min), Q&A session (30 min), Recording (optional)] | [Audience: 50-500 People, Inspiration: High Impact, Takeaways: 3-5 Actions] |
+| deliverablesDe | (entsprechend) | [Audience: 50-500 Personen, Inspiration: High Impact, Takeaways: 3-5 Aktionen] |
+| impactEn | "Inspire 50-500 participants with tactical insights and frameworks. Get 20-30% higher team alignment." | "Inspire 50-500 participants in 60-90 minutes. Get tactical frameworks and 3-5 actionable takeaways. Predict 5-10x ROI from audience inspiration and event momentum." |
+| impactDe | (entsprechend) | "Inspiriere 50-500 Teilnehmer in 60-90 Minuten. Erhalte taktische Frameworks und 3-5 umsetzbare Takeaways. Prognostiziere 5-10x ROI durch Audience Inspiration und Event Momentum." |
+| primaryCtaEn | Book Keynote | More About Keynote |
+| primaryCtaDe | Keynote buchen | Mehr ueber Keynote |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/workshop |
+| primaryCtaUrl | Calendly-Link | /solutions/keynote |
 
 ---
 
@@ -86,118 +78,108 @@
 **Datei:** `src/App.tsx`
 
 ```tsx
-const Workshop = lazy(() => import("./pages/Workshop"));
+const Keynote = lazy(() => import("./pages/Keynote"));
 
-// Route (nach CustomAnalysisReport):
-<Route path="/solutions/workshop" element={<Workshop />} />
+// Route (nach Workshop):
+<Route path="/solutions/keynote" element={<Keynote />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/Workshop.tsx`
+**Datei:** `src/pages/Keynote.tsx`
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Workshop`
-- **Badge:** `Training & Enablement · 1-2 Days · €9.6K-€12.9K`
-- **Headline:** `Tactical Workshop—In 1-2 Days`
-- **Subheadline:** Get your team aligned and trained in 1-2 days. Choose from 9 workshop types...
-- **Stats:** Team Alignment +80% | Playbook 30-40 Pages | Execution Ready Day 1
-- **Trust Badges:** Fast Alignment (1-2 Days), Scalable (10-30 Participants), Actionable Playbook (30-40 Pages)
+- **Breadcrumb:** `Solutions > Keynote`
+- **Badge:** `Training & Enablement · 60-90 Min · €4.9K`
+- **Headline:** `Inspirational Keynote—In 60-90 Minutes`
+- **Subheadline:** Inspire your team or event audience in 60-90 minutes. Choose from 5 keynote topics...
+- **Stats:** Audience 50-500 People | Inspiration High Impact | Takeaways 3-5 Actions
+- **Trust Badges:** Fast Impact (60-90 Min), Scalable (50-500 Participants), Actionable Takeaways (Not Just Theory)
 
 ### Section 2: Problem
-- **Headline:** `Your Team Isn't Aligned—And You're Losing Velocity`
+- **Headline:** `Your Event Needs Inspiration—Not Generic Motivation`
 - **Symptome:**
-  - Team misalignment: Marketing, Sales, Product not aligned (different priorities)
-  - No frameworks: Team lacks playbooks (no standardized approach)
-  - Low execution velocity: Decisions take 7-14 days (no clarity)
-  - Strategic confusion: Team doesn't understand strategy (no shared language)
-  - Training gap: Team needs tactical training (not just theory)
-- **Real Cost:** Destroys execution velocity, limits growth potential, weakens team confidence, increases competitive risk
+  - Generic speakers: Motivational speakers who don't understand your business
+  - No tactical value: Just inspiration, no frameworks
+  - Audience disengagement: People checking phones during talk
+  - No takeaways: Audience leaves without actionable insights
+  - Wasted budget: €5K-€10K spent on generic motivation
+- **Real Cost:** Destroys momentum, limits team engagement, weakens culture, wastes opportunity
 
-### Section 3: Solution (9 Workshop Types)
-- **Headline:** `9 Workshop Types—Choose Your Focus`
-- **9 Workshop Types (Accordion):**
-  1. **GTM Strategy Workshop**
-     - When to choose: GTM strategy unclear, team misaligned, need GTM frameworks
-     - What we cover: ICP Definition, Value Proposition, GTM Channels, GTM Playbooks
-     - What you get: 1-2 Day Workshop, GTM Strategy Playbook (30-40 pages), Recording
-     - Typical outcome: Team Alignment +85%, GTM Clarity +80%
-  2. **Growth Strategy Workshop**
-     - When to choose: growth strategy unclear, team doesn't know which lever
-     - What we cover: Growth Engines, Growth Drivers, Growth Bottlenecks, Growth Playbooks
-     - Typical outcome: Team Alignment +85%, Growth Clarity +80%
-  3. **Pricing Strategy Workshop**
-     - When to choose: pricing broken, ARPU stagnant, discounting high
-     - What we cover: Pricing Strategy, Pricing Models, Packaging, Pricing Playbooks
-     - Typical outcome: Team Alignment +85%, Pricing Clarity +80%
-  4. **Customer Success Workshop**
-     - When to choose: churn >5%, NRR <100%
-     - What we cover: CS Strategy, Retention Drivers, Churn Drivers, CS Playbooks
-     - Typical outcome: Team Alignment +85%, CS Clarity +80%
-  5. **Operations Excellence Workshop**
-     - When to choose: operations chaotic, meetings 50/week
-     - What we cover: Operational Efficiency, Operational Debt, Scaling Readiness, Operations Playbooks
-     - Typical outcome: Team Alignment +85%, Operations Clarity +80%
-  6. **Scaling Workshop**
-     - When to choose: scaling broken, operational debt high
-     - What we cover: Scaling Readiness, Scaling Bottlenecks, Scaling Playbooks, Organizational Design
-     - Typical outcome: Team Alignment +85%, Scaling Clarity +80%
-  7. **AI Transformation Workshop**
-     - When to choose: AI strategy missing, theta_index 0.2-0.4
-     - What we cover: AI Maturity, AI Use Cases, AI ROI, AI Playbooks
-     - Typical outcome: Team Alignment +85%, AI Clarity +90%
-  8. **Board Governance Workshop**
-     - When to choose: board governance broken, meetings unproductive
-     - What we cover: Board Strategy, Board Meetings, Board Reporting, Board Playbooks
-     - Typical outcome: Team Alignment +85%, Board Clarity +80%
-  9. **Portfolio Excellence Workshop**
-     - When to choose: portfolio lacks synergy, operating partners overwhelmed
-     - What we cover: Portfolio Strategy, Portfolio Synergies, Portfolio Playbooks, Operating Partner Enablement
-     - Typical outcome: Team Alignment +85%, Portfolio Clarity +80%
-  + **Bespoke Workshop (Custom Topic)**
-     - When to choose: challenge not covered by standard workshops
+### Section 3: Solution (5 Keynote Topics)
+- **Headline:** `5 Keynote Topics—Choose Your Focus`
+- **5 Topics (Accordion):**
+  1. **AI-Native Scaling**
+     - Title: "How AI-Native Companies Scale 10x Faster"
+     - When to choose: audience needs AI inspiration, team skeptical about AI
+     - What we cover: θ_index, 4 levels, tactical roadmap, real examples
+     - Typical outcome: High Inspiration, 3-5 Takeaways (AI roadmap, θ_index assessment)
+  2. **Efficient Hypergrowth**
+     - Title: "The New Playbook for Efficient Hypergrowth"
+     - When to choose: audience needs growth inspiration, CAC vs. Growth trade-off
+     - What we cover: CAC Payback, LTV/CAC, Rule of 40, tactical roadmap
+     - Typical outcome: High Inspiration, 3-5 Takeaways (CAC optimization, LTV improvement)
+  3. **Pricing Strategy**
+     - Title: "The New Math of SaaS Pricing"
+     - When to choose: audience needs pricing inspiration, value-based vs. cost-based
+     - What we cover: value-based pricing, packaging, expansion, tactical roadmap
+     - Typical outcome: High Inspiration, 3-5 Takeaways (pricing audit, packaging redesign)
+  4. **Customer Success Excellence**
+     - Title: "How to Build a Net Retention Machine"
+     - When to choose: audience needs retention inspiration, churn high
+     - What we cover: onboarding, expansion, retention loops, tactical roadmap
+     - Typical outcome: High Inspiration, 3-5 Takeaways (retention audit, expansion playbook)
+  5. **Board Governance**
+     - Title: "How to Work with Your Board (Not Against It)"
+     - When to choose: audience needs board inspiration, board relationship broken
+     - What we cover: board strategy, meetings, reporting, tactical roadmap
+     - Typical outcome: High Inspiration, 3-5 Takeaways (board meeting redesign, reporting framework)
+  + **Bespoke Keynote (Custom Topic)**
+     - When to choose: topic not covered by standard keynotes
      - Custom pricing
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Team Alignment +80% (misaligned to aligned)
-  - Playbook Delivered (30-40 pages, actionable)
-  - Execution Ready Day 1 (immediate)
+  - Audience Inspiration: High Impact (memorable stories + frameworks)
+  - Actionable Takeaways: 3-5 Actions (frameworks, templates, roadmaps)
+  - Event Momentum: Lasting Impact (team uses frameworks)
 - **Real Examples:**
-  - Example 1: Series B SaaS (GTM Strategy Workshop) - Team Alignment +85%, CAC Reduction Plan -40%
-  - Example 2: Series A SaaS (AI Transformation Workshop) - Team Alignment +90%, theta_index Roadmap +114%
-  - Example 3: Series A-B VC (Portfolio Excellence Workshop) - Team Alignment +85%, Operating Partner Efficiency +80%
+  - Example 1: Series B SaaS Company Offsite (AI-Native Scaling)
+  - Example 2: VC Portfolio Conference (Efficient Hypergrowth)
+  - Example 3: CEO Peer Group Event (Board Governance)
 
 ### Section 5: Process (How We Work)
-- **Pre-Workshop (1-2 Weeks Before):** Questionnaire, Materials, Call
-- **Workshop Day (1-2 Days):** Facilitation, Hands-on exercises, Framework training, Playbook creation
-- **Post-Workshop (1-2 Weeks After):** Finalize playbook, Recording, Follow-up call
+- **Pre-Keynote (2-3 Weeks Before):** Questionnaire, Audience research, Topic alignment, Slide customization
+- **Keynote Day (60-90 Min):** Keynote delivery, Q&A session, Audience engagement
+- **Post-Keynote (1-2 Days After):** Send slides, resources, recording
 - **Pricing:**
-  - 1-Day Workshop: €9.6K (6-8 hours, 10-30 participants)
-  - 2-Day Workshop: €12.9K (12-16 hours, 10-30 participants)
-  - Bespoke Workshop: Custom pricing
-- Quality Guarantee (Hands-on, Actionable Playbook, Execution Ready)
+  - Standard Keynote: €4.9K (60-90 min, 50-500 participants)
+  - + Recording: +€500 (professional recording)
+  - + Travel: Billed separately (if on-site)
+  - Bespoke Keynote: Custom pricing
+- Quality Guarantee (High-impact, Actionable takeaways, Audience engagement)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Need team alignment on specific challenge
-  - Have 10-30 participants
-  - Series A-B or VC/PE with portfolio
-  - Budget: €9.6K-€12.9K
+  - Need tactical inspiration (not generic motivation)
+  - Have 50-500 participants
+  - Series A-B or VC/PE organizing event
+  - Budget: €4.9K + travel
 - **Not a Fit:**
-  - Need hands-on implementation: Power Up (€23.6K) or Boost (€60K-€78K)
-  - Have <10 participants: Expert Session (€490-€890)
-  - Have >30 participants: Custom pricing
+  - Need generic motivation: Hire motivational speaker (€2K-€5K)
+  - Need hands-on training: Workshop (€9.6K-€12.9K)
+  - Have <50 participants: Workshop (€9.6K-€12.9K)
+  - Have >500 participants: Custom pricing
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Align Your Team?`
-- **Primary CTA:** Book Workshop (€9.6K)
-- **Step 2:** Choose Your Workshop Type (9 types listed)
-- **Step 3:** Prepare Your Team (pre-work)
+- **Headline:** `Ready to Inspire Your Audience?`
+- **Primary CTA:** Book Keynote (€4.9K)
+- **Step 2:** Choose Your Keynote Topic (5 topics listed)
+- **Step 3:** Prepare Your Event (pre-work)
 - **Secondary:** Book Free Inflection Call (30 min)
-- **FAQ:** Duration, Investment, Participants, References, ROI, Remote/On-site, Custom topic, Recording
+- **FAQ:** Duration, Investment, Participants, References, ROI, Remote/On-site, Custom topic, Recording, Booking notice
 
 ---
 
@@ -207,66 +189,63 @@ const Workshop = lazy(() => import("./pages/Workshop"));
 - `TwinklingStars` fuer Hero-Hintergrund
 - `useParallaxLayers` fuer Parallax-Effekte
 - `useScrollAnimation` fuer Scroll-basierte Animationen
-- `Accordion` fuer 9 Workshop Types und FAQ-Bereich
+- `Accordion` fuer 5 Keynote Topics und FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons fuer Workshop
-- `GraduationCap` - Workshop / Training
-- `TrendingUp` - GTM Strategy / Growth Strategy
+### Spezifische Icons fuer Keynote
+- `Mic` - Keynote / Speaking
+- `Brain` - AI-Native Scaling
+- `TrendingUp` - Efficient Hypergrowth
 - `DollarSign` - Pricing Strategy
-- `HeartHandshake` - Customer Success
-- `Settings` - Operations Excellence
-- `Rocket` - Scaling
-- `Brain` - AI Transformation
+- `HeartHandshake` - Customer Success Excellence
 - `Users` - Board Governance
-- `Briefcase` - Portfolio Excellence
-- `Sparkles` - Bespoke Workshop
-- `Clock` - Fast Alignment (1-2 Days)
-- `FileText` - Playbook (30-40 Pages)
-- `Zap` - Execution Ready Day 1
-- `UserCheck` - Participants (10-30)
-- `Video` - Recording (90 days access)
+- `Sparkles` - Bespoke Keynote
+- `Clock` - Fast Impact (60-90 Min)
+- `Users` - Audience (50-500)
+- `Lightbulb` - Inspiration
+- `Target` - Takeaways (3-5 Actions)
+- `Video` - Recording (+€500)
+- `Plane` - Travel (if on-site)
 
-### 9 Workshop Types Framework
-Diese Seite verwendet 9 Workshop-Typen als strukturierendes Element (Section 3):
+### 5 Keynote Topics Framework
 
 ```text
 +-----------------------------------------------------------+
-|                   9 WORKSHOP TYPES                         |
+|                   5 KEYNOTE TOPICS                         |
 +------------------+------------------+----------------------+
-| 1. GTM           | 2. Growth        | 3. Pricing          |
-|    Strategy      |    Strategy      |    Strategy         |
+| 1. AI-Native     | 2. Efficient     | 3. Pricing          |
+|    Scaling       |    Hypergrowth   |    Strategy         |
 +------------------+------------------+----------------------+
-| 4. Customer      | 5. Operations    | 6. Scaling          |
-|    Success       |    Excellence    |                     |
-+------------------+------------------+----------------------+
-| 7. AI            | 8. Board         | 9. Portfolio        |
-|    Transformation|    Governance    |    Excellence       |
+| 4. Customer      | 5. Board         |                     |
+|    Success       |    Governance    |                     |
 +------------------+------------------+----------------------+
 | + Bespoke (Custom Topic)                                   |
 +-----------------------------------------------------------+
 ```
 
-### Unterschied zu anderen Workshops & Keynotes Pages
+### Unterschied zu Workshop
 
-Diese Seite ist die zentrale Workshop-Landing-Page, die alle 9 Workshop-Typen zusammenfasst. Sie unterscheidet sich von:
-- **Keynote Landing Page:** Fokussiert auf 90-min Keynotes (€3.9K-€7.6K)
-- **Challenge-spezifische Workshops:** In challenges.ts referenziert, aber nicht als separate Pages
+| Aspekt | Workshop | Keynote |
+|--------|----------|---------|
+| Dauer | 1-2 Tage (6-16 Stunden) | 60-90 Minuten |
+| Preis | €9.6K-€12.9K | €4.9K |
+| Teilnehmer | 10-30 | 50-500 |
+| Format | Hands-on Training | Inspirational Talk |
+| Deliverable | Playbook (30-40 Seiten) | Slides (40-60 Seiten) |
+| Output | Team Alignment +80% | High Impact Inspiration |
+| Topics | 9 Workshop Types | 5 Keynote Topics |
 
-### Workshop Format Details
+### Keynote Format
 
-| Aspekt | 1-Day Workshop | 2-Day Workshop |
-|--------|----------------|----------------|
-| Dauer | 6-8 Stunden | 12-16 Stunden |
-| Preis | €9.6K | €12.9K |
-| Format | Morning (3-4h) + Afternoon (3-4h) | 2x (Morning + Afternoon) |
-| Playbook | 30-40 Seiten | 30-40 Seiten |
-| Teilnehmer | 10-30 | 10-30 |
-| Recording | 90 Tage Zugang | 90 Tage Zugang |
-| Follow-up | 1x 60-min Call | 1x 60-min Call |
+| Segment | Dauer | Inhalt |
+|---------|-------|--------|
+| Opening | 5-10 min | Hook + Context |
+| Main Content | 40-60 min | Frameworks + Stories + Takeaways |
+| Closing | 5-10 min | Summary + Call to Action |
+| Q&A | 15-30 min | Audience Questions |
 
 ### URL-Pattern
-Top-Level Workshops & Keynotes Page: `/solutions/workshop`
+Top-Level Workshops & Keynotes Page: `/solutions/keynote`
 
 ---
 
@@ -274,7 +253,6 @@ Top-Level Workshops & Keynotes Page: `/solutions/workshop`
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 34: Price (€2.5K-€5K zu €9.6K-€12.9K) + Duration (1-day zu 1-2 days) + Metriken (outcome-fokussiert) + CTA (learn-more) aktualisieren |
-| `src/App.tsx` | Neue Route + Lazy Import (erste Workshops & Keynotes Landing Page) |
-| `src/pages/Workshop.tsx` | Neue Datei (7 Sektionen) mit 9 Workshop Types Framework, Workshop Selector UI (Accordion), Pre/During/Post Workshop Process, und Bespoke Workshop Option |
-
+| `src/data/solutionTiles.ts` | Kachel ID 37: Price (€5K–€15K zu €4.9K) + Topics (7 zu 5) + Metriken (outcome-fokussiert) + CTA (learn-more) aktualisieren |
+| `src/App.tsx` | Neue Route + Lazy Import (zweite Workshops & Keynotes Landing Page) |
+| `src/pages/Keynote.tsx` | Neue Datei (7 Sektionen) mit 5 Keynote Topics Framework, Topic Selector UI (Accordion), Pre/During/Post Keynote Process, und Recording Upsell (+€500) |
