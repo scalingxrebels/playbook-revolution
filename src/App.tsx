@@ -39,6 +39,7 @@ const PowerUpCustomSprint = lazy(() => import("./pages/PowerUpCustomSprint"));
 const BoostEfficientHypergrowth = lazy(() => import("./pages/BoostEfficientHypergrowth"));
 const BoostGrowthEngine = lazy(() => import("./pages/BoostGrowthEngine"));
 const BoostPricingDominance = lazy(() => import("./pages/BoostPricingDominance"));
+const BoostNRRMachine = lazy(() => import("./pages/BoostNRRMachine"));
 
 const queryClient = new QueryClient();
 
@@ -91,6 +92,7 @@ const App = () => (
                 <Route path="/solutions/boost/efficient-hypergrowth" element={<BoostEfficientHypergrowth />} />
                 <Route path="/solutions/boost/growth-engine" element={<BoostGrowthEngine />} />
                 <Route path="/solutions/boost/pricing-dominance" element={<BoostPricingDominance />} />
+                <Route path="/solutions/boost/nrr-machine" element={<BoostNRRMachine />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
