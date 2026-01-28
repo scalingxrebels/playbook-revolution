@@ -1523,7 +1523,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'external',
     primaryCtaUrl: 'https://dealdeskr.io/',
-    secondaryCtaEn: 'Learn More',
+    secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
   }
