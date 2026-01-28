@@ -1,52 +1,87 @@
 
 
-# Plan: Pigtie Texte aktualisieren
+# Plan: Breadcrumb-Logik korrigieren
+
+## Übersicht
+
+Die Breadcrumb-Navigation auf der Landing Page muss den Kachel-Titel als Seitennamen verwenden.
+
+---
 
 ## Änderungen
 
-| Element | Aktuell | Neu |
-|---------|---------|-----|
-| Subtitle | "AI-Powered Sales Intelligence" | "The Agentic OS for Personal Finance." |
-| Beschreibung (EN) | "Helping B2B sales teams identify high-intent buyers and accelerate deal velocity with AI-powered insights." | "Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers." |
-| Beschreibung (DE) | "Hilft B2B Sales Teams, High-Intent Buyer zu identifizieren und Deal Velocity mit KI-gestützten Insights zu beschleunigen." | "Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen." |
+| Aktuell | Neu |
+|---------|-----|
+| Home > Solutions > Power Up > CAC Crisis | Solutions > Power Up Predictable Acquisition |
 
 ---
 
 ## Betroffene Datei
 
-**`src/pages/About.tsx`** – Zeilen 499, 503-506
+**`src/pages/PowerUpCACCrisis.tsx`** – Zeilen 104-126
 
-### Zeile 499 (Subtitle)
+### Aktuelle Breadcrumb-Struktur
 ```tsx
-// Aktuell:
-<p className="text-sm text-muted-foreground">AI-Powered Sales Intelligence</p>
-
-// Neu:
-<p className="text-sm text-muted-foreground">The Agentic OS for Personal Finance.</p>
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
+        Home
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
+        Solutions
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-muted-foreground">Power Up</span>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">CAC Crisis</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
 
-### Zeilen 502-506 (Beschreibung)
+### Neue Breadcrumb-Struktur
 ```tsx
-// Aktuell:
-<p className="text-sm text-muted-foreground mb-4">
-  {lang === 'de' 
-    ? 'Hilft B2B Sales Teams, High-Intent Buyer zu identifizieren und Deal Velocity mit KI-gestützten Insights zu beschleunigen.'
-    : 'Helping B2B sales teams identify high-intent buyers and accelerate deal velocity with AI-powered insights.'
-  }
-</p>
-
-// Neu:
-<p className="text-sm text-muted-foreground mb-4">
-  {lang === 'de' 
-    ? 'Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen.'
-    : 'Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers.'
-  }
-</p>
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
+        Solutions
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">Power Up Predictable Acquisition</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
 
 ---
 
-## Hinweis
+## Logik für alle Landing Pages
 
-Die deutsche Übersetzung wird ebenfalls angepasst, damit beide Sprachen konsistent sind.
+Die Breadcrumb folgt dem Schema:
+
+```text
+Solutions > [Kachel-Titel]
+```
+
+### Beispiele
+
+| Kachel-Titel | Breadcrumb |
+|--------------|------------|
+| Power Up: Predictable Acquisition | Solutions > Power Up Predictable Acquisition |
+| Power Up: Hypergrowth Unlocked | Solutions > Power Up Hypergrowth Unlocked |
+| Boost: Board Readiness | Solutions > Boost Board Readiness |
+| LASR.io Assessment | Solutions > LASR.io Assessment |
+
+**Hinweis:** Der Doppelpunkt ":" aus dem Kachel-Titel wird im Breadcrumb weggelassen für bessere Lesbarkeit.
 
