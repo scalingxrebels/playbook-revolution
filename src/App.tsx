@@ -36,6 +36,7 @@ const PowerUpAIQuickWins = lazy(() => import("./pages/PowerUpAIQuickWins"));
 const PowerUpBoardReadiness = lazy(() => import("./pages/PowerUpBoardReadiness"));
 const PowerUpPortfolioPerformance = lazy(() => import("./pages/PowerUpPortfolioPerformance"));
 const PowerUpCustomSprint = lazy(() => import("./pages/PowerUpCustomSprint"));
+const BoostEfficientHypergrowth = lazy(() => import("./pages/BoostEfficientHypergrowth"));
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,7 @@ const App = () => (
                 <Route path="/solutions/power-up/board-readiness" element={<PowerUpBoardReadiness />} />
                 <Route path="/solutions/power-up/portfolio-performance" element={<PowerUpPortfolioPerformance />} />
                 <Route path="/solutions/power-up/custom-sprint" element={<PowerUpCustomSprint />} />
+                <Route path="/solutions/boost/efficient-hypergrowth" element={<BoostEfficientHypergrowth />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

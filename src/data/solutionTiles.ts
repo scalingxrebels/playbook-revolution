@@ -783,34 +783,34 @@ export const solutionTiles: SolutionTile[] = [
   // ============================================
   {
     id: 20,
-    slug: 'boost-hypergrowth',
+    slug: 'boost-efficient-hypergrowth',
     solutionType: 'transformation',
     transformationTier: 'boost',
     challenges: ['cac-crisis', 'growth-stalled'],
-    price: '€58K',
+    price: '€60K-€78K',
     priceTag: 'paid',
     headlineEn: 'Boost: Efficient Hypergrowth',
     headlineDe: 'Boost: Effizientes Hypergrowth',
-    problemEn: "You're growing fast, but burning cash. CAC is rising, LTV/CAC is below 3x, and Rule of 40 is below 20%. You need efficient hypergrowth.",
-    problemDe: 'Du wächst schnell, aber verbrennst Cash. CAC steigt, LTV/CAC ist unter 3x, und Rule of 40 ist unter 20%. Du brauchst effizientes Hypergrowth.',
-    solutionEn: 'We build a scalable GTM engine in 8-10 weeks: reduce CAC, increase LTV/CAC, improve Rule of 40. You get a complete growth architecture.',
-    solutionDe: 'Wir bauen eine skalierbare GTM-Engine in 8-10 Wochen: reduzieren CAC, erhöhen LTV/CAC, verbessern Rule of 40. Du erhältst eine komplette Growth-Architektur.',
+    problemEn: "Your unit economics are broken. CAC has exploded, LTV/CAC has collapsed, Rule of 40 is at 10%. Board is asking: When will we achieve efficient growth?",
+    problemDe: 'Deine Unit Economics sind kaputt. CAC ist explodiert, LTV/CAC ist eingebrochen, Rule of 40 liegt bei 10%. Das Board fragt: Wann erreichen wir effizientes Wachstum?',
+    solutionEn: 'We rebuild your entire GTM engine in 90 days: CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp—with 2 of 3 outcomes guaranteed.',
+    solutionDe: 'Wir bauen deine gesamte GTM-Engine in 90 Tagen neu auf: CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp – mit 2 von 3 Ergebnissen garantiert.',
     deliverablesEn: [
-      'CAC reduction: -30-40%',
-      'LTV/CAC: 4-6x',
-      'Rule of 40: +15-25pp'
+      'CAC: -40-60%',
+      'LTV/CAC: +100-200%',
+      'Rule of 40: +20-40pp'
     ],
     deliverablesDe: [
-      'CAC-Reduktion: -30-40%',
-      'LTV/CAC: 4-6x',
-      'Rule of 40: +15-25pp'
+      'CAC: -40-60%',
+      'LTV/CAC: +100-200%',
+      'Rule of 40: +20-40pp'
     ],
-    impactEn: 'Reduce CAC by 30-40%, increase LTV/CAC to 4-6x, improve Rule of 40 by 15-25pp in 8-10 weeks. Build scalable GTM engine.',
-    impactDe: 'Reduziere CAC um 30-40%, erhöhe LTV/CAC auf 4-6x, verbessere Rule of 40 um 15-25pp in 8-10 Wochen. Baue skalierbare GTM-Engine.',
-    primaryCtaEn: 'Start Boost',
-    primaryCtaDe: 'Boost starten',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/boost',
+    impactEn: 'Reduce CAC by 40-60%, increase LTV/CAC by 100-200%, improve Rule of 40 by 20-40pp in 90 days. 2 of 3 outcomes guaranteed or 50% refund.',
+    impactDe: 'Reduziere CAC um 40-60%, erhöhe LTV/CAC um 100-200%, verbessere Rule of 40 um 20-40pp in 90 Tagen. 2 von 3 Ergebnissen garantiert oder 50% Rückerstattung.',
+    primaryCtaEn: 'More About Efficient Hypergrowth',
+    primaryCtaDe: 'Mehr über Efficient Hypergrowth',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/boost/efficient-hypergrowth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
     secondaryCtaUrl: '/cases/hypergrowth-boost'
