@@ -183,4 +183,3 @@ Gemaess etablierter Logik: `/solutions/power-up/board-readiness` (nicht `/soluti
 | `src/data/solutionTiles.ts` | Kachel ID 17: Umbenennung "Board Ready" -> "Board Readiness" + Slug + Metriken + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
 | `src/pages/PowerUpBoardReadiness.tsx` | Neue Datei (7 Sektionen) |
-
