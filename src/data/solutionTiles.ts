@@ -355,38 +355,36 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'vc-dd-simulation',
     solutionType: 'decision-support',
     challenges: ['board-pressure', 'portfolio-performance'],
-    price: '€3.9K-€5.9K',
+    price: '€5.9K',
     priceTag: 'paid',
     headlineEn: 'VC Due Diligence Simulation',
     headlineDe: 'VC Due Diligence Simulation',
-    problemEn: "You're raising a round, but you don't know what VCs will find. Red flags could kill your deal.",
-    problemDe: 'Du raiset eine Runde, aber du weißt nicht, was VCs finden werden. Red Flags könnten deinen Deal killen.',
-    solutionEn: 'We simulate VC due diligence in 5-7 days: identify red flags, prepare Q&A, optimize financials. You get a board-ready report.',
-    solutionDe: 'Wir simulieren VC Due Diligence in 5-7 Tagen: identifizieren Red Flags, bereiten Q&A vor, optimieren Financials. Du erhältst einen Board-Ready Report.',
+    problemEn: "You're not ready for VC due diligence—and you don't know it. DD readiness is 0%, red flags are hidden, and your data room is incomplete.",
+    problemDe: 'Du bist nicht bereit für VC Due Diligence—und weißt es nicht. DD Readiness ist 0%, Red Flags sind versteckt, und dein Data Room ist unvollständig.',
+    solutionEn: 'We simulate VC due diligence in 1-2 weeks (8 dimensions). You get: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report.',
+    solutionDe: 'Wir simulieren VC Due Diligence in 1-2 Wochen (8 Dimensionen). Du erhältst: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report.',
     deliverablesEn: [
-      'DD simulation report (15-20 pages)',
-      'Red flag mitigation plan',
-      'Q&A prep (50-100 questions)',
-      'Optional: Execution Bridge (+€2K discount)'
+      'Red Flags Fixed: 100%',
+      'DD Readiness: 0% → 100%',
+      'Fundraising Rate: +40-60pp'
     ],
     deliverablesDe: [
-      'DD Simulation Report (15-20 Seiten)',
-      'Red Flag Mitigation Plan',
-      'Q&A Vorbereitung (50-100 Fragen)',
-      'Optional: Execution Bridge (+€2K Rabatt)'
+      'Red Flags Fixed: 100%',
+      'DD Readiness: 0% → 100%',
+      'Fundraising Rate: +40-60pp'
     ],
-    impactEn: 'Predict 30-50% higher success rate. Close your round faster.',
-    impactDe: 'Prognostiziere 30-50% höhere Erfolgsquote. Schließe deine Runde schneller ab.',
-    primaryCtaEn: 'Request Simulation',
-    primaryCtaDe: 'Simulation anfragen',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/vc-dd-simulation',
+    impactEn: 'Fix red flags before VCs find them. Predict 10-50x ROI in fundraising success.',
+    impactDe: 'Behebe Red Flags, bevor VCs sie finden. Prognostiziere 10-50x ROI im Fundraising-Erfolg.',
+    primaryCtaEn: 'More About DD Simulation',
+    primaryCtaDe: 'Mehr über DD Simulation',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/vc-dd-simulation',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
     secondaryCtaUrl: '/cases/vc-dd-simulation',
     addOnPricing: {
-      base: '€3.9K',
-      bridge: '€5.9K'
+      base: '€5.9K',
+      bridge: '€9.8K'
     }
   },
   {
