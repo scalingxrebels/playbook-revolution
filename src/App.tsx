@@ -32,6 +32,7 @@ const PowerUpGrowthMomentum = lazy(() => import("./pages/PowerUpGrowthMomentum")
 const PowerUpPricingPower = lazy(() => import("./pages/PowerUpPricingPower"));
 const PowerUpNRREngine = lazy(() => import("./pages/PowerUpNRREngine"));
 const PowerUpScalingVelocity = lazy(() => import("./pages/PowerUpScalingVelocity"));
+const PowerUpAIQuickWins = lazy(() => import("./pages/PowerUpAIQuickWins"));
 
 const queryClient = new QueryClient();
 
@@ -77,6 +78,7 @@ const App = () => (
                 <Route path="/solutions/power-up/pricing-power" element={<PowerUpPricingPower />} />
                 <Route path="/solutions/power-up/nrr-engine" element={<PowerUpNRREngine />} />
                 <Route path="/solutions/power-up/scaling-velocity" element={<PowerUpScalingVelocity />} />
+                <Route path="/solutions/power-up/ai-quick-wins" element={<PowerUpAIQuickWins />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

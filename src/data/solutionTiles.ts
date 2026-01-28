@@ -643,7 +643,7 @@ export const solutionTiles: SolutionTile[] = [
   },
   {
     id: 16,
-    slug: 'power-up-ai',
+    slug: 'power-up-ai-quick-wins',
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['ai-transformation'],
@@ -653,24 +653,24 @@ export const solutionTiles: SolutionTile[] = [
     headlineDe: 'Power Up: AI Quick Wins',
     problemEn: "You've dabbled in AI, but nothing's production-grade or ROI-proven. You need quick wins to build momentum.",
     problemDe: 'Du hast mit AI experimentiert, aber nichts ist production-grade oder ROI-bewiesen. Du brauchst Quick Wins, um Momentum aufzubauen.',
-    solutionEn: 'We ship 1-2 AI use-cases in 30 days: prioritize, build MVP, deploy to production. You get 3 guaranteed outcomes (2 of 3 or 50% refund).',
-    solutionDe: 'Wir shippen 1-2 AI Use-Cases in 30 Tagen: priorisieren, bauen MVP, deployen in Production. Du erhältst 3 garantierte Ergebnisse (2 von 3 oder 50% Rückerstattung).',
+    solutionEn: 'We implement 3-5 AI use cases in 4-6 weeks: prioritize, build, deploy to production. You get 3 guaranteed outcomes (2 of 3 or 50% refund).',
+    solutionDe: 'Wir implementieren 3-5 AI Use Cases in 4-6 Wochen: priorisieren, bauen, deployen in Production. Du erhältst 3 garantierte Ergebnisse (2 von 3 oder 50% Rückerstattung).',
     deliverablesEn: [
-      'AI use-cases deployed: 1-2',
-      'Productivity gain: +20-40%',
-      'θ_index improvement: +0.1-0.2'
+      'AI Use Cases Implemented: 3-5',
+      'Operations Speed: +30-50%',
+      'θ_index Improvement: +0.2-0.3'
     ],
     deliverablesDe: [
-      'AI Use-Cases deployed: 1-2',
-      'Produktivitätssteigerung: +20-40%',
-      'θ_index Verbesserung: +0.1-0.2'
+      'AI Use Cases implementiert: 3-5',
+      'Operations Speed: +30-50%',
+      'θ_index Verbesserung: +0.2-0.3'
     ],
-    impactEn: 'Deploy 1-2 AI use-cases, increase productivity by 20-40%, improve θ_index by 0.1-0.2 in 30 days. Guaranteed: 2 of 3 or 50% refund.',
-    impactDe: 'Deploye 1-2 AI Use-Cases, steigere Produktivität um 20-40%, verbessere θ_index um 0.1-0.2 in 30 Tagen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
-    primaryCtaEn: 'Start Transformation',
-    primaryCtaDe: 'Transformation starten',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/transformation',
+    impactEn: 'Implement 3-5 AI use cases, increase operations speed by 30-50%, improve θ_index by 0.2-0.3 in 4-6 weeks. Guaranteed: 2 of 3 or 50% refund.',
+    impactDe: 'Implementiere 3-5 AI Use Cases, steigere Operations Speed um 30-50%, verbessere θ_index um 0.2-0.3 in 4-6 Wochen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
+    primaryCtaEn: 'More About AI Quick Wins',
+    primaryCtaDe: 'Mehr über AI Quick Wins',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/power-up/ai-quick-wins',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
     secondaryCtaUrl: '/cases/ai-transformation'
