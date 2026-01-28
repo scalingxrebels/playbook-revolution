@@ -127,29 +127,29 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'Expert Session',
     headlineDe: 'Expert Session',
-    problemEn: "You need tactical guidance on a specific challenge—pricing, GTM, scaling, AI—but don't need a full program yet.",
-    problemDe: 'Du brauchst taktische Anleitung für eine spezifische Herausforderung—Pricing, GTM, Skalierung, AI—aber noch kein vollständiges Programm.',
-    solutionEn: '45 or 90-minute deep-dive with a ScalingX expert. Get concrete action steps and a 90-day roadmap tailored to your challenge.',
-    solutionDe: '45 oder 90-minütiger Deep-Dive mit einem ScalingX-Experten. Erhalte konkrete Aktionsschritte und eine 90-Tage-Roadmap, zugeschnitten auf deine Herausforderung.',
+    problemEn: "You have a specific challenge—CAC, growth, pricing, retention, operations, scaling, AI, deck, portfolio—but you don't need a full program. You need expert guidance. Fast.",
+    problemDe: 'Du hast eine spezifische Herausforderung—CAC, Growth, Pricing, Retention, Operations, Scaling, AI, Deck, Portfolio—aber du brauchst kein volles Programm. Du brauchst Experten-Guidance. Schnell.',
+    solutionEn: 'Get expert guidance in 45-90 minutes. Choose from 9 session types. Walk away with 3-5 actionable initiatives and a 90-day roadmap. ROI: 3-5x typical.',
+    solutionDe: 'Erhalte Experten-Guidance in 45-90 Minuten. Wähle aus 9 Session-Typen. Gehe mit 3-5 umsetzbaren Initiativen und einer 90-Tage-Roadmap. ROI: 3-5x typisch.',
     deliverablesEn: [
-      'Expert analysis (45 or 90 min)',
-      'Action plan (3-5 initiatives)',
-      '90-day roadmap with milestones'
+      'Expert Guidance: 45-90 Min',
+      'Action Plan: 3-5 Initiatives',
+      'ROI: 3-5x Typical'
     ],
     deliverablesDe: [
-      'Experten-Analyse (45 oder 90 min)',
-      'Aktionsplan (3-5 Initiativen)',
-      '90-Tage-Roadmap mit Meilensteinen'
+      'Experten-Guidance: 45-90 Min',
+      'Aktionsplan: 3-5 Initiativen',
+      'ROI: 3-5x Typisch'
     ],
-    impactEn: 'Walk away with a clear action plan and 90-day roadmap. Start executing immediately.',
-    impactDe: 'Gehe mit einem klaren Aktionsplan und einer 90-Tage-Roadmap. Starte sofort mit der Umsetzung.',
+    impactEn: 'Get expert guidance in 45-90 minutes. Walk away with 3-5 actionable initiatives and a 90-day roadmap. Predict 3-5x ROI from time saved and clarity gained.',
+    impactDe: 'Erhalte Experten-Guidance in 45-90 Minuten. Gehe mit 3-5 umsetzbaren Initiativen und einer 90-Tage-Roadmap. Prognostiziere 3-5x ROI durch Zeitersparnis und gewonnene Klarheit.',
     primaryCtaEn: 'Book Session',
     primaryCtaDe: 'Session buchen',
     primaryCtaAction: 'book-call',
     primaryCtaUrl: 'https://calendly.com/michel-scalingx/expert-session',
-    secondaryCtaEn: 'See topics',
-    secondaryCtaDe: 'Themen ansehen',
-    secondaryCtaUrl: '/expertise'
+    secondaryCtaEn: 'More About Expert Session',
+    secondaryCtaDe: 'Mehr über Expert Session',
+    secondaryCtaUrl: '/solutions/expert-session'
   },
 
   // ============================================
