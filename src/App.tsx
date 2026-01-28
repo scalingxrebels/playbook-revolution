@@ -43,6 +43,7 @@ const BoostNRRMachine = lazy(() => import("./pages/BoostNRRMachine"));
 const BoostScalingOS = lazy(() => import("./pages/BoostScalingOS"));
 const BoostAIMaturity = lazy(() => import("./pages/BoostAIMaturity"));
 const BoostBoardExcellence = lazy(() => import("./pages/BoostBoardExcellence"));
+const BoostPortfolioValue = lazy(() => import("./pages/BoostPortfolioValue"));
 
 const queryClient = new QueryClient();
 
@@ -99,6 +100,7 @@ const App = () => (
                 <Route path="/solutions/boost/scaling-os" element={<BoostScalingOS />} />
                 <Route path="/solutions/boost/ai-maturity" element={<BoostAIMaturity />} />
                 <Route path="/solutions/boost/board-excellence" element={<BoostBoardExcellence />} />
+                <Route path="/solutions/boost/portfolio-value" element={<BoostPortfolioValue />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
