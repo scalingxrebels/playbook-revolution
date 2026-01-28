@@ -29,6 +29,7 @@ const AH = lazy(() => import("./pages/AH"));
 const FM = lazy(() => import("./pages/FM"));
 const PowerUpCACCrisis = lazy(() => import("./pages/PowerUpCACCrisis"));
 const PowerUpGrowthMomentum = lazy(() => import("./pages/PowerUpGrowthMomentum"));
+const PowerUpPricingPower = lazy(() => import("./pages/PowerUpPricingPower"));
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,7 @@ const App = () => (
                 <Route path="/fm" element={<FM />} />
                 <Route path="/solutions/power-up/cac-crisis" element={<PowerUpCACCrisis />} />
                 <Route path="/solutions/power-up/growth-momentum" element={<PowerUpGrowthMomentum />} />
+                <Route path="/solutions/power-up/pricing-power" element={<PowerUpPricingPower />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
