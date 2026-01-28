@@ -1307,33 +1307,33 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'strategic-advisory',
     solutionType: 'advisory',
     challenges: 'universal',
-    price: '€8K–€40K',
+    price: '€3.9K–€11K/Mo',
     priceTag: 'custom',
     headlineEn: 'Strategic Advisory',
     headlineDe: 'Strategic Advisory',
-    problemEn: "You have a unique challenge that doesn't fit a standard offering. You need custom strategy work—designed for your specific situation.",
-    problemDe: 'Du hast eine einzigartige Herausforderung, die nicht in ein Standardangebot passt. Du brauchst maßgeschneiderte Strategiearbeit—designed für deine spezifische Situation.',
-    solutionEn: 'We design custom strategy in 4-24 weeks. Choose intensity: Catalyst (4-6 weeks, €8K-€15K), Accelerator (6-10 weeks, €15K-€25K), or Transformer (3-6 months, €25K-€40K).',
-    solutionDe: 'Wir designen maßgeschneiderte Strategie in 4-24 Wochen. Wähle Intensität: Catalyst (4-6 Wochen, €8K-€15K), Accelerator (6-10 Wochen, €15K-€25K), oder Transformer (3-6 Monate, €25K-€40K).',
+    problemEn: "You're making critical decisions without strategic guidance. Decision velocity is 7-14 days. Strategic clarity is low. Board confidence is 40-60%.",
+    problemDe: 'Du triffst kritische Entscheidungen ohne strategische Führung. Decision Velocity ist 7-14 Tage. Strategische Klarheit ist gering. Board Confidence liegt bei 40-60%.',
+    solutionEn: 'We become your ongoing strategic sparring partner (min. 12 months). Choose intensity: Catalyst (1-2 days/month, €3.9K/Mo), Accelerator (3-4 days/month, €8.4K/Mo), Transformator (4-6 days/week, €11K/Mo).',
+    solutionDe: 'Wir werden dein laufender strategischer Sparringspartner (mind. 12 Monate). Wähle Intensität: Catalyst (1-2 Tage/Monat, €3.9K/Mo), Accelerator (3-4 Tage/Monat, €8.4K/Mo), Transformator (4-6 Tage/Woche, €11K/Mo).',
     deliverablesEn: [
-      'Custom strategy design',
-      'Implementation roadmap',
-      'Team enablement & training'
+      'Decision Velocity: +50-100%',
+      'Strategic Clarity: +80%',
+      'Board Confidence: +30-50pp'
     ],
     deliverablesDe: [
-      'Custom Strategy Design',
-      'Implementierungs-Roadmap',
-      'Team Enablement & Training'
+      'Decision Velocity: +50-100%',
+      'Strategic Clarity: +80%',
+      'Board Confidence: +30-50pp'
     ],
-    impactEn: 'Get custom strategy tailored to your unique challenge. Predict 5-10x ROI in 90-180 days.',
-    impactDe: 'Erhalte maßgeschneiderte Strategie, zugeschnitten auf deine einzigartige Herausforderung. Prognostiziere 5-10x ROI in 90-180 Tagen.',
-    primaryCtaEn: 'Request Advisory',
-    primaryCtaDe: 'Advisory anfragen',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/advisory',
-    secondaryCtaEn: 'See examples',
-    secondaryCtaDe: 'Beispiele ansehen',
-    secondaryCtaUrl: '/cases/advisory'
+    impactEn: 'Get ongoing strategic guidance that accelerates your decision-making and increases board confidence. Predict 5-10x ROI in 12+ months.',
+    impactDe: 'Erhalte laufende strategische Führung, die deine Entscheidungsfindung beschleunigt und das Board-Vertrauen stärkt. Prognostiziere 5-10x ROI in 12+ Monaten.',
+    primaryCtaEn: 'More About Strategic Advisory',
+    primaryCtaDe: 'Mehr über Strategic Advisory',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/strategic-advisory',
+    secondaryCtaEn: 'Book call',
+    secondaryCtaDe: 'Call buchen',
+    secondaryCtaUrl: 'https://calendly.com/michel-scalingx/advisory'
   },
 
 
