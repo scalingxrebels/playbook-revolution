@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
               <img src="/images/scalingx-logo.png" alt="ScalingX" className="h-10 w-auto" />
             </div>
             <p className="text-xs uppercase tracking-widest text-accent mb-2">
-              GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS
+              GROWTH ENGINES × SCALING SYSTEMS × AI = HYPERGROWTH
             </p>
             <p className="text-sm text-muted-foreground max-w-md mb-2">
               {language === 'de' 
