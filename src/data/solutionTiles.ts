@@ -1492,6 +1492,40 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
+  },
+  // ID 42: DealDeskr.io - AI Deal Intelligence (paid tool)
+  {
+    id: 42,
+    slug: 'dealdeskr-io',
+    solutionType: 'tools',
+    challenges: ['cac-crisis', 'growth-stalled', 'pricing-breakdown', 'board-pressure'],
+    price: 'From €79/user/mo',
+    priceTag: 'paid',
+    headlineEn: 'DealDeskr.io',
+    headlineDe: 'DealDeskr.io',
+    problemEn: "Your sales team makes bad pricing decisions—no data foundation, 40-60% deal leakage, inconsistent playbooks.",
+    problemDe: 'Dein Sales-Team trifft schlechte Pricing-Entscheidungen—keine Datengrundlage, 40-60% Deal-Leakage, inkonsistente Playbooks.',
+    solutionEn: 'Real-time deal intelligence & AI-powered pricing recommendations in your sales workflow. Deal scoring, pricing intelligence, playbook recommendations, forecast accuracy.',
+    solutionDe: 'Echtzeit-Deal-Intelligence & AI-gestützte Pricing-Empfehlungen in deinem Sales-Workflow. Deal Scoring, Pricing Intelligence, Playbook-Empfehlungen, Forecast-Genauigkeit.',
+    deliverablesEn: [
+      'Deal scoring (+30-50% pricing intelligence)',
+      'Playbook recommendations (+20-40% conversion)',
+      'Forecast accuracy (-60% errors)'
+    ],
+    deliverablesDe: [
+      'Deal Scoring (+30-50% Pricing Intelligence)',
+      'Playbook-Empfehlungen (+20-40% Conversion)',
+      'Forecast-Genauigkeit (-60% Fehler)'
+    ],
+    impactEn: '+50-100% higher deals, +40-60% win rate, -25-33% sales cycle. €50M ARR company: +€15M ARR/year.',
+    impactDe: '+50-100% höhere Deals, +40-60% Win Rate, -25-33% Sales Cycle. €50M ARR Unternehmen: +€15M ARR/Jahr.',
+    primaryCtaEn: 'Try Now',
+    primaryCtaDe: 'Jetzt ausprobieren',
+    primaryCtaAction: 'external',
+    primaryCtaUrl: 'https://dealdeskr.io/',
+    secondaryCtaEn: 'Learn More',
+    secondaryCtaDe: 'Mehr erfahren',
+    secondaryCtaUrl: '/about'
   }
 ];
 
