@@ -1,30 +1,28 @@
 
 
-# Plan: Power Up Growth Momentum – Landing Page + Kachel-Update
+# Plan: Power Up Pricing Power – Landing Page + Kachel-Update
 
 ## Übersicht
 
-Umsetzung aller 3 Aufgaben:
-1. Neue Landing Page `/solutions/power-up/growth-momentum` erstellen
-2. Kachel "Growth Unlocked" → "Growth Momentum" umbenennen
-3. Button-Text und Breadcrumb korrigieren
+Umsetzung analog zu den bestehenden Power Up Landing Pages:
+1. Kachel-Update in solutionTiles.ts (ID 13)
+2. Neue Route in App.tsx
+3. Neue Landing Page erstellen
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (Zeilen 508-541)
+**Datei:** `src/data/solutionTiles.ts` (Zeilen 542-575)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| headlineEn | Power Up: Growth Unlocked | Power Up: Growth Momentum |
-| headlineDe | Power Up: Growth entsperrt | Power Up: Growth Momentum |
 | solutionEn | "...in 30 days..." | "...in 4-6 weeks..." |
 | solutionDe | "...in 30 Tagen..." | "...in 4-6 Wochen..." |
-| primaryCtaEn | Start Transformation | More About Growth Momentum |
-| primaryCtaDe | Transformation starten | Mehr über Growth Momentum |
+| primaryCtaEn | Start Transformation | More About Pricing Power |
+| primaryCtaDe | Transformation starten | Mehr über Pricing Power |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/power-up/growth-momentum |
+| primaryCtaUrl | Calendly-Link | /solutions/power-up/pricing-power |
 
 ---
 
@@ -32,81 +30,81 @@ Umsetzung aller 3 Aufgaben:
 
 **Datei:** `src/App.tsx`
 
-Neue Route hinzufügen:
 ```tsx
-const PowerUpGrowthMomentum = lazy(() => import("./pages/PowerUpGrowthMomentum"));
+const PowerUpPricingPower = lazy(() => import("./pages/PowerUpPricingPower"));
 
 // Route:
-<Route path="/solutions/power-up/growth-momentum" element={<PowerUpGrowthMomentum />} />
+<Route path="/solutions/power-up/pricing-power" element={<PowerUpPricingPower />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/PowerUpGrowthMomentum.tsx`
+**Datei:** `src/pages/PowerUpPricingPower.tsx`
 
-Struktur analog zu `PowerUpCACCrisis.tsx` mit 7 Sektionen:
+Struktur analog zu `PowerUpGrowthMomentum.tsx` mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Power Up Growth Momentum`
+- **Breadcrumb:** `Solutions > Power Up Pricing Power`
 - **Badge:** `Power Up · 4-6 Weeks · From €23.6K`
-- **Headline:** `Growth Stalled → Back to Hypergrowth`
-- **Subheadline:** Reignite your growth engine in 4-6 weeks...
-- **Stats:** ARR Growth +30-60pp | Win Rate +30-50% | Pipeline +50-100%
+- **Headline:** `Pricing Breakdown → Pricing Power Restored`
+- **Subheadline:** Fix your pricing strategy in 4-6 weeks...
+- **Stats:** ARPU +30-50% | Gross Margin +10-15pp | Pricing System Implemented
 - **Trust Badges:** Outcome-Based Risk Sharing, 4-6 Week Sprint, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `Your Growth Has Stalled`
+- **Headline:** `Your Pricing Is Broken`
 - **Symptome:**
-  - Declining growth rate: 150% → 120% → 80% YoY
-  - Stagnant pipeline: Same volume, lower conversion (35% → 22%)
-  - Longer sales cycles: 45 days → 75 days
-  - Lower win rates: 40% → 25%
-  - Product-market fit concerns
+  - ARPU stagnation: €150 (benchmark: €300+)
+  - Heavy discounting: 30-50% just to close
+  - Gross margin decline: 25% (target: 40%)
+  - Value metric confusion
+  - Packaging chaos
 
 ### Section 3: Solution
-- **Headline:** `How We Reignite Your Growth Engine`
+- **Headline:** `How We Restore Your Pricing Power`
 - **3-Phasen-Ansatz:**
-  - Week 1-2: Diagnose the Bottleneck (C₁, C₃ Assessment, PMF Analysis)
-  - Week 2-4: Fix the Bottleneck (ICP, Sales Process, or PMF)
+  - Week 1-2: Diagnose (Value Metric, Packaging, Willingness-to-Pay, Competitive Analysis)
+  - Week 2-4: Fix (Value Metric Redesign, Packaging Optimization, or WTP Validation)
   - Week 4-6: Validate & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - ARR Growth +30-60pp (Beispiel: 80% → 130% YoY)
-  - Win Rate +30-50% (Beispiel: 25% → 37%)
-  - Pipeline +50-100% (Beispiel: €2M → €3.5M)
-- **Real Example:** Series B SaaS Case Study
+  - ARPU +30-50% (Beispiel: €150 → €210)
+  - Gross Margin +10-15pp (Beispiel: 25% → 38%)
+  - Pricing System Implemented (Calculator, Dynamic Pricing, Discount Policy)
+- **Real Example:** Series B SaaS, €20M ARR, ARPU +42%
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown
 - Time Commitment (8-12h, 12-16h, 6-8h)
 - Outcome-Based Risk Sharing Details
+- Primary Metrics: ARPU, Gross Margin, Discount Rate
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - ARR growth dropped from 100%+ to <80%
+  - ARPU stagnant/declining for 12+ months
+  - Gross margins <30%
   - Series A-D, €10M-€50M ARR
-  - Willing to execute (8-12 hours/week)
   - Budget: €23.6K
 - **Not a Fit:**
   - Pre-revenue/pre-Series A
-  - Needs full transformation (→ Boost/Accelerate)
+  - Needs full pricing transformation (→ Boost/Accelerate)
   - Just wants strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Reignite Your Growth Engine?`
+- **Headline:** `Ready to Restore Your Pricing Power?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Expert Session Option (€490-€890)
-- **FAQ:** Duration, Investment, Risk Sharing, References, ROI
+- **Secondary:** Expert Session: Pricing & Packaging Level Up (€490-€890)
+- **FAQ:** Duration, Investment, Risk Sharing, References, ROI, Billing System Integration
 
 ---
 
 ## Technische Details
 
 ### Komponenten-Wiederverwendung
-Die neue Landing Page verwendet die gleichen Patterns wie `PowerUpCACCrisis.tsx`:
+Die neue Landing Page verwendet die gleichen Patterns wie `PowerUpGrowthMomentum.tsx`:
 - `TwinklingStars` für Hero-Hintergrund
 - `useParallaxLayers` für Parallax-Effekte
 - `useScrollAnimation` für Scroll-basierte Animationen
@@ -118,14 +116,17 @@ Die neue Landing Page verwendet die gleichen Patterns wie `PowerUpCACCrisis.tsx`
 src/
 ├── App.tsx                          # Neue Route hinzufügen
 ├── data/
-│   └── solutionTiles.ts             # Kachel umbenennen
+│   └── solutionTiles.ts             # Kachel-CTA aktualisieren
 └── pages/
-    ├── PowerUpCACCrisis.tsx         # Referenz-Template
-    └── PowerUpGrowthMomentum.tsx    # NEU
+    ├── PowerUpCACCrisis.tsx         # Referenz
+    ├── PowerUpGrowthMomentum.tsx    # Referenz
+    └── PowerUpPricingPower.tsx      # NEU
 ```
 
+### URL-Pattern
+Gemäß etablierter Logik: `/solutions/power-up/pricing-power` (nicht `/solutions/power-up-pricing-power`)
+
 ### Breadcrumb-Pattern
-Gemäß etablierter Logik:
 ```tsx
 <BreadcrumbList>
   <BreadcrumbItem>
@@ -133,7 +134,7 @@ Gemäß etablierter Logik:
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Power Up Growth Momentum</span>
+    <span className="text-foreground font-medium">Power Up Pricing Power</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
@@ -144,7 +145,7 @@ Gemäß etablierter Logik:
 
 | Datei | Änderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel umbenennen + CTA aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 13: CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/PowerUpGrowthMomentum.tsx` | Neue Datei (7 Sektionen) |
+| `src/pages/PowerUpPricingPower.tsx` | Neue Datei (7 Sektionen) |
 
