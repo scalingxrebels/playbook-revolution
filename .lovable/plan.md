@@ -1,75 +1,83 @@
 
 
-# Plan: Custom Analysis & Report - Landing Page + Kachel-Update
+# Plan: Workshop - Landing Page + Kachel-Update
 
 ## Briefing Review
 
 ### Wichtige Feststellungen
 
 **1. URL-Format:**
-- **Aktueller Slug (ID 10):** `custom-analysis`
-- **Briefing URL:** `/solutions/custom-analysis-report`
-- **Empfehlung:** Briefing uebernehmen (vollstaendiger Name mit "report")
+- **Aktueller Slug (ID 34):** `workshop`
+- **Briefing URL:** `/solutions/workshop`
+- **Status:** Bereits korrekt - keine Aenderung erforderlich
 
 **2. Duration:**
-- **Aktuell:** 5-7 days
-- **Briefing:** 3-5 days
-- **Empfehlung:** Briefing uebernehmen (schnellere Lieferung, konsistent mit anderen Decision Support Pages)
+- **Aktuell:** 1-day (6-8 hours)
+- **Briefing:** 1-2 Days
+- **Empfehlung:** Briefing uebernehmen (erweitert auf 1-2 Tage Option)
 
 **3. Pricing:**
 | Quelle | Preis |
 |--------|-------|
-| Aktuelle Kachel | €3.9K-€5.9K |
-| Briefing | €3.9K-€5.9K |
+| Aktuelle Kachel | €2.5K-€5K |
+| Briefing | €9.6K-€12.9K |
 
-**Status:** Bereits korrekt - keine Aenderung erforderlich
+**Kritische Diskrepanz:** Briefing hat signifikant hoehere Preise. Briefing-Preis uebernehmen, da konsistent mit challenge-spezifischen Workshop-Preisen in challenges.ts.
 
 **4. Neue Metriken (Outcome-fokussiert):**
-- **Analysis Clarity:** +85%
-- **Strategic Roadmap:** +30-60%
-- **Decision Velocity:** +50%
+- **Team Alignment:** +80%
+- **Playbook Delivered:** 30-40 Pages
+- **Execution Ready:** Day 1 (Immediate)
 
 **5. Framework-Struktur:**
 | Aktuell | Briefing |
 |---------|----------|
-| 6 Analysis Types (Growth Strategy Review, PMF Audit, CS Audit, Operations Audit, AI Strategy Design, Portfolio Synergy Playbook) | 7 Analysis Types (+Board Decision Memo hinzugefuegt) |
+| 9 Workshop Types erwaehnt | 9 Workshop Types + Bespoke Workshop (Custom) |
 
-**Empfehlung:** Briefing-Framework mit 7 Analysis Types uebernehmen
+**Workshop Types:**
+1. GTM Strategy Workshop
+2. Growth Strategy Workshop
+3. Pricing Strategy Workshop
+4. Customer Success Workshop
+5. Operations Excellence Workshop
+6. Scaling Workshop
+7. AI Transformation Workshop
+8. Board Governance Workshop
+9. Portfolio Excellence Workshop
++ Bespoke Workshop (Custom Topic)
 
-**6. Report-Laenge:**
-| Quelle | Report |
-|--------|--------|
-| Aktuelle Kachel | 15-25 pages |
-| Briefing | 15-25 pages (board-ready) |
+**6. solutionType:**
+- **Aktuell:** `keynote` (Workshops & Keynotes)
+- **Briefing:** Badge zeigt "Training & Enablement"
+- **Empfehlung:** Aktuellen solutionType `keynote` beibehalten (konsistent mit Filter-Kategorien), aber Badge-Text auf "Training & Enablement" aendern
 
-**Status:** Bereits korrekt
-
-**7. Besonderheit dieser Page:**
-Diese Seite ist einzigartig im Decision Support Bereich, da sie **7 verschiedene Analyse-Typen** anbietet statt eines einzelnen Fokus. Die Section 3 wird entsprechend als "7 Analysis Types - Choose Your Focus" strukturiert.
+**7. Workshop Format:**
+- **Pre-Workshop:** 1-2 Wochen vorher (Questionnaire, Materials, Call)
+- **Workshop Day:** 6-16 Stunden total (Morning + Afternoon)
+- **Post-Workshop:** 1-2 Wochen danach (Finalize playbook, Recording, Follow-up call)
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 10, Zeilen 417-455)
+**Datei:** `src/data/solutionTiles.ts` (ID 34, Zeilen 1252-1284)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | custom-analysis | custom-analysis-report |
-| Duration | 5-7 days | 3-5 days |
-| Analysis Types | 6 Types | 7 Types (+Board Decision Memo) |
-| problemEn | "You have a unique challenge that doesn't fit a standard offering..." | "You have a specific challenge—but no clear answer. Your challenge is unique: growth strategy unclear, PMF eroding, customer success broken, operations chaotic, AI strategy missing, portfolio lacks synergy, or board needs a decision. You need expert analysis. Fast." |
-| problemDe | (entsprechend) | "Du hast eine spezifische Herausforderung—aber keine klare Antwort. Deine Challenge ist einzigartig: Growth Strategy unklar, PMF erodiert, Customer Success kaputt, Operations chaotisch, AI Strategy fehlt, Portfolio hat keine Synergy, oder Board braucht eine Entscheidung. Du brauchst Experten-Analyse. Schnell." |
-| solutionEn | "We create a custom analysis in 5-7 days..." | "We conduct expert analysis in 3-5 days. Choose from 7 analysis types: Growth Strategy Review, PMF Audit, Customer Success Audit, Operations Audit, AI Strategy Design, Portfolio Synergy Playbook, Board Decision Memo. You get: Analysis Clarity +85%, Strategic Roadmap +30-60%, Decision Velocity +50%—with board-ready report." |
-| solutionDe | (entsprechend) | "Wir fuehren Experten-Analyse in 3-5 Tagen durch. Waehle aus 7 Analyse-Typen: Growth Strategy Review, PMF Audit, Customer Success Audit, Operations Audit, AI Strategy Design, Portfolio Synergy Playbook, Board Decision Memo. Du erhaeltst: Analysis Clarity +85%, Strategic Roadmap +30-60%, Decision Velocity +50%—mit Board-Ready Report." |
-| deliverablesEn | [Custom analysis report, Decision-grade recommendations, Implementation roadmap, Optional: Transformation Roadmap] | [Analysis Clarity: +85%, Strategic Roadmap: +30-60%, Decision Velocity: +50%] |
-| deliverablesDe | (entsprechend) | [Analysis Clarity: +85%, Strategic Roadmap: +30-60%, Decision Velocity: +50%] |
-| impactEn | "Get decision-ready analysis tailored to your unique challenge..." | "Know exactly what to do next. Predict 10-30x ROI from strategic clarity and decision velocity." |
-| impactDe | (entsprechend) | "Wisse genau, was als naechstes zu tun ist. Prognostiziere 10-30x ROI durch strategische Klarheit und Decision Velocity." |
-| primaryCtaEn | Discuss Scope | More About Custom Analysis |
-| primaryCtaDe | Scope besprechen | Mehr ueber Custom Analysis |
+| price | €2.5K-€5K | €9.6K-€12.9K |
+| Duration | 1-day (6-8 hours) | 1-2 Days (6-16 hours) |
+| problemEn | "Your team needs tactical training on a specific challenge—GTM, pricing, scaling, AI—but doesn't have the frameworks or playbooks to execute." | "Your team isn't aligned—and you're losing velocity. Marketing says one thing, Sales says another, Product is building the wrong features. Your team doesn't have the frameworks to execute. You need team alignment. Fast." |
+| problemDe | (entsprechend) | "Dein Team ist nicht aligned—und ihr verliert Velocity. Marketing sagt das Eine, Sales das Andere, Product baut die falschen Features. Dein Team hat keine Frameworks zur Umsetzung. Du brauchst Team Alignment. Schnell." |
+| solutionEn | "We deliver a 1-day tactical workshop (6-8 hours) for 10-30 participants..." | "We deliver tactical workshops in 1-2 days (6-16 hours) for 10-30 participants. Choose from 9 workshop types: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence. You get: Team Alignment +80%, Playbook (30-40 pages), Execution Ready Day 1." |
+| solutionDe | (entsprechend) | "Wir liefern taktische Workshops in 1-2 Tagen (6-16 Stunden) fuer 10-30 Teilnehmer. Waehle aus 9 Workshop-Typen: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence. Du erhaeltst: Team Alignment +80%, Playbook (30-40 Seiten), Execution Ready Tag 1." |
+| deliverablesEn | [1-day workshop, Workshop playbook, Recording] | [Team Alignment: +80%, Playbook: 30-40 Pages, Execution Ready: Day 1] |
+| deliverablesDe | (entsprechend) | [Team Alignment: +80%, Playbook: 30-40 Seiten, Execution Ready: Tag 1] |
+| impactEn | "Train 10-30 participants in 1 day..." | "Align 10-30 participants in 1-2 days. Get tactical frameworks and playbooks to execute immediately. Predict 5-10x ROI from team alignment and execution velocity." |
+| impactDe | (entsprechend) | "Aligniere 10-30 Teilnehmer in 1-2 Tagen. Erhalte taktische Frameworks und Playbooks zur sofortigen Umsetzung. Prognostiziere 5-10x ROI durch Team Alignment und Execution Velocity." |
+| primaryCtaEn | Book Workshop | More About Workshop |
+| primaryCtaDe | Workshop buchen | Mehr ueber Workshop |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/custom-analysis-report |
+| primaryCtaUrl | Calendly-Link | /solutions/workshop |
 
 ---
 
@@ -78,111 +86,118 @@ Diese Seite ist einzigartig im Decision Support Bereich, da sie **7 verschiedene
 **Datei:** `src/App.tsx`
 
 ```tsx
-const CustomAnalysisReport = lazy(() => import("./pages/CustomAnalysisReport"));
+const Workshop = lazy(() => import("./pages/Workshop"));
 
-// Route (nach InvestorReadinessPitchDeckCheck):
-<Route path="/solutions/custom-analysis-report" element={<CustomAnalysisReport />} />
+// Route (nach CustomAnalysisReport):
+<Route path="/solutions/workshop" element={<Workshop />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/CustomAnalysisReport.tsx`
+**Datei:** `src/pages/Workshop.tsx`
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Custom Analysis & Report`
-- **Badge:** `Decision Support · 3-5 Days · €3.9K-€5.9K`
-- **Headline:** `Custom Expert Analysis—In 3-5 Days`
-- **Subheadline:** Get expert analysis tailored to your challenge in 3-5 days. Choose from 7 analysis types...
-- **Stats:** Analysis Clarity +85% | Strategic Roadmap +30-60% | Decision Velocity +50%
-- **Trust Badges:** Fast Turnaround (3-5 Days), Board-Ready Report (15-25 Pages), Expert Analysis (McKinsey-Level)
+- **Breadcrumb:** `Solutions > Workshop`
+- **Badge:** `Training & Enablement · 1-2 Days · €9.6K-€12.9K`
+- **Headline:** `Tactical Workshop—In 1-2 Days`
+- **Subheadline:** Get your team aligned and trained in 1-2 days. Choose from 9 workshop types...
+- **Stats:** Team Alignment +80% | Playbook 30-40 Pages | Execution Ready Day 1
+- **Trust Badges:** Fast Alignment (1-2 Days), Scalable (10-30 Participants), Actionable Playbook (30-40 Pages)
 
 ### Section 2: Problem
-- **Headline:** `You Have a Specific Challenge—But No Clear Answer`
+- **Headline:** `Your Team Isn't Aligned—And You're Losing Velocity`
 - **Symptome:**
-  - Strategic uncertainty: Don't know which direction to take
-  - No expert perspective: Internal team lacks expertise
-  - Board pressure: Board asking questions, no clear answers
-  - Decision paralysis: Can't decide without data
-  - Time pressure: Need answers fast (3-5 days, not 2-4 weeks)
-- **Real Cost:** Destroys strategic momentum, limits growth potential, weakens board confidence, increases competitive risk
+  - Team misalignment: Marketing, Sales, Product not aligned (different priorities)
+  - No frameworks: Team lacks playbooks (no standardized approach)
+  - Low execution velocity: Decisions take 7-14 days (no clarity)
+  - Strategic confusion: Team doesn't understand strategy (no shared language)
+  - Training gap: Team needs tactical training (not just theory)
+- **Real Cost:** Destroys execution velocity, limits growth potential, weakens team confidence, increases competitive risk
 
-### Section 3: Solution (7 Analysis Types)
-- **Headline:** `7 Custom Analysis Types—Choose Your Focus`
-- **7 Analysis Types (Cards/Accordion):**
-  1. **Growth Strategy Review**
-     - When to choose: growth strategy unclear, growth stalling, board asking
-     - What we analyze: growth engines, drivers, bottlenecks, opportunities
-     - What you get: Growth Strategy Report (15-25 pages), Growth Roadmap (90-day)
-     - Typical outcome: Growth Clarity +85%, Growth Roadmap +30-50%
-  2. **Product-Market Fit (PMF) Audit**
-     - When to choose: PMF eroding, PMF Score <0.6, board asking about PMF
-     - What we analyze: PMF Score, customer feedback, product usage, market positioning
-     - What you get: PMF Audit Report (15-25 pages), PMF Roadmap (90-day)
-     - Typical outcome: PMF Clarity +90%, PMF Roadmap +40-60%
-  3. **Customer Success Audit**
-     - When to choose: churn >5%, NRR <100%, board asking about churn
-     - What we analyze: CS operations, retention drivers, churn drivers, expansion
-     - What you get: CS Audit Report (15-25 pages), Retention Roadmap (90-day)
-     - Typical outcome: CS Clarity +85%, Retention Roadmap +30-50%
-  4. **Operations Audit**
-     - When to choose: operations chaotic, scaling broken, board asking about operations
-     - What we analyze: operational efficiency, operational debt, scaling readiness, org design
-     - What you get: Operations Audit Report (15-25 pages), Operations Roadmap (90-day)
-     - Typical outcome: Operations Clarity +85%, Efficiency Roadmap +30-60%
-  5. **AI Strategy Design**
-     - When to choose: AI strategy missing, theta_index 0.2-0.4, board asking about AI
-     - What we analyze: AI maturity, AI use cases, AI ROI, AI roadmap
-     - What you get: AI Strategy Report (15-25 pages), AI Roadmap (90-day)
-     - Typical outcome: AI Clarity +90%, theta_index Roadmap +50-150%
-  6. **Portfolio Synergy Playbook**
-     - When to choose: portfolio lacks synergy, no cross-portfolio value, LPs asking
-     - What we analyze: portfolio synergies, gaps, value creation, strategy
-     - What you get: Portfolio Synergy Playbook (20-30 pages), Synergy Roadmap (90-day)
-     - Typical outcome: Portfolio Clarity +85%, Synergy Roadmap +30-60%
-  7. **Board Decision Memo**
-     - When to choose: board needs decision (M&A, Market Expansion, Pricing Reset)
-     - What we analyze: decision options, trade-offs, recommendations, roadmap
-     - What you get: Board Decision Memo (10-15 pages), Decision Framework
-     - Typical outcome: Decision Clarity +90%, Board Confidence +50-70%
+### Section 3: Solution (9 Workshop Types)
+- **Headline:** `9 Workshop Types—Choose Your Focus`
+- **9 Workshop Types (Accordion):**
+  1. **GTM Strategy Workshop**
+     - When to choose: GTM strategy unclear, team misaligned, need GTM frameworks
+     - What we cover: ICP Definition, Value Proposition, GTM Channels, GTM Playbooks
+     - What you get: 1-2 Day Workshop, GTM Strategy Playbook (30-40 pages), Recording
+     - Typical outcome: Team Alignment +85%, GTM Clarity +80%
+  2. **Growth Strategy Workshop**
+     - When to choose: growth strategy unclear, team doesn't know which lever
+     - What we cover: Growth Engines, Growth Drivers, Growth Bottlenecks, Growth Playbooks
+     - Typical outcome: Team Alignment +85%, Growth Clarity +80%
+  3. **Pricing Strategy Workshop**
+     - When to choose: pricing broken, ARPU stagnant, discounting high
+     - What we cover: Pricing Strategy, Pricing Models, Packaging, Pricing Playbooks
+     - Typical outcome: Team Alignment +85%, Pricing Clarity +80%
+  4. **Customer Success Workshop**
+     - When to choose: churn >5%, NRR <100%
+     - What we cover: CS Strategy, Retention Drivers, Churn Drivers, CS Playbooks
+     - Typical outcome: Team Alignment +85%, CS Clarity +80%
+  5. **Operations Excellence Workshop**
+     - When to choose: operations chaotic, meetings 50/week
+     - What we cover: Operational Efficiency, Operational Debt, Scaling Readiness, Operations Playbooks
+     - Typical outcome: Team Alignment +85%, Operations Clarity +80%
+  6. **Scaling Workshop**
+     - When to choose: scaling broken, operational debt high
+     - What we cover: Scaling Readiness, Scaling Bottlenecks, Scaling Playbooks, Organizational Design
+     - Typical outcome: Team Alignment +85%, Scaling Clarity +80%
+  7. **AI Transformation Workshop**
+     - When to choose: AI strategy missing, theta_index 0.2-0.4
+     - What we cover: AI Maturity, AI Use Cases, AI ROI, AI Playbooks
+     - Typical outcome: Team Alignment +85%, AI Clarity +90%
+  8. **Board Governance Workshop**
+     - When to choose: board governance broken, meetings unproductive
+     - What we cover: Board Strategy, Board Meetings, Board Reporting, Board Playbooks
+     - Typical outcome: Team Alignment +85%, Board Clarity +80%
+  9. **Portfolio Excellence Workshop**
+     - When to choose: portfolio lacks synergy, operating partners overwhelmed
+     - What we cover: Portfolio Strategy, Portfolio Synergies, Portfolio Playbooks, Operating Partner Enablement
+     - Typical outcome: Team Alignment +85%, Portfolio Clarity +80%
+  + **Bespoke Workshop (Custom Topic)**
+     - When to choose: challenge not covered by standard workshops
+     - Custom pricing
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Analysis Clarity +85% (unclear to clear roadmap)
-  - Strategic Roadmap +30-60% (no path to clear path)
-  - Decision Velocity +50% (7-14 days to 3-7 days)
+  - Team Alignment +80% (misaligned to aligned)
+  - Playbook Delivered (30-40 pages, actionable)
+  - Execution Ready Day 1 (immediate)
 - **Real Examples:**
-  - Example 1: Series B SaaS (Growth Strategy Review)
-  - Example 2: Series A SaaS (PMF Audit)
-  - Example 3: Series A-B VC (Portfolio Synergy Playbook)
+  - Example 1: Series B SaaS (GTM Strategy Workshop) - Team Alignment +85%, CAC Reduction Plan -40%
+  - Example 2: Series A SaaS (AI Transformation Workshop) - Team Alignment +90%, theta_index Roadmap +114%
+  - Example 3: Series A-B VC (Portfolio Excellence Workshop) - Team Alignment +85%, Operating Partner Efficiency +80%
 
 ### Section 5: Process (How We Work)
-- Day-by-Day Breakdown (3-5 Days)
-- Time Commitment (2-4 hours)
+- **Pre-Workshop (1-2 Weeks Before):** Questionnaire, Materials, Call
+- **Workshop Day (1-2 Days):** Facilitation, Hands-on exercises, Framework training, Playbook creation
+- **Post-Workshop (1-2 Weeks After):** Finalize playbook, Recording, Follow-up call
 - **Pricing:**
-  - Base Package: €3.9K (Custom Analysis Report, 15-25 pages)
-  - + Execution Bridge: +€2K (90-Day Roadmap)
-  - Total: €5.9K (Base + Execution)
-- **7 Analysis Types Available** (Liste)
-- Quality Guarantee (Expert-Grade, McKinsey-Level)
+  - 1-Day Workshop: €9.6K (6-8 hours, 10-30 participants)
+  - 2-Day Workshop: €12.9K (12-16 hours, 10-30 participants)
+  - Bespoke Workshop: Custom pricing
+- Quality Guarantee (Hands-on, Actionable Playbook, Execution Ready)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Specific challenge that needs expert analysis
+  - Need team alignment on specific challenge
+  - Have 10-30 participants
   - Series A-B or VC/PE with portfolio
-  - Budget: €3.9K-€5.9K
+  - Budget: €9.6K-€12.9K
 - **Not a Fit:**
   - Need hands-on implementation: Power Up (€23.6K) or Boost (€60K-€78K)
-  - Challenge covered by standard assessment: GTM Review, Scaling Assessment, AI Assessment, Portfolio Assessment
+  - Have <10 participants: Expert Session (€490-€890)
+  - Have >30 participants: Custom pricing
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Get Expert Analysis?`
-- **Primary CTA:** Request Custom Analysis (€3.9K)
-- **Step 2:** Choose Your Analysis Type (7 types listed)
-- **Step 3:** Decide if you need Execution Bridge (+€2K)
+- **Headline:** `Ready to Align Your Team?`
+- **Primary CTA:** Book Workshop (€9.6K)
+- **Step 2:** Choose Your Workshop Type (9 types listed)
+- **Step 3:** Prepare Your Team (pre-work)
 - **Secondary:** Book Free Inflection Call (30 min)
-- **FAQ:** Duration, Investment, Which analysis type, References, ROI, Difference to consultants, Custom challenge
+- **FAQ:** Duration, Investment, Participants, References, ROI, Remote/On-site, Custom topic, Recording
 
 ---
 
@@ -192,61 +207,66 @@ const CustomAnalysisReport = lazy(() => import("./pages/CustomAnalysisReport"));
 - `TwinklingStars` fuer Hero-Hintergrund
 - `useParallaxLayers` fuer Parallax-Effekte
 - `useScrollAnimation` fuer Scroll-basierte Animationen
-- `Accordion` fuer 7 Analysis Types und FAQ-Bereich
+- `Accordion` fuer 9 Workshop Types und FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons fuer Custom Analysis & Report
-- `FileSearch` - Custom Analysis
-- `TrendingUp` - Growth Strategy Review
-- `Target` - PMF Audit
-- `HeartHandshake` - Customer Success Audit
-- `Settings` - Operations Audit
-- `Brain` - AI Strategy Design
-- `Briefcase` - Portfolio Synergy Playbook
-- `FileText` - Board Decision Memo
-- `Clock` - Fast Turnaround (3-5 Days)
-- `FileText` - Board-Ready Report
-- `Shield` - Quality Guarantee (McKinsey-Level)
-- `Lightbulb` - Analysis Clarity
-- `Map` - Strategic Roadmap
-- `Zap` - Decision Velocity
+### Spezifische Icons fuer Workshop
+- `GraduationCap` - Workshop / Training
+- `TrendingUp` - GTM Strategy / Growth Strategy
+- `DollarSign` - Pricing Strategy
+- `HeartHandshake` - Customer Success
+- `Settings` - Operations Excellence
+- `Rocket` - Scaling
+- `Brain` - AI Transformation
+- `Users` - Board Governance
+- `Briefcase` - Portfolio Excellence
+- `Sparkles` - Bespoke Workshop
+- `Clock` - Fast Alignment (1-2 Days)
+- `FileText` - Playbook (30-40 Pages)
+- `Zap` - Execution Ready Day 1
+- `UserCheck` - Participants (10-30)
+- `Video` - Recording (90 days access)
 
-### 7 Analysis Types Framework
-Diese Seite verwendet 7 Analyse-Typen als strukturierendes Element (Section 3):
+### 9 Workshop Types Framework
+Diese Seite verwendet 9 Workshop-Typen als strukturierendes Element (Section 3):
 
 ```text
 +-----------------------------------------------------------+
-|                   7 ANALYSIS TYPES                         |
+|                   9 WORKSHOP TYPES                         |
 +------------------+------------------+----------------------+
-| 1. Growth        | 2. PMF Audit     | 3. CS Audit         |
-|    Strategy      |                  |                     |
+| 1. GTM           | 2. Growth        | 3. Pricing          |
+|    Strategy      |    Strategy      |    Strategy         |
 +------------------+------------------+----------------------+
-| 4. Operations    | 5. AI Strategy   | 6. Portfolio        |
-|    Audit         |    Design        |    Synergy          |
+| 4. Customer      | 5. Operations    | 6. Scaling          |
+|    Success       |    Excellence    |                     |
 +------------------+------------------+----------------------+
-| 7. Board         |                  |                     |
-|    Decision Memo |                  |                     |
+| 7. AI            | 8. Board         | 9. Portfolio        |
+|    Transformation|    Governance    |    Excellence       |
 +------------------+------------------+----------------------+
+| + Bespoke (Custom Topic)                                   |
++-----------------------------------------------------------+
 ```
 
-### Unterschied zu anderen Decision Support Pages
-| Aspekt | Standard Assessments | Custom Analysis & Report |
-|--------|---------------------|--------------------------|
-| Fokus | Single Challenge (GTM, Scaling, AI, Portfolio, Pitch Deck) | Any Challenge (7 Types) |
-| Dimensionen | 4-10 Dimensionen pro Typ | Flexibel je nach Analyse-Typ |
-| ICP | Series A-B | Series A-B ODER VC/PE |
-| Preis | €1.9K-€5.9K | €3.9K-€5.9K |
-| Unique | Spezialisiert | Flexibel (7 Analyse-Typen zur Auswahl) |
+### Unterschied zu anderen Workshops & Keynotes Pages
 
-### UI-Besonderheit: Analysis Type Selector
-Die Section 3 benoetigt eine besondere UI-Komponente:
-- 7 Analysis Types als Accordion oder Tab-basierte Cards
-- Jeder Type zeigt: When to choose, What we analyze, What you get, Typical outcome
-- Mobile: Accordion-Ansicht
-- Desktop: Eventuell Grid mit expandierbaren Cards
+Diese Seite ist die zentrale Workshop-Landing-Page, die alle 9 Workshop-Typen zusammenfasst. Sie unterscheidet sich von:
+- **Keynote Landing Page:** Fokussiert auf 90-min Keynotes (€3.9K-€7.6K)
+- **Challenge-spezifische Workshops:** In challenges.ts referenziert, aber nicht als separate Pages
+
+### Workshop Format Details
+
+| Aspekt | 1-Day Workshop | 2-Day Workshop |
+|--------|----------------|----------------|
+| Dauer | 6-8 Stunden | 12-16 Stunden |
+| Preis | €9.6K | €12.9K |
+| Format | Morning (3-4h) + Afternoon (3-4h) | 2x (Morning + Afternoon) |
+| Playbook | 30-40 Seiten | 30-40 Seiten |
+| Teilnehmer | 10-30 | 10-30 |
+| Recording | 90 Tage Zugang | 90 Tage Zugang |
+| Follow-up | 1x 60-min Call | 1x 60-min Call |
 
 ### URL-Pattern
-Top-Level Decision Support Page: `/solutions/custom-analysis-report`
+Top-Level Workshops & Keynotes Page: `/solutions/workshop`
 
 ---
 
@@ -254,7 +274,7 @@ Top-Level Decision Support Page: `/solutions/custom-analysis-report`
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 10: Slug (custom-analysis zu custom-analysis-report) + Duration (5-7 zu 3-5 days) + 7 Analysis Types + Metriken (outcome-fokussiert) + CTA (learn-more) aktualisieren |
-| `src/App.tsx` | Neue Route + Lazy Import (achte Decision Support Landing Page) |
-| `src/pages/CustomAnalysisReport.tsx` | Neue Datei (7 Sektionen) mit 7 Analysis Types Framework, Analysis Type Selector UI, und Execution Bridge Upsell |
+| `src/data/solutionTiles.ts` | Kachel ID 34: Price (€2.5K-€5K zu €9.6K-€12.9K) + Duration (1-day zu 1-2 days) + Metriken (outcome-fokussiert) + CTA (learn-more) aktualisieren |
+| `src/App.tsx` | Neue Route + Lazy Import (erste Workshops & Keynotes Landing Page) |
+| `src/pages/Workshop.tsx` | Neue Datei (7 Sektionen) mit 9 Workshop Types Framework, Workshop Selector UI (Accordion), Pre/During/Post Workshop Process, und Bespoke Workshop Option |
 
