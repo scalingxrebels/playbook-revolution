@@ -1,41 +1,97 @@
 
 
-# Plan: Strategic Advisory - Landing Page + Kachel-Update (Korrigiert)
+# Plan: VC Due Diligence Simulation - Landing Page + Kachel-Update
 
-## Pricing-Korrektur
+## Briefing Review
 
-Das korrekte Pricing gemaess CheatSheet und User-Bild:
+### Wichtige Feststellungen
 
-| Tier | Tage/Monat | Preis/Monat |
-|------|------------|-------------|
-| Catalyst | 1-2 Tage/Monat | €3.900 |
-| Accelerator | 3-4 Tage/Monat | €8.400 |
-| Transformator | 4-6 Tage/Woche | €11.000 |
+**1. URL-Korrektur erforderlich:**
+Das Briefing gibt `/solutions/vc-due-diligence-simulation` an. Da dies eine Decision Support Seite ist (nicht Transformation), ist ein Top-Level URL korrekt. Allerdings sollte der Slug konsistent sein:
 
-**Preisspanne:** €3.9K–€11K/Mo (bereits korrekt im CheatSheet)
-**Mindestlaufzeit:** 12 Monate
+- **Aktueller Slug (ID 8):** `vc-dd-simulation`
+- **Briefing URL:** `/solutions/vc-due-diligence-simulation`
+- **Empfehlung:** `/solutions/vc-dd-simulation` (konsistent mit bestehendem Slug)
+
+**2. Preis-Diskrepanz:**
+
+| Quelle | Preis |
+|--------|-------|
+| Aktuelle Kachel (ID 8) | €3.9K-€5.9K |
+| Briefing Base | €5.9K |
+| Briefing + Execution Bridge | €9.8K |
+
+**Analyse:** Das Briefing vereinfacht auf €5.9K (Base) mit optionalem +€3.9K (Execution Bridge). Die aktuelle Kachel zeigt €3.9K-€5.9K.
+
+**Empfehlung:** Kachel auf €5.9K aktualisieren (Base-Preis, nicht Range)
+
+**3. Duration-Aenderung:**
+
+| Quelle | Duration |
+|--------|----------|
+| Aktuelle Kachel | 5-7 days |
+| Briefing | 1-2 Weeks |
+
+**Empfehlung:** Briefing uebernehmen (1-2 Weeks)
+
+**4. Report-Laenge:**
+
+| Quelle | Report |
+|--------|--------|
+| Aktuelle Kachel | 15-20 pages |
+| Briefing | 30-40 pages |
+
+**Empfehlung:** Briefing uebernehmen (30-40 pages = Board-Ready Quality)
+
+### Metriken-Alignment: Aktuelle Kachel (ID 8) vs. Briefing
+
+| Feld | Aktuelle Kachel (ID 8) | Briefing | Empfehlung |
+|------|-------------------------|----------|------------|
+| slug | vc-dd-simulation | vc-due-diligence-simulation | Aktuell behalten (kuerzer) |
+| price | €3.9K-€5.9K | €5.9K | Briefing uebernehmen |
+| Duration | 5-7 days | 1-2 Weeks | Briefing uebernehmen |
+| Report | 15-20 pages | 30-40 pages | Briefing uebernehmen |
+| Metrik 1 | DD simulation report | Red Flags Fixed: 100% | Briefing uebernehmen |
+| Metrik 2 | Red flag mitigation plan | DD Readiness: 0% → 100% | Briefing uebernehmen |
+| Metrik 3 | Q&A prep (50-100 questions) | Fundraising Rate: +40-60pp | Briefing uebernehmen |
+| Execution Bridge | +€2K | +€3.9K | Briefing uebernehmen |
+
+**Positionierungsaenderung:** Die Briefing-Version ist outcome-fokussiert:
+- **Alt:** Deliverable-fokussiert (report, mitigation plan, Q&A)
+- **Neu:** Outcome-fokussiert (Red Flags Fixed, DD Readiness, Fundraising Success)
+
+### Unterscheidung zu anderen Solution Types
+
+| Aspekt | Transformation (Power Up/Boost/Accelerate) | Decision Support (DD Simulation) |
+|--------|------------------------------------------|--------------------------------|
+| Modell | Projekt-basiert (Transformation) | Produkt-basiert (Report) |
+| Fokus | Hands-on Implementation | Analysis + Report |
+| Zeitraum | 30 Tage - 12 Monate | 1-2 Weeks |
+| Outcome | Transformation abgeschlossen | DD-Readiness Report |
+| Guarantee | 2 of 3 Outcomes | Quality Guarantee (Board-Ready Report) |
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 35, Zeilen 1305-1337)
+**Datei:** `src/data/solutionTiles.ts` (ID 8, Zeilen 353-391)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| price | €8K–€40K | €3.9K–€11K/Mo |
-| solutionEn | "We design custom strategy in 4-24 weeks. Choose intensity: Catalyst (4-6 weeks, €8K-€15K)..." | "We become your ongoing strategic sparring partner (min. 12 months). Choose intensity: Catalyst (1-2 days/month, €3.9K/Mo), Accelerator (3-4 days/month, €8.4K/Mo), Transformator (4-6 days/week, €11K/Mo)." |
-| solutionDe | (entsprechend) | "Wir werden dein laufender strategischer Sparringspartner (mind. 12 Monate). Waehle Intensitaet: Catalyst (1-2 Tage/Monat, €3.9K/Mo), Accelerator (3-4 Tage/Monat, €8.4K/Mo), Transformator (4-6 Tage/Woche, €11K/Mo)." |
-| problemEn | "You have a unique challenge..." | "You're making critical decisions without strategic guidance. Decision velocity is 7-14 days. Strategic clarity is low. Board confidence is 40-60%." |
-| problemDe | (entsprechend) | "Du triffst kritische Entscheidungen ohne strategische Fuehrung. Decision Velocity ist 7-14 Tage. Strategische Klarheit ist gering. Board Confidence liegt bei 40-60%." |
-| deliverablesEn | [Custom strategy design, Implementation roadmap, Team enablement] | [Decision Velocity: +50-100%, Strategic Clarity: +80%, Board Confidence: +30-50pp] |
+| price | €3.9K-€5.9K | €5.9K |
+| problemEn | "You're raising a round, but you don't know what VCs will find. Red flags could kill your deal." | "You're not ready for VC due diligence—and you don't know it. DD readiness is 0%, red flags are hidden, and your data room is incomplete." |
+| problemDe | (entsprechend) | "Du bist nicht bereit fuer VC Due Diligence—und weisst es nicht. DD Readiness ist 0%, Red Flags sind versteckt, und dein Data Room ist unvollstaendig." |
+| solutionEn | "We simulate VC due diligence in 5-7 days: identify red flags, prepare Q&A, optimize financials. You get a board-ready report." | "We simulate VC due diligence in 1-2 weeks (8 dimensions). You get: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report." |
+| solutionDe | (entsprechend) | "Wir simulieren VC Due Diligence in 1-2 Wochen (8 Dimensionen). Du erhaeltst: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report." |
+| deliverablesEn | [DD simulation report (15-20 pages), Red flag mitigation plan, Q&A prep (50-100 questions), Optional: Execution Bridge (+€2K discount)] | [Red Flags Fixed: 100%, DD Readiness: 0% → 100%, Fundraising Rate: +40-60pp] |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| impactEn | "Get custom strategy tailored..." | "Get ongoing strategic guidance that accelerates your decision-making and increases board confidence. Predict 5-10x ROI in 12+ months." |
+| impactEn | "Predict 30-50% higher success rate. Close your round faster." | "Fix red flags before VCs find them. Predict 10-50x ROI in fundraising success." |
 | impactDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Request Advisory | More About Strategic Advisory |
-| primaryCtaDe | Advisory anfragen | Mehr ueber Strategic Advisory |
+| primaryCtaEn | Request Simulation | More About DD Simulation |
+| primaryCtaDe | Simulation anfragen | Mehr ueber DD Simulation |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/strategic-advisory |
+| primaryCtaUrl | Calendly-Link | /solutions/vc-dd-simulation |
+| addOnPricing | { base: '€3.9K', bridge: '€5.9K' } | { base: '€5.9K', bridge: '€9.8K' } |
 
 ---
 
@@ -44,108 +100,145 @@ Das korrekte Pricing gemaess CheatSheet und User-Bild:
 **Datei:** `src/App.tsx`
 
 ```tsx
-const StrategicAdvisory = lazy(() => import("./pages/StrategicAdvisory"));
+const VCDueDiligenceSimulation = lazy(() => import("./pages/VCDueDiligenceSimulation"));
 
-// Route (Top-Level Solution Page):
-<Route path="/solutions/strategic-advisory" element={<StrategicAdvisory />} />
+// Route (neue Decision Support Page, nach Strategic Advisory):
+<Route path="/solutions/vc-dd-simulation" element={<VCDueDiligenceSimulation />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/StrategicAdvisory.tsx`
+**Datei:** `src/pages/VCDueDiligenceSimulation.tsx`
+
+Struktur analog zu StrategicAdvisory.tsx mit 7 Sektionen (aber angepasst fuer Decision Support Produkt):
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Strategic Advisory`
-- **Badge:** `Advisory . 12+ Months . €3.9K–€11K/Mo`
-- **Headline:** `Your Strategic Sparring Partner—On Demand`
-- **Subheadline:** Get ongoing strategic guidance for 12+ months...
-- **Stats:** Decision Velocity +50-100% | Strategic Clarity +80% | Board Confidence +30-50pp
-- **Trust Badges:** Ongoing Support (12+ Months), Measurable Impact, Reference Calls Available
+- **Breadcrumb:** `Solutions > VC Due Diligence Simulation`
+- **Badge:** `Decision Support . 1-2 Weeks . €5.9K`
+- **Headline:** `Simulate VC Due Diligence—Before The Real One`
+- **Subheadline:** Get your company due diligence-ready in 1-2 weeks...
+- **Stats:** Red Flags Fixed 100% | DD Readiness 0% → 100% | Fundraising Rate +40-60pp
+- **Trust Badges:** Fast Turnaround (1-2 Weeks), Board-Ready Report (30-40 Pages), Investor Perspective
 
 ### Section 2: Problem
-- **Headline:** `You're Making Critical Decisions—Without Strategic Guidance`
-- **Symptome:** Slow decision-making (7-14 days), Low strategic clarity, Low board confidence (40-60%), Isolated decision-making, Strategic mistakes
+- **Headline:** `You're Not Ready For VC Due Diligence—And You Don't Know It`
+- **Symptome:**
+  - Not DD-ready: 0% due diligence readiness
+  - Red flags hidden: Financials, contracts, compliance issues
+  - Data room incomplete: Missing documents, outdated data
+  - No investor perspective: Don't know what VCs actually check
+  - Fundraising risk: Can't raise next round
 
 ### Section 3: Solution
-- **Headline:** `How Strategic Advisory Works`
-- **3 Engagement Tiers:**
-  1. **Catalyst** (1-2 Tage/Monat, €3.900/Mo) - Light-touch strategic guidance
-  2. **Accelerator** (3-4 Tage/Monat, €8.400/Mo) - Regular strategic sessions
-  3. **Transformator** (4-6 Tage/Woche, €11.000/Mo) - Intensive strategic partnership
-- **4 Leistungskomponenten:**
-  1. Monthly Strategy Sessions
-  2. Quarterly Board Prep
-  3. Ad-Hoc Support (Slack/Email)
-  4. AI-Powered Strategic Intelligence
+- **Headline:** `How VC Due Diligence Simulation Works`
+- **8 DD Dimensions:**
+  1. Financial Due Diligence (revenue, unit economics, burn)
+  2. Commercial Due Diligence (customers, contracts, pipeline)
+  3. Product Due Diligence (PMF, tech debt, roadmap, IP)
+  4. Team Due Diligence (management, key person risk, culture)
+  5. Legal Due Diligence (cap table, contracts, compliance)
+  6. Operational Due Diligence (processes, infrastructure, vendors)
+  7. Strategic Due Diligence (growth, positioning, exit potential)
+  8. Governance Due Diligence (board, reporting, decision-making)
+- **Week 1:** DD Simulation (8 dimensions analyzed)
+- **Week 2 (Optional +€3.9K):** DD Readiness Roadmap (90-day action plan)
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Decision Velocity +50-100% (7-14d -> 3-7d)
-  - Strategic Clarity +80% (low -> high)
-  - Board Confidence +30-50pp (40-60% -> 70-95%)
-- **Real Example:** Series B SaaS, €18M ARR, Decision Velocity +80%, Strategic Clarity +90%, Board Confidence +50pp
+  - Red Flags Fixed 100% (unknown → 100% identified + fixed)
+  - DD Readiness 0% → 100% (not prepared → fully prepared)
+  - Fundraising Success Rate +40-60pp (20-40% → 60-100%)
+- **Real Example:** Series A SaaS, €8M ARR, Red Flags Fixed 100% (15 issues), DD Readiness +100%, Fundraising Rate +50pp, Deal Timeline -40%
 
 ### Section 5: Process (How We Work)
-- Monat-fuer-Monat Breakdown (12+ Monate)
-- **Mindestlaufzeit: 12 Monate**
-- 3 Tier-Optionen mit unterschiedlicher Intensitaet
-- ROI: 5-10x
+- Week-by-Week Breakdown (1-2 Weeks)
+- Time Commitment (4-6 hours)
+- **Pricing:**
+  - Base Package: €5.9K (Red Flags Report, 30-40 pages)
+  - + Execution Bridge: +€3.9K (DD Readiness Roadmap)
+  - Total: €9.8K (Base + Execution)
+- Quality Guarantee (Board-Ready Report)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Making critical decisions without strategic guidance
-  - Need ongoing strategic support (12+ months)
-  - Series B-C, €10M-€50M ARR, 50-200 people
-  - Budget: €3.9K-€11K/month
+  - Preparing for fundraising (Series A-C)
+  - 3-6 months away from fundraising
+  - Not DD-ready (0% prepared)
+  - Series A-B, €5M-€30M ARR, 30-150 people
+  - Budget: €5.9K-€9.8K
 - **Not a Fit:**
-  - Only need one-time advice (-> Expert Session €490-€890)
-  - Need hands-on implementation (-> Boost/Accelerate)
-  - Not ready for 12-month commitment
+  - Not fundraising (no immediate need)
+  - Already DD-ready (100% prepared) → Pitch Deck Check (€1.9K)
+  - Need hands-on DD preparation → Boost: Board Excellence (€60K-€78K)
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Get Your Strategic Sparring Partner?`
-- **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Expert Session (90-180 min, €490-€890)
-- **Pricing Cards:** 3 Tiers (Catalyst, Accelerator, Transformator)
-- **FAQ:** Duration (12+ months), Investment (€3.9K-€11K/Mo), Tiers, References, ROI
+- **Headline:** `Ready to Simulate VC Due Diligence?`
+- **Primary CTA:** Request Simulation (€5.9K)
+- **Secondary:** Book Free Inflection Call (30 min)
+- **FAQ:** Duration (1-2 weeks), Investment (€5.9K-€9.8K), Documents needed, References, ROI, Difference to lawyers
 
 ---
 
 ## Technische Details
 
 ### Komponenten-Wiederverwendung
+Die neue Landing Page verwendet die gleichen Patterns wie StrategicAdvisory:
 - `TwinklingStars` fuer Hero-Hintergrund
 - `useParallaxLayers` fuer Parallax-Effekte
 - `useScrollAnimation` fuer Scroll-basierte Animationen
 - `Accordion` fuer FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons
-- `Compass` - Advisory / Strategic Direction
-- `Zap` - Decision Velocity
-- `Target` - Strategic Clarity / Outcomes
-- `Users` - Board Confidence / Sparring
-- `Shield` - 12-Month Commitment
-- `MessageCircle` - Ad-hoc Support
+### Spezifische Icons fuer DD Simulation
+- `FileSearch` - Due Diligence / Simulation
+- `AlertTriangle` - Red Flags
+- `CheckCircle2` - DD Ready / Fixed
+- `TrendingUp` - Fundraising Success
+- `Briefcase` - Investor Perspective
+- `Shield` - Quality Guarantee
+- `Clock` - Fast Turnaround (1-2 Weeks)
+- `FileText` - Board-Ready Report
+- `Layers` - 8 Dimensions
+- `Building2` - Financial DD
+- `Users` - Team DD
+- `Scale` - Legal DD
+- `Settings` - Operational DD
 
-### Pricing Cards (Unterschied zu Transformation Pages)
-Diese Seite zeigt 3 Tier-Karten mit monatlichen Preisen:
+### Unterschiede zu Transformation Pages
+Diese Seite unterscheidet sich von Transformation Pages:
+- **Kein "2 of 3 Outcomes Guaranteed"** - Decision Support ist Produkt, nicht Transformation
+- **Quality Guarantee** statt Outcome Guarantee
+- **Fokus auf Report Delivery** statt Team Transformation
+- **Kuerzerer Zeitraum** (1-2 Wochen statt 30 Tage - 12 Monate)
+
+### 8 DD Dimensions (Kernkonzept)
+Diese Seite verwendet 8 Dimensionen als strukturierenden Rahmen:
 
 ```text
-┌─────────────────┬─────────────────┬─────────────────┐
-│    CATALYST     │   ACCELERATOR   │  TRANSFORMATOR  │
-│  1-2 Tage/Mo    │   3-4 Tage/Mo   │  4-6 Tage/Wo    │
-│   €3.900/Mo     │    €8.400/Mo    │   €11.000/Mo    │
-│                 │                 │                 │
-│  Light-touch    │  Regular        │  Intensive      │
-│  guidance       │  sessions       │  partnership    │
-└─────────────────┴─────────────────┴─────────────────┘
+┌───────────────────────────────────────────────────────────┐
+│                   8 DD DIMENSIONS                          │
+├──────────────────┬──────────────────┬─────────────────────┤
+│ 1. Financial     │ 2. Commercial    │ 3. Product          │
+│ 4. Team          │ 5. Legal         │ 6. Operational      │
+│ 7. Strategic     │ 8. Governance    │                     │
+└──────────────────┴──────────────────┴─────────────────────┘
+```
+
+### Dateistruktur
+
+```text
+src/
+  App.tsx                           # Neue Route hinzufuegen
+  data/
+    solutionTiles.ts                # Kachel ID 8: Price + Metriken + CTA aktualisieren
+  pages/
+    VCDueDiligenceSimulation.tsx    # NEU - Erste Decision Support Landing Page
 ```
 
 ### URL-Pattern
-Top-Level Solution Page: `/solutions/strategic-advisory`
+Top-Level Decision Support Page: `/solutions/vc-dd-simulation`
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -155,7 +248,7 @@ Top-Level Solution Page: `/solutions/strategic-advisory`
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Strategic Advisory</span>
+    <span className="text-foreground font-medium">VC Due Diligence Simulation</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
@@ -164,16 +257,28 @@ Top-Level Solution Page: `/solutions/strategic-advisory`
 
 ## Besonderheiten dieser Seite
 
-### Retainer-Modell mit 3 Tiers
-- **Catalyst (€3.9K/Mo):** Entry-Level, 1-2 Tage/Monat
-- **Accelerator (€8.4K/Mo):** Mid-Level, 3-4 Tage/Monat
-- **Transformator (€11K/Mo):** High-Level, 4-6 Tage/Woche
+### Decision Support vs. Transformation
+Diese Seite ist die erste "Decision Support" Landing Page:
+- **Transformation Pages:** Projekt-basiert, Team arbeitet mit, Outcome-Garantie
+- **Decision Support Pages:** Produkt-basiert, Report-Lieferung, Quality-Garantie
 
-### 12-Monate Mindestlaufzeit
-Klar kommuniziert in Badge, Solution Description und Qualification Section
+### Investor Perspective als Differentiator
+Die Seite positioniert "Investor Perspective" als Kernunterscheidung:
+- "What VCs actually check" (nicht nur Compliance)
+- 8 Dimensionen (nicht nur Financial + Legal)
+- Board-Ready Report (nicht nur internes Dokument)
 
-### Kein "2 of 3 Outcomes Guaranteed"
-Advisory ist Retainer-basiert, nicht projekt-basiert - daher anderes Garantie-Modell
+### Fundraising-fokussierte Metriken
+Die Seite verwendet fundraising-spezifische Metriken:
+- **Red Flags Fixed:** 100% (vor echtem DD gefunden + geloest)
+- **DD Readiness:** 0% → 100% (von unprepared zu fully prepared)
+- **Fundraising Success Rate:** +40-60pp (von 20-40% auf 60-100%)
+
+### Execution Bridge als Upsell
+Die Seite positioniert eine klare Upsell-Moeglichkeit:
+- **Base (€5.9K):** Red Flags Report (30-40 pages)
+- **+ Execution Bridge (+€3.9K):** DD Readiness Roadmap (90-day action plan)
+- **Total (€9.8K):** Komplettpaket
 
 ---
 
@@ -181,7 +286,7 @@ Advisory ist Retainer-basiert, nicht projekt-basiert - daher anderes Garantie-Mo
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 35: Price (€8K-€40K -> €3.9K-€11K/Mo) + Tiers + Metriken + CTA aktualisieren |
-| `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/StrategicAdvisory.tsx` | Neue Datei (7 Sektionen) mit 3-Tier Pricing Cards |
+| `src/data/solutionTiles.ts` | Kachel ID 8: Price (€3.9K-€5.9K → €5.9K) + Metriken (outcome-fokussiert) + CTA (learn-more) + addOnPricing (€5.9K + €9.8K) aktualisieren |
+| `src/App.tsx` | Neue Route + Lazy Import (erste Decision Support Landing Page) |
+| `src/pages/VCDueDiligenceSimulation.tsx` | Neue Datei (7 Sektionen) mit 8 DD Dimensions und Execution Bridge Upsell |
 
