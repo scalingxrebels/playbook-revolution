@@ -1080,7 +1080,7 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'accelerate-hypergrowth',
     solutionType: 'transformation',
     transformationTier: 'accelerate',
-    challenges: ['ai-transformation', 'growth-stalled'],
+    challenges: ['cac-crisis', 'growth-stalled', 'pricing-breakdown', 'customer-success-broken', 'ai-transformation'],
     price: '€153K',
     priceTag: 'paid',
     headlineEn: 'Accelerate: Hypergrowth',
