@@ -1,44 +1,63 @@
 
 
-# Plan: "SCALING SUCCESS" durch "HYPERGROWTH" ersetzen
+# Plan: Team-Namen im Footer verlinken
 
-## Fundstellen
+## Uebersicht
 
-Es gibt **2 Dateien** mit "SCALING SUCCESS", die geändert werden müssen:
+Die Team-Mitglieder im Footer sollen zu ihren jeweiligen Profilseiten verlinkt werden.
 
-### 1. Footer.tsx (Zeile 47)
-**Aktuell:**
-```
-GROWTH ENGINES × SCALING SYSTEMS × AI = SCALING SUCCESS
-```
-**Neu:**
-```
-GROWTH ENGINES × SCALING SYSTEMS × AI = HYPERGROWTH
+## Aenderungen
+
+**Datei:** `src/components/Footer.tsx`
+
+### 1. Team-Array erweitern (Zeilen 30-34)
+
+```typescript
+// Aktuell:
+const team = [
+  { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
+  { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
+  { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
+];
+
+// Neu:
+const team = [
+  { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.', href: '/ml' },
+  { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.', href: '/ah' },
+  { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.', href: '/fm' },
+];
 ```
 
-### 2. FormulaOptimized.tsx (Zeilen 79-80)
-**Aktuell:**
+### 2. Rendering anpassen (Zeilen 133-138)
+
 ```tsx
-<span className="block">Growth Engines × Scaling Systems × AI</span>
-<span className="block text-primary">= Scaling Success</span>
+// Aktuell:
+{team.map((member) => (
+  <li key={member.name} className="text-sm">
+    <span className="text-foreground font-medium">{member.name}</span>
+    <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
+  </li>
+))}
+
+// Neu:
+{team.map((member) => (
+  <li key={member.name} className="text-sm">
+    <Link 
+      to={member.href} 
+      className="text-foreground font-medium hover:text-primary transition-colors"
+    >
+      {member.name}
+    </Link>
+    <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
+  </li>
+))}
 ```
-**Neu:**
-```tsx
-<span className="block">Growth Engines × Scaling Systems × AI</span>
-<span className="block text-primary">= Hypergrowth</span>
-```
 
-## Nicht geändert
+## Ergebnis
 
-- **SolutionHero.tsx**: Bereits "Hypergrowth"
-- **LanguageContext.tsx**: Bereits "Hypergrowth"
-- **ThreePillarsModel.tsx**: Zeigt nur die Formel ohne Ergebnis
-- **ThetaIndexAssessment.tsx / ResearchHub.tsx**: Verwenden "scaling success" in Kleinbuchstaben als Teil von Sätzen (keine Formel)
-
-## Zusammenfassung
-
-| Datei | Änderung |
-|-------|----------|
-| `src/components/Footer.tsx` | Zeile 47: SCALING SUCCESS → HYPERGROWTH |
-| `src/components/homepage/FormulaOptimized.tsx` | Zeile 80: Scaling Success → Hypergrowth |
+| Name | Link |
+|------|------|
+| Michel Lason | /ml |
+| Alban Halili | /ah |
+| Florian Metzger | /fm |
 
