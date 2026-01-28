@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { 
   ArrowRight, Linkedin, Mail, Target, Users, Code2, 
   BookOpen, Rocket, TrendingUp, CheckCircle2, ExternalLink,
-  Zap, Handshake
+  Zap, Handshake, PiggyBank
 } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 
@@ -240,7 +240,7 @@ const About: React.FC = () => {
                       alt={member.name}
                       className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
                         member.name === 'Florian Metzger' 
-                          ? 'scale-125 object-top' 
+                          ? 'scale-150 translate-y-[20%]' 
                           : member.name === 'Alban Halili' 
                             ? 'object-top' 
                             : ''
@@ -491,18 +491,18 @@ const About: React.FC = () => {
               {/* Pigtie */}
               <Card className="p-6 hover:shadow-brutal transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
+                    <PiggyBank className="w-6 h-6 text-pink-500" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">Pigtie</h3>
-                    <p className="text-sm text-muted-foreground">AI-Powered Sales Intelligence</p>
+                    <p className="text-sm text-muted-foreground">The Agentic OS for Personal Finance.</p>
                   </div>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
                   {lang === 'de' 
-                    ? 'Hilft B2B Sales Teams, High-Intent Buyer zu identifizieren und Deal Velocity mit KI-gestützten Insights zu beschleunigen.'
-                    : 'Helping B2B sales teams identify high-intent buyers and accelerate deal velocity with AI-powered insights.'
+                    ? 'Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen.'
+                    : 'Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers.'
                   }
                 </p>
                 <div className="flex items-center justify-between">
