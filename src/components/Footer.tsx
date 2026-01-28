@@ -28,9 +28,9 @@ const Footer: React.FC = () => {
   ];
 
   const team = [
-    { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
-    { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
-    { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
+    { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.', href: '/ml' },
+    { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.', href: '/ah' },
+    { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.', href: '/fm' },
   ];
 
   return (
@@ -132,7 +132,12 @@ const Footer: React.FC = () => {
               <ul className="space-y-3">
                 {team.map((member) => (
                   <li key={member.name} className="text-sm">
-                    <span className="text-foreground font-medium">{member.name}</span>
+                    <Link 
+                      to={member.href} 
+                      className="text-foreground font-medium hover:text-primary transition-colors"
+                    >
+                      {member.name}
+                    </Link>
                     <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
                   </li>
                 ))}
