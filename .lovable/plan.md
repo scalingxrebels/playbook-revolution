@@ -1,87 +1,63 @@
 
 
-# Plan: Breadcrumb-Logik korrigieren
+# Plan: Team-Namen im Footer verlinken
 
-## Übersicht
+## Uebersicht
 
-Die Breadcrumb-Navigation auf der Landing Page muss den Kachel-Titel als Seitennamen verwenden.
+Die Team-Mitglieder im Footer sollen zu ihren jeweiligen Profilseiten verlinkt werden.
 
----
+## Aenderungen
 
-## Änderungen
+**Datei:** `src/components/Footer.tsx`
 
-| Aktuell | Neu |
-|---------|-----|
-| Home > Solutions > Power Up > CAC Crisis | Solutions > Power Up Predictable Acquisition |
+### 1. Team-Array erweitern (Zeilen 30-34)
 
----
+```typescript
+// Aktuell:
+const team = [
+  { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.' },
+  { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.' },
+  { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.' },
+];
 
-## Betroffene Datei
+// Neu:
+const team = [
+  { name: 'Michel Lason', role: 'Strategy. Scaling. Impact.', href: '/ml' },
+  { name: 'Alban Halili', role: 'Growth. AI Solutions. Automation.', href: '/ah' },
+  { name: 'Florian Metzger', role: 'RevOps. GTM. Venture Architect.', href: '/fm' },
+];
+```
 
-**`src/pages/PowerUpCACCrisis.tsx`** – Zeilen 104-126
+### 2. Rendering anpassen (Zeilen 133-138)
 
-### Aktuelle Breadcrumb-Struktur
 ```tsx
-<Breadcrumb className="justify-center mb-6 animate-fade-in">
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
-        Home
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
-        Solutions
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <span className="text-muted-foreground">Power Up</span>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <span className="text-foreground font-medium">CAC Crisis</span>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
+// Aktuell:
+{team.map((member) => (
+  <li key={member.name} className="text-sm">
+    <span className="text-foreground font-medium">{member.name}</span>
+    <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
+  </li>
+))}
+
+// Neu:
+{team.map((member) => (
+  <li key={member.name} className="text-sm">
+    <Link 
+      to={member.href} 
+      className="text-foreground font-medium hover:text-primary transition-colors"
+    >
+      {member.name}
+    </Link>
+    <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
+  </li>
+))}
 ```
 
-### Neue Breadcrumb-Struktur
-```tsx
-<Breadcrumb className="justify-center mb-6 animate-fade-in">
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
-        Solutions
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <span className="text-foreground font-medium">Power Up Predictable Acquisition</span>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
-```
+## Ergebnis
 
----
-
-## Logik für alle Landing Pages
-
-Die Breadcrumb folgt dem Schema:
-
-```text
-Solutions > [Kachel-Titel]
-```
-
-### Beispiele
-
-| Kachel-Titel | Breadcrumb |
-|--------------|------------|
-| Power Up: Predictable Acquisition | Solutions > Power Up Predictable Acquisition |
-| Power Up: Hypergrowth Unlocked | Solutions > Power Up Hypergrowth Unlocked |
-| Boost: Board Readiness | Solutions > Boost Board Readiness |
-| LASR.io Assessment | Solutions > LASR.io Assessment |
-
-**Hinweis:** Der Doppelpunkt ":" aus dem Kachel-Titel wird im Breadcrumb weggelassen für bessere Lesbarkeit.
+| Name | Link |
+|------|------|
+| Michel Lason | /ml |
+| Alban Halili | /ah |
+| Florian Metzger | /fm |
 
