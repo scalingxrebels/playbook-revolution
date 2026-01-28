@@ -3,12 +3,21 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TwinklingStars from "@/components/TwinklingStars";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { 
   Accordion, 
   AccordionContent, 
   AccordionItem, 
   AccordionTrigger 
 } from "@/components/ui/accordion";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { useParallaxLayers } from "@/hooks/useParallax";
 import { 
   GraduationCap, 
   TrendingUp, 
@@ -30,12 +39,13 @@ import {
   ArrowRight,
   Calendar,
   Shield,
-  ChevronRight
+  ChevronDown
 } from "lucide-react";
 
 const Workshop = () => {
   const { language } = useLanguage();
   const isEnglish = language === 'en';
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
   const workshopTypes = [
     {
@@ -248,8 +258,8 @@ const Workshop = () => {
     {
       questionEn: 'How many participants?',
       questionDe: 'Wie viele Teilnehmer?',
-      answerEn: '10-30 participants (optimal size for hands-on exercises)',
-      answerDe: '10-30 Teilnehmer (optimale Größe für Hands-on Übungen)'
+      answerEn: '3+ participants (scalable for larger groups)',
+      answerDe: '3+ Teilnehmer (skalierbar für größere Gruppen)'
     },
     {
       questionEn: 'Can I talk to a reference?',
@@ -291,10 +301,10 @@ const Workshop = () => {
       descDe: 'Dein Team ist nicht aligned und braucht taktische Frameworks'
     },
     {
-      titleEn: 'You have 10-30 participants',
-      titleDe: 'Du hast 10-30 Teilnehmer',
-      descEn: 'Optimal size for hands-on exercises and team alignment',
-      descDe: 'Optimale Größe für Hands-on Übungen und Team Alignment'
+      titleEn: 'You have 3+ participants',
+      titleDe: 'Du hast 3+ Teilnehmer',
+      descEn: 'Scalable for any team size',
+      descDe: 'Skalierbar für jede Teamgröße'
     },
     {
       titleEn: 'You\'re Series A-B (or VC/PE with portfolio)',
@@ -318,16 +328,10 @@ const Workshop = () => {
       alternativeDe: 'Besser: Power Up (30 Tage, €23.6K) oder Boost (90 Tage, €60K-€78K)'
     },
     {
-      titleEn: 'You have <10 participants',
-      titleDe: 'Du hast <10 Teilnehmer',
+      titleEn: 'You have <3 participants',
+      titleDe: 'Du hast <3 Teilnehmer',
       alternativeEn: 'Better fit: Expert Session (45-90 min, €490-€890)',
       alternativeDe: 'Besser: Expert Session (45-90 Min, €490-€890)'
-    },
-    {
-      titleEn: 'You have >30 participants',
-      titleDe: 'Du hast >30 Teilnehmer',
-      alternativeEn: 'Contact us for custom pricing',
-      alternativeDe: 'Kontaktiere uns für Custom Pricing'
     }
   ];
 
@@ -336,48 +340,84 @@ const Workshop = () => {
       <Navigation />
 
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        <TwinklingStars />
+      <section 
+        ref={containerRef as React.RefObject<HTMLElement>}
+        className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
+      >
+        {/* Deep Space Background */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]"
+          style={{ transform: `translateY(${offsets[0]}px)` }}
+        />
         
-        <div className="container mx-auto px-4 relative z-10">
+        {/* Mesh Gradient Overlay */}
+        <div 
+          className="absolute inset-0 bg-mesh opacity-60"
+          style={{ transform: `translateY(${offsets[0]}px)` }}
+        />
+        
+        {/* Twinkling Stars */}
+        <div 
+          className="absolute inset-0"
+          style={{ transform: `translateY(${offsets[1]}px)` }}
+        >
+          <TwinklingStars />
+        </div>
+        
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
+          style={{ transform: `translateY(${offsets[2]}px)` }}
+        />
+        
+        <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-            <a href="/solutions" className="hover:text-foreground transition-colors">Solutions</a>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-foreground">Workshop</span>
-          </nav>
+          <Breadcrumb className="justify-center mb-6 animate-fade-in">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">Solutions</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <span className="text-foreground font-medium">Workshop</span>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <GraduationCap className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Training & Enablement · 1-2 Days · €9.6K-€12.9K</span>
-          </div>
+          <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <GraduationCap className="w-4 h-4 mr-2" />
+            Training & Enablement · 1-2 {isEnglish ? 'Days' : 'Tage'} · €9.6K-€12.9K
+          </Badge>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl">
-            {isEnglish ? 'Tactical Workshop—In 1-2 Days' : 'Tactical Workshop—In 1-2 Tagen'}
+          <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
+            <span className="block text-foreground">{isEnglish ? 'Tactical Workshop' : 'Taktischer Workshop'}</span>
+            <span className="block text-gradient animate-gradient bg-gradient-primary">
+              {isEnglish ? 'In 1-2 Days' : 'In 1-2 Tagen'}
+            </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl">
+          <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             {isEnglish 
               ? 'Get your team aligned and trained in 1-2 days. Choose from 9 workshop types: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence—with actionable playbook.'
               : 'Bringe dein Team in 1-2 Tagen auf eine Linie. Wähle aus 9 Workshop-Typen: GTM Strategy, Growth Strategy, Pricing Strategy, Customer Success, Operations Excellence, Scaling, AI Transformation, Board Governance, Portfolio Excellence—mit umsetzbarem Playbook.'}
           </p>
 
           {/* Hero Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-3xl">
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border rounded-xl p-6 text-center">
               <Users className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">+80%</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Team Alignment' : 'Team Alignment'}</div>
             </div>
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border rounded-xl p-6 text-center">
               <FileText className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">30-40</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Playbook Pages' : 'Playbook-Seiten'}</div>
             </div>
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border rounded-xl p-6 text-center">
               <Zap className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">{isEnglish ? 'Day 1' : 'Tag 1'}</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Execution Ready' : 'Execution Ready'}</div>
@@ -385,7 +425,7 @@ const Workshop = () => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Button size="lg" className="text-lg px-8" asChild>
               <a href="https://calendly.com/michel-scalingx/workshop" target="_blank" rel="noopener noreferrer">
                 {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
@@ -400,20 +440,25 @@ const Workshop = () => {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-primary" />
               <span>{isEnglish ? '1-2 Days (Fast Alignment)' : '1-2 Tage (Schnelles Alignment)'}</span>
             </div>
             <div className="flex items-center gap-2">
               <UserCheck className="w-4 h-4 text-primary" />
-              <span>{isEnglish ? '10-30 Participants (Scalable)' : '10-30 Teilnehmer (Skalierbar)'}</span>
+              <span>{isEnglish ? '3+ Participants' : '3+ Teilnehmer'}</span>
             </div>
             <div className="flex items-center gap-2">
               <FileText className="w-4 h-4 text-primary" />
               <span>{isEnglish ? 'Actionable Playbook (30-40 Pages)' : 'Umsetzbares Playbook (30-40 Seiten)'}</span>
             </div>
           </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-muted-foreground" />
         </div>
       </section>
 
@@ -527,7 +572,7 @@ const Workshop = () => {
                         <ul className="space-y-1 text-muted-foreground">
                           <li className="flex items-center gap-2">
                             <Clock className="w-4 h-4 text-primary" />
-                            <span>{isEnglish ? '1-2 Day Workshop (6-16 hours, 10-30 participants)' : '1-2 Tage Workshop (6-16 Stunden, 10-30 Teilnehmer)'}</span>
+                            <span>{isEnglish ? '1-2 Day Workshop (6-16 hours, 3+ participants)' : '1-2 Tage Workshop (6-16 Stunden, 3+ Teilnehmer)'}</span>
                           </li>
                           <li className="flex items-center gap-2">
                             <FileText className="w-4 h-4 text-primary" />
@@ -742,7 +787,7 @@ const Workshop = () => {
               <div className="text-3xl font-bold text-primary mb-4">€9.6K</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• {isEnglish ? '6-8 hours workshop' : '6-8 Stunden Workshop'}</li>
-                <li>• {isEnglish ? '10-30 participants' : '10-30 Teilnehmer'}</li>
+                <li>• {isEnglish ? '3+ participants' : '3+ Teilnehmer'}</li>
                 <li>• {isEnglish ? 'Workshop Playbook (30-40 pages)' : 'Workshop Playbook (30-40 Seiten)'}</li>
                 <li>• {isEnglish ? 'Recording (90 days access)' : 'Aufzeichnung (90 Tage Zugang)'}</li>
                 <li>• {isEnglish ? 'Follow-up call (60 min)' : 'Follow-up Call (60 Min)'}</li>
@@ -758,7 +803,7 @@ const Workshop = () => {
               <div className="text-3xl font-bold text-primary mb-4">€12.9K</div>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>• {isEnglish ? '12-16 hours workshop' : '12-16 Stunden Workshop'}</li>
-                <li>• {isEnglish ? '10-30 participants' : '10-30 Teilnehmer'}</li>
+                <li>• {isEnglish ? '3+ participants' : '3+ Teilnehmer'}</li>
                 <li>• {isEnglish ? 'Workshop Playbook (30-40 pages)' : 'Workshop Playbook (30-40 Seiten)'}</li>
                 <li>• {isEnglish ? 'Recording (90 days access)' : 'Aufzeichnung (90 Tage Zugang)'}</li>
                 <li>• {isEnglish ? 'Follow-up call (60 min)' : 'Follow-up Call (60 Min)'}</li>
