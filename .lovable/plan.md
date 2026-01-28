@@ -1,41 +1,47 @@
 
 
-# Plan: Power Up Scaling Velocity - Landing Page + Kachel-Update
+# Plan: Power Up AI Quick Wins - Landing Page + Kachel-Update
 
-## Übersicht
+## Briefing Review
 
-Umsetzung analog zu den bestehenden Power Up Landing Pages:
-1. Kachel-Update und Umbenennung in solutionTiles.ts (ID 15)
-2. Neue Route in App.tsx
-3. Neue Landing Page erstellen
+### URL-Korrektur erforderlich
 
----
+Das Briefing gibt `/solutions/power-up-ai-quick-wins` an, aber gemäß etabliertem Pattern sollte die URL lauten:
 
-## URL-Korrektur
+**Korrekt:** `/solutions/power-up/ai-quick-wins`
 
-Das Briefing gibt `/solutions/power-up-scaling-velocity` an, aber gemäß etabliertem Pattern sollte die URL lauten:
+### Metriken-Alignment: Kachel vs. Briefing
 
-**Korrekt:** `/solutions/power-up/scaling-velocity`
+| Metrik | Aktuelle Kachel (ID 16) | Briefing | Empfehlung |
+|--------|-------------------------|----------|------------|
+| AI Use Cases | 1-2 deployed | 3-5 Implemented | Briefing übernehmen |
+| Productivity/Speed | +20-40% | +30-50% Operations Speed | Briefing übernehmen |
+| theta_index | +0.1-0.2 | +0.2-0.3 | Briefing übernehmen |
+| Duration | 30 days | 4-6 weeks | Briefing übernehmen |
+
+Die Kachel-Metriken sind konservativer als das Briefing - wir aktualisieren auf die Briefing-Werte.
+
+### Headline-Diskrepanz
+
+Das Briefing verwendet "AI Laggard -> AI-Powered in 30 Days" als H1, aber die Duration ist "4-6 Weeks". Empfehlung: Headline anpassen zu **"AI Laggard -> AI-Powered"** (ohne Zeitangabe, da 4-6 Wochen im Badge steht).
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 15, Zeilen 610-643)
+**Datei:** `src/data/solutionTiles.ts` (ID 16, Zeilen 644-677)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | power-up-scaling | power-up-scaling-velocity |
-| headlineEn | Power Up: Scaling Ready | Power Up: Scaling Velocity |
-| headlineDe | Power Up: Scaling Ready | Power Up: Scaling Velocity |
-| solutionEn | "...in 30 days..." | "...in 4-6 weeks..." |
-| solutionDe | "...in 30 Tagen..." | "...in 4-6 Wochen..." |
-| deliverablesEn | ARR/Employee: +20-40%, Operational Debt: -30-50%, Team Velocity: +20-30% | Decision Velocity: +50-100%, Operational Debt: -15-25pp, ARR/Employee: +30-50% |
+| slug | power-up-ai | power-up-ai-quick-wins |
+| solutionEn | "...in 30 days: ... 1-2 AI use-cases..." | "...in 4-6 weeks... 3-5 AI use cases..." |
+| solutionDe | "...in 30 Tagen: ... 1-2 AI Use-Cases..." | "...in 4-6 Wochen... 3-5 AI Use Cases..." |
+| deliverablesEn | [1-2 use cases, +20-40%, +0.1-0.2] | [3-5 AI Use Cases, +30-50% Operations Speed, +0.2-0.3 theta_index] |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Start Transformation | More About Scaling Velocity |
-| primaryCtaDe | Transformation starten | Mehr über Scaling Velocity |
+| primaryCtaEn | Start Transformation | More About AI Quick Wins |
+| primaryCtaDe | Transformation starten | Mehr uber AI Quick Wins |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/power-up/scaling-velocity |
+| primaryCtaUrl | Calendly-Link | /solutions/power-up/ai-quick-wins |
 
 ---
 
@@ -44,73 +50,73 @@ Das Briefing gibt `/solutions/power-up-scaling-velocity` an, aber gemäß etabli
 **Datei:** `src/App.tsx`
 
 ```tsx
-const PowerUpScalingVelocity = lazy(() => import("./pages/PowerUpScalingVelocity"));
+const PowerUpAIQuickWins = lazy(() => import("./pages/PowerUpAIQuickWins"));
 
 // Route:
-<Route path="/solutions/power-up/scaling-velocity" element={<PowerUpScalingVelocity />} />
+<Route path="/solutions/power-up/ai-quick-wins" element={<PowerUpAIQuickWins />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/PowerUpScalingVelocity.tsx`
+**Datei:** `src/pages/PowerUpAIQuickWins.tsx`
 
-Struktur analog zu `PowerUpNRREngine.tsx` mit 7 Sektionen:
+Struktur analog zu `PowerUpScalingVelocity.tsx` mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Power Up Scaling Velocity`
-- **Badge:** `Power Up · 4-6 Weeks · From €23.6K`
-- **Headline:** `Scaling Chaos → 10x Ready`
-- **Subheadline:** Unlock your scaling velocity in 4-6 weeks...
-- **Stats:** Decision Velocity +50-100% | Operational Debt -15-25pp | ARR/Employee +30-50%
+- **Breadcrumb:** `Solutions > Power Up AI Quick Wins`
+- **Badge:** `Power Up . 4-6 Weeks . From EUR23.6K`
+- **Headline:** `AI Laggard -> AI-Powered`
+- **Subheadline:** Get your first AI wins in 4-6 weeks...
+- **Stats:** AI Maturity +0.2-0.3 (theta_index) | 3-5 AI Use Cases Implemented | Operations Speed +30-50%
 - **Trust Badges:** Outcome-Based Risk Sharing, 4-6 Week Sprint, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `You're Stuck in Scaling Chaos`
+- **Headline:** `You're Falling Behind on AI`
 - **Symptome:**
-  - Decision velocity collapsed: 1 day → 7 days (7x slower)
-  - Meeting overload: 10/week → 30/week (+200%)
-  - Operational debt high: 50%+
-  - ARR/Employee dropping: €200K → €150K (-25%)
-  - Coordination chaos: 5 tools → 25 tools
+  - Low AI maturity: theta_index 0.3 (benchmark: 0.7+)
+  - No AI use cases: 0 implemented (benchmark: 10+)
+  - No AI tools: 0 deployed (benchmark: 5+)
+  - Competitor gap: 3-5x slower than AI-native competitors
+  - Board pressure: "When will we be AI-native?"
 
 ### Section 3: Solution
-- **Headline:** `How We Unlock Your Scaling Velocity`
+- **Headline:** `How We Deliver Your First AI Wins`
 - **3-Phasen-Ansatz:**
-  - Week 1-2: Diagnose (Decision Velocity, Operational Debt, Coordination, Efficiency Analysis)
-  - Week 2-4: Fix (Decision Framework, Process Standardization, or Org Design)
-  - Week 4-6: Validate & Scale
+  - Week 1-2: Identify (AI Maturity Assessment, Operations Analysis, Quick Win Identification, Tool Selection)
+  - Week 2-4: Implement (3-5 AI use cases live in production - lead scoring, support, content, analysis, automation)
+  - Week 4-6: Measure & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Decision Velocity +50-100% (Beispiel: 7d → 2-3d)
-  - Operational Debt -15-25pp (Beispiel: 50% → 30%)
-  - ARR/Employee +30-50% (Beispiel: €150K → €200K)
-- **Real Example:** Series B SaaS, €30M ARR, Decision Velocity +67%
+  - theta_index +0.2-0.3 (Beispiel: 0.3 -> 0.5-0.6)
+  - 3-5 AI Use Cases Implemented (live in production, not POC)
+  - Operations Speed +30-50% (Beispiel: 5+ hours/day freed up)
+- **Real Example:** Series B SaaS, EUR25M ARR, theta_index +0.3, 5 AI use cases live, Operations Speed +45%
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown
 - Time Commitment (8-12h, 12-16h, 6-8h)
 - Outcome-Based Risk Sharing Details
-- Primary Metrics: Decision Velocity (days), Operational Debt (%), ARR/Employee (€)
+- Primary Metrics: theta_index (AI Maturity), AI Use Cases Implemented (#), Operations Speed (%)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Team grew 50 → 100+, but velocity dropped 50%
-  - Decision velocity collapsed (1 day → 7 days)
-  - Series A-D, €10M-€50M ARR
-  - Budget: €23.6K
+  - AI maturity is low (theta_index < 0.5)
+  - Competitors are 3-5x faster with AI
+  - Series A-D, EUR10M-EUR50M ARR
+  - Budget: EUR23.6K
 - **Not a Fit:**
-  - Pre-revenue/pre-Series A
-  - Needs full operations transformation (→ Boost/Accelerate)
-  - Just wants strategy deck
+  - Already AI-native (theta_index > 0.7)
+  - Needs full AI transformation (-> Boost/Accelerate)
+  - Just wants AI strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Unlock Your Scaling Velocity?`
+- **Headline:** `Ready to Get Your First AI Wins?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Expert Session: Scaling Velocity (€490-€890)
-- **FAQ:** Duration, Investment, Risk Sharing, References (COOs), ROI, Tool Integration (Notion, Confluence, Asana, Monday.com)
+- **Secondary:** Expert Session: AI Strategy (EUR490-EUR890)
+- **FAQ:** Duration, Investment, Risk Sharing, References (CTOs), ROI, AI Tools (OpenAI, Anthropic, custom models, no-code tools)
 
 ---
 
@@ -118,36 +124,41 @@ Struktur analog zu `PowerUpNRREngine.tsx` mit 7 Sektionen:
 
 ### Komponenten-Wiederverwendung
 Die neue Landing Page verwendet die gleichen Patterns wie die anderen Power Up Pages:
-- `TwinklingStars` für Hero-Hintergrund
-- `useParallaxLayers` für Parallax-Effekte
-- `useScrollAnimation` für Scroll-basierte Animationen
-- `Accordion` für FAQ-Bereich
+- `TwinklingStars` fur Hero-Hintergrund
+- `useParallaxLayers` fur Parallax-Effekte
+- `useScrollAnimation` fur Scroll-basierte Animationen
+- `Accordion` fur FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons für Scaling Velocity
-- `Zap` - Decision Velocity
-- `FileText` - Operational Debt / Process Documentation
-- `Users` - Team/Coordination
-- `TrendingUp` - ARR/Employee
-- `Settings` - Org Design/Operations
-- `Clock` - Meetings/Time
+### Spezifische Icons fur AI Quick Wins
+- `Zap` - Speed/Quick Wins
+- `Bot` oder `Sparkles` - AI/ML
+- `BarChart3` - Metrics/theta_index
+- `Layers` - Use Cases
+- `TrendingUp` - Operations Speed
+- `Target` - Lead Scoring
+- `MessageCircle` - Customer Support
+- `FileText` - Content Generation
+- `Search` - Data Analysis
+- `Settings` - Workflow Automation
 
 ### Dateistruktur
 ```text
 src/
-├── App.tsx                          # Neue Route hinzufügen
-├── data/
-│   └── solutionTiles.ts             # Kachel umbenennen + CTA aktualisieren
-└── pages/
-    ├── PowerUpCACCrisis.tsx         # Referenz
-    ├── PowerUpGrowthMomentum.tsx    # Referenz
-    ├── PowerUpPricingPower.tsx      # Referenz
-    ├── PowerUpNRREngine.tsx         # Referenz
-    └── PowerUpScalingVelocity.tsx   # NEU
+  App.tsx                          # Neue Route hinzufugen
+  data/
+    solutionTiles.ts             # Kachel-Metriken + CTA aktualisieren
+  pages/
+    PowerUpCACCrisis.tsx         # Referenz
+    PowerUpGrowthMomentum.tsx    # Referenz
+    PowerUpPricingPower.tsx      # Referenz
+    PowerUpNRREngine.tsx         # Referenz
+    PowerUpScalingVelocity.tsx   # Referenz
+    PowerUpAIQuickWins.tsx       # NEU
 ```
 
 ### URL-Pattern
-Gemäß etablierter Logik: `/solutions/power-up/scaling-velocity` (nicht `/solutions/power-up-scaling-velocity`)
+Gemass etablierter Logik: `/solutions/power-up/ai-quick-wins` (nicht `/solutions/power-up-ai-quick-wins`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -157,18 +168,18 @@ Gemäß etablierter Logik: `/solutions/power-up/scaling-velocity` (nicht `/solut
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Power Up Scaling Velocity</span>
+    <span className="text-foreground font-medium">Power Up AI Quick Wins</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
 
 ---
 
-## Zusammenfassung der Änderungen
+## Zusammenfassung der Anderungen
 
-| Datei | Änderung |
+| Datei | Anderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 15: Umbenennung "Scaling Ready" → "Scaling Velocity" + CTA + Duration + Metriken aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 16: Slug + Metriken + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/PowerUpScalingVelocity.tsx` | Neue Datei (7 Sektionen) |
+| `src/pages/PowerUpAIQuickWins.tsx` | Neue Datei (7 Sektionen) |
 
