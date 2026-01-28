@@ -46,6 +46,7 @@ const BoostBoardExcellence = lazy(() => import("./pages/BoostBoardExcellence"));
 const BoostPortfolioValue = lazy(() => import("./pages/BoostPortfolioValue"));
 const BoostCustomProgram = lazy(() => import("./pages/BoostCustomProgram"));
 const AccelerateHypergrowth = lazy(() => import("./pages/AccelerateHypergrowth"));
+const AccelerateSustainableGrowth = lazy(() => import("./pages/AccelerateSustainableGrowth"));
 
 const queryClient = new QueryClient();
 
@@ -105,6 +106,7 @@ const App = () => (
                 <Route path="/solutions/boost/portfolio-value" element={<BoostPortfolioValue />} />
                 <Route path="/solutions/boost/custom-program" element={<BoostCustomProgram />} />
                 <Route path="/solutions/accelerate/hypergrowth" element={<AccelerateHypergrowth />} />
+                <Route path="/solutions/accelerate/sustainable-growth" element={<AccelerateSustainableGrowth />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
