@@ -1,11 +1,11 @@
 
 
-# Plan: Power Up NRR Engine – Landing Page + Kachel-Update
+# Plan: Power Up Scaling Velocity - Landing Page + Kachel-Update
 
 ## Übersicht
 
 Umsetzung analog zu den bestehenden Power Up Landing Pages:
-1. Kachel-Update in solutionTiles.ts (ID 14)
+1. Kachel-Update und Umbenennung in solutionTiles.ts (ID 15)
 2. Neue Route in App.tsx
 3. Neue Landing Page erstellen
 
@@ -13,26 +13,29 @@ Umsetzung analog zu den bestehenden Power Up Landing Pages:
 
 ## URL-Korrektur
 
-Das Briefing gibt `/solutions/power-up-nrr-engine` an, aber gemäß etabliertem Pattern sollte die URL lauten:
+Das Briefing gibt `/solutions/power-up-scaling-velocity` an, aber gemäß etabliertem Pattern sollte die URL lauten:
 
-**Korrekt:** `/solutions/power-up/nrr-engine`
+**Korrekt:** `/solutions/power-up/scaling-velocity`
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (Zeilen 576-609, ID 14)
+**Datei:** `src/data/solutionTiles.ts` (ID 15, Zeilen 610-643)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
+| slug | power-up-scaling | power-up-scaling-velocity |
+| headlineEn | Power Up: Scaling Ready | Power Up: Scaling Velocity |
+| headlineDe | Power Up: Scaling Ready | Power Up: Scaling Velocity |
 | solutionEn | "...in 30 days..." | "...in 4-6 weeks..." |
 | solutionDe | "...in 30 Tagen..." | "...in 4-6 Wochen..." |
-| deliverablesEn[2] | "Expansion revenue: +20-40%" | "Expansion Rate: +50-100%" |
-| deliverablesDe[2] | "Expansion Revenue: +20-40%" | "Expansion Rate: +50-100%" |
-| primaryCtaEn | Start Transformation | More About NRR Engine |
-| primaryCtaDe | Transformation starten | Mehr über NRR Engine |
+| deliverablesEn | ARR/Employee: +20-40%, Operational Debt: -30-50%, Team Velocity: +20-30% | Decision Velocity: +50-100%, Operational Debt: -15-25pp, ARR/Employee: +30-50% |
+| deliverablesDe | (entsprechend) | (entsprechend) |
+| primaryCtaEn | Start Transformation | More About Scaling Velocity |
+| primaryCtaDe | Transformation starten | Mehr über Scaling Velocity |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/power-up/nrr-engine |
+| primaryCtaUrl | Calendly-Link | /solutions/power-up/scaling-velocity |
 
 ---
 
@@ -41,101 +44,110 @@ Das Briefing gibt `/solutions/power-up-nrr-engine` an, aber gemäß etabliertem 
 **Datei:** `src/App.tsx`
 
 ```tsx
-const PowerUpNRREngine = lazy(() => import("./pages/PowerUpNRREngine"));
+const PowerUpScalingVelocity = lazy(() => import("./pages/PowerUpScalingVelocity"));
 
 // Route:
-<Route path="/solutions/power-up/nrr-engine" element={<PowerUpNRREngine />} />
+<Route path="/solutions/power-up/scaling-velocity" element={<PowerUpScalingVelocity />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/PowerUpNRREngine.tsx`
+**Datei:** `src/pages/PowerUpScalingVelocity.tsx`
 
-Struktur analog zu `PowerUpPricingPower.tsx` mit 7 Sektionen:
+Struktur analog zu `PowerUpNRREngine.tsx` mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Power Up NRR Engine`
+- **Breadcrumb:** `Solutions > Power Up Scaling Velocity`
 - **Badge:** `Power Up · 4-6 Weeks · From €23.6K`
-- **Headline:** `Customer Success Broken → NRR Engine Built`
-- **Subheadline:** Build your retention engine in 4-6 weeks...
-- **Stats:** Churn -20-40% | NRR +10-20pp | Expansion Rate +50-100%
+- **Headline:** `Scaling Chaos → 10x Ready`
+- **Subheadline:** Unlock your scaling velocity in 4-6 weeks...
+- **Stats:** Decision Velocity +50-100% | Operational Debt -15-25pp | ARR/Employee +30-50%
 - **Trust Badges:** Outcome-Based Risk Sharing, 4-6 Week Sprint, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `Your Customer Success Is Broken`
+- **Headline:** `You're Stuck in Scaling Chaos`
 - **Symptome:**
-  - High churn: 20%+ annually (benchmark: <10%)
-  - Low NRR: 90-95% (benchmark: 110-130%)
-  - No expansion: 10% of customers expand (benchmark: 30%+)
-  - Reactive CS: Fire-fighting mode
-  - No retention loops: No health scoring, no early warning
+  - Decision velocity collapsed: 1 day → 7 days (7x slower)
+  - Meeting overload: 10/week → 30/week (+200%)
+  - Operational debt high: 50%+
+  - ARR/Employee dropping: €200K → €150K (-25%)
+  - Coordination chaos: 5 tools → 25 tools
 
 ### Section 3: Solution
-- **Headline:** `How We Build Your NRR Engine`
+- **Headline:** `How We Unlock Your Scaling Velocity`
 - **3-Phasen-Ansatz:**
-  - Week 1-2: Diagnose (Onboarding, Retention, Expansion, CS Operations Analysis)
-  - Week 2-4: Fix (Onboarding Optimization, Retention Loops, or Expansion Engine)
+  - Week 1-2: Diagnose (Decision Velocity, Operational Debt, Coordination, Efficiency Analysis)
+  - Week 2-4: Fix (Decision Framework, Process Standardization, or Org Design)
   - Week 4-6: Validate & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - Churn -20-40% (Beispiel: 20% → 12%)
-  - NRR +10-20pp (Beispiel: 95% → 110%)
-  - Expansion Rate +50-100% (Beispiel: 10% → 18%)
-- **Real Example:** Series B SaaS, €25M ARR, NRR +18pp
+  - Decision Velocity +50-100% (Beispiel: 7d → 2-3d)
+  - Operational Debt -15-25pp (Beispiel: 50% → 30%)
+  - ARR/Employee +30-50% (Beispiel: €150K → €200K)
+- **Real Example:** Series B SaaS, €30M ARR, Decision Velocity +67%
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown
 - Time Commitment (8-12h, 12-16h, 6-8h)
 - Outcome-Based Risk Sharing Details
-- Primary Metrics: Churn Rate, NRR, Expansion Rate
+- Primary Metrics: Decision Velocity (days), Operational Debt (%), ARR/Employee (€)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Churn high (15%+ annually)
-  - NRR below 100%
+  - Team grew 50 → 100+, but velocity dropped 50%
+  - Decision velocity collapsed (1 day → 7 days)
   - Series A-D, €10M-€50M ARR
   - Budget: €23.6K
 - **Not a Fit:**
   - Pre-revenue/pre-Series A
-  - Needs full CS transformation (→ Boost/Accelerate)
+  - Needs full operations transformation (→ Boost/Accelerate)
   - Just wants strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Build Your NRR Engine?`
+- **Headline:** `Ready to Unlock Your Scaling Velocity?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Expert Session: Net Retention Revenue Boost (€490-€890)
-- **FAQ:** Duration, Investment, Risk Sharing, References, ROI, CS Tool Integration (Gainsight, ChurnZero, Totango, Vitally)
+- **Secondary:** Expert Session: Scaling Velocity (€490-€890)
+- **FAQ:** Duration, Investment, Risk Sharing, References (COOs), ROI, Tool Integration (Notion, Confluence, Asana, Monday.com)
 
 ---
 
 ## Technische Details
 
 ### Komponenten-Wiederverwendung
-Die neue Landing Page verwendet die gleichen Patterns wie `PowerUpPricingPower.tsx`:
+Die neue Landing Page verwendet die gleichen Patterns wie die anderen Power Up Pages:
 - `TwinklingStars` für Hero-Hintergrund
 - `useParallaxLayers` für Parallax-Effekte
 - `useScrollAnimation` für Scroll-basierte Animationen
 - `Accordion` für FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
+### Spezifische Icons für Scaling Velocity
+- `Zap` - Decision Velocity
+- `FileText` - Operational Debt / Process Documentation
+- `Users` - Team/Coordination
+- `TrendingUp` - ARR/Employee
+- `Settings` - Org Design/Operations
+- `Clock` - Meetings/Time
+
 ### Dateistruktur
 ```text
 src/
 ├── App.tsx                          # Neue Route hinzufügen
 ├── data/
-│   └── solutionTiles.ts             # Kachel-CTA aktualisieren
+│   └── solutionTiles.ts             # Kachel umbenennen + CTA aktualisieren
 └── pages/
     ├── PowerUpCACCrisis.tsx         # Referenz
     ├── PowerUpGrowthMomentum.tsx    # Referenz
     ├── PowerUpPricingPower.tsx      # Referenz
-    └── PowerUpNRREngine.tsx         # NEU
+    ├── PowerUpNRREngine.tsx         # Referenz
+    └── PowerUpScalingVelocity.tsx   # NEU
 ```
 
 ### URL-Pattern
-Gemäß etablierter Logik: `/solutions/power-up/nrr-engine` (nicht `/solutions/power-up-nrr-engine`)
+Gemäß etablierter Logik: `/solutions/power-up/scaling-velocity` (nicht `/solutions/power-up-scaling-velocity`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -145,7 +157,7 @@ Gemäß etablierter Logik: `/solutions/power-up/nrr-engine` (nicht `/solutions/p
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Power Up NRR Engine</span>
+    <span className="text-foreground font-medium">Power Up Scaling Velocity</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
@@ -156,7 +168,7 @@ Gemäß etablierter Logik: `/solutions/power-up/nrr-engine` (nicht `/solutions/p
 
 | Datei | Änderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 14: CTA + Duration + Expansion Rate aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 15: Umbenennung "Scaling Ready" → "Scaling Velocity" + CTA + Duration + Metriken aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/PowerUpNRREngine.tsx` | Neue Datei (7 Sektionen) |
+| `src/pages/PowerUpScalingVelocity.tsx` | Neue Datei (7 Sektionen) |
 
