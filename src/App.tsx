@@ -60,6 +60,7 @@ const PortfolioAssessment = lazy(() => import("./pages/PortfolioAssessment"));
 const InvestorReadinessPitchDeckCheck = lazy(() => import("./pages/InvestorReadinessPitchDeckCheck"));
 const CustomAnalysisReport = lazy(() => import("./pages/CustomAnalysisReport"));
 const Workshop = lazy(() => import("./pages/Workshop"));
+const Keynote = lazy(() => import("./pages/Keynote"));
 
 const queryClient = new QueryClient();
 
@@ -133,6 +134,7 @@ const App = () => (
                 <Route path="/solutions/investor-readiness-pitch-deck-check" element={<InvestorReadinessPitchDeckCheck />} />
                 <Route path="/solutions/custom-analysis-report" element={<CustomAnalysisReport />} />
                 <Route path="/solutions/workshop" element={<Workshop />} />
+                <Route path="/solutions/keynote" element={<Keynote />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

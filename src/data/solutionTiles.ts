@@ -1329,33 +1329,33 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'keynote',
     solutionType: 'keynote',
     challenges: 'universal',
-    price: '€5K–€15K',
+    price: '€4.9K',
     priceTag: 'paid',
     headlineEn: 'Keynote',
     headlineDe: 'Keynote',
-    problemEn: "You need to inspire your team or event with a high-impact keynote—but generic motivational talks don't cut it. You need tactical insights and frameworks.",
-    problemDe: 'Du musst dein Team oder Event mit einer High-Impact Keynote inspirieren—aber generische Motivationsreden reichen nicht. Du brauchst taktische Insights und Frameworks.',
-    solutionEn: 'We deliver a 60-90 min keynote + Q&A. Choose topic: AI-Native Scaling, Growth Momentum, Pricing Optimization, Retention Excellence, Operational Excellence, Board Excellence, Portfolio Excellence.',
-    solutionDe: 'Wir liefern eine 60-90 min Keynote + Q&A. Wähle Thema: AI-Native Scaling, Growth Momentum, Pricing Optimization, Retention Excellence, Operational Excellence, Board Excellence, Portfolio Excellence.',
+    problemEn: "Your event needs inspiration—not generic motivation. Generic speakers don't understand your business. You need tactical inspiration with frameworks, stories, and actionable takeaways. You need expert keynote. Fast.",
+    problemDe: 'Dein Event braucht Inspiration—keine generische Motivation. Generische Speaker verstehen dein Business nicht. Du brauchst taktische Inspiration mit Frameworks, Stories und umsetzbaren Takeaways. Du brauchst eine Experten-Keynote. Schnell.',
+    solutionEn: 'We deliver tactical keynotes in 60-90 minutes for 50-500 participants. Choose from 5 topics: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance. You get: High Impact Inspiration, 3-5 Actionable Takeaways, Keynote Slides (40-60 pages).',
+    solutionDe: 'Wir liefern taktische Keynotes in 60-90 Minuten für 50-500 Teilnehmer. Wähle aus 5 Themen: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance. Du erhältst: High Impact Inspiration, 3-5 umsetzbare Takeaways, Keynote Slides (40-60 Seiten).',
     deliverablesEn: [
-      'Keynote (60-90 min)',
-      'Q&A session (30 min)',
-      'Recording (optional)'
+      'Audience: 50-500 People',
+      'Inspiration: High Impact',
+      'Takeaways: 3-5 Actions'
     ],
     deliverablesDe: [
-      'Keynote (60-90 min)',
-      'Q&A Session (30 min)',
-      'Aufzeichnung (optional)'
+      'Audience: 50-500 Personen',
+      'Inspiration: High Impact',
+      'Takeaways: 3-5 Aktionen'
     ],
-    impactEn: 'Inspire 50-500 participants with tactical insights and frameworks. Get 20-30% higher team alignment.',
-    impactDe: 'Inspiriere 50-500 Teilnehmer mit taktischen Insights und Frameworks. Erreiche 20-30% höhere Team-Ausrichtung.',
-    primaryCtaEn: 'Book Keynote',
-    primaryCtaDe: 'Keynote buchen',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/keynote',
-    secondaryCtaEn: 'See topics',
-    secondaryCtaDe: 'Themen ansehen',
-    secondaryCtaUrl: '/expertise'
+    impactEn: 'Inspire 50-500 participants in 60-90 minutes. Get tactical frameworks and 3-5 actionable takeaways. Predict 5-10x ROI from audience inspiration and event momentum.',
+    impactDe: 'Inspiriere 50-500 Teilnehmer in 60-90 Minuten. Erhalte taktische Frameworks und 3-5 umsetzbare Takeaways. Prognostiziere 5-10x ROI durch Audience Inspiration und Event Momentum.',
+    primaryCtaEn: 'More About Keynote',
+    primaryCtaDe: 'Mehr über Keynote',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/keynote',
+    secondaryCtaEn: 'Book Free Inflection Call',
+    secondaryCtaDe: 'Kostenloses Inflection Call buchen',
+    secondaryCtaUrl: 'https://calendly.com/michel-scalingx/inflection-call'
   },
 
   // ============================================
