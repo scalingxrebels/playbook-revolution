@@ -745,7 +745,7 @@ export const solutionTiles: SolutionTile[] = [
   },
   {
     id: 19,
-    slug: 'power-up-custom',
+    slug: 'power-up-custom-sprint',
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: 'universal',
@@ -753,26 +753,26 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'Power Up: Custom Sprint',
     headlineDe: 'Power Up: Custom Sprint',
-    problemEn: "Your bottleneck doesn't fit a standard track. You need a bespoke 30-day sprint.",
-    problemDe: 'Dein Engpass passt nicht auf einen Standard-Track. Du brauchst einen maßgeschneiderten 30-Tage-Sprint.',
-    solutionEn: 'We design a custom sprint around your unique constraint. 30 days, 3 guaranteed outcomes (2 of 3 or 50% refund).',
-    solutionDe: 'Wir designen einen maßgeschneiderten Sprint um deinen einzigartigen Constraint. 30 Tage, 3 garantierte Ergebnisse (2 von 3 oder 50% Rückerstattung).',
+    problemEn: "Your challenge is unique. It's not CAC crisis, not scaling chaos, not board pressure. Standard solutions don't fit your unique business model.",
+    problemDe: 'Deine Herausforderung ist einzigartig. Es ist keine CAC-Krise, kein Scaling-Chaos, kein Board-Druck. Standard-Lösungen passen nicht zu deinem einzigartigen Geschäftsmodell.',
+    solutionEn: 'We diagnose your unique bottleneck and build a custom solution in 4-6 weeks. Hands-on execution, outcome-based risk sharing.',
+    solutionDe: 'Wir diagnostizieren deinen einzigartigen Engpass und bauen eine Custom Solution in 4-6 Wochen. Hands-on Execution, ergebnisbasierte Risikoteilung.',
     deliverablesEn: [
-      'Custom scope design',
-      '3 guaranteed outcomes',
-      'Transition + handoff playbook'
+      'Custom Bottleneck Fixed',
+      'Custom Solution Deployed',
+      'ROI: 2-5x'
     ],
     deliverablesDe: [
-      'Custom Scope Design',
-      '3 garantierte Ergebnisse',
-      'Transition + Handoff Playbook'
+      'Custom Bottleneck gefixt',
+      'Custom Solution deployed',
+      'ROI: 2-5x'
     ],
-    impactEn: 'Constraint-specific results in 30 days. Guaranteed: 2 of 3 or 50% refund.',
-    impactDe: 'Constraint-spezifische Ergebnisse in 30 Tagen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
-    primaryCtaEn: 'Discuss Scope',
-    primaryCtaDe: 'Scope besprechen',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/transformation',
+    impactEn: 'Fix your unique bottleneck, deploy a custom solution, achieve 2-5x ROI in 4-6 weeks. Guaranteed: 2 of 3 or 50% refund.',
+    impactDe: 'Fixe deinen einzigartigen Engpass, deploye eine Custom Solution, erziele 2-5x ROI in 4-6 Wochen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
+    primaryCtaEn: 'More About Custom Sprint',
+    primaryCtaDe: 'Mehr über Custom Sprint',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/power-up/custom-sprint',
     secondaryCtaEn: 'See past examples',
     secondaryCtaDe: 'Frühere Beispiele ansehen',
     secondaryCtaUrl: '/cases/custom-transformation'
