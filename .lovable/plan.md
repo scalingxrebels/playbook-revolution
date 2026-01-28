@@ -1,163 +1,72 @@
 
 
-# Plan: GTM Effectiveness Review - Landing Page + Kachel-Update (Korrigiert)
+# Plan: VC DD Simulation Duration-Anpassung (1-2 Weeks → 3-5 Days)
 
-## Korrektur zur Duration
+## Übersicht
 
-| Feld | Briefing | Korrigiert |
-|------|----------|------------|
-| Duration | 1-2 Weeks | **3-5 Days** (behalten) |
-
-Alle anderen Empfehlungen werden uebernommen.
+Die Duration muss an zwei Stellen von "1-2 Weeks" auf "3-5 Days" geändert werden:
+1. **Kachel** in `solutionTiles.ts` (ID 8)
+2. **Landing Page** in `VCDueDiligenceSimulation.tsx`
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 3)
+**Datei:** `src/data/solutionTiles.ts` (Zeilen 362-363)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | gtm-review | gtm-effectiveness-review |
-| Duration | 3-5 days | 3-5 days (behalten) |
-| Report | 10-15 pages | 20-30 pages |
-| problemEn | "Your CAC is rising, win rates are dropping..." | "Your GTM is broken—but you don't know where. CAC is €5K-€10K (benchmark: €500-€2K). Win rate is 15-25% (benchmark: 40-60%). Sales cycle is 90-180 days (benchmark: 30-60 days)." |
-| problemDe | (entsprechend) | (entsprechend) |
-| solutionEn | "We audit your GTM in 3-5 days..." | "We analyze your GTM effectiveness in 3-5 days (6 dimensions). You get: GTM Clarity +80%, Decision Velocity +50-100%, CAC Reduction Roadmap 30-50%—with board-ready report." |
-| solutionDe | (entsprechend) | (entsprechend) |
-| deliverablesEn | [GTM audit report, Bottleneck identification, 3-5 recommendations] | [GTM Clarity: +80%, Decision Velocity: +50-100%, CAC Roadmap: -30-50%] |
-| deliverablesDe | (entsprechend) | (entsprechend) |
-| impactEn | "Reduce CAC by 20-30%..." | "Know exactly which GTM lever to pull first. Predict 10-30x ROI from CAC reduction and growth acceleration." |
-| impactDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Request Review | More About GTM Review |
-| primaryCtaDe | Review anfragen | Mehr ueber GTM Review |
-| primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/gtm-effectiveness-review |
+| solutionEn | "...in 1-2 weeks (8 dimensions)..." | "...in 3-5 days (8 dimensions)..." |
+| solutionDe | "...in 1-2 Wochen (8 Dimensionen)..." | "...in 3-5 Tagen (8 Dimensionen)..." |
 
 ---
 
-## 2. Neue Route in App.tsx
+## 2. Landing Page Updates in VCDueDiligenceSimulation.tsx
 
-**Datei:** `src/App.tsx`
+### 2.1 Hero Section - Badge (Zeile 121)
+- **Aktuell:** `Decision Support · 1-2 Weeks · €5.9K`
+- **Neu:** `Decision Support · 3-5 Days · €5.9K`
 
-```tsx
-const GTMEffectivenessReview = lazy(() => import("./pages/GTMEffectivenessReview"));
+### 2.2 Hero Section - Trust Badges (Zeile 65)
+- **Aktuell:** `1-2 Weeks (Fast Turnaround)` / `1-2 Wochen (Schnelle Lieferung)`
+- **Neu:** `3-5 Days (Fast Turnaround)` / `3-5 Tage (Schnelle Lieferung)`
 
-// Route (nach VC DD Simulation):
-<Route path="/solutions/gtm-effectiveness-review" element={<GTMEffectivenessReview />} />
-```
+### 2.3 Hero Section - Subheadline (Zeilen 135-136)
+- **Aktuell:** `...in 1-2 weeks...` / `...in 1-2 Wochen...`
+- **Neu:** `...in 3-5 days...` / `...in 3-5 Tagen...`
 
----
+### 2.4 Solution Section - Differentiators (Zeile 346)
+- **Aktuell:** `Fast turnaround (1-2 weeks, not 4-6 weeks)`
+- **Neu:** `Fast turnaround (3-5 days, not 4-6 weeks)`
 
-## 3. Neue Landing Page erstellen
+### 2.5 Outcome Section - Headline (Zeile 527)
+- **Aktuell:** `Typical Outcomes (1-2 Weeks)` / `Typische Ergebnisse (1-2 Wochen)`
+- **Neu:** `Typical Outcomes (3-5 Days)` / `Typische Ergebnisse (3-5 Tage)`
 
-**Datei:** `src/pages/GTMEffectivenessReview.tsx`
+### 2.6 Process Section - Quality Guarantee (Zeile 612)
+- **Aktuell:** `Fast turnaround (1-2 weeks, not 4-6 weeks)`
+- **Neu:** `Fast turnaround (3-5 days, not 4-6 weeks)`
 
-### Section 1: Hero
-- **Breadcrumb:** `Solutions > GTM Effectiveness Review`
-- **Badge:** `Decision Support . 3-5 Days . €3.9K-€5.9K`
-- **Headline:** `Expert GTM Review—In 3-5 Days`
-- **Subheadline:** Get expert analysis of your GTM effectiveness in 3-5 days...
-- **Stats:** GTM Clarity +80% | Decision Velocity +50-100% | CAC Roadmap -30-50%
-- **Trust Badges:** Fast Turnaround (3-5 Days), Board-Ready Report (20-30 Pages), Expert Analysis (McKinsey-Level)
+### 2.7 Process Section - Pricing Card (Zeile 672)
+- **Aktuell:** `1-2 weeks turnaround`
+- **Neu:** `3-5 days turnaround`
 
-### Section 2: Problem
-- **Headline:** `Your GTM Is Broken—But You Don't Know Where`
-- **Symptome:**
-  - High CAC: €5K-€10K (benchmark: €500-€2K for AI-native)
-  - Low win rate: 15-25% (benchmark: 40-60% for AI-native)
-  - Long sales cycle: 90-180 days (benchmark: 30-60 days for AI-native)
-  - No GTM clarity: Don't know which lever to pull first
-  - Growth stalled: 150% → 80% YoY growth
+### 2.8 Final CTA Section - Steps (Zeile 807)
+- **Aktuell:** `...30-40 pages, 1-2 weeks` / `...30-40 Seiten, 1-2 Wochen`
+- **Neu:** `...30-40 pages, 3-5 days` / `...30-40 Seiten, 3-5 Tage`
 
-### Section 3: Solution
-- **Headline:** `How GTM Effectiveness Review Works`
-- **6 GTM Dimensions:**
-  1. Market & ICP (TAM, SAM, SOM, ICP definition, positioning)
-  2. Customer Acquisition (CAC analysis, win rate, sales cycle, channels)
-  3. Messaging & Positioning (value proposition, messaging framework)
-  4. Sales Process (sales motion, playbook, enablement, tools)
-  5. Pricing & Packaging (pricing model, packaging strategy, monetization)
-  6. GTM Operations (metrics, systems, team, processes)
-- **Days 1-3:** GTM Analysis (6 dimensions analyzed)
-- **Days 4-5 (Optional +€2K):** 90-Day GTM Roadmap
-
-### Section 4: Impact/Outcome
-- **Metrics:**
-  - GTM Clarity +80% (low → high)
-  - Decision Velocity +50-100% (7-14d → 3-7d)
-  - CAC Reduction Roadmap 30-50% (€8K → €4K-€5.6K target)
-- **Real Example:** Series A SaaS, €12M ARR, GTM Clarity +85%, Decision Velocity +80%, CAC Roadmap -40%
-
-### Section 5: Process (How We Work)
-- Day-by-Day Breakdown (3-5 Days)
-- Time Commitment (4-6 hours)
-- **Pricing:**
-  - Base Package: €3.9K (GTM Effectiveness Report, 20-30 pages)
-  - + Execution Bridge: +€2K (90-Day GTM Roadmap)
-  - Total: €5.9K (Base + Execution)
-- Quality Guarantee (Expert-Grade, McKinsey-Level)
-
-### Section 6: Qualification (Who It's For)
-- **Good Fit:**
-  - GTM problems but don't know which lever to pull first
-  - CAC €5K-€10K, Win Rate 15-25%, Sales Cycle 90-180 days
-  - Series A-B, €5M-€30M ARR, 30-150 people
-  - Budget: €3.9K-€5.9K
-- **Not a Fit:**
-  - Need hands-on GTM implementation → Power Up: CAC Crisis (€23.6K)
-  - Need full GTM transformation → Boost (€60K-€78K)
-
-### Section 7: Final CTA
-- **Headline:** `Ready to Get GTM Clarity?`
-- **Primary CTA:** Request Review (€3.9K)
-- **Secondary:** Book Free Inflection Call (30 min)
-- **FAQ:** Duration (3-5 days), Investment (€3.9K-€5.9K), Data needed, References, ROI
+### 2.9 Final CTA Section - FAQ (Zeile 811)
+- **Aktuell:** `1-2 weeks (from document sharing...)` / `1-2 Wochen (vom Dokumenten-Sharing...)`
+- **Neu:** `3-5 days (from document sharing...)` / `3-5 Tage (vom Dokumenten-Sharing...)`
 
 ---
 
-## Technische Details
+## Zusammenfassung
 
-### Komponenten-Wiederverwendung
-- `TwinklingStars` fuer Hero-Hintergrund
-- `useParallaxLayers` fuer Parallax-Effekte
-- `useScrollAnimation` fuer Scroll-basierte Animationen
-- `Accordion` fuer FAQ-Bereich
-- Bilingual (DE/EN) mit `useLanguage`
+| Datei | Anzahl Änderungen |
+|-------|-------------------|
+| `src/data/solutionTiles.ts` | 2 (solutionEn, solutionDe) |
+| `src/pages/VCDueDiligenceSimulation.tsx` | 9 Stellen (alle "1-2 weeks/Wochen" Erwähnungen) |
 
-### Spezifische Icons
-- `Target` - GTM Clarity / ICP
-- `TrendingUp` - CAC / Growth Metrics
-- `Zap` - Decision Velocity
-- `Users` - Customer Acquisition / Sales
-- `MessageSquare` - Messaging & Positioning
-- `DollarSign` - Pricing & Packaging
-- `Settings` - GTM Operations
-- `BarChart3` - Metrics / Analysis
-- `Clock` - Fast Turnaround (3-5 Days)
-- `FileText` - Board-Ready Report
-
-### 6 GTM Dimensions Framework
-
-```text
-+-----------------------------------------------------------+
-|                   6 GTM DIMENSIONS                         |
-+------------------+------------------+----------------------+
-| 1. Market & ICP  | 2. Acquisition   | 3. Messaging         |
-| 4. Sales Process | 5. Pricing       | 6. Operations        |
-+------------------+------------------+----------------------+
-```
-
-### URL-Pattern
-Top-Level Decision Support Page: `/solutions/gtm-effectiveness-review`
-
----
-
-## Zusammenfassung der Aenderungen
-
-| Datei | Aenderung |
-|-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 3: Slug (gtm-review → gtm-effectiveness-review) + Metriken (outcome-fokussiert) + CTA (learn-more) aktualisieren |
-| `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/GTMEffectivenessReview.tsx` | Neue Datei (7 Sektionen) mit 6 GTM Dimensions und Execution Bridge Upsell |
+**Konsistenz mit GTM Effectiveness Review:** Nach dieser Änderung haben beide Decision Support Pages die gleiche Duration von 3-5 Days.
 
