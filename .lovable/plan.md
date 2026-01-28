@@ -1,52 +1,46 @@
 
 
-# Plan: Power Up Portfolio Performance - Landing Page + Kachel-Update
+# Plan: Power Up Custom Sprint - Landing Page + Kachel-Update
 
 ## Briefing Review
 
 ### URL-Korrektur erforderlich
 
-Das Briefing gibt `/solutions/power-up-portfolio-performance` an, aber gemaess etabliertem Pattern sollte die URL lauten:
+Das Briefing gibt `/solutions/power-up-custom-sprint` an, aber gemaess etabliertem Pattern sollte die URL lauten:
 
-**Korrekt:** `/solutions/power-up/portfolio-performance`
-
-### Kachel-Umbenennung
-
-Die Kachel "Power Up: Portfolio Quick Win" (ID 18) wird umbenannt zu **"Power Up: Portfolio Performance"**.
+**Korrekt:** `/solutions/power-up/custom-sprint`
 
 ### Metriken-Alignment: Kachel vs. Briefing
 
-| Metrik | Aktuelle Kachel (ID 18) | Briefing | Empfehlung |
+| Metrik | Aktuelle Kachel (ID 19) | Briefing | Empfehlung |
 |--------|-------------------------|----------|------------|
-| Metrik 1 | Portcos unblocked: 1-2 | Companies Fixed: 3-5 | Briefing uebernehmen |
-| Metrik 2 | KPI improvement: +20-40% | Portfolio IRR: +5-10pp | Briefing uebernehmen |
-| Metrik 3 | Intervention playbook delivered | Portfolio Value: +20-30% | Briefing uebernehmen |
+| Metrik 1 | Custom scope design | Bottleneck Fixed (✓ Identified) | Briefing uebernehmen |
+| Metrik 2 | 3 guaranteed outcomes | Solution Deployed (✓ Deployed) | Briefing uebernehmen |
+| Metrik 3 | Transition + handoff playbook | ROI Delivered (2-5x) | Briefing uebernehmen |
 | Duration | 30 days | 4-6 weeks | Briefing uebernehmen |
-| slug | power-up-portfolio | power-up-portfolio-performance | Aktualisieren |
+| slug | power-up-custom | power-up-custom-sprint | Aktualisieren |
 
-Die Metriken im Briefing sind umfassender und auf Portfolio-Ebene (nicht einzelne Portcos) - wir aktualisieren auf die Briefing-Werte.
+Die Metriken im Briefing sind klarer und outcome-fokussiert - wir aktualisieren auf die Briefing-Werte.
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 18, Zeilen 712-745)
+**Datei:** `src/data/solutionTiles.ts` (ID 19, Zeilen 746-779)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | power-up-portfolio | power-up-portfolio-performance |
-| headlineEn | Power Up: Portfolio Quick Win | Power Up: Portfolio Performance |
-| headlineDe | Power Up: Portfolio Quick Win | Power Up: Portfolio Performance |
-| problemEn | "You need to move the needle on 1-2 portcos..." | "Your portfolio is underperforming. 5-10 companies stuck..." |
+| slug | power-up-custom | power-up-custom-sprint |
+| problemEn | "Your bottleneck doesn't fit a standard track. You need a bespoke 30-day sprint." | "Your challenge is unique. It's not CAC crisis, not scaling chaos, not board pressure. Standard solutions don't fit your unique business model." |
 | problemDe | (entsprechend) | (entsprechend) |
-| solutionEn | "...unblock 1-2 portcos in 30 days..." | "...transform 3-5 underperforming companies in 4-6 weeks..." |
+| solutionEn | "We design a custom sprint around your unique constraint. 30 days..." | "We diagnose your unique bottleneck and build a custom solution in 4-6 weeks..." |
 | solutionDe | (entsprechend) | (entsprechend) |
-| deliverablesEn | [1-2 portcos, +20-40% KPI, Playbook] | [3-5 Companies Fixed, Portfolio IRR +5-10pp, Portfolio Value +20-30%] |
+| deliverablesEn | [Custom scope design, 3 guaranteed outcomes, Transition + handoff playbook] | [Custom Bottleneck Fixed, Custom Solution Deployed, ROI: 2-5x] |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Start Transformation | More About Portfolio Performance |
-| primaryCtaDe | Transformation starten | Mehr ueber Portfolio Performance |
+| primaryCtaEn | Discuss Scope | More About Custom Sprint |
+| primaryCtaDe | Scope besprechen | Mehr ueber Custom Sprint |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/power-up/portfolio-performance |
+| primaryCtaUrl | Calendly-Link | /solutions/power-up/custom-sprint |
 
 ---
 
@@ -55,73 +49,73 @@ Die Metriken im Briefing sind umfassender und auf Portfolio-Ebene (nicht einzeln
 **Datei:** `src/App.tsx`
 
 ```tsx
-const PowerUpPortfolioPerformance = lazy(() => import("./pages/PowerUpPortfolioPerformance"));
+const PowerUpCustomSprint = lazy(() => import("./pages/PowerUpCustomSprint"));
 
 // Route:
-<Route path="/solutions/power-up/portfolio-performance" element={<PowerUpPortfolioPerformance />} />
+<Route path="/solutions/power-up/custom-sprint" element={<PowerUpCustomSprint />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/PowerUpPortfolioPerformance.tsx`
+**Datei:** `src/pages/PowerUpCustomSprint.tsx`
 
-Struktur analog zu `PowerUpBoardReadiness.tsx` mit 7 Sektionen:
+Struktur analog zu `PowerUpPortfolioPerformance.tsx` mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Power Up Portfolio Performance`
+- **Breadcrumb:** `Solutions > Power Up Custom Sprint`
 - **Badge:** `Power Up . 4-6 Weeks . From EUR23.6K`
-- **Headline:** `Portfolio Underperforming -> Value Creation Unlocked`
-- **Subheadline:** Unlock portfolio value in 4-6 weeks...
-- **Stats:** 3-5 Companies Fixed | Portfolio IRR +5-10pp | Portfolio Value +20-30%
+- **Headline:** `Unique Bottleneck -> Custom Solution Deployed`
+- **Subheadline:** Fix your unique challenge in 4-6 weeks...
+- **Stats:** Bottleneck Fixed (✓ Identified, Week 1-2) | Solution Live (✓ Deployed, Week 2-4) | ROI Delivered (2-5x, Predicted)
 - **Trust Badges:** Outcome-Based Risk Sharing, 4-6 Week Sprint, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `Your Portfolio Is Underperforming`
+- **Headline:** `Your Challenge Doesn't Fit Standard Solutions`
 - **Symptome:**
-  - Low portfolio IRR: 15% (benchmark: 25%+)
-  - 5-10 companies stuck: CAC crisis, scaling chaos, board pressure
-  - Operating partner overwhelmed: 1 OP managing 20+ companies
-  - No systematic approach: Ad-hoc support, no playbooks
-  - LP pressure: "Why is portfolio performance so low?"
+  - Unique business model: Your GTM doesn't fit standard B2B SaaS playbooks
+  - Unique market: Your industry has specific constraints (regulated, complex)
+  - Unique product: Your product requires custom go-to-market approach
+  - Unique bottleneck: Your #1 constraint isn't covered by standard offerings
+  - No clear solution: Standard consultants don't understand your problem
 
 ### Section 3: Solution
-- **Headline:** `How We Unlock Portfolio Value`
+- **Headline:** `How We Build Your Custom Solution`
 - **3-Phasen-Ansatz:**
-  - Week 1-2: Identify (Portfolio Assessment, Bottleneck Diagnosis, Impact Prioritization, Transformation Plan)
-  - Week 2-4: Transform (3-5 companies parallel: CAC Crisis Fix, Scaling Chaos Fix, Board Pressure Fix)
-  - Week 4-6: Measure & Scale
+  - Week 1-2: Diagnose (Business Model Analysis, Market Analysis, Bottleneck Diagnosis, Solution Design)
+  - Week 2-4: Build (Option A: Custom GTM Playbook, Option B: Custom Operations System, Option C: Custom Product Strategy)
+  - Week 4-6: Validate & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - 3-5 Companies Transformed (Beispiel: Company A CAC -50%, Company B Decision Velocity +250%, Company C Board Confidence +27pp)
-  - Portfolio IRR +5-10pp (Beispiel: 15% -> 22%)
-  - Portfolio Value +20-30% (Beispiel: EUR100M -> EUR125M)
-- **Real Example:** EUR500M AUM VC Firm, Portfolio IRR +8pp, Portfolio Value +28%
+  - Custom Bottleneck Fixed (Beispiel: From "stuck" to "scaling" in 30 days)
+  - Custom Solution Deployed (Beispiel: Repeatable, scalable solution)
+  - ROI: 2-5x (Beispiel: EUR23.6K -> EUR50K-EUR120K return)
+- **Real Example:** Series B FinTech, EUR25M ARR, Custom GTM playbook, Sales Cycle -40%, Win Rate +25pp, 3x ROI
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown
 - Time Commitment (8-12h, 12-16h, 6-8h)
 - Outcome-Based Risk Sharing Details
-- Primary Metrics: Companies Transformed (#), Portfolio IRR (%), Portfolio Value (EUR)
+- Primary Metrics: Custom Bottleneck Fixed (✓/✗), Custom Solution Deployed (✓/✗), ROI Delivered (2-5x)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Portfolio IRR below target (15% vs. 25%)
-  - 5-10 companies stuck
-  - VC/PE firm with 10-50 portfolio companies, EUR200M-EUR2B AUM
+  - Challenge is unique (standard solutions don't fit)
+  - Unique bottleneck (GTM, operations, or product)
+  - Series A-D, EUR10M-EUR50M ARR, 50-200 people
   - Budget: EUR23.6K
 - **Not a Fit:**
-  - Fewer than 10 portfolio companies
-  - Needs full portfolio transformation (-> Portfolio Transformation 12-18 months)
-  - Just wants portfolio strategy deck
+  - Challenge fits a standard solution (-> Standard Power Up)
+  - Needs full custom transformation (-> Boost/Accelerate Custom)
+  - Just wants custom strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Unlock Portfolio Value?`
+- **Headline:** `Ready to Build Your Custom Solution?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Portfolio Assessment (EUR3.9K-EUR5.9K)
-- **FAQ:** Duration, Investment, Risk Sharing, References (GPs), ROI (100-500x), Operating Partner Training
+- **Secondary:** Expert Session: Custom Challenge (EUR490-EUR890)
+- **FAQ:** Duration, Investment, Risk Sharing, References (CEOs with similar challenges), ROI (2-5x), Unique Challenges (FinTech, B2B2C, vertical SaaS)
 
 ---
 
@@ -135,35 +129,36 @@ Die neue Landing Page verwendet die gleichen Patterns wie die anderen Power Up P
 - `Accordion` fuer FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons fuer Portfolio Performance
-- `Briefcase` - Portfolio/VC/PE
-- `TrendingUp` - IRR/Value Creation
-- `Building2` - Portfolio Companies
-- `Users` - Operating Partners
-- `BarChart3` - Metrics/Dashboard
-- `Target` - Bottleneck Diagnosis
-- `Layers` - Parallel Transformation
-- `PieChart` - Portfolio Allocation
+### Spezifische Icons fuer Custom Sprint
+- `Puzzle` - Custom/Unique
+- `Target` - Bottleneck Fixed
+- `Rocket` - Solution Deployed
+- `TrendingUp` - ROI
+- `Wrench` - Custom Build
+- `Settings` - Custom Operations
+- `Lightbulb` - Custom Strategy
+- `Layers` - Custom GTM
 
 ### Dateistruktur
 ```text
 src/
-  App.tsx                              # Neue Route hinzufuegen
+  App.tsx                           # Neue Route hinzufuegen
   data/
-    solutionTiles.ts                   # Kachel umbenennen + CTA aktualisieren
+    solutionTiles.ts                # Kachel Slug + Metriken + CTA aktualisieren
   pages/
-    PowerUpCACCrisis.tsx               # Referenz
-    PowerUpGrowthMomentum.tsx          # Referenz
-    PowerUpPricingPower.tsx            # Referenz
-    PowerUpNRREngine.tsx               # Referenz
-    PowerUpScalingVelocity.tsx         # Referenz
-    PowerUpAIQuickWins.tsx             # Referenz
-    PowerUpBoardReadiness.tsx          # Referenz
-    PowerUpPortfolioPerformance.tsx    # NEU
+    PowerUpCACCrisis.tsx            # Referenz
+    PowerUpGrowthMomentum.tsx       # Referenz
+    PowerUpPricingPower.tsx         # Referenz
+    PowerUpNRREngine.tsx            # Referenz
+    PowerUpScalingVelocity.tsx      # Referenz
+    PowerUpAIQuickWins.tsx          # Referenz
+    PowerUpBoardReadiness.tsx       # Referenz
+    PowerUpPortfolioPerformance.tsx # Referenz
+    PowerUpCustomSprint.tsx         # NEU
 ```
 
 ### URL-Pattern
-Gemaess etablierter Logik: `/solutions/power-up/portfolio-performance` (nicht `/solutions/power-up-portfolio-performance`)
+Gemaess etablierter Logik: `/solutions/power-up/custom-sprint` (nicht `/solutions/power-up-custom-sprint`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -173,7 +168,7 @@ Gemaess etablierter Logik: `/solutions/power-up/portfolio-performance` (nicht `/
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Power Up Portfolio Performance</span>
+    <span className="text-foreground font-medium">Power Up Custom Sprint</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
@@ -184,7 +179,7 @@ Gemaess etablierter Logik: `/solutions/power-up/portfolio-performance` (nicht `/
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 18: Umbenennung "Portfolio Quick Win" -> "Portfolio Performance" + Slug + Metriken + CTA + Duration aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 19: Slug + Metriken + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/PowerUpPortfolioPerformance.tsx` | Neue Datei (7 Sektionen) |
+| `src/pages/PowerUpCustomSprint.tsx` | Neue Datei (7 Sektionen) |
 
