@@ -1,85 +1,124 @@
 
 
-# Plan: DealDeskr.io Kachel visuell harmonisieren
+# Plan: Tool-Kacheln aktualisieren (KeyPitchs, lasr.io, ROI Calculator, Scaling Calculator)
 
-## Problem
+## Übersicht der Änderungen
 
-DealDeskr.io (kostenpflichtig) hat eine andere Umrandung und Button-Farbe als KeyPitchs (kostenlos), obwohl beide zur Kategorie "AI-Powered Tools" gehoeren.
+| Tool | Änderung |
+|------|----------|
+| KeyPitchs (ID 41) | Link korrigieren, Pricing anpassen |
+| lasr.io (ID 38) | Link korrigieren, Beschreibung komplett überarbeiten |
+| ROI Calculator (ID 39) | Link zu Homepage-Sektion ändern |
+| Scaling Calculator (ID 40) | CTA von "Try Now" auf "Coming soon" ändern |
 
-| Element | KeyPitchs (Free) | DealDeskr.io (Paid) |
-|---------|------------------|---------------------|
-| Umrandung | Orange (`border-accent/50`) | Standard (grau) |
-| Button | Farbiger Gradient | Outline (grau) |
+---
 
-## Ursache
+## 1. KeyPitchs (ID 41)
 
-In `SolutionTileCard.tsx` wird das Styling an `priceTag === 'free'` gekoppelt:
-- Zeile 81: `tile.priceTag === 'free' && "border-accent/50"`
-- Zeile 189-193: Button-Gradient nur fuer Free-Kacheln
+**Datei:** `src/data/solutionTiles.ts` (Zeilen 1468, 1491)
 
-## Loesung
+| Feld | Aktuell | Neu |
+|------|---------|-----|
+| `price` | `'Free'` | `'Trial Free, from €25'` |
+| `priceTag` | `'free'` | `'free'` (bleibt, da Trial kostenlos) |
+| `primaryCtaUrl` | `'https://keypitchs.com'` | `'https://keypitchs.com/'` |
 
-Die Styling-Logik erweitern, sodass **alle Tools-Kacheln** (`solutionType === 'tools'`) das Akzent-Styling erhalten - unabhaengig vom Preis.
+---
 
-**Datei:** `src/components/solutions/SolutionTileCard.tsx`
+## 2. lasr.io (ID 38)
 
-### Aenderung 1: Umrandung (Zeile 78-82)
+**Datei:** `src/data/solutionTiles.ts` (Zeilen 1364-1396)
 
-```typescript
-// Aktuell:
-<Card 
-  className={cn(
-    "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
-    "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-    tile.priceTag === 'free' && "border-accent/50"
-  )}
+### Änderungen:
 
-// Neu:
-<Card 
-  className={cn(
-    "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
-    "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-    (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50"
-  )}
+| Feld | Neu |
+|------|-----|
+| `primaryCtaUrl` | `'https://www.lasr.io/'` |
+| `solutionEn` | Basierend auf neuem Briefing |
+| `solutionDe` | Deutsche Übersetzung |
+| `deliverablesEn` | Neue 3 Punkte aus Briefing |
+| `deliverablesDe` | Deutsche Übersetzung |
+| `impactEn` | Neuer Impact-Text |
+| `impactDe` | Deutsche Übersetzung |
+
+### Neue Texte:
+
+**solutionEn:**
+```
+Assessment & Diagnosis: 12-minute analysis across 4 dimensions. Solo or team-based with multiple perspectives. Get Score 0-100, Peer Benchmarks, and Board-Ready Decks—100% free.
 ```
 
-### Aenderung 2: Button-Styling (Zeile 185-201)
-
-```typescript
-// Aktuell:
-<Button 
-  onClick={handlePrimaryClick}
-  className={cn(
-    "w-full",
-    tile.priceTag === 'free' 
-      ? "bg-gradient-to-r from-primary to-primary/80" 
-      : ""
-  )}
-  variant={tile.priceTag === 'free' ? 'default' : 'outline'}
->
-
-// Neu:
-const useAccentStyle = tile.priceTag === 'free' || tile.solutionType === 'tools';
-
-<Button 
-  onClick={handlePrimaryClick}
-  className={cn(
-    "w-full",
-    useAccentStyle && "bg-gradient-to-r from-primary to-primary/80"
-  )}
-  variant={useAccentStyle ? 'default' : 'outline'}
->
+**solutionDe:**
+```
+Assessment & Diagnose: 12-Minuten-Analyse über 4 Dimensionen. Allein oder im Team mit mehreren Perspektiven. Erhalte Score 0-100, Peer-Benchmarks und Board-Ready Decks—100% kostenlos.
 ```
 
-## Auswirkung
+**deliverablesEn:**
+```typescript
+[
+  '12 Minutes, 4 Dimensions, Team-capable',
+  'Score 0-100, Benchmarks, Board Decks',
+  'AI Ops Copilot with Issues, Recipes & Chat'
+]
+```
 
-Nach der Aenderung haben **alle Tools-Kacheln** (lasr.io, ROI Calculator, Scaling Calculator, KeyPitchs, DealDeskr.io) das gleiche visuelle Styling:
-- Orange Umrandung
-- Farbiger Gradient-Button
+**deliverablesDe:**
+```typescript
+[
+  '12 Minuten, 4 Dimensionen, Team-fähig',
+  'Score 0-100, Benchmarks, Board Decks',
+  'AI Ops Copilot mit Issues, Recipes & Chat'
+]
+```
+
+**impactEn:**
+```
+Identifies execution problems and generates concrete recipes with workstreams, steps, and milestones—structured across 30/90/180 days.
+```
+
+**impactDe:**
+```
+Identifiziert Ausführungsprobleme und generiert konkrete Rezepte mit Workstreams, Schritten und Meilensteinen—strukturiert über 30/90/180 Tage.
+```
+
+---
+
+## 3. ROI Calculator (ID 39)
+
+**Datei:** `src/data/solutionTiles.ts` (Zeile 1424-1425)
+
+| Feld | Aktuell | Neu |
+|------|---------|-----|
+| `primaryCtaUrl` | `'/roi-calculator'` | `'/#calculator'` |
+
+Dies führt zur Homepage mit Anker zur ROI-Rechner-Sektion.
+
+---
+
+## 4. Scaling Calculator (ID 40)
+
+**Datei:** `src/data/solutionTiles.ts` (Zeilen 1455-1458)
+
+| Feld | Aktuell | Neu |
+|------|---------|-----|
+| `primaryCtaEn` | `'Try Now'` | `'Coming soon'` |
+| `primaryCtaDe` | `'Jetzt ausprobieren'` | `'Coming soon'` |
+| `primaryCtaAction` | `'open-tool'` | `'disabled'` (oder Button disabled machen) |
+| `primaryCtaUrl` | `'/scaling-calculator'` | `''` (leer oder entfernen) |
+
+**Hinweis:** Da es keine "disabled" Action gibt, könnte der Button auch einfach keinen Link haben und visuell als "Coming soon" Text angezeigt werden.
+
+---
 
 ## Zusammenfassung
 
-| Datei | Aenderung |
-|-------|----------|
-| `src/components/solutions/SolutionTileCard.tsx` | Styling-Logik um `solutionType === 'tools'` Bedingung erweitern (Zeilen 81 und 185-201) |
+| Datei | Änderungen |
+|-------|-----------|
+| `src/data/solutionTiles.ts` | 4 Tool-Kacheln aktualisieren (IDs 38, 39, 40, 41) |
+
+## Technische Details
+
+### SolutionTileCard.tsx Anpassung
+
+Falls `primaryCtaAction: 'disabled'` nicht existiert, muss ggf. die Komponente erweitert werden um den "Coming soon" Button zu deaktivieren. Alternative: CTA-Text auf "Coming soon" setzen und URL leeren—dann öffnet sich nichts beim Klick.
 
