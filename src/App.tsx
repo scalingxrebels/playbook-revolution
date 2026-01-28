@@ -50,6 +50,7 @@ const AccelerateSustainableGrowth = lazy(() => import("./pages/AccelerateSustain
 const AccelerateExitReadiness = lazy(() => import("./pages/AccelerateExitReadiness"));
 const AccelerateAINativeScaling = lazy(() => import("./pages/AccelerateAINativeScaling"));
 const AcceleratePortfolioTransformation = lazy(() => import("./pages/AcceleratePortfolioTransformation"));
+const StrategicAdvisory = lazy(() => import("./pages/StrategicAdvisory"));
 
 const queryClient = new QueryClient();
 
@@ -113,6 +114,7 @@ const App = () => (
                 <Route path="/solutions/accelerate/exit-readiness" element={<AccelerateExitReadiness />} />
                 <Route path="/solutions/accelerate/ai-native-scaling" element={<AccelerateAINativeScaling />} />
                 <Route path="/solutions/accelerate/portfolio-transformation" element={<AcceleratePortfolioTransformation />} />
+                <Route path="/solutions/strategic-advisory" element={<StrategicAdvisory />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
