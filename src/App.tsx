@@ -34,6 +34,7 @@ const PowerUpNRREngine = lazy(() => import("./pages/PowerUpNRREngine"));
 const PowerUpScalingVelocity = lazy(() => import("./pages/PowerUpScalingVelocity"));
 const PowerUpAIQuickWins = lazy(() => import("./pages/PowerUpAIQuickWins"));
 const PowerUpBoardReadiness = lazy(() => import("./pages/PowerUpBoardReadiness"));
+const PowerUpPortfolioPerformance = lazy(() => import("./pages/PowerUpPortfolioPerformance"));
 
 const queryClient = new QueryClient();
 
@@ -81,6 +82,7 @@ const App = () => (
                 <Route path="/solutions/power-up/scaling-velocity" element={<PowerUpScalingVelocity />} />
                 <Route path="/solutions/power-up/ai-quick-wins" element={<PowerUpAIQuickWins />} />
                 <Route path="/solutions/power-up/board-readiness" element={<PowerUpBoardReadiness />} />
+                <Route path="/solutions/power-up/portfolio-performance" element={<PowerUpPortfolioPerformance />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
