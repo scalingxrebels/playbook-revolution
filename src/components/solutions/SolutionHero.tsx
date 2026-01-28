@@ -1,13 +1,18 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SharedHero from '@/components/shared/SharedHero';
+import { solutionTiles, challenges } from '@/data/solutionTiles';
 
 const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
+  // Dynamic counts from data
+  const solutionCount = solutionTiles.length;
+  const challengeCount = challenges.length - 1; // Minus "all"
+
   const stats = [
-    { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
-    { value: '40', label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
+    { value: String(challengeCount), label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
+    { value: String(solutionCount), label: { en: 'Solutions', de: 'Lösungen' }, color: 'primary' as const },
     { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
     { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
   ];
@@ -20,8 +25,8 @@ const SolutionHero: React.FC = () => {
       headlineLine1De="Finde die richtige Lösung"
       headlineLine2En="for Your Growth Challenge"
       headlineLine2De="für deine Growth Challenge"
-      subheadlineEn="40 solutions across 9 challenges. Filter by challenge or solution type to find what you need."
-      subheadlineDe="40 Lösungen für 9 Challenges. Filtere nach Challenge oder Solution Type, um das Richtige zu finden."
+      subheadlineEn={`${solutionCount} solutions across ${challengeCount} challenges. Filter by challenge or solution type to find what you need.`}
+      subheadlineDe={`${solutionCount} Lösungen für ${challengeCount} Challenges. Filtere nach Challenge oder Solution Type, um das Richtige zu finden.`}
       stats={stats}
     />
   );
