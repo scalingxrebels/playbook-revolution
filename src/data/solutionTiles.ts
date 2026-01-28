@@ -47,7 +47,7 @@ export interface SolutionTile {
   impactDe: string;
   primaryCtaEn: string;
   primaryCtaDe: string;
-  primaryCtaAction: 'book-call' | 'open-tool' | 'download' | 'learn-more' | 'external';
+  primaryCtaAction: 'book-call' | 'open-tool' | 'download' | 'learn-more' | 'external' | 'disabled';
   primaryCtaUrl: string;
   secondaryCtaEn?: string;
   secondaryCtaDe?: string;
@@ -1372,24 +1372,24 @@ export const solutionTiles: SolutionTile[] = [
     headlineDe: 'lasr.io',
     problemEn: "You don't know if you're ready to scale. You need a quick assessment—but don't want to book a call yet.",
     problemDe: 'Du weißt nicht, ob du bereit bist zu skalieren. Du brauchst ein schnelles Assessment—willst aber noch keinen Call buchen.',
-    solutionEn: 'AI-powered scaling readiness assessment. Get your θ_index score (0-1), identify C_min, and receive 3-5 next steps in 15 minutes.',
-    solutionDe: 'AI-gesteuertes Scaling Readiness Assessment. Erhalte deinen θ_index Score (0-1), identifiziere C_min und erhalte 3-5 nächste Schritte in 15 Minuten.',
+    solutionEn: 'Assessment & Diagnosis: 12-minute analysis across 4 dimensions. Solo or team-based with multiple perspectives. Get Score 0-100, Peer Benchmarks, and Board-Ready Decks—100% free.',
+    solutionDe: 'Assessment & Diagnose: 12-Minuten-Analyse über 4 Dimensionen. Allein oder im Team mit mehreren Perspektiven. Erhalte Score 0-100, Peer-Benchmarks und Board-Ready Decks—100% kostenlos.',
     deliverablesEn: [
-      'θ_index score (0-1 scale)',
-      'C_min identification (bottleneck)',
-      '3-5 next steps with ROI'
+      '12 Minutes, 4 Dimensions, Team-capable',
+      'Score 0-100, Benchmarks, Board Decks',
+      'AI Ops Copilot with Issues, Recipes & Chat'
     ],
     deliverablesDe: [
-      'θ_index Score (0-1 Skala)',
-      'C_min Identifikation (Engpass)',
-      '3-5 nächste Schritte mit ROI'
+      '12 Minuten, 4 Dimensionen, Team-fähig',
+      'Score 0-100, Benchmarks, Board Decks',
+      'AI Ops Copilot mit Issues, Recipes & Chat'
     ],
-    impactEn: 'Get your scaling readiness score in 15 minutes. Know exactly where to focus next.',
-    impactDe: 'Erhalte deinen Scaling Readiness Score in 15 Minuten. Wisse genau, worauf du dich als Nächstes konzentrieren solltest.',
+    impactEn: 'Identifies execution problems and generates concrete recipes with workstreams, steps, and milestones—structured across 30/90/180 days.',
+    impactDe: 'Identifiziert Ausführungsprobleme und generiert konkrete Rezepte mit Workstreams, Schritten und Meilensteinen—strukturiert über 30/90/180 Tage.',
     primaryCtaEn: 'Try Now',
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'open-tool',
-    primaryCtaUrl: 'https://lasr.io',
+    primaryCtaUrl: 'https://www.lasr.io/',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
@@ -1422,7 +1422,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaEn: 'Try Now',
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'open-tool',
-    primaryCtaUrl: '/roi-calculator',
+    primaryCtaUrl: '/#calculator',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
@@ -1452,10 +1452,10 @@ export const solutionTiles: SolutionTile[] = [
     ],
     impactEn: 'Get your scaling readiness score in 10 minutes. Know exactly where to focus next.',
     impactDe: 'Erhalte deinen Scaling Readiness Score in 10 Minuten. Wisse genau, worauf du dich als Nächstes konzentrieren solltest.',
-    primaryCtaEn: 'Try Now',
-    primaryCtaDe: 'Jetzt ausprobieren',
-    primaryCtaAction: 'open-tool',
-    primaryCtaUrl: '/scaling-calculator',
+    primaryCtaEn: 'Coming soon',
+    primaryCtaDe: 'Coming soon',
+    primaryCtaAction: 'disabled',
+    primaryCtaUrl: '',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
@@ -1465,7 +1465,7 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'keypitchs',
     solutionType: 'tools',
     challenges: ['cac-crisis'],
-    price: 'Free',
+    price: 'Trial Free, from €25',
     priceTag: 'free',
     headlineEn: 'KeyPitchs',
     headlineDe: 'KeyPitchs',
@@ -1488,7 +1488,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaEn: 'Try Now',
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'open-tool',
-    primaryCtaUrl: 'https://keypitchs.com',
+    primaryCtaUrl: 'https://keypitchs.com/',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
