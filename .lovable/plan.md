@@ -1,47 +1,50 @@
 
 
-# Plan: Power Up AI Quick Wins - Landing Page + Kachel-Update
+# Plan: Power Up Board Readiness - Landing Page + Kachel-Update
 
 ## Briefing Review
 
 ### URL-Korrektur erforderlich
 
-Das Briefing gibt `/solutions/power-up-ai-quick-wins` an, aber gemäß etabliertem Pattern sollte die URL lauten:
+Das Briefing gibt `/solutions/power-up-board-readiness` an, aber gemaess etabliertem Pattern sollte die URL lauten:
 
-**Korrekt:** `/solutions/power-up/ai-quick-wins`
+**Korrekt:** `/solutions/power-up/board-readiness`
+
+### Kachel-Umbenennung
+
+Die Kachel "Power Up: Board Ready" (ID 17) wird umbenannt zu **"Power Up: Board Readiness"**.
 
 ### Metriken-Alignment: Kachel vs. Briefing
 
-| Metrik | Aktuelle Kachel (ID 16) | Briefing | Empfehlung |
+| Metrik | Aktuelle Kachel (ID 17) | Briefing | Empfehlung |
 |--------|-------------------------|----------|------------|
-| AI Use Cases | 1-2 deployed | 3-5 Implemented | Briefing übernehmen |
-| Productivity/Speed | +20-40% | +30-50% Operations Speed | Briefing übernehmen |
-| theta_index | +0.1-0.2 | +0.2-0.3 | Briefing übernehmen |
-| Duration | 30 days | 4-6 weeks | Briefing übernehmen |
+| Metrik 1 | Board Satisfaction: +30-50% | Board Confidence: +20-30pp | Briefing uebernehmen |
+| Metrik 2 | Meeting Efficiency: +20-40% | Board Prep Time: -50-70% | Briefing uebernehmen |
+| Metrik 3 | Strategic Alignment: +20-30% | Rule of 40: +10-20pp | Briefing uebernehmen |
+| Duration | 30 days | 4-6 weeks | Briefing uebernehmen |
+| slug | power-up-board | power-up-board-readiness | Aktualisieren |
 
-Die Kachel-Metriken sind konservativer als das Briefing - wir aktualisieren auf die Briefing-Werte.
-
-### Headline-Diskrepanz
-
-Das Briefing verwendet "AI Laggard -> AI-Powered in 30 Days" als H1, aber die Duration ist "4-6 Weeks". Empfehlung: Headline anpassen zu **"AI Laggard -> AI-Powered"** (ohne Zeitangabe, da 4-6 Wochen im Badge steht).
+Die Metriken im Briefing sind spezifischer und messbarer - wir aktualisieren auf die Briefing-Werte.
 
 ---
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 16, Zeilen 644-677)
+**Datei:** `src/data/solutionTiles.ts` (ID 17, Zeilen 679-711)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | power-up-ai | power-up-ai-quick-wins |
-| solutionEn | "...in 30 days: ... 1-2 AI use-cases..." | "...in 4-6 weeks... 3-5 AI use cases..." |
-| solutionDe | "...in 30 Tagen: ... 1-2 AI Use-Cases..." | "...in 4-6 Wochen... 3-5 AI Use Cases..." |
-| deliverablesEn | [1-2 use cases, +20-40%, +0.1-0.2] | [3-5 AI Use Cases, +30-50% Operations Speed, +0.2-0.3 theta_index] |
+| slug | power-up-board | power-up-board-readiness |
+| headlineEn | Power Up: Board Ready | Power Up: Board Readiness |
+| headlineDe | Power Up: Board Ready | Power Up: Board Readiness |
+| solutionEn | "...in 30 days..." | "...in 4-6 weeks..." |
+| solutionDe | "...in 30 Tagen..." | "...in 4-6 Wochen..." |
+| deliverablesEn | Board satisfaction +30-50%, Meeting efficiency +20-40%, Strategic alignment +20-30% | Board Confidence: +20-30pp, Board Prep Time: -50-70%, Rule of 40: +10-20pp |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Start Transformation | More About AI Quick Wins |
-| primaryCtaDe | Transformation starten | Mehr uber AI Quick Wins |
+| primaryCtaEn | Start Transformation | More About Board Readiness |
+| primaryCtaDe | Transformation starten | Mehr ueber Board Readiness |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/power-up/ai-quick-wins |
+| primaryCtaUrl | Calendly-Link | /solutions/power-up/board-readiness |
 
 ---
 
@@ -50,73 +53,73 @@ Das Briefing verwendet "AI Laggard -> AI-Powered in 30 Days" als H1, aber die Du
 **Datei:** `src/App.tsx`
 
 ```tsx
-const PowerUpAIQuickWins = lazy(() => import("./pages/PowerUpAIQuickWins"));
+const PowerUpBoardReadiness = lazy(() => import("./pages/PowerUpBoardReadiness"));
 
 // Route:
-<Route path="/solutions/power-up/ai-quick-wins" element={<PowerUpAIQuickWins />} />
+<Route path="/solutions/power-up/board-readiness" element={<PowerUpBoardReadiness />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/PowerUpAIQuickWins.tsx`
+**Datei:** `src/pages/PowerUpBoardReadiness.tsx`
 
 Struktur analog zu `PowerUpScalingVelocity.tsx` mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Power Up AI Quick Wins`
+- **Breadcrumb:** `Solutions > Power Up Board Readiness`
 - **Badge:** `Power Up . 4-6 Weeks . From EUR23.6K`
-- **Headline:** `AI Laggard -> AI-Powered`
-- **Subheadline:** Get your first AI wins in 4-6 weeks...
-- **Stats:** AI Maturity +0.2-0.3 (theta_index) | 3-5 AI Use Cases Implemented | Operations Speed +30-50%
+- **Headline:** `Board Pressure -> Board Confidence Restored`
+- **Subheadline:** Get board-ready in 4-6 weeks...
+- **Stats:** Board Confidence +20-30pp | Board Prep Time -50-70% | Rule of 40 +10-20pp
 - **Trust Badges:** Outcome-Based Risk Sharing, 4-6 Week Sprint, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `You're Falling Behind on AI`
+- **Headline:** `Your Board Is Losing Confidence`
 - **Symptome:**
-  - Low AI maturity: theta_index 0.3 (benchmark: 0.7+)
-  - No AI use cases: 0 implemented (benchmark: 10+)
-  - No AI tools: 0 deployed (benchmark: 5+)
-  - Competitor gap: 3-5x slower than AI-native competitors
-  - Board pressure: "When will we be AI-native?"
+  - Low board confidence: 40-60% (benchmark: 80%+)
+  - Long board prep: 5-7 days/quarter (benchmark: 24-48h)
+  - Poor Rule of 40: 10% (benchmark: 40%+)
+  - No board framework: Ad-hoc reporting
+  - Valuation discount: 30-40% below peers
 
 ### Section 3: Solution
-- **Headline:** `How We Deliver Your First AI Wins`
+- **Headline:** `How We Restore Board Confidence`
 - **3-Phasen-Ansatz:**
-  - Week 1-2: Identify (AI Maturity Assessment, Operations Analysis, Quick Win Identification, Tool Selection)
-  - Week 2-4: Implement (3-5 AI use cases live in production - lead scoring, support, content, analysis, automation)
-  - Week 4-6: Measure & Scale
+  - Week 1-2: Diagnose (Board Confidence, Rule of 40, Board Prep, Governance Analysis)
+  - Week 2-4: Build (Strategic Narrative, Rule of 40 Improvement, Board Reporting System)
+  - Week 4-6: Validate & Prepare
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - theta_index +0.2-0.3 (Beispiel: 0.3 -> 0.5-0.6)
-  - 3-5 AI Use Cases Implemented (live in production, not POC)
-  - Operations Speed +30-50% (Beispiel: 5+ hours/day freed up)
-- **Real Example:** Series B SaaS, EUR25M ARR, theta_index +0.3, 5 AI use cases live, Operations Speed +45%
+  - Board Confidence +20-30pp (Beispiel: 50% -> 75%)
+  - Board Prep Time -50-70% (Beispiel: 5-7d -> 24-48h)
+  - Rule of 40 +10-20pp (Beispiel: 10% -> 25%)
+- **Real Example:** Series B SaaS, EUR30M ARR, Board Confidence +28pp
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown
 - Time Commitment (8-12h, 12-16h, 6-8h)
 - Outcome-Based Risk Sharing Details
-- Primary Metrics: theta_index (AI Maturity), AI Use Cases Implemented (#), Operations Speed (%)
+- Primary Metrics: Board Confidence (%), Rule of 40 (%), Board Prep Time (days)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - AI maturity is low (theta_index < 0.5)
-  - Competitors are 3-5x faster with AI
+  - Board confidence is low (40-60%, trending down)
+  - Board prep takes too long (5-7 days/quarter)
   - Series A-D, EUR10M-EUR50M ARR
   - Budget: EUR23.6K
 - **Not a Fit:**
-  - Already AI-native (theta_index > 0.7)
-  - Needs full AI transformation (-> Boost/Accelerate)
-  - Just wants AI strategy deck
+  - Don't have a board (pre-Series A)
+  - Needs full governance transformation (-> Boost/Accelerate)
+  - Just wants board strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Get Your First AI Wins?`
+- **Headline:** `Ready to Restore Board Confidence?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Expert Session: AI Strategy (EUR490-EUR890)
-- **FAQ:** Duration, Investment, Risk Sharing, References (CTOs), ROI, AI Tools (OpenAI, Anthropic, custom models, no-code tools)
+- **Secondary:** Expert Session: Board Governance (EUR490-EUR890)
+- **FAQ:** Duration, Investment, Risk Sharing, References (CEOs), ROI, Board Work
 
 ---
 
@@ -124,41 +127,39 @@ Struktur analog zu `PowerUpScalingVelocity.tsx` mit 7 Sektionen:
 
 ### Komponenten-Wiederverwendung
 Die neue Landing Page verwendet die gleichen Patterns wie die anderen Power Up Pages:
-- `TwinklingStars` fur Hero-Hintergrund
-- `useParallaxLayers` fur Parallax-Effekte
-- `useScrollAnimation` fur Scroll-basierte Animationen
-- `Accordion` fur FAQ-Bereich
+- `TwinklingStars` fuer Hero-Hintergrund
+- `useParallaxLayers` fuer Parallax-Effekte
+- `useScrollAnimation` fuer Scroll-basierte Animationen
+- `Accordion` fuer FAQ-Bereich
 - Bilingual (DE/EN) mit `useLanguage`
 
-### Spezifische Icons fur AI Quick Wins
-- `Zap` - Speed/Quick Wins
-- `Bot` oder `Sparkles` - AI/ML
-- `BarChart3` - Metrics/theta_index
-- `Layers` - Use Cases
-- `TrendingUp` - Operations Speed
-- `Target` - Lead Scoring
-- `MessageCircle` - Customer Support
-- `FileText` - Content Generation
-- `Search` - Data Analysis
-- `Settings` - Workflow Automation
+### Spezifische Icons fuer Board Readiness
+- `Users` - Board/Stakeholders
+- `TrendingUp` - Confidence/Rule of 40
+- `Clock` - Board Prep Time
+- `BarChart3` - Metrics/Dashboard
+- `FileText` - Board Materials/Narrative
+- `Shield` - Governance Framework
+- `Target` - Strategic Clarity
 
 ### Dateistruktur
 ```text
 src/
-  App.tsx                          # Neue Route hinzufugen
+  App.tsx                          # Neue Route hinzufuegen
   data/
-    solutionTiles.ts             # Kachel-Metriken + CTA aktualisieren
+    solutionTiles.ts             # Kachel umbenennen + CTA aktualisieren
   pages/
     PowerUpCACCrisis.tsx         # Referenz
     PowerUpGrowthMomentum.tsx    # Referenz
     PowerUpPricingPower.tsx      # Referenz
     PowerUpNRREngine.tsx         # Referenz
     PowerUpScalingVelocity.tsx   # Referenz
-    PowerUpAIQuickWins.tsx       # NEU
+    PowerUpAIQuickWins.tsx       # Referenz
+    PowerUpBoardReadiness.tsx    # NEU
 ```
 
 ### URL-Pattern
-Gemass etablierter Logik: `/solutions/power-up/ai-quick-wins` (nicht `/solutions/power-up-ai-quick-wins`)
+Gemaess etablierter Logik: `/solutions/power-up/board-readiness` (nicht `/solutions/power-up-board-readiness`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -168,18 +169,18 @@ Gemass etablierter Logik: `/solutions/power-up/ai-quick-wins` (nicht `/solutions
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Power Up AI Quick Wins</span>
+    <span className="text-foreground font-medium">Power Up Board Readiness</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
 
 ---
 
-## Zusammenfassung der Anderungen
+## Zusammenfassung der Aenderungen
 
-| Datei | Anderung |
+| Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 16: Slug + Metriken + CTA + Duration aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 17: Umbenennung "Board Ready" -> "Board Readiness" + Slug + Metriken + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/PowerUpAIQuickWins.tsx` | Neue Datei (7 Sektionen) |
+| `src/pages/PowerUpBoardReadiness.tsx` | Neue Datei (7 Sektionen) |
 
