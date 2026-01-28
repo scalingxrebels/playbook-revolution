@@ -228,4 +228,3 @@ Die Seite positioniert Exit-Readiness als Vorbereitung fuer:
 | `src/data/solutionTiles.ts` | Kachel ID 32: Slug + Metriken + Duration + CTA aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import (dritte Accelerate Route) |
 | `src/pages/AccelerateExitReadiness.tsx` | Neue Datei (7 Sektionen) - Dritte Accelerate Landing Page |
-

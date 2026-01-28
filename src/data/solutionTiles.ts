@@ -1195,7 +1195,7 @@ export const solutionTiles: SolutionTile[] = [
   },
   {
     id: 32,
-    slug: 'accelerate-exit',
+    slug: 'accelerate-exit-readiness',
     solutionType: 'transformation',
     transformationTier: 'accelerate',
     challenges: ['board-pressure'],
@@ -1203,26 +1203,26 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'Accelerate: Exit-Readiness',
     headlineDe: 'Accelerate: Exit-Readiness',
-    problemEn: "You have 12-18 months to an exit and need to maximize valuation. Every valuation driver must be optimized.",
-    problemDe: 'Du hast 12-18 Monate bis zum Exit und musst die Bewertung maximieren. Jeder Bewertungstreiber muss optimiert werden.',
-    solutionEn: 'We optimize every valuation driver in 12-16 weeks: valuation driver audit, exit narrative build, ops cleanup for DD.',
-    solutionDe: 'Wir optimieren jeden Bewertungstreiber in 12-16 Wochen: Bewertungstreiber Audit, Exit Narrative Build, Ops Cleanup für DD.',
+    problemEn: "Your board is losing confidence—and your exit is at risk. Board Confidence is 40-60% (benchmark: 85-95%). Valuation is 3-5x ARR (benchmark: 10-15x for AI-native). Exit readiness is 0% (benchmark: 100% for Series C+).",
+    problemDe: 'Dein Board verliert Vertrauen—und dein Exit ist gefährdet. Board Confidence liegt bei 40-60% (Benchmark: 85-95%). Bewertung bei 3-5x ARR (Benchmark: 10-15x für AI-native). Exit-Readiness bei 0% (Benchmark: 100% für Series C+).',
+    solutionEn: 'We transform your entire governance model from Level 1 to Level 2 in 12 months: Board Confidence +60-80pp, Valuation Premium +200-400%, Exit Readiness 0% → 100%—with 2 of 3 outcomes guaranteed.',
+    solutionDe: 'Wir transformieren dein gesamtes Governance-Modell von Level 1 zu Level 2 in 12 Monaten: Board Confidence +60-80pp, Valuation Premium +200-400%, Exit Readiness 0% → 100% – mit 2 von 3 Ergebnissen garantiert.',
     deliverablesEn: [
-      'Valuation uplift: +20-40%',
-      'Exit narrative deployed',
-      'DD-ready operations'
+      'Board Confidence: +60-80pp',
+      'Valuation Premium: +200-400%',
+      'Exit Readiness: 0% → 100%'
     ],
     deliverablesDe: [
-      'Bewertungs-Uplift: +20-40%',
-      'Exit Narrative deployed',
-      'DD-Ready Operations'
+      'Board Confidence: +60-80pp',
+      'Valuation Premium: +200-400%',
+      'Exit Readiness: 0% → 100%'
     ],
-    impactEn: 'Increase valuation by 20-40%, deploy exit narrative, achieve DD-ready operations in 12-16 weeks. Exit at top-quartile multiples.',
-    impactDe: 'Steigere Bewertung um 20-40%, deploye Exit Narrative, erreiche DD-Ready Operations in 12-16 Wochen. Exit zu Top-Quartil Multiples.',
-    primaryCtaEn: 'Start Accelerate',
-    primaryCtaDe: 'Accelerate starten',
-    primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/accelerate',
+    impactEn: 'Achieve Board Confidence +60-80pp, Valuation Premium +200-400%, Exit Readiness 0% → 100% in 12 months. Become exit-ready for Series C+ or M&A.',
+    impactDe: 'Erreiche Board Confidence +60-80pp, Valuation Premium +200-400%, Exit Readiness 0% → 100% in 12 Monaten. Werde exit-ready für Series C+ oder M&A.',
+    primaryCtaEn: 'More About Exit-Readiness',
+    primaryCtaDe: 'Mehr über Exit-Readiness',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/accelerate/exit-readiness',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
     secondaryCtaUrl: '/cases/exit-accelerate'
