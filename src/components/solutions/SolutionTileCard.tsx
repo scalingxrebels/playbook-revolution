@@ -48,6 +48,9 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
   const Icon = typeIcons[tile.solutionType];
 
   const handlePrimaryClick = () => {
+    if (tile.primaryCtaAction === 'disabled') {
+      return; // Do nothing for disabled buttons
+    }
     if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'book-call' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
     } else if (tile.primaryCtaUrl) {
@@ -72,6 +75,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
   };
 
   const isExternalAction = tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool';
+  const isDisabled = tile.primaryCtaAction === 'disabled';
 
   return (
     <Card 
@@ -189,16 +193,18 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
                 onClick={handlePrimaryClick}
                 className={cn(
                   "w-full",
-                  useAccentStyle && "bg-gradient-to-r from-primary to-primary/80"
+                  useAccentStyle && !isDisabled && "bg-gradient-to-r from-primary to-primary/80",
+                  isDisabled && "cursor-not-allowed opacity-60"
                 )}
-                variant={useAccentStyle ? 'default' : 'outline'}
+                variant={isDisabled ? 'outline' : (useAccentStyle ? 'default' : 'outline')}
+                disabled={isDisabled}
               >
                 {primaryCta}
-                {isExternalAction ? (
+                {!isDisabled && (isExternalAction ? (
                   <ExternalLink className="w-4 h-4 ml-2" />
                 ) : (
                   <ArrowRight className="w-4 h-4 ml-2" />
-                )}
+                ))}
               </Button>
               
               {secondaryCta && tile.secondaryCtaUrl && (
