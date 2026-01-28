@@ -1,30 +1,25 @@
 
 
-# Plan: Boost Pricing Dominance - Landing Page + Kachel-Umbenennung
+# Plan: Boost NRR Machine - Landing Page + Kachel-Update
 
 ## Briefing Review
 
 ### URL-Korrektur erforderlich
 
-Das Briefing gibt `/solutions/boost-pricing-dominance` an, aber gemaess etabliertem Pattern (analog zu anderen Boost Pages) sollte die URL lauten:
+Das Briefing gibt `/solutions/boost-nrr-machine` an, aber gemaess etabliertem Pattern (analog zu anderen Boost Pages) sollte die URL lauten:
 
-**Korrekt:** `/solutions/boost/pricing-dominance`
-
-### Umbenennung der Kachel
-
-Die Kachel muss von "Boost: Pricing Architecture" zu "Boost: Pricing Dominance" umbenannt werden - ein staerkerer, outcome-fokussierter Name.
+**Korrekt:** `/solutions/boost/nrr-machine`
 
 ### Metriken-Alignment: Kachel vs. Briefing
 
-| Metrik | Aktuelle Kachel (ID 22) | Briefing | Empfehlung |
+| Metrik | Aktuelle Kachel (ID 23) | Briefing | Empfehlung |
 |--------|-------------------------|----------|------------|
-| Headline | Boost: Pricing Architecture | Boost: Pricing Dominance | Briefing uebernehmen |
-| Metrik 1 | Revenue increase: +20-35% | ARPU: +50-100% | Briefing uebernehmen |
-| Metrik 2 | ARPU increase: +25-45% | Gross Margin: +15-20pp | Briefing uebernehmen |
-| Metrik 3 | Pricing architecture deployed | Discounting: -30-50% | Briefing uebernehmen |
+| Metrik 1 | NRR: 120%+ | Churn: -50-75% | Briefing uebernehmen |
+| Metrik 2 | Churn reduction: -40-60% | NRR: +30-50pp | Briefing uebernehmen |
+| Metrik 3 | Expansion revenue: +50-80% | Expansion Rate: +100-200% | Briefing uebernehmen |
 | Duration | 8-10 weeks | 90 days (12 weeks) | Briefing uebernehmen |
 | Price | EUR58K | EUR60K-EUR78K | Briefing uebernehmen |
-| slug | boost-pricing | boost-pricing-dominance | Aktualisieren |
+| slug | boost-nrr | boost-nrr-machine | Aktualisieren |
 
 Die Metriken im Briefing sind aggressiver und beinhalten die "2 of 3 Outcomes Guaranteed" Struktur konsistent mit anderen Boost Pages.
 
@@ -32,24 +27,22 @@ Die Metriken im Briefing sind aggressiver und beinhalten die "2 of 3 Outcomes Gu
 
 ## 1. Kachel-Update in solutionTiles.ts
 
-**Datei:** `src/data/solutionTiles.ts` (ID 22, Zeilen 852-885)
+**Datei:** `src/data/solutionTiles.ts` (ID 23, Zeilen 886-919)
 
 | Feld | Aktuell | Neu |
 |------|---------|-----|
-| slug | boost-pricing | boost-pricing-dominance |
-| headlineEn | Boost: Pricing Architecture | Boost: Pricing Dominance |
-| headlineDe | Boost: Pricing-Architektur | Boost: Pricing-Dominanz |
+| slug | boost-nrr | boost-nrr-machine |
 | price | EUR58K | EUR60K-EUR78K |
-| problemEn | "Your pricing needs a complete overhaul..." | "Your pricing is broken. ARPU stagnated at EUR500, gross margin dropped to 50%, sales team discounting 30-50%. Board is asking: Why are we leaving money on the table?" |
+| problemEn | "Customer success is a cost center..." | "Your customer success is broken. Churn has climbed to 20%+, NRR dropped to 90%, expansion rate at 5%. Board is asking: Why are we losing customers?" |
 | problemDe | (entsprechend) | (entsprechend) |
-| solutionEn | "We redesign your entire pricing architecture in 8-10 weeks..." | "We rebuild your entire pricing architecture in 90 days: ARPU +50-100%, Gross Margin +15-20pp, Discounting -30-50%—with 2 of 3 outcomes guaranteed." |
+| solutionEn | "We transform CS into a revenue function in 8-10 weeks..." | "We rebuild your entire CS engine in 90 days: Churn -50-75%, NRR +30-50pp, Expansion Rate +100-200% - with 2 of 3 outcomes guaranteed." |
 | solutionDe | (entsprechend) | (entsprechend) |
-| deliverablesEn | [Revenue +20-35%, ARPU +25-45%, Architecture deployed] | [ARPU: +50-100%, Gross Margin: +15-20pp, Discounting: -30-50%] |
+| deliverablesEn | [NRR: 120%+, Churn -40-60%, Expansion +50-80%] | [Churn: -50-75%, NRR: +30-50pp, Expansion Rate: +100-200%] |
 | deliverablesDe | (entsprechend) | (entsprechend) |
-| primaryCtaEn | Start Boost | More About Pricing Dominance |
-| primaryCtaDe | Boost starten | Mehr ueber Pricing Dominance |
+| primaryCtaEn | Start Boost | More About NRR Machine |
+| primaryCtaDe | Boost starten | Mehr ueber NRR Machine |
 | primaryCtaAction | book-call | learn-more |
-| primaryCtaUrl | Calendly-Link | /solutions/boost/pricing-dominance |
+| primaryCtaUrl | Calendly-Link | /solutions/boost/nrr-machine |
 
 ---
 
@@ -58,80 +51,80 @@ Die Metriken im Briefing sind aggressiver und beinhalten die "2 of 3 Outcomes Gu
 **Datei:** `src/App.tsx`
 
 ```tsx
-const BoostPricingDominance = lazy(() => import("./pages/BoostPricingDominance"));
+const BoostNRRMachine = lazy(() => import("./pages/BoostNRRMachine"));
 
 // Route:
-<Route path="/solutions/boost/pricing-dominance" element={<BoostPricingDominance />} />
+<Route path="/solutions/boost/nrr-machine" element={<BoostNRRMachine />} />
 ```
 
 ---
 
 ## 3. Neue Landing Page erstellen
 
-**Datei:** `src/pages/BoostPricingDominance.tsx`
+**Datei:** `src/pages/BoostNRRMachine.tsx`
 
-Struktur analog zu `BoostGrowthEngine.tsx` und `BoostEfficientHypergrowth.tsx` mit 7 Sektionen:
+Struktur analog zu `BoostPricingDominance.tsx` und anderen Boost Pages mit 7 Sektionen:
 
 ### Section 1: Hero
-- **Breadcrumb:** `Solutions > Boost Pricing Dominance`
+- **Breadcrumb:** `Solutions > Boost NRR Machine`
 - **Badge:** `Boost . 90 Days . EUR60K-EUR78K`
-- **Headline:** `Pricing Breakdown -> Pricing Dominance Built`
-- **Subheadline:** Build your pricing dominance in 90 days...
-- **Stats:** ARPU +50-100% | Margin +15-20pp | Discounting -30-50%
+- **Headline:** `Customer Success Broken -> NRR Machine Built`
+- **Subheadline:** Build your NRR machine in 90 days...
+- **Stats:** Churn -50-75% | NRR +30-50pp | Expansion Rate +100-200%
 - **Trust Badges:** 2 of 3 Outcomes Guaranteed (or 50% Refund), 90-Day Transformation, Reference Calls Available
 
 ### Section 2: Problem
-- **Headline:** `Your Pricing Is Broken`
+- **Headline:** `Your Customer Success Is Broken`
 - **Symptome:**
-  - ARPU stagnation: EUR500 (benchmark: EUR1,000+)
-  - Margin compression: 50% gross margin (benchmark: 75%+)
-  - Excessive discounting: 30-50% discounts (benchmark: 10-15%)
-  - Value metric unclear: Pricing not aligned to customer value
-  - Board pressure: "Why are we leaving money on the table?"
+  - High churn: 20%+ annually (benchmark: <10%)
+  - Low NRR: 90% (benchmark: 120%+)
+  - No expansion: 5% expansion rate (benchmark: 25%+)
+  - Reactive CS: Fighting fires, no proactive retention
+  - Board pressure: "Why are we losing customers?"
 
 ### Section 3: Solution
-- **Headline:** `How We Build Your Pricing Dominance`
+- **Headline:** `How We Build Your NRR Machine`
 - **3-Phasen-Ansatz (90 Days):**
-  - Week 1-2: Diagnose (Pricing Analysis, Value Metric Analysis, Packaging Analysis, Willingness-to-Pay Research)
-  - Week 3-8: Build (Pricing Strategy C1, Pricing Execution C3, Pricing Discipline)
+  - Week 1-2: Diagnose (Churn Analysis, NRR Analysis, CS Operations Audit, AI Readiness)
+  - Week 3-8: Build (Retention Loops, Expansion Engine, CS Operations)
   - Week 9-12: Validate & Scale
 
 ### Section 4: Impact/Outcome
 - **Metrics:**
-  - ARPU +50-100% (Beispiel: EUR500 -> EUR750-EUR1,000)
-  - Gross Margin +15-20pp (Beispiel: 50% -> 65-70%)
-  - Discounting -30-50% (Beispiel: 40% -> 10-15%)
-- **Real Example:** Series B SaaS, EUR18M ARR, ARPU +78%, Gross Margin +18pp, Discounting -32pp
+  - Churn -50-75% (Beispiel: 20% -> 5-10%)
+  - NRR +30-50pp (Beispiel: 90% -> 120-140%)
+  - Expansion Rate +100-200% (Beispiel: 5% -> 15-25%)
+- **Real Example:** Series B SaaS, EUR22M ARR, Churn -68%, NRR +42pp, Expansion Rate +400%
 
 ### Section 5: Process (How We Work)
 - Week-by-Week Breakdown (90 Days)
 - Time Commitment (12-16h, 20-30h, 10-15h)
 - **2 of 3 Outcomes Guaranteed** (oder 50% Refund)
-- Primary Metrics: ARPU (EUR), Gross Margin (%), Discounting (%)
+- Primary Metrics: Churn (%), NRR (%), Expansion Rate (%)
 
 ### Section 6: Qualification (Who It's For)
 - **Good Fit:**
-  - Pricing broken (ARPU stagnation, margin compression, excessive discounting)
-  - Multiple pricing problems (value metric, packaging, sales discipline)
+  - CS broken (high churn, low NRR, no expansion)
+  - Multiple CS problems (reactive CS, no churn prediction, no expansion playbooks)
   - Series A-C, EUR10M-EUR50M ARR, 50-200 people
   - Budget: EUR60K-EUR78K
 - **Not a Fit:**
-  - Only one pricing issue (-> Power Up)
-  - Needs full revenue transformation (-> Accelerate)
-  - Just wants pricing strategy deck
+  - Only one CS issue (-> Power Up: NRR Engine)
+  - Needs full AI-native transformation (-> Accelerate)
+  - Just wants CS strategy deck
 
 ### Section 7: Final CTA
-- **Headline:** `Ready to Build Your Pricing Dominance?`
+- **Headline:** `Ready to Build Your NRR Machine?`
 - **Primary CTA:** Book Free Inflection Call (30 min)
-- **Secondary:** Pricing & Packaging Review (EUR3.9K-EUR5.9K)
-- **FAQ:** Duration (90 days), Investment (EUR60K-EUR78K stage-based), Risk Sharing (2 of 3 guaranteed), References (CEOs), ROI (20-40x), Customer Migration
+- **Secondary:** Customer Success Audit (EUR3.9K-EUR5.9K)
+- **FAQ:** Duration (90 days), Investment (EUR60K-EUR78K stage-based), Risk Sharing (2 of 3 guaranteed), References (CEOs), ROI (20-40x), CS Team Training
 
 ---
 
 ## Technische Details
 
 ### Komponenten-Wiederverwendung
-Die neue Landing Page verwendet die gleichen Patterns wie `BoostGrowthEngine.tsx`:
+Die neue Landing Page verwendet die gleichen Patterns wie `BoostPricingDominance.tsx`:
 - `TwinklingStars` fuer Hero-Hintergrund
 - `useParallaxLayers` fuer Parallax-Effekte
 - `useScrollAnimation` fuer Scroll-basierte Animationen
@@ -144,32 +137,33 @@ Die neue Landing Page verwendet die gleichen Patterns wie `BoostGrowthEngine.tsx
 - **Duration:** 90 Days
 - **Price:** EUR60K-EUR78K
 - **Guarantee:** "2 of 3 Outcomes Guaranteed (or 50% Refund)"
-- **Scope:** Full Pricing Architecture Rebuild
+- **Scope:** Full NRR Machine Rebuild (Retention + Expansion)
 
-### Spezifische Icons fuer Pricing Dominance
-- `DollarSign` - ARPU
-- `TrendingUp` - Margin Expansion
-- `TrendingDown` - Discounting Reduction
-- `Target` - Value Metric
-- `Layers` - Packaging Strategy
-- `Settings` - Pricing Execution
-- `Shield` - Pricing Discipline
-- `Users` - Sales Training
+### Spezifische Icons fuer NRR Machine
+- `TrendingDown` - Churn Reduction
+- `TrendingUp` - NRR Growth
+- `BarChart3` - Expansion Rate
+- `Users` - Customer Success
+- `Shield` - Retention Loops
+- `Rocket` - Expansion Engine
+- `Brain` - AI-Powered Churn Prediction
+- `Target` - Health Scoring
 
 ### Dateistruktur
 ```text
 src/
   App.tsx                              # Neue Route hinzufuegen
   data/
-    solutionTiles.ts                   # Kachel ID 22: Umbenennung + Metriken + CTA aktualisieren
+    solutionTiles.ts                   # Kachel ID 23: Slug + Metriken + CTA aktualisieren
   pages/
     BoostEfficientHypergrowth.tsx      # Referenz fuer Section-Struktur
     BoostGrowthEngine.tsx              # Referenz fuer Section-Struktur
-    BoostPricingDominance.tsx          # NEU - Dritte Boost Page
+    BoostPricingDominance.tsx          # Referenz fuer Section-Struktur
+    BoostNRRMachine.tsx                # NEU - Vierte Boost Page
 ```
 
 ### URL-Pattern
-Gemaess etablierter Boost-Logik: `/solutions/boost/pricing-dominance` (nicht `/solutions/boost-pricing-dominance`)
+Gemaess etablierter Boost-Logik: `/solutions/boost/nrr-machine` (nicht `/solutions/boost-nrr-machine`)
 
 ### Breadcrumb-Pattern
 ```tsx
@@ -179,7 +173,7 @@ Gemaess etablierter Boost-Logik: `/solutions/boost/pricing-dominance` (nicht `/s
   </BreadcrumbItem>
   <BreadcrumbSeparator />
   <BreadcrumbItem>
-    <span className="text-foreground font-medium">Boost Pricing Dominance</span>
+    <span className="text-foreground font-medium">Boost NRR Machine</span>
   </BreadcrumbItem>
 </BreadcrumbList>
 ```
@@ -190,7 +184,7 @@ Gemaess etablierter Boost-Logik: `/solutions/boost/pricing-dominance` (nicht `/s
 
 | Datei | Aenderung |
 |-------|----------|
-| `src/data/solutionTiles.ts` | Kachel ID 22: Umbenennung zu "Pricing Dominance" + Slug + Metriken + Price + CTA + Duration aktualisieren |
+| `src/data/solutionTiles.ts` | Kachel ID 23: Slug + Metriken + Price + CTA + Duration aktualisieren |
 | `src/App.tsx` | Neue Route + Lazy Import |
-| `src/pages/BoostPricingDominance.tsx` | Neue Datei (7 Sektionen) - Dritte Boost Landing Page |
+| `src/pages/BoostNRRMachine.tsx` | Neue Datei (7 Sektionen) - Vierte Boost Landing Page |
 
