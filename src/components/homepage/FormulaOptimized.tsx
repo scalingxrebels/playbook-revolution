@@ -77,7 +77,7 @@ const FormulaOptimized: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
             <span className="block">Growth Engines × Scaling Systems × AI</span>
-            <span className="block text-primary">= Scaling Success</span>
+            <span className="block text-primary">= Hypergrowth</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === 'de' 
