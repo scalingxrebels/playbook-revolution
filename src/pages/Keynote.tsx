@@ -3,12 +3,21 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import TwinklingStars from "@/components/TwinklingStars";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { 
   Accordion, 
   AccordionContent, 
   AccordionItem, 
   AccordionTrigger 
 } from "@/components/ui/accordion";
+import { useParallaxLayers } from "@/hooks/useParallax";
 import { 
   Mic, 
   Brain, 
@@ -26,7 +35,7 @@ import {
   ArrowRight,
   Calendar,
   Shield,
-  ChevronRight,
+  ChevronDown,
   Plane,
   FileText
 } from "lucide-react";
@@ -34,6 +43,7 @@ import {
 const Keynote = () => {
   const { language } = useLanguage();
   const isEnglish = language === 'en';
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
   const keynoteTopics = [
     {
@@ -310,48 +320,66 @@ const Keynote = () => {
       <Navigation />
 
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
-        <TwinklingStars />
+      <section ref={containerRef as React.RefObject<HTMLElement>} className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20">
+        {/* Deep Space Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" style={{ transform: `translateY(${offsets[0]}px)` }} />
+        {/* Mesh Gradient Overlay */}
+        <div className="absolute inset-0 bg-mesh opacity-60" style={{ transform: `translateY(${offsets[0]}px)` }} />
+        {/* Twinkling Stars */}
+        <div className="absolute inset-0" style={{ transform: `translateY(${offsets[1]}px)` }}>
+          <TwinklingStars />
+        </div>
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" style={{ transform: `translateY(${offsets[2]}px)` }} />
         
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-            <a href="/solutions" className="hover:text-foreground transition-colors">Solutions</a>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-foreground">Keynote</span>
-          </nav>
+          <Breadcrumb className="justify-center mb-6 animate-fade-in">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">Solutions</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <span className="text-foreground font-medium">Keynote</span>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <Mic className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium">Training & Enablement · 60-90 Min · €4.9K</span>
-          </div>
+          <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <Mic className="w-4 h-4 mr-2" />
+            Training & Enablement · 60-90 Min · €4.9K
+          </Badge>
 
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 max-w-4xl">
-            {isEnglish ? 'Inspirational Keynote—In 60-90 Minutes' : 'Inspirational Keynote—In 60-90 Minuten'}
+          <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
+            <span className="block text-foreground">{isEnglish ? 'Inspirational Keynote' : 'Inspirational Keynote'}</span>
+            <span className="block text-gradient animate-gradient bg-gradient-primary">
+              {isEnglish ? 'In 60-90 Minutes' : 'In 60-90 Minuten'}
+            </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl">
+          <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             {isEnglish 
               ? 'Inspire your team or event audience in 60-90 minutes. Choose from 5 keynote topics: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance—with actionable takeaways and Q&A.'
               : 'Inspiriere dein Team oder Event-Publikum in 60-90 Minuten. Wähle aus 5 Keynote-Themen: AI-Native Scaling, Efficient Hypergrowth, Pricing Strategy, Customer Success Excellence, Board Governance—mit umsetzbaren Takeaways und Q&A.'}
           </p>
 
           {/* Hero Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-3xl">
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto animate-slide-up" style={{ animationDelay: '0.3s' }}>
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border p-6 text-center">
               <Users className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">50-500</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Audience (Scalable)' : 'Audience (Skalierbar)'}</div>
             </div>
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border p-6 text-center">
               <Lightbulb className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">{isEnglish ? 'High' : 'High'}</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Impact Inspiration' : 'Impact Inspiration'}</div>
             </div>
-            <div className="bg-card/50 backdrop-blur border border-border rounded-xl p-6 text-center">
+            <div className="bg-card/50 backdrop-blur-sm border-2 border-border p-6 text-center">
               <Target className="w-8 h-8 text-primary mx-auto mb-2" />
               <div className="text-3xl font-bold text-primary mb-1">3-5</div>
               <div className="text-sm text-muted-foreground">{isEnglish ? 'Actionable Takeaways' : 'Umsetzbare Takeaways'}</div>
@@ -359,7 +387,7 @@ const Keynote = () => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-10">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Button size="lg" className="text-lg px-8" asChild>
               <a href="https://calendly.com/michel-scalingx/keynote" target="_blank" rel="noopener noreferrer">
                 {isEnglish ? 'Book Keynote (€4.9K)' : 'Keynote buchen (€4.9K)'}
@@ -374,7 +402,7 @@ const Keynote = () => {
           </div>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
+          <div className="flex flex-wrap gap-6 text-sm text-muted-foreground justify-center animate-fade-in" style={{ animationDelay: '0.5s' }}>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-primary" />
               <span>{isEnglish ? '60-90 Minutes (Fast Impact)' : '60-90 Minuten (Schneller Impact)'}</span>
@@ -388,6 +416,11 @@ const Keynote = () => {
               <span>{isEnglish ? 'Actionable Takeaways (Not Just Theory)' : 'Umsetzbare Takeaways (Nicht nur Theorie)'}</span>
             </div>
           </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-muted-foreground" />
         </div>
       </section>
 
