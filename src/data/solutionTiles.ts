@@ -359,8 +359,8 @@ export const solutionTiles: SolutionTile[] = [
     headlineDe: 'VC Due Diligence Simulation',
     problemEn: "You're not ready for VC due diligence—and you don't know it. DD readiness is 0%, red flags are hidden, and your data room is incomplete.",
     problemDe: 'Du bist nicht bereit für VC Due Diligence—und weißt es nicht. DD Readiness ist 0%, Red Flags sind versteckt, und dein Data Room ist unvollständig.',
-    solutionEn: 'We simulate VC due diligence in 1-2 weeks (8 dimensions). You get: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report.',
-    solutionDe: 'Wir simulieren VC Due Diligence in 1-2 Wochen (8 Dimensionen). Du erhältst: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report.',
+    solutionEn: 'We simulate VC due diligence in 3-5 days (8 dimensions). You get: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report.',
+    solutionDe: 'Wir simulieren VC Due Diligence in 3-5 Tagen (8 Dimensionen). Du erhältst: Red Flags Fixed 100%, DD Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report.',
     deliverablesEn: [
       'Red Flags Fixed: 100%',
       'DD Readiness: 0% → 100%',

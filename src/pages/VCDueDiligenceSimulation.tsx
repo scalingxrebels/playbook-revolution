@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
   ];
 
   const trustBadges = [
-    { icon: Clock, label: { en: '1-2 Weeks (Fast Turnaround)', de: '1-2 Wochen (Schnelle Lieferung)' } },
+    { icon: Clock, label: { en: '3-5 Days (Fast Turnaround)', de: '3-5 Tage (Schnelle Lieferung)' } },
     { icon: FileText, label: { en: 'Board-Ready Report (30-40 Pages)', de: 'Board-Ready Report (30-40 Seiten)' } },
     { icon: Briefcase, label: { en: 'Investor Perspective (What VCs Actually Check)', de: 'Investor-Perspektive (Was VCs wirklich prüfen)' } },
   ];
@@ -118,7 +118,7 @@ const HeroSection: React.FC = () => {
         {/* Badge */}
         <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <FileSearch className="w-4 h-4 mr-2" />
-          Decision Support · 1-2 {language === 'de' ? 'Wochen' : 'Weeks'} · €5.9K
+          Decision Support · 3-5 {language === 'de' ? 'Tage' : 'Days'} · €5.9K
         </Badge>
 
         {/* Headline */}
@@ -132,8 +132,8 @@ const HeroSection: React.FC = () => {
         {/* Subheadline */}
         <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de'
-            ? 'Mach dein Unternehmen Due-Diligence-ready in 1-2 Wochen. Typische Ergebnisse: Red Flags Fixed 100%, Due Diligence Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report.'
-            : 'Get your company due diligence-ready in 1-2 weeks. Typical outcomes: Red Flags Fixed 100%, Due Diligence Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report.'}
+            ? 'Mach dein Unternehmen Due-Diligence-ready in 3-5 Tagen. Typische Ergebnisse: Red Flags Fixed 100%, Due Diligence Readiness 0% → 100%, Fundraising Success Rate +40-60pp—mit Board-Ready Report.'
+            : 'Get your company due diligence-ready in 3-5 days. Typical outcomes: Red Flags Fixed 100%, Due Diligence Readiness 0% → 100%, Fundraising Success Rate +40-60pp—with board-ready report.'}
         </p>
 
         {/* Hero Stats */}
@@ -343,7 +343,7 @@ const SolutionSection: React.FC = () => {
     { en: 'Investor perspective (what VCs actually check, not just compliance)', de: 'Investor-Perspektive (was VCs wirklich prüfen, nicht nur Compliance)' },
     { en: '8 dimensions (financial, commercial, product, team, legal, ops, strategic, governance)', de: '8 Dimensionen (Financial, Commercial, Product, Team, Legal, Ops, Strategic, Governance)' },
     { en: 'Board-ready report (30-40 pages, investor-grade quality)', de: 'Board-Ready Report (30-40 Seiten, Investor-Grade Qualität)' },
-    { en: 'Fast turnaround (1-2 weeks, not 4-6 weeks)', de: 'Schnelle Lieferung (1-2 Wochen, nicht 4-6 Wochen)' },
+    { en: 'Fast turnaround (3-5 days, not 4-6 weeks)', de: 'Schnelle Lieferung (3-5 Tage, nicht 4-6 Wochen)' },
   ];
 
   return (
@@ -524,7 +524,7 @@ const OutcomeSection: React.FC = () => {
             {language === 'de' ? 'Das Ergebnis' : 'The Outcome'}
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' ? 'Typische Ergebnisse (1-2 Wochen)' : 'Typical Outcomes (1-2 Weeks)'}
+            {language === 'de' ? 'Typische Ergebnisse (3-5 Tage)' : 'Typical Outcomes (3-5 Days)'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             {language === 'de'
@@ -609,7 +609,7 @@ const ProcessSection: React.FC = () => {
   const guarantees = [
     { en: 'Investor-grade quality (board-ready report)', de: 'Investor-Grade Qualität (Board-Ready Report)' },
     { en: '8 dimensions analyzed (comprehensive DD simulation)', de: '8 Dimensionen analysiert (umfassende DD Simulation)' },
-    { en: 'Fast turnaround (1-2 weeks, not 4-6 weeks)', de: 'Schnelle Lieferung (1-2 Wochen, nicht 4-6 Wochen)' },
+    { en: 'Fast turnaround (3-5 days, not 4-6 weeks)', de: 'Schnelle Lieferung (3-5 Tage, nicht 4-6 Wochen)' },
     { en: 'Reference calls available (talk to CEOs who\'ve used this)', de: 'Referenzgespräche möglich (mit CEOs sprechen, die das genutzt haben)' },
   ];
 
@@ -669,7 +669,7 @@ const ProcessSection: React.FC = () => {
               <li>• Red Flags Report (30-40 pages)</li>
               <li>• 8 Dimensions analyzed</li>
               <li>• Investor perspective</li>
-              <li>• 1-2 weeks turnaround</li>
+              <li>• 3-5 days turnaround</li>
             </ul>
           </div>
           <div className="bg-muted/50 border-2 border-border p-6 rounded-lg text-center">
@@ -804,11 +804,11 @@ const FinalCTASection: React.FC = () => {
     { en: 'We\'ll send you a document checklist (what we need)', de: 'Wir senden dir eine Dokumenten-Checkliste (was wir brauchen)' },
     { en: 'You share documents (4-6 hours)', de: 'Du teilst Dokumente (4-6 Stunden)' },
     { en: 'We simulate VC due diligence (8 dimensions)', de: 'Wir simulieren VC Due Diligence (8 Dimensionen)' },
-    { en: 'You get Red Flags Report (30-40 pages, 1-2 weeks)', de: 'Du erhältst Red Flags Report (30-40 Seiten, 1-2 Wochen)' },
+    { en: 'You get Red Flags Report (30-40 pages, 3-5 days)', de: 'Du erhältst Red Flags Report (30-40 Seiten, 3-5 Tage)' },
   ];
 
   const faqs = [
-    { q: { en: 'How long does DD simulation take?', de: 'Wie lange dauert die DD Simulation?' }, a: { en: '1-2 weeks (from document sharing to Red Flags Report)', de: '1-2 Wochen (vom Dokumenten-Sharing bis zum Red Flags Report)' } },
+    { q: { en: 'How long does DD simulation take?', de: 'Wie lange dauert die DD Simulation?' }, a: { en: '3-5 days (from document sharing to Red Flags Report)', de: '3-5 Tage (vom Dokumenten-Sharing bis zum Red Flags Report)' } },
     { q: { en: "What's the investment?", de: 'Was ist das Investment?' }, a: { en: '€5.9K (Base) or €9.8K (Base + Execution Bridge)', de: '€5.9K (Base) oder €9.8K (Base + Execution Bridge)' } },
     { q: { en: 'What documents do you need?', de: 'Welche Dokumente braucht ihr?' }, a: { en: 'Financials (P&L, balance sheet, cash flow), contracts (customer, supplier), cap table, pitch deck, data room (if available)', de: 'Financials (P&L, Bilanz, Cashflow), Verträge (Kunden, Lieferanten), Cap Table, Pitch Deck, Data Room (falls vorhanden)' } },
     { q: { en: 'Can I talk to a reference?', de: 'Kann ich mit einer Referenz sprechen?' }, a: { en: "Yes. We'll connect you with a CEO who's used DD simulation (same stage, same challenge).", de: 'Ja. Wir verbinden dich mit einem CEO, der DD Simulation genutzt hat (gleiche Stage, gleiche Herausforderung).' } },
