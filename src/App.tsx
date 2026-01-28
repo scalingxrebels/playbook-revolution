@@ -57,6 +57,7 @@ const PricingPackagingReview = lazy(() => import("./pages/PricingPackagingReview
 const ScalingReadinessAssessment = lazy(() => import("./pages/ScalingReadinessAssessment"));
 const AIMaturityAssessment = lazy(() => import("./pages/AIMaturityAssessment"));
 const PortfolioAssessment = lazy(() => import("./pages/PortfolioAssessment"));
+const InvestorReadinessPitchDeckCheck = lazy(() => import("./pages/InvestorReadinessPitchDeckCheck"));
 
 const queryClient = new QueryClient();
 
@@ -127,6 +128,7 @@ const App = () => (
                 <Route path="/solutions/scaling-readiness-assessment" element={<ScalingReadinessAssessment />} />
                 <Route path="/solutions/ai-maturity-assessment" element={<AIMaturityAssessment />} />
                 <Route path="/solutions/portfolio-assessment" element={<PortfolioAssessment />} />
+                <Route path="/solutions/investor-readiness-pitch-deck-check" element={<InvestorReadinessPitchDeckCheck />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
