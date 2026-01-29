@@ -1,5 +1,5 @@
 // Solution Tiles Data - Complete briefing-compliant version
-// Last updated: 2026-01-22 (Briefing 04b)
+// Last updated: 2026-01-29 (Cache bust - DealDeskr fix v2)
 
 export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote';
 
