@@ -1427,7 +1427,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaEn: 'Try Now',
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'open-tool',
-    primaryCtaUrl: '/#calculator',
+    primaryCtaUrl: '/#roi-calculator',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
