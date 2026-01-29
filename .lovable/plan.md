@@ -1,191 +1,103 @@
 
 
-# Plan: Kachel 44 "Fix Growth. Scale Faster." + Landing Page
+# Plan: Fix Growth - Preise anpassen und Kachel-Änderungen
 
-## Übersicht
+## Übersicht der Änderungen
 
-| Element | Details |
-|---------|---------|
-| Kachel ID | 44 |
-| Slug | `fix-growth-scale-faster` |
-| solutionType | `insights` (existiert bereits) |
-| challenges | `'universal'` (erscheint bei allen Challenges) |
-| Route | `/book/fix-growth` |
-| Amazon Link | https://www.amazon.de/dp/B0FN7C71VN |
+| Datei | Änderung |
+|-------|----------|
+| `src/data/solutionTiles.ts` | Preise, Deliverables kürzen, CTAs anpassen, partnerBadge entfernen |
+| `src/pages/FixGrowthBook.tsx` | Preise in Hero Badge und FinalCTASection korrigieren |
 
 ---
 
-## Teil 1: Buchcover-Bild kopieren
+## Teil 1: Solution Tile (ID 44) in `solutionTiles.ts`
 
-Das hochgeladene Buchcover wird in den `public/images/` Ordner kopiert:
+### Aktuelle Werte vs. Neue Werte
 
-```
-user-uploads://Book_Cover.png → public/images/book-fix-growth-cover.png
-```
+| Feld | Aktuell | Neu |
+|------|---------|-----|
+| `price` | `€8.90-€44.90` | `€4.29-€44.90` |
+| `deliverablesEn` | 4 Items (lang) | 2 Items (gekürzt) |
+| `deliverablesDe` | 4 Items (lang) | 2 Items (gekürzt) |
+| `primaryCtaAction` | `external` | `learn-more` |
+| `primaryCtaUrl` | Amazon Link | `/book/fix-growth` |
+| `secondaryCtaEn` | `Learn more` | `Buy on Amazon` |
+| `secondaryCtaDe` | `Mehr erfahren` | `Auf Amazon kaufen` |
+| `secondaryCtaUrl` | `/book/fix-growth` | Amazon Link |
+| `partnerBadge` | Vorhanden | Entfernen |
 
----
+### Gekürzte Deliverables
 
-## Teil 2: Neue Kachel in `src/data/solutionTiles.ts`
-
-Am Ende des `solutionTiles` Arrays (nach ID 43 Maxxeed) wird die neue Kachel eingefügt:
-
+**Englisch:**
 ```typescript
-// ============================================
-// INSIGHTS & CLARITY - BOOK (ID 44)
-// ============================================
-{
-  id: 44,
-  slug: 'fix-growth-scale-faster',
-  solutionType: 'insights',
-  challenges: 'universal',
-  price: '€8.90-€44.90',
-  priceTag: 'paid',
-  headlineEn: 'Fix Growth. Scale Faster.',
-  headlineDe: 'Fix Growth. Scale Faster.',
-  problemEn: "You have a good product, strong investors, ambitious goals—but something's stuck. Revenue stagnates, complexity grows, decisions come too late, investors lose confidence. What's missing? A clear system for execution.",
-  problemDe: 'Du hast ein gutes Produkt, starke Investoren, ambitionierte Ziele—aber etwas hakt. Umsatz stagniert, Komplexität wächst, Entscheidungen kommen zu spät, Investoren verlieren Vertrauen. Was fehlt? Ein klares System für Execution.',
-  solutionEn: '"Fix Growth. Scale Faster." is the first book that takes execution seriously—and offers a system to deliver exactly that: Impact. Clarity. Growth. Based on 140+ projects with startups, scale-ups, and mid-market ventures.',
-  solutionDe: '"Fix Growth. Scale Faster." ist das erste Buch, das Execution ernst nimmt—und ein System bietet, um genau das zu liefern: Impact. Klarheit. Wachstum. Basierend auf 140+ Projekten mit Startups, Scale-ups und Mittelständlern.',
-  deliverablesEn: [
-    'The complete ScalingX Hypergrowth System (32 interventions, 4 levers, 3 modes)',
-    'Detailed checklists, tools, and real-world examples',
-    'The Scaling Scorecard for assessment and strategy',
-    'Access to ScalingX Hypergrowth GPT (with exclusive prompt guide)'
-  ],
-  deliverablesDe: [
-    'Das komplette ScalingX Hypergrowth System (32 Interventionen, 4 Hebel, 3 Modi)',
-    'Detaillierte Checklisten, Tools und Real-World Beispiele',
-    'Die Scaling Scorecard für Assessment und Strategie',
-    'Zugang zum ScalingX Hypergrowth GPT (mit exklusivem Prompt Guide)'
-  ],
-  impactEn: 'The execution playbook for VC/PE-backed ventures that want to win. Built for capital efficiency, time-to-impact, and investor confidence.',
-  impactDe: 'Das Execution-Playbook für VC/PE-finanzierte Unternehmen, die gewinnen wollen. Gebaut für Kapitaleffizienz, Time-to-Impact und Investor Confidence.',
-  primaryCtaEn: 'Buy on Amazon',
-  primaryCtaDe: 'Auf Amazon kaufen',
-  primaryCtaAction: 'external',
-  primaryCtaUrl: 'https://www.amazon.de/dp/B0FN7C71VN',
-  secondaryCtaEn: 'Learn more',
-  secondaryCtaDe: 'Mehr erfahren',
-  secondaryCtaUrl: '/book/fix-growth',
-  partnerBadge: {
-    labelEn: 'Kindle · Paperback · Hardcover',
-    labelDe: 'Kindle · Paperback · Hardcover',
-    color: 'book'
-  }
-}
+deliverablesEn: [
+  'The ScalingX Hypergrowth System (32 interventions, 4 levers)',
+  'Checklists, tools, Scaling Scorecard & GPT access'
+]
 ```
 
-Besonderheiten:
-- `challenges: 'universal'` - erscheint bei allen Challenge-Filtern
-- `primaryCtaAction: 'external'` - öffnet Amazon-Link in neuem Tab
-- `secondaryCtaUrl: '/book/fix-growth'` - Link zur Landing Page
-
----
-
-## Teil 3: Neue Landing Page `src/pages/FixGrowthBook.tsx`
-
-Die Landing Page folgt dem Maxxeed-Pattern mit angepassten Sektionen:
-
-### Sektionen-Struktur
-
-```
-1. HeroSection
-   - Breadcrumb: Solutions > Fix Growth. Scale Faster.
-   - Badge: Book · €8.90-€44.90 · Kindle/Paperback/Hardcover
-   - Buchcover-Bild
-   - Headline + Subheadline
-   - CTAs: "Buy on Amazon" (primary) + "Read Sample" (secondary)
-
-2. ProblemSection
-   - 4 Symptome (Revenue stagniert, Komplexität wächst, etc.)
-   - Kostenrechnung: Was passiert ohne klares Execution-System
-
-3. SolutionSection
-   - Das Hypergrowth System (4 Hebel, 32 Interventionen, 3 Modi)
-   - Visuelle Darstellung der Struktur
-
-4. WhatsInsideSection
-   - 4 Deliverables als Cards
-   - Exklusiver GPT-Zugang hervorheben
-
-5. AuthorSection
-   - Michel Laleye Portrait (existierendes Bild)
-   - Kurzbio und Credentials
-
-6. ReviewsSection (optional)
-   - Amazon Reviews/Zitate falls vorhanden
-   - "Based on 140+ projects"
-
-7. FinalCTASection
-   - Alle 3 Formate mit Preisen
-   - Direct Amazon Links
-```
-
-### Komponenten-Imports
-
+**Deutsch:**
 ```typescript
-// Verwendet bestehende UI-Komponenten
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Card, CardContent } from '@/components/ui/card';
-import { Breadcrumb, ... } from '@/components/ui/breadcrumb';
-import TwinklingStars from '@/components/TwinklingStars';
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useParallaxLayers } from '@/hooks/useParallax';
-
-// Icons
-import { BookOpen, Check, ArrowRight, ExternalLink, Target, Zap, Settings, BarChart3, Brain, Users } from 'lucide-react';
+deliverablesDe: [
+  'Das ScalingX Hypergrowth System (32 Interventionen, 4 Hebel)',
+  'Checklisten, Tools, Scaling Scorecard & GPT-Zugang'
+]
 ```
 
----
-
-## Teil 4: Route in `src/App.tsx`
-
-Neue lazy-loaded Komponente und Route:
-
-```typescript
-// Import (Zeile ~65)
-const FixGrowthBook = lazy(() => import("./pages/FixGrowthBook"));
-
-// Route (vor Zeile 142)
-<Route path="/book/fix-growth" element={<FixGrowthBook />} />
-```
-
----
-
-## Technische Details
-
-### Dateien die erstellt/geändert werden
-
-| Datei | Aktion |
-|-------|--------|
-| `public/images/book-fix-growth-cover.png` | Erstellen (Kopie vom Upload) |
-| `src/data/solutionTiles.ts` | Kachel ID 44 hinzufügen |
-| `src/pages/FixGrowthBook.tsx` | Neue Datei erstellen |
-| `src/App.tsx` | Import + Route hinzufügen |
-
-### Design-System Konsistenz
-
-- Folgt dem Maxxeed-Pattern (7 Sektionen, TwinklingStars, Parallax)
-- Breadcrumb: "Solutions > Fix Growth. Scale Faster."
-- Farben: Blau-Akzent (passend zum Buchcover)
-- Bilingual: Vollständig DE/EN
-
-### CTA-Logik
+### CTA-Logik invertiert
 
 | CTA | Aktion | URL |
 |-----|--------|-----|
-| "Buy on Amazon" (Primary) | `window.open(...)` | https://www.amazon.de/dp/B0FN7C71VN |
-| "Read Sample" | `window.open(...)` | https://www.amazon.de/dp/B0FN7C71VN#reader |
-| "Learn more" (Secondary auf Kachel) | Navigation | /book/fix-growth |
+| Primary "Learn more" | Navigation | `/book/fix-growth` |
+| Secondary "Buy on Amazon" | External | https://www.amazon.de/dp/B0FN7C71VN |
+
+---
+
+## Teil 2: Landing Page Preise in `FixGrowthBook.tsx`
+
+### Hero Section (Zeile 105)
+
+```typescript
+// Aktuell:
+<Badge variant="outline">€8.90-€44.90</Badge>
+
+// Neu:
+<Badge variant="outline">€4.29-€44.90</Badge>
+```
+
+### FinalCTASection Format Cards (Zeilen 638-642)
+
+```typescript
+// Aktuell:
+const formats = [
+  { name: 'Kindle', price: '€8.90', icon: Lightbulb },
+  { name: 'Paperback', price: '€29.90', icon: BookOpen },
+  { name: 'Hardcover', price: '€44.90', icon: Award },
+];
+
+// Neu (korrekte Preise):
+const formats = [
+  { name: 'Kindle', price: '€4.29', icon: Lightbulb },
+  { name: 'Paperback', price: '€14.95', icon: BookOpen },
+  { name: 'Hardcover', price: '€44.90', icon: Award },
+];
+```
 
 ---
 
 ## Erwartetes Ergebnis
 
-1. **Solutions Hub**: Neue Kachel "Fix Growth. Scale Faster." erscheint bei allen Challenge-Filtern und unter "Insights & Clarity"
-2. **Kachel-CTA**: "Auf Amazon kaufen" → öffnet Amazon, "Mehr erfahren" → öffnet Landing Page
-3. **Landing Page**: Vollständige Buchpräsentation unter `/book/fix-growth` mit direkten Amazon-Links
+### Solution Tile im Hub
+
+- Preis: "€4.29-€44.90"
+- 2 kurze Deliverables statt 4 lange
+- Kein "Kindle · Paperback · Hardcover" Sticker
+- Primary CTA: "Learn more" → Landing Page
+- Secondary CTA: "Buy on Amazon" → Amazon
+
+### Landing Page
+
+- Hero Badge: "€4.29-€44.90"
+- Format Cards: Kindle €4.29, Paperback €14.95, Hardcover €44.90
 
