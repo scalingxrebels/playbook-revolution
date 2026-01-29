@@ -184,7 +184,8 @@ const ResearchHub: React.FC = () => {
   const activePaper = researchPapers.find(p => p.id === selectedPaper);
 
   return (
-    <section className="pb-16">
+    <>
+      {/* Hero - Standalone */}
       <SharedHero
         overlineEn="Expertise × Speed = Impact"
         overlineDe="Expertise × Speed = Impact"
@@ -197,7 +198,9 @@ const ResearchHub: React.FC = () => {
         stats={researchStats}
       />
 
-      <div className="container max-w-7xl mx-auto px-4 pt-6 md:pt-8">
+      {/* Content Section */}
+      <section className="py-12 md:py-16 bg-background">
+        <div className="container max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           {researchPapers.map(paper => (
             <Card 
@@ -378,8 +381,9 @@ const ResearchHub: React.FC = () => {
             </Button>
           </div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </>
   );
 };
 
