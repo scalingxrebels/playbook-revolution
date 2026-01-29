@@ -4,7 +4,7 @@ import { SolutionTile, getTransformationTierLabel, SolutionTypeId } from '@/data
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2 } from 'lucide-react';
+import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SolutionTileCardProps {
@@ -123,6 +123,14 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
           >
             {tile.price}
           </Badge>
+          {tile.partnerBadge && (
+            <Badge 
+              className="text-xs font-medium bg-yellow-500/20 text-yellow-600 border-yellow-500/30"
+            >
+              <Star className="w-3 h-3 mr-1" />
+              {lang === 'de' ? tile.partnerBadge.labelDe : tile.partnerBadge.labelEn}
+            </Badge>
+          )}
         </div>
 
         {/* Headline */}

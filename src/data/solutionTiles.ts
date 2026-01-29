@@ -1,5 +1,5 @@
 // Solution Tiles Data - Complete briefing-compliant version
-// Last updated: 2026-01-22 (Briefing 04b)
+// Last updated: 2026-01-29 (Cache bust - DealDeskr fix v2)
 
 export type SolutionTypeId = 'all' | 'insights' | 'decision-support' | 'tools' | 'transformation' | 'advisory' | 'keynote';
 
@@ -55,6 +55,11 @@ export interface SolutionTile {
   addOnPricing?: {
     base: string;
     bridge: string;
+  };
+  partnerBadge?: {
+    labelEn: string;
+    labelDe: string;
+    color: string;
   };
 }
 
@@ -1523,6 +1528,121 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Jetzt ausprobieren',
     primaryCtaAction: 'external',
     primaryCtaUrl: 'https://dealdeskr.io/',
+    secondaryCtaEn: 'Learn more',
+    secondaryCtaDe: 'Mehr erfahren',
+    secondaryCtaUrl: '/about'
+  },
+  // ============================================
+  // AI-POWERED TOOLS - PARTNERSHIP (ID 43)
+  // ============================================
+  {
+    id: 43,
+    slug: 'maxxeed',
+    solutionType: 'tools',
+    challenges: ['cac-crisis', 'growth-stalled'],
+    price: '€135/User/Mo',
+    priceTag: 'paid',
+    headlineEn: 'Maxxeed Digital Showrooms',
+    headlineDe: 'Maxxeed Digital Showrooms',
+    problemEn: "Your sales team relies on email and PowerPoint—unpersonal, inefficient. 78% of buyers demand better experiences, but get boring presentations. 30% win rate.",
+    problemDe: 'Dein Sales-Team nutzt E-Mail und PowerPoint—unpersönlich, ineffizient. 78% der Käufer fordern bessere Erfahrungen, bekommen aber langweilige Präsentationen. 30% Win Rate.',
+    solutionEn: 'Maxxeed automates creation of hyper-personalized Digital Showrooms in 30 seconds. AI transforms meeting notes into stunning showrooms you can share with your prospects.',
+    solutionDe: 'Maxxeed automatisiert die Erstellung hyper-personalisierter Digital Showrooms in 30 Sekunden. KI verwandelt Gesprächsnotizen in beeindruckende Showrooms, die du mit deinen Prospects teilen kannst.',
+    deliverablesEn: [
+      'Automatic showroom creation (30s)',
+      'Buyer value cycle (stakeholder maps)',
+      'Deal health score & analytics'
+    ],
+    deliverablesDe: [
+      'Automatische Showroom-Erstellung (30s)',
+      'Buyer Value Cycle (Stakeholder Maps)',
+      'Deal Health Score & Analytics'
+    ],
+    impactEn: '+31% close rate, +24% deal size, 98% email open rate. €50M ARR: +€12M ARR.',
+    impactDe: '+31% Close Rate, +24% Deal Size, 98% E-Mail-Öffnungsrate. €50M ARR: +€12M ARR.',
+    primaryCtaEn: 'More about Buyer Excitement',
+    primaryCtaDe: 'Mehr über Buyer Excitement',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/tools/maxxeed',
+    secondaryCtaEn: 'Visit Maxxeed',
+    secondaryCtaDe: 'Maxxeed besuchen',
+    secondaryCtaUrl: 'https://www.maxxeed.com/de/',
+    partnerBadge: {
+      labelEn: 'Black Belt Partner',
+      labelDe: 'Black Belt Partner',
+      color: 'gold'
+    }
+  },
+
+  // ============================================
+  // INSIGHTS & CLARITY - BOOK (ID 44)
+  // ============================================
+  {
+    id: 44,
+    slug: 'fix-growth-scale-faster',
+    solutionType: 'insights',
+    challenges: 'universal',
+    price: '€4.29-€44.90',
+    priceTag: 'paid',
+    headlineEn: 'Fix Growth. Scale Faster.',
+    headlineDe: 'Fix Growth. Scale Faster.',
+    problemEn: "You have a good product, strong investors, ambitious goals—but something's stuck. Revenue stagnates, complexity grows, decisions come too late, investors lose confidence. What's missing? A clear system for execution.",
+    problemDe: 'Du hast ein gutes Produkt, starke Investoren, ambitionierte Ziele—aber etwas hakt. Umsatz stagniert, Komplexität wächst, Entscheidungen kommen zu spät, Investoren verlieren Vertrauen. Was fehlt? Ein klares System für Execution.',
+    solutionEn: '"Fix Growth. Scale Faster." is the first book that takes execution seriously—and offers a system to deliver exactly that: Impact. Clarity. Growth. Based on 140+ projects with startups, scale-ups, and mid-market ventures.',
+    solutionDe: '"Fix Growth. Scale Faster." ist das erste Buch, das Execution ernst nimmt—und ein System bietet, um genau das zu liefern: Impact. Klarheit. Wachstum. Basierend auf 140+ Projekten mit Startups, Scale-ups und Mittelständlern.',
+    deliverablesEn: [
+      'The ScalingX Hypergrowth System (32 interventions, 4 levers)',
+      'Checklists, tools, Scaling Scorecard & GPT access'
+    ],
+    deliverablesDe: [
+      'Das ScalingX Hypergrowth System (32 Interventionen, 4 Hebel)',
+      'Checklisten, Tools, Scaling Scorecard & GPT-Zugang'
+    ],
+    impactEn: 'The execution playbook for VC/PE-backed ventures that want to win. Built for capital efficiency, time-to-impact, and investor confidence.',
+    impactDe: 'Das Execution-Playbook für VC/PE-finanzierte Unternehmen, die gewinnen wollen. Gebaut für Kapitaleffizienz, Time-to-Impact und Investor Confidence.',
+    primaryCtaEn: 'Learn more',
+    primaryCtaDe: 'Mehr erfahren',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/book/fix-growth',
+    secondaryCtaEn: 'Buy on Amazon',
+    secondaryCtaDe: 'Auf Amazon kaufen',
+    secondaryCtaUrl: 'https://www.amazon.de/dp/B0FN7C71VN'
+  },
+
+  // ============================================
+  // AI-POWERED TOOLS - FUNDING NAVIGATOR (ID 45)
+  // ============================================
+  {
+    id: 45,
+    slug: 'funding-navigator',
+    solutionType: 'tools',
+    challenges: ['board-pressure', 'portfolio-performance', 'orientation'],
+    price: 'Free',
+    priceTag: 'free',
+    headlineEn: 'Funding Navigator',
+    headlineDe: 'Fördermittel-Navigator',
+    problemEn: "German startups waste 4-8 weeks researching funding programs (EXIST, ZIM, KfW)—and still miss opportunities. 70% miss relevant funding, leaving €150k-€350k on the table.",
+    problemDe: "Deutsche Startups verschwenden 4-8 Wochen mit der Recherche von Förderprogrammen (EXIST, ZIM, KfW)—und verpassen trotzdem Chancen. 70% verpassen relevante Förderungen und lassen €150k-€350k liegen.",
+    solutionEn: "AI-native funding matching platform that automates the entire funding process in 10 minutes. Get AI-powered matching to specialized consultants.",
+    solutionDe: "AI-native Fördermittel-Matching-Plattform, die den gesamten Förderprozess in 10 Minuten automatisiert. Erhalte AI-gestütztes Matching zu spezialisierten Beratern.",
+    deliverablesEn: [
+      'Intelligent questionnaire (10 min)',
+      'AI-powered matching (A/B/C scoring)',
+      'Personal consultation (24h)',
+      'All programs (EXIST, ZIM, KfW, etc.)'
+    ],
+    deliverablesDe: [
+      'Intelligenter Fragebogen (10 Min)',
+      'AI-gestütztes Matching (A/B/C Scoring)',
+      'Persönliche Beratung (24h)',
+      'Alle Programme (EXIST, ZIM, KfW, etc.)'
+    ],
+    impactEn: "-99% research time (10 min vs. 4-8 weeks), +400-600% programs identified, +200-400% funding volume. Free.",
+    impactDe: "-99% Recherchezeit (10 Min statt 4-8 Wochen), +400-600% identifizierte Programme, +200-400% Fördervolumen. Kostenlos.",
+    primaryCtaEn: 'Start Funding Check',
+    primaryCtaDe: 'Förder-Check starten',
+    primaryCtaAction: 'external',
+    primaryCtaUrl: 'https://foerdermittelnavigator.com/',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
