@@ -1,68 +1,67 @@
 
-# Plan: GTM/Revenue Playbook v2.0 - Implementierung
+# Plan: GTM/Revenue Playbook v2.0 - Inkrementelle Implementierung
 
-## Übersicht
-Drei Dateien müssen angepasst werden, um das Playbook von v1 auf v2 zu aktualisieren.
+## Problem-Analyse
+Die bisherigen Versuche scheiterten beim kompletten Rewrite der 1084-Zeilen-Datei. Dieser Plan nutzt stattdessen gezielte Zeilenänderungen (`lov-line-replace`).
 
 ---
 
-## Änderung 1: `src/data/playbooks.ts`
+## Phase 1: Routing & Data (kleine Dateien - sicher)
 
-**Zeile 23**: Slug ändern
+### Änderung 1.1: `src/data/playbooks.ts` (Zeile 23)
 ```typescript
 slug: 'growth-engines/gtm-revenue',
 ```
 
-**Zeilen 28-46**: Description und Outcomes auf 7-Hebel-Framework aktualisieren
-
----
-
-## Änderung 2: `src/App.tsx`
-
-**Zeile 145**: Route-Pfad ändern
+### Änderung 1.2: `src/App.tsx` (Zeile 145)
 ```typescript
 <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
 ```
 
 ---
 
-## Änderung 3: `src/pages/PlaybookGtmRevenue.tsx`
+## Phase 2: PlaybookGtmRevenue.tsx - Gezielte Zeilenänderungen
 
-Kompletter Umbau der 1084-Zeilen-Datei auf v2:
+Statt kompletten Rewrite: Einzelne Sektionen nacheinander anpassen.
 
-### Hero CTAs
-- Download: `/downloads/gtm-revenue-playbook.pdf`
-- Booking: `https://scalingx.fillout.com/inflection-call`
+### Änderung 2.1: Hero CTAs (Zeilen ~122-140)
+- Calendly -> Fillout URL
+- Scroll-to-section -> PDF Download
 
-### 7-Hebel-Framework (Accordion)
-1. ICP Clarity
-2. Outbound Engine
-3. Inbound Machine
-4. Partner Leverage
-5. Pricing Power
-6. Sales Process
-7. PLG Motion
+### Änderung 2.2: Framework-Sektion umbauen
+- 3-Komponenten-Framework entfernen
+- 7-Hebel-Accordion einfügen (ICP, Outbound, Inbound, Partners, Pricing, Sales, PLG)
 
-### Neue Sektionen
-- Case Studies (Series A/B/C mit ARR)
-- 90-Tage-Roadmap
-- Solutions Connection (Power Up/Boost)
-- Who It's For (4 Personas)
-- Next Steps (3 CTAs)
+### Änderung 2.3: Neue Sektionen am Ende hinzufügen
+- Solutions Connection
+- Who It's For
+- Next Steps
 
 ---
 
-## Technische Details
+## Technische Vorgehensweise
 
-- Bilingual (EN/DE) via `useLanguage()`
-- Bestehende Komponenten: `Accordion`, `Card`, `TwinklingStars`
-- PDF muss unter `public/downloads/gtm-revenue-playbook.pdf` existieren
+1. **Erst die kleinen Dateien ändern** (playbooks.ts, App.tsx)
+2. **Dann PlaybookGtmRevenue.tsx in 3-4 separaten Schritten**:
+   - Schritt A: Hero-CTAs anpassen
+   - Schritt B: Framework-Sektion ersetzen  
+   - Schritt C: Neue Sektionen hinzufügen
+   - Schritt D: Aufräumen (ungenutzte Importe, alte Sektionen)
 
 ---
 
 ## Erwartetes Ergebnis
 
-- `/playbooks` → "Learn More" führt auf `/playbooks/growth-engines/gtm-revenue`
-- `/playbooks/gtm-revenue` → 404 (NotFound)
-- Download-Button → PDF öffnen
-- Booking-Button → Fillout öffnen
+Identisch wie vorher:
+- `/playbooks` -> "Learn More" führt auf `/playbooks/growth-engines/gtm-revenue`
+- `/playbooks/gtm-revenue` -> 404
+- Download -> PDF
+- Booking -> Fillout
+
+---
+
+## Vorteil dieser Methode
+
+- Kleinere, atomare Änderungen = geringeres Fehlerrisiko
+- Bei Fehlern leichter zu debuggen
+- Keine 1000+ Zeilen auf einmal übertragen
