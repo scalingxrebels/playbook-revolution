@@ -419,6 +419,251 @@ const SolutionSection: React.FC = () => {
 };
 
 // ============================================================================
+// SECTION 3b: BOOK COMPARISON
+// ============================================================================
+const ComparisonTableSection: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  const books = [
+    {
+      title: 'Fix Growth. Scale Faster.',
+      author: 'Michel Lason',
+      focus: { en: 'Execution Gap in GTM, Ops & Valuation', de: 'Execution Gap in GTM, Ops & Valuation' },
+      scores: { speed: 100, capitalEfficiency: 100, implementationDepth: 100, orgFocus: 80 },
+      conclusion: { en: 'Execution Gap closed', de: 'Execution Gap closed' },
+      highlight: true,
+    },
+    {
+      title: 'Scaling Up',
+      author: 'Verne Harnish',
+      focus: { en: 'Structure & Rhythm', de: 'Struktur & Rhythmus' },
+      scores: { speed: 40, capitalEfficiency: 80, implementationDepth: 80, orgFocus: 60 },
+      conclusion: { en: 'Too slow, too rigid', de: 'Too slow, too rigid' },
+    },
+    {
+      title: 'Blitzscaling',
+      author: 'Reid Hoffman',
+      focus: { en: 'Speed > Efficiency', de: 'Geschwindigkeit > Effizienz' },
+      scores: { speed: 100, capitalEfficiency: 20, implementationDepth: 40, orgFocus: 40 },
+      conclusion: { en: 'Burn fast, win big', de: 'Burn fast, win big' },
+    },
+    {
+      title: 'Traction',
+      author: 'Gino Wickman',
+      focus: { en: 'EOS + Structure for small teams', de: 'EOS + Struktur für kleine Teams' },
+      scores: { speed: 40, capitalEfficiency: 80, implementationDepth: 40, orgFocus: 60 },
+      conclusion: { en: 'Clarity, lack of business focus', de: 'Clarity, lack of business focus' },
+    },
+    {
+      title: 'Pinnacle',
+      author: 'Steve Preada/Greg Cleary',
+      focus: { en: 'EOS + Leadership + Culture', de: 'EOS + Leadership + Kultur' },
+      scores: { speed: 40, capitalEfficiency: 80, implementationDepth: 60, orgFocus: 80 },
+      conclusion: { en: 'Culture, too little GTM', de: 'Culture, too little GTM' },
+    },
+    {
+      title: 'Scaling People',
+      author: 'Claire Hughes Johnson',
+      focus: { en: 'People & Culture Scale', de: 'People- & Culture-Scale' },
+      scores: { speed: 60, capitalEfficiency: 80, implementationDepth: 60, orgFocus: 100 },
+      conclusion: { en: 'People first, no GTM & business', de: 'People first, no GTM & business' },
+    },
+    {
+      title: 'Scaling Through Chaos',
+      author: 'Dominic Jacquesson',
+      focus: { en: 'Team structure through growth phases', de: 'Teamstruktur durch Wachstumsphasen' },
+      scores: { speed: 60, capitalEfficiency: 80, implementationDepth: 40, orgFocus: 100 },
+      conclusion: { en: 'Roles, not revenue & valuation', de: 'Roles, not revenue & valuation' },
+    },
+  ];
+
+  const categories = [
+    { key: 'speed', label: { en: 'Speed', de: 'Speed' } },
+    { key: 'capitalEfficiency', label: { en: 'Capital Efficiency', de: 'Kapitaleffizienz' } },
+    { key: 'implementationDepth', label: { en: 'Implementation Depth', de: 'Umsetzungstiefe' } },
+    { key: 'orgFocus', label: { en: 'Org Focus', de: 'Org-Fokus' } },
+  ];
+
+  const ProgressBar: React.FC<{ value: number; highlight?: boolean }> = ({ value, highlight }) => (
+    <div className="relative h-6 w-full bg-muted/30 rounded overflow-hidden">
+      <div
+        className={`absolute inset-y-0 left-0 rounded ${
+          highlight
+            ? 'bg-gradient-to-r from-primary to-accent'
+            : 'bg-muted-foreground/40'
+        }`}
+        style={{
+          width: `${value}%`,
+          backgroundImage: highlight
+            ? undefined
+            : 'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.1) 4px, rgba(255,255,255,0.1) 8px)',
+        }}
+      >
+        {highlight && (
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(255,255,255,0.15) 4px, rgba(255,255,255,0.15) 8px)',
+            }}
+          />
+        )}
+      </div>
+      <span className={`absolute inset-0 flex items-center justify-center text-xs font-medium ${value >= 50 ? 'text-foreground' : 'text-muted-foreground'}`}>
+        {value}%
+      </span>
+    </div>
+  );
+
+  return (
+    <section
+      id="comparison-section"
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+
+      <div className="container max-w-7xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12 animate-slide-up">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Im Vergleich' : 'Compared'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' ? 'Das Buch im Vergleich' : 'The Book Compared'}
+          </h2>
+          <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto">
+            {language === 'de'
+              ? 'Wie schneidet Fix Growth. Scale Faster. im Vergleich zu anderen bekannten Scaling-Büchern ab?'
+              : 'How does Fix Growth. Scale Faster. compare to other well-known scaling books?'}
+          </p>
+        </div>
+
+        {/* Desktop Table */}
+        <div className="hidden lg:block overflow-x-auto animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b-2 border-border">
+                <th className="text-left py-4 px-3 font-semibold text-muted-foreground w-48">
+                  {language === 'de' ? 'Buch' : 'Book'}
+                </th>
+                <th className="text-left py-4 px-3 font-semibold text-muted-foreground w-56">
+                  {language === 'de' ? 'Fokus' : 'Focus'}
+                </th>
+                {categories.map((cat) => (
+                  <th key={cat.key} className="text-center py-4 px-2 font-semibold text-muted-foreground w-32">
+                    {language === 'de' ? cat.label.de : cat.label.en}
+                  </th>
+                ))}
+                <th className="text-left py-4 px-3 font-semibold text-muted-foreground w-48">
+                  {language === 'de' ? 'Fazit' : 'Conclusion'}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {books.map((book, index) => (
+                <tr
+                  key={index}
+                  className={`border-b border-border/50 transition-colors ${
+                    book.highlight
+                      ? 'bg-primary/5 hover:bg-primary/10'
+                      : 'hover:bg-muted/30'
+                  }`}
+                >
+                  <td className="py-4 px-3">
+                    <div className={`font-bold ${book.highlight ? 'text-primary' : 'text-foreground'}`}>
+                      {book.title}
+                    </div>
+                    <div className="text-xs text-muted-foreground">{book.author}</div>
+                  </td>
+                  <td className="py-4 px-3 text-muted-foreground text-xs">
+                    {language === 'de' ? book.focus.de : book.focus.en}
+                  </td>
+                  {categories.map((cat) => (
+                    <td key={cat.key} className="py-4 px-2">
+                      <ProgressBar
+                        value={book.scores[cat.key as keyof typeof book.scores]}
+                        highlight={book.highlight}
+                      />
+                    </td>
+                  ))}
+                  <td className="py-4 px-3">
+                    <div className="flex items-center gap-2">
+                      <ArrowRight className={`w-4 h-4 ${book.highlight ? 'text-accent' : 'text-muted-foreground'}`} />
+                      <span className={`text-xs ${book.highlight ? 'text-accent font-semibold' : 'text-muted-foreground'}`}>
+                        {language === 'de' ? book.conclusion.de : book.conclusion.en}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile Cards */}
+        <div className="lg:hidden space-y-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          {books.map((book, index) => (
+            <Card
+              key={index}
+              className={`transition-all ${
+                book.highlight
+                  ? 'border-primary/50 bg-primary/5'
+                  : 'border-border'
+              }`}
+            >
+              <CardContent className="p-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <div className={`font-bold ${book.highlight ? 'text-primary' : 'text-foreground'}`}>
+                      {book.title}
+                    </div>
+                    <div className="text-xs text-muted-foreground">{book.author}</div>
+                  </div>
+                  {book.highlight && (
+                    <Badge variant="gradient" className="text-xs">
+                      {language === 'de' ? 'Empfohlen' : 'Recommended'}
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground mb-4">
+                  {language === 'de' ? book.focus.de : book.focus.en}
+                </p>
+                <div className="space-y-2">
+                  {categories.map((cat) => (
+                    <div key={cat.key}>
+                      <div className="flex justify-between text-xs mb-1">
+                        <span className="text-muted-foreground">
+                          {language === 'de' ? cat.label.de : cat.label.en}
+                        </span>
+                        <span className={book.highlight ? 'text-primary font-medium' : 'text-foreground'}>
+                          {book.scores[cat.key as keyof typeof book.scores]}%
+                        </span>
+                      </div>
+                      <ProgressBar
+                        value={book.scores[cat.key as keyof typeof book.scores]}
+                        highlight={book.highlight}
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 pt-3 border-t border-border/50 flex items-center gap-2">
+                  <ArrowRight className={`w-4 h-4 ${book.highlight ? 'text-accent' : 'text-muted-foreground'}`} />
+                  <span className={`text-sm ${book.highlight ? 'text-accent font-semibold' : 'text-muted-foreground'}`}>
+                    {language === 'de' ? book.conclusion.de : book.conclusion.en}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
 // SECTION 4: WHAT'S INSIDE
 // ============================================================================
 const WhatsInsideSection: React.FC = () => {
@@ -708,6 +953,7 @@ const FixGrowthBook: React.FC = () => {
         <HeroSection />
         <ProblemSection />
         <SolutionSection />
+        <ComparisonTableSection />
         <WhatsInsideSection />
         <AuthorSection />
         <ProofSection />
