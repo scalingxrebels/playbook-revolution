@@ -1,76 +1,32 @@
 
-# Plan: Schwarzen Balken über Heroes entfernen
+# Plan: Playbooks Hero Overline anpassen
 
-## Problem
+## Änderung
 
-**Playbooks.tsx & Expertise.tsx:**
-```tsx
-<Navigation />
-<main className="pt-20">     ← 80px schwarzes Padding
-  <PlaybookLibrary />
-</main>
+In `src/components/PlaybookLibrary.tsx` die Overline-Props von:
+```
+"Expertise × Speed = Impact"
 ```
 
-**Cases.tsx & Solutions.tsx:**
-```tsx
-<Navigation />
-<SharedHero ... />           ← Direkt nach Navigation, kein Extra-Padding
-<main ...>
+ändern zu:
+```
+"Growth Engines × Scaling Systems × AI = Hypergrowth"
 ```
 
-## Lösung
+## Konkrete Code-Änderung (Zeilen 53-54)
 
-Das `pt-20` vom `<main>` Tag entfernen und die Struktur an Cases/Solutions angleichen.
-
----
-
-## Änderungen
-
-### 1. `src/pages/Playbooks.tsx`
-
-```tsx
+```typescript
 // Vorher:
-<main className="pt-20">
-  <PlaybookLibrary />
-</main>
+overlineEn="Expertise × Speed = Impact"
+overlineDe="Expertise × Speed = Impact"
 
 // Nachher:
-<PlaybookLibrary />
-<Footer />
+overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
+overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
 ```
 
-Kein `<main>` Wrapper nötig, da PlaybookLibrary bereits aus mehreren Sections besteht.
+## Datei
 
----
-
-### 2. `src/pages/Expertise.tsx`
-
-```tsx
-// Vorher:
-<main className="pt-20">
-  <ResearchHub />
-</main>
-
-// Nachher:
-<ResearchHub />
-<Footer />
-```
-
-Gleiche Änderung wie bei Playbooks.
-
----
-
-## Datei-Übersicht
-
-| Datei | Aktion | Beschreibung |
-|-------|--------|--------------|
-| `src/pages/Playbooks.tsx` | Bearbeiten | `pt-20` main-Wrapper entfernen |
-| `src/pages/Expertise.tsx` | Bearbeiten | `pt-20` main-Wrapper entfernen |
-
----
-
-## Erwartetes Ergebnis
-
-Alle vier Seiten (Solutions, Cases, Playbooks, Expertise) haben identische Strukturen:
-- Navigation → Hero → Content → Footer
-- Kein schwarzer Balken zwischen Navigation und Hero
+| Datei | Zeilen | Aktion |
+|-------|--------|--------|
+| `src/components/PlaybookLibrary.tsx` | 53-54 | Overline-Text aktualisieren |
