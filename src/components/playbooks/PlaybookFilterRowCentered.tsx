@@ -52,8 +52,8 @@ function PlaybookFilterRowCentered<T extends string>({
               className={cn(
                 'px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
                 isActive
-                  ? 'bg-primary/20 text-primary border-primary/30'
-                  : 'bg-card border-border hover:border-primary/50'
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-card border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
               )}
             >
               {option.label[language]}
