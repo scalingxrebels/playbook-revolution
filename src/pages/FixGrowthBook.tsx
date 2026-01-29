@@ -154,7 +154,7 @@ const HeroSection: React.FC = () => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => window.open(`${AMAZON_URL}#reader`, '_blank')}
+                onClick={() => window.open('/downloads/fix-growth-sample.pdf', '_blank')}
                 className="border-2"
               >
                 {language === 'de' ? 'Leseprobe' : 'Read Sample'}
