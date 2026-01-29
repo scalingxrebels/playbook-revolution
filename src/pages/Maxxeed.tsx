@@ -115,14 +115,8 @@ const HeroSection: React.FC = () => {
         <Breadcrumb className="justify-center mb-6 animate-fade-in">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
-                Home
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
               <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
-                Tools
+                Solutions
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
