@@ -1,46 +1,65 @@
 import { 
-  Target, Rocket, Users, Settings, Workflow, Cpu, Zap, Database,
-  Network, Shield, TrendingUp, LineChart, Globe, BarChart3, Award,
-  Brain, Building, GitBranch, Layers, Megaphone
+  Rocket, Users, Settings, Workflow, Cpu, 
+  Shield, TrendingUp, LineChart, Award,
+  Brain, Building, Layers, Target, Briefcase
 } from 'lucide-react';
 import React from 'react';
 import type { 
-  NeedForActionTag, ImpactTag, TimeframeTag, CapabilityTag, CapacityTag 
+  NeedForActionTag, ImpactTag, BottleneckTag, RoleTag 
 } from './playbookFilters';
 
 export interface Playbook {
   id: string;
   title: { en: string; de: string };
-  dimension: string;
-  capabilities: string[];
-  stage: string;
-  duration: string;
-  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   description: { en: string; de: string };
   outcomes: { en: string[]; de: string[] };
   caseStudies: string[];
   icon: React.ReactNode;
   gradient: string;
-  // NEW: User-centric filter tags
+  // 4-Filter Tags (Michel's Definition)
   needForAction: NeedForActionTag[];
   impact: ImpactTag[];
-  timeframe: TimeframeTag;
-  capability: CapabilityTag;
-  capacity: CapacityTag;
+  bottleneck: BottleneckTag[];
+  role: RoleTag[];
 }
 
 export const playbooks: Playbook[] = [
+  // 1. AI-Native Scaling Playbook (Master Playbook)
   {
-    id: 'ai-native-gtm-sales-led',
-    title: { en: 'AI-Native GTM: Sales-Led', de: 'AI-Native GTM: Vertriebsgeführt' },
-    dimension: 'GTM',
-    capabilities: ['C1', 'C2'],
-    stage: 'Scale',
-    duration: '8-12 weeks',
-    difficulty: 'Intermediate',
+    id: 'ai-native-scaling-playbook',
+    title: { 
+      en: 'AI-Native Scaling Playbook', 
+      de: 'AI-Native Scaling Playbook' 
+    },
     description: { 
-      en: 'Transform your sales motion with AI-powered prospecting, qualification, and closing strategies.',
-      de: 'Transformieren Sie Ihre Vertriebsbewegung mit KI-gestütztem Prospecting, Qualifizierung und Abschlussstrategien.'
+      en: 'The comprehensive master playbook for AI-native scaling. Foundation for all other playbooks.',
+      de: 'Das umfassende Master-Playbook für AI-native Skalierung. Grundlage für alle anderen Playbooks.'
+    },
+    outcomes: {
+      en: ['Complete scaling framework', 'AI-native operating model', 'Hypergrowth foundation'],
+      de: ['Vollständiges Scaling-Framework', 'AI-natives Betriebsmodell', 'Hypergrowth-Grundlage']
+    },
+    caseStudies: ['Cursor', 'Midjourney', 'Perplexity'],
+    icon: React.createElement(Brain, { className: 'w-6 h-6' }),
+    gradient: 'from-purple-600 to-pink-600',
+    needForAction: ['revenue-not-growing', 'product-not-scaling', 'customers-churning', 'operations-chaotic', 'costs-too-high', 'need-ai-transformation', 'board-wants-results', 'portfolio-underperforming'],
+    impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
+    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+    role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
+  },
+
+  // === GROWTH ENGINES (Document 5a) ===
+  
+  // 2. GTM/Revenue Playbook
+  {
+    id: 'gtm-revenue-playbook',
+    title: { 
+      en: 'GTM/Revenue Playbook', 
+      de: 'GTM/Revenue Playbook' 
+    },
+    description: { 
+      en: 'Transform your go-to-market motion with AI-powered prospecting, qualification, and closing strategies.',
+      de: 'Transformieren Sie Ihre Go-to-Market-Bewegung mit KI-gestütztem Prospecting, Qualifizierung und Abschlussstrategien.'
     },
     outcomes: {
       en: ['3x pipeline velocity', '40% higher conversion rates', 'AI-powered sales coaching'],
@@ -50,20 +69,19 @@ export const playbooks: Playbook[] = [
     icon: React.createElement(Target, { className: 'w-6 h-6' }),
     gradient: 'from-blue-500 to-cyan-500',
     needForAction: ['revenue-not-growing'],
-    impact: ['increase-revenue'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
+    impact: ['growth-engines'],
+    bottleneck: ['strategy', 'execution-focus'],
+    role: ['ceo', 'cmo-cro'],
   },
+
+  // 3. Product Playbook
   {
-    id: 'ai-native-gtm-product-led',
-    title: { en: 'AI-Native GTM: Product-Led', de: 'AI-Native GTM: Produktgeführt' },
-    dimension: 'GTM',
-    capabilities: ['C1', 'C3'],
-    stage: 'Growth',
-    duration: '6-10 weeks',
-    difficulty: 'Advanced',
-    description: {
+    id: 'product-playbook',
+    title: { 
+      en: 'Product Playbook', 
+      de: 'Product Playbook' 
+    },
+    description: { 
       en: 'Build viral product-led growth loops with AI-enhanced onboarding and activation.',
       de: 'Bauen Sie virale produktgesteuerte Wachstumsschleifen mit KI-verbessertem Onboarding und Aktivierung.'
     },
@@ -75,197 +93,95 @@ export const playbooks: Playbook[] = [
     icon: React.createElement(Rocket, { className: 'w-6 h-6' }),
     gradient: 'from-purple-500 to-pink-500',
     needForAction: ['product-not-scaling', 'revenue-not-growing'],
-    impact: ['increase-revenue', 'accelerate-product'],
-    timeframe: 'mid-term',
-    capability: 'focused',
-    capacity: 'goal-oriented',
+    impact: ['growth-engines'],
+    bottleneck: ['execution-focus'],
+    role: ['ceo', 'cpo', 'cto'],
   },
+
+  // 4. Customer Success Playbook
   {
-    id: 'ai-native-gtm-community-led',
-    title: { en: 'AI-Native GTM: Community-Led', de: 'AI-Native GTM: Community-geführt' },
-    dimension: 'GTM',
-    capabilities: ['C2', 'C4'],
-    stage: 'Scale',
-    duration: '10-14 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Leverage community as your primary growth engine with AI-powered engagement and advocacy.',
-      de: 'Nutzen Sie die Community als primären Wachstumsmotor mit KI-gestütztem Engagement und Advocacy.'
+    id: 'customer-success-playbook',
+    title: { 
+      en: 'Customer Success Playbook', 
+      de: 'Customer Success Playbook' 
+    },
+    description: { 
+      en: 'Transform customer success with AI-powered health scoring, churn prediction, and proactive intervention.',
+      de: 'Transformieren Sie Customer Success mit KI-gestütztem Health Scoring, Churn-Prognose und proaktiver Intervention.'
     },
     outcomes: {
-      en: ['10x community engagement', 'User-generated content flywheel', 'Brand advocacy at scale'],
-      de: ['10x Community-Engagement', 'User-Generated-Content-Schwungrad', 'Marken-Advocacy in großem Maßstab']
+      en: ['Predictive churn prevention', 'Automated health scoring', 'Net Revenue Retention > 120%'],
+      de: ['Prädiktive Churn-Prävention', 'Automatisiertes Health Scoring', 'Net Revenue Retention > 120%']
     },
-    caseStudies: ['Discord', 'Figma'],
-    icon: React.createElement(Users, { className: 'w-6 h-6' }),
-    gradient: 'from-green-500 to-emerald-500',
-    needForAction: ['revenue-not-growing', 'customers-churning'],
-    impact: ['retain-customers', 'increase-revenue'],
-    timeframe: 'long-term',
-    capability: 'focused',
-    capacity: 'transformation-ready',
+    caseStudies: ['Gainsight', 'ChurnZero'],
+    icon: React.createElement(Award, { className: 'w-6 h-6' }),
+    gradient: 'from-pink-500 to-rose-500',
+    needForAction: ['customers-churning'],
+    impact: ['growth-engines'],
+    bottleneck: ['execution-focus'],
+    role: ['ceo', 'cmo-cro'],
   },
+
+  // === OPERATING SYSTEMS (Document 5b) ===
+
+  // 5. Operations Playbook
   {
-    id: 'ops-automation-foundation',
-    title: { en: 'Ops Automation Foundation', de: 'Ops-Automatisierungs-Grundlagen' },
-    dimension: 'Operations',
-    capabilities: ['C1'],
-    stage: 'Foundation',
-    duration: '4-6 weeks',
-    difficulty: 'Beginner',
-    description: {
-      en: 'Establish the foundational automation layer for scalable operations.',
-      de: 'Etablieren Sie die grundlegende Automatisierungsschicht für skalierbare Operationen.'
+    id: 'operations-playbook',
+    title: { 
+      en: 'Operations Playbook', 
+      de: 'Operations Playbook' 
+    },
+    description: { 
+      en: 'Establish scalable operations with AI-driven automation, orchestration, and O(n log n) coordination.',
+      de: 'Etablieren Sie skalierbare Operationen mit KI-gesteuerter Automatisierung, Orchestrierung und O(n log n) Koordination.'
     },
     outcomes: {
-      en: ['70% reduction in manual tasks', 'Standardized workflows', 'Real-time visibility'],
-      de: ['70% Reduktion manueller Aufgaben', 'Standardisierte Workflows', 'Echtzeit-Transparenz']
+      en: ['70% reduction in manual tasks', 'O(n log n) coordination costs', 'Real-time visibility'],
+      de: ['70% Reduktion manueller Aufgaben', 'O(n log n) Koordinationskosten', 'Echtzeit-Transparenz']
     },
     caseStudies: ['Linear', 'Notion'],
     icon: React.createElement(Settings, { className: 'w-6 h-6' }),
     gradient: 'from-orange-500 to-amber-500',
     needForAction: ['operations-chaotic'],
-    impact: ['reduce-costs', 'scale-operations'],
-    timeframe: 'quick-win',
-    capability: 'limited',
-    capacity: 'firefighting',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'coo'],
   },
+
+  // 6. Finance Playbook
   {
-    id: 'ai-ops-orchestration',
-    title: { en: 'AI-Ops Orchestration', de: 'AI-Ops-Orchestrierung' },
-    dimension: 'Operations',
-    capabilities: ['C2', 'C3'],
-    stage: 'Scale',
-    duration: '8-12 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Implement AI-driven operations orchestration for O(n log n) coordination.',
-      de: 'Implementieren Sie KI-gesteuerte Operations-Orchestrierung für O(n log n) Koordination.'
+    id: 'finance-playbook',
+    title: { 
+      en: 'Finance Playbook', 
+      de: 'Finance Playbook' 
+    },
+    description: { 
+      en: 'Optimize financial operations with AI-driven forecasting, cost control, and unit economics optimization.',
+      de: 'Optimieren Sie Finanzoperationen mit KI-gesteuerter Prognose, Kostenkontrolle und Unit-Economics-Optimierung.'
     },
     outcomes: {
-      en: ['O(n log n) coordination costs', 'Predictive resource allocation', 'Autonomous incident response'],
-      de: ['O(n log n) Koordinationskosten', 'Prädiktive Ressourcenallokation', 'Autonome Incident Response']
+      en: ['AI-powered financial forecasting', 'LTV:CAC > 3:1', 'Optimized burn rate'],
+      de: ['KI-gestützte Finanzprognosen', 'LTV:CAC > 3:1', 'Optimierte Burn-Rate']
     },
-    caseStudies: ['Cursor', 'Stripe'],
-    icon: React.createElement(Workflow, { className: 'w-6 h-6' }),
-    gradient: 'from-indigo-500 to-violet-500',
-    needForAction: ['operations-chaotic', 'ai-transformation'],
-    impact: ['scale-operations', 'reduce-costs'],
-    timeframe: 'mid-term',
-    capability: 'focused',
-    capacity: 'transformation-ready',
+    caseStudies: ['Ramp', 'Brex'],
+    icon: React.createElement(LineChart, { className: 'w-6 h-6' }),
+    gradient: 'from-emerald-500 to-green-500',
+    needForAction: ['costs-too-high', 'operations-chaotic'],
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'cfo', 'coo'],
   },
+
+  // 7. Talent Playbook
   {
-    id: 'tech-stack-modernization',
-    title: { en: 'Tech Stack Modernization', de: 'Tech-Stack-Modernisierung' },
-    dimension: 'Technology',
-    capabilities: ['C1', 'C2'],
-    stage: 'Foundation',
-    duration: '12-16 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Modernize your tech stack for AI-native development velocity.',
-      de: 'Modernisieren Sie Ihren Tech-Stack für AI-native Entwicklungsgeschwindigkeit.'
+    id: 'talent-playbook',
+    title: { 
+      en: 'Talent Playbook', 
+      de: 'Talent Playbook' 
     },
-    outcomes: {
-      en: ['10x faster deployment cycles', 'AI-assisted code generation', 'Zero-downtime releases'],
-      de: ['10x schnellere Deployment-Zyklen', 'KI-unterstützte Code-Generierung', 'Zero-Downtime-Releases']
-    },
-    caseStudies: ['Vercel', 'Supabase'],
-    icon: React.createElement(Cpu, { className: 'w-6 h-6' }),
-    gradient: 'from-cyan-500 to-blue-500',
-    needForAction: ['product-not-scaling', 'ai-transformation'],
-    impact: ['accelerate-product', 'scale-operations'],
-    timeframe: 'transformation',
-    capability: 'moderate',
-    capacity: 'transformation-ready',
-  },
-  {
-    id: 'ai-dev-velocity',
-    title: { en: 'AI Dev Velocity System', de: 'AI-Entwicklungsgeschwindigkeits-System' },
-    dimension: 'Technology',
-    capabilities: ['C2', 'C3'],
-    stage: 'Scale',
-    duration: '6-10 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Implement AI-powered development workflows for 10-30x velocity gains.',
-      de: 'Implementieren Sie KI-gestützte Entwicklungs-Workflows für 10-30x Geschwindigkeitsgewinne.'
-    },
-    outcomes: {
-      en: ['30x faster feature development', 'AI pair programming', 'Automated testing & QA'],
-      de: ['30x schnellere Feature-Entwicklung', 'KI-Pair-Programming', 'Automatisierte Tests & QA']
-    },
-    caseStudies: ['Cursor', 'Replit'],
-    icon: React.createElement(Zap, { className: 'w-6 h-6' }),
-    gradient: 'from-yellow-500 to-orange-500',
-    needForAction: ['product-not-scaling', 'ai-transformation'],
-    impact: ['accelerate-product', 'reduce-costs'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'data-infrastructure-scale',
-    title: { en: 'Data Infrastructure at Scale', de: 'Dateninfrastruktur im Maßstab' },
-    dimension: 'Technology',
-    capabilities: ['C3', 'C4'],
-    stage: 'Scale',
-    duration: '10-14 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Build data infrastructure that scales with your AI-native operations.',
-      de: 'Bauen Sie Dateninfrastruktur, die mit Ihren AI-nativen Operationen skaliert.'
-    },
-    outcomes: {
-      en: ['Real-time data pipelines', 'ML-ready data architecture', 'Cost-efficient scaling'],
-      de: ['Echtzeit-Datenpipelines', 'ML-ready Datenarchitektur', 'Kosteneffiziente Skalierung']
-    },
-    caseStudies: ['Databricks', 'Snowflake'],
-    icon: React.createElement(Database, { className: 'w-6 h-6' }),
-    gradient: 'from-teal-500 to-cyan-500',
-    needForAction: ['ai-transformation', 'product-not-scaling'],
-    impact: ['scale-operations', 'accelerate-product'],
-    timeframe: 'long-term',
-    capability: 'focused',
-    capacity: 'transformation-ready',
-  },
-  {
-    id: 'org-design-ai-native',
-    title: { en: 'AI-Native Org Design', de: 'AI-Native Organisationsdesign' },
-    dimension: 'Organization',
-    capabilities: ['C1', 'C2'],
-    stage: 'Growth',
-    duration: '8-12 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Design organizational structures optimized for AI-augmented teams.',
-      de: 'Designen Sie Organisationsstrukturen, die für KI-unterstützte Teams optimiert sind.'
-    },
-    outcomes: {
-      en: ['Flat, autonomous team structures', 'AI-human collaboration frameworks', 'Reduced management overhead'],
-      de: ['Flache, autonome Teamstrukturen', 'KI-Mensch-Kollaborations-Frameworks', 'Reduzierter Management-Overhead']
-    },
-    caseStudies: ['GitLab', 'Automattic'],
-    icon: React.createElement(Network, { className: 'w-6 h-6' }),
-    gradient: 'from-rose-500 to-pink-500',
-    needForAction: ['ai-transformation', 'operations-chaotic'],
-    impact: ['transform-organization', 'scale-operations'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'talent-acquisition-ai',
-    title: { en: 'AI-Powered Talent Acquisition', de: 'KI-gestützte Talentakquise' },
-    dimension: 'Organization',
-    capabilities: ['C2'],
-    stage: 'Scale',
-    duration: '6-8 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Transform hiring with AI-powered sourcing, screening, and assessment.',
-      de: 'Transformieren Sie das Recruiting mit KI-gestütztem Sourcing, Screening und Assessment.'
+    description: { 
+      en: 'Build AI-native talent strategies for hiring, development, and retention in high-growth environments.',
+      de: 'Entwickeln Sie AI-native Talentstrategien für Recruiting, Entwicklung und Retention in Hypergrowth-Umgebungen.'
     },
     outcomes: {
       en: ['50% faster time-to-hire', 'AI-powered candidate matching', 'Reduced bias in hiring'],
@@ -274,310 +190,159 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Anthropic', 'OpenAI'],
     icon: React.createElement(Users, { className: 'w-6 h-6' }),
     gradient: 'from-violet-500 to-purple-500',
-    needForAction: ['operations-chaotic', 'ai-transformation'],
-    impact: ['scale-operations', 'reduce-costs'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
+    needForAction: ['operations-chaotic'],
+    impact: ['operating-systems'],
+    bottleneck: ['setup'],
+    role: ['ceo', 'coo'],
   },
+
+  // 8. Data/Tech Playbook
   {
-    id: 'board-governance-ai',
-    title: { en: 'AI Board Governance', de: 'KI-Board-Governance' },
-    dimension: 'Governance',
-    capabilities: ['C3', 'C4'],
-    stage: 'Scale',
-    duration: '4-6 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Implement AI-powered board reporting and governance frameworks.',
-      de: 'Implementieren Sie KI-gestützte Board-Reporting- und Governance-Frameworks.'
+    id: 'data-tech-playbook',
+    title: { 
+      en: 'Data/Tech Playbook', 
+      de: 'Data/Tech Playbook' 
+    },
+    description: { 
+      en: 'Build data infrastructure and tech stack that scales with AI-native operations.',
+      de: 'Bauen Sie Dateninfrastruktur und Tech-Stack, die mit AI-nativen Operationen skalieren.'
     },
     outcomes: {
-      en: ['Real-time board dashboards', 'Predictive risk analytics', 'Automated compliance monitoring'],
-      de: ['Echtzeit-Board-Dashboards', 'Prädiktive Risikoanalytik', 'Automatisiertes Compliance-Monitoring']
+      en: ['10x faster deployment cycles', 'Real-time data pipelines', 'AI-assisted code generation'],
+      de: ['10x schnellere Deployment-Zyklen', 'Echtzeit-Datenpipelines', 'KI-unterstützte Code-Generierung']
+    },
+    caseStudies: ['Vercel', 'Supabase'],
+    icon: React.createElement(Cpu, { className: 'w-6 h-6' }),
+    gradient: 'from-cyan-500 to-blue-500',
+    needForAction: ['product-not-scaling', 'operations-chaotic'],
+    impact: ['operating-systems'],
+    bottleneck: ['operationalization'],
+    role: ['ceo', 'cto', 'coo'],
+  },
+
+  // === BOARD & GOVERNANCE (Document 5c) ===
+
+  // 9. Strategic Governance Playbook
+  {
+    id: 'strategic-governance-playbook',
+    title: { 
+      en: 'Strategic Governance Playbook', 
+      de: 'Strategic Governance Playbook' 
+    },
+    description: { 
+      en: 'Implement AI-powered strategic governance with real-time board dashboards and predictive analytics.',
+      de: 'Implementieren Sie KI-gestützte strategische Governance mit Echtzeit-Board-Dashboards und prädiktiver Analytik.'
+    },
+    outcomes: {
+      en: ['Real-time board dashboards', 'Predictive risk analytics', 'Strategic alignment'],
+      de: ['Echtzeit-Board-Dashboards', 'Prädiktive Risikoanalytik', 'Strategische Ausrichtung']
     },
     caseStudies: ['Stripe', 'Plaid'],
     icon: React.createElement(Shield, { className: 'w-6 h-6' }),
     gradient: 'from-slate-500 to-zinc-500',
     needForAction: ['board-wants-results'],
-    impact: ['transform-organization'],
-    timeframe: 'quick-win',
-    capability: 'focused',
-    capacity: 'transformation-ready',
+    impact: ['board-governance'],
+    bottleneck: ['strategy'],
+    role: ['ceo', 'vc-board'],
   },
+
+  // 10. Operational Governance Playbook
   {
-    id: 'capital-strategy-ai',
-    title: { en: 'AI Capital Strategy', de: 'KI-Kapitalstrategie' },
-    dimension: 'Capital',
-    capabilities: ['C2', 'C3'],
-    stage: 'Growth',
-    duration: '6-10 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Optimize capital allocation with AI-driven financial modeling and forecasting.',
-      de: 'Optimieren Sie die Kapitalallokation mit KI-gestützter Finanzmodellierung und Prognosen.'
+    id: 'operational-governance-playbook',
+    title: { 
+      en: 'Operational Governance Playbook', 
+      de: 'Operational Governance Playbook' 
+    },
+    description: { 
+      en: 'Establish operational governance frameworks with automated compliance and performance monitoring.',
+      de: 'Etablieren Sie operative Governance-Frameworks mit automatisiertem Compliance- und Performance-Monitoring.'
     },
     outcomes: {
-      en: ['AI-powered financial forecasting', 'Optimized burn rate', 'Data-driven fundraising'],
-      de: ['KI-gestützte Finanzprognosen', 'Optimierte Burn-Rate', 'Datengetriebenes Fundraising']
+      en: ['Automated compliance monitoring', 'Operational KPI tracking', 'Risk mitigation'],
+      de: ['Automatisiertes Compliance-Monitoring', 'Operative KPI-Verfolgung', 'Risikominimierung']
     },
-    caseStudies: ['Ramp', 'Brex'],
+    caseStudies: ['GitLab', 'Automattic'],
+    icon: React.createElement(Workflow, { className: 'w-6 h-6' }),
+    gradient: 'from-indigo-500 to-violet-500',
+    needForAction: ['operations-chaotic', 'board-wants-results'],
+    impact: ['board-governance'],
+    bottleneck: ['operationalization'],
+    role: ['ceo', 'coo', 'vc-board'],
+  },
+
+  // 11. Exit & M&A Playbook
+  {
+    id: 'exit-ma-playbook',
+    title: { 
+      en: 'Exit & M&A Playbook', 
+      de: 'Exit & M&A Playbook' 
+    },
+    description: { 
+      en: 'Prepare for successful exits with AI-driven valuation, due diligence, and transaction optimization.',
+      de: 'Bereiten Sie erfolgreiche Exits vor mit KI-gesteuerter Bewertung, Due Diligence und Transaktionsoptimierung.'
+    },
+    outcomes: {
+      en: ['Exit readiness in 90 days', 'Optimized valuation', 'Data-driven negotiations'],
+      de: ['Exit-Readiness in 90 Tagen', 'Optimierte Bewertung', 'Datengetriebene Verhandlungen']
+    },
+    caseStudies: ['Figma', 'Mailchimp'],
     icon: React.createElement(TrendingUp, { className: 'w-6 h-6' }),
-    gradient: 'from-emerald-500 to-green-500',
-    needForAction: ['revenue-not-growing', 'board-wants-results'],
-    impact: ['raise-capital', 'improve-margins'],
-    timeframe: 'mid-term',
-    capability: 'focused',
-    capacity: 'goal-oriented',
+    gradient: 'from-rose-500 to-pink-500',
+    needForAction: ['board-wants-results'],
+    impact: ['board-governance'],
+    bottleneck: ['strategy'],
+    role: ['ceo', 'cfo', 'vc-board'],
   },
+
+  // === PORTFOLIO (VC/PE Supplement) ===
+
+  // 12. Portfolio Excellence Playbook
   {
-    id: 'unit-economics-optimization',
-    title: { en: 'Unit Economics Optimization', de: 'Unit-Economics-Optimierung' },
-    dimension: 'Capital',
-    capabilities: ['C1', 'C2'],
-    stage: 'Scale',
-    duration: '8-12 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Achieve sustainable unit economics with AI-driven cost optimization.',
-      de: 'Erreichen Sie nachhaltige Unit Economics mit KI-gesteuerter Kostenoptimierung.'
+    id: 'portfolio-excellence-playbook',
+    title: { 
+      en: 'Portfolio Excellence Playbook', 
+      de: 'Portfolio Excellence Playbook' 
+    },
+    description: { 
+      en: 'Optimize portfolio performance with AI-driven benchmarking, value creation, and fund strategy.',
+      de: 'Optimieren Sie Portfolio-Performance mit KI-gesteuertem Benchmarking, Wertschöpfung und Fondsstrategie.'
     },
     outcomes: {
-      en: ['LTV:CAC > 3:1', 'Negative churn strategies', 'Margin expansion'],
-      de: ['LTV:CAC > 3:1', 'Negative Churn-Strategien', 'Margin-Expansion']
+      en: ['Portfolio-wide benchmarking', 'Value creation playbooks', 'AI-powered fund analytics'],
+      de: ['Portfolio-weites Benchmarking', 'Wertschöpfungs-Playbooks', 'KI-gestützte Fonds-Analytik']
     },
-    caseStudies: ['Notion', 'Figma'],
-    icon: React.createElement(LineChart, { className: 'w-6 h-6' }),
-    gradient: 'from-lime-500 to-green-500',
-    needForAction: ['pricing-not-working', 'customers-churning'],
-    impact: ['improve-margins', 'retain-customers'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'market-expansion-playbook',
-    title: { en: 'Market Expansion Playbook', de: 'Marktexpansions-Playbook' },
-    dimension: 'GTM',
-    capabilities: ['C3', 'C4'],
-    stage: 'Scale',
-    duration: '12-16 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Expand into new markets with AI-powered market intelligence and localization.',
-      de: 'Expandieren Sie in neue Märkte mit KI-gestützter Marktintelligenz und Lokalisierung.'
-    },
-    outcomes: {
-      en: ['New market entry in 90 days', 'AI-powered localization', 'Market-specific GTM strategies'],
-      de: ['Neuer Markteintritt in 90 Tagen', 'KI-gestützte Lokalisierung', 'Marktspezifische GTM-Strategien']
-    },
-    caseStudies: ['Canva', 'Miro'],
-    icon: React.createElement(Globe, { className: 'w-6 h-6' }),
-    gradient: 'from-sky-500 to-blue-500',
-    needForAction: ['revenue-not-growing'],
-    impact: ['increase-revenue', 'scale-operations'],
-    timeframe: 'transformation',
-    capability: 'focused',
-    capacity: 'transformation-ready',
-  },
-  {
-    id: 'pricing-optimization-ai',
-    title: { en: 'AI Pricing Optimization', de: 'KI-Preisoptimierung' },
-    dimension: 'GTM',
-    capabilities: ['C2', 'C3'],
-    stage: 'Growth',
-    duration: '4-8 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Implement dynamic, AI-driven pricing strategies for maximum revenue.',
-      de: 'Implementieren Sie dynamische, KI-gesteuerte Preisstrategien für maximalen Umsatz.'
-    },
-    outcomes: {
-      en: ['20% revenue uplift', 'Dynamic pricing models', 'Price elasticity insights'],
-      de: ['20% Umsatzsteigerung', 'Dynamische Preismodelle', 'Preiselastizitäts-Insights']
-    },
-    caseStudies: ['Stripe', 'Paddle'],
-    icon: React.createElement(BarChart3, { className: 'w-6 h-6' }),
+    caseStudies: ['a16z', 'Sequoia'],
+    icon: React.createElement(Briefcase, { className: 'w-6 h-6' }),
     gradient: 'from-amber-500 to-yellow-500',
-    needForAction: ['pricing-not-working', 'revenue-not-growing'],
-    impact: ['increase-revenue', 'improve-margins'],
-    timeframe: 'quick-win',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
+    needForAction: ['portfolio-underperforming'],
+    impact: ['portfolio'],
+    bottleneck: ['strategy', 'operationalization'],
+    role: ['vc-board'],
   },
+
+  // === STRATEGIC CAPABILITIES (Special) ===
+
+  // 13. Strategic Capabilities Playbook
   {
-    id: 'customer-success-ai',
-    title: { en: 'AI Customer Success', de: 'KI-Customer-Success' },
-    dimension: 'Operations',
-    capabilities: ['C2', 'C4'],
-    stage: 'Scale',
-    duration: '6-10 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Transform customer success with AI-powered health scoring and intervention.',
-      de: 'Transformieren Sie Customer Success mit KI-gestütztem Health Scoring und Intervention.'
+    id: 'strategic-capabilities-playbook',
+    title: { 
+      en: 'Strategic Capabilities Playbook', 
+      de: 'Strategic Capabilities Playbook' 
+    },
+    description: { 
+      en: 'Develop and strengthen the four strategic capabilities (C₁-C₄) that drive sustainable hypergrowth.',
+      de: 'Entwickeln und stärken Sie die vier strategischen Fähigkeiten (C₁-C₄) für nachhaltiges Hypergrowth.'
     },
     outcomes: {
-      en: ['Predictive churn prevention', 'Automated health scoring', 'Proactive intervention'],
-      de: ['Prädiktive Churn-Prävention', 'Automatisiertes Health Scoring', 'Proaktive Intervention']
+      en: ['C₁-C₄ capability assessment', 'Targeted capability development', 'Sustainable competitive advantage'],
+      de: ['C₁-C₄ Fähigkeits-Assessment', 'Gezielte Fähigkeitsentwicklung', 'Nachhaltiger Wettbewerbsvorteil']
     },
-    caseStudies: ['Gainsight', 'ChurnZero'],
-    icon: React.createElement(Award, { className: 'w-6 h-6' }),
-    gradient: 'from-pink-500 to-rose-500',
-    needForAction: ['customers-churning'],
-    impact: ['retain-customers', 'increase-revenue'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'product-analytics-ai',
-    title: { en: 'AI Product Analytics', de: 'KI-Produktanalytik' },
-    dimension: 'Technology',
-    capabilities: ['C1', 'C3'],
-    stage: 'Growth',
-    duration: '6-8 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Implement AI-powered product analytics for data-driven decisions.',
-      de: 'Implementieren Sie KI-gestützte Produktanalytik für datengetriebene Entscheidungen.'
-    },
-    outcomes: {
-      en: ['AI-powered user insights', 'Predictive feature adoption', 'Automated A/B testing'],
-      de: ['KI-gestützte Nutzer-Insights', 'Prädiktive Feature-Adoption', 'Automatisierte A/B-Tests']
-    },
-    caseStudies: ['Amplitude', 'Mixpanel'],
-    icon: React.createElement(Brain, { className: 'w-6 h-6' }),
-    gradient: 'from-fuchsia-500 to-purple-500',
-    needForAction: ['product-not-scaling'],
-    impact: ['accelerate-product', 'increase-revenue'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'security-compliance-ai',
-    title: { en: 'AI Security & Compliance', de: 'KI-Sicherheit & Compliance' },
-    dimension: 'Governance',
-    capabilities: ['C3', 'C4'],
-    stage: 'Scale',
-    duration: '8-12 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Implement AI-powered security monitoring and compliance automation.',
-      de: 'Implementieren Sie KI-gestütztes Sicherheitsmonitoring und Compliance-Automatisierung.'
-    },
-    outcomes: {
-      en: ['SOC2/ISO27001 automation', 'Real-time threat detection', 'Automated compliance reporting'],
-      de: ['SOC2/ISO27001-Automatisierung', 'Echtzeit-Bedrohungserkennung', 'Automatisiertes Compliance-Reporting']
-    },
-    caseStudies: ['Vanta', 'Drata'],
-    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
-    gradient: 'from-red-500 to-orange-500',
-    needForAction: ['board-wants-results', 'ai-transformation'],
-    impact: ['transform-organization', 'reduce-costs'],
-    timeframe: 'mid-term',
-    capability: 'focused',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'culture-scaling-playbook',
-    title: { en: 'Culture Scaling Playbook', de: 'Kultur-Skalierungs-Playbook' },
-    dimension: 'Organization',
-    capabilities: ['C1', 'C4'],
-    stage: 'Scale',
-    duration: '10-14 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Scale your culture intentionally while maintaining core values.',
-      de: 'Skalieren Sie Ihre Kultur bewusst unter Beibehaltung der Kernwerte.'
-    },
-    outcomes: {
-      en: ['Culture documentation', 'Values-aligned hiring', 'Remote-first practices'],
-      de: ['Kultur-Dokumentation', 'Werte-orientiertes Hiring', 'Remote-First-Praktiken']
-    },
-    caseStudies: ['GitLab', 'Zapier'],
-    icon: React.createElement(Building, { className: 'w-6 h-6' }),
-    gradient: 'from-indigo-500 to-blue-500',
-    needForAction: ['operations-chaotic'],
-    impact: ['transform-organization', 'scale-operations'],
-    timeframe: 'long-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'partnership-ecosystem',
-    title: { en: 'Partnership Ecosystem', de: 'Partnerschafts-Ökosystem' },
-    dimension: 'GTM',
-    capabilities: ['C3', 'C4'],
-    stage: 'Scale',
-    duration: '8-12 weeks',
-    difficulty: 'Advanced',
-    description: {
-      en: 'Build and scale a partner ecosystem for exponential growth.',
-      de: 'Bauen und skalieren Sie ein Partner-Ökosystem für exponentielles Wachstum.'
-    },
-    outcomes: {
-      en: ['Partner-sourced revenue > 30%', 'Automated partner management', 'Ecosystem flywheel'],
-      de: ['Partner-Umsatz > 30%', 'Automatisiertes Partner-Management', 'Ökosystem-Schwungrad']
-    },
-    caseStudies: ['HubSpot', 'Salesforce'],
-    icon: React.createElement(GitBranch, { className: 'w-6 h-6' }),
-    gradient: 'from-teal-500 to-emerald-500',
-    needForAction: ['revenue-not-growing'],
-    impact: ['increase-revenue', 'scale-operations'],
-    timeframe: 'mid-term',
-    capability: 'focused',
-    capacity: 'transformation-ready',
-  },
-  {
-    id: 'revenue-operations-ai',
-    title: { en: 'AI Revenue Operations', de: 'KI-Revenue-Operations' },
-    dimension: 'Operations',
-    capabilities: ['C2', 'C3'],
-    stage: 'Scale',
-    duration: '8-10 weeks',
-    difficulty: 'Intermediate',
-    description: {
-      en: 'Unify sales, marketing, and CS with AI-powered revenue operations.',
-      de: 'Vereinen Sie Sales, Marketing und CS mit KI-gestützten Revenue Operations.'
-    },
-    outcomes: {
-      en: ['Unified revenue data', 'AI-powered forecasting', 'Cross-functional alignment'],
-      de: ['Vereinte Umsatzdaten', 'KI-gestützte Prognosen', 'Cross-funktionale Abstimmung']
-    },
-    caseStudies: ['Clari', 'Gong'],
+    caseStudies: ['Cursor', 'Midjourney', 'Perplexity'],
     icon: React.createElement(Layers, { className: 'w-6 h-6' }),
-    gradient: 'from-orange-500 to-red-500',
-    needForAction: ['revenue-not-growing', 'operations-chaotic'],
-    impact: ['increase-revenue', 'scale-operations'],
-    timeframe: 'mid-term',
-    capability: 'moderate',
-    capacity: 'goal-oriented',
-  },
-  {
-    id: 'content-marketing-ai',
-    title: { en: 'AI Content Marketing', de: 'KI-Content-Marketing' },
-    dimension: 'GTM',
-    capabilities: ['C1', 'C2'],
-    stage: 'Growth',
-    duration: '4-8 weeks',
-    difficulty: 'Beginner',
-    description: {
-      en: 'Scale content production with AI-powered creation and optimization.',
-      de: 'Skalieren Sie die Content-Produktion mit KI-gestützter Erstellung und Optimierung.'
-    },
-    outcomes: {
-      en: ['10x content velocity', 'SEO-optimized output', 'Multi-channel distribution'],
-      de: ['10x Content-Geschwindigkeit', 'SEO-optimierter Output', 'Multi-Channel-Distribution']
-    },
-    caseStudies: ['Jasper', 'Copy.ai'],
-    icon: React.createElement(Megaphone, { className: 'w-6 h-6' }),
-    gradient: 'from-violet-500 to-fuchsia-500',
-    needForAction: ['revenue-not-growing'],
-    impact: ['increase-revenue', 'reduce-costs'],
-    timeframe: 'quick-win',
-    capability: 'limited',
-    capacity: 'firefighting',
+    gradient: 'from-teal-500 to-emerald-500',
+    needForAction: ['need-ai-transformation', 'revenue-not-growing', 'product-not-scaling', 'customers-churning', 'operations-chaotic', 'costs-too-high', 'board-wants-results', 'portfolio-underperforming'],
+    impact: ['strategic-capabilities'],
+    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+    role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
   },
 ];
