@@ -82,7 +82,7 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
       }`}
     >
       {/* Gradient Accent */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${playbook.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${playbook.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300 pointer-events-none`} />
       
       {/* Icon */}
       <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${playbook.gradient} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300`}>
@@ -121,16 +121,12 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
 
       {/* Actions */}
       <div className="flex gap-2">
-        <Button
-          size="sm"
-          variant="outline"
-          className="flex-1"
-          asChild
+        <Link 
+          to={`/playbooks/${playbook.slug}`}
+          className="flex-1 inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-semibold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 border-2 border-foreground/20 bg-background hover:border-foreground/40 hover:bg-muted/50 h-9 px-4 text-xs uppercase tracking-wide"
         >
-          <Link to={`/playbooks/${playbook.slug}`}>
-            {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
-          </Link>
-        </Button>
+          {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
+        </Link>
         <Button
           size="sm"
           className="flex-1 bg-gradient-to-r from-primary to-primary/80"
