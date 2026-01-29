@@ -56,6 +56,11 @@ export interface SolutionTile {
     base: string;
     bridge: string;
   };
+  partnerBadge?: {
+    labelEn: string;
+    labelDe: string;
+    color: string;
+  };
 }
 
 export const solutionTypes: SolutionType[] = [
@@ -1526,6 +1531,47 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
+  },
+  // ============================================
+  // AI-POWERED TOOLS - PARTNERSHIP (ID 42)
+  // ============================================
+  {
+    id: 42,
+    slug: 'maxxeed',
+    solutionType: 'tools',
+    challenges: ['cac-crisis', 'growth-stalled'],
+    price: '€135/User/Mo',
+    priceTag: 'paid',
+    headlineEn: 'Maxxeed Digital Showrooms',
+    headlineDe: 'Maxxeed Digital Showrooms',
+    problemEn: "Your sales team relies on email and PowerPoint—unpersonal, inefficient. 78% of buyers demand better experiences, but get boring presentations. 30% win rate.",
+    problemDe: 'Dein Sales-Team nutzt E-Mail und PowerPoint—unpersönlich, ineffizient. 78% der Käufer fordern bessere Erfahrungen, bekommen aber langweilige Präsentationen. 30% Win Rate.',
+    solutionEn: 'Maxxeed automates creation of hyper-personalized Digital Showrooms in 30 seconds. AI transforms meeting notes into stunning presentations.',
+    solutionDe: 'Maxxeed automatisiert die Erstellung hyper-personalisierter Digital Showrooms in 30 Sekunden. KI verwandelt Gesprächsnotizen in beeindruckende Präsentationen.',
+    deliverablesEn: [
+      'Automatic showroom creation (30s)',
+      'Buyer value cycle (stakeholder maps)',
+      'Deal health score & analytics'
+    ],
+    deliverablesDe: [
+      'Automatische Showroom-Erstellung (30s)',
+      'Buyer Value Cycle (Stakeholder Maps)',
+      'Deal Health Score & Analytics'
+    ],
+    impactEn: '+31% close rate, +24% deal size, 98% email open rate. €50M ARR: +€12M ARR.',
+    impactDe: '+31% Close Rate, +24% Deal Size, 98% E-Mail-Öffnungsrate. €50M ARR: +€12M ARR.',
+    primaryCtaEn: 'Book Demo',
+    primaryCtaDe: 'Demo buchen',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/tools/maxxeed',
+    secondaryCtaEn: 'Visit Maxxeed',
+    secondaryCtaDe: 'Maxxeed besuchen',
+    secondaryCtaUrl: 'https://www.maxxeed.com/de/',
+    partnerBadge: {
+      labelEn: 'Black Belt Partner',
+      labelDe: 'Black Belt Partner',
+      color: 'gold'
+    }
   }
 ];
 
