@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertCircle, Target, Clock, Gauge, Users } from 'lucide-react';
+import { AlertCircle, Target, Gauge, User } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 import type { FilterOption } from '@/data/playbookFilters';
@@ -9,16 +9,15 @@ interface PlaybookFilterRowCenteredProps<T extends string> {
   label: { en: string; de: string };
   icon: string;
   options: FilterOption<T>[];
-  value: T | 'all';
-  onChange: (value: T | 'all') => void;
+  value: T | 'all' | 'none';
+  onChange: (value: T | 'all' | 'none') => void;
 }
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   AlertCircle,
   Target,
-  Clock,
   Gauge,
-  Users,
+  User,
 };
 
 function PlaybookFilterRowCentered<T extends string>({
@@ -49,7 +48,7 @@ function PlaybookFilterRowCentered<T extends string>({
           return (
             <button
               key={option.value}
-              onClick={() => onChange(option.value as T | 'all')}
+              onClick={() => onChange(option.value as T | 'all' | 'none')}
               className={cn(
                 'px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
                 isActive

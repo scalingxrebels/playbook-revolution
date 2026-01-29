@@ -40,10 +40,10 @@ const PlaybookLibrary: React.FC = () => {
   };
 
   const playbookStats = [
-    { value: '22+', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
-    { value: '6', label: { en: 'Dimensions', de: 'Dimensionen' }, color: 'accent' as const },
-    { value: '5', label: { en: 'Filters', de: 'Filter' }, color: 'primary' as const },
-    { value: '3', label: { en: 'Readiness Levels', de: 'Reifegrade' }, color: 'accent' as const },
+    { value: '13', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
+    { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' as const },
+    { value: '4', label: { en: 'Filters', de: 'Filter' }, color: 'primary' as const },
+    { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' as const },
   ];
 
   return (
@@ -80,7 +80,7 @@ const PlaybookLibrary: React.FC = () => {
           <PlaybookOnboardingHint />
         </div>
 
-        {/* 5-Filter Panel - Solutions-consistent layout */}
+        {/* 4-Filter Panel - Michel's Definition */}
         <div className="mb-8 space-y-6">
           <PlaybookFilterPanel 
             filters={filters} 

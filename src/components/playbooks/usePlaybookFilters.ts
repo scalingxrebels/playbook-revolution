@@ -7,9 +7,8 @@ import {
   FILTER_WEIGHTS,
   type NeedForActionTag,
   type ImpactTag,
-  type TimeframeTag,
-  type CapabilityTag,
-  type CapacityTag,
+  type BottleneckTag,
+  type RoleTag,
 } from '@/data/playbookFilters';
 
 interface PlaybookWithScore extends Playbook {
@@ -24,24 +23,19 @@ function calculateMatchScore(playbook: Playbook, filters: ActiveFilters): number
     score += FILTER_WEIGHTS.needForAction;
   }
   
-  // Impact: +25 points if match
+  // Impact: +30 points if match
   if (filters.impact === 'all' || playbook.impact.includes(filters.impact)) {
     score += FILTER_WEIGHTS.impact;
   }
   
-  // Timeframe: +20 points if match
-  if (filters.timeframe === 'all' || playbook.timeframe === filters.timeframe) {
-    score += FILTER_WEIGHTS.timeframe;
+  // Bottleneck: +25 points if match (note: 'none' means no filter = show all)
+  if (filters.bottleneck === 'none' || playbook.bottleneck.includes(filters.bottleneck)) {
+    score += FILTER_WEIGHTS.bottleneck;
   }
   
-  // Capability: +15 points if match
-  if (filters.capability === 'all' || playbook.capability === filters.capability) {
-    score += FILTER_WEIGHTS.capability;
-  }
-  
-  // Capacity: +10 points if match
-  if (filters.capacity === 'all' || playbook.capacity === filters.capacity) {
-    score += FILTER_WEIGHTS.capacity;
+  // Role: +15 points if match
+  if (filters.role === 'all' || playbook.role.includes(filters.role)) {
+    score += FILTER_WEIGHTS.role;
   }
   
   return score;
@@ -55,9 +49,8 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     return {
       needForAction: (searchParams.get('need') as NeedForActionTag) || 'all',
       impact: (searchParams.get('impact') as ImpactTag) || 'all',
-      timeframe: (searchParams.get('timeframe') as TimeframeTag) || 'all',
-      capability: (searchParams.get('capability') as CapabilityTag) || 'all',
-      capacity: (searchParams.get('capacity') as CapacityTag) || 'all',
+      bottleneck: (searchParams.get('bottleneck') as BottleneckTag) || 'none',
+      role: (searchParams.get('role') as RoleTag) || 'all',
     };
   });
 
@@ -66,9 +59,8 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     const params = new URLSearchParams();
     if (filters.needForAction !== 'all') params.set('need', filters.needForAction);
     if (filters.impact !== 'all') params.set('impact', filters.impact);
-    if (filters.timeframe !== 'all') params.set('timeframe', filters.timeframe);
-    if (filters.capability !== 'all') params.set('capability', filters.capability);
-    if (filters.capacity !== 'all') params.set('capacity', filters.capacity);
+    if (filters.bottleneck !== 'none') params.set('bottleneck', filters.bottleneck);
+    if (filters.role !== 'all') params.set('role', filters.role);
     setSearchParams(params, { replace: true });
   }, [filters, setSearchParams]);
 
@@ -83,9 +75,12 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     setFilters(defaultFilters);
   }, []);
 
-  // Check if any filter is active (not 'all')
+  // Check if any filter is active (not default)
   const hasActiveFilters = useMemo(() => {
-    return Object.values(filters).some(v => v !== 'all');
+    return filters.needForAction !== 'all' || 
+           filters.impact !== 'all' || 
+           filters.bottleneck !== 'none' || 
+           filters.role !== 'all';
   }, [filters]);
 
   // Filter and score playbooks
@@ -100,24 +95,20 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
       );
     });
 
-    // If any filter is active (not all 'all'), filter by match score > 0
-    // But actually, we want to show all if 'all' is selected, and filter if specific values
+    // If any filter is active, filter by match
     if (hasActiveFilters) {
       results = results.filter(playbook => {
-        // Check each non-'all' filter
+        // Check each non-default filter
         if (filters.needForAction !== 'all' && !playbook.needForAction.includes(filters.needForAction)) {
           return false;
         }
         if (filters.impact !== 'all' && !playbook.impact.includes(filters.impact)) {
           return false;
         }
-        if (filters.timeframe !== 'all' && playbook.timeframe !== filters.timeframe) {
+        if (filters.bottleneck !== 'none' && !playbook.bottleneck.includes(filters.bottleneck)) {
           return false;
         }
-        if (filters.capability !== 'all' && playbook.capability !== filters.capability) {
-          return false;
-        }
-        if (filters.capacity !== 'all' && playbook.capacity !== filters.capacity) {
+        if (filters.role !== 'all' && !playbook.role.includes(filters.role)) {
           return false;
         }
         return true;

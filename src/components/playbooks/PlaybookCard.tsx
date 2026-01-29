@@ -1,8 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Clock, Layers, Download, ArrowRight } from 'lucide-react';
+import { Target, Download, ArrowRight } from 'lucide-react';
 import type { Playbook } from '@/data/playbooks';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PlaybookCardProps {
   playbook: Playbook;
@@ -13,13 +14,24 @@ interface PlaybookCardProps {
   onDownload: (playbook: Playbook) => void;
 }
 
-const getDifficultyColor = (difficulty: string) => {
-  switch (difficulty) {
-    case 'Beginner': return 'bg-green-500/20 text-green-400 border-green-500/30';
-    case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-    case 'Advanced': return 'bg-red-500/20 text-red-400 border-red-500/30';
-    default: return 'bg-muted text-muted-foreground';
-  }
+// Map impact to user-friendly labels
+const impactLabels: Record<string, { en: string; de: string }> = {
+  'growth-engines': { en: 'Growth Engines', de: 'Wachstumsmotoren' },
+  'operating-systems': { en: 'Operating Systems', de: 'Betriebssysteme' },
+  'board-governance': { en: 'Board & Governance', de: 'Board & Governance' },
+  'portfolio': { en: 'Portfolio', de: 'Portfolio' },
+  'strategic-capabilities': { en: 'Strategic Capabilities', de: 'Strategische Fähigkeiten' },
+};
+
+// Map role to display labels
+const roleLabels: Record<string, string> = {
+  'ceo': 'CEO',
+  'cmo-cro': 'CMO/CRO',
+  'coo': 'COO',
+  'cfo': 'CFO',
+  'cto': 'CTO',
+  'cpo': 'CPO',
+  'vc-board': 'VC/Board',
 };
 
 const PlaybookCard: React.FC<PlaybookCardProps> = ({ 
@@ -52,6 +64,13 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
     return () => observer.disconnect();
   }, [index]);
 
+  // Get primary impact area for display
+  const primaryImpact = playbook.impact[0];
+  const impactLabel = impactLabels[primaryImpact] || { en: primaryImpact, de: primaryImpact };
+
+  // Get first few roles for display
+  const displayRoles = playbook.role.slice(0, 3).map(r => roleLabels[r] || r);
+
   return (
     <div
       ref={cardRef}
@@ -72,16 +91,13 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
       {/* Tags */}
       <div className="flex flex-wrap gap-2 mb-4">
         <Badge variant="outline" className="text-xs">
-          {playbook.dimension}
+          {impactLabel[language]}
         </Badge>
-        {playbook.capabilities.map(cap => (
-          <Badge key={cap} variant="outline" className="text-xs bg-primary/5">
-            {cap}
+        {displayRoles.map(role => (
+          <Badge key={role} variant="outline" className="text-xs bg-primary/5">
+            {role}
           </Badge>
         ))}
-        <Badge className={`text-xs ${getDifficultyColor(playbook.difficulty)}`}>
-          {playbook.difficulty}
-        </Badge>
       </div>
 
       {/* Title */}
@@ -94,15 +110,11 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
         {playbook.description[language]}
       </p>
 
-      {/* Meta */}
+      {/* Meta - showing bottleneck count */}
       <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
         <span className="flex items-center gap-1">
-          <Clock className="w-3 h-3" />
-          {playbook.duration}
-        </span>
-        <span className="flex items-center gap-1">
-          <Layers className="w-3 h-3" />
-          {playbook.stage}
+          <Target className="w-3 h-3" />
+          {playbook.bottleneck.length} {language === 'en' ? 'bottlenecks' : 'Engpässe'}
         </span>
       </div>
 

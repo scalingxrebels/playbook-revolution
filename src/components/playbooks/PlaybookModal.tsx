@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Clock, CheckCircle2, BookOpen, ArrowRight } from 'lucide-react';
+import { CheckCircle2, BookOpen, ArrowRight, Target, Users } from 'lucide-react';
 import type { Playbook } from '@/data/playbooks';
 
 interface PlaybookModalProps {
@@ -19,13 +19,32 @@ interface PlaybookModalProps {
   onDownload: (playbook: Playbook) => void;
 }
 
-const getDifficultyColor = (difficulty: string) => {
-  switch (difficulty) {
-    case 'Beginner': return 'bg-green-500/20 text-green-400 border-green-500/30';
-    case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
-    case 'Advanced': return 'bg-red-500/20 text-red-400 border-red-500/30';
-    default: return 'bg-muted text-muted-foreground';
-  }
+// Map impact to user-friendly labels
+const impactLabels: Record<string, { en: string; de: string }> = {
+  'growth-engines': { en: 'Growth Engines', de: 'Wachstumsmotoren' },
+  'operating-systems': { en: 'Operating Systems', de: 'Betriebssysteme' },
+  'board-governance': { en: 'Board & Governance', de: 'Board & Governance' },
+  'portfolio': { en: 'Portfolio', de: 'Portfolio' },
+  'strategic-capabilities': { en: 'Strategic Capabilities', de: 'Strategische Fähigkeiten' },
+};
+
+// Map bottleneck to user-friendly labels
+const bottleneckLabels: Record<string, { en: string; de: string }> = {
+  'strategy': { en: 'Strategy', de: 'Strategie' },
+  'setup': { en: 'Setup', de: 'Setup' },
+  'execution-focus': { en: 'Execution Focus', de: 'Umsetzungsfokus' },
+  'operationalization': { en: 'Operationalization', de: 'Operationalisierung' },
+};
+
+// Map role to display labels
+const roleLabels: Record<string, string> = {
+  'ceo': 'CEO',
+  'cmo-cro': 'CMO/CRO',
+  'coo': 'COO',
+  'cfo': 'CFO',
+  'cto': 'CTO',
+  'cpo': 'CPO',
+  'vc-board': 'VC/Board',
 };
 
 const PlaybookModal: React.FC<PlaybookModalProps> = ({ 
@@ -53,19 +72,43 @@ const PlaybookModal: React.FC<PlaybookModalProps> = ({
         </DialogHeader>
 
         <div className="space-y-6 mt-6">
-          {/* Tags */}
+          {/* Impact Areas */}
           <div className="flex flex-wrap gap-2">
-            <Badge variant="outline">{playbook.dimension}</Badge>
-            {playbook.capabilities.map(cap => (
-              <Badge key={cap} variant="outline" className="bg-primary/5">{cap}</Badge>
+            {playbook.impact.map(imp => (
+              <Badge key={imp} variant="outline">
+                {impactLabels[imp]?.[language] || imp}
+              </Badge>
             ))}
-            <Badge className={getDifficultyColor(playbook.difficulty)}>
-              {playbook.difficulty}
-            </Badge>
-            <Badge variant="outline">
-              <Clock className="w-3 h-3 mr-1" />
-              {playbook.duration}
-            </Badge>
+          </div>
+
+          {/* Bottlenecks */}
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Target className="w-5 h-5 text-primary" />
+              {language === 'en' ? 'Addresses Bottlenecks' : 'Behandelt Engpässe'}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {playbook.bottleneck.map(b => (
+                <Badge key={b} variant="outline" className="bg-primary/5">
+                  {bottleneckLabels[b]?.[language] || b}
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* Roles */}
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Users className="w-5 h-5 text-primary" />
+              {language === 'en' ? 'Recommended For' : 'Empfohlen für'}
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {playbook.role.map(r => (
+                <Badge key={r} variant="outline" className="bg-muted/50">
+                  {roleLabels[r] || r}
+                </Badge>
+              ))}
+            </div>
           </div>
 
           {/* Expected Outcomes */}
