@@ -1,171 +1,278 @@
 
-# Plan: Konsistentes Filter-Layout fur Playbooks
+# Plan: 4-Filter-System Redesign fur Playbooks (Michel's Definition)
 
-## Ubersicht
+## Zusammenfassung der Anderungen
 
-Das Filter-Layout wird an das Solutions-Design angepasst, mit einem neuen 2-Zeilen-Layout:
-- **Zeile 1-2**: Need-for-Action und Impact (volle Breite, zentriert)
-- **Zeile 3**: Timeframe, Capability, Capacity (nebeneinander, kompakter)
+Das aktuelle 5-Filter-System muss komplett auf das neue 4-Filter-System umgestellt werden:
 
----
-
-## Vergleich: Vorher vs. Nachher
-
-### Vorher (aktuell)
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│ [Icon] Need-for-Action:                                     │
-│ [All] [Revenue not growing] [Product not scaling] ...       │
-│                                                             │
-│ [Icon] Impact:                                              │
-│ [All] [Reduce costs] [Increase revenue] ...                 │
-│                                                             │
-│ [Icon] Timeframe:                                           │
-│ [All] [Quick Win] [Mid-Term] [Long-Term] ...                │
-│                                                             │
-│ [Icon] Capability:                                          │
-│ [All] [Limited] [Moderate] [Focused]                        │
-│                                                             │
-│ [Icon] Capacity:                                            │
-│ [All] [Firefighting] [Goal-oriented] [Transformation-ready] │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Nachher (neu)
-
-```text
-                    [Icon] Need-for-Action:
-    [All] [Revenue not growing] [Product not scaling] ...
-                    (volle Breite, zentriert)
-
-                        [Icon] Impact:
-        [All] [Reduce costs] [Increase revenue] ...
-                    (volle Breite, zentriert)
-
-┌─────────────────┬─────────────────┬─────────────────┐
-│   [Clock]       │   [Gauge]       │   [Users]       │
-│   Timeframe:    │   Capability:   │   Capacity:     │
-│ [All][Quick]... │ [All][Limited]  │ [All][Fire...]  │
-└─────────────────┴─────────────────┴─────────────────┘
-              (3 Filter nebeneinander, kompakt)
-```
+| Aktuell (5 Filter) | Neu (4 Filter) |
+|-------------------|----------------|
+| Need-for-Action | Need-for-Action (angepasste Optionen) |
+| Impact (Reduce costs, Increase revenue, etc.) | Impact (Growth Engines, Operating Systems, etc.) |
+| Timeframe | **ENTFERNT** |
+| Capability | **ENTFERNT** |
+| Capacity | **ENTFERNT** |
+| - | Bottleneck (NEU) |
+| - | Role (NEU) |
 
 ---
 
-## Technische Anderungen
+## Detaillierte Anderungen
 
-### 1. Neue Komponente: `PlaybookFilterRowCentered.tsx`
+### 1. Filter-Definitionen (`src/data/playbookFilters.ts`)
 
-Fur Need-for-Action und Impact - basierend auf dem Solutions-Pattern:
+**ENTFERNEN:**
+- `TimeframeTag` Typ
+- `CapabilityTag` Typ
+- `CapacityTag` Typ
+- `timeframeFilter` Definition
+- `capabilityFilter` Definition
+- `capacityFilter` Definition
+
+**ANPASSEN:**
 
 ```typescript
-// Zentriertes Layout wie ChallengeTabNavigation
-<div className="w-full">
-  <div className="flex items-center justify-center gap-2 mb-3">
-    <Icon className="w-4 h-4 text-muted-foreground" />
-    <span className="text-sm font-medium text-muted-foreground">
-      {label}
-    </span>
-  </div>
-  <div className="flex flex-wrap gap-2 justify-center">
-    {/* Pills */}
-  </div>
-</div>
+// Need-for-Action: Optionen anpassen
+export type NeedForActionTag = 
+  | 'revenue-not-growing'
+  | 'product-not-scaling'
+  | 'customers-churning'
+  | 'operations-chaotic'
+  | 'costs-too-high'        // NEU (ersetzt pricing-not-working)
+  | 'need-ai-transformation' // ANGEPASST
+  | 'board-wants-results'
+  | 'portfolio-underperforming';
+
+// Impact: Komplett neue Optionen
+export type ImpactTag = 
+  | 'growth-engines'
+  | 'operating-systems'
+  | 'board-governance'
+  | 'portfolio'
+  | 'strategic-capabilities';
 ```
 
-### 2. Neue Komponente: `PlaybookFilterRowCompact.tsx`
-
-Fur Timeframe, Capability, Capacity - kompaktere Variante:
+**NEU HINZUFUGEN:**
 
 ```typescript
-// Kompaktes Layout fur 3-Spalten-Grid
-<div className="space-y-2">
-  <div className="flex items-center justify-center gap-1.5">
-    <Icon className="w-3.5 h-3.5 text-muted-foreground" />
-    <span className="text-xs font-medium text-muted-foreground">
-      {label}
-    </span>
-  </div>
-  <div className="flex flex-wrap gap-1.5 justify-center">
-    {/* Kleinere Pills: text-xs, px-2 py-1 */}
-  </div>
-</div>
+// Bottleneck: Ersetzt C1-C4 mit verstandlichen Begriffen
+export type BottleneckTag = 
+  | 'strategy'
+  | 'setup'
+  | 'execution-focus'
+  | 'operationalization';
+
+// Role: Single-Select Filter
+export type RoleTag = 
+  | 'ceo'
+  | 'cmo-cro'
+  | 'coo'
+  | 'cfo'
+  | 'cto'
+  | 'cpo'
+  | 'vc-board';
 ```
 
-### 3. Anpassung: `PlaybookFilterPanel.tsx`
-
-Neues Layout mit 2 Sections:
+**Neue ActiveFilters:**
 
 ```typescript
-<div className="space-y-6">
-  {/* Full-Width Section: Need-for-Action + Impact */}
-  <div className="space-y-6">
-    <PlaybookFilterRowCentered ... />  {/* Need-for-Action */}
-    <PlaybookFilterRowCentered ... />  {/* Impact */}
-  </div>
+export interface ActiveFilters {
+  needForAction: NeedForActionTag | 'all';
+  impact: ImpactTag | 'all';
+  bottleneck: BottleneckTag | 'none';  // Default: none
+  role: RoleTag | 'all';
+}
+```
+
+---
+
+### 2. Playbook-Daten (`src/data/playbooks.ts`)
+
+**STRUKTUR ANDERN:**
+
+```typescript
+export interface Playbook {
+  id: string;
+  title: { en: string; de: string };
+  description: { en: string; de: string };
+  outcomes: { en: string[]; de: string[] };
+  caseStudies: string[];
+  icon: React.ReactNode;
+  gradient: string;
   
-  {/* Compact Section: Timeframe + Capability + Capacity */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-border/50">
-    <PlaybookFilterRowCompact ... />  {/* Timeframe */}
-    <PlaybookFilterRowCompact ... />  {/* Capability */}
-    <PlaybookFilterRowCompact ... />  {/* Capacity */}
-  </div>
-</div>
+  // NEUE FILTER-TAGS (ersetzen alte)
+  needForAction: NeedForActionTag[];
+  impact: ImpactTag[];
+  bottleneck: BottleneckTag[];
+  role: RoleTag[];
+  
+  // Legacy-Felder entfernen oder behalten fur Referenz
+  dimension?: string;
+  capabilities?: string[];
+  stage?: string;
+  duration?: string;
+  difficulty?: 'Beginner' | 'Intermediate' | 'Advanced';
+}
 ```
 
-### 4. Anpassung: `PlaybookLibrary.tsx`
+**PLAYBOOKS REDUZIEREN:** Von 22 auf 12 Playbooks gemass Briefing:
 
-Container-Styling anpassen:
+1. AI-Native Scaling Playbook (Mutter)
+2. GTM/Revenue Playbook
+3. Product Playbook
+4. Customer Success Playbook
+5. Operations Playbook
+6. Finance Playbook
+7. Talent Playbook
+8. Data/Tech Playbook
+9. Strategic Governance Playbook
+10. Operational Governance Playbook
+11. Exit and M&A Playbook
+12. Portfolio Excellence Playbook
+13. Strategic Capabilities Playbook (optional, als 12. oder 13.)
+
+---
+
+### 3. Filter-Komponenten
+
+**PlaybookFilterPanel.tsx:**
+
+```text
+Neues Layout:
+
+┌─────────────────────────────────────────────────────────────┐
+│              [AlertCircle] What's your challenge?            │
+│   [All] [Revenue not growing] [Product not scaling] ...    │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                   [Target] Which area?                       │
+│  [All] [Growth Engines] [Operating Systems] [Board] ...    │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────────────────────┬─────────────────────────────────┐
+│  [Gauge] What's your      │     [User] Who are you?         │
+│  bottleneck?              │                                 │
+│  [None][Strategy][Setup]  │  [All][CEO][CMO/CRO][COO]...   │
+│  [Execution][Operational] │                                 │
+└───────────────────────────┴─────────────────────────────────┘
+          (2 Filter nebeneinander, kompakt)
+```
+
+**Anderungen:**
+- Need-for-Action: Volle Breite, zentriert (Label: "What's your challenge?")
+- Impact: Volle Breite, zentriert (Label: "Which area?")
+- Bottleneck + Role: 2-Spalten-Grid (statt 3)
+
+---
+
+### 4. Filter-Hook (`usePlaybookFilters.ts`)
+
+**Anderungen:**
+- URL-Parameter anpassen: `need`, `impact`, `bottleneck`, `role`
+- Match-Score-Gewichtung anpassen
+- Bottleneck-Filter hat Default "none" statt "all"
+
+**Neue Gewichtung:**
 
 ```typescript
-// Vorher: Box um alle Filter
-<div className="mb-8 p-6 bg-card/50 border border-border rounded-xl">
-
-// Nachher: Kein Container, wie Solutions-Seite
-<div className="mb-8 space-y-6">
+export const FILTER_WEIGHTS = {
+  needForAction: 30,
+  impact: 30,
+  bottleneck: 25,
+  role: 15,
+} as const;
 ```
 
 ---
 
-## Design-Details
+### 5. Icon-Map erweitern
 
-### Full-Width Filter (Need-for-Action, Impact)
+In `PlaybookFilterRowCentered.tsx` und `PlaybookFilterRowCompact.tsx`:
 
-| Eigenschaft | Wert |
-|-------------|------|
-| Label | Zentriert uber Pills |
-| Icon | 4x4, text-muted-foreground |
-| Pills | px-3 py-1.5, text-sm, rounded-full |
-| Ausrichtung | justify-center, flex-wrap |
+```typescript
+import { AlertCircle, Target, Gauge, User, Briefcase } from 'lucide-react';
 
-### Compact Filter (Timeframe, Capability, Capacity)
-
-| Eigenschaft | Wert |
-|-------------|------|
-| Label | Zentriert, kleiner (text-xs) |
-| Icon | 3.5x3.5, text-muted-foreground |
-| Pills | px-2 py-1, text-xs, rounded-full |
-| Grid | 3 Spalten auf Desktop, 1 auf Mobile |
+const iconMap = {
+  AlertCircle,
+  Target,
+  Gauge,       // Bottleneck
+  User,        // Role
+  Briefcase,   // Alternative fur Role
+};
+```
 
 ---
 
-## Dateien
+## Dateien und Aktionen
 
 | Datei | Aktion |
 |-------|--------|
-| `src/components/playbooks/PlaybookFilterRowCentered.tsx` | Neu erstellen |
-| `src/components/playbooks/PlaybookFilterRowCompact.tsx` | Neu erstellen |
-| `src/components/playbooks/PlaybookFilterPanel.tsx` | Refactoren |
-| `src/components/playbooks/PlaybookFilterRow.tsx` | Kann entfernt werden (nach Migration) |
-| `src/components/PlaybookLibrary.tsx` | Container-Styling anpassen |
+| `src/data/playbookFilters.ts` | Komplett uberarbeiten (neue Typen, Filter) |
+| `src/data/playbooks.ts` | Playbooks auf 12 reduzieren, neue Tags |
+| `src/components/playbooks/PlaybookFilterPanel.tsx` | Layout auf 2+2 anpassen |
+| `src/components/playbooks/PlaybookFilterRowCentered.tsx` | Icon-Map erweitern |
+| `src/components/playbooks/PlaybookFilterRowCompact.tsx` | Icon-Map erweitern |
+| `src/components/playbooks/usePlaybookFilters.ts` | 4-Filter-Logik |
+| `src/components/PlaybookLibrary.tsx` | Stats anpassen (12 Playbooks, 4 Filter) |
 
 ---
 
-## Responsive Verhalten
+## Mapping-Tabelle (aus Briefing)
 
-| Breakpoint | Full-Width Filter | Compact Filter |
-|------------|-------------------|----------------|
-| Mobile | Volle Breite, wrap | Vertikal gestapelt |
-| Tablet | Volle Breite, wrap | 3 Spalten |
-| Desktop | Volle Breite, wrap | 3 Spalten |
+| Playbook | Need-for-Action | Impact | Bottleneck | Role |
+|----------|-----------------|--------|------------|------|
+| AI-Native Scaling | all | all | all | ceo, all |
+| GTM/Revenue | revenue-not-growing | growth-engines | strategy, execution-focus | ceo, cmo-cro |
+| Product | product-not-scaling, revenue-not-growing | growth-engines | execution-focus | ceo, cpo, cto |
+| Customer Success | customers-churning | growth-engines | execution-focus | ceo, cmo-cro |
+| Operations | operations-chaotic | operating-systems | setup, operationalization | ceo, coo |
+| Finance | costs-too-high, operations-chaotic | operating-systems | setup, operationalization | ceo, cfo, coo |
+| Talent | operations-chaotic | operating-systems | setup | ceo, coo |
+| Data/Tech | product-not-scaling, operations-chaotic | operating-systems | operationalization | ceo, cto, coo |
+| Strategic Governance | board-wants-results | board-governance | strategy | ceo, vc-board |
+| Operational Governance | operations-chaotic, board-wants-results | board-governance | operationalization | ceo, coo, vc-board |
+| Exit and M&A | board-wants-results | board-governance | strategy | ceo, cfo, vc-board |
+| Portfolio Excellence | portfolio-underperforming | portfolio | strategy, operationalization | vc-board |
+| Strategic Capabilities | need-ai-transformation, all | strategic-capabilities | strategy, setup, execution-focus, operationalization | ceo, all |
+
+---
+
+## Implementierungs-Reihenfolge
+
+1. **Phase 1: Daten-Layer**
+   - `playbookFilters.ts` komplett uberarbeiten
+   - Neue Typen und Filter-Definitionen
+
+2. **Phase 2: Playbook-Daten**
+   - `playbooks.ts` auf 12 Playbooks reduzieren
+   - Neue Filter-Tags zuweisen
+
+3. **Phase 3: Komponenten**
+   - `PlaybookFilterPanel.tsx` auf 2+2 Layout
+   - Icon-Maps erweitern
+   - Filter-Hook anpassen
+
+4. **Phase 4: Integration**
+   - `PlaybookLibrary.tsx` Stats aktualisieren
+   - URL-Parameter testen
+
+---
+
+## Bilinguale Labels (aus Briefing)
+
+| Filter | Label EN | Label DE |
+|--------|----------|----------|
+| Need-for-Action | What's your challenge? | Was ist deine Herausforderung? |
+| Impact | Which area? | Welcher Bereich? |
+| Bottleneck | What's your bottleneck? | Was ist dein Engpass? |
+| Role | Who are you? | Wer bist du? |
+
+---
+
+## Wichtige Hinweise
+
+1. **Bottleneck Default**: "None" statt "All" - zeigt alle Playbooks ohne Bottleneck-Filter
+2. **Role ist Single-Select**: Nur eine Rolle gleichzeitig wahlbar
+3. **Impact komplett neu**: Keine Uberschneidung mit alten Optionen
+4. **12 Playbooks statt 22**: Fokus auf die Kern-Playbooks aus dem Briefing
