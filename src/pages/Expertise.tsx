@@ -11,9 +11,7 @@ const Research: React.FC = () => {
       <LanguageProvider>
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
-          <main className="pt-20">
-            <ResearchHub />
-          </main>
+          <ResearchHub />
           <Footer />
         </div>
       </LanguageProvider>
