@@ -1,113 +1,99 @@
 
 
-# Plan: Vergleichstabelle "Das Buch im Vergleich" hinzufügen
+# Plan: Fördermittel-Navigator Solution Tile hinzufügen
 
 ## Übersicht
 
-Eine neue Sektion wird auf der Fix Growth Landing Page eingefügt, die das Buch mit anderen bekannten Scaling-Büchern vergleicht.
-
 | Element | Details |
 |---------|---------|
-| Position | Nach der SolutionSection, vor WhatsInsideSection |
-| Neue Komponente | `ComparisonTableSection` |
-| Darstellung | Responsive Tabelle mit Progress-Bars |
+| Tile ID | 45 (nach Fix Growth Book mit ID 44) |
+| Solution Type | `tools` (AI-Powered Tools) |
+| Challenges | `board-pressure`, `portfolio-performance`, `orientation` |
+| Preis | Free |
 
 ---
 
-## Daten aus dem Screenshot
+## Änderung in `src/data/solutionTiles.ts`
 
-### 7 Bücher im Vergleich
-
-| Buch | Autor | Fokus | Speed | Kapitaleffizienz | Umsetzungstiefe | Org-Fokus | Fazit |
-|------|-------|-------|-------|-----------------|-----------------|-----------|-------|
-| Fix Growth. Scale Faster. | Michel Lason | Execution Gap in GTM, Ops & Valuation | 100% | 100% | 100% | 80% | Execution Gap closed |
-| Scaling Up | Verne Harnish | Struktur & Rhythmus | 40% | 80% | 80% | 60% | Too slow, too rigid |
-| Blitzscaling | Reid Hoffman | Geschwindigkeit > Effizienz | 100% | 20% | 40% | 40% | Burn fast, win big |
-| Traction | Gino Wickman | EOS + Struktur für kleine Teams | 40% | 80% | 40% | 60% | Clarity, lack of business focus |
-| Pinnacle | Steve Preada/Greg Cleary | EOS + Leadership + Kultur | 40% | 80% | 60% | 80% | Culture, too little GTM |
-| Scaling People | Claire Hughes Johnson | People- & Culture-Scale | 60% | 80% | 60% | 100% | People first, no GTM & business |
-| Scaling Through Chaos | Dominic Jacquesson | Teamstruktur durch Wachstumsphasen | 60% | 80% | 40% | 100% | Roles, not revenue & valuation |
-
----
-
-## Änderung in `src/pages/FixGrowthBook.tsx`
-
-### 1. Neue Sektion: `ComparisonTableSection` (nach Zeile 418)
+### Neue Tile-Konfiguration (nach Zeile 1610)
 
 ```typescript
-// ============================================================================
-// SECTION 3b: BOOK COMPARISON
-// ============================================================================
-const ComparisonTableSection: React.FC = () => {
-  const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-
-  const books = [
-    {
-      title: 'Fix Growth. Scale Faster.',
-      author: 'Michel Lason',
-      focus: { 
-        en: 'Execution Gap in GTM, Ops & Valuation', 
-        de: 'Execution Gap in GTM, Ops & Valuation' 
-      },
-      scores: { speed: 100, capitalEfficiency: 100, implementationDepth: 100, orgFocus: 80 },
-      conclusion: { en: 'Execution Gap closed', de: 'Execution Gap closed' },
-      highlight: true,
-    },
-    {
-      title: 'Scaling Up',
-      author: 'Verne Harnish',
-      focus: { en: 'Structure & Rhythm', de: 'Struktur & Rhythmus' },
-      scores: { speed: 40, capitalEfficiency: 80, implementationDepth: 80, orgFocus: 60 },
-      conclusion: { en: 'Too slow, too rigid', de: 'Too slow, too rigid' },
-    },
-    // ... weitere Bücher
-  ];
-
-  // Responsive Tabelle mit Progress-Bars
-};
-```
-
-### 2. Sektionsreihenfolge aktualisieren (Zeile 707-714)
-
-```typescript
-<main>
-  <HeroSection />
-  <ProblemSection />
-  <SolutionSection />
-  <ComparisonTableSection />  {/* NEU */}
-  <WhatsInsideSection />
-  <AuthorSection />
-  <ProofSection />
-  <FinalCTASection />
-</main>
+// ============================================
+// AI-POWERED TOOLS - FUNDING NAVIGATOR (ID 45)
+// ============================================
+{
+  id: 45,
+  slug: 'funding-navigator',
+  solutionType: 'tools',
+  challenges: ['board-pressure', 'portfolio-performance', 'orientation'],
+  price: 'Free',
+  priceTag: 'free',
+  
+  headlineEn: 'Funding Navigator',
+  headlineDe: 'Fördermittel-Navigator',
+  
+  problemEn: "German startups waste 4-8 weeks researching funding programs (EXIST, ZIM, KfW)—and still miss opportunities. 70% miss relevant funding, leaving €150k-€350k on the table.",
+  problemDe: "Deutsche Startups verschwenden 4-8 Wochen mit der Recherche von Förderprogrammen (EXIST, ZIM, KfW)—und verpassen trotzdem Chancen. 70% verpassen relevante Förderungen und lassen €150k-€350k liegen.",
+  
+  solutionEn: "AI-native funding matching platform that automates the entire funding process in 10 minutes. Get AI-powered matching to specialized consultants.",
+  solutionDe: "AI-native Fördermittel-Matching-Plattform, die den gesamten Förderprozess in 10 Minuten automatisiert. Erhalte AI-gestütztes Matching zu spezialisierten Beratern.",
+  
+  deliverablesEn: [
+    'Intelligent questionnaire (10 min)',
+    'AI-powered matching (A/B/C scoring)',
+    'Personal consultation (24h)',
+    'All programs (EXIST, ZIM, KfW, etc.)'
+  ],
+  deliverablesDe: [
+    'Intelligenter Fragebogen (10 Min)',
+    'AI-gestütztes Matching (A/B/C Scoring)',
+    'Persönliche Beratung (24h)',
+    'Alle Programme (EXIST, ZIM, KfW, etc.)'
+  ],
+  
+  impactEn: "-99% research time (10 min vs. 4-8 weeks), +400-600% programs identified, +200-400% funding volume. Free.",
+  impactDe: "-99% Recherchezeit (10 Min statt 4-8 Wochen), +400-600% identifizierte Programme, +200-400% Fördervolumen. Kostenlos.",
+  
+  primaryCtaEn: 'Start Funding Check',
+  primaryCtaDe: 'Förder-Check starten',
+  primaryCtaAction: 'external',
+  primaryCtaUrl: 'https://foerdermittelnavigator.com/',
+  
+  secondaryCtaEn: 'Learn more',
+  secondaryCtaDe: 'Mehr erfahren',
+  secondaryCtaUrl: '/about'
+}
 ```
 
 ---
 
-## Design-Details
+## Tile-Verhalten
 
-### Progress-Bars
-- Schräge Streifen (diagonal stripes) wie im Original
-- Primärfarbe für die Balken
-- Prozentanzeige auf dem Balken
+### Visuelles Design (automatisch durch `solutionType: 'tools'`)
+- Orange Rahmen (`border-accent/50`)
+- Gradient-Button für Primary CTA
+- Wrench-Icon (🔧) als Kategorie-Icon
 
-### Responsive Verhalten
-- Desktop: Volle Tabelle mit allen Spalten
-- Mobile: Horizontales Scrollen oder Card-Layout
+### CTAs
+| CTA | Aktion | URL |
+|-----|--------|-----|
+| Primary: "Start Funding Check" | Externes Tool öffnen | `https://foerdermittelnavigator.com/` |
+| Secondary: "Learn more" | Interne Navigation | `/about` |
 
-### Styling
-- Konsistent mit dem bestehenden Design-System
-- Hervorhebung für "Fix Growth" Zeile (erste Zeile)
-- Fazit-Spalte mit Pfeil-Icon (→)
+### Filter-Sichtbarkeit
+Die Kachel erscheint bei:
+- **Alle Challenges** (All)
+- **Board Pressure**
+- **Portfolio Performance**  
+- **Need Orientation**
+- **Alle Tools** (AI-Powered Tools Filter)
 
 ---
 
-## Erwartetes Ergebnis
+## Technische Details
 
-- Neue Sektion "Das Buch im Vergleich" / "The Book Compared"
-- Zeigt 7 Bücher im direkten Vergleich
-- 4 Bewertungskategorien mit visuellen Progress-Bars
-- Fix Growth als Spitzenreiter hervorgehoben
-- Bilingual DE/EN
+- `primaryCtaAction: 'external'` öffnet URL in neuem Tab
+- `priceTag: 'free'` aktiviert grünen "Free" Badge
+- Kein `partnerBadge` (wie gewünscht)
+- Array-Challenges (kein `'universal'`)
 
