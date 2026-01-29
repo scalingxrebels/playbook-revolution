@@ -2,12 +2,10 @@ import React from 'react';
 import PlaybookFilterRowCentered from './PlaybookFilterRowCentered';
 import PlaybookFilterRowCompact from './PlaybookFilterRowCompact';
 import {
-  needForActionFilter,
   impactFilter,
   bottleneckFilter,
   roleFilter,
   type ActiveFilters,
-  type NeedForActionTag,
   type ImpactTag,
   type BottleneckTag,
   type RoleTag,
@@ -24,32 +22,19 @@ const PlaybookFilterPanel: React.FC<PlaybookFilterPanelProps> = ({
 }) => {
   return (
     <div className="space-y-6">
-      {/* Full-Width Section: Need-for-Action + Impact */}
-      <div className="space-y-6">
-        {/* Filter 1: Need-for-Action (What's your challenge?) */}
-        <PlaybookFilterRowCentered<NeedForActionTag>
-          filterId={needForActionFilter.id}
-          label={needForActionFilter.label}
-          icon={needForActionFilter.icon}
-          options={needForActionFilter.options}
-          value={filters.needForAction}
-          onChange={(value) => onFilterChange('needForAction', value as NeedForActionTag | 'all')}
-        />
-
-        {/* Filter 2: Impact (Which area?) */}
-        <PlaybookFilterRowCentered<ImpactTag>
-          filterId={impactFilter.id}
-          label={impactFilter.label}
-          icon={impactFilter.icon}
-          options={impactFilter.options}
-          value={filters.impact}
-          onChange={(value) => onFilterChange('impact', value as ImpactTag | 'all')}
-        />
-      </div>
+      {/* Full-Width Section: Impact */}
+      <PlaybookFilterRowCentered<ImpactTag>
+        filterId={impactFilter.id}
+        label={impactFilter.label}
+        icon={impactFilter.icon}
+        options={impactFilter.options}
+        value={filters.impact}
+        onChange={(value) => onFilterChange('impact', value as ImpactTag | 'all')}
+      />
 
       {/* Compact Section: Bottleneck + Role (2 columns) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border/50">
-        {/* Filter 3: Bottleneck (What's your bottleneck?) */}
+        {/* Filter 2: Bottleneck (What's your bottleneck?) */}
         <PlaybookFilterRowCompact<BottleneckTag>
           filterId={bottleneckFilter.id}
           label={bottleneckFilter.label}
@@ -59,7 +44,7 @@ const PlaybookFilterPanel: React.FC<PlaybookFilterPanelProps> = ({
           onChange={(value) => onFilterChange('bottleneck', value as BottleneckTag | 'none')}
         />
 
-        {/* Filter 4: Role (Who are you?) */}
+        {/* Filter 3: Role (Who are you?) */}
         <PlaybookFilterRowCompact<RoleTag>
           filterId={roleFilter.id}
           label={roleFilter.label}

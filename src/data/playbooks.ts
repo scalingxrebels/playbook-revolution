@@ -4,9 +4,7 @@ import {
   Brain, Building, Layers, Target, Briefcase
 } from 'lucide-react';
 import React from 'react';
-import type { 
-  NeedForActionTag, ImpactTag, BottleneckTag, RoleTag 
-} from './playbookFilters';
+import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
 export interface Playbook {
   id: string;
@@ -16,8 +14,7 @@ export interface Playbook {
   caseStudies: string[];
   icon: React.ReactNode;
   gradient: string;
-  // 4-Filter Tags (Michel's Definition)
-  needForAction: NeedForActionTag[];
+  // 3-Filter Tags
   impact: ImpactTag[];
   bottleneck: BottleneckTag[];
   role: RoleTag[];
@@ -42,7 +39,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Cursor', 'Midjourney', 'Perplexity'],
     icon: React.createElement(Brain, { className: 'w-6 h-6' }),
     gradient: 'from-purple-600 to-pink-600',
-    needForAction: ['revenue-not-growing', 'product-not-scaling', 'customers-churning', 'operations-chaotic', 'costs-too-high', 'need-ai-transformation', 'board-wants-results', 'portfolio-underperforming'],
     impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
@@ -68,7 +64,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Cursor', 'Perplexity'],
     icon: React.createElement(Target, { className: 'w-6 h-6' }),
     gradient: 'from-blue-500 to-cyan-500',
-    needForAction: ['revenue-not-growing'],
     impact: ['growth-engines'],
     bottleneck: ['strategy', 'execution-focus'],
     role: ['ceo', 'cmo-cro'],
@@ -92,7 +87,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Midjourney', 'Notion'],
     icon: React.createElement(Rocket, { className: 'w-6 h-6' }),
     gradient: 'from-purple-500 to-pink-500',
-    needForAction: ['product-not-scaling', 'revenue-not-growing'],
     impact: ['growth-engines'],
     bottleneck: ['execution-focus'],
     role: ['ceo', 'cpo', 'cto'],
@@ -116,7 +110,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Gainsight', 'ChurnZero'],
     icon: React.createElement(Award, { className: 'w-6 h-6' }),
     gradient: 'from-pink-500 to-rose-500',
-    needForAction: ['customers-churning'],
     impact: ['growth-engines'],
     bottleneck: ['execution-focus'],
     role: ['ceo', 'cmo-cro'],
@@ -142,7 +135,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Linear', 'Notion'],
     icon: React.createElement(Settings, { className: 'w-6 h-6' }),
     gradient: 'from-orange-500 to-amber-500',
-    needForAction: ['operations-chaotic'],
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo'],
@@ -166,7 +158,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Ramp', 'Brex'],
     icon: React.createElement(LineChart, { className: 'w-6 h-6' }),
     gradient: 'from-emerald-500 to-green-500',
-    needForAction: ['costs-too-high', 'operations-chaotic'],
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cfo', 'coo'],
@@ -190,7 +181,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Anthropic', 'OpenAI'],
     icon: React.createElement(Users, { className: 'w-6 h-6' }),
     gradient: 'from-violet-500 to-purple-500',
-    needForAction: ['operations-chaotic'],
     impact: ['operating-systems'],
     bottleneck: ['setup'],
     role: ['ceo', 'coo'],
@@ -214,7 +204,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Vercel', 'Supabase'],
     icon: React.createElement(Cpu, { className: 'w-6 h-6' }),
     gradient: 'from-cyan-500 to-blue-500',
-    needForAction: ['product-not-scaling', 'operations-chaotic'],
     impact: ['operating-systems'],
     bottleneck: ['operationalization'],
     role: ['ceo', 'cto', 'coo'],
@@ -240,7 +229,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Stripe', 'Plaid'],
     icon: React.createElement(Shield, { className: 'w-6 h-6' }),
     gradient: 'from-slate-500 to-zinc-500',
-    needForAction: ['board-wants-results'],
     impact: ['board-governance'],
     bottleneck: ['strategy'],
     role: ['ceo', 'vc-board'],
@@ -264,7 +252,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['GitLab', 'Automattic'],
     icon: React.createElement(Workflow, { className: 'w-6 h-6' }),
     gradient: 'from-indigo-500 to-violet-500',
-    needForAction: ['operations-chaotic', 'board-wants-results'],
     impact: ['board-governance'],
     bottleneck: ['operationalization'],
     role: ['ceo', 'coo', 'vc-board'],
@@ -288,7 +275,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Figma', 'Mailchimp'],
     icon: React.createElement(TrendingUp, { className: 'w-6 h-6' }),
     gradient: 'from-rose-500 to-pink-500',
-    needForAction: ['board-wants-results'],
     impact: ['board-governance'],
     bottleneck: ['strategy'],
     role: ['ceo', 'cfo', 'vc-board'],
@@ -314,7 +300,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['a16z', 'Sequoia'],
     icon: React.createElement(Briefcase, { className: 'w-6 h-6' }),
     gradient: 'from-amber-500 to-yellow-500',
-    needForAction: ['portfolio-underperforming'],
     impact: ['portfolio'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['vc-board'],
@@ -340,7 +325,6 @@ export const playbooks: Playbook[] = [
     caseStudies: ['Cursor', 'Midjourney', 'Perplexity'],
     icon: React.createElement(Layers, { className: 'w-6 h-6' }),
     gradient: 'from-teal-500 to-emerald-500',
-    needForAction: ['need-ai-transformation', 'revenue-not-growing', 'product-not-scaling', 'customers-churning', 'operations-chaotic', 'costs-too-high', 'board-wants-results', 'portfolio-underperforming'],
     impact: ['strategic-capabilities'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],

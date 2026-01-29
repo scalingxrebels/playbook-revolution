@@ -1,17 +1,6 @@
-// Filter type definitions for the 4-filter Playbook navigation system (Michel's Definition)
+// Filter type definitions for the 3-filter Playbook navigation system
 
-// FILTER 1: Need-for-Action (Multi-Select)
-export type NeedForActionTag = 
-  | 'revenue-not-growing'
-  | 'product-not-scaling'
-  | 'customers-churning'
-  | 'operations-chaotic'
-  | 'costs-too-high'
-  | 'need-ai-transformation'
-  | 'board-wants-results'
-  | 'portfolio-underperforming';
-
-// FILTER 2: Impact (Multi-Select) - Maps to Playbook categories
+// FILTER 1: Impact (Multi-Select) - Maps to Playbook categories
 export type ImpactTag = 
   | 'growth-engines'
   | 'operating-systems'
@@ -19,14 +8,14 @@ export type ImpactTag =
   | 'portfolio'
   | 'strategic-capabilities';
 
-// FILTER 3: Bottleneck (Multi-Select) - Replaces C1-C4 with user-friendly terms
+// FILTER 2: Bottleneck (Multi-Select) - User-friendly terms for C1-C4
 export type BottleneckTag = 
   | 'strategy'
   | 'setup'
   | 'execution-focus'
   | 'operationalization';
 
-// FILTER 4: Role (Single-Select)
+// FILTER 3: Role (Single-Select)
 export type RoleTag = 
   | 'ceo'
   | 'cmo-cro'
@@ -48,25 +37,7 @@ export interface FilterDefinition<T extends string> {
   options: FilterOption<T>[];
 }
 
-// Filter 1: Need-for-Action
-export const needForActionFilter: FilterDefinition<NeedForActionTag> = {
-  id: 'needForAction',
-  label: { en: "What's your challenge?", de: 'Was ist deine Herausforderung?' },
-  icon: 'AlertCircle',
-  options: [
-    { value: 'all', label: { en: 'All', de: 'Alle' } },
-    { value: 'revenue-not-growing', label: { en: 'Revenue not growing', de: 'Umsatz wächst nicht' } },
-    { value: 'product-not-scaling', label: { en: 'Product not scaling', de: 'Produkt skaliert nicht' } },
-    { value: 'customers-churning', label: { en: 'Customers churning', de: 'Kunden wandern ab' } },
-    { value: 'operations-chaotic', label: { en: 'Operations chaotic', de: 'Ops im Chaos' } },
-    { value: 'costs-too-high', label: { en: 'Costs too high', de: 'Kosten zu hoch' } },
-    { value: 'need-ai-transformation', label: { en: 'Need AI transformation', de: 'AI-Transformation nötig' } },
-    { value: 'board-wants-results', label: { en: 'Board wants results', de: 'Board fordert Ergebnisse' } },
-    { value: 'portfolio-underperforming', label: { en: 'Portfolio underperforming', de: 'Portfolio underperformt' } },
-  ],
-};
-
-// Filter 2: Impact (Which area?)
+// Filter 1: Impact (Which area?)
 export const impactFilter: FilterDefinition<ImpactTag> = {
   id: 'impact',
   label: { en: 'Which area?', de: 'Welcher Bereich?' },
@@ -81,7 +52,7 @@ export const impactFilter: FilterDefinition<ImpactTag> = {
   ],
 };
 
-// Filter 3: Bottleneck
+// Filter 2: Bottleneck
 export const bottleneckFilter: FilterDefinition<BottleneckTag> = {
   id: 'bottleneck',
   label: { en: "What's your bottleneck?", de: 'Was ist dein Engpass?' },
@@ -95,7 +66,7 @@ export const bottleneckFilter: FilterDefinition<BottleneckTag> = {
   ],
 };
 
-// Filter 4: Role
+// Filter 3: Role
 export const roleFilter: FilterDefinition<RoleTag> = {
   id: 'role',
   label: { en: 'Who are you?', de: 'Wer bist du?' },
@@ -114,23 +85,20 @@ export const roleFilter: FilterDefinition<RoleTag> = {
 
 // Active filters state interface
 export interface ActiveFilters {
-  needForAction: NeedForActionTag | 'all';
   impact: ImpactTag | 'all';
   bottleneck: BottleneckTag | 'none';
   role: RoleTag | 'all';
 }
 
 export const defaultFilters: ActiveFilters = {
-  needForAction: 'all',
   impact: 'all',
   bottleneck: 'none',
   role: 'all',
 };
 
-// Match-Score calculation weights
+// Match-Score calculation weights (total: 100)
 export const FILTER_WEIGHTS = {
-  needForAction: 30,
-  impact: 30,
-  bottleneck: 25,
-  role: 15,
+  impact: 45,
+  bottleneck: 35,
+  role: 20,
 } as const;
