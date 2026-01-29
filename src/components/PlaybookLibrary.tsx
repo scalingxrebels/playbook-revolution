@@ -80,8 +80,8 @@ const PlaybookLibrary: React.FC = () => {
           <PlaybookOnboardingHint />
         </div>
 
-        {/* 5-Filter Panel */}
-        <div className="mb-8 p-6 bg-card/50 border border-border rounded-xl">
+        {/* 5-Filter Panel - Solutions-consistent layout */}
+        <div className="mb-8 space-y-6">
           <PlaybookFilterPanel 
             filters={filters} 
             onFilterChange={updateFilter} 
