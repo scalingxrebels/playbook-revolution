@@ -142,7 +142,7 @@ const App = () => (
                 <Route path="/solutions/expert-session" element={<ExpertSession />} />
                 <Route path="/tools/maxxeed" element={<Maxxeed />} />
                 <Route path="/book/fix-growth" element={<FixGrowthBook />} />
-                <Route path="/playbooks/gtm-revenue" element={<PlaybookGtmRevenue />} />
+                <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
