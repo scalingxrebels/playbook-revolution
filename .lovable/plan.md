@@ -1,47 +1,59 @@
 
-# Fix: Verbleibende 17 Skeleton-Dateien erstellen
+# Fix: UI-Komponenten in kleinen Batches erstellen
 
-## Status
-- ✅ `gtm-revenue.ts` existiert
-- ❌ 17 Dateien fehlen
+## Problem
+Der Versuch, 8 Section-Komponenten parallel zu erstellen, ist fehlgeschlagen. Das Verzeichnis `src/components/playbooks/sections/` ist leer.
 
-## Strategie: 3-4 Dateien pro Durchgang
+## Loesung: 2-3 Komponenten pro Durchgang
 
-Statt alle 17 parallel zu erstellen, teile ich in kleinere Batches auf:
+### Batch 1 (3 Komponenten)
+- `PlaybookHeroSection.tsx` (~80 Zeilen)
+- `PlaybookSummarySection.tsx` (~50 Zeilen)
+- `PlaybookProblemSection.tsx` (~60 Zeilen)
 
-### Batch 1 (4 Dateien)
-- `ai-native-scaling.ts` (Ebene 1)
-- `growth-engines.ts` (Ebene 2)
-- `operating-systems.ts` (Ebene 2)
-- `board-governance.ts` (Ebene 2)
+### Batch 2 (3 Komponenten)
+- `PlaybookFrameworkSection.tsx` (~80 Zeilen)
+- `PlaybookRoadmapSection.tsx` (~70 Zeilen)
+- `PlaybookCaseStudiesSection.tsx` (~80 Zeilen)
 
-### Batch 2 (4 Dateien)
-- `portfolio-transformation.ts` (Ebene 2)
-- `strategic-capabilities.ts` (Ebene 2)
-- `product.ts` (Ebene 3)
-- `customer-success.ts` (Ebene 3)
+### Batch 3 (3 Komponenten)
+- `PlaybookSolutionsSection.tsx` (~70 Zeilen)
+- `PlaybookPersonasSection.tsx` (~60 Zeilen)
+- `PlaybookFinalCTASection.tsx` (~50 Zeilen)
 
-### Batch 3 (4 Dateien)
-- `operations.ts` (Ebene 3)
-- `finance.ts` (Ebene 3)
-- `talent.ts` (Ebene 3)
-- `data-tech.ts` (Ebene 3)
+### Batch 4 (2 Komponenten)
+- `PlaybookSubPlaybooksSection.tsx` (~50 Zeilen) - nur fuer Ebene 2
+- `index.ts` - Exportiert alle Sections
 
-### Batch 4 (5 Dateien)
-- `strategic-governance.ts` (Ebene 3)
-- `operational-governance.ts` (Ebene 3)
-- `exit-ma.ts` (Ebene 3)
-- `portfolio-excellence.ts` (Ebene 3)
-- `strategic-capabilities-deep-dive.ts` (Ebene 3)
+### Batch 5: Wrapper
+- `PlaybookLandingPage.tsx` - Orchestriert alle Sections basierend auf `PlaybookPageData`
 
-### Batch 5: Index-Datei
-- `content/index.ts` - Exportiert alle 18 Playbooks
+## Komponenten-Struktur
 
-## Template (identisch fuer alle)
-Jede Datei ~35 Zeilen mit:
-- Import von `PlaybookPageData` und `getPlaybookBySlug`
-- Minimal-Platzhalter fuer alle Sections
-- Korrekte Slug-Referenz aus Index
+Jede Section-Komponente folgt diesem Muster:
+
+```typescript
+import { useLanguage } from '@/contexts/LanguageContext';
+import type { BilingualText } from '@/data/playbooks/types';
+
+interface Props {
+  data: SectionSpecificData;
+}
+
+const Section: React.FC<Props> = ({ data }) => {
+  const { language } = useLanguage();
+  const t = (text: BilingualText) => text[language];
+  
+  return (
+    <section className="py-16 md:py-24">
+      {/* Section content */}
+    </section>
+  );
+};
+
+export default Section;
+```
 
 ## Naechster Schritt
-Erstelle Batch 1: 4 Skeleton-Dateien
+
+Erstelle Batch 1: `PlaybookHeroSection`, `PlaybookSummarySection`, `PlaybookProblemSection`
