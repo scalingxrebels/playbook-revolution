@@ -1,71 +1,62 @@
 
-# Plan: Playbooks & Expertise Heroes an Solutions angleichen
+# Plan: Schwarzen Balken über Heroes entfernen
 
-## Ziel
+## Problem
 
-Die Hero-Sektionen von Playbooks und Expertise (Research Hub) strukturell an Solutions angleichen:
-- Hero als eigenständige Komponente (nicht in extra Section gewrappt)
-- Filter/Search in separater Section mit `bg-muted/30 border-y border-border` Styling
-- Klare visuelle Trennung zwischen Hero und Content
+**Playbooks.tsx & Expertise.tsx:**
+```tsx
+<Navigation />
+<main className="pt-20">     ← 80px schwarzes Padding
+  <PlaybookLibrary />
+</main>
+```
+
+**Cases.tsx & Solutions.tsx:**
+```tsx
+<Navigation />
+<SharedHero ... />           ← Direkt nach Navigation, kein Extra-Padding
+<main ...>
+```
+
+## Lösung
+
+Das `pt-20` vom `<main>` Tag entfernen und die Struktur an Cases/Solutions angleichen.
 
 ---
 
-## Teil 1: PlaybookLibrary.tsx anpassen
+## Änderungen
 
-### Aktuelle Struktur (problematisch)
-```
-<section className="pb-20 bg-background relative overflow-hidden">
-  <SharedHero ... />        ← Hero drin
-  <div>Search</div>         ← Filter drin
-  <div>Filters</div>        ← Filter drin
-  <div>Grid</div>           ← Content drin
-</section>
-```
+### 1. `src/pages/Playbooks.tsx`
 
-### Neue Struktur (wie Solutions)
-```
-<SharedHero ... />                                           ← Standalone
-<section className="py-6 md:py-8 bg-muted/30 border-y border-border">
-  <div>Search</div>
-  <div>Onboarding Hint</div>
-  <div>Filters</div>
-  <div>Results Count</div>
-</section>
-<section className="py-12 md:py-16">
-  <div>Grid</div>
-</section>
+```tsx
+// Vorher:
+<main className="pt-20">
+  <PlaybookLibrary />
+</main>
+
+// Nachher:
+<PlaybookLibrary />
+<Footer />
 ```
 
-### Änderungen
-1. `SharedHero` aus der Section herausnehmen - eigenständig rendern
-2. Neue Section für Filter mit `bg-muted/30 border-y border-border`
-3. Grid in eigene Section verschieben
-4. Empty State in Grid-Section belassen
+Kein `<main>` Wrapper nötig, da PlaybookLibrary bereits aus mehreren Sections besteht.
 
 ---
 
-## Teil 2: ResearchHub.tsx anpassen
+### 2. `src/pages/Expertise.tsx`
 
-### Aktuelle Struktur
-```
-<section className="pb-16">
-  <SharedHero ... />        ← Hero drin
-  <div>Content Cards</div>  ← Content drin
-</section>
-```
+```tsx
+// Vorher:
+<main className="pt-20">
+  <ResearchHub />
+</main>
 
-### Neue Struktur
-```
-<SharedHero ... />                                           ← Standalone
-<section className="py-12 md:py-16">
-  <div>Content Cards</div>
-</section>
+// Nachher:
+<ResearchHub />
+<Footer />
 ```
 
-### Änderungen
-1. `SharedHero` aus der Section herausnehmen - eigenständig rendern
-2. Content in eigene Section mit `py-12 md:py-16` verschieben
-3. Konsistente Container-Größe (`max-w-7xl`) verwenden
+Gleiche Änderung wie bei Playbooks.
 
 ---
 
@@ -73,23 +64,13 @@ Die Hero-Sektionen von Playbooks und Expertise (Research Hub) strukturell an Sol
 
 | Datei | Aktion | Beschreibung |
 |-------|--------|--------------|
-| `src/components/PlaybookLibrary.tsx` | Bearbeiten | Hero separieren, Filter-Section mit Solutions-Styling |
-| `src/components/ResearchHub.tsx` | Bearbeiten | Hero separieren, Content in eigene Section |
+| `src/pages/Playbooks.tsx` | Bearbeiten | `pt-20` main-Wrapper entfernen |
+| `src/pages/Expertise.tsx` | Bearbeiten | `pt-20` main-Wrapper entfernen |
 
 ---
 
 ## Erwartetes Ergebnis
 
-Nach der Anpassung haben alle drei Seiten dieselbe visuelle Struktur:
-
-```
-┌─────────────────────────────────────┐
-│         SharedHero (Dark Space)     │  ← Eigenständig
-├─────────────────────────────────────┤
-│    Filter Section (bg-muted/30)     │  ← Separate Section mit Border
-├─────────────────────────────────────┤
-│         Content Grid/Cards          │  ← Eigene Section
-└─────────────────────────────────────┘
-```
-
-Visuell: Klare horizontale Trennung zwischen Hero, Filtern und Content durch die `border-y` und `bg-muted/30` Styling.
+Alle vier Seiten (Solutions, Cases, Playbooks, Expertise) haben identische Strukturen:
+- Navigation → Hero → Content → Footer
+- Kein schwarzer Balken zwischen Navigation und Hero
