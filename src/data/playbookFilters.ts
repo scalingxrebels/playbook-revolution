@@ -61,7 +61,7 @@ export const bottleneckFilter: FilterDefinition<BottleneckTag> = {
     { value: 'none', label: { en: 'None', de: 'Keiner' } },
     { value: 'strategy', label: { en: 'Strategy', de: 'Strategie' } },
     { value: 'setup', label: { en: 'Setup', de: 'Setup' } },
-    { value: 'execution-focus', label: { en: 'Execution Focus', de: 'Umsetzungsfokus' } },
+    { value: 'execution-focus', label: { en: 'Execution', de: 'Umsetzung' } },
     { value: 'operationalization', label: { en: 'Operationalization', de: 'Operationalisierung' } },
   ],
 };
