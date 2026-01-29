@@ -1582,7 +1582,7 @@ export const solutionTiles: SolutionTile[] = [
     slug: 'fix-growth-scale-faster',
     solutionType: 'insights',
     challenges: 'universal',
-    price: '€8.90-€44.90',
+    price: '€4.29-€44.90',
     priceTag: 'paid',
     headlineEn: 'Fix Growth. Scale Faster.',
     headlineDe: 'Fix Growth. Scale Faster.',
@@ -1591,31 +1591,22 @@ export const solutionTiles: SolutionTile[] = [
     solutionEn: '"Fix Growth. Scale Faster." is the first book that takes execution seriously—and offers a system to deliver exactly that: Impact. Clarity. Growth. Based on 140+ projects with startups, scale-ups, and mid-market ventures.',
     solutionDe: '"Fix Growth. Scale Faster." ist das erste Buch, das Execution ernst nimmt—und ein System bietet, um genau das zu liefern: Impact. Klarheit. Wachstum. Basierend auf 140+ Projekten mit Startups, Scale-ups und Mittelständlern.',
     deliverablesEn: [
-      'The complete ScalingX Hypergrowth System (32 interventions, 4 levers, 3 modes)',
-      'Detailed checklists, tools, and real-world examples',
-      'The Scaling Scorecard for assessment and strategy',
-      'Access to ScalingX Hypergrowth GPT (with exclusive prompt guide)'
+      'The ScalingX Hypergrowth System (32 interventions, 4 levers)',
+      'Checklists, tools, Scaling Scorecard & GPT access'
     ],
     deliverablesDe: [
-      'Das komplette ScalingX Hypergrowth System (32 Interventionen, 4 Hebel, 3 Modi)',
-      'Detaillierte Checklisten, Tools und Real-World Beispiele',
-      'Die Scaling Scorecard für Assessment und Strategie',
-      'Zugang zum ScalingX Hypergrowth GPT (mit exklusivem Prompt Guide)'
+      'Das ScalingX Hypergrowth System (32 Interventionen, 4 Hebel)',
+      'Checklisten, Tools, Scaling Scorecard & GPT-Zugang'
     ],
     impactEn: 'The execution playbook for VC/PE-backed ventures that want to win. Built for capital efficiency, time-to-impact, and investor confidence.',
     impactDe: 'Das Execution-Playbook für VC/PE-finanzierte Unternehmen, die gewinnen wollen. Gebaut für Kapitaleffizienz, Time-to-Impact und Investor Confidence.',
-    primaryCtaEn: 'Buy on Amazon',
-    primaryCtaDe: 'Auf Amazon kaufen',
-    primaryCtaAction: 'external',
-    primaryCtaUrl: 'https://www.amazon.de/dp/B0FN7C71VN',
-    secondaryCtaEn: 'Learn more',
-    secondaryCtaDe: 'Mehr erfahren',
-    secondaryCtaUrl: '/book/fix-growth',
-    partnerBadge: {
-      labelEn: 'Kindle · Paperback · Hardcover',
-      labelDe: 'Kindle · Paperback · Hardcover',
-      color: 'book'
-    }
+    primaryCtaEn: 'Learn more',
+    primaryCtaDe: 'Mehr erfahren',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/book/fix-growth',
+    secondaryCtaEn: 'Buy on Amazon',
+    secondaryCtaDe: 'Auf Amazon kaufen',
+    secondaryCtaUrl: 'https://www.amazon.de/dp/B0FN7C71VN'
   }
 ];
 

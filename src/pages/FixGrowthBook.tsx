@@ -102,7 +102,7 @@ const HeroSection: React.FC = () => {
             <BookOpen className="w-4 h-4 mr-2" />
             Book
           </Badge>
-          <Badge variant="outline">€8.90-€44.90</Badge>
+          <Badge variant="outline">€4.29-€44.90</Badge>
           <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
             Kindle · Paperback · Hardcover
           </Badge>
@@ -636,8 +636,8 @@ const FinalCTASection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const formats = [
-    { name: 'Kindle', price: '€8.90', icon: Lightbulb },
-    { name: 'Paperback', price: '€29.90', icon: BookOpen },
+    { name: 'Kindle', price: '€4.29', icon: Lightbulb },
+    { name: 'Paperback', price: '€14.95', icon: BookOpen },
     { name: 'Hardcover', price: '€44.90', icon: Award },
   ];
 
