@@ -23,11 +23,11 @@ const PlaybookOnboardingHint: React.FC = () => {
   const text = {
     de: {
       label: 'Tipp:',
-      message: 'Beantworte 3-5 Fragen, um dein passendes Playbook zu finden.',
+      message: 'Filtere nach Bereich, Engpass oder Rolle – oder kombiniere alle drei für präzise Ergebnisse.',
     },
     en: {
-      label: 'Quick Tip:',
-      message: 'Answer 3-5 questions to find your perfect playbook.',
+      label: 'Tip:',
+      message: 'Filter by Area, Bottleneck or Role – or combine all three for precise results.',
     },
   };
 
