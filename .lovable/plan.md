@@ -1,137 +1,181 @@
 
-# Plan: Filter 1 "Need-for-Action" entfernen
+# Plan: Playbook-Seite mit Solutions Hub harmonisieren
 
-## Ubersicht
+## Übersicht der Änderungen
 
-Das Playbook-Filter-System wird von 4 auf **3 Filter** reduziert:
-
-| Aktuell (4 Filter) | Neu (3 Filter) |
-|-------------------|----------------|
-| ~~Need-for-Action (What's your challenge?)~~ | **ENTFERNT** |
-| Impact (Which area?) | Impact (Which area?) |
-| Bottleneck (What's your bottleneck?) | Bottleneck (What's your bottleneck?) |
-| Role (Who are you?) | Role (Who are you?) |
+| Aufgabe | Beschreibung |
+|---------|--------------|
+| 1a | Navigation-Styling an Solutions anpassen (Farbe, Formatierung) |
+| 1b | CTA-Sektion am Ende durch `SolutionCTA`-Stil ersetzen |
+| 2 | Alle 13 Playbook-Kacheln aus `playbooks.ts` löschen |
+| 3 | Quick Tip Text an 3-Filter-Logik anpassen |
 
 ---
 
-## Neues Layout
+## 1a. Navigation-Styling harmonisieren
+
+### Unterschiede zwischen Solutions und Playbooks
+
+| Aspekt | Solutions Hub | Playbooks (aktuell) |
+|--------|---------------|---------------------|
+| Aktiver Button | `bg-primary text-primary-foreground` (solide) | `bg-primary/20 text-primary border-primary/30` (semi-transparent) |
+| Inaktiver Button | `bg-card border-border text-muted-foreground` | `bg-card border-border` |
+| Hover-Effekt | `hover:border-primary/50 hover:text-foreground` | `hover:border-primary/50` |
+| Icon im aktiven State | Keine spezielle Behandlung | Gleich |
+
+### Änderungen
+
+**PlaybookFilterRowCentered.tsx** (Zeile 48-57):
+
+```typescript
+// VORHER (aktuell):
+isActive
+  ? 'bg-primary/20 text-primary border-primary/30'
+  : 'bg-card border-border hover:border-primary/50'
+
+// NACHHER (wie Solutions):
+isActive
+  ? 'bg-primary text-primary-foreground shadow-sm'
+  : 'bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
+```
+
+**PlaybookFilterRowCompact.tsx** (Zeile 48-55):
+
+```typescript
+// Gleiche Anpassung für kleinere Pills
+isActive
+  ? 'bg-primary text-primary-foreground shadow-sm'
+  : 'bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
+```
+
+---
+
+## 1b. CTA-Sektion am Ende ersetzen
+
+### Aktueller Playbook-CTA (Zeile 130-150 in PlaybookLibrary.tsx)
 
 ```text
 ┌─────────────────────────────────────────────────────────────┐
-│                   [Target] Which area?                       │
-│  [All] [Growth Engines] [Operating Systems] [Board] ...    │
-│               (volle Breite, zentriert)                      │
+│        [Calendar] Need help choosing the right playbook?     │
+│                                                              │
+│              [ Take Assessment → ]                           │
 └─────────────────────────────────────────────────────────────┘
-
-┌───────────────────────────┬─────────────────────────────────┐
-│  [Gauge] What's your      │     [User] Who are you?         │
-│  bottleneck?              │                                 │
-│  [None][Strategy][Setup]  │  [All][CEO][CMO/CRO][COO]...   │
-│  [Execution][Operational] │                                 │
-└───────────────────────────┴─────────────────────────────────┘
-          (2 Filter nebeneinander, kompakt)
 ```
+
+### Neuer CTA (wie SolutionCTA.tsx)
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                      Still not sure which                    │
+│                    playbook is right?                        │
+│                                                              │
+│  Book a free Inflection Call. We'll identify your bottleneck │
+│  in 30 minutes and recommend the right path.                │
+│                                                              │
+│          [ 📞 Book Free Inflection Call → ]                  │
+│                                                              │
+│      ✓ No commitment   ✓ 30 minutes   ✓ Concrete steps      │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Änderungen in PlaybookLibrary.tsx
+
+Ersetze den CTA-Block (Zeile 130-150) mit dem SolutionCTA-Stil:
+- Gradient-Hintergrund: `bg-gradient-to-br from-primary/10 via-background to-accent/10`
+- Headline: "Still not sure which playbook is right?"
+- Subline: Inflection Call Beschreibung
+- Button: `size="xl"` mit Phone-Icon
+- Trust Signals: 3 Checkmarks
 
 ---
 
-## Technische Anderungen
+## 2. Alle Playbook-Kacheln löschen
 
-### 1. `src/data/playbookFilters.ts`
+**Datei:** `src/data/playbooks.ts`
 
-**ENTFERNEN:**
-- `NeedForActionTag` Typ-Definition
-- `needForActionFilter` Konstante
-- `needForAction` aus `ActiveFilters` Interface
-- `needForAction` aus `defaultFilters`
-- `needForAction` aus `FILTER_WEIGHTS`
-
-**Neue Gewichtung (angepasst auf 100%):**
+Das Array `playbooks` wird geleert (leeres Array):
 
 ```typescript
-export const FILTER_WEIGHTS = {
-  impact: 45,      // war 30, jetzt erhöht
-  bottleneck: 35,  // war 25, jetzt erhöht
-  role: 20,        // war 15, jetzt erhöht
-} as const;
+export const playbooks: Playbook[] = [];
 ```
 
-**Neues ActiveFilters Interface:**
+**Auswirkung:**
+- Die Seite zeigt den Empty State: "No playbooks found"
+- Filter bleiben funktionsfähig
+- Stats in SharedHero müssen angepasst werden (0 Playbooks)
+
+---
+
+## 3. Quick Tip Text anpassen
+
+**Datei:** `src/components/playbooks/PlaybookOnboardingHint.tsx`
+
+### Aktueller Text (veraltet):
 
 ```typescript
-export interface ActiveFilters {
-  impact: ImpactTag | 'all';
-  bottleneck: BottleneckTag | 'none';
-  role: RoleTag | 'all';
+de: {
+  label: 'Tipp:',
+  message: 'Beantworte 3-5 Fragen, um dein passendes Playbook zu finden.',
+},
+en: {
+  label: 'Quick Tip:',
+  message: 'Answer 3-5 questions to find your perfect playbook.',
+}
+```
+
+### Neuer Text (passend zur 3-Filter-Logik):
+
+```typescript
+de: {
+  label: 'Tipp:',
+  message: 'Filtere nach Bereich, Engpass oder Rolle – oder kombiniere alle drei für präzise Ergebnisse.',
+},
+en: {
+  label: 'Tip:',
+  message: 'Filter by Area, Bottleneck or Role – or combine all three for precise results.',
 }
 ```
 
 ---
 
-### 2. `src/data/playbooks.ts`
+## Datei-Übersicht
 
-**ENTFERNEN aus Playbook Interface:**
-- `needForAction: NeedForActionTag[]`
-
-**ENTFERNEN aus allen 13 Playbooks:**
-- Die `needForAction`-Arrays werden komplett entfernt
-
----
-
-### 3. `src/components/playbooks/usePlaybookFilters.ts`
-
-**ANPASSEN:**
-- URL-Parameter `need` entfernen
-- `needForAction` aus Filter-State entfernen
-- Match-Score-Berechnung anpassen (ohne needForAction)
+| Datei | Änderung |
+|-------|----------|
+| `src/components/playbooks/PlaybookFilterRowCentered.tsx` | Button-Styling auf Solutions-Pattern |
+| `src/components/playbooks/PlaybookFilterRowCompact.tsx` | Button-Styling auf Solutions-Pattern |
+| `src/components/PlaybookLibrary.tsx` | CTA-Sektion ersetzen, Stats anpassen |
+| `src/data/playbooks.ts` | Alle Playbooks löschen (leeres Array) |
+| `src/components/playbooks/PlaybookOnboardingHint.tsx` | Text an 3-Filter-Logik anpassen |
 
 ---
 
-### 4. `src/components/playbooks/PlaybookFilterPanel.tsx`
+## Visueller Vergleich: Navigation-Buttons
 
-**LAYOUT ANDERN:**
-- Nur noch 1 volle-Breite-Filter: Impact (Which area?)
-- 2 kompakte Filter: Bottleneck + Role
+### Solutions Hub (Referenz)
 
-```typescript
-<div className="space-y-6">
-  {/* Full-Width Section: Nur Impact */}
-  <PlaybookFilterRowCentered ... />  {/* Impact */}
-  
-  {/* Compact Section: Bottleneck + Role */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border/50">
-    <PlaybookFilterRowCompact ... />  {/* Bottleneck */}
-    <PlaybookFilterRowCompact ... />  {/* Role */}
-  </div>
-</div>
+```css
+/* Aktiv */
+bg-primary text-primary-foreground shadow-sm
+
+/* Inaktiv */
+bg-card border border-border text-muted-foreground
+hover:bg-muted hover:text-foreground hover:border-primary/50
+```
+
+### Playbooks (nach Änderung)
+
+```css
+/* Identisch zu Solutions */
 ```
 
 ---
 
-### 5. `src/components/PlaybookLibrary.tsx`
+## Hinweis zu den Playbooks
 
-**STATS ANPASSEN:**
-- Von "4 Filters" auf "3 Filters"
+Da alle 13 Playbooks gelöscht werden:
 
----
-
-## Dateien und Aktionen
-
-| Datei | Aktion |
-|-------|--------|
-| `src/data/playbookFilters.ts` | NeedForAction entfernen, Gewichtung anpassen |
-| `src/data/playbooks.ts` | needForAction aus Interface und allen Playbooks entfernen |
-| `src/components/playbooks/usePlaybookFilters.ts` | Filter-Logik anpassen |
-| `src/components/playbooks/PlaybookFilterPanel.tsx` | Layout auf 1+2 anpassen |
-| `src/components/PlaybookLibrary.tsx` | Stats aktualisieren (3 Filter) |
-
----
-
-## URL-Parameter (nach Anderung)
-
-| Parameter | Beschreibung |
-|-----------|--------------|
-| ~~`need`~~ | **ENTFERNT** |
-| `impact` | Bereich-Filter |
-| `bottleneck` | Engpass-Filter |
-| `role` | Rollen-Filter |
-
+1. **Empty State** wird angezeigt ("Keine Playbooks gefunden")
+2. **SharedHero Stats** werden angepasst auf `'0'` Playbooks
+3. **Filter bleiben** funktionsfähig für zukünftige Playbooks
+4. **CTA bleibt** sichtbar (Inflection Call buchen)
