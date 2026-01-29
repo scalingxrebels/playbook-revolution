@@ -1533,10 +1533,10 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaUrl: '/about'
   },
   // ============================================
-  // AI-POWERED TOOLS - PARTNERSHIP (ID 42)
+  // AI-POWERED TOOLS - PARTNERSHIP (ID 43)
   // ============================================
   {
-    id: 42,
+    id: 43,
     slug: 'maxxeed',
     solutionType: 'tools',
     challenges: ['cac-crisis', 'growth-stalled'],
