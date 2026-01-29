@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Target, Download, ArrowRight } from 'lucide-react';
@@ -43,7 +43,6 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
   onOpen, 
   onDownload 
 }) => {
-  const navigate = useNavigate();
   const cardRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -65,10 +64,6 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
 
     return () => observer.disconnect();
   }, [index]);
-
-  const handleLearnMore = () => {
-    navigate(`/playbooks/${playbook.slug}`);
-  };
 
   // Get primary impact area for display
   const primaryImpact = playbook.impact[0];
@@ -130,12 +125,11 @@ const PlaybookCard: React.FC<PlaybookCardProps> = ({
           size="sm"
           variant="outline"
           className="flex-1"
-          onClick={(e) => {
-            e.stopPropagation();
-            handleLearnMore();
-          }}
+          asChild
         >
-          {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
+          <Link to={`/playbooks/${playbook.slug}`}>
+            {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
+          </Link>
         </Button>
         <Button
           size="sm"
