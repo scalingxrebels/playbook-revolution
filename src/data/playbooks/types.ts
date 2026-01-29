@@ -1,8 +1,36 @@
+import type { ImpactTag, BottleneckTag, RoleTag } from '../playbookFilters';
+
 // Bilingual text for DE/EN support
 export interface BilingualText {
   en: string;
   de: string;
 }
+
+// ============================================================================
+// PLAYBOOK METADATA (for Tiles/Index)
+// ============================================================================
+
+export type PlaybookEbene = 1 | 2 | 3;
+
+export interface PlaybookMeta {
+  id: number;
+  slug: string;
+  title: BilingualText;
+  description: BilingualText;
+  icon: string; // Lucide icon name
+  color: string; // Tailwind color (e.g., "green", "blue", "orange")
+  gradient: string; // Tailwind gradient classes
+  area: ImpactTag[];
+  bottleneck: BottleneckTag[];
+  role: RoleTag[];
+  ebene: PlaybookEbene;
+  parent: number | null; // Parent playbook ID
+  children: number[]; // Child playbook IDs
+}
+
+// ============================================================================
+// LANDING PAGE SECTIONS
+// ============================================================================
 
 // Hero Section Data
 export interface PlaybookHeroData {
@@ -17,14 +45,33 @@ export interface PlaybookHeroData {
   gradient: string;
 }
 
-// Summary Section Data
+// Summary Section Data (Problem/Why/Solution cards)
 export interface PlaybookSummaryData {
   problem: { title: BilingualText; text: BilingualText };
   whyItMatters: { title: BilingualText; text: BilingualText };
   solution: { title: BilingualText; text: BilingualText };
 }
 
-// Framework Item
+// Problem Section (Section 2: Why Traditional X is Broken)
+export interface ProblemBullet {
+  text: BilingualText;
+  icon?: string;
+}
+
+export interface ProblemMetric {
+  label: BilingualText;
+  value: string;
+  trend?: 'up' | 'down';
+}
+
+export interface PlaybookProblemSection {
+  title: BilingualText;
+  subtitle: BilingualText;
+  bullets: ProblemBullet[];
+  metrics: ProblemMetric[];
+}
+
+// Framework Item (for Solution Section)
 export interface FrameworkItem {
   id: string;
   icon: string;
@@ -48,7 +95,7 @@ export interface BestPractice {
   items: BestPracticeItem[];
 }
 
-// Roadmap Phase
+// Roadmap Phase (Implementation Section)
 export interface RoadmapPhase {
   phase: number;
   title: BilingualText;
@@ -74,8 +121,27 @@ export interface CaseStudy {
   timeline: BilingualText;
 }
 
-// Persona
-export interface Persona {
+// Solutions Connection (Power Up, Boost, Accelerate)
+export interface SolutionConnectionItem {
+  type: 'power-up' | 'boost' | 'accelerate';
+  name: BilingualText;
+  duration: BilingualText;
+  price: BilingualText;
+  outcome: BilingualText;
+  cta: BilingualText;
+  link: string;
+  icon: string;
+  color: string;
+}
+
+export interface PlaybookSolutionsConnection {
+  title: BilingualText;
+  subtitle: BilingualText;
+  items: SolutionConnectionItem[];
+}
+
+// Who This Is For Section
+export interface PersonaItem {
   icon: string;
   role: BilingualText;
   pain: BilingualText;
@@ -83,7 +149,39 @@ export interface Persona {
   color: string;
 }
 
-// Related Solution
+export interface PlaybookWhoThisIsFor {
+  title: BilingualText;
+  subtitle: BilingualText;
+  icp: BilingualText;
+  personas: PersonaItem[];
+}
+
+// Next Steps / Final CTA
+export interface FinalCTAData {
+  headline: BilingualText;
+  subline: BilingualText;
+  trustSignals: BilingualText[];
+  bookingUrl: string;
+  downloadUrl: string;
+}
+
+// Sub-Playbooks Section (only for Ebene 2)
+export interface SubPlaybookLink {
+  id: number;
+  slug: string;
+  title: BilingualText;
+  teaser: BilingualText;
+  icon: string;
+  color: string;
+}
+
+export interface PlaybookSubPlaybooksSection {
+  title: BilingualText;
+  subtitle: BilingualText;
+  items: SubPlaybookLink[];
+}
+
+// Related Solution (legacy, keep for compatibility)
 export interface RelatedSolution {
   title: BilingualText;
   desc: BilingualText;
@@ -95,19 +193,15 @@ export interface RelatedSolution {
   color: string;
 }
 
-// Final CTA
-export interface FinalCTAData {
-  headline: BilingualText;
-  subline: BilingualText;
-  trustSignals: BilingualText[];
-  bookingUrl: string;
-  downloadUrl: string;
-}
+// ============================================================================
+// MASTER PAGE DATA (Complete Landing Page)
+// ============================================================================
 
-// Master Page Data
 export interface PlaybookPageData {
+  meta: PlaybookMeta;
   hero: PlaybookHeroData;
   summary: PlaybookSummaryData;
+  problem: PlaybookProblemSection;
   framework: {
     title: BilingualText;
     subtitle: BilingualText;
@@ -127,15 +221,8 @@ export interface PlaybookPageData {
     subtitle: BilingualText;
     cases: CaseStudy[];
   };
-  personas: {
-    title: BilingualText;
-    subtitle: BilingualText;
-    items: Persona[];
-  };
-  relatedSolutions: {
-    title: BilingualText;
-    subtitle: BilingualText;
-    items: RelatedSolution[];
-  };
+  solutionsConnection: PlaybookSolutionsConnection;
+  whoThisIsFor: PlaybookWhoThisIsFor;
   finalCta: FinalCTAData;
+  subPlaybooks?: PlaybookSubPlaybooksSection; // Only for Ebene 2
 }
