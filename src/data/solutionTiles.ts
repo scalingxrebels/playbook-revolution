@@ -1572,6 +1572,50 @@ export const solutionTiles: SolutionTile[] = [
       labelDe: 'Black Belt Partner',
       color: 'gold'
     }
+  },
+
+  // ============================================
+  // INSIGHTS & CLARITY - BOOK (ID 44)
+  // ============================================
+  {
+    id: 44,
+    slug: 'fix-growth-scale-faster',
+    solutionType: 'insights',
+    challenges: 'universal',
+    price: '€8.90-€44.90',
+    priceTag: 'paid',
+    headlineEn: 'Fix Growth. Scale Faster.',
+    headlineDe: 'Fix Growth. Scale Faster.',
+    problemEn: "You have a good product, strong investors, ambitious goals—but something's stuck. Revenue stagnates, complexity grows, decisions come too late, investors lose confidence. What's missing? A clear system for execution.",
+    problemDe: 'Du hast ein gutes Produkt, starke Investoren, ambitionierte Ziele—aber etwas hakt. Umsatz stagniert, Komplexität wächst, Entscheidungen kommen zu spät, Investoren verlieren Vertrauen. Was fehlt? Ein klares System für Execution.',
+    solutionEn: '"Fix Growth. Scale Faster." is the first book that takes execution seriously—and offers a system to deliver exactly that: Impact. Clarity. Growth. Based on 140+ projects with startups, scale-ups, and mid-market ventures.',
+    solutionDe: '"Fix Growth. Scale Faster." ist das erste Buch, das Execution ernst nimmt—und ein System bietet, um genau das zu liefern: Impact. Klarheit. Wachstum. Basierend auf 140+ Projekten mit Startups, Scale-ups und Mittelständlern.',
+    deliverablesEn: [
+      'The complete ScalingX Hypergrowth System (32 interventions, 4 levers, 3 modes)',
+      'Detailed checklists, tools, and real-world examples',
+      'The Scaling Scorecard for assessment and strategy',
+      'Access to ScalingX Hypergrowth GPT (with exclusive prompt guide)'
+    ],
+    deliverablesDe: [
+      'Das komplette ScalingX Hypergrowth System (32 Interventionen, 4 Hebel, 3 Modi)',
+      'Detaillierte Checklisten, Tools und Real-World Beispiele',
+      'Die Scaling Scorecard für Assessment und Strategie',
+      'Zugang zum ScalingX Hypergrowth GPT (mit exklusivem Prompt Guide)'
+    ],
+    impactEn: 'The execution playbook for VC/PE-backed ventures that want to win. Built for capital efficiency, time-to-impact, and investor confidence.',
+    impactDe: 'Das Execution-Playbook für VC/PE-finanzierte Unternehmen, die gewinnen wollen. Gebaut für Kapitaleffizienz, Time-to-Impact und Investor Confidence.',
+    primaryCtaEn: 'Buy on Amazon',
+    primaryCtaDe: 'Auf Amazon kaufen',
+    primaryCtaAction: 'external',
+    primaryCtaUrl: 'https://www.amazon.de/dp/B0FN7C71VN',
+    secondaryCtaEn: 'Learn more',
+    secondaryCtaDe: 'Mehr erfahren',
+    secondaryCtaUrl: '/book/fix-growth',
+    partnerBadge: {
+      labelEn: 'Kindle · Paperback · Hardcover',
+      labelDe: 'Kindle · Paperback · Hardcover',
+      color: 'book'
+    }
   }
 ];
 
