@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
   const trustBadges = [
     { icon: Shield, label: { en: '€135/User/Month', de: '€135/User/Monat' } },
     { icon: Clock, label: { en: '30 Seconds Setup', de: '30 Sekunden Setup' } },
-    { icon: Star, label: { en: 'ScalingX Black Belt Partner', de: 'ScalingX Black Belt Partner' } },
+    { icon: Star, label: { en: 'Maxxeed Black Belt Partner', de: 'Maxxeed Black Belt Partner' } },
     { icon: Award, label: { en: 'Commission-Based Partnership', de: 'Provisionsbasierte Partnerschaft' } },
   ];
 
@@ -1014,7 +1014,7 @@ const PricingSection: React.FC = () => {
   const trustBadges = [
     { en: '€135/User/Month', de: '€135/User/Monat' },
     { en: '30 Seconds Setup', de: '30 Sekunden Setup' },
-    { en: 'ScalingX Black Belt Partner', de: 'ScalingX Black Belt Partner' },
+    { en: 'Maxxeed Black Belt Partner', de: 'Maxxeed Black Belt Partner' },
     { en: 'No Long-Term Lock-In', de: 'Keine langfristige Bindung' },
   ];
 
