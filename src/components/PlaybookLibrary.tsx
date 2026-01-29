@@ -50,8 +50,8 @@ const PlaybookLibrary: React.FC = () => {
     <>
       {/* Hero - Standalone */}
       <SharedHero
-        overlineEn="Expertise × Speed = Impact"
-        overlineDe="Expertise × Speed = Impact"
+        overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
+        overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
         headlineLine1En="Playbook Library"
         headlineLine1De="Playbook Bibliothek"
         headlineLine2En="for AI-Native Scaling"
