@@ -20,7 +20,7 @@ export interface Playbook {
 export const playbooks: Playbook[] = [
   {
     id: 'gtm-revenue',
-    slug: 'gtm-revenue',
+    slug: 'growth-engines/gtm-revenue',
     title: {
       en: 'GTM/Revenue Playbook',
       de: 'GTM/Revenue Playbook',

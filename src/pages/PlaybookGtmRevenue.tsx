@@ -122,7 +122,7 @@ const HeroSection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            onClick={() => window.open('https://scalingx.fillout.com/inflection-call', '_blank')}
           >
             <Phone className="w-5 h-5 mr-2" />
             {language === 'de' ? 'Kostenloses Inflection Call buchen' : 'Book Free Inflection Call'}
@@ -131,7 +131,7 @@ const HeroSection: React.FC = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => scrollToSection('executive-summary')}
+            onClick={() => window.open('/downloads/gtm-revenue-playbook.pdf', '_blank')}
             className="border-2"
           >
             <Download className="w-4 h-4 mr-2" />
@@ -1026,13 +1026,18 @@ const FinalCTASection: React.FC = () => {
             <Button
               size="xl"
               className="shadow-brutal hover-brutal group"
-              onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+              onClick={() => window.open('https://scalingx.fillout.com/inflection-call', '_blank')}
             >
               <Phone className="mr-2 w-5 h-5" />
               {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg" className="border-2">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-2"
+              onClick={() => window.open('/downloads/gtm-revenue-playbook.pdf', '_blank')}
+            >
               <Download className="mr-2 w-4 h-4" />
               {language === 'de' ? 'Vollständiges Playbook herunterladen' : 'Download Full Playbook'}
             </Button>
