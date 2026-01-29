@@ -5,7 +5,6 @@ import {
   type ActiveFilters, 
   defaultFilters,
   FILTER_WEIGHTS,
-  type NeedForActionTag,
   type ImpactTag,
   type BottleneckTag,
   type RoleTag,
@@ -18,22 +17,17 @@ interface PlaybookWithScore extends Playbook {
 function calculateMatchScore(playbook: Playbook, filters: ActiveFilters): number {
   let score = 0;
   
-  // Need-for-Action: +30 points if match
-  if (filters.needForAction === 'all' || playbook.needForAction.includes(filters.needForAction)) {
-    score += FILTER_WEIGHTS.needForAction;
-  }
-  
-  // Impact: +30 points if match
+  // Impact: +45 points if match
   if (filters.impact === 'all' || playbook.impact.includes(filters.impact)) {
     score += FILTER_WEIGHTS.impact;
   }
   
-  // Bottleneck: +25 points if match (note: 'none' means no filter = show all)
+  // Bottleneck: +35 points if match (note: 'none' means no filter = show all)
   if (filters.bottleneck === 'none' || playbook.bottleneck.includes(filters.bottleneck)) {
     score += FILTER_WEIGHTS.bottleneck;
   }
   
-  // Role: +15 points if match
+  // Role: +20 points if match
   if (filters.role === 'all' || playbook.role.includes(filters.role)) {
     score += FILTER_WEIGHTS.role;
   }
@@ -47,7 +41,6 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
   // Initialize filters from URL params
   const [filters, setFilters] = useState<ActiveFilters>(() => {
     return {
-      needForAction: (searchParams.get('need') as NeedForActionTag) || 'all',
       impact: (searchParams.get('impact') as ImpactTag) || 'all',
       bottleneck: (searchParams.get('bottleneck') as BottleneckTag) || 'none',
       role: (searchParams.get('role') as RoleTag) || 'all',
@@ -57,7 +50,6 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
   // Sync filters to URL
   useEffect(() => {
     const params = new URLSearchParams();
-    if (filters.needForAction !== 'all') params.set('need', filters.needForAction);
     if (filters.impact !== 'all') params.set('impact', filters.impact);
     if (filters.bottleneck !== 'none') params.set('bottleneck', filters.bottleneck);
     if (filters.role !== 'all') params.set('role', filters.role);
@@ -77,8 +69,7 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
 
   // Check if any filter is active (not default)
   const hasActiveFilters = useMemo(() => {
-    return filters.needForAction !== 'all' || 
-           filters.impact !== 'all' || 
+    return filters.impact !== 'all' || 
            filters.bottleneck !== 'none' || 
            filters.role !== 'all';
   }, [filters]);
@@ -99,9 +90,6 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     if (hasActiveFilters) {
       results = results.filter(playbook => {
         // Check each non-default filter
-        if (filters.needForAction !== 'all' && !playbook.needForAction.includes(filters.needForAction)) {
-          return false;
-        }
         if (filters.impact !== 'all' && !playbook.impact.includes(filters.impact)) {
           return false;
         }
