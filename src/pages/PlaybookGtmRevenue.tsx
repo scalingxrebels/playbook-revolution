@@ -35,7 +35,17 @@ import {
   Rocket,
   FileText,
   Calendar,
+  Crosshair,
+  Send,
+  Magnet,
+  Handshake,
+  DollarSign,
+  MessageSquare,
+  Sparkles,
+  Briefcase,
+  UserCheck,
 } from 'lucide-react';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 // ============================================================================
 // SECTION 1: HERO
@@ -237,67 +247,165 @@ const ExecutiveSummarySection: React.FC = () => {
 };
 
 // ============================================================================
-// SECTION 3: THE FRAMEWORK
+// SECTION 3: THE 7-LEVER FRAMEWORK
 // ============================================================================
 const FrameworkSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
-  const components = [
+  const levers = [
     {
-      number: '1',
-      icon: Target,
+      id: 'icp',
+      icon: Crosshair,
+      color: 'text-violet-500',
+      bgColor: 'bg-violet-500/10',
       title: { en: 'ICP Clarity', de: 'ICP Clarity' },
-      subtitle: { en: 'Strategy', de: 'Strategie' },
-      color: 'from-violet-500 to-purple-600',
+      subtitle: { en: 'Know exactly who to target', de: 'Wissen, wen du ansprechen musst' },
       description: {
-        en: "Crystal-clear definition of who you sell to. Without ICP clarity, you waste 60% of sales effort on wrong-fit leads. Your CAC explodes. Your win rate drops. Your sales cycle lengthens.",
-        de: "Glasklare Definition, an wen du verkaufst. Ohne ICP-Klarheit verschwendest du 60% des Sales-Aufwands für falsche Leads. Dein CAC explodiert. Deine Win Rate sinkt. Dein Sales Cycle wird länger."
+        en: 'Crystal-clear definition of your Ideal Customer Profile. Without ICP clarity, you waste 60% of sales effort on wrong-fit leads.',
+        de: 'Glasklare Definition deines Ideal Customer Profiles. Ohne ICP-Klarheit verschwendest du 60% des Sales-Aufwands für falsche Leads.'
       },
-      dimensions: [
-        { en: 'Firmographic: Company size, industry, geography', de: 'Firmographisch: Unternehmensgröße, Branche, Geografie' },
-        { en: 'Technographic: Tech stack, tools, integrations', de: 'Technographisch: Tech Stack, Tools, Integrationen' },
-        { en: 'Behavioral: Buying patterns, decision process', de: 'Behavioral: Kaufmuster, Entscheidungsprozess' },
-        { en: 'Psychographic: Pain points, motivations, objections', de: 'Psychographisch: Pain Points, Motivationen, Einwände' },
-        { en: 'Economic: Budget, pricing sensitivity, ROI expectations', de: 'Ökonomisch: Budget, Preissensibilität, ROI-Erwartungen' },
+      metrics: [
+        { en: 'TAM/SAM/SOM Analysis', de: 'TAM/SAM/SOM Analyse' },
+        { en: '5-Dimension Buyer Persona', de: '5-Dimensionen Buyer Persona' },
+        { en: 'Pain Point Mapping', de: 'Pain Point Mapping' },
+      ],
+      actions: [
+        { en: 'Build ICP Canvas with 5 dimensions', de: 'ICP Canvas mit 5 Dimensionen erstellen' },
+        { en: 'Score existing accounts (1-10)', de: 'Bestehende Accounts bewerten (1-10)' },
+        { en: 'Define anti-ICP criteria', de: 'Anti-ICP Kriterien definieren' },
       ],
     },
     {
-      number: '2',
-      icon: Users,
-      title: { en: 'Sales Motion', de: 'Sales Motion' },
-      subtitle: { en: 'Execution', de: 'Umsetzung' },
-      color: 'from-blue-500 to-cyan-500',
+      id: 'outbound',
+      icon: Send,
+      color: 'text-blue-500',
+      bgColor: 'bg-blue-500/10',
+      title: { en: 'Outbound Engine', de: 'Outbound Engine' },
+      subtitle: { en: 'Systematic prospecting at scale', de: 'Systematisches Prospecting in Scale' },
       description: {
-        en: "Repeatable process from lead to close. Without sales motion, each deal is unique. Reps reinvent the wheel. You can't scale. You can't train. You can't predict.",
-        de: "Wiederholbarer Prozess vom Lead zum Abschluss. Ohne Sales Motion ist jeder Deal einzigartig. Reps erfinden das Rad neu. Du kannst nicht skalieren. Du kannst nicht trainieren. Du kannst nicht vorhersagen."
+        en: 'AI-powered SDR process with multi-channel sequencing. Personalization at scale without losing authenticity.',
+        de: 'AI-gestützter SDR-Prozess mit Multi-Channel-Sequencing. Personalisierung in Scale ohne Authentizitätsverlust.'
       },
-      stages: [
-        { en: 'Stage 1: Lead qualification (BANT framework)', de: 'Stufe 1: Lead-Qualifizierung (BANT-Framework)' },
-        { en: 'Stage 2: Discovery call (pain point mapping)', de: 'Stufe 2: Discovery Call (Pain Point Mapping)' },
-        { en: 'Stage 3: Demo (value-based, not feature-based)', de: 'Stufe 3: Demo (wertbasiert, nicht feature-basiert)' },
-        { en: 'Stage 4: Proposal (ROI-driven, not price-driven)', de: 'Stufe 4: Proposal (ROI-getrieben, nicht preis-getrieben)' },
-        { en: 'Stage 5: Negotiation (value defense, not discounting)', de: 'Stufe 5: Verhandlung (Wert-Verteidigung, kein Rabattieren)' },
-        { en: 'Stage 6: Close (mutual action plan)', de: 'Stufe 6: Abschluss (gemeinsamer Aktionsplan)' },
-        { en: 'Stage 7: Handoff (seamless to CS)', de: 'Stufe 7: Übergabe (nahtlos an CS)' },
+      metrics: [
+        { en: 'Response Rate +40%', de: 'Response Rate +40%' },
+        { en: 'Meeting Booked Rate', de: 'Meeting Booked Rate' },
+        { en: 'Pipeline Generated', de: 'Pipeline Generated' },
+      ],
+      actions: [
+        { en: 'Implement 5-touch sequence (Email, LinkedIn, Call)', de: '5-Touch Sequenz implementieren (Email, LinkedIn, Call)' },
+        { en: 'Set up Clay/Apollo for enrichment', de: 'Clay/Apollo für Enrichment einrichten' },
+        { en: 'A/B test messaging angles', de: 'Messaging-Ansätze A/B testen' },
       ],
     },
     {
-      number: '3',
-      icon: Settings,
-      title: { en: 'Revenue Operations', de: 'Revenue Operations' },
-      subtitle: { en: 'Operationalization', de: 'Operationalisierung' },
-      color: 'from-emerald-500 to-teal-500',
+      id: 'inbound',
+      icon: Magnet,
+      color: 'text-emerald-500',
+      bgColor: 'bg-emerald-500/10',
+      title: { en: 'Inbound Machine', de: 'Inbound Machine' },
+      subtitle: { en: 'Attract qualified buyers', de: 'Qualifizierte Käufer anziehen' },
       description: {
-        en: "Systems, data, and automation. Without RevOps, you can't scale beyond 10 reps. Data is siloed. Processes are manual. Insights are delayed.",
-        de: "Systeme, Daten und Automation. Ohne RevOps kannst du nicht über 10 Reps hinaus skalieren. Daten sind in Silos. Prozesse sind manuell. Insights sind verzögert."
+        en: 'Content strategy, SEO, and lead magnets that attract ICP-fit prospects. Build authority while generating pipeline.',
+        de: 'Content-Strategie, SEO und Lead Magnets, die ICP-fit Prospects anziehen. Autorität aufbauen während Pipeline generiert wird.'
       },
-      tools: [
-        { en: 'CRM: Salesforce, HubSpot (single source of truth)', de: 'CRM: Salesforce, HubSpot (Single Source of Truth)' },
-        { en: 'Enrichment: Clay, Clearbit (data quality)', de: 'Enrichment: Clay, Clearbit (Datenqualität)' },
-        { en: 'Intelligence: Gong, Chorus (call analysis)', de: 'Intelligence: Gong, Chorus (Call-Analyse)' },
-        { en: 'Automation: Zapier, Make (workflow automation)', de: 'Automation: Zapier, Make (Workflow-Automation)' },
-        { en: 'Analytics: Tableau, Looker (real-time dashboards)', de: 'Analytics: Tableau, Looker (Echtzeit-Dashboards)' },
+      metrics: [
+        { en: 'Organic Traffic Growth', de: 'Organisches Traffic-Wachstum' },
+        { en: 'MQL to SQL Conversion', de: 'MQL zu SQL Conversion' },
+        { en: 'Content ROI', de: 'Content ROI' },
+      ],
+      actions: [
+        { en: 'Create pillar content for each ICP pain point', de: 'Pillar Content für jeden ICP Pain Point erstellen' },
+        { en: 'Build gated assets (ROI calculator, assessments)', de: 'Gated Assets erstellen (ROI-Rechner, Assessments)' },
+        { en: 'Implement lead scoring model', de: 'Lead Scoring Modell implementieren' },
+      ],
+    },
+    {
+      id: 'partners',
+      icon: Handshake,
+      color: 'text-amber-500',
+      bgColor: 'bg-amber-500/10',
+      title: { en: 'Partner Leverage', de: 'Partner Leverage' },
+      subtitle: { en: 'Multiply reach through ecosystem', de: 'Reichweite durch Ökosystem multiplizieren' },
+      description: {
+        en: 'Channel partners, tech partners, and integration ecosystem. Leverage others\' audiences to accelerate growth.',
+        de: 'Channel Partner, Tech Partner und Integrations-Ökosystem. Die Audiences anderer nutzen, um Wachstum zu beschleunigen.'
+      },
+      metrics: [
+        { en: 'Partner-Sourced Pipeline', de: 'Partner-Sourced Pipeline' },
+        { en: 'Co-Sell Opportunities', de: 'Co-Sell Opportunities' },
+        { en: 'Integration Adoption', de: 'Integration Adoption' },
+      ],
+      actions: [
+        { en: 'Map partner ecosystem (20+ potential partners)', de: 'Partner-Ökosystem mappen (20+ potenzielle Partner)' },
+        { en: 'Build partner enablement kit', de: 'Partner Enablement Kit erstellen' },
+        { en: 'Launch co-marketing campaign', de: 'Co-Marketing Kampagne starten' },
+      ],
+    },
+    {
+      id: 'pricing',
+      icon: DollarSign,
+      color: 'text-rose-500',
+      bgColor: 'bg-rose-500/10',
+      title: { en: 'Pricing Power', de: 'Pricing Power' },
+      subtitle: { en: 'Capture value, not just revenue', de: 'Wert erfassen, nicht nur Umsatz' },
+      description: {
+        en: 'Value-based pricing, strategic packaging, and clear upsell paths. Stop leaving money on the table.',
+        de: 'Wertbasierte Preisgestaltung, strategisches Packaging und klare Upsell-Pfade. Kein Geld mehr auf dem Tisch liegen lassen.'
+      },
+      metrics: [
+        { en: 'ACV Increase', de: 'ACV Steigerung' },
+        { en: 'Expansion Revenue', de: 'Expansion Revenue' },
+        { en: 'Price Realization', de: 'Price Realization' },
+      ],
+      actions: [
+        { en: 'Conduct willingness-to-pay research', de: 'Zahlungsbereitschafts-Research durchführen' },
+        { en: 'Design 3-tier packaging (Good/Better/Best)', de: '3-Tier Packaging designen (Good/Better/Best)' },
+        { en: 'Build expansion triggers into product', de: 'Expansion-Trigger ins Produkt einbauen' },
+      ],
+    },
+    {
+      id: 'sales',
+      icon: MessageSquare,
+      color: 'text-cyan-500',
+      bgColor: 'bg-cyan-500/10',
+      title: { en: 'Sales Process', de: 'Sales Process' },
+      subtitle: { en: 'Repeatable path to close', de: 'Wiederholbarer Weg zum Abschluss' },
+      description: {
+        en: 'Structured sales methodology from discovery to close. Every rep follows the same winning playbook.',
+        de: 'Strukturierte Sales-Methodik von Discovery bis Close. Jeder Rep folgt dem gleichen Winning Playbook.'
+      },
+      metrics: [
+        { en: 'Win Rate +50%', de: 'Win Rate +50%' },
+        { en: 'Sales Cycle -30%', de: 'Sales Cycle -30%' },
+        { en: 'Forecast Accuracy', de: 'Forecast Accuracy' },
+      ],
+      actions: [
+        { en: 'Document 7-stage sales playbook', de: '7-Stufen Sales Playbook dokumentieren' },
+        { en: 'Implement MEDDIC qualification', de: 'MEDDIC Qualifizierung implementieren' },
+        { en: 'Build mutual action plan template', de: 'Mutual Action Plan Vorlage erstellen' },
+      ],
+    },
+    {
+      id: 'plg',
+      icon: Sparkles,
+      color: 'text-purple-500',
+      bgColor: 'bg-purple-500/10',
+      title: { en: 'PLG Motion', de: 'PLG Motion' },
+      subtitle: { en: 'Let the product sell itself', de: 'Das Produkt für sich selbst verkaufen lassen' },
+      description: {
+        en: 'Product-led growth with freemium, trials, and self-serve. Reduce CAC by letting users experience value before sales touch.',
+        de: 'Product-led Growth mit Freemium, Trials und Self-Serve. CAC reduzieren, indem User Wert erleben, bevor Sales eingreift.'
+      },
+      metrics: [
+        { en: 'PQL Conversion Rate', de: 'PQL Conversion Rate' },
+        { en: 'Time to Value', de: 'Time to Value' },
+        { en: 'Viral Coefficient', de: 'Viral Coefficient' },
+      ],
+      actions: [
+        { en: 'Define PQL criteria (usage-based signals)', de: 'PQL-Kriterien definieren (nutzungsbasierte Signale)' },
+        { en: 'Build onboarding flow with "aha moment" in < 5 min', de: 'Onboarding-Flow mit "Aha-Moment" in < 5 Min erstellen' },
+        { en: 'Implement in-app upgrade prompts', de: 'In-App Upgrade-Prompts implementieren' },
       ],
     },
   ];
@@ -308,85 +416,90 @@ const FrameworkSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`py-24 lg:py-32 bg-secondary/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      <div className="container max-w-4xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {language === 'de' ? 'Das Framework' : 'The Framework'}
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' ? 'Das GTM/Revenue Framework' : 'The GTM/Revenue Framework'}
+            {language === 'de' ? 'Die 7 Revenue-Hebel' : 'The 7 Revenue Levers'}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             {language === 'de'
-              ? 'Drei Komponenten, die zusammenwirken: ICP Clarity → Sales Motion → Revenue Operations'
-              : 'Three components that work together: ICP Clarity → Sales Motion → Revenue Operations'}
+              ? 'Jeder Hebel ist ein Multiplikator. Optimiere alle 7, um deine Revenue Engine zu skalieren.'
+              : 'Each lever is a multiplier. Optimize all 7 to scale your revenue engine.'}
           </p>
         </div>
 
-        {/* Framework Components */}
-        <div className="space-y-12">
-          {components.map((component, index) => (
-            <Card key={index} className="overflow-hidden border-2 hover:border-primary/50 transition-colors">
-              <CardContent className="p-8">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Left: Header */}
-                  <div className="lg:w-1/3">
-                    <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${component.color} flex items-center justify-center text-white mb-4`}>
-                      <component.icon className="w-8 h-8" />
+        {/* 7-Lever Accordion */}
+        <Accordion type="single" collapsible className="space-y-4">
+          {levers.map((lever, index) => (
+            <AccordionItem
+              key={lever.id}
+              value={lever.id}
+              className="border-2 rounded-lg bg-card overflow-hidden data-[state=open]:border-primary/50"
+            >
+              <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                <div className="flex items-center gap-4 text-left">
+                  <div className={`w-12 h-12 rounded-lg ${lever.bgColor} flex items-center justify-center shrink-0`}>
+                    <lever.icon className={`w-6 h-6 ${lever.color}`} />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-muted-foreground">#{index + 1}</span>
+                      <h3 className="text-lg font-bold text-foreground">
+                        {language === 'de' ? lever.title.de : lever.title.en}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {language === 'de' ? component.title.de : component.title.en}
-                    </h3>
-                    <Badge variant="outline" className="mb-4">
-                      {language === 'de' ? component.subtitle.de : component.subtitle.en}
-                    </Badge>
-                    <p className="text-muted-foreground">
-                      {language === 'de' ? component.description.de : component.description.en}
+                    <p className="text-sm text-muted-foreground">
+                      {language === 'de' ? lever.subtitle.de : lever.subtitle.en}
                     </p>
                   </div>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-6">
+                <div className="pt-4 border-t border-border">
+                  {/* Description */}
+                  <p className="text-muted-foreground mb-6">
+                    {language === 'de' ? lever.description.de : lever.description.en}
+                  </p>
 
-                  {/* Right: Details */}
-                  <div className="lg:w-2/3 lg:border-l lg:pl-8 border-border">
-                    <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
-                      {component.dimensions ? (language === 'de' ? 'ICP Canvas (5 Dimensionen)' : 'ICP Canvas (5 Dimensions)') :
-                       component.stages ? (language === 'de' ? '7-Stufen Sales Playbook' : '7-Stage Sales Playbook') :
-                       (language === 'de' ? 'RevOps Stack (5 Tools)' : 'RevOps Stack (5 Tools)')}
-                    </h4>
-                    <ul className="space-y-3">
-                      {(component.dimensions || component.stages || component.tools)?.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3">
-                          <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                          <span className="text-foreground">
-                            {language === 'de' ? (item as { en: string; de: string }).de : (item as { en: string; de: string }).en}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Key Metrics */}
+                    <div>
+                      <h4 className="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+                        {language === 'de' ? 'Key Metrics' : 'Key Metrics'}
+                      </h4>
+                      <ul className="space-y-2">
+                        {lever.metrics.map((metric, i) => (
+                          <li key={i} className="flex items-center gap-2 text-sm text-foreground">
+                            <BarChart3 className="w-4 h-4 text-muted-foreground shrink-0" />
+                            {language === 'de' ? metric.de : metric.en}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Action Items */}
+                    <div>
+                      <h4 className="text-sm font-bold uppercase tracking-widest text-accent mb-3">
+                        {language === 'de' ? 'Action Items' : 'Action Items'}
+                      </h4>
+                      <ul className="space-y-2">
+                        {lever.actions.map((action, i) => (
+                          <li key={i} className="flex items-start gap-2 text-sm text-foreground">
+                            <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                            {language === 'de' ? action.de : action.en}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-
-        {/* Feedback Loop */}
-        <div className="mt-16 p-8 bg-card border-2 border-primary/30 rounded-xl text-center">
-          <h3 className="text-xl font-bold text-foreground mb-4">
-            {language === 'de' ? 'Wie sie zusammenwirken' : 'How They Connect'}
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-4 text-lg font-semibold mb-4">
-            <span className="text-violet-500">ICP Clarity</span>
-            <ArrowRight className="w-5 h-5 text-muted-foreground" />
-            <span className="text-blue-500">Sales Motion</span>
-            <ArrowRight className="w-5 h-5 text-muted-foreground" />
-            <span className="text-emerald-500">Revenue Operations</span>
-          </div>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {language === 'de'
-              ? 'Strategie speist Execution. Execution speist Ops. Ops speist Strategie. Das erzeugt einen Compound-Effekt: Bessere ICP → Bessere Sales Motion → Bessere RevOps → Bessere ICP.'
-              : 'Strategy feeds Execution. Execution feeds Ops. Ops feeds Strategy. This creates a compounding effect: Better ICP → Better Sales Motion → Better RevOps → Better ICP.'}
-          </p>
-        </div>
+        </Accordion>
       </div>
     </section>
   );
@@ -399,59 +512,30 @@ const BestPracticesSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
-  const whatWorks = [
+  const practices = [
     {
-      title: { en: 'Start with ICP, not product features', de: 'Starte mit ICP, nicht mit Produkt-Features' },
-      desc: { en: 'AI-native companies define ICP first, then build product. Example: Perplexity focused on "researchers who hate Google". Result: 10M users in 18 months.', de: 'AI-native Unternehmen definieren ICP zuerst, dann bauen sie das Produkt. Beispiel: Perplexity fokussierte auf "Researcher, die Google hassen". Ergebnis: 10M User in 18 Monaten.' },
+      category: { en: 'ICP Clarity', de: 'ICP Clarity' },
+      items: [
+        { do: { en: 'Score every lead (1-10) before outreach', de: 'Jeden Lead (1-10) vor Outreach bewerten' }, dont: { en: 'Spray and pray to any company that fits firmographics', de: 'Spray and Pray an jede Firma, die firmographisch passt' } },
+        { do: { en: 'Define anti-ICP criteria to disqualify fast', de: 'Anti-ICP Kriterien definieren, um schnell zu disqualifizieren' }, dont: { en: 'Waste time on leads that will never close', de: 'Zeit mit Leads verschwenden, die nie closen' } },
+        { do: { en: 'Update ICP quarterly based on win/loss data', de: 'ICP vierteljährlich basierend auf Win/Loss-Daten aktualisieren' }, dont: { en: 'Keep using year-old ICP that no longer fits reality', de: 'Veraltetes ICP verwenden, das nicht mehr zur Realität passt' } },
+      ],
     },
     {
-      title: { en: 'Use AI for lead scoring, not just outreach', de: 'Nutze AI für Lead Scoring, nicht nur für Outreach' },
-      desc: { en: 'Traditional: AI writes emails. AI-native: AI scores leads, prioritizes accounts. Result: 3x conversion rate.', de: 'Traditionell: AI schreibt E-Mails. AI-native: AI bewertet Leads, priorisiert Accounts. Ergebnis: 3x Conversion Rate.' },
+      category: { en: 'Sales Motion', de: 'Sales Motion' },
+      items: [
+        { do: { en: 'Use value-based demos (show ROI, not features)', de: 'Wertbasierte Demos (ROI zeigen, nicht Features)' }, dont: { en: 'Feature dump in every demo', de: 'Feature-Dump in jeder Demo' } },
+        { do: { en: 'Implement MEDDIC qualification framework', de: 'MEDDIC Qualifizierungs-Framework implementieren' }, dont: { en: 'Let reps freestyle qualification criteria', de: 'Reps eigene Qualifizierungskriterien erfinden lassen' } },
+        { do: { en: 'Build mutual action plans for every deal >€50K', de: 'Mutual Action Plans für jeden Deal >€50K erstellen' }, dont: { en: 'Hope deals close without buyer alignment', de: 'Hoffen, dass Deals ohne Buyer Alignment closen' } },
+      ],
     },
     {
-      title: { en: 'Build sales playbook before scaling team', de: 'Baue Sales Playbook vor dem Team-Scaling' },
-      desc: { en: 'Traditional: Hire 10 reps, hope for best. AI-native: Build playbook with 2-3 top reps, then scale. Result: 50% faster ramp time.', de: 'Traditionell: 10 Reps einstellen, auf das Beste hoffen. AI-native: Playbook mit 2-3 Top-Reps bauen, dann skalieren. Ergebnis: 50% schnellere Ramp-Time.' },
-    },
-    {
-      title: { en: 'Deploy RevOps early (not late)', de: 'RevOps früh deployen (nicht spät)' },
-      desc: { en: 'Traditional: Build RevOps at 50 reps. AI-native: Build RevOps at 5 reps. Result: 10x easier to scale.', de: 'Traditionell: RevOps bei 50 Reps aufbauen. AI-native: RevOps bei 5 Reps aufbauen. Ergebnis: 10x einfacher zu skalieren.' },
-    },
-    {
-      title: { en: 'Measure leading indicators, not lagging', de: 'Messe Leading Indicators, nicht Lagging' },
-      desc: { en: 'Traditional: Track revenue (lagging). AI-native: Track pipeline velocity (leading). Result: Predict problems 60 days earlier.', de: 'Traditionell: Revenue tracken (lagging). AI-native: Pipeline Velocity tracken (leading). Ergebnis: Probleme 60 Tage früher vorhersagen.' },
-    },
-  ];
-
-  const whatDoesntWork = [
-    {
-      title: { en: 'Hiring more reps to fix CAC', de: 'Mehr Reps einstellen, um CAC zu fixen' },
-      desc: { en: 'Traditional playbook: "Hire 10 more SDRs". Why it fails: CAC increases linearly with headcount. Example: Company X hired 20 SDRs, CAC went from €5k → €8k.', de: 'Traditionelles Playbook: "10 SDRs mehr einstellen". Warum es scheitert: CAC steigt linear mit Headcount. Beispiel: Unternehmen X stellte 20 SDRs ein, CAC ging von €5k → €8k.' },
-    },
-    {
-      title: { en: 'Discounting to close deals', de: 'Rabatte für Abschlüsse' },
-      desc: { en: 'Traditional: "Give 20% discount to close". Why it fails: Trains customers to expect discounts. Example: Company Y\'s average discount went from 10% → 30% in 12 months.', de: 'Traditionell: "20% Rabatt geben zum Abschluss". Warum es scheitert: Trainiert Kunden, Rabatte zu erwarten. Beispiel: Unternehmen Y\'s durchschnittlicher Rabatt ging von 10% → 30% in 12 Monaten.' },
-    },
-    {
-      title: { en: 'Building RevOps before Sales Motion', de: 'RevOps vor Sales Motion bauen' },
-      desc: { en: 'Traditional: "Let\'s build Salesforce dashboards first". Why it fails: You\'re automating a broken process. Example: Company Z spent €50k on RevOps, still had 15% win rate.', de: 'Traditionell: "Lass uns erst Salesforce-Dashboards bauen". Warum es scheitert: Du automatisierst einen kaputten Prozess. Beispiel: Unternehmen Z gab €50k für RevOps aus, hatte immer noch 15% Win Rate.' },
-    },
-  ];
-
-  const pitfalls = [
-    {
-      title: { en: 'ICP too broad', de: 'ICP zu breit' },
-      mistake: { en: '"We sell to all B2B SaaS companies"', de: '"Wir verkaufen an alle B2B SaaS Unternehmen"' },
-      fix: { en: 'Define 3-5 specific verticals, validate with data.', de: 'Definiere 3-5 spezifische Verticals, validiere mit Daten.' },
-    },
-    {
-      title: { en: 'Sales playbook too rigid', de: 'Sales Playbook zu starr' },
-      mistake: { en: '"Follow script exactly"', de: '"Folge dem Skript exakt"' },
-      fix: { en: 'Build framework, not script. Allow 20% flexibility.', de: 'Baue Framework, kein Skript. Erlaube 20% Flexibilität.' },
-    },
-    {
-      title: { en: 'RevOps too complex', de: 'RevOps zu komplex' },
-      mistake: { en: '"We need 10 tools"', de: '"Wir brauchen 10 Tools"' },
-      fix: { en: 'Start with 3 tools (CRM + Enrichment + Intelligence), add later.', de: 'Starte mit 3 Tools (CRM + Enrichment + Intelligence), füge später hinzu.' },
+      category: { en: 'RevOps', de: 'RevOps' },
+      items: [
+        { do: { en: 'Single source of truth in CRM', de: 'Single Source of Truth im CRM' }, dont: { en: 'Data scattered across spreadsheets', de: 'Daten über Spreadsheets verstreut' } },
+        { do: { en: 'Weekly forecast calls with deal-by-deal review', de: 'Wöchentliche Forecast Calls mit Deal-by-Deal Review' }, dont: { en: 'Monthly reviews that catch issues too late', de: 'Monatliche Reviews, die Probleme zu spät erkennen' } },
+        { do: { en: 'Automate data entry with tools like Gong', de: 'Dateneingabe mit Tools wie Gong automatisieren' }, dont: { en: 'Rely on reps to manually log activities', de: 'Darauf verlassen, dass Reps Aktivitäten manuell loggen' } },
+      ],
     },
   ];
 
@@ -466,78 +550,46 @@ const BestPracticesSection: React.FC = () => {
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {language === 'de' ? 'Best Practices' : 'Best Practices'}
           </span>
-          <h2 className="font-display text-display-md text-foreground">
-            {language === 'de' ? 'Was funktioniert (und was nicht)' : 'What Works (and What Doesn\'t)'}
+          <h2 className="font-display text-display-md text-foreground mb-4">
+            {language === 'de' ? 'Do\'s & Don\'ts' : 'Do\'s & Don\'ts'}
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {language === 'de'
+              ? 'Die häufigsten Fehler, die wir bei Series B/C Unternehmen sehen – und wie du sie vermeidest.'
+              : 'The most common mistakes we see in Series B/C companies—and how to avoid them.'}
+          </p>
         </div>
 
-        {/* What Works */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-accent mb-6 flex items-center gap-2">
-            <Check className="w-6 h-6" />
-            {language === 'de' ? 'Was funktioniert' : 'What Works'}
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whatWorks.map((item, index) => (
-              <Card key={index} className="bg-accent/5 border-accent/20">
-                <CardContent className="p-6">
-                  <h4 className="font-bold text-foreground mb-2">
-                    {language === 'de' ? item.title.de : item.title.en}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'de' ? item.desc.de : item.desc.en}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* What Doesn't Work */}
-        <div className="mb-16">
-          <h3 className="text-xl font-bold text-destructive mb-6 flex items-center gap-2">
-            <X className="w-6 h-6" />
-            {language === 'de' ? 'Was nicht funktioniert' : "What Doesn't Work"}
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {whatDoesntWork.map((item, index) => (
-              <Card key={index} className="bg-destructive/5 border-destructive/20">
-                <CardContent className="p-6">
-                  <h4 className="font-bold text-foreground mb-2">
-                    {language === 'de' ? item.title.de : item.title.en}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'de' ? item.desc.de : item.desc.en}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Common Pitfalls */}
-        <div>
-          <h3 className="text-xl font-bold text-yellow-500 mb-6 flex items-center gap-2">
-            <AlertTriangle className="w-6 h-6" />
-            {language === 'de' ? 'Häufige Fallstricke' : 'Common Pitfalls'}
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {pitfalls.map((item, index) => (
-              <Card key={index} className="bg-yellow-500/5 border-yellow-500/20">
-                <CardContent className="p-6">
-                  <h4 className="font-bold text-foreground mb-2">
-                    {language === 'de' ? item.title.de : item.title.en}
-                  </h4>
-                  <p className="text-sm text-destructive mb-2 italic">
-                    {language === 'de' ? `Fehler: ${item.mistake.de}` : `Mistake: ${item.mistake.en}`}
-                  </p>
-                  <p className="text-sm text-accent">
-                    {language === 'de' ? `Fix: ${item.fix.de}` : `Fix: ${item.fix.en}`}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        <div className="space-y-12">
+          {practices.map((practice, index) => (
+            <div key={index}>
+              <h3 className="text-xl font-bold text-foreground mb-6">
+                {language === 'de' ? practice.category.de : practice.category.en}
+              </h3>
+              <div className="grid lg:grid-cols-2 gap-4">
+                {practice.items.map((item, i) => (
+                  <div key={i} className="grid grid-cols-2 gap-4">
+                    <Card className="border-accent/50 bg-accent/5">
+                      <CardContent className="p-4">
+                        <div className="flex items-start gap-2">
+                          <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                          <span className="text-sm text-foreground">{language === 'de' ? item.do.de : item.do.en}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card className="border-destructive/50 bg-destructive/5">
+                      <CardContent className="p-4">
+                        <div className="flex items-start gap-2">
+                          <X className="w-5 h-5 text-destructive shrink-0 mt-0.5" />
+                          <span className="text-sm text-foreground">{language === 'de' ? item.dont.de : item.dont.en}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -545,7 +597,7 @@ const BestPracticesSection: React.FC = () => {
 };
 
 // ============================================================================
-// SECTION 5: IMPLEMENTATION GUIDE
+// SECTION 5: IMPLEMENTATION ROADMAP
 // ============================================================================
 const ImplementationSection: React.FC = () => {
   const { language } = useLanguage();
@@ -553,68 +605,40 @@ const ImplementationSection: React.FC = () => {
 
   const phases = [
     {
-      number: '1',
-      title: { en: 'Strategy', de: 'Strategie' },
-      timeline: { en: 'Week 1-2', de: 'Woche 1-2' },
+      phase: { en: 'Phase 1: Foundation', de: 'Phase 1: Fundament' },
+      timeline: { en: 'Weeks 1-4', de: 'Wochen 1-4' },
+      focus: { en: 'ICP Clarity + Sales Motion Design', de: 'ICP Clarity + Sales Motion Design' },
+      deliverables: [
+        { en: 'ICP Canvas with 5 dimensions', de: 'ICP Canvas mit 5 Dimensionen' },
+        { en: '7-Stage Sales Playbook documented', de: '7-Stufen Sales Playbook dokumentiert' },
+        { en: 'Lead scoring model implemented', de: 'Lead Scoring Modell implementiert' },
+        { en: 'CRM hygiene audit completed', de: 'CRM-Hygiene-Audit abgeschlossen' },
+      ],
       color: 'from-violet-500 to-purple-600',
-      tasks: [
-        { en: 'Define ICP, validate with data', de: 'ICP definieren, mit Daten validieren' },
-      ],
-      involved: { en: 'CEO, CMO/CRO, 2-3 top reps', de: 'CEO, CMO/CRO, 2-3 Top-Reps' },
-      deliverables: [
-        { en: 'ICP Canvas (1 page)', de: 'ICP Canvas (1 Seite)' },
-        { en: 'Target Account List (100 accounts)', de: 'Target Account Liste (100 Accounts)' },
-        { en: 'Positioning Statement (1 page)', de: 'Positioning Statement (1 Seite)' },
-      ],
-      metric: { en: '80% team alignment on ICP', de: '80% Team-Alignment auf ICP' },
     },
     {
-      number: '2',
-      title: { en: 'Setup', de: 'Setup' },
-      timeline: { en: 'Week 3-4', de: 'Woche 3-4' },
+      phase: { en: 'Phase 2: Optimization', de: 'Phase 2: Optimierung' },
+      timeline: { en: 'Weeks 5-8', de: 'Wochen 5-8' },
+      focus: { en: 'Process Refinement + Team Training', de: 'Prozessverfeinerung + Team-Training' },
+      deliverables: [
+        { en: 'MEDDIC training for all AEs', de: 'MEDDIC-Training für alle AEs' },
+        { en: 'Demo script optimized for value', de: 'Demo-Script für Wert optimiert' },
+        { en: 'Win/Loss analysis framework', de: 'Win/Loss Analyse-Framework' },
+        { en: 'Weekly forecast cadence established', de: 'Wöchentliche Forecast-Kadenz etabliert' },
+      ],
       color: 'from-blue-500 to-cyan-500',
-      tasks: [
-        { en: 'Build sales motion, create playbook', de: 'Sales Motion bauen, Playbook erstellen' },
-      ],
-      involved: { en: 'CRO, Sales Ops, 2-3 top reps', de: 'CRO, Sales Ops, 2-3 Top-Reps' },
-      deliverables: [
-        { en: '7-stage sales playbook (10-15 pages)', de: '7-Stufen Sales Playbook (10-15 Seiten)' },
-        { en: 'Objection handling guide (5 pages)', de: 'Objection Handling Guide (5 Seiten)' },
-        { en: 'Demo script (value-based)', de: 'Demo-Skript (wertbasiert)' },
-      ],
-      metric: { en: 'All reps trained, 90% adoption', de: 'Alle Reps trainiert, 90% Adoption' },
     },
     {
-      number: '3',
-      title: { en: 'Execution', de: 'Umsetzung' },
-      timeline: { en: 'Week 5-8', de: 'Woche 5-8' },
-      color: 'from-orange-500 to-amber-500',
-      tasks: [
-        { en: 'Run pilot with 3-5 reps, iterate', de: 'Pilot mit 3-5 Reps durchführen, iterieren' },
-      ],
-      involved: { en: 'CRO, pilot reps, Sales Ops', de: 'CRO, Pilot-Reps, Sales Ops' },
+      phase: { en: 'Phase 3: Scale', de: 'Phase 3: Skalierung' },
+      timeline: { en: 'Weeks 9-12', de: 'Wochen 9-12' },
+      focus: { en: 'RevOps Automation + Analytics', de: 'RevOps Automation + Analytics' },
       deliverables: [
-        { en: '10-20 deals closed with new motion', de: '10-20 Deals mit neuer Motion abgeschlossen' },
-        { en: 'Feedback report (what works, what doesn\'t)', de: 'Feedback Report (was funktioniert, was nicht)' },
-        { en: 'Playbook v2.0 (refined)', de: 'Playbook v2.0 (verfeinert)' },
+        { en: 'Full RevOps stack implemented', de: 'Vollständiger RevOps Stack implementiert' },
+        { en: 'Real-time dashboards live', de: 'Echtzeit-Dashboards live' },
+        { en: 'Automated data enrichment', de: 'Automatisierte Datenanreicherung' },
+        { en: 'Playbook handoff to internal team', de: 'Playbook-Übergabe an internes Team' },
       ],
-      metric: { en: '20% improvement in win rate or cycle time', de: '20% Verbesserung bei Win Rate oder Cycle Time' },
-    },
-    {
-      number: '4',
-      title: { en: 'Operationalization', de: 'Operationalisierung' },
-      timeline: { en: 'Week 9-12', de: 'Woche 9-12' },
       color: 'from-emerald-500 to-teal-500',
-      tasks: [
-        { en: 'Roll out to full team, automate with AI', de: 'An ganzes Team ausrollen, mit AI automatisieren' },
-      ],
-      involved: { en: 'CRO, Sales Ops, RevOps', de: 'CRO, Sales Ops, RevOps' },
-      deliverables: [
-        { en: 'RevOps stack deployed (CRM + Enrichment + Intelligence)', de: 'RevOps Stack deployed (CRM + Enrichment + Intelligence)' },
-        { en: 'Dashboards live (pipeline velocity, win rate, CAC)', de: 'Dashboards live (Pipeline Velocity, Win Rate, CAC)' },
-        { en: 'Training complete (all reps certified)', de: 'Training abgeschlossen (alle Reps zertifiziert)' },
-      ],
-      metric: { en: '30% improvement in sales velocity', de: '30% Verbesserung bei Sales Velocity' },
     },
   ];
 
@@ -627,96 +651,45 @@ const ImplementationSection: React.FC = () => {
       <div className="container max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
-            {language === 'de' ? 'Implementierung' : 'Implementation Guide'}
+            {language === 'de' ? 'Implementierung' : 'Implementation'}
           </span>
-          <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' ? 'Wie du implementierst' : 'How to Implement'}
+          <h2 className="font-display text-display-md text-foreground mb-4">
+            {language === 'de' ? '12-Wochen Roadmap' : '12-Week Roadmap'}
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {language === 'de'
+              ? 'Ein bewährter Plan, um das GTM/Revenue Framework in deinem Unternehmen zu implementieren.'
+              : 'A proven plan to implement the GTM/Revenue Framework in your company.'}
+          </p>
         </div>
 
-        {/* Timeline */}
-        <div className="space-y-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {phases.map((phase, index) => (
-            <Card key={index} className="overflow-hidden border-2">
-              <CardContent className="p-0">
-                <div className="flex flex-col lg:flex-row">
-                  {/* Phase Header */}
-                  <div className={`lg:w-1/4 p-6 bg-gradient-to-br ${phase.color} text-white`}>
-                    <div className="text-sm font-bold uppercase tracking-widest opacity-80 mb-2">
-                      {language === 'de' ? `Phase ${phase.number}` : `Phase ${phase.number}`}
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2">
-                      {language === 'de' ? phase.title.de : phase.title.en}
-                    </h3>
-                    <Badge variant="secondary" className="bg-white/20 text-white border-0">
-                      <Clock className="w-3 h-3 mr-1" />
-                      {language === 'de' ? phase.timeline.de : phase.timeline.en}
-                    </Badge>
-                  </div>
-
-                  {/* Phase Content */}
-                  <div className="lg:w-3/4 p-6">
-                    <div className="grid md:grid-cols-2 gap-6">
-                      {/* Left */}
-                      <div>
-                        <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                          {language === 'de' ? 'Aufgaben' : 'Tasks'}
-                        </h4>
-                        <ul className="space-y-2 mb-4">
-                          {phase.tasks.map((task, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
-                              <span className="text-foreground">{language === 'de' ? task.de : task.en}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="text-sm text-muted-foreground">
-                          <strong>{language === 'de' ? 'Beteiligte:' : 'Involved:'}</strong> {language === 'de' ? phase.involved.de : phase.involved.en}
-                        </div>
-                      </div>
-
-                      {/* Right */}
-                      <div>
-                        <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-3">
-                          {language === 'de' ? 'Liefergegenstände' : 'Deliverables'}
-                        </h4>
-                        <ul className="space-y-2 mb-4">
-                          {phase.deliverables.map((deliverable, i) => (
-                            <li key={i} className="flex items-start gap-2">
-                              <FileText className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                              <span className="text-foreground">{language === 'de' ? deliverable.de : deliverable.en}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="text-sm p-2 bg-accent/10 rounded border border-accent/30">
-                          <strong className="text-accent">{language === 'de' ? 'Erfolgsmetrik:' : 'Success Metric:'}</strong>{' '}
-                          <span className="text-foreground">{language === 'de' ? phase.metric.de : phase.metric.en}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+            <Card key={index} className="border-2 hover:border-primary/50 transition-colors">
+              <CardContent className="p-6">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${phase.color} flex items-center justify-center text-white mb-4`}>
+                  <span className="text-xl font-bold">{index + 1}</span>
                 </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  {language === 'de' ? phase.phase.de : phase.phase.en}
+                </h3>
+                <Badge variant="outline" className="mb-3">
+                  {language === 'de' ? phase.timeline.de : phase.timeline.en}
+                </Badge>
+                <p className="text-sm text-primary font-medium mb-4">
+                  {language === 'de' ? phase.focus.de : phase.focus.en}
+                </p>
+                <ul className="space-y-2">
+                  {phase.deliverables.map((deliverable, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                      <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                      {language === 'de' ? deliverable.de : deliverable.en}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        {/* Summary Box */}
-        <div className="mt-12 p-8 bg-card border-2 border-primary/30 rounded-xl text-center">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div>
-              <div className="text-2xl font-bold text-foreground">12 {language === 'de' ? 'Wochen' : 'Weeks'}</div>
-              <div className="text-sm text-muted-foreground">{language === 'de' ? 'Gesamtdauer' : 'Total Timeline'}</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-foreground">€23.6K-€45.9K</div>
-              <div className="text-sm text-muted-foreground">{language === 'de' ? 'Investment (mit Power Up/Boost)' : 'Investment (with Power Up/Boost)'}</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-accent">10-20x ROI</div>
-              <div className="text-sm text-muted-foreground">{language === 'de' ? 'Erwarteter Return' : 'Expected Return'}</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -732,58 +705,37 @@ const CaseStudiesSection: React.FC = () => {
 
   const caseStudies = [
     {
-      title: { en: 'Series B SaaS Company', de: 'Series B SaaS Unternehmen' },
-      arr: '€15M ARR',
-      problem: {
-        en: 'CAC increased from €5k → €12k in 12 months. Win rate dropped from 25% → 15%. No clear reason why.',
-        de: 'CAC stieg von €5k → €12k in 12 Monaten. Win Rate sank von 25% → 15%. Kein klarer Grund warum.'
-      },
-      solution: {
-        en: 'Redefined ICP (focused on 3 verticals instead of 10), rebuilt sales motion with AI lead scoring, deployed RevOps stack.',
-        de: 'ICP neu definiert (auf 3 Verticals fokussiert statt 10), Sales Motion mit AI Lead Scoring neu gebaut, RevOps Stack deployed.'
-      },
+      company: 'SaaS Scale-Up (Series B)',
+      problem: { en: 'CAC increased 180% YoY while growth slowed', de: 'CAC stieg 180% YoY während Wachstum verlangsamte' },
+      solution: { en: 'ICP refinement + Sales Motion redesign', de: 'ICP-Verfeinerung + Sales Motion Redesign' },
       results: [
-        { metric: 'CAC', value: '-50%', detail: { en: '€12k → €6k', de: '€12k → €6k' } },
-        { metric: 'Win Rate', value: '+100%', detail: { en: '15% → 30%', de: '15% → 30%' } },
-        { metric: 'Sales Cycle', value: '-33%', detail: { en: '90 → 60 days', de: '90 → 60 Tage' } },
+        { metric: 'CAC', before: '€4,200', after: '€1,680', change: '-60%' },
+        { metric: 'Win Rate', before: '12%', after: '28%', change: '+133%' },
+        { metric: 'Sales Cycle', before: '94 days', after: '62 days', change: '-34%' },
       ],
-      timeline: '12 weeks',
+      timeline: '90 days',
     },
     {
-      title: { en: 'Series C Fintech', de: 'Series C Fintech' },
-      arr: '€40M ARR',
-      problem: {
-        en: 'Win rate dropped from 25% → 15%, no clear reason. Sales team blamed "market conditions".',
-        de: 'Win Rate sank von 25% → 15%, kein klarer Grund. Sales Team beschuldigte "Marktbedingungen".'
-      },
-      solution: {
-        en: 'Built data-driven sales playbook (analyzed 500+ deals), trained team on new motion, deployed Gong for call analysis.',
-        de: 'Datengetriebenes Sales Playbook gebaut (500+ Deals analysiert), Team auf neue Motion trainiert, Gong für Call-Analyse deployed.'
-      },
+      company: 'Enterprise Tech (Series C)',
+      problem: { en: 'Win rate dropped from 25% to 15%', de: 'Win Rate sank von 25% auf 15%' },
+      solution: { en: 'MEDDIC implementation + Demo optimization', de: 'MEDDIC-Implementierung + Demo-Optimierung' },
       results: [
-        { metric: 'Win Rate', value: '+100%', detail: { en: '15% → 30%', de: '15% → 30%' } },
-        { metric: 'Revenue', value: '+€8M', detail: { en: '+20% ARR', de: '+20% ARR' } },
-        { metric: 'Team Morale', value: '↑', detail: { en: 'Clear process', de: 'Klarer Prozess' } },
+        { metric: 'Win Rate', before: '15%', after: '32%', change: '+113%' },
+        { metric: 'ACV', before: '€85K', after: '€142K', change: '+67%' },
+        { metric: 'Forecast Accuracy', before: '52%', after: '84%', change: '+62%' },
       ],
-      timeline: '16 weeks',
+      timeline: '120 days',
     },
     {
-      title: { en: 'Series A Healthtech', de: 'Series A Healthtech' },
-      arr: '€5M ARR',
-      problem: {
-        en: "Sales team couldn't scale beyond 5 reps. Each rep had different process. No playbook, no data.",
-        de: "Sales Team konnte nicht über 5 Reps hinaus skalieren. Jeder Rep hatte anderen Prozess. Kein Playbook, keine Daten."
-      },
-      solution: {
-        en: 'Built 7-stage sales playbook with top 2 reps, deployed RevOps stack (Salesforce + Clay + Gong), trained new reps.',
-        de: '7-Stufen Sales Playbook mit Top-2-Reps gebaut, RevOps Stack deployed (Salesforce + Clay + Gong), neue Reps trainiert.'
-      },
+      company: 'Growth-Stage B2B (Series B)',
+      problem: { en: 'Revenue ops non-existent, data in spreadsheets', de: 'Revenue Ops nicht existent, Daten in Spreadsheets' },
+      solution: { en: 'Full RevOps stack + automation', de: 'Vollständiger RevOps Stack + Automation' },
       results: [
-        { metric: 'Team Size', value: '3x', detail: { en: '5 → 15 reps', de: '5 → 15 Reps' } },
-        { metric: 'Sales Velocity', value: '+40%', detail: { en: 'Faster deals', de: 'Schnellere Deals' } },
-        { metric: 'Ramp Time', value: '-50%', detail: { en: '6 → 3 months', de: '6 → 3 Monate' } },
+        { metric: 'Data Entry Time', before: '8h/week', after: '0.5h/week', change: '-94%' },
+        { metric: 'Pipeline Visibility', before: 'Monthly', after: 'Real-time', change: '∞' },
+        { metric: 'Rep Productivity', before: 'Baseline', after: '+45%', change: '+45%' },
       ],
-      timeline: '8 weeks',
+      timeline: '60 days',
     },
   ];
 
@@ -798,58 +750,60 @@ const CaseStudiesSection: React.FC = () => {
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {language === 'de' ? 'Fallstudien' : 'Case Studies'}
           </span>
-          <h2 className="font-display text-display-md text-foreground">
-            {language === 'de' ? 'Praxisbeispiele' : 'Real-World Examples'}
+          <h2 className="font-display text-display-md text-foreground mb-4">
+            {language === 'de' ? 'Ergebnisse aus der Praxis' : 'Real-World Results'}
           </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {language === 'de'
+              ? 'Wie Series B/C Unternehmen das GTM/Revenue Framework implementiert haben.'
+              : 'How Series B/C companies have implemented the GTM/Revenue Framework.'}
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {caseStudies.map((study, index) => (
             <Card key={index} className="border-2 hover:border-primary/50 transition-colors">
               <CardContent className="p-6">
-                {/* Header */}
+                <Badge variant="secondary" className="mb-4">{study.company}</Badge>
+                
                 <div className="mb-4">
-                  <Badge variant="outline" className="mb-2">{study.arr}</Badge>
-                  <h3 className="text-xl font-bold text-foreground">
-                    {language === 'de' ? study.title.de : study.title.en}
-                  </h3>
-                </div>
-
-                {/* Problem */}
-                <div className="mb-4">
-                  <h4 className="text-sm font-bold text-destructive mb-2">{language === 'de' ? 'Problem' : 'Problem'}</h4>
+                  <h4 className="text-sm font-bold text-destructive mb-2 flex items-center gap-2">
+                    <AlertTriangle className="w-4 h-4" />
+                    {language === 'de' ? 'Problem' : 'Problem'}
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     {language === 'de' ? study.problem.de : study.problem.en}
                   </p>
                 </div>
 
-                {/* Solution */}
                 <div className="mb-4">
-                  <h4 className="text-sm font-bold text-primary mb-2">{language === 'de' ? 'Lösung' : 'Solution'}</h4>
+                  <h4 className="text-sm font-bold text-primary mb-2 flex items-center gap-2">
+                    <Zap className="w-4 h-4" />
+                    {language === 'de' ? 'Lösung' : 'Solution'}
+                  </h4>
                   <p className="text-sm text-muted-foreground">
                     {language === 'de' ? study.solution.de : study.solution.en}
                   </p>
                 </div>
 
-                {/* Results */}
-                <div className="mb-4">
-                  <h4 className="text-sm font-bold text-accent mb-2">{language === 'de' ? 'Ergebnisse' : 'Results'}</h4>
-                  <div className="space-y-2">
-                    {study.results.map((result, i) => (
-                      <div key={i} className="flex justify-between items-center p-2 bg-accent/10 rounded">
-                        <span className="text-sm text-foreground">{result.metric}</span>
-                        <div className="text-right">
-                          <span className="font-bold text-accent">{result.value}</span>
-                          <span className="text-xs text-muted-foreground ml-2">
-                            ({language === 'de' ? result.detail.de : result.detail.en})
-                          </span>
-                        </div>
+                <div className="space-y-3 mb-4">
+                  <h4 className="text-sm font-bold text-accent flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4" />
+                    {language === 'de' ? 'Ergebnisse' : 'Results'}
+                  </h4>
+                  {study.results.map((result, i) => (
+                    <div key={i} className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground">{result.metric}</span>
+                      <div className="flex items-center gap-2">
+                        <span className="text-muted-foreground line-through">{result.before}</span>
+                        <ArrowRight className="w-3 h-3 text-muted-foreground" />
+                        <span className="text-foreground font-medium">{result.after}</span>
+                        <Badge variant="outline" className="text-accent border-accent/50">{result.change}</Badge>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* Timeline */}
                 <div className="pt-4 border-t border-border">
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
                     <Clock className="w-4 h-4" />
@@ -866,7 +820,127 @@ const CaseStudiesSection: React.FC = () => {
 };
 
 // ============================================================================
-// SECTION 7: RELATED SOLUTIONS
+// SECTION 7: WHO IT'S FOR
+// ============================================================================
+const WhoItsForSection: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  const personas = [
+    {
+      icon: Briefcase,
+      role: { en: 'CEO / Founder', de: 'CEO / Founder' },
+      pain: {
+        en: '"Growth is stalling despite more headcount"',
+        de: '"Wachstum stagniert trotz mehr Headcount"'
+      },
+      outcome: {
+        en: 'Clear GTM strategy with measurable milestones',
+        de: 'Klare GTM-Strategie mit messbaren Meilensteinen'
+      },
+      color: 'from-violet-500 to-purple-600',
+    },
+    {
+      icon: TrendingUp,
+      role: { en: 'CMO / CRO', de: 'CMO / CRO' },
+      pain: {
+        en: '"CAC is exploding, win rate is dropping"',
+        de: '"CAC explodiert, Win Rate sinkt"'
+      },
+      outcome: {
+        en: 'Predictable pipeline with optimized unit economics',
+        de: 'Planbare Pipeline mit optimierten Unit Economics'
+      },
+      color: 'from-blue-500 to-cyan-500',
+    },
+    {
+      icon: Settings,
+      role: { en: 'COO', de: 'COO' },
+      pain: {
+        en: '"Our processes don\'t scale beyond 10 reps"',
+        de: '"Unsere Prozesse skalieren nicht über 10 Reps"'
+      },
+      outcome: {
+        en: 'RevOps foundation for 10x growth',
+        de: 'RevOps-Fundament für 10x Wachstum'
+      },
+      color: 'from-emerald-500 to-teal-500',
+    },
+    {
+      icon: UserCheck,
+      role: { en: 'VC / Board Member', de: 'VC / Board Member' },
+      pain: {
+        en: '"Portfolio company needs a GTM fix, fast"',
+        de: '"Portfolio-Company braucht GTM-Fix, schnell"'
+      },
+      outcome: {
+        en: 'Rapid turnaround signals in 30-90 days',
+        de: 'Schnelle Turnaround-Signale in 30-90 Tagen'
+      },
+      color: 'from-amber-500 to-orange-500',
+    },
+  ];
+
+  return (
+    <section
+      id="who-its-for"
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`py-24 lg:py-32 bg-background transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="container max-w-6xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Für wen ist das?' : 'Who It\'s For'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-4">
+            {language === 'de' ? 'Dieses Playbook ist für dich, wenn...' : 'This Playbook is For You If...'}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {language === 'de'
+              ? 'Egal ob du CEO, Revenue Leader oder Investor bist – das GTM/Revenue Framework hilft dir, deine spezifischen Herausforderungen zu lösen.'
+              : 'Whether you\'re a CEO, revenue leader, or investor—the GTM/Revenue Framework helps you solve your specific challenges.'}
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {personas.map((persona, index) => (
+            <Card key={index} className="border-2 hover:border-primary/50 transition-all hover:-translate-y-1 group">
+              <CardContent className="p-6">
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${persona.color} flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform`}>
+                  <persona.icon className="w-7 h-7" />
+                </div>
+
+                {/* Role */}
+                <h3 className="text-lg font-bold text-foreground mb-3">
+                  {language === 'de' ? persona.role.de : persona.role.en}
+                </h3>
+
+                {/* Pain Point */}
+                <p className="text-sm text-muted-foreground italic mb-4">
+                  {language === 'de' ? persona.pain.de : persona.pain.en}
+                </p>
+
+                {/* Outcome */}
+                <div className="pt-4 border-t border-border">
+                  <div className="flex items-start gap-2">
+                    <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-sm text-foreground">
+                      {language === 'de' ? persona.outcome.de : persona.outcome.en}
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// SECTION 8: RELATED SOLUTIONS
 // ============================================================================
 const RelatedSolutionsSection: React.FC = () => {
   const { language } = useLanguage();
@@ -1078,6 +1152,7 @@ const PlaybookGtmRevenue: React.FC = () => {
         <BestPracticesSection />
         <ImplementationSection />
         <CaseStudiesSection />
+        <WhoItsForSection />
         <RelatedSolutionsSection />
         <FinalCTASection />
       </main>
