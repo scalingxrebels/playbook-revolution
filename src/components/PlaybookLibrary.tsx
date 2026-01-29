@@ -48,22 +48,24 @@ const PlaybookLibrary: React.FC = () => {
 
   return (
     <>
-      <section className="pb-20 bg-background relative overflow-hidden">
-        <SharedHero
-          overlineEn="Expertise × Speed = Impact"
-          overlineDe="Expertise × Speed = Impact"
-          headlineLine1En="Playbook Library"
-          headlineLine1De="Playbook Bibliothek"
-          headlineLine2En="for AI-Native Scaling"
-          headlineLine2De="für AI-Native Scaling"
-          subheadlineEn="Find the right playbook for your scaling challenge."
-          subheadlineDe="Finden Sie das richtige Playbook für Ihre Skalierungs-Challenge."
-          stats={playbookStats}
-        />
+      {/* Hero - Standalone */}
+      <SharedHero
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
+        headlineLine1En="Playbook Library"
+        headlineLine1De="Playbook Bibliothek"
+        headlineLine2En="for AI-Native Scaling"
+        headlineLine2De="für AI-Native Scaling"
+        subheadlineEn="Find the right playbook for your scaling challenge."
+        subheadlineDe="Finden Sie das richtige Playbook für Ihre Skalierungs-Challenge."
+        stats={playbookStats}
+      />
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 pt-6 md:pt-8">
+      {/* Filter Section - Consistent with Solutions */}
+      <section className="py-6 md:py-8 bg-muted/30 border-y border-border">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Search */}
-          <div className="mb-8">
+          <div className="mb-6">
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <input
@@ -77,12 +79,12 @@ const PlaybookLibrary: React.FC = () => {
           </div>
 
           {/* Onboarding Hint */}
-          <div className="mb-8">
+          <div className="mb-6">
             <PlaybookOnboardingHint />
           </div>
 
           {/* 3-Filter Panel */}
-          <div className="mb-8 space-y-6">
+          <div className="mb-6 space-y-6">
             <PlaybookFilterPanel 
               filters={filters} 
               onFilterChange={updateFilter} 
@@ -90,14 +92,19 @@ const PlaybookLibrary: React.FC = () => {
           </div>
 
           {/* Results Count */}
-          <div className="text-center mb-8">
+          <div className="text-center">
             <p className="text-muted-foreground">
               {language === 'en' 
                 ? `Showing ${filteredPlaybooks.length} of ${totalPlaybooks} playbooks`
                 : `Zeige ${filteredPlaybooks.length} von ${totalPlaybooks} Playbooks`}
             </p>
           </div>
+        </div>
+      </section>
 
+      {/* Grid Section */}
+      <section className="py-12 md:py-16 bg-background">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Playbook Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPlaybooks.map((playbook, index) => (
@@ -128,16 +135,16 @@ const PlaybookLibrary: React.FC = () => {
             </div>
           )}
         </div>
-
-        {/* Playbook Detail Modal */}
-        <PlaybookModal
-          playbook={selectedPlaybook}
-          isOpen={isDialogOpen}
-          onClose={() => setIsDialogOpen(false)}
-          language={language}
-          onDownload={handleDownloadTemplate}
-        />
       </section>
+
+      {/* Playbook Detail Modal */}
+      <PlaybookModal
+        playbook={selectedPlaybook}
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        language={language}
+        onDownload={handleDownloadTemplate}
+      />
 
       {/* CTA Section - Eigenständig außerhalb des Containers */}
       <section className="py-24 lg:py-32 relative overflow-hidden">
