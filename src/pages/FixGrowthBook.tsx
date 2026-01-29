@@ -539,7 +539,7 @@ const AuthorSection: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-accent/20 blur-2xl opacity-50" />
               <img
                 src="/images/ml-hero-new.png"
-                alt="Michel Laleye"
+                alt="Michel Lason"
                 className="relative w-64 h-64 object-cover rounded-full border-4 border-border shadow-xl"
               />
             </div>
@@ -551,7 +551,7 @@ const AuthorSection: React.FC = () => {
               {language === 'de' ? 'Der Autor' : 'The Author'}
             </span>
             <h2 className="font-display text-display-sm text-foreground mb-4">
-              Michel Laleye
+              Michel Lason
             </h2>
             <p className="text-body-lg text-muted-foreground mb-6">
               {language === 'de'
