@@ -40,7 +40,7 @@ const PlaybookLibrary: React.FC = () => {
   };
 
   const playbookStats = [
-    { value: '0', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
+    { value: '1', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
     { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' as const },
     { value: '3', label: { en: 'Filters', de: 'Filter' }, color: 'primary' as const },
     { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' as const },
