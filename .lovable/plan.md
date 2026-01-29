@@ -1,95 +1,47 @@
 
+# Fix: Verbleibende 17 Skeleton-Dateien erstellen
 
-# Neuer Ansatz: Ultra-Minimal Skeletons (1 Datei = 1 Nachricht)
+## Status
+- ✅ `gtm-revenue.ts` existiert
+- ❌ 17 Dateien fehlen
 
-## Problem erkannt
+## Strategie: 3-4 Dateien pro Durchgang
 
-Die Skeleton-Dateien wurden NICHT erstellt, obwohl die vorherige Nachricht behauptete, 5 Dateien angelegt zu haben.
+Statt alle 17 parallel zu erstellen, teile ich in kleinere Batches auf:
 
-**Aktueller Stand:**
-```
-src/data/playbooks/
-├── index.ts     ✅ EXISTIERT
-├── types.ts     ✅ EXISTIERT
-└── content/     ❌ NICHT VORHANDEN
-```
+### Batch 1 (4 Dateien)
+- `ai-native-scaling.ts` (Ebene 1)
+- `growth-engines.ts` (Ebene 2)
+- `operating-systems.ts` (Ebene 2)
+- `board-governance.ts` (Ebene 2)
 
-## Neue Strategie: 1 Datei pro Durchgang
+### Batch 2 (4 Dateien)
+- `portfolio-transformation.ts` (Ebene 2)
+- `strategic-capabilities.ts` (Ebene 2)
+- `product.ts` (Ebene 3)
+- `customer-success.ts` (Ebene 3)
 
-Statt 5+ Dateien parallel zu erstellen, erstelle ich **genau 1 Datei pro Nachricht** mit **absolutem Minimum** an Content (~30 Zeilen).
+### Batch 3 (4 Dateien)
+- `operations.ts` (Ebene 3)
+- `finance.ts` (Ebene 3)
+- `talent.ts` (Ebene 3)
+- `data-tech.ts` (Ebene 3)
 
-### Schritt 1: Erste Skeleton-Datei
+### Batch 4 (5 Dateien)
+- `strategic-governance.ts` (Ebene 3)
+- `operational-governance.ts` (Ebene 3)
+- `exit-ma.ts` (Ebene 3)
+- `portfolio-excellence.ts` (Ebene 3)
+- `strategic-capabilities-deep-dive.ts` (Ebene 3)
 
-Erstelle: `src/data/playbooks/content/gtm-revenue.ts`
+### Batch 5: Index-Datei
+- `content/index.ts` - Exportiert alle 18 Playbooks
 
-```typescript
-import type { PlaybookPageData } from '../types';
-import { getPlaybookBySlug } from '../index';
-
-const meta = getPlaybookBySlug('growth-engines/gtm-revenue')!;
-
-export const gtmRevenueData: PlaybookPageData = {
-  meta,
-  hero: {
-    breadcrumb: { en: "Playbooks", de: "Playbooks" },
-    badge: { en: "GTM", de: "GTM" },
-    title: "GTM/Revenue Playbook",
-    subtitle: { en: "...", de: "..." },
-    description: { en: "...", de: "..." },
-    trustBadges: [],
-    bookingUrl: "#",
-    downloadUrl: "#",
-    gradient: "from-orange-500 to-amber-500"
-  },
-  summary: {
-    problem: { title: { en: "Problem", de: "Problem" }, text: { en: "...", de: "..." } },
-    whyItMatters: { title: { en: "Why", de: "Warum" }, text: { en: "...", de: "..." } },
-    solution: { title: { en: "Solution", de: "Loesung" }, text: { en: "...", de: "..." } }
-  },
-  problem: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, bullets: [], metrics: [] },
-  framework: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, items: [] },
-  bestPractices: { title: { en: "...", de: "..." }, categories: [] },
-  roadmap: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, phases: [] },
-  caseStudies: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, cases: [] },
-  solutionsConnection: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, items: [] },
-  whoThisIsFor: { title: { en: "...", de: "..." }, subtitle: { en: "...", de: "..." }, icp: { en: "...", de: "..." }, personas: [] },
-  finalCta: { headline: { en: "...", de: "..." }, subline: { en: "...", de: "..." }, trustSignals: [], bookingUrl: "#", downloadUrl: "#" }
-};
-```
-
-**Warum das funktionieren sollte:**
-- Nur ~35 Zeilen
-- Keine verschachtelten Arrays mit Content
-- Alle Felder vorhanden aber leer/minimal
-- Nutzt `meta` aus dem bestehenden Index
-
-### Schritt 2-18: Weitere Skeletons
-
-Nach erfolgreichem Test von Schritt 1:
-- Erstelle naechste Skeleton-Datei
-- Wiederhole fuer alle 18 Playbooks
-- Jede Datei ~30-40 Zeilen
-
-### Schritt 19: Content-Index
-
-Erstelle: `src/data/playbooks/content/index.ts`
-
-```typescript
-export { gtmRevenueData } from './gtm-revenue';
-// ... weitere exports
-```
-
-## Unterschied zu vorher
-
-| Vorher | Jetzt |
-|--------|-------|
-| 5 Dateien parallel | 1 Datei pro Nachricht |
-| ~80 Zeilen pro Datei | ~35 Zeilen pro Datei |
-| Komplexe Struktur | Flache Platzhalter |
+## Template (identisch fuer alle)
+Jede Datei ~35 Zeilen mit:
+- Import von `PlaybookPageData` und `getPlaybookBySlug`
+- Minimal-Platzhalter fuer alle Sections
+- Korrekte Slug-Referenz aus Index
 
 ## Naechster Schritt
-
-Erstelle NUR `src/data/playbooks/content/gtm-revenue.ts` mit Ultra-Minimal Skeleton (~35 Zeilen).
-
-Wenn das funktioniert, machen wir die naechsten 17 Dateien einzeln.
-
+Erstelle Batch 1: 4 Skeleton-Dateien
