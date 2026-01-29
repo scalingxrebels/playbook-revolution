@@ -1,76 +1,95 @@
 
+# Plan: Playbooks & Expertise Heroes an Solutions angleichen
 
-# Plan: "Learn More"-Button Navigation reparieren
+## Ziel
 
-## Problem-Diagnose
-
-Der "Learn More"-Button registriert Klicks, aber die Navigation zu `/playbooks/gtm-revenue` findet nicht statt. Die URL bleibt auf `/playbooks`.
-
-## Analyse
-
-| Komponente | Status | Problem |
-|------------|--------|---------|
-| Route in App.tsx | OK | `/playbooks/gtm-revenue` ist korrekt registriert |
-| Daten in playbooks.ts | OK | `slug: 'gtm-revenue'` ist vorhanden |
-| handleLearnMore() | Verdächtig | `navigate()` wird aufgerufen, aber Navigation passiert nicht |
-| useNavigate Hook | Möglich | Hook könnte im falschen Kontext sein |
-
-## Lösung
-
-Die Navigation von `navigate()` auf direkte Link-Navigation umstellen. Dies ist robuster und vermeidet potenzielle Probleme mit dem React Router Hook.
-
-### Änderung in `src/components/playbooks/PlaybookCard.tsx`
-
-**Option 1: Link-Komponente statt Button (empfohlen)**
-
-Den "Learn More"-Button durch einen Link ersetzen, der wie ein Button gestylt ist:
-
-```typescript
-import { Link } from 'react-router-dom';
-
-// Statt:
-<Button
-  size="sm"
-  variant="outline"
-  className="flex-1"
-  onClick={(e) => {
-    e.stopPropagation();
-    handleLearnMore();
-  }}
->
-  {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
-</Button>
-
-// Neu:
-<Button
-  size="sm"
-  variant="outline"
-  className="flex-1"
-  asChild
->
-  <Link to={`/playbooks/${playbook.slug}`}>
-    {language === 'en' ? 'Learn More' : 'Mehr erfahren'}
-  </Link>
-</Button>
-```
-
-**Vorteile:**
-- Link-Komponente ist nativ für Navigation ausgelegt
-- `asChild` überträgt Button-Styles auf den Link
-- Kein JavaScript-Handler nötig - reine HTML-Navigation
-- SEO-freundlicher (echte `<a>`-Tags)
-- Funktioniert garantiert mit React Router
-
-### Entfernen von ungenutztem Code
-
-- `useNavigate` Import kann entfernt werden
-- `handleLearnMore` Funktion kann entfernt werden
+Die Hero-Sektionen von Playbooks und Expertise (Research Hub) strukturell an Solutions angleichen:
+- Hero als eigenständige Komponente (nicht in extra Section gewrappt)
+- Filter/Search in separater Section mit `bg-muted/30 border-y border-border` Styling
+- Klare visuelle Trennung zwischen Hero und Content
 
 ---
 
-## Dateien
+## Teil 1: PlaybookLibrary.tsx anpassen
+
+### Aktuelle Struktur (problematisch)
+```
+<section className="pb-20 bg-background relative overflow-hidden">
+  <SharedHero ... />        ← Hero drin
+  <div>Search</div>         ← Filter drin
+  <div>Filters</div>        ← Filter drin
+  <div>Grid</div>           ← Content drin
+</section>
+```
+
+### Neue Struktur (wie Solutions)
+```
+<SharedHero ... />                                           ← Standalone
+<section className="py-6 md:py-8 bg-muted/30 border-y border-border">
+  <div>Search</div>
+  <div>Onboarding Hint</div>
+  <div>Filters</div>
+  <div>Results Count</div>
+</section>
+<section className="py-12 md:py-16">
+  <div>Grid</div>
+</section>
+```
+
+### Änderungen
+1. `SharedHero` aus der Section herausnehmen - eigenständig rendern
+2. Neue Section für Filter mit `bg-muted/30 border-y border-border`
+3. Grid in eigene Section verschieben
+4. Empty State in Grid-Section belassen
+
+---
+
+## Teil 2: ResearchHub.tsx anpassen
+
+### Aktuelle Struktur
+```
+<section className="pb-16">
+  <SharedHero ... />        ← Hero drin
+  <div>Content Cards</div>  ← Content drin
+</section>
+```
+
+### Neue Struktur
+```
+<SharedHero ... />                                           ← Standalone
+<section className="py-12 md:py-16">
+  <div>Content Cards</div>
+</section>
+```
+
+### Änderungen
+1. `SharedHero` aus der Section herausnehmen - eigenständig rendern
+2. Content in eigene Section mit `py-12 md:py-16` verschieben
+3. Konsistente Container-Größe (`max-w-7xl`) verwenden
+
+---
+
+## Datei-Übersicht
 
 | Datei | Aktion | Beschreibung |
 |-------|--------|--------------|
-| `src/components/playbooks/PlaybookCard.tsx` | Bearbeiten | Button durch Link mit `asChild` ersetzen |
+| `src/components/PlaybookLibrary.tsx` | Bearbeiten | Hero separieren, Filter-Section mit Solutions-Styling |
+| `src/components/ResearchHub.tsx` | Bearbeiten | Hero separieren, Content in eigene Section |
 
+---
+
+## Erwartetes Ergebnis
+
+Nach der Anpassung haben alle drei Seiten dieselbe visuelle Struktur:
+
+```
+┌─────────────────────────────────────┐
+│         SharedHero (Dark Space)     │  ← Eigenständig
+├─────────────────────────────────────┤
+│    Filter Section (bg-muted/30)     │  ← Separate Section mit Border
+├─────────────────────────────────────┤
+│         Content Grid/Cards          │  ← Eigene Section
+└─────────────────────────────────────┘
+```
+
+Visuell: Klare horizontale Trennung zwischen Hero, Filtern und Content durch die `border-y` und `bg-muted/30` Styling.
