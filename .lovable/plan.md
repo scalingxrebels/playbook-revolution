@@ -1,80 +1,98 @@
 
-# Plan: Onboarding-Hint für Solutions-Navigation
+# Plan: Persistente Sprachauswahl mit localStorage
 
-## Übersicht
+## Das Problem
 
-Ein einmaliger, ausblend­barer Hinweis erklärt beim ersten Besuch die Filterlogik. Nach dem Schließen wird der Status in `localStorage` gespeichert.
-
----
-
-## Neue Komponente
-
-### `src/components/solutions/FilterOnboardingHint.tsx`
+Die aktuelle Implementierung in `src/contexts/LanguageContext.tsx` speichert die Sprachauswahl nur im React-State:
 
 ```typescript
-// Eigenständige Komponente für den Onboarding-Hint
-// - Prüft localStorage auf 'solutions-filter-hint-dismissed'
-// - Zeigt Hinweis nur wenn nicht dismissed
-// - Schließen-Button setzt localStorage und blendet aus
+const [language, setLanguage] = useState<Language>('en');
 ```
 
-**Features:**
-- Dezentes Design mit Info-Icon und Schließen-Button
-- Bilingual (DE/EN) basierend auf LanguageContext
-- Fade-out Animation beim Schließen
-- localStorage-Key: `solutions-filter-hint-dismissed`
+Bei jedem Seitenwechsel oder Neuladen wird die Sprache auf Englisch zurückgesetzt.
 
 ---
 
-## Design des Hints
+## Die Lösung
 
-| Element | Beschreibung |
-|---------|--------------|
-| Position | Direkt unter der Suchleiste, vor den Filtern |
-| Stil | Dezenter Banner mit `bg-primary/5` und `border-primary/20` |
-| Icon | Lightbulb (💡) für Tipp-Charakter |
-| Schließen | X-Button rechts, setzt localStorage |
-
-### Text (bilingual)
-
-**Deutsch:**
-> **Tipp:** Filtere nach Challenge (dein Problem) oder Typ (Lösungsformat) – oder kombiniere beide für präzise Ergebnisse.
-
-**English:**
-> **Tip:** Filter by Challenge (your problem) or Type (solution format) – or combine both for precise results.
+Die Sprachpräferenz wird in `localStorage` gespeichert und beim Start geladen.
 
 ---
 
-## Integration in Solutions.tsx
+## Änderungen
+
+### `src/contexts/LanguageContext.tsx`
+
+**1. Initialisierung aus localStorage (Zeile 300-301)**
+
+Vorher:
+```typescript
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<Language>('en');
+```
+
+Nachher:
+```typescript
+export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [language, setLanguage] = useState<Language>(() => {
+    const stored = localStorage.getItem('preferred-language');
+    return (stored === 'de' || stored === 'en') ? stored : 'en';
+  });
+```
+
+**2. Persistierung bei Änderung (nach Zeile 314)**
+
+Nachher:
+```typescript
+const toggleLanguage = useCallback(() => {
+  setLanguage(prev => {
+    const next = prev === 'en' ? 'de' : 'en';
+    localStorage.setItem('preferred-language', next);
+    return next;
+  });
+}, []);
+
+// Auch bei direktem setLanguage persistieren
+const handleSetLanguage = useCallback((lang: Language) => {
+  localStorage.setItem('preferred-language', lang);
+  setLanguage(lang);
+}, []);
+```
+
+**3. Provider anpassen (Zeile 316-320)**
 
 ```typescript
-// Zeile 6: Import hinzufügen
-import FilterOnboardingHint from '@/components/solutions/FilterOnboardingHint';
-
-// Zeile 129: Nach Suchleiste, vor Challenge-Tabs einfügen
-<FilterOnboardingHint />
+return (
+  <LanguageContext.Provider value={{ 
+    language, 
+    setLanguage: handleSetLanguage, 
+    t, 
+    toggleLanguage 
+  }}>
+    {children}
+  </LanguageContext.Provider>
+);
 ```
+
+---
+
+## Verhalten nach der Änderung
+
+| Aktion | Ergebnis |
+|--------|----------|
+| Sprache auf Deutsch stellen | Wird in localStorage gespeichert |
+| Seite wechseln | Deutsch bleibt aktiv |
+| Browser schließen & öffnen | Deutsch bleibt aktiv |
+| localStorage löschen | Fallback auf Englisch |
 
 ---
 
 ## Technische Details
 
-### localStorage Logik
-```typescript
-const [isDismissed, setIsDismissed] = useState(() => {
-  return localStorage.getItem('solutions-filter-hint-dismissed') === 'true';
-});
-
-const handleDismiss = () => {
-  localStorage.setItem('solutions-filter-hint-dismissed', 'true');
-  setIsDismissed(true);
-};
-```
-
-### Styling
-- Responsive: Volle Breite auf Mobile, max-width auf Desktop
-- Konsistent mit dem bestehenden Design-System
-- Sanfte Übergangsanimation beim Ausblenden
+- **localStorage-Key**: `preferred-language`
+- **Gültige Werte**: `'en'` oder `'de'`
+- **Fallback**: Englisch (`'en'`)
+- **Keine zusätzlichen Dependencies** erforderlich
 
 ---
 
@@ -82,6 +100,5 @@ const handleDismiss = () => {
 
 | Datei | Aktion |
 |-------|--------|
-| `src/components/solutions/FilterOnboardingHint.tsx` | Neu erstellen |
-| `src/pages/Solutions.tsx` | Import + Komponente einfügen |
+| `src/contexts/LanguageContext.tsx` | Zeilen 300-320 anpassen |
 
