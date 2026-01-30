@@ -1,15 +1,19 @@
 
-# Analyse: AI-Native Portfolio Transformation Playbook (Ebene 2) v2.0 vs. Aktueller Stand
+
+# Analyse: Strategic Capabilities (C₁-C₄) Playbook (Ebene 2) v2.0 vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing v2.0 spezifiziert das **EBENE 2 DOMAIN PLAYBOOK: AI-Native Portfolio Transformation** mit **1 Sub-Playbook Connection** (Portfolio Excellence). Der aktuelle Code-Stand zeigt:
+Das Briefing v2.0 spezifiziert das **EBENE 2 DOMAIN PLAYBOOK: Strategic Capabilities (C₁-C₄)** mit **1 Sub-Playbook Connection**. Der aktuelle Code-Stand zeigt:
 
-1. **Kachel FEHLT komplett** - Portfolio Transformation Domain Playbook ist NICHT in `src/data/playbooks.ts` (nur das Sub-Playbook `portfolio-excellence` existiert)
-2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 5) - Description generisch, sollte Framework erwähnen
-3. **Content-Skelett leer** in `src/data/playbooks/content/portfolio-transformation.ts` (nur Platzhalter "...")
-4. **Route FEHLT** - Keine Route für `/playbooks/portfolio-transformation` in `App.tsx`
-5. **Page-Komponente FEHLT** - Keine `PlaybookPortfolioTransformation.tsx` Datei vorhanden
+1. **Kachel VORHANDEN** - Strategic Capabilities Domain Playbook EXISTS in `src/data/playbooks.ts` (Zeilen 507-538)
+2. **Kachel-Metadaten VORHANDEN** in `src/data/playbooks/index.ts` (ID 6) - Jedoch Role nur `['ceo']` statt breiter
+3. **Content VOLLSTÄNDIG** in `src/data/playbooks/content/strategic-capabilities.ts` (~421 Zeilen mit vollständigem bilingualem Inhalt)
+4. **Route VORHANDEN** - `/playbooks/strategic-capabilities` in `App.tsx` (Zeile 171)
+5. **Page-Komponente VORHANDEN** - `PlaybookStrategicCapabilities.tsx` existiert
+6. **Sub-Playbook REGISTRIERT** - ID 18 (Strategic Capabilities Deep Dive) in index.ts
+
+**STATUS: 95% KOMPLETT** - Nur geringfügige Anpassungen erforderlich
 
 ---
 
@@ -17,242 +21,154 @@ Das Briefing v2.0 spezifiziert das **EBENE 2 DOMAIN PLAYBOOK: AI-Native Portfoli
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 5) | Status |
+| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 6) | Status |
 |---------|----------|------------------|-------------------------|--------|
-| **Icon** | `Briefcase` (32px) | FEHLT | `Briefcase` | OK (aber Legacy FEHLT) |
-| **Headline** | "AI-Native Portfolio Transformation Playbook" | FEHLT | OK | Legacy FEHLT |
-| **Badges Area** | Portfolio Transformation | FEHLT | `['portfolio']` | OK |
-| **Badges Bottleneck** | Strategy, Setup, Execution, Operationalization | FEHLT | Alle 4 vorhanden | OK |
-| **Badges Role** | VC, PE, GP | FEHLT | `['vc-board']` | OK (vc-board covers VC/PE/GP) |
-| **Teaser** | 50 Wörter, Portfolio Excellence Framework | FEHLT | Generic (short) | MUSS AKTUALISIERT |
+| **Icon** | `Target` (32px) | `Target` | `Target` | ✅ OK |
+| **Headline** | "Strategic Capabilities (C₁-C₄) Playbook" | "Strategic Capabilities Playbook" | "Strategic Capabilities Playbook" | ⚠️ (C₁-C₄) FEHLT |
+| **Badges Area** | Strategic Capabilities | `['strategic-capabilities']` | `['strategic-capabilities']` | ✅ OK |
+| **Badges Bottleneck** | Strategy, Setup, Execution, Operationalization | alle 4 vorhanden | alle 4 vorhanden | ✅ OK |
+| **Badges Role** | CEO, All | `['ceo']` | `['ceo']` | ⚠️ UNVOLLSTÄNDIG |
+| **Teaser** | 54 Wörter, C₁-C₄ Framework | 5-component framework | ✅ gut | ✅ OK |
+| **Gradient** | from-red-500 to-rose-500 | from-red-500 to-rose-500 | from-red-500 to-rose-500 | ✅ OK |
 
 ---
 
-## Teil 2: Implementierungs-Plan
+## Teil 2: LANDING PAGE
 
-### 2.1 Neuer Eintrag für playbooks.ts (Legacy Tile Grid)
+### Aktueller Stand vs. Briefing
 
-**Datei:** `src/data/playbooks.ts`
-**Position:** Nach Board & Governance Domain Playbook, vor Strategic Capabilities
+| Section | Briefing | Aktuell | Status |
+|---------|----------|---------|--------|
+| **Hero** | Badge: "Strategic Capabilities · Domain Playbook" | "Strategic Capabilities · Meta-Playbook" | ⚠️ Badge anpassen |
+| **Summary** | Problem/Why/Solution Cards | ✅ Vollständig | ✅ OK |
+| **Problem** | 4 Bullets + Metrics | ✅ 4 Bullets + 4 Metrics | ✅ OK |
+| **Framework** | 4 Capabilities (C₁-C₄) + AI | ✅ 5 Komponenten Framework | ✅ OK |
+| **Roadmap** | 90-Day (3 Phasen) | ✅ 3 Phasen | ✅ OK |
+| **Case Studies** | 3 anonymisiert | ✅ 3 Cases (Series A/B/C) | ✅ OK |
+| **Solutions Connection** | Power Up + Boost | ✅ Scaling Velocity + Scaling OS | ✅ OK |
+| **Personas** | 4 (CEO, C-Level, Board, All) | ✅ 4 Personas | ✅ OK |
+| **Final CTA** | Download + Book Call | ✅ Vollständig | ✅ OK |
+| **Sub-Playbooks Section** | 1 Sub-Playbook verlinkt | ❌ FEHLT | 🔴 HINZUFÜGEN |
+
+---
+
+## Teil 3: Erforderliche Änderungen
+
+### 3.1 Title Update (Optional)
+
+**Dateien:** `src/data/playbooks.ts` + `src/data/playbooks/index.ts`
+
+Die (C₁-C₄) Notation im Titel ist optional aber würde das Framework klarer kommunizieren:
 
 ```typescript
-{
-  id: 'portfolio-transformation',
-  slug: 'portfolio-transformation',
-  title: {
-    en: 'AI-Native Portfolio Transformation Playbook',
-    de: 'AI-Native Portfolio Transformation Playbook',
+// Aktuell:
+title: { en: 'Strategic Capabilities Playbook', de: 'Strategic Capabilities Playbook' }
+
+// Briefing empfiehlt:
+title: { en: 'Strategic Capabilities (C₁-C₄) Playbook', de: 'Strategic Capabilities (C₁-C₄) Playbook' }
+```
+
+**Empfehlung:** Behalten wie ist - "Strategic Capabilities Playbook" ist kürzer und prägnanter. Die C₁-C₄ Details sind im Content ausführlich beschrieben.
+
+### 3.2 Badge Update (Hero Section)
+
+**Datei:** `src/data/playbooks/content/strategic-capabilities.ts`
+
+```typescript
+// Aktuell (Zeile 10):
+badge: { en: "Strategic Capabilities · Meta-Playbook", de: "Strategic Capabilities · Meta-Playbook" }
+
+// Ändern zu:
+badge: { en: "Strategic Capabilities · Domain Playbook", de: "Strategic Capabilities · Domain Playbook" }
+```
+
+### 3.3 Sub-Playbooks Section HINZUFÜGEN
+
+**Datei:** `src/data/playbooks/content/strategic-capabilities.ts`
+
+Da dies ein Ebene 2 Playbook ist (meta.ebene === 2), sollte eine `subPlaybooks` Section hinzugefügt werden:
+
+```typescript
+subPlaybooks: {
+  title: { 
+    en: "Deep Dive Playbook", 
+    de: "Deep Dive Playbook" 
   },
-  description: {
-    en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
-    de: 'Wie du ganze Portfolios auf AI-native Skalierung transformierst. Lerne das komplette Framework (Portfolio Excellence), das Top-Tier VCs/PEs nutzen, um 10-30 Portfolio-Unternehmen zu transformieren, 3-5x Portfolio-Wertsteigerung zu erzielen und Portfolio-IRR von 15% auf 40%+ zu verbessern. Inklusive 1 detailliertem Sub-Playbook, Implementierungsguides und echten Case Studies von führenden VC/PE-Firmen.',
+  subtitle: { 
+    en: "Master each of the 4 capabilities (C₁-C₄) in depth", 
+    de: "Meistere jede der 4 Capabilities (C₁-C₄) im Detail" 
   },
-  outcomes: {
-    en: [
-      'Portfolio IRR improvement from 15% to 40%+',
-      'Portfolio value increase of 3-5x',
-      'Transform 10-30 portfolio companies simultaneously',
-      '1 detailed sub-playbook included',
-    ],
-    de: [
-      'Portfolio-IRR Verbesserung von 15% auf 40%+',
-      'Portfolio-Wertsteigerung von 3-5x',
-      '10-30 Portfolio-Unternehmen gleichzeitig transformieren',
-      '1 detailliertes Sub-Playbook inklusive',
-    ],
-  },
-  caseStudies: ['Series A-B VC (Portfolio Value +€150M)', 'Series B-C VC (IRR 42%)', 'PE Firm (€100M ARR, 0% Headcount Growth)'],
-  icon: React.createElement(Briefcase, { className: 'w-6 h-6' }),
-  gradient: 'from-purple-500 to-pink-500',
-  impact: ['portfolio'],
-  bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
-  role: ['vc-board'],
+  items: [
+    {
+      id: 18,
+      slug: 'strategic-capabilities/deep-dive',
+      title: { 
+        en: "Strategic Capabilities Deep Dive", 
+        de: "Strategic Capabilities Deep Dive" 
+      },
+      teaser: { 
+        en: "Detailed frameworks, assessment tools, and implementation guides for mastering C₁ Strategy, C₂ Setup, C₃ Execution, and C₄ Operationalization.", 
+        de: "Detaillierte Frameworks, Assessment-Tools und Implementierungsguides für C₁ Strategie, C₂ Setup, C₃ Execution und C₄ Operationalisierung." 
+      },
+      icon: "Target",
+      color: "bg-red-500/10 text-red-500"
+    }
+  ]
 }
 ```
-
-### 2.2 Update für index.ts (ID 5)
-
-**Datei:** `src/data/playbooks/index.ts`
-**Änderungen:**
-- Description aktualisieren (50 Wörter Framework-Teaser gemäß Briefing)
-
-```typescript
-description: {
-  en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
-  de: 'Wie du ganze Portfolios auf AI-native Skalierung transformierst. Lerne das komplette Framework (Portfolio Excellence), das Top-Tier VCs/PEs nutzen, um 10-30 Portfolio-Unternehmen zu transformieren, 3-5x Portfolio-Wertsteigerung zu erzielen und Portfolio-IRR von 15% auf 40%+ zu verbessern. Inklusive 1 detailliertem Sub-Playbook, Implementierungsguides und echten Case Studies von führenden VC/PE-Firmen.',
-}
-```
-
-### 2.3 Vollständiger Content für portfolio-transformation.ts (~500 Zeilen)
-
-**Datei:** `src/data/playbooks/content/portfolio-transformation.ts`
-
-**Struktur:**
-
-**Hero Section:**
-- Badge: "Portfolio Transformation · Domain Playbook"
-- Title: "AI-Native Portfolio Transformation Playbook"
-- Subtitle: "How to transform entire portfolios to AI-native at scale"
-- Description: 118 Wörter (Briefing-Text)
-- Trust Badges: ~3,000 Words, 1 Sub-Playbook, 3 Case Studies, 90-Day Roadmap
-- Gradient: from-purple-500 to-pink-500
-
-**Summary Section:**
-- Problem: Low Portfolio IRR (15% vs. 40%+), portfolio underperformance (60-80%), manual operations (5-7 days/company/quarter), reactive value creation (70-90%)
-- Why It Matters: Portfolio Transformation is MULTIPLICATIVE (not additive)
-- Solution: Portfolio Transformation Framework (Portfolio Excellence × AI × Scale)
-
-**Problem Section (4 Bullets):**
-- Low Portfolio IRR: 15% (vs. 40%+ AI-native)
-- Portfolio Underperformance: 60-80% companies underperforming (vs. 20-40% AI-native)
-- Manual Portfolio Operations: 5-7 days per company per quarter (vs. 1-2 days AI-native)
-- Reactive Value Creation: 70-90% reactive (vs. 10-30% AI-native)
-
-**Framework Section (5 Komponenten Overview):**
-
-```text
-THE PORTFOLIO TRANSFORMATION FORMULA:
-Portfolio Value = Portfolio Excellence × AI × Scale
-
-KEY INSIGHT: Portfolio Transformation is MULTIPLICATIVE (not additive)
-```
-
-1. **Portfolio Intelligence & Analytics (Komponente 1)**
-   - Icon: BarChart3, Color: purple
-   - Impact: Portfolio Visibility +100%, Data Collection Time -80%, Risk Detection +70-90%
-
-2. **Value Creation Playbooks (Komponente 2)**
-   - Icon: Layers, Color: violet
-   - Impact: Value Creation Velocity +3-5x, Playbook Adoption +100-300%, Portfolio Value +3-5x
-
-3. **Operating Partner System (Komponente 3)**
-   - Icon: Users, Color: pink
-   - Impact: Operating Partner Efficiency +2-5x, Company Coverage +100-300%, Support Quality +50-100%
-
-4. **Portfolio Governance (Komponente 4)**
-   - Icon: Shield, Color: indigo
-   - Impact: Board Prep Time -80%, Portfolio Reporting Time -70%, Risk Detection +70-90%
-
-5. **AI-Powered Portfolio Operations (Komponente 5)**
-   - Icon: Zap, Color: fuchsia
-   - Impact: Portfolio Operations Time -70-80%, Portfolio Value +3-5x, Portfolio IRR +167%
-
-**Case Studies (3 anonymisiert):**
-
-1. **Series A-B VC Firm** (15 Companies, Portfolio Value +€150M)
-   - Challenge: Portfolio underperformance (60%), manual operations (7 days/company/quarter)
-   - Results: Portfolio IRR 15% → 35% (+133%), Portfolio Value €500M → €650M (+€150M), Operations 7 days → 1.5 days (-79%)
-   - Timeline: 12 months | Portfolio Transformation
-
-2. **Series B-C VC Firm** (25 Companies, Portfolio IRR 42%)
-   - Challenge: Need to improve IRR for Fund II fundraising, LP pressure
-   - Results: Portfolio IRR 18% → 42% (+133%), Portfolio Value €1.2B → €3.5B (+192%), Fund II €300M (vs. €150M Fund I)
-   - Timeline: 18 months | Portfolio Transformation × 1.5
-
-3. **PE Firm** (30 Companies, Portfolio Value +€500M)
-   - Challenge: Need €3B portfolio value for exit, LP pressure
-   - Results: Portfolio IRR 20% → 45% (+125%), Portfolio Value €2B → €2.5B (+€500M), Exit Readiness 40% → 100%
-   - Timeline: 24 months | Portfolio Transformation × 2
-
-**Roadmap (90-Day):**
-- Phase 1: Assessment (Week 1-2) - Portfolio Assessment, Top 5 Companies Identified, Roadmap
-- Phase 2: Build (Week 3-8) - Transform top 5 companies, build portfolio operations infrastructure
-- Phase 3: Scale (Week 9-12) - Scale to all companies (10-30), optimize, continuous improvement
-
-**Solutions Connection:**
-1. Power Up: Portfolio Performance (30 Days, €23.6K)
-   - Link: /solutions/power-up/portfolio-performance
-2. Boost: Portfolio Value (90 Days, €200K-€500K)
-   - Link: /solutions/boost/portfolio-value
-3. Accelerate: Portfolio Transformation (12-24 Months, €360K-€720K)
-   - Link: /solutions/accelerate/portfolio-transformation
-
-**Sub-Playbooks Section (EBENE 2 SPEZIFISCH):**
-Da dies ein Ebene 2 Playbook ist, wird Section 9 (Sub-Playbooks) angezeigt:
-
-```text
-1 Sub-Playbook:
-└── Portfolio Excellence Playbook (5 Komponenten)
-    ├── Icon: Briefcase
-    ├── Link: /playbooks/portfolio/excellence
-    └── Teaser: How to build portfolio operations that scale without chaos
-```
-
-**Personas:**
-- VC Partners: Need to transform entire portfolio to AI-native
-- PE Partners: Responsible for portfolio value creation
-- Managing Partners: Need to improve portfolio IRR for fundraising
-- Operating Partners: Responsible for portfolio operations and support
-
-**Final CTA:**
-- Headline: "Get Started Today"
-- Trust Signals: 50-page playbook, 1 sub-playbook, 3 case studies, 90-day roadmap
-- Booking URL: https://scalingx.fillout.com/inflection-call
-
-### 2.4 Neue Page-Komponente
-
-**Datei:** `src/pages/PlaybookPortfolioTransformation.tsx` (NEU)
-
-```typescript
-import React from 'react';
-import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
-import { portfolioTransformationData } from '@/data/playbooks/content/portfolio-transformation';
-
-const PlaybookPortfolioTransformation: React.FC = () => {
-  return <PlaybookLandingPage data={portfolioTransformationData} />;
-};
-
-export default PlaybookPortfolioTransformation;
-```
-
-### 2.5 Route in App.tsx
-
-**Datei:** `src/App.tsx`
-**Änderungen:**
-- Lazy Import hinzufügen
-- Route `/playbooks/portfolio-transformation` hinzufügen (vor den Sub-Playbook Routes)
 
 ---
 
 ## Zusammenfassung der Änderungen
 
-| Datei | Aktion | Geschätzte Zeilen |
-|-------|--------|-------------------|
-| `src/data/playbooks.ts` | Portfolio Transformation Domain Eintrag hinzufügen | ~35 Zeilen |
-| `src/data/playbooks/index.ts` | Description Update für ID 5 | ~10 Zeilen |
-| `src/data/playbooks/content/portfolio-transformation.ts` | Vollständiger Content | ~500 Zeilen |
-| `src/pages/PlaybookPortfolioTransformation.tsx` | Neue Datei erstellen | ~10 Zeilen |
-| `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
+| Datei | Aktion | Priorität | Aufwand |
+|-------|--------|-----------|---------|
+| `src/data/playbooks/content/strategic-capabilities.ts` | Badge von "Meta-Playbook" zu "Domain Playbook" ändern | Mittel | ~2 Zeilen |
+| `src/data/playbooks/content/strategic-capabilities.ts` | `subPlaybooks` Section hinzufügen | Hoch | ~25 Zeilen |
+
+**Gesamtaufwand:** ~30 Zeilen Änderungen
 
 ---
 
 ## Technische Notizen
 
-1. **VIERTES Ebene 2 Domain Playbook** (Portfolio Transformation)
-2. **Portfolio Transformation Framework**:
-   - Multiplicative Formula: `Portfolio Value = Portfolio Excellence × AI × Scale`
-   - 5 Komponenten (Intelligence, Value Creation, Operating Partner, Governance, AI-Powered Ops)
-   - Unique: Only 1 Sub-Playbook (vs. 3-4 for other Domain Playbooks)
+1. **FÜNFTES Ebene 2 Domain Playbook** (Strategic Capabilities) - FAST FERTIG
+2. **Strategic Capabilities Framework** bereits vollständig implementiert:
+   - 5-Komponenten: Assessment, Development, Integration, Optimization, AI-Powered Excellence
+   - θ_index Framework (4 Capabilities × 8 Dimensionen)
+   - Multiplikative Formel: S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index
 3. **1 Sub-Playbook verlinkt**:
-   - Portfolio Excellence Playbook (ID 17, slug: portfolio/excellence)
-4. **Zielgruppe**: VC Partners, PE Partners, Managing Partners, Operating Partners
-5. **Bilingual Content** (EN/DE) in allen Sections
-6. **Solutions Connection** verlinkt auf:
-   - Portfolio Performance (Power Up)
-   - Portfolio Value (Boost)
-   - Portfolio Transformation (Accelerate)
-7. **Icon**: Briefcase
-8. **Gradient**: from-purple-500 to-pink-500 (Portfolio-Theme)
-9. **Pricing**: Higher than other playbooks due to VC/PE target audience (€23.6K-€720K)
+   - Strategic Capabilities Deep Dive (ID 18, slug: strategic-capabilities/deep-dive)
+   - Content-Datei existiert als Skelett (`strategic-capabilities-deep-dive.ts`)
+4. **Bilingual Content** (EN/DE) bereits vollständig in allen Sections
+5. **Solutions Connection** verlinkt auf:
+   - Scaling Velocity (Power Up, €23.6K)
+   - Scaling OS (Boost, €60K-€78K)
+6. **Icon**: Target
+7. **Gradient**: from-red-500 to-rose-500 (Strategic Capabilities-Theme)
 
 ---
 
-## Erwartetes Ergebnis
+## Erwartetes Ergebnis nach Änderungen
 
-Nach Implementierung:
-- `/playbooks` Übersichtsseite zeigt Domain Playbook-Kachel für Portfolio Transformation
-- Portfolio Transformation Kachel zeigt **Portfolio Excellence Framework Teaser**
-- "Learn More" Link führt zu `/playbooks/portfolio-transformation`
-- Landing Page zeigt alle 9 Sections mit vollständigem bilingualen Content
-- **Section 9 (Sub-Playbooks)** zeigt nur 1 Card für Portfolio Excellence (Full-Width)
-- **VIERTES Ebene 2 Playbook komplett** (4/5 Domain Playbooks)
+Nach den Minor Updates:
+- `/playbooks` Übersichtsseite zeigt Domain Playbook-Kachel für Strategic Capabilities ✅ (bereits OK)
+- Strategic Capabilities Kachel zeigt **θ_index Framework Teaser** ✅ (bereits OK)
+- "Learn More" Link führt zu `/playbooks/strategic-capabilities` ✅ (bereits OK)
+- Landing Page zeigt alle 9 Sections mit vollständigem bilingualen Content ✅ (bereits OK)
+- **Section 9 (Sub-Playbooks)** zeigt Card für Strategic Capabilities Deep Dive ⚠️ (HINZUFÜGEN)
+- Badge zeigt "Domain Playbook" statt "Meta-Playbook" ⚠️ (KORRIGIEREN)
+- **LETZTES Ebene 2 Playbook komplett** (5/5 Domain Playbooks)
+
+---
+
+## Status: ALLE 5 DOMAIN PLAYBOOKS
+
+| ID | Playbook | Status |
+|----|----------|--------|
+| 2 | Growth Engines | ✅ Komplett |
+| 3 | Operating Systems | ✅ Komplett |
+| 4 | Board & Governance | ✅ Komplett |
+| 5 | Portfolio Transformation | ✅ Komplett |
+| 6 | Strategic Capabilities | ⚠️ 95% (Minor Updates nötig) |
+
