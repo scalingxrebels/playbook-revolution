@@ -27,7 +27,7 @@ export const playbookIndex: PlaybookMeta[] = [
     gradient: 'from-purple-500 to-violet-500',
     area: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
-    role: ['ceo'],
+    role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
     ebene: 1,
     parent: null,
     children: [2, 3, 4, 5, 6],
