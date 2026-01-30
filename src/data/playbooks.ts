@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -273,5 +273,37 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['ceo', 'vc-board'],
+  },
+  {
+    id: 'operational-governance',
+    slug: 'board-governance/operational',
+    title: {
+      en: 'Operational Governance Playbook',
+      de: 'Operational Governance Playbook',
+    },
+    description: {
+      en: 'How to build operational governance systems that scale with AI. Learn the 5-component framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance) used by AI-native companies to improve data quality by 80% and reduce compliance risk by 70%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Operational Governance Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance), das AI-native Unternehmen nutzen, um Datenqualität um 80% zu verbessern und Compliance-Risiko um 70% zu reduzieren. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Data quality improvement of 80-100%',
+        'Compliance risk reduction of 70-80%',
+        'Incident response time reduction of 96%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Datenqualitäts-Verbesserung von 80-100%',
+        'Compliance-Risiko Reduktion von 70-80%',
+        'Incident Response Zeit Reduktion von 96%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Data Quality +88%)', 'Series B SaaS (Compliance Risk -80%)', 'Series C (98% Data Quality)'],
+    icon: React.createElement(ShieldCheck, { className: 'w-6 h-6' }),
+    gradient: 'from-amber-500 to-orange-500',
+    impact: ['board-governance'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'cto', 'coo'],
   },
 ];
