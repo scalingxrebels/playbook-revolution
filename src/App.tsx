@@ -81,6 +81,7 @@ const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSys
 const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
 const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
 const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
+const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
 
 const queryClient = new QueryClient();
 
@@ -175,6 +176,7 @@ const App = () => (
                 <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
                 <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
                 <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
+                <Route path="/expertise/amf" element={<ExpertiseAMF />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
