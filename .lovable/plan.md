@@ -1,15 +1,15 @@
 
-# Analyse: Strategic Capabilities Playbook v2.0 Briefing vs. Aktueller Stand
+# Analyse: AI-Native Growth Engines Playbook (Ebene 2) v2.0 vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #12** und die **Landing Page**. Dies ist das **FINALE** Playbook - das Meta-Playbook für alle 4 Capabilities (C₁-C₄). Der aktuelle Code-Stand zeigt:
+Das Briefing v2.0 spezifiziert das **EBENE 2 DOMAIN PLAYBOOK: AI-Native Growth Engines** mit **3 Sub-Playbooks Connection**. Der aktuelle Code-Stand zeigt:
 
-1. **Kachel FEHLT komplett** - Strategic Capabilities ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
-2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 6) - Description ist generisch, sollte 5-Komponenten Framework erwähnen
-3. **Content-Skelett leer** in `src/data/playbooks/content/strategic-capabilities.ts` (nur Platzhalter "...")
-4. **Route FEHLT** - Keine Route für `/playbooks/strategic-capabilities` in `App.tsx`
-5. **Page-Komponente FEHLT** - Keine `PlaybookStrategicCapabilities.tsx` Datei vorhanden
+1. **Kachel FEHLT komplett** - Growth Engines Domain Playbook ist NICHT in `src/data/playbooks.ts` (nur die 3 Sub-Playbooks existieren)
+2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 2) - Description generisch, sollte Framework erwähnen
+3. **Content-Skelett leer** in `src/data/playbooks/content/growth-engines.ts` (nur Platzhalter "...")
+4. **Route FEHLT** - Keine Route für `/playbooks/growth-engines` in `App.tsx`
+5. **Page-Komponente FEHLT** - Keine `PlaybookGrowthEngines.tsx` Datei vorhanden
 
 ---
 
@@ -17,14 +17,14 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #12** und di
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 6) | Status |
+| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 2) | Status |
 |---------|----------|------------------|-------------------------|--------|
-| **Icon** | `Target` (32px) | FEHLT | `Target` | OK (aber Legacy FEHLT) |
-| **Headline** | "Strategic Capabilities Playbook" | FEHLT | "Strategic Capabilities (C₁-C₄) Playbook" | Legacy FEHLT |
-| **Badges Area** | Strategic Capabilities | FEHLT | `['strategic-capabilities']` | OK |
-| **Badges Bottleneck** | Strategy, Setup, Execution, Operationalization | FEHLT | all 4 | OK |
-| **Badges Role** | CEO, All | FEHLT | `['ceo']` | OK (All = everyone benefits) |
-| **Teaser** | 58 Wörter, θ_index Framework | FEHLT | Generic (old) | MUSS AKTUALISIERT |
+| **Icon** | `TrendingUp` (32px) | FEHLT | `TrendingUp` | OK (aber Legacy FEHLT) |
+| **Headline** | "AI-Native Growth Engines Playbook" | FEHLT | OK | Legacy FEHLT |
+| **Badges Area** | Growth Engines | FEHLT | `['growth-engines']` | OK |
+| **Badges Bottleneck** | Strategy, Execution | FEHLT | `['strategy', 'execution-focus']` | OK |
+| **Badges Role** | CEO, CMO/CRO, CPO | FEHLT | `['ceo', 'cmo-cro']` | **CPO fehlt** |
+| **Teaser** | 52 Wörter, 3 Sub-Playbooks Framework | FEHLT | Generic (old) | MUSS AKTUALISIERT |
 
 ---
 
@@ -33,204 +33,197 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #12** und di
 ### 2.1 Neuer Eintrag für playbooks.ts (Legacy Tile Grid)
 
 ```typescript
-// Import erweitern
-import { ..., Target } from 'lucide-react';
+// Import erweitern (TrendingUp bereits vorhanden)
 
-// Neuer Eintrag am Ende des Arrays:
+// Neuer Eintrag (Position: Ebene 2 vor den Sub-Playbooks):
 {
-  id: 'strategic-capabilities',
-  slug: 'strategic-capabilities',
+  id: 'growth-engines',
+  slug: 'growth-engines',
   title: {
-    en: 'Strategic Capabilities Playbook',
-    de: 'Strategic Capabilities Playbook',
+    en: 'AI-Native Growth Engines Playbook',
+    de: 'AI-Native Growth Engines Playbook',
   },
   description: {
-    en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to transform revenue generation with AI-native growth engines. Learn the complete framework (GTM/Revenue, Product, Customer Success) used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Revenue-Generierung mit AI-native Growth Engines transformierst. Lerne das komplette Framework (GTM/Revenue, Product, Customer Success), das AI-native Unternehmen nutzen, um 3-5x schnelleres Wachstum zu erzielen, CAC um 60-75% zu senken und LTV/CAC um 50-100% zu steigern. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies von Series A-C Unternehmen.',
   },
   outcomes: {
     en: [
-      'θ_index improvement from 0.35 to 0.75+',
-      'Scaling velocity increase of 3-5x',
-      'Capability bottleneck (C_min) identification and fix',
-      'Clear 90-day implementation roadmap',
+      '3-5x faster growth rate',
+      'CAC reduction of 60-75%',
+      'LTV/CAC improvement of 50-100%',
+      '3 detailed sub-playbooks included',
     ],
     de: [
-      'θ_index Verbesserung von 0.35 auf 0.75+',
-      'Skalierungsgeschwindigkeit Steigerung von 3-5x',
-      'Capability Bottleneck (C_min) Identifikation und Fix',
-      'Klare 90-Tage-Implementierungs-Roadmap',
+      '3-5x schnellere Wachstumsrate',
+      'CAC-Reduktion von 60-75%',
+      'LTV/CAC Verbesserung von 50-100%',
+      '3 detaillierte Sub-Playbooks inklusive',
     ],
   },
-  caseStudies: ['Series A SaaS (θ_index +123%)', 'Series B SaaS (All C > 0.7)', 'Series C (θ_index 0.88 AI-Native)'],
-  icon: React.createElement(Target, { className: 'w-6 h-6' }),
-  gradient: 'from-red-500 to-rose-500',
-  impact: ['strategic-capabilities'],
-  bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
-  role: ['ceo'],
+  caseStudies: ['Series A SaaS (CAC -70%)', 'Series B SaaS (LTV/CAC 15x)', 'Series C (€100M ARR in 18mo)'],
+  icon: React.createElement(TrendingUp, { className: 'w-6 h-6' }),
+  gradient: 'from-green-500 to-emerald-500',
+  impact: ['growth-engines'],
+  bottleneck: ['strategy', 'execution-focus'],
+  role: ['ceo', 'cmo-cro', 'cpo'],
 }
 ```
 
-### 2.2 Update für index.ts (ID 6)
+### 2.2 Update für index.ts (ID 2)
 
 ```typescript
 {
-  id: 6,
-  slug: 'strategic-capabilities',
+  id: 2,
+  slug: 'growth-engines',
   title: {
-    en: 'Strategic Capabilities Playbook',
-    de: 'Strategic Capabilities Playbook',
+    en: 'AI-Native Growth Engines Playbook',
+    de: 'AI-Native Growth Engines Playbook',
   },
   description: {
-    en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to transform revenue generation with AI-native growth engines. Learn the complete framework (GTM/Revenue, Product, Customer Success) used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Revenue-Generierung mit AI-native Growth Engines transformierst. Lerne das komplette Framework (GTM/Revenue, Product, Customer Success), das AI-native Unternehmen nutzen, um 3-5x schnelleres Wachstum zu erzielen, CAC um 60-75% zu senken und LTV/CAC um 50-100% zu steigern. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies von Series A-C Unternehmen.',
   },
-  icon: 'Target', // Bereits korrekt
-  color: 'red',
-  gradient: 'from-red-500 to-rose-500',
-  area: ['strategic-capabilities'],
-  bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
-  role: ['ceo'],
+  icon: 'TrendingUp', // Bereits korrekt
+  color: 'green',
+  gradient: 'from-green-500 to-emerald-500',
+  area: ['growth-engines'],
+  bottleneck: ['strategy', 'execution-focus'],
+  role: ['ceo', 'cmo-cro', 'cpo'], // CPO hinzugefügt
   ebene: 2,
   parent: 1,
-  children: [18],
+  children: [7, 8, 9],
 }
 ```
 
-### 2.3 Vollständiger Content für strategic-capabilities.ts (~600 Zeilen)
+### 2.3 Vollständiger Content für growth-engines.ts (~500 Zeilen)
 
 **Hero Section:**
-- Badge: "Strategic Capabilities · Meta-Playbook"
-- Title: "Strategic Capabilities Playbook"
-- Subtitle: "How to improve the 4 core capabilities that drive AI-native scaling"
-- Description: 104 Wörter (Briefing-Text)
-- Trust Badges: ~3,000 Words, 3 Case Studies, θ_index Framework, 90-Day Roadmap
-- Gradient: from-red-500 to-rose-500
+- Badge: "Growth Engines · Domain Playbook"
+- Title: "AI-Native Growth Engines Playbook"
+- Subtitle: "How to transform revenue generation with AI-native growth engines"
+- Description: 110 Wörter (Briefing-Text)
+- Trust Badges: ~3,000 Words, 3 Sub-Playbooks, 3 Case Studies, 90-Day Roadmap
+- Gradient: from-green-500 to-emerald-500
 
 **Summary Section:**
-- Problem: Random capability investment, 70% have C_min < 0.5, average θ_index 0.35, 5-10x slower scaling
-- Why It Matters: Capabilities are multiplicative - weak capability limits overall performance
-- Solution: 5-Komponenten-Framework
+- Problem: High CAC (€10k-€50k), low LTV/CAC (2-3x), slow growth (30-50% YoY), linear scaling
+- Why It Matters: Growth Engines are MULTIPLICATIVE (not additive)
+- Solution: Growth Engines Framework (GTM × Product × CS × AI)
 
 **Problem Section (4 Bullets):**
-- Random Capability Investment: Invest in strategy without setup (vs. systematic AI-native)
-- Capability Bottlenecks: 70% have C_min < 0.5 (vs. C_min > 0.7 AI-native)
-- Low θ_index: Average 0.35 (vs. 0.75+ AI-native)
-- Slow Scaling: 5-10x slower velocity (vs. AI-native)
+- High CAC: €10k-€50k per customer (vs. €2k-€10k AI-native)
+- Low LTV/CAC: 2-3x (vs. 5-20x AI-native)
+- Slow Growth: 30-50% YoY (vs. 100-300% AI-native)
+- Linear Scaling: Revenue ≈ People (vs. Revenue >>> People AI-native)
 
-**Framework Section (5 Komponenten):**
+**Framework Section (Growth Engines Overview):**
 
-1. **Capability Assessment & Bottleneck Identification**
-   - Icon: ClipboardCheck, Color: cyan
-   - Impact: Capability Visibility +100%, Assessment Time -90%
-   - Actions: θ_index Assessment (C₁-C₄ × 8 Dimensions), Capability Benchmarking, Bottleneck Analysis (C_min), Capability Roadmap, AI-Powered Assessment (LASR.io)
+```text
+THE GROWTH ENGINES FORMULA:
+Hypergrowth = GTM/Revenue × Product × Customer Success × AI
 
-2. **Capability Development & Improvement (C₁-C₄)**
-   - Icon: TrendingUp, Color: green
-   - Impact: θ_index +50-100%, Scaling Velocity +3-5x
-   - Actions: C₁ (Strategy) Development, C₂ (Setup) Development, C₃ (Execution) Development, C₄ (Operationalization) Development, AI-Powered Capability Development
-
-3. **Capability Integration & Interdependencies**
-   - Icon: Network, Color: blue
-   - Impact: Capability Synergies +50-100%, Coordination +3-5x
-   - Actions: Capability Interdependencies (Multiplicative Formula), Capability Sequencing (Fix C_min first), Capability Coordination, Capability Synergies, AI-Powered Integration
-
-4. **Capability Optimization & Continuous Improvement**
-   - Icon: RefreshCw, Color: violet
-   - Impact: Capability Maintenance +100%, Continuous Improvement +3-5x
-   - Actions: Capability Monitoring (Real-time dashboard), Capability Reviews (Quarterly), Capability Benchmarking, Capability Experiments, AI-Powered Optimization
-
-5. **AI-Powered Capability Excellence**
-   - Icon: Sparkles, Color: pink
-   - Impact: Capability Efficiency +300%, θ_index +50-100%
-   - Actions: AI Capability Assessment (LASR.io 12 min), AI Capability Development, AI Capability Integration, AI Capability Optimization, AI Capability Excellence
-
-**Key Technical Content:**
-
-θ_index Framework (4 Capabilities × 8 Dimensions):
-- C₁ (Strategy): Where to play, how to win (0-1 score)
-- C₂ (Setup): Org structure, systems, processes (0-1 score)
-- C₃ (Execution): GTM, product, customer success (0-1 score)
-- C₄ (Operationalization): Ops, finance, talent, governance (0-1 score)
-
-Multiplicative Formula:
-```
-S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index
+KEY INSIGHT: Growth Engines are MULTIPLICATIVE (not additive)
+- Weak GTM × Strong Product × Strong CS = Bottleneck
+- Strong GTM × Strong Product × Strong CS = Hypergrowth
 ```
 
-Bottleneck Principle (C_min):
-- C_min = min(C₁, C₂, C₃, C₄)
-- Weakest capability limits overall performance
-- Fix C_min first (highest ROI)
+1. **GTM/Revenue Engine (Dimension 1)**
+   - Icon: TrendingUp, Color: orange
+   - Impact: CAC -60-75%, Win Rate +50-100%, Sales Cycle -40-60%
+   - Sub-Playbook: GTM/Revenue Playbook (7 Hebel)
 
-Bottleneck Distribution (n=22 companies):
-- C₂ (Setup): 36% (most common)
-- C₁ (Strategy): 27%
-- C₄ (Operationalization): 23%
-- C₃ (Execution): 18% (least common)
+2. **Product Engine (Dimension 2)**
+   - Icon: Package, Color: green
+   - Impact: Feature Velocity +3-5x, Time to PMF -50-70%, User Engagement +50-100%
+   - Sub-Playbook: Product Playbook (5 Komponenten)
+
+3. **Customer Success Engine (Dimension 6)**
+   - Icon: Users, Color: pink
+   - Impact: Churn -40-60%, NRR +20-50%, Expansion Rate +50-100%
+   - Sub-Playbook: Customer Success Playbook (5 Komponenten)
 
 **Case Studies (3 anonymisiert):**
 
-1. **Series A SaaS Company** (θ_index +123%, C₂ Bottleneck Fixed)
-   - Challenge: θ_index 0.35, C₂ (Setup) bottleneck (0.31), slow scaling (40% growth)
-   - Results: θ_index 0.35 → 0.78 (+123%), C₂ 0.31 → 0.75 (+142%), ARR Growth 40% → 120%
-   - Timeline: 12 months | Boost + Accelerate
+1. **Series A SaaS Company** (CAC -70%, Growth 3x)
+   - Challenge: High CAC (€40k), low growth (35% YoY)
+   - Results: CAC €40k → €12k (-70%), LTV/CAC 2.5x → 8x, ARR €10M → €35M
+   - Timeline: 18 months | Boost + Accelerate
 
-2. **Series B SaaS Company** (θ_index +86%, All Capabilities > 0.7)
-   - Challenge: θ_index 0.42, multiple capability gaps, need to scale 3x in 18 months
-   - Results: θ_index 0.42 → 0.78 (+86%), All C > 0.7, ARR Growth 50% → 95%
-   - Timeline: 18 months | Boost + Accelerate + Extension
-
-3. **Series C Company** (θ_index 0.88, AI-Native)
-   - Challenge: Maintain θ_index 0.85+ while scaling 5x
-   - Results: θ_index 0.55 → 0.88 (+60%), ARR Growth 60% → 110%, 4.2x faster scaling
+2. **Series B SaaS Company** (LTV/CAC 15x, Hypergrowth)
+   - Challenge: Need hypergrowth (100%+ YoY) for Series C
+   - Results: CAC €25k → €8k (-68%), LTV/CAC 3x → 15x, ARR €30M → €100M
    - Timeline: 24 months | Accelerate × 2
 
+3. **Series C Company** (€100M ARR in 18 Months)
+   - Challenge: Need €100M ARR in 18 months for IPO readiness
+   - Results: CAC €30k → €10k (-67%), LTV/CAC 3.5x → 18x, ARR €40M → €100M
+   - Timeline: 18 months | Accelerate + Extension
+
 **Roadmap (90-Day):**
-- Phase 1: Assessment (Week 1-2) - θ_index Assessment, Benchmarking, Bottleneck Analysis, Roadmap
-- Phase 2: Development (Week 3-6) - Fix C_min, Capability Development Plans, Integration Plan, Dashboard
-- Phase 3: Optimization (Week 7-12) - Continuous Improvement, Experiments, AI Integration, Excellence
+- Phase 1: Assessment (Week 1-2) - Growth Engines Assessment, Bottleneck Analysis, Roadmap
+- Phase 2: Build (Week 3-8) - Fix bottleneck engine, improve all 3 engines, AI integration
+- Phase 3: Scale (Week 9-12) - Scale all engines, optimize, continuous improvement
 
 **Solutions Connection:**
-1. Power Up: Capability Assessment Fixed (30 Days, €23.6K)
-   - Link: /solutions/power-up/scaling-velocity
-2. Boost: Scaling OS (90 Days, €60K-€78K)
-   - Link: /solutions/boost/scaling-os
+1. Power Up: Growth Momentum (30 Days, €23.6K)
+   - Link: /solutions/power-up/growth-momentum
+2. Boost: Growth Engine (90 Days, €60K-€78K)
+   - Link: /solutions/boost/growth-engine
+
+**Sub-Playbooks Section (EBENE 2 SPEZIFISCH):**
+Da dies ein Ebene 2 Playbook ist, wird Section 9 (Sub-Playbooks) angezeigt:
+
+```text
+3 Sub-Playbooks:
+├── GTM/Revenue Playbook (7 Hebel)
+│   ├── Icon: TrendingUp
+│   ├── Link: /playbooks/growth-engines/gtm-revenue
+│   └── Teaser: How to build repeatable customer acquisition that scales
+├── Product Playbook (5 Komponenten)
+│   ├── Icon: Rocket
+│   ├── Link: /playbooks/growth-engines/product
+│   └── Teaser: How to build products that customers love and scale fast
+└── Customer Success Playbook (5 Komponenten)
+    ├── Icon: Heart
+    ├── Link: /playbooks/growth-engines/customer-success
+    └── Teaser: How to retain and expand customers with AI-native CS
+```
 
 **Personas:**
-- CEOs: Need to improve strategic capabilities and achieve 3-5x faster scaling
-- C-Level Executives: Responsible for capability development in their function
-- Board Members: Need to understand capability bottlenecks and improvement plans
-- All Teams: Everyone benefits from improved strategic capabilities
+- CEOs: Need to achieve hypergrowth and scale 3-5x faster
+- CMOs/CROs: Responsible for GTM and revenue growth
+- CPOs: Responsible for product development and PMF
+- VP Customer Success: Responsible for retention and expansion
 
 **Final CTA:**
 - Headline: "Get Started Today"
-- Trust Signals: 50-page playbook, θ_index framework, 3 case studies, 90-day roadmap
+- Trust Signals: 50-page playbook, 3 sub-playbooks, 3 case studies, 90-day roadmap
 - Booking URL: https://scalingx.fillout.com/inflection-call
 
 ### 2.4 Neue Page-Komponente
 
-**Datei:** `src/pages/PlaybookStrategicCapabilities.tsx`
+**Datei:** `src/pages/PlaybookGrowthEngines.tsx`
 ```typescript
 import React from 'react';
 import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
-import { strategicCapabilitiesData } from '@/data/playbooks/content/strategic-capabilities';
+import { growthEnginesData } from '@/data/playbooks/content/growth-engines';
 
-const PlaybookStrategicCapabilities: React.FC = () => {
-  return <PlaybookLandingPage data={strategicCapabilitiesData} />;
+const PlaybookGrowthEngines: React.FC = () => {
+  return <PlaybookLandingPage data={growthEnginesData} />;
 };
 
-export default PlaybookStrategicCapabilities;
+export default PlaybookGrowthEngines;
 ```
 
 ### 2.5 Route in App.tsx
 
 ```typescript
 // Lazy Import hinzufügen
-const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrategicCapabilities"));
+const PlaybookGrowthEngines = lazy(() => import("./pages/PlaybookGrowthEngines"));
 
-// Route hinzufügen (vor dem Catch-All)
-<Route path="/playbooks/strategic-capabilities" element={<PlaybookStrategicCapabilities />} />
+// Route hinzufügen (vor den Sub-Playbook Routes)
+<Route path="/playbooks/growth-engines" element={<PlaybookGrowthEngines />} />
 ```
 
 ---
@@ -239,56 +232,39 @@ const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrateg
 
 | Datei | Aktion | Geschätzte Zeilen |
 |-------|--------|-------------------|
-| `src/data/playbooks.ts` | Strategic Capabilities Eintrag + Target Import | ~40 Zeilen |
-| `src/data/playbooks/index.ts` | Description Update für ID 6 | ~10 Zeilen |
-| `src/data/playbooks/content/strategic-capabilities.ts` | Vollständiger Content | ~600 Zeilen |
-| `src/pages/PlaybookStrategicCapabilities.tsx` | Neue Datei erstellen | ~10 Zeilen |
+| `src/data/playbooks.ts` | Growth Engines Domain Eintrag hinzufügen | ~35 Zeilen |
+| `src/data/playbooks/index.ts` | Description + Role Update für ID 2 | ~10 Zeilen |
+| `src/data/playbooks/content/growth-engines.ts` | Vollständiger Content | ~500 Zeilen |
+| `src/pages/PlaybookGrowthEngines.tsx` | Neue Datei erstellen | ~10 Zeilen |
 | `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
 
 ---
 
 ## Technische Notizen
 
-1. **FINALES Meta-Playbook** (12/12 Playbooks - Komplettiert das gesamte Playbook System!)
-2. **5 Komponenten**:
-   - Capability Assessment & Bottleneck Identification
-   - Capability Development & Improvement (C₁-C₄)
-   - Capability Integration & Interdependencies
-   - Capability Optimization & Continuous Improvement
-   - AI-Powered Capability Excellence
-3. **θ_index Framework Integration**:
-   - 4 Capabilities × 8 Dimensions
-   - Multiplicative Formula: S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index
-   - Bottleneck Principle (C_min)
-   - Empirische Daten (n=22 companies)
-4. **LASR.io Reference**: AI-Powered Assessment (12 min)
-5. **Bilingual Content** (EN/DE) in allen Sections
-6. **Solutions Connection** verlinkt auf Scaling Velocity (Power Up) und Scaling OS (Boost)
-7. **Icon-Palette**: ClipboardCheck (Assessment), TrendingUp (Development), Network (Integration), RefreshCw (Optimization), Sparkles (AI Excellence)
-8. **Gradient**: from-red-500 to-rose-500 (Strategic Capabilities-Theme)
+1. **ERSTES Ebene 2 Domain Playbook** (Growth Engines)
+2. **Growth Engines Framework**:
+   - Multiplicative Formula: `Hypergrowth = GTM × Product × CS × AI`
+   - 3 Growth Engines (D1: GTM, D2: Product, D6: Customer Success)
+   - Interdependencies: GTM enables Product, Product enables CS, CS enables GTM
+3. **3 Sub-Playbooks verlinkt**:
+   - GTM/Revenue Playbook (ID 7, slug: growth-engines/gtm-revenue)
+   - Product Playbook (ID 8, slug: growth-engines/product)
+   - Customer Success Playbook (ID 9, slug: growth-engines/customer-success)
+4. **Bilingual Content** (EN/DE) in allen Sections
+5. **Solutions Connection** verlinkt auf Growth Momentum (Power Up) und Growth Engine (Boost)
+6. **Icon-Palette**: TrendingUp (GTM), Package/Rocket (Product), Users/Heart (CS)
+7. **Gradient**: from-green-500 to-emerald-500 (Growth Engines-Theme)
+8. **Role erweitert**: ceo, cmo-cro, cpo (CPO hinzugefügt gemäß Briefing)
 
 ---
 
 ## Erwartetes Ergebnis
 
 Nach Implementierung:
-- `/playbooks` Übersichtsseite zeigt **12 Kacheln** (3 Growth Engines + 4 Operating Systems + 3 Board & Governance + 1 Portfolio + 1 Strategic Capabilities)
-- Strategic Capabilities Kachel zeigt **θ_index Framework Teaser**
-- "Learn More" Link führt zu `/playbooks/strategic-capabilities`
-- Landing Page zeigt alle 8 Sections mit vollständigem bilingualen Content
-- **PLAYBOOK SYSTEM KOMPLETT** (12/12 Playbooks)
-
----
-
-## Meilenstein
-
-Mit der Implementierung des Strategic Capabilities Playbooks ist das **gesamte Playbook-System** mit 12 Playbooks abgeschlossen:
-
-| Serie | Playbooks | Status |
-|-------|-----------|--------|
-| Growth Engines | GTM/Revenue, Product, Customer Success | ✅ Complete |
-| Operating Systems | Operations, Finance, Talent, Data/Tech | ✅ Complete |
-| Board & Governance | Strategic Gov., Operational Gov., Exit & M&A | ✅ Complete |
-| Portfolio | Portfolio Excellence | ✅ Complete |
-| Strategic Capabilities | Strategic Capabilities (Meta) | 🎯 Final |
-
+- `/playbooks` Übersichtsseite zeigt **13 Kacheln** (Growth Engines Domain + 3 Sub-Playbooks + Operating Systems + Board & Governance + Portfolio + Strategic Capabilities)
+- Growth Engines Kachel zeigt **Growth Framework Teaser mit 3 Sub-Playbooks**
+- "Learn More" Link führt zu `/playbooks/growth-engines`
+- Landing Page zeigt alle 9 Sections mit vollständigem bilingualen Content
+- **Section 9 (Sub-Playbooks)** zeigt Cards für GTM, Product, Customer Success
+- **ERSTES Ebene 2 Playbook komplett** (1/5 Domain Playbooks)
