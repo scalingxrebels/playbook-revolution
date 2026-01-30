@@ -403,6 +403,38 @@ export const playbooks: Playbook[] = [
     role: ['ceo', 'cmo-cro', 'cpo'],
   },
   {
+    id: 'operating-systems',
+    slug: 'operating-systems',
+    title: {
+      en: 'AI-Native Operating Systems Playbook',
+      de: 'AI-Native Operating Systems Playbook',
+    },
+    description: {
+      en: 'How to transform infrastructure and processes with AI-native operating systems. Learn the complete framework (Operations, Finance, Talent, Data/Tech) used by AI-native companies to achieve 2-5x efficiency gains, reduce operational costs by 30-50%, and scale without linear headcount growth. Includes 4 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Infrastruktur und Prozesse mit AI-native Operating Systems transformierst. Lerne das komplette Framework (Operations, Finance, Talent, Data/Tech), das AI-native Unternehmen nutzen, um 2-5x Effizienzsteigerungen zu erzielen, Betriebskosten um 30-50% zu senken und ohne lineares Headcount-Wachstum zu skalieren. Inklusive 4 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        '2-5x efficiency gains',
+        'Operational cost reduction of 30-50%',
+        'Scale without linear headcount growth',
+        '4 detailed sub-playbooks included',
+      ],
+      de: [
+        '2-5x Effizienzsteigerungen',
+        'Betriebskosten-Reduktion von 30-50%',
+        'Skalieren ohne lineares Headcount-Wachstum',
+        '4 detaillierte Sub-Playbooks inklusive',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Costs -45%)', 'Series B SaaS (Rule of 40: 45%)', 'Series C (€100M ARR, 0% Headcount Growth)'],
+    icon: React.createElement(Settings, { className: 'w-6 h-6' }),
+    gradient: 'from-blue-500 to-cyan-500',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'coo', 'cfo', 'cto'],
+  },
+  {
     id: 'strategic-capabilities',
     slug: 'strategic-capabilities',
     title: {
