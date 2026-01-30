@@ -2,7 +2,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { MeasurementData } from '@/data/research/types';
-import { Target, Layers, Workflow, Database, Users, TrendingUp, LucideIcon } from 'lucide-react';
+import { Target, Layers, Workflow, Database, Users, TrendingUp, LucideIcon, Ruler } from 'lucide-react';
 
 interface ResearchMeasurementSectionProps {
   data: MeasurementData;
@@ -24,12 +24,18 @@ const ResearchMeasurementSection: React.FC<ResearchMeasurementSectionProps> = ({
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className={`py-20 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`py-16 md:py-24 bg-gradient-to-b from-background via-muted/30 to-background transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
+            <Ruler className="w-4 h-4" />
+            <span className="text-sm font-medium uppercase tracking-wide">
+              {language === 'de' ? 'Messung' : 'Measurement'}
+            </span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             {data.headline[language]}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -50,7 +56,7 @@ const ResearchMeasurementSection: React.FC<ResearchMeasurementSectionProps> = ({
             return (
               <div
                 key={dimension.id}
-                className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300"
+                className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Header */}
