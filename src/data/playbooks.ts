@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase, Layers, Target } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase, Layers, Target, Zap } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -18,6 +18,44 @@ export interface Playbook {
 }
 
 export const playbooks: Playbook[] = [
+  // ============================================================================
+  // EBENE 1: MUTTER-PLAYBOOK (FEATURED)
+  // ============================================================================
+  {
+    id: 'ai-native-scaling',
+    slug: 'ai-native-scaling',
+    title: {
+      en: 'AI-Native Scaling Playbook',
+      de: 'AI-Native Scaling Playbook',
+    },
+    description: {
+      en: 'The complete framework for AI-native transformation. Learn the complete framework (4 Capabilities × 8 Dimensions × AI) used by AI-native companies to scale 10-30x faster, reach €100M ARR in 8-18 months (vs. 8-12 years traditional), and achieve 2-5x ARR/Employee. Includes 5 domain playbooks, 12 sub-playbooks, implementation guides, and real-world case studies from 22 companies.',
+      de: 'Das komplette Framework für AI-native Transformation. Lerne das komplette Framework (4 Capabilities × 8 Dimensionen × AI), das AI-native Unternehmen nutzen, um 10-30x schneller zu skalieren, €100M ARR in 8-18 Monaten zu erreichen (vs. 8-12 Jahre traditionell) und 2-5x ARR/Mitarbeiter zu erzielen. Inklusive 5 Domain Playbooks, 12 Sub-Playbooks, Implementierungsguides und echten Case Studies von 22 Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Scale 10-30x faster than traditional companies',
+        'Reach €100M ARR in 8-18 months (vs. 8-12 years)',
+        'Achieve €500k-€1.5M ARR/Employee (vs. €150k-€200k)',
+        '5 domain playbooks + 12 sub-playbooks included',
+      ],
+      de: [
+        '10-30x schneller skalieren als traditionelle Unternehmen',
+        '€100M ARR in 8-18 Monaten erreichen (vs. 8-12 Jahre)',
+        '€500k-€1.5M ARR/Mitarbeiter erzielen (vs. €150k-€200k)',
+        '5 Domain Playbooks + 12 Sub-Playbooks inklusive',
+      ],
+    },
+    caseStudies: ['Series A (€100M ARR in 14 months)', 'Series B (θ_index 0.88)', 'Series C (IPO-Ready, €150M ARR)'],
+    icon: React.createElement(Zap, { className: 'w-6 h-6' }),
+    gradient: 'from-purple-500 to-violet-500',
+    impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
+    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+    role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
+  },
+  // ============================================================================
+  // EBENE 3: SUB-PLAYBOOKS
+  // ============================================================================
   {
     id: 'gtm-revenue',
     slug: 'growth-engines/gtm-revenue',
