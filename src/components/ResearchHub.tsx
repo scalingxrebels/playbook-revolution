@@ -148,6 +148,7 @@ const playbookCards = [
 const teamMembers = [
   {
     name: 'Michel Lason',
+    credentials: 'M.A. HSG',
     role: { en: 'Lead Researcher', de: 'Lead Researcher' },
     tagline: { en: 'Strategy. Scaling. Impact.', de: 'Strategy. Scaling. Impact.' },
     description: { 
@@ -167,11 +168,13 @@ const teamMembers = [
       de: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.' 
     },
     image: '/images/team-alban.png',
+    imageStyle: 'object-[center_10%]',
     linkedIn: 'https://linkedin.com/in/alban-halili',
     link: '/ah'
   },
   {
     name: 'Florian Metzger',
+    credentials: 'M.Sc. Bocconi, M.Sc. Lisboa',
     role: { en: 'Theoretical Framework', de: 'Theoretisches Framework' },
     tagline: { en: 'RevOps. GTM. Venture Architect.', de: 'RevOps. GTM. Venture Architect.' },
     description: { 
@@ -179,6 +182,7 @@ const teamMembers = [
       de: 'Growth-Hacker und GTM-Architekt für SaaS & B2C mit Co-Founder-Mindset.' 
     },
     image: '/images/team-florian.png',
+    imageStyle: 'scale-150 translate-y-[20%]',
     linkedIn: 'https://linkedin.com/in/florian-metzger',
     link: '/fm'
   }
@@ -487,10 +491,17 @@ const ResearchHub: React.FC = () => {
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${member.imageStyle || ''}`}
                   />
                 </div>
-                <h3 className="font-bold text-xl mb-1">{member.name}</h3>
+                <h3 className="font-bold text-xl mb-1">
+                  {member.name}
+                  {member.credentials && (
+                    <span className="text-muted-foreground font-normal text-base ml-2">
+                      {member.credentials}
+                    </span>
+                  )}
+                </h3>
                 <p className="text-primary font-medium mb-1">{member.role[language]}</p>
                 {/* Tagline */}
                 <p className="text-accent font-medium italic text-sm mb-2">
