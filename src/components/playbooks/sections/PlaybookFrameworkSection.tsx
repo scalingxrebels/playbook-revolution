@@ -113,6 +113,23 @@ const PlaybookFrameworkSection: React.FC<Props> = ({ data }) => {
                         </Badge>
                       ))}
                     </div>
+
+                    {/* Examples (wenn vorhanden) */}
+                    {item.examples && item.examples.length > 0 && (
+                      <div className="mt-4 p-4 bg-primary/5 rounded-lg border border-primary/10">
+                        <p className="text-xs font-medium text-primary mb-2 uppercase tracking-wide">
+                          {language === 'de' ? 'Beispiele' : 'Examples'}
+                        </p>
+                        <ul className="space-y-1">
+                          {item.examples.map((ex, i) => (
+                            <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                              <span className="text-primary mt-0.5">→</span>
+                              {t(ex)}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </AccordionContent>
               </AccordionItem>

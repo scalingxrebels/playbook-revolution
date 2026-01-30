@@ -82,6 +82,7 @@ export interface FrameworkItem {
   description: BilingualText;
   metrics: { label: BilingualText; value: string }[];
   actions: BilingualText[];
+  examples?: BilingualText[];
 }
 
 // Best Practices
