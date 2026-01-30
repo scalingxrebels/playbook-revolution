@@ -371,6 +371,38 @@ export const playbooks: Playbook[] = [
     role: ['vc-board'],
   },
   {
+    id: 'growth-engines',
+    slug: 'growth-engines',
+    title: {
+      en: 'AI-Native Growth Engines Playbook',
+      de: 'AI-Native Growth Engines Playbook',
+    },
+    description: {
+      en: 'How to transform revenue generation with AI-native growth engines. Learn the complete framework (GTM/Revenue, Product, Customer Success) used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Revenue-Generierung mit AI-native Growth Engines transformierst. Lerne das komplette Framework (GTM/Revenue, Product, Customer Success), das AI-native Unternehmen nutzen, um 3-5x schnelleres Wachstum zu erzielen, CAC um 60-75% zu senken und LTV/CAC um 50-100% zu steigern. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        '3-5x faster growth rate',
+        'CAC reduction of 60-75%',
+        'LTV/CAC improvement of 50-100%',
+        '3 detailed sub-playbooks included',
+      ],
+      de: [
+        '3-5x schnellere Wachstumsrate',
+        'CAC-Reduktion von 60-75%',
+        'LTV/CAC Verbesserung von 50-100%',
+        '3 detaillierte Sub-Playbooks inklusive',
+      ],
+    },
+    caseStudies: ['Series A SaaS (CAC -70%)', 'Series B SaaS (LTV/CAC 15x)', 'Series C (€100M ARR in 18mo)'],
+    icon: React.createElement(TrendingUp, { className: 'w-6 h-6' }),
+    gradient: 'from-green-500 to-emerald-500',
+    impact: ['growth-engines'],
+    bottleneck: ['strategy', 'execution-focus'],
+    role: ['ceo', 'cmo-cro', 'cpo'],
+  },
+  {
     id: 'strategic-capabilities',
     slug: 'strategic-capabilities',
     title: {
