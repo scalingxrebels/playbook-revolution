@@ -1,87 +1,218 @@
 
+# Implementierungsplan: Expertise-Seite UX/UI-Optimierung
 
-# Plan: Team-Bilder Anpassung & Akademische Titel
-
-## Übersicht
-
-Die Team-Bilder in der "Who's Behind This Research?" Section benötigen individuelle CSS-Anpassungen, und akademische Titel sollen ergänzt werden.
+## Ziel
+Die Expertise-Seite soll visuell und animationstechnisch auf das Niveau von Homepage, Solutions und Playbook Landing Pages angehoben werden.
 
 ---
 
-## Änderungen in `src/components/ResearchHub.tsx`
+## Teil 1: Hero-Section mit Parallax-Effekten
 
-### 1. Akademische Titel hinzufügen
+### Problem
+`SharedHero` ist statisch, wahrend `HeroOptimized` und `PlaybookHeroSection` das 3-Layer-Parallax-System nutzen.
 
-**Michel Lason:**
+### Anderungen in `src/components/shared/SharedHero.tsx`
+
+**Neue Imports hinzufugen:**
 ```typescript
-name: 'Michel Lason',
-credentials: 'M.A. HSG',  // NEU
+import { useParallaxLayers } from '@/hooks/useParallax';
 ```
 
-**Florian Metzger:**
+**Props erweitern:**
 ```typescript
-name: 'Florian Metzger',
-credentials: 'M.Sc. Bocconi, M.Sc. Lisboa',  // NEU
+interface SharedHeroProps {
+  // ... existing props
+  enableParallax?: boolean;  // NEU - Standard: false fur Abwartskompatibilitat
+}
+```
+
+**Parallax-Layer implementieren:**
+- Slow Layer (0.1): Deep Space Background
+- Medium Layer (0.3): TwinklingStars
+- Fast Layer (0.5): Grid Pattern
+
+### Expertise-Seite aktivieren
+In `ResearchHub.tsx` den Hero mit `enableParallax={true}` aufrufen.
+
+---
+
+## Teil 2: Scroll-Animationen fur alle Sections
+
+### Problem
+Sections in ResearchHub haben keine Entry-Animationen wie `PlaybookFrameworkSection`.
+
+### Anderungen in `src/components/ResearchHub.tsx`
+
+**Import hinzufugen:**
+```typescript
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+```
+
+**Jede Section mit Animation versehen:**
+
+| Section | Zeilen | Animation |
+|---------|--------|-----------|
+| "Why This Matters" | 233-330 | Fade-in beim Scrollen |
+| "Our Research" | 332-402 | Staggered Card Entry |
+| "Applied Research" | 409-470 | Slide-in Left/Right |
+| "Who's Behind This Research?" | 472-535 | Staggered Team Cards |
+| "Download Research" | 538-574 | Fade-in |
+| "Final CTA" | 577-627 | Fade-in |
+
+**Beispiel-Pattern (Research Cards):**
+```tsx
+const { ref: researchRef, isVisible: researchVisible } = useScrollAnimation({ threshold: 0.1 });
+
+<div 
+  ref={researchRef}
+  className={`grid md:grid-cols-2 gap-6 mb-12 transition-all duration-700 ${researchVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+>
+  {researchCards.map((card, idx) => (
+    <Card 
+      key={card.id}
+      className="..."
+      style={{ transitionDelay: `${idx * 100}ms` }}
+    >
 ```
 
 ---
 
-### 2. Individuelle Bild-Styling
+## Teil 3: Case Studies Grid optimieren
 
-**Alban Halili - Bild 10% nach unten:**
-```typescript
-imageStyle: 'object-[center_10%]'  // 10% von oben
+### Problem
+Das Grid nutzt `xl:grid-cols-4` - zu dicht fur optimale Lesbarkeit.
+
+### Anderungen in `src/components/ScalingXCaseStudies.tsx`
+
+**Zeile 435 - Grid anpassen:**
+```tsx
+// ALT:
+<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+
+// NEU:
+<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
 ```
 
-**Florian Metzger - Bild um 50% vergrößern:**
-```typescript
-imageStyle: 'scale-150 translate-y-[20%]'  // 50% größer + nach unten verschieben
+**Staggered Entry-Animation hinzufugen:**
+```tsx
+{caseStudies.map((study, idx) => (
+  <div
+    key={study.id}
+    onClick={() => setSelectedStudy(study)}
+    className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer 
+               transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1
+               opacity-0 animate-fade-in"
+    style={{ 
+      '--study-color': study.color,
+      animationDelay: `${idx * 80}ms`,
+      animationFillMode: 'forwards'
+    } as React.CSSProperties}
+  >
 ```
 
 ---
 
-### 3. UI-Anpassung für Credentials
+## Teil 4: Comparison Table Lesbarkeit
 
-Nach dem Namen die Credentials anzeigen:
+### Problem
+Tabelle hat keinen visuellen Rahmen und wirkt flach.
+
+### Anderungen in `src/components/CaseStudyComparisonTable.tsx`
+
+**Container-Styling verbessern:**
+```tsx
+<div className="w-full overflow-x-auto rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
+```
+
+**Header-Zeile hervorheben:**
+```tsx
+<TableRow className="border-border/50 bg-muted/30">
+```
+
+**Hover-States verbessern:**
+```tsx
+<TableRow 
+  key={company.name} 
+  className="border-border/30 hover:bg-primary/5 transition-colors duration-200"
+>
+```
+
+---
+
+## Teil 5: Branding-Konsistenz
+
+### Problem
+Overline "Expertise x Speed = Impact" weicht von der Kernformel ab.
+
+### Anderung in `src/components/ResearchHub.tsx` (Zeile 221-222)
 
 ```tsx
-<h3 className="font-bold text-xl mb-1">
-  {member.name}
-  {member.credentials && (
-    <span className="text-muted-foreground font-normal text-base ml-2">
-      {member.credentials}
-    </span>
-  )}
-</h3>
+// ALT:
+overlineEn="Expertise × Speed = Impact"
+overlineDe="Expertise × Speed = Impact"
+
+// NEU:
+overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
+overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
 ```
 
 ---
 
-### 4. Image-Rendering mit individuellem Styling
+## Teil 6: Team Section Hover-Effekte
 
+### Anderungen in `src/components/ResearchHub.tsx` (Zeilen 487-524)
+
+**Hover-Glow wie bei Research Cards:**
 ```tsx
-<img
-  src={member.image}
-  alt={member.name}
-  className={`w-full h-full object-cover ${member.imageStyle || ''}`}
-/>
+<Card 
+  key={i} 
+  className="p-6 text-center border-border/50 hover:border-primary/50 
+             hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] 
+             transition-all duration-300 group"
+>
+```
+
+**Bild-Animation bei Hover:**
+```tsx
+<div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-foreground/10 
+                transition-transform duration-300 group-hover:scale-105">
 ```
 
 ---
 
-## Zusammenfassung der Änderungen
+## Zusammenfassung der Datei-Anderungen
 
-| Person | Bild-Anpassung | Akademischer Titel |
-|--------|----------------|-------------------|
-| Michel Lason | Keine | M.A. HSG |
-| Alban Halili | 10% nach unten (object-[center_10%]) | Keine |
-| Florian Metzger | 50% größer (scale-150) | M.Sc. Bocconi, M.Sc. Lisboa |
+| Datei | Anderungen |
+|-------|------------|
+| `src/components/shared/SharedHero.tsx` | Optionales Parallax-System |
+| `src/components/ResearchHub.tsx` | useScrollAnimation, Branding, Team Hover |
+| `src/components/ScalingXCaseStudies.tsx` | Grid 3-spaltig, Staggered Animation |
+| `src/components/CaseStudyComparisonTable.tsx` | Container-Styling, Hover-States |
 
 ---
 
-## Datei-Änderungen
+## Erwartete Verbesserungen
 
-| Datei | Aktion |
-|-------|--------|
-| `src/components/ResearchHub.tsx` | teamMembers erweitern (credentials, imageStyle), UI anpassen |
+| Metrik | Vorher | Nachher |
+|--------|--------|---------|
+| Konsistenz | 6/10 | 9/10 |
+| Lesbarkeit | 7/10 | 9/10 |
+| Animationen | 4/10 | 9/10 |
+| Branding | 7/10 | 10/10 |
 
+---
+
+## Technische Details
+
+### Verwendete Hooks
+- `useScrollAnimation` - Intersection Observer fur Entry-Animationen
+- `useParallaxLayers` - 3-Layer Parallax mit speeds [0.1, 0.3, 0.5]
+
+### Animation-Timing
+- Base Duration: 700ms
+- Stagger Delay: 80-100ms pro Element
+- Easing: CSS default ease-out
+
+### Grid-Anderung
+- Von 4-spaltig auf 3-spaltig fur bessere Lesbarkeit
+- Gap von 6 auf 8 fur mehr Whitespace
