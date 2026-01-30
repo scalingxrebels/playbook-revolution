@@ -1,121 +1,87 @@
 
 
-# Plan: Dynamische Stats im Playbook Hero
+# Plan: Expertise Hero Anpassung
 
-## Analyse
+## Aktueller Stand
 
-**Aktueller Stand (Zeilen 42-47 in PlaybookLibrary.tsx):**
-```typescript
-const playbookStats = [
-  { value: '1', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' },
-  { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' },
-  { value: '3', label: { en: 'Filters', de: 'Filter' }, color: 'primary' },
-  { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' },
-];
-```
+Die `ResearchHub.tsx` verwendet bereits `SharedHero` mit einfachen Stats ohne Sublabels (Zeilen 173-178, 189-199).
 
-**Problem:** 
-- Stats hardcoded
-- Nur einzeiliges Label unterstützt
-- Aktuelles Design zeigt nicht die gewünschten zweizeiligen Labels
+## Gewünschte Änderungen
 
-**Gewünschtes Design:**
-```text
-┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
-│   17 Playbooks   │   5 Areas        │   10-30x ROI     │   FREE           │
-│   Complete       │   Growth, Ops,   │   Proven         │   Download       │
-│   Framework      │   Board, More    │   Results        │   All PDFs       │
-└──────────────────┴──────────────────┴──────────────────┴──────────────────┘
-```
+### 1. Hero Content aktualisieren (Zeilen 189-199)
 
----
+**Neu:**
+- **Overline:** "Expertise × Speed = Impact" (behalten)
+- **Headline Line 1:** "The Science Behind"
+- **Headline Line 2:** "AI-Native Scaling"
+- **Subheadline:** "We analyzed 22 AI-native companies (Midjourney, Perplexity, Cursor, etc.) to understand why they scale 8.2x faster than traditional startups. Here's what we found."
 
-## Implementierung
+### 2. Stats mit Sublabels erweitern (Zeilen 173-178)
 
-### 1. SharedHero Interface erweitern (`src/components/shared/SharedHero.tsx`)
+| Value | Label | Sublabel |
+|-------|-------|----------|
+| 250,000+ | Words | of research |
+| 22+ | Companies | AI-native analyzed |
+| 3 | Frameworks | developed |
+| OPEN | Shared | not peer-reviewed yet |
 
-**Änderung:** `sublabel` Property hinzufügen für zweite Zeile
+## Code-Änderungen
 
 ```typescript
-interface StatItem {
-  value: string;
-  label: { en: string; de: string };
-  sublabel?: { en: string; de: string };  // NEU
-  color?: 'primary' | 'accent';
-}
-```
-
-### 2. SharedHero Rendering erweitern (Zeilen 96-104)
-
-**Vorher:**
-```typescript
-<span className="block text-xs text-muted-foreground uppercase tracking-wide">
-  {language === 'de' ? stat.label.de : stat.label.en}
-</span>
-```
-
-**Nachher:**
-```typescript
-<span className="block text-xs text-muted-foreground uppercase tracking-wide">
-  {language === 'de' ? stat.label.de : stat.label.en}
-</span>
-{stat.sublabel && (
-  <span className="block text-[10px] text-muted-foreground/70 mt-0.5">
-    {language === 'de' ? stat.sublabel.de : stat.sublabel.en}
-  </span>
-)}
-```
-
-### 3. PlaybookLibrary Stats dynamisch generieren (`src/components/PlaybookLibrary.tsx`)
-
-**Änderung (Zeilen 42-47):**
-
-```typescript
-const playbookStats = [
+// Zeilen 173-178 ersetzen
+const researchStats = [
   { 
-    value: String(totalPlaybooks),  // DYNAMISCH!
-    label: { en: 'Playbooks', de: 'Playbooks' }, 
-    sublabel: { en: 'Complete Framework', de: 'Komplettes Framework' },
+    value: '250,000+', 
+    label: { en: 'Words', de: 'Wörter' }, 
+    sublabel: { en: 'of research', de: 'Forschung' },
     color: 'primary' as const 
   },
   { 
-    value: '5', 
-    label: { en: 'Areas', de: 'Bereiche' }, 
-    sublabel: { en: 'Growth, Ops, Board...', de: 'Growth, Ops, Board...' },
+    value: '22+', 
+    label: { en: 'Companies', de: 'Unternehmen' }, 
+    sublabel: { en: 'AI-native analyzed', de: 'AI-native analysiert' },
     color: 'accent' as const 
   },
   { 
-    value: '10-30x', 
-    label: { en: 'ROI', de: 'ROI' }, 
-    sublabel: { en: 'Proven Results', de: 'Bewiesene Ergebnisse' },
+    value: '3', 
+    label: { en: 'Frameworks', de: 'Frameworks' }, 
+    sublabel: { en: 'developed', de: 'entwickelt' },
     color: 'primary' as const 
   },
   { 
-    value: 'FREE', 
-    label: { en: 'Download', de: 'Download' }, 
-    sublabel: { en: 'All PDFs', de: 'Alle PDFs' },
+    value: 'OPEN', 
+    label: { en: 'Shared', de: 'Geteilt' }, 
+    sublabel: { en: 'not peer-reviewed yet', de: 'noch nicht peer-reviewed' },
     color: 'accent' as const 
   },
 ];
 ```
 
----
+```typescript
+// Zeilen 189-199 ersetzen
+<SharedHero
+  overlineEn="Expertise × Speed = Impact"
+  overlineDe="Expertise × Speed = Impact"
+  headlineLine1En="The Science Behind"
+  headlineLine1De="Die Wissenschaft hinter"
+  headlineLine2En="AI-Native Scaling"
+  headlineLine2De="AI-Native Scaling"
+  subheadlineEn="We analyzed 22 AI-native companies (Midjourney, Perplexity, Cursor, etc.) to understand why they scale 8.2x faster than traditional startups. Here's what we found."
+  subheadlineDe="Wir haben 22 AI-native Unternehmen (Midjourney, Perplexity, Cursor, etc.) analysiert, um zu verstehen, warum sie 8.2x schneller skalieren als traditionelle Startups. Das haben wir herausgefunden."
+  stats={researchStats}
+/>
+```
 
-## Zusammenfassung der Änderungen
+## Datei
 
-| Datei | Änderung | Zeilen |
-|-------|----------|--------|
-| `src/components/shared/SharedHero.tsx` | Interface + Rendering erweitern | ~10 Zeilen |
-| `src/components/PlaybookLibrary.tsx` | Stats dynamisch + neue Texte | ~20 Zeilen |
-
----
+| Datei | Änderung |
+|-------|----------|
+| `src/components/ResearchHub.tsx` | Stats + Hero Content aktualisieren |
 
 ## Ergebnis
 
-- **STAT 1:** `{totalPlaybooks} Playbooks` - dynamisch generiert aus der Playbook-Registry
-- **STAT 2:** `5 Areas` - Coverage der 5 Domains
-- **STAT 3:** `10-30x ROI` - bewiesene Ergebnisse
-- **STAT 4:** `FREE Download` - Value Proposition
-
-Die Playbook-Anzahl aktualisiert sich automatisch, wenn neue Playbooks hinzugefügt werden.
+Der Expertise Hero zeigt nun:
+- Neue Headline: "The Science Behind AI-Native Scaling"
+- Neue Subheadline mit konkreten Unternehmensnamen und 8.2x-Metrik
+- 4 Stats im Playbook-Style mit zweizeiligen Labels
 
