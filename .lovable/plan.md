@@ -1,109 +1,121 @@
 
-# Plan: Kombinierte Sortierung mit `ebene` + `sortOrder`
 
-## Konzept
+# Plan: Dynamische Stats im Playbook Hero
 
-Die Sortierung wird wie folgt priorisiert:
-1. **Primär:** `ebene` Property (aufsteigend: 1 → 2 → 3)
-2. **Sekundär:** `sortOrder` Property (aufsteigend innerhalb jeder Ebene)
-3. **Tertiär:** `matchScore` (absteigend, für Filter-Relevanz)
-4. **Fallback:** Alphabetisch nach Titel
+## Analyse
 
-## Änderungen
+**Aktueller Stand (Zeilen 42-47 in PlaybookLibrary.tsx):**
+```typescript
+const playbookStats = [
+  { value: '1', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' },
+  { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' },
+  { value: '3', label: { en: 'Filters', de: 'Filter' }, color: 'primary' },
+  { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' },
+];
+```
 
-### 1. Interface erweitern (`src/data/playbooks.ts`)
+**Problem:** 
+- Stats hardcoded
+- Nur einzeiliges Label unterstützt
+- Aktuelles Design zeigt nicht die gewünschten zweizeiligen Labels
+
+**Gewünschtes Design:**
+```text
+┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
+│   17 Playbooks   │   5 Areas        │   10-30x ROI     │   FREE           │
+│   Complete       │   Growth, Ops,   │   Proven         │   Download       │
+│   Framework      │   Board, More    │   Results        │   All PDFs       │
+└──────────────────┴──────────────────┴──────────────────┴──────────────────┘
+```
+
+---
+
+## Implementierung
+
+### 1. SharedHero Interface erweitern (`src/components/shared/SharedHero.tsx`)
+
+**Änderung:** `sublabel` Property hinzufügen für zweite Zeile
 
 ```typescript
-export interface Playbook {
-  // ... existing properties
-  ebene: 1 | 2 | 3;      // NEU: Hierarchie-Ebene
-  sortOrder: number;      // NEU: Reihenfolge innerhalb der Ebene
+interface StatItem {
+  value: string;
+  label: { en: string; de: string };
+  sublabel?: { en: string; de: string };  // NEU
+  color?: 'primary' | 'accent';
 }
 ```
 
-### 2. Playbooks mit Properties versehen (`src/data/playbooks.ts`)
+### 2. SharedHero Rendering erweitern (Zeilen 96-104)
 
-| ID | Playbook | Ebene | sortOrder |
-|----|----------|-------|-----------|
-| ai-native-scaling | AI-Native Scaling | 1 | 1 |
-| growth-engines | Growth Engines | 2 | 1 |
-| operating-systems | Operating Systems | 2 | 2 |
-| board-governance | Board & Governance | 2 | 3 |
-| portfolio-transformation | Portfolio Transformation | 2 | 4 |
-| strategic-capabilities | Strategic Capabilities | 2 | 5 |
-| gtm-revenue | GTM/Revenue | 3 | 1 |
-| product | Product | 3 | 2 |
-| customer-success | Customer Success | 3 | 3 |
-| operations | Operations | 3 | 4 |
-| finance | Finance | 3 | 5 |
-| talent | Talent | 3 | 6 |
-| data-tech | Data/Tech | 3 | 7 |
-| strategic-governance | Strategic Governance | 3 | 8 |
-| operational-governance | Operational Governance | 3 | 9 |
-| exit-ma | Exit/M&A | 3 | 10 |
-| portfolio-excellence | Portfolio Excellence | 3 | 11 |
+**Vorher:**
+```typescript
+<span className="block text-xs text-muted-foreground uppercase tracking-wide">
+  {language === 'de' ? stat.label.de : stat.label.en}
+</span>
+```
 
-### 3. Sortierlogik anpassen (`src/components/playbooks/usePlaybookFilters.ts`)
+**Nachher:**
+```typescript
+<span className="block text-xs text-muted-foreground uppercase tracking-wide">
+  {language === 'de' ? stat.label.de : stat.label.en}
+</span>
+{stat.sublabel && (
+  <span className="block text-[10px] text-muted-foreground/70 mt-0.5">
+    {language === 'de' ? stat.sublabel.de : stat.sublabel.en}
+  </span>
+)}
+```
+
+### 3. PlaybookLibrary Stats dynamisch generieren (`src/components/PlaybookLibrary.tsx`)
+
+**Änderung (Zeilen 42-47):**
 
 ```typescript
-// Neue Sortierung (Zeilen 113-118)
-withScores.sort((a, b) => {
-  // 1. Primär: ebene aufsteigend (1 → 2 → 3)
-  if (a.ebene !== b.ebene) {
-    return a.ebene - b.ebene;
-  }
-  // 2. Sekundär: sortOrder aufsteigend innerhalb der Ebene
-  if (a.sortOrder !== b.sortOrder) {
-    return a.sortOrder - b.sortOrder;
-  }
-  // 3. Tertiär: matchScore absteigend (Filter-Relevanz)
-  if (b.matchScore !== a.matchScore) {
-    return b.matchScore - a.matchScore;
-  }
-  // 4. Fallback: alphabetisch
-  return a.title[language].localeCompare(b.title[language]);
-});
+const playbookStats = [
+  { 
+    value: String(totalPlaybooks),  // DYNAMISCH!
+    label: { en: 'Playbooks', de: 'Playbooks' }, 
+    sublabel: { en: 'Complete Framework', de: 'Komplettes Framework' },
+    color: 'primary' as const 
+  },
+  { 
+    value: '5', 
+    label: { en: 'Areas', de: 'Bereiche' }, 
+    sublabel: { en: 'Growth, Ops, Board...', de: 'Growth, Ops, Board...' },
+    color: 'accent' as const 
+  },
+  { 
+    value: '10-30x', 
+    label: { en: 'ROI', de: 'ROI' }, 
+    sublabel: { en: 'Proven Results', de: 'Bewiesene Ergebnisse' },
+    color: 'primary' as const 
+  },
+  { 
+    value: 'FREE', 
+    label: { en: 'Download', de: 'Download' }, 
+    sublabel: { en: 'All PDFs', de: 'Alle PDFs' },
+    color: 'accent' as const 
+  },
+];
 ```
 
-## Ergebnis
+---
 
-Die Playbooks werden in folgender Reihenfolge angezeigt:
-
-```text
-EBENE 1:
-├── 1. AI-Native Scaling Playbook (Mutter)
-
-EBENE 2:
-├── 2. AI-Native Growth Engines
-├── 3. AI-Native Operating Systems
-├── 4. AI-Native Board & Governance
-├── 5. AI-Native Portfolio Transformation
-├── 6. Strategic Capabilities
-
-EBENE 3:
-├── 7. GTM/Revenue
-├── 8. Product
-├── 9. Customer Success
-├── 10. Operations
-├── 11. Finance
-├── 12. Talent
-├── 13. Data/Tech
-├── 14. Strategic Governance
-├── 15. Operational Governance
-├── 16. Exit/M&A
-├── 17. Portfolio Excellence
-```
-
-## Technische Details
+## Zusammenfassung der Änderungen
 
 | Datei | Änderung | Zeilen |
 |-------|----------|--------|
-| `src/data/playbooks.ts` | Interface + 17 Playbooks erweitern | ~40 Zeilen |
-| `src/components/playbooks/usePlaybookFilters.ts` | Sortierlogik anpassen | ~15 Zeilen |
+| `src/components/shared/SharedHero.tsx` | Interface + Rendering erweitern | ~10 Zeilen |
+| `src/components/PlaybookLibrary.tsx` | Stats dynamisch + neue Texte | ~20 Zeilen |
 
-## Vorteile dieser Lösung
+---
 
-- **Flexibel:** `sortOrder` kann jederzeit angepasst werden
-- **Hierarchisch:** `ebene` respektiert die 3-Ebenen-Struktur
-- **Erweiterbar:** Neue Playbooks können einfach einsortiert werden
-- **Filter-kompatibel:** `matchScore` bleibt als tertiäre Sortierung erhalten
+## Ergebnis
+
+- **STAT 1:** `{totalPlaybooks} Playbooks` - dynamisch generiert aus der Playbook-Registry
+- **STAT 2:** `5 Areas` - Coverage der 5 Domains
+- **STAT 3:** `10-30x ROI` - bewiesene Ergebnisse
+- **STAT 4:** `FREE Download` - Value Proposition
+
+Die Playbook-Anzahl aktualisiert sich automatisch, wenn neue Playbooks hinzugefügt werden.
+
