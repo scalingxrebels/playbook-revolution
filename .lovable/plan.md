@@ -1,224 +1,113 @@
 
-# Plan: Expertise Page v1.1 Redesign
+
+# Plan: Quellen-Integration für Company-Daten
 
 ## Übersicht
 
-Die Expertise-Seite muss gemäß Briefing v1.1 komplett neu strukturiert werden. Der Hero bleibt unverändert, aber die folgenden Sections werden überarbeitet:
+Das Briefing v1.1 erfordert explizite **Data Source** Angaben bei jeder Company. Diese fehlen aktuell komplett in der Implementierung.
 
 ---
 
-## Teil 1: Neue Sektionen hinzufügen (4 FEHLEND)
+## Teil 1: Datenstruktur erweitern
 
-### 1.1 Section 2: "Why This Matters" (NEU)
+### 1.1 ScalingXCaseStudies.tsx - Interface erweitern
 
-**Position:** Nach Hero, vor Research-Kacheln
+**Zeile 14-34**: `CaseStudy` Interface erweitern:
 
-**Layout:** 2-Spalten (Text links, Stats rechts)
-
-**Inhalt:**
-```
-Headline: "Most Scaling Advice is Anecdotal. Ours is Systematic."
-
-Linke Spalte (Text):
-Traditional scaling advice comes from:
-❌ War stories (what worked for one company)
-❌ Best practices (copied from successful companies)
-❌ Consultant opinions (based on experience, not data)
-
-Our approach:
-✅ Systematic analysis (n=22 AI-native companies)
-✅ Pattern recognition (what works across companies)
-✅ Frameworks (Strategy, Setup, Execution, Operationalization)
-
-The result: A unified theory of AI-native scaling.
-
-Rechte Spalte (4 Stats):
-• 22 companies analyzed
-• 3 frameworks developed
-• 250,000+ words documented
-• Openly shared
-```
-
----
-
-### 1.2 Section 4: "Applied Research" (NEU)
-
-**Position:** Nach Case Studies
-
-**Layout:** 2-Spalten (Text links, 4 Playbook-Kacheln rechts)
-
-**Inhalt:**
-```
-Headline: "Want to Apply This Research?"
-
-Linke Spalte:
-"Our research is the foundation. Our playbooks show you how to execute."
-
-Rechte Spalte (4 Playbook-Kacheln):
-1. AI-Native Growth Engines → /playbooks/growth-engines
-2. AI-Native Operating Systems → /playbooks/operating-systems
-3. AI-Native Governance → /playbooks/board-governance
-4. AI-Native Portfolio Transformation → /playbooks/portfolio-transformation
-
-CTA: "Explore All Playbooks →" → /playbooks
-```
-
----
-
-### 1.3 Section 5: "Our Expertise" (NEU)
-
-**Position:** Nach Applied Research
-
-**Layout:** 3-Spalten Team-Kacheln (zentriert)
-
-**Inhalt:**
-```
-Headline: "Who's Behind This Research?"
-Subheadline: "This research was conducted by the ScalingX Hypergrowth team..."
-
-3 Team Cards:
-1. Michel Lason - Lead Researcher (18+ years, Ex-Haufe)
-2. Alban Halili - Empirical Analysis (GTM & Revenue Expert)
-3. Florian Metzger - Theoretical Framework (AI Architect)
-
-CTA: "Meet the Full Team →" → /about
-```
-
----
-
-### 1.4 Section 6: "Download Research" (NEU)
-
-**Position:** Nach Team Section
-
-**Layout:** 4 Download-Kacheln im Grid
-
-**Inhalt:**
-```
-Headline: "Get the Complete Research"
-Subheadline: "Download our research papers (Executive Summaries)"
-
-4 Download Cards:
-1. AI Maturity Framework (3,000 words)
-2. AI-Native Scaling Theory (3,000 words)
-3. Bottleneck Framework (3,000 words)
-4. The Unified Framework (3,000 words)
-
-CTA: "Download All Research →"
-```
-
----
-
-## Teil 2: Daten-Korrekturen (KRITISCH)
-
-### 2.1 CaseStudyComparisonTable.tsx (Zeilen 26-34)
-
-| Company | Feld | Alt | Neu |
-|---------|------|-----|-----|
-| Cursor | valuation | $29.3B | $400M |
-| Cursor | valuationNum | 29.3 | 0.4 |
-| Cursor | revenue | $1B+ | $100M |
-| Cursor | revenueNum | 1000 | 100 |
-| Cursor | growth | 293x/2y | 40x/2y |
-| Cursor | thetaIndex | 0.92 | 0.90 |
-| Perplexity | revenue | $500M+ | $200M+ |
-| Perplexity | revenueNum | 500 | 200 |
-| Perplexity | thetaIndex | 0.88 | 0.85 |
-| Midjourney | revenue | $500M | $492M |
-| Midjourney | revenueNum | 500 | 492 |
-| Midjourney | thetaIndex | 0.85 | 0.88 |
-
----
-
-### 2.2 GrowthTimelineVisualization.tsx (Zeilen 28-43)
-
-**Cursor Timeline komplett ersetzen:**
 ```typescript
-// ALT (FALSCH - erfundene Daten):
-{ year: 2025, value: 9.9, label: '$9.9B', milestone: 'Series C' },
-{ year: 2025.5, value: 29.3, label: '$29.3B', milestone: 'Series D' },
-
-// NEU (KORREKT):
-{ year: 2024, value: 0.4, label: '$400M', milestone: 'Series B (Aug 2024)' },
+interface CaseStudy {
+  // ... existing fields
+  dataSource?: string; // NEU: Quellen-Angabe
+}
 ```
 
-**Perplexity Timeline korrigieren:**
-- 2024: $500M → $200M (estimated)
-- 2025: $9B bleibt
+### 1.2 Quellen zu jeder Company hinzufügen
 
-**Midjourney hinzufügen:** Falls nicht im Chart, hinzufügen mit Revenue statt Valuation
+**caseStudies Array (Zeilen 36-346)**:
+
+| Company | Neue `dataSource` |
+|---------|-------------------|
+| Midjourney | "ANST v4.5.3, AMF v4.5.1" |
+| Cursor | "AMF v4.1, ANST v4.1, TechCrunch (Aug 2024)" |
+| Perplexity | "AMF v4.1, ANST v4.1" |
+| OpenAI | "Public data (TechCrunch, OpenAI announcements)" |
+| Stripe | "Public data (Stripe financial reports)" |
+| Figma | "Public data (Figma announcements)" |
+| Notion | "Public data (Notion announcements)" |
 
 ---
 
-### 2.3 ScalingXCaseStudies.tsx
+## Teil 2: CaseStudyComparisonTable.tsx - Quellen hinzufügen
 
-**Cursor (Zeilen 82-126):**
+### 2.1 Interface erweitern (Zeile 14-24)
+
 ```typescript
-headline: { metric: '$400M', label: { en: 'Valuation Aug 2024', de: 'Bewertung Aug 2024' } },
-secondaryMetrics: [
-  { value: '$100M', label: { en: 'ARR 2024', de: 'ARR 2024' } },
-  { value: '60', label: { en: 'Employees', de: 'Mitarbeiter' } },
-  { value: '$1.67M', label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' } },
-],
-thetaIndex: { overall: 0.90, ... },
-growthTimeline: [
-  { year: '2022', value: '$0', label: 'Founded' },
-  { year: '2024', value: '$400M', label: 'Series B' },
-],
+interface CompanyData {
+  // ... existing fields
+  dataSource: string; // NEU
+}
 ```
 
-**Perplexity (Zeilen 127-170):**
+### 2.2 Daten aktualisieren (Zeilen 26-34)
+
 ```typescript
-secondaryMetrics: [
-  { value: '780M', label: { en: 'Queries/Month', de: 'Anfragen/Monat' } },
-  { value: '$200M+', label: { en: 'Revenue (est.)', de: 'Umsatz (est.)' } },
-  { value: '80-100', label: { en: 'Employees', de: 'Mitarbeiter' } },
-],
-thetaIndex: { overall: 0.85, ... },
+const companies: CompanyData[] = [
+  { name: 'OpenAI', ..., dataSource: 'Public data' },
+  { name: 'Cursor', ..., dataSource: 'AMF v4.1, TechCrunch' },
+  { name: 'Stripe', ..., dataSource: 'Public data' },
+  { name: 'Midjourney', ..., dataSource: 'ANST v4.5.3' },
+  { name: 'Figma', ..., dataSource: 'Public data' },
+  { name: 'Perplexity', ..., dataSource: 'AMF v4.1' },
+  { name: 'Notion', ..., dataSource: 'Public data' },
+];
 ```
 
-**Midjourney (Zeilen 36-81):**
-```typescript
-headline: { metric: '$492M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
-thetaIndex: { overall: 0.88, ... },
-secondaryMetrics: [
-  ...
-  { value: '107', label: { en: 'Employees', de: 'Mitarbeiter' } },
-],
-```
+### 2.3 Tabelle erweitern - neue Spalte "Source"
 
-**keyInsights.capitalEfficiency (Zeilen 386-397):**
-```typescript
-{ company: 'Cursor', highlight: '$100M ARR with 60 employees (most efficient per employee)' },
-{ company: 'Perplexity', highlight: '$200M+ revenue, $9B valuation' },
+Nach θ_index eine neue Spalte hinzufügen:
+
+```tsx
+<TableHead>Source</TableHead>
+...
+<TableCell className="text-xs text-muted-foreground">{company.dataSource}</TableCell>
 ```
 
 ---
 
-## Teil 3: Section entfernen
+## Teil 3: UI-Anpassungen
 
-### 3.1 Executive Summary entfernen
+### 3.1 Company Cards in ScalingXCaseStudies.tsx
 
-Die aktuelle "Executive Summary" Card (Zeilen 212-267 in ResearchHub.tsx) mit C₁-C₄, θ-Symbol ist **NICHT im Briefing v1.1** und sollte entfernt werden.
+Im Modal-Dialog für jede Case Study die Quelle anzeigen:
+
+```tsx
+{/* Data Source (am Ende der Card) */}
+{study.dataSource && (
+  <p className="text-xs text-muted-foreground mt-4 pt-4 border-t border-border/30">
+    📊 {language === 'de' ? 'Quelle' : 'Source'}: {study.dataSource}
+  </p>
+)}
+```
+
+### 3.2 Growth Timeline - Tooltip mit Quelle
+
+In `GrowthTimelineVisualization.tsx` die Milestones mit Quellen-Info erweitern (optional).
 
 ---
 
-## Teil 4: Datei-Änderungen Zusammenfassung
+## Teil 4: Zusammenfassung der Änderungen
 
 | Datei | Aktion |
 |-------|--------|
-| `src/components/ResearchHub.tsx` | Section 2, 4, 5, 6 hinzufügen; Executive Summary entfernen |
-| `src/components/CaseStudyComparisonTable.tsx` | Cursor, Perplexity, Midjourney Daten korrigieren |
-| `src/components/GrowthTimelineVisualization.tsx` | Cursor Timeline korrigieren (keine $29.3B!) |
-| `src/components/ScalingXCaseStudies.tsx` | Cursor, Perplexity, Midjourney Daten korrigieren |
+| `src/components/ScalingXCaseStudies.tsx` | Interface erweitern, 7× dataSource hinzufügen, UI-Anzeige |
+| `src/components/CaseStudyComparisonTable.tsx` | Interface erweitern, 7× dataSource hinzufügen, neue Tabellenspalte |
 
 ---
 
-## Teil 5: Erwartetes Ergebnis
+## Erwartetes Ergebnis
 
-Nach der Implementierung:
+1. **Jede Company hat eine Quellen-Angabe** gemäß Briefing v1.1
+2. **Vergleichstabelle zeigt "Source" Spalte** für Transparenz
+3. **Case Study Modals zeigen Quelle** am unteren Rand
+4. **Wissenschaftliche Glaubwürdigkeit** durch klare Referenzen
 
-1. **7 Sections gemäß Briefing** (Hero + 6 Content Sections)
-2. **Korrekte Company-Daten** (Cursor: $400M, nicht $29.3B!)
-3. **Neue Sections:** Why This Matters, Applied Research, Team Teaser, Download Research
-4. **Entfernt:** Executive Summary mit C₁-C₄ (nicht im Briefing)
-5. **Verbessert:** Final CTA mit korrektem Wording
