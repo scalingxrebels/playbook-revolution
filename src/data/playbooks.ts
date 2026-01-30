@@ -306,6 +306,41 @@ export const playbooks: Playbook[] = [
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cto', 'coo'],
   },
+  // ============================================================================
+  // EBENE 2: DOMAIN PLAYBOOK - BOARD & GOVERNANCE
+  // ============================================================================
+  {
+    id: 'board-governance',
+    slug: 'board-governance',
+    title: {
+      en: 'AI-Native Board & Governance Playbook',
+      de: 'AI-Native Board & Governance Playbook',
+    },
+    description: {
+      en: 'How to transform board and governance systems with AI-native frameworks. Learn the complete framework (Strategic Governance, Operational Governance, Exit/M&A) used by AI-native companies to reduce board prep time by 80%, increase board confidence by 100%, and achieve 2-5x valuation premiums. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Board- und Governance-Systeme mit AI-native Frameworks transformierst. Lerne das komplette Framework (Strategic Governance, Operational Governance, Exit/M&A), das AI-native Unternehmen nutzen, um Board Prep Time um 80% zu reduzieren, Board Confidence um 100% zu steigern und 2-5x Bewertungsprämien zu erzielen. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Board prep time reduction of 80%',
+        'Board confidence increase of 100%',
+        'Valuation premium of 2-5x',
+        '3 detailed sub-playbooks included',
+      ],
+      de: [
+        'Board Prep Time Reduktion von 80%',
+        'Board Confidence Steigerung von 100%',
+        'Bewertungsprämie von 2-5x',
+        '3 detaillierte Sub-Playbooks inklusive',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Board Prep -79%)', 'Series B SaaS (Valuation 4x)', 'Series C (IPO-Ready, €1B)'],
+    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
+    gradient: 'from-orange-500 to-amber-500',
+    impact: ['board-governance'],
+    bottleneck: ['strategy', 'operationalization'],
+    role: ['ceo', 'vc-board'],
+  },
   {
     id: 'exit-ma',
     slug: 'board-governance/exit-ma',
