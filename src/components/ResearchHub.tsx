@@ -179,8 +179,8 @@ const researchStats = [
   },
   { 
     value: '22+', 
-    label: { en: 'Companies', de: 'Unternehmen' }, 
-    sublabel: { en: 'AI-native analyzed', de: 'AI-native analysiert' },
+    label: { en: 'AI-Native Companies', de: 'AI-Native Unternehmen' }, 
+    sublabel: { en: 'analyzed', de: 'analysiert' },
     color: 'accent' as const 
   },
   { 
@@ -190,9 +190,9 @@ const researchStats = [
     color: 'primary' as const 
   },
   { 
-    value: 'OPEN', 
-    label: { en: 'Shared', de: 'Geteilt' }, 
-    sublabel: { en: 'not peer-reviewed yet', de: 'noch nicht peer-reviewed' },
+    value: 'OPEN SOURCE', 
+    label: { en: 'Collaborative', de: 'Kollaborativ' }, 
+    sublabel: { en: 'not-peer-reviewed (yet)', de: 'noch nicht peer-reviewed' },
     color: 'accent' as const 
   },
 ];
