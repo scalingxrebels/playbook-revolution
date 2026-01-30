@@ -341,6 +341,41 @@ export const playbooks: Playbook[] = [
     bottleneck: ['strategy', 'operationalization'],
     role: ['ceo', 'vc-board'],
   },
+  // ============================================================================
+  // EBENE 2: DOMAIN PLAYBOOK - PORTFOLIO TRANSFORMATION
+  // ============================================================================
+  {
+    id: 'portfolio-transformation',
+    slug: 'portfolio-transformation',
+    title: {
+      en: 'AI-Native Portfolio Transformation Playbook',
+      de: 'AI-Native Portfolio Transformation Playbook',
+    },
+    description: {
+      en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
+      de: 'Wie du ganze Portfolios auf AI-native Skalierung transformierst. Lerne das komplette Framework (Portfolio Excellence), das Top-Tier VCs/PEs nutzen, um 10-30 Portfolio-Unternehmen zu transformieren, 3-5x Portfolio-Wertsteigerung zu erzielen und Portfolio-IRR von 15% auf 40%+ zu verbessern. Inklusive 1 detailliertem Sub-Playbook, Implementierungsguides und echten Case Studies von führenden VC/PE-Firmen.',
+    },
+    outcomes: {
+      en: [
+        'Portfolio IRR improvement from 15% to 40%+',
+        'Portfolio value increase of 3-5x',
+        'Transform 10-30 portfolio companies simultaneously',
+        '1 detailed sub-playbook included',
+      ],
+      de: [
+        'Portfolio-IRR Verbesserung von 15% auf 40%+',
+        'Portfolio-Wertsteigerung von 3-5x',
+        '10-30 Portfolio-Unternehmen gleichzeitig transformieren',
+        '1 detailliertes Sub-Playbook inklusive',
+      ],
+    },
+    caseStudies: ['Series A-B VC (Portfolio Value +€150M)', 'Series B-C VC (IRR 42%)', 'PE Firm (Portfolio Value +€500M)'],
+    icon: React.createElement(Briefcase, { className: 'w-6 h-6' }),
+    gradient: 'from-purple-500 to-pink-500',
+    impact: ['portfolio'],
+    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+    role: ['vc-board'],
+  },
   {
     id: 'exit-ma',
     slug: 'board-governance/exit-ma',

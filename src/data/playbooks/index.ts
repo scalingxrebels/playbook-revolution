@@ -107,8 +107,8 @@ export const playbookIndex: PlaybookMeta[] = [
       de: 'AI-Native Portfolio Transformation Playbook',
     },
     description: {
-      en: 'Maximize portfolio value through AI-native transformation. The VC/PE supplement for systematic portfolio excellence.',
-      de: 'Maximiere Portfoliowert durch AI-native Transformation. Das VC/PE Supplement für systematische Portfolio-Exzellenz.',
+      en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
+      de: 'Wie du ganze Portfolios auf AI-native Skalierung transformierst. Lerne das komplette Framework (Portfolio Excellence), das Top-Tier VCs/PEs nutzen, um 10-30 Portfolio-Unternehmen zu transformieren, 3-5x Portfolio-Wertsteigerung zu erzielen und Portfolio-IRR von 15% auf 40%+ zu verbessern. Inklusive 1 detailliertem Sub-Playbook, Implementierungsguides und echten Case Studies von führenden VC/PE-Firmen.',
     },
     icon: 'Briefcase',
     color: 'purple',
