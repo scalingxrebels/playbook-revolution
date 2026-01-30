@@ -1,15 +1,15 @@
 
-# Analyse: Portfolio Excellence Playbook v2.0 Briefing vs. Aktueller Stand
+# Analyse: Strategic Capabilities Playbook v2.0 Briefing vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #11** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
+Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #12** und die **Landing Page**. Dies ist das **FINALE** Playbook - das Meta-Playbook für alle 4 Capabilities (C₁-C₄). Der aktuelle Code-Stand zeigt:
 
-1. **Kachel FEHLT komplett** - Portfolio Excellence ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
-2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 17) - aber **Teaser veraltet**, Icon falsch (`Briefcase` statt `Layers`), Bottleneck falsch (alle 4 statt Strategy + Operationalization)
-3. **Content-Skelett leer** in `src/data/playbooks/content/portfolio-excellence.ts` (nur Platzhalter "...")
-4. **Route FEHLT** - Keine Route für `/playbooks/portfolio/excellence` in `App.tsx`
-5. **Page-Komponente FEHLT** - Keine `PlaybookPortfolioExcellence.tsx` Datei vorhanden
+1. **Kachel FEHLT komplett** - Strategic Capabilities ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
+2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 6) - Description ist generisch, sollte 5-Komponenten Framework erwähnen
+3. **Content-Skelett leer** in `src/data/playbooks/content/strategic-capabilities.ts` (nur Platzhalter "...")
+4. **Route FEHLT** - Keine Route für `/playbooks/strategic-capabilities` in `App.tsx`
+5. **Page-Komponente FEHLT** - Keine `PlaybookStrategicCapabilities.tsx` Datei vorhanden
 
 ---
 
@@ -17,14 +17,14 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #11** und di
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 17) | Status |
-|---------|----------|------------------|--------------------------|--------|
-| **Icon** | `Layers` (32px) | FEHLT | `Briefcase` | **ICON FALSCH** |
-| **Headline** | "Portfolio Excellence Playbook" | FEHLT | OK | Legacy FEHLT |
-| **Badges Area** | Portfolio | FEHLT | `['portfolio']` | OK |
-| **Badges Bottleneck** | Strategy, Operationalization | FEHLT | all 4 | **FALSCH** |
-| **Badges Role** | VC, Board | FEHLT | `['vc-board']` | OK |
-| **Teaser** | 60 Wörter, 5-Komponenten Framework | FEHLT | Generic (old) | MUSS AKTUALISIERT |
+| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 6) | Status |
+|---------|----------|------------------|-------------------------|--------|
+| **Icon** | `Target` (32px) | FEHLT | `Target` | OK (aber Legacy FEHLT) |
+| **Headline** | "Strategic Capabilities Playbook" | FEHLT | "Strategic Capabilities (C₁-C₄) Playbook" | Legacy FEHLT |
+| **Badges Area** | Strategic Capabilities | FEHLT | `['strategic-capabilities']` | OK |
+| **Badges Bottleneck** | Strategy, Setup, Execution, Operationalization | FEHLT | all 4 | OK |
+| **Badges Role** | CEO, All | FEHLT | `['ceo']` | OK (All = everyone benefits) |
+| **Teaser** | 58 Wörter, θ_index Framework | FEHLT | Generic (old) | MUSS AKTUALISIERT |
 
 ---
 
@@ -34,191 +34,203 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #11** und di
 
 ```typescript
 // Import erweitern
-import { ..., Layers } from 'lucide-react';
+import { ..., Target } from 'lucide-react';
 
 // Neuer Eintrag am Ende des Arrays:
 {
-  id: 'portfolio-excellence',
-  slug: 'portfolio/excellence',
+  id: 'strategic-capabilities',
+  slug: 'strategic-capabilities',
   title: {
-    en: 'Portfolio Excellence Playbook',
-    de: 'Portfolio Excellence Playbook',
+    en: 'Strategic Capabilities Playbook',
+    de: 'Strategic Capabilities Playbook',
   },
   description: {
-    en: 'How to transform portfolio performance with AI-native operations. Learn the 5-component framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence) used by VCs/PEs to increase portfolio valuation by 200-400% and achieve 3-5x faster growth. Includes best practices, implementation guide, and real-world case studies from VC/PE portfolios.',
-    de: 'Wie du Portfolio-Performance mit AI-native Operations transformierst. Lerne das 5-Komponenten-Framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence), das VCs/PEs nutzen, um Portfolio-Bewertungen um 200-400% zu steigern und 3-5x schnelleres Wachstum zu erzielen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von VC/PE Portfolios.',
+    en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
   outcomes: {
     en: [
-      'Portfolio valuation increase of 200-400%',
-      'Portfolio growth acceleration of 3-5x',
-      'Portfolio IRR improvement of 50-100%',
+      'θ_index improvement from 0.35 to 0.75+',
+      'Scaling velocity increase of 3-5x',
+      'Capability bottleneck (C_min) identification and fix',
       'Clear 90-day implementation roadmap',
     ],
     de: [
-      'Portfolio-Bewertung Steigerung von 200-400%',
-      'Portfolio-Wachstum Beschleunigung von 3-5x',
-      'Portfolio IRR Verbesserung von 50-100%',
+      'θ_index Verbesserung von 0.35 auf 0.75+',
+      'Skalierungsgeschwindigkeit Steigerung von 3-5x',
+      'Capability Bottleneck (C_min) Identifikation und Fix',
       'Klare 90-Tage-Implementierungs-Roadmap',
     ],
   },
-  caseStudies: ['Series A-B VC (Valuation +250%)', 'Series B-C PE (IRR 35%)', 'Multi-Stage VC (4-hour Reporting)'],
-  icon: React.createElement(Layers, { className: 'w-6 h-6' }),
-  gradient: 'from-purple-500 to-indigo-500',
-  impact: ['portfolio'],
-  bottleneck: ['strategy', 'operationalization'],
-  role: ['vc-board'],
+  caseStudies: ['Series A SaaS (θ_index +123%)', 'Series B SaaS (All C > 0.7)', 'Series C (θ_index 0.88 AI-Native)'],
+  icon: React.createElement(Target, { className: 'w-6 h-6' }),
+  gradient: 'from-red-500 to-rose-500',
+  impact: ['strategic-capabilities'],
+  bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+  role: ['ceo'],
 }
 ```
 
-### 2.2 Update für index.ts (ID 17)
+### 2.2 Update für index.ts (ID 6)
 
 ```typescript
 {
-  id: 17,
-  slug: 'portfolio/portfolio-excellence',
+  id: 6,
+  slug: 'strategic-capabilities',
   title: {
-    en: 'Portfolio Excellence Playbook',
-    de: 'Portfolio Excellence Playbook',
+    en: 'Strategic Capabilities Playbook',
+    de: 'Strategic Capabilities Playbook',
   },
   description: {
-    en: 'How to transform portfolio performance with AI-native operations. Learn the 5-component framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence) used by VCs/PEs to increase portfolio valuation by 200-400% and achieve 3-5x faster growth. Includes best practices, implementation guide, and real-world case studies from VC/PE portfolios.',
-    de: 'Wie du Portfolio-Performance mit AI-native Operations transformierst. Lerne das 5-Komponenten-Framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence), das VCs/PEs nutzen, um Portfolio-Bewertungen um 200-400% zu steigern und 3-5x schnelleres Wachstum zu erzielen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von VC/PE Portfolios.',
+    en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
-  icon: 'Layers', // GEÄNDERT von 'Briefcase'
-  color: 'purple',
-  gradient: 'from-purple-500 to-indigo-500',
-  area: ['portfolio'],
-  bottleneck: ['strategy', 'operationalization'], // GEÄNDERT von all 4
-  role: ['vc-board'],
-  ebene: 3,
-  parent: 5,
-  children: [],
+  icon: 'Target', // Bereits korrekt
+  color: 'red',
+  gradient: 'from-red-500 to-rose-500',
+  area: ['strategic-capabilities'],
+  bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+  role: ['ceo'],
+  ebene: 2,
+  parent: 1,
+  children: [18],
 }
 ```
 
-### 2.3 Vollständiger Content für portfolio-excellence.ts (~500 Zeilen)
+### 2.3 Vollständiger Content für strategic-capabilities.ts (~600 Zeilen)
 
 **Hero Section:**
-- Badge: "Portfolio Excellence · Portfolio"
-- Title: "Portfolio Excellence Playbook"
-- Subtitle: "How to transform portfolio performance with AI-native operations"
-- Description: 98 Wörter (Briefing-Text)
-- Trust Badges: ~3,000 Words, 3 Case Studies, 90-Day Roadmap
-- Gradient: from-purple-500 to-indigo-500
+- Badge: "Strategic Capabilities · Meta-Playbook"
+- Title: "Strategic Capabilities Playbook"
+- Subtitle: "How to improve the 4 core capabilities that drive AI-native scaling"
+- Description: 104 Wörter (Briefing-Text)
+- Trust Badges: ~3,000 Words, 3 Case Studies, θ_index Framework, 90-Day Roadmap
+- Gradient: from-red-500 to-rose-500
 
 **Summary Section:**
-- Problem: 70% portfolio companies underperform, 30-50% valuation gap, ad-hoc value creation, manual portfolio operations
-- Why It Matters: Portfolio excellence is the foundation for top-quartile LP returns
+- Problem: Random capability investment, 70% have C_min < 0.5, average θ_index 0.35, 5-10x slower scaling
+- Why It Matters: Capabilities are multiplicative - weak capability limits overall performance
 - Solution: 5-Komponenten-Framework
 
-**Problem Section:**
-4 Bullets:
-- Portfolio Performance: 70% underperform (vs. 30% AI-native)
-- Portfolio Valuation: 30-50% below potential (vs. 0-10% AI-native)
-- Value Creation: Ad-hoc, reactive (vs. systematic AI-native)
-- Portfolio Operations: Manual, inefficient (vs. AI-powered AI-native)
-
-4 Metrics:
-- Performance: 70% underperform, trend down
-- Valuation Gap: 30-50%, trend up
-- Value Creation: Ad-hoc, trend down
-- Operations: Manual, trend down
+**Problem Section (4 Bullets):**
+- Random Capability Investment: Invest in strategy without setup (vs. systematic AI-native)
+- Capability Bottlenecks: 70% have C_min < 0.5 (vs. C_min > 0.7 AI-native)
+- Low θ_index: Average 0.35 (vs. 0.75+ AI-native)
+- Slow Scaling: 5-10x slower velocity (vs. AI-native)
 
 **Framework Section (5 Komponenten):**
 
-1. **Portfolio Assessment & Scoring (θ_INDEX)**
+1. **Capability Assessment & Bottleneck Identification**
    - Icon: ClipboardCheck, Color: cyan
-   - Impact: Portfolio Visibility +100%, Assessment Time -90%
-   - Actions: θ_index Framework (4 Capabilities × 8 Dimensions × 3 AI Maturity Levels), Portfolio Scoring, Portfolio Benchmarking, Portfolio Prioritization, AI-Powered Portfolio Assessment
+   - Impact: Capability Visibility +100%, Assessment Time -90%
+   - Actions: θ_index Assessment (C₁-C₄ × 8 Dimensions), Capability Benchmarking, Bottleneck Analysis (C_min), Capability Roadmap, AI-Powered Assessment (LASR.io)
 
-2. **Portfolio Transformation & Value Creation**
+2. **Capability Development & Improvement (C₁-C₄)**
    - Icon: TrendingUp, Color: green
-   - Impact: Portfolio Valuation +200-400%, Growth Rate +3-5x
-   - Actions: Portfolio Strategy (Vision, Roadmap, Resource Allocation), Value Creation Plans (Per Company), Portfolio Playbooks (8 Playbooks), Portfolio Execution, AI-Powered Portfolio Transformation
+   - Impact: θ_index +50-100%, Scaling Velocity +3-5x
+   - Actions: C₁ (Strategy) Development, C₂ (Setup) Development, C₃ (Execution) Development, C₄ (Operationalization) Development, AI-Powered Capability Development
 
-3. **Portfolio Operations & Synergies**
+3. **Capability Integration & Interdependencies**
    - Icon: Network, Color: blue
-   - Impact: Portfolio Synergies +50-100%, Portfolio Efficiency +30-50%
-   - Actions: Portfolio Operations (Shared Services, Best Practices), Portfolio Synergies (Cross-Sell, Co-Marketing, Product Integration), Portfolio Community, Portfolio Support, AI-Powered Portfolio Operations
+   - Impact: Capability Synergies +50-100%, Coordination +3-5x
+   - Actions: Capability Interdependencies (Multiplicative Formula), Capability Sequencing (Fix C_min first), Capability Coordination, Capability Synergies, AI-Powered Integration
 
-4. **Portfolio Intelligence & Reporting**
-   - Icon: BarChart3, Color: violet
-   - Impact: Portfolio Visibility +100%, Reporting Time -80%
-   - Actions: Portfolio Dashboard (Real-Time Metrics), Portfolio Reporting (LP, Board, Company), Portfolio Analytics, Portfolio Alerts, AI-Powered Portfolio Intelligence
+4. **Capability Optimization & Continuous Improvement**
+   - Icon: RefreshCw, Color: violet
+   - Impact: Capability Maintenance +100%, Continuous Improvement +3-5x
+   - Actions: Capability Monitoring (Real-time dashboard), Capability Reviews (Quarterly), Capability Benchmarking, Capability Experiments, AI-Powered Optimization
 
-5. **AI-Powered Portfolio Excellence**
+5. **AI-Powered Capability Excellence**
    - Icon: Sparkles, Color: pink
-   - Impact: Portfolio Efficiency +300%, Portfolio Valuation +50-100%
-   - Actions: AI Portfolio Assessment, AI Portfolio Transformation, AI Portfolio Operations, AI Portfolio Intelligence, AI Portfolio Excellence
+   - Impact: Capability Efficiency +300%, θ_index +50-100%
+   - Actions: AI Capability Assessment (LASR.io 12 min), AI Capability Development, AI Capability Integration, AI Capability Optimization, AI Capability Excellence
+
+**Key Technical Content:**
+
+θ_index Framework (4 Capabilities × 8 Dimensions):
+- C₁ (Strategy): Where to play, how to win (0-1 score)
+- C₂ (Setup): Org structure, systems, processes (0-1 score)
+- C₃ (Execution): GTM, product, customer success (0-1 score)
+- C₄ (Operationalization): Ops, finance, talent, governance (0-1 score)
+
+Multiplicative Formula:
+```
+S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index
+```
+
+Bottleneck Principle (C_min):
+- C_min = min(C₁, C₂, C₃, C₄)
+- Weakest capability limits overall performance
+- Fix C_min first (highest ROI)
+
+Bottleneck Distribution (n=22 companies):
+- C₂ (Setup): 36% (most common)
+- C₁ (Strategy): 27%
+- C₄ (Operationalization): 23%
+- C₃ (Execution): 18% (least common)
 
 **Case Studies (3 anonymisiert):**
 
-1. **Series A-B VC** (Portfolio Valuation +250%)
-   - Portfolio: 15 Series A-B SaaS companies
-   - Challenge: 70% underperforming, LP pressure
-   - Results: Valuation €200M → €700M (+250%), θ_index 0.35 → 0.72, IRR 15% → 32%
-   - Timeline: 18 months | Portfolio Assessment + Transformation
+1. **Series A SaaS Company** (θ_index +123%, C₂ Bottleneck Fixed)
+   - Challenge: θ_index 0.35, C₂ (Setup) bottleneck (0.31), slow scaling (40% growth)
+   - Results: θ_index 0.35 → 0.78 (+123%), C₂ 0.31 → 0.75 (+142%), ARR Growth 40% → 120%
+   - Timeline: 12 months | Boost + Accelerate
 
-2. **Series B-C PE** (Portfolio IRR 35%)
-   - Portfolio: 10 Series B-C SaaS companies
-   - Challenge: Need IRR 30%+ for LP commitments
-   - Results: IRR 18% → 35% (+94%), Valuation €500M → €1.5B (+200%), Rule of 40: 28 → 62
-   - Timeline: 24 months | Portfolio Transformation + AI Portfolio Intelligence
+2. **Series B SaaS Company** (θ_index +86%, All Capabilities > 0.7)
+   - Challenge: θ_index 0.42, multiple capability gaps, need to scale 3x in 18 months
+   - Results: θ_index 0.42 → 0.78 (+86%), All C > 0.7, ARR Growth 50% → 95%
+   - Timeline: 18 months | Boost + Accelerate + Extension
 
-3. **Multi-Stage VC** (4-Hour Reporting, 30 Companies)
-   - Portfolio: 30 Series A-D SaaS companies
-   - Challenge: Scale portfolio operations 3x without 3x team
-   - Results: Portfolio Size 30 → 45 (+50%), Team 8 → 10 (+25%), Reporting 40h → 4h (-90%)
-   - Timeline: 24 months | Portfolio Transformation + LASR.io
+3. **Series C Company** (θ_index 0.88, AI-Native)
+   - Challenge: Maintain θ_index 0.85+ while scaling 5x
+   - Results: θ_index 0.55 → 0.88 (+60%), ARR Growth 60% → 110%, 4.2x faster scaling
+   - Timeline: 24 months | Accelerate × 2
 
 **Roadmap (90-Day):**
-- Phase 1: Assessment (Week 1-2) - θ_index Scoring, Benchmarking, Prioritization, Strategy
-- Phase 2: Planning (Week 3-4) - Value Creation Plans, Portfolio Playbooks, Portfolio Operations Plan, Dashboard
-- Phase 3: Execution (Week 5-8) - Portfolio Transformations, Operations, Tracking, Optimization
+- Phase 1: Assessment (Week 1-2) - θ_index Assessment, Benchmarking, Bottleneck Analysis, Roadmap
+- Phase 2: Development (Week 3-6) - Fix C_min, Capability Development Plans, Integration Plan, Dashboard
+- Phase 3: Optimization (Week 7-12) - Continuous Improvement, Experiments, AI Integration, Excellence
 
 **Solutions Connection:**
-1. Portfolio Assessment (4-6 Weeks, €50K-€150K)
-   - Link: /solutions/portfolio/assessment
-2. Portfolio Transformation (12-24 Months, €360K-€720K)
-   - Link: /solutions/portfolio/transformation
-3. Portfolio Excellence (Ongoing, €50K-€200K/year)
-   - Link: /solutions/portfolio/excellence
+1. Power Up: Capability Assessment Fixed (30 Days, €23.6K)
+   - Link: /solutions/power-up/scaling-velocity
+2. Boost: Scaling OS (90 Days, €60K-€78K)
+   - Link: /solutions/boost/scaling-os
 
 **Personas:**
-- VCs: Need to maximize portfolio performance and deliver top-quartile LP returns
-- PE Partners: Need to transform portfolio companies and increase portfolio valuation
-- Board Members: Need portfolio visibility and systematic value creation
-- Portfolio Teams: Responsible for portfolio operations and portfolio support
+- CEOs: Need to improve strategic capabilities and achieve 3-5x faster scaling
+- C-Level Executives: Responsible for capability development in their function
+- Board Members: Need to understand capability bottlenecks and improvement plans
+- All Teams: Everyone benefits from improved strategic capabilities
 
 **Final CTA:**
 - Headline: "Get Started Today"
-- Trust Signals: 50-page playbook, 3 case studies, 90-day roadmap
+- Trust Signals: 50-page playbook, θ_index framework, 3 case studies, 90-day roadmap
 - Booking URL: https://scalingx.fillout.com/inflection-call
 
 ### 2.4 Neue Page-Komponente
 
-**Datei:** `src/pages/PlaybookPortfolioExcellence.tsx`
+**Datei:** `src/pages/PlaybookStrategicCapabilities.tsx`
 ```typescript
 import React from 'react';
 import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
-import { portfolioExcellenceData } from '@/data/playbooks/content/portfolio-excellence';
+import { strategicCapabilitiesData } from '@/data/playbooks/content/strategic-capabilities';
 
-const PlaybookPortfolioExcellence: React.FC = () => {
-  return <PlaybookLandingPage data={portfolioExcellenceData} />;
+const PlaybookStrategicCapabilities: React.FC = () => {
+  return <PlaybookLandingPage data={strategicCapabilitiesData} />;
 };
 
-export default PlaybookPortfolioExcellence;
+export default PlaybookStrategicCapabilities;
 ```
 
 ### 2.5 Route in App.tsx
 
 ```typescript
 // Lazy Import hinzufügen
-const PlaybookPortfolioExcellence = lazy(() => import("./pages/PlaybookPortfolioExcellence"));
+const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrategicCapabilities"));
 
 // Route hinzufügen (vor dem Catch-All)
-<Route path="/playbooks/portfolio/excellence" element={<PlaybookPortfolioExcellence />} />
+<Route path="/playbooks/strategic-capabilities" element={<PlaybookStrategicCapabilities />} />
 ```
 
 ---
@@ -227,39 +239,56 @@ const PlaybookPortfolioExcellence = lazy(() => import("./pages/PlaybookPortfolio
 
 | Datei | Aktion | Geschätzte Zeilen |
 |-------|--------|-------------------|
-| `src/data/playbooks.ts` | Portfolio Excellence Eintrag + Layers Import | ~40 Zeilen |
-| `src/data/playbooks/index.ts` | Description + Icon + Bottleneck für ID 17 | ~15 Zeilen |
-| `src/data/playbooks/content/portfolio-excellence.ts` | Vollständiger Content | ~550 Zeilen |
-| `src/pages/PlaybookPortfolioExcellence.tsx` | Neue Datei erstellen | ~10 Zeilen |
+| `src/data/playbooks.ts` | Strategic Capabilities Eintrag + Target Import | ~40 Zeilen |
+| `src/data/playbooks/index.ts` | Description Update für ID 6 | ~10 Zeilen |
+| `src/data/playbooks/content/strategic-capabilities.ts` | Vollständiger Content | ~600 Zeilen |
+| `src/pages/PlaybookStrategicCapabilities.tsx` | Neue Datei erstellen | ~10 Zeilen |
 | `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
 
 ---
 
 ## Technische Notizen
 
-1. **VC/PE Supplement Playbook** (1/1 Portfolio Playbooks)
+1. **FINALES Meta-Playbook** (12/12 Playbooks - Komplettiert das gesamte Playbook System!)
 2. **5 Komponenten**:
-   - Portfolio Assessment & Scoring (θ_INDEX)
-   - Portfolio Transformation & Value Creation
-   - Portfolio Operations & Synergies
-   - Portfolio Intelligence & Reporting
-   - AI-Powered Portfolio Excellence
-3. **Bilingual Content** (EN/DE) in allen Sections
-4. **Solutions Connection** verlinkt auf Portfolio Assessment, Portfolio Transformation, und Portfolio Excellence
-5. **Icon-Palette**: ClipboardCheck (Assessment), TrendingUp (Transformation), Network (Operations), BarChart3 (Intelligence), Sparkles (AI Portfolio)
-6. **Gradient**: from-purple-500 to-indigo-500 (Portfolio-Theme)
-7. **Icon korrigiert**: Layers statt Briefcase
-8. **Bottleneck korrigiert**: strategy + operationalization (statt alle 4)
-9. **θ_INDEX Integration**: Portfolio Assessment nutzt das θ_index Framework (4 Capabilities × 8 Dimensions × 3 AI Maturity Levels)
-10. **LASR.io Reference**: AI-Powered Portfolio Assessment referenziert LASR.io (12 min/company)
+   - Capability Assessment & Bottleneck Identification
+   - Capability Development & Improvement (C₁-C₄)
+   - Capability Integration & Interdependencies
+   - Capability Optimization & Continuous Improvement
+   - AI-Powered Capability Excellence
+3. **θ_index Framework Integration**:
+   - 4 Capabilities × 8 Dimensions
+   - Multiplicative Formula: S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index
+   - Bottleneck Principle (C_min)
+   - Empirische Daten (n=22 companies)
+4. **LASR.io Reference**: AI-Powered Assessment (12 min)
+5. **Bilingual Content** (EN/DE) in allen Sections
+6. **Solutions Connection** verlinkt auf Scaling Velocity (Power Up) und Scaling OS (Boost)
+7. **Icon-Palette**: ClipboardCheck (Assessment), TrendingUp (Development), Network (Integration), RefreshCw (Optimization), Sparkles (AI Excellence)
+8. **Gradient**: from-red-500 to-rose-500 (Strategic Capabilities-Theme)
 
 ---
 
 ## Erwartetes Ergebnis
 
 Nach Implementierung:
-- `/playbooks` Übersichtsseite zeigt **11 Kacheln** (3 Growth Engines + 4 Operating Systems + 3 Board & Governance + 1 Portfolio)
-- Portfolio Excellence Kachel zeigt **5-Komponenten-Framework Teaser**
-- "Learn More" Link führt zu `/playbooks/portfolio/excellence`
+- `/playbooks` Übersichtsseite zeigt **12 Kacheln** (3 Growth Engines + 4 Operating Systems + 3 Board & Governance + 1 Portfolio + 1 Strategic Capabilities)
+- Strategic Capabilities Kachel zeigt **θ_index Framework Teaser**
+- "Learn More" Link führt zu `/playbooks/strategic-capabilities`
 - Landing Page zeigt alle 8 Sections mit vollständigem bilingualen Content
-- **Portfolio Serie komplett** (1/1 Playbook)
+- **PLAYBOOK SYSTEM KOMPLETT** (12/12 Playbooks)
+
+---
+
+## Meilenstein
+
+Mit der Implementierung des Strategic Capabilities Playbooks ist das **gesamte Playbook-System** mit 12 Playbooks abgeschlossen:
+
+| Serie | Playbooks | Status |
+|-------|-----------|--------|
+| Growth Engines | GTM/Revenue, Product, Customer Success | ✅ Complete |
+| Operating Systems | Operations, Finance, Talent, Data/Tech | ✅ Complete |
+| Board & Governance | Strategic Gov., Operational Gov., Exit & M&A | ✅ Complete |
+| Portfolio | Portfolio Excellence | ✅ Complete |
+| Strategic Capabilities | Strategic Capabilities (Meta) | 🎯 Final |
+
