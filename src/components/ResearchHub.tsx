@@ -42,8 +42,8 @@ const researchCards: ResearchCard[] = [
     keyInsight: 'AI Maturity predicts Time to €100M ARR',
     keyInsightDe: 'AI-Reife sagt Zeit bis €100M ARR voraus',
     stats: 'n=22 companies | 3 levels | 6 dimensions',
-    ctaText: 'Read Research',
-    ctaTextDe: 'Forschung lesen',
+    ctaText: 'Discover the AI Maturity Framework',
+    ctaTextDe: 'Entdecke das AI Maturity Framework',
     link: '/expertise/amf'
   },
   {
@@ -58,15 +58,15 @@ const researchCards: ResearchCard[] = [
     keyInsight: 'Scaling success = 4 Capabilities × AI Multiplier',
     keyInsightDe: 'Scaling-Erfolg = 4 Capabilities × AI Multiplier',
     stats: 'n=22 companies | 8-18 months to €100M | 4 capabilities',
-    ctaText: 'Read Research',
-    ctaTextDe: 'Forschung lesen',
+    ctaText: 'Discover the AI-Native Scaling Theory',
+    ctaTextDe: 'Entdecke die AI-Native Scaling Theory',
     link: '/expertise/anst'
   },
   {
-    id: 'bottleneck',
+    id: 'sst',
     icon: <Target className="w-6 h-6" />,
-    title: 'Bottleneck Framework',
-    titleDe: 'Bottleneck Framework',
+    title: 'Scaling Stack Theory',
+    titleDe: 'Scaling Stack Theory',
     tagline: "What's Blocking Your Growth?",
     taglineDe: 'Was blockiert dein Wachstum?',
     description: 'We found that 36% of scaling bottlenecks are in Setup (org structure, systems), 23% in Strategy, 18% in Execution, 23% in Operationalization. Fix the bottleneck, unlock growth.',
@@ -74,12 +74,12 @@ const researchCards: ResearchCard[] = [
     keyInsight: 'Your weakest capability determines your growth',
     keyInsightDe: 'Deine schwächste Capability bestimmt dein Wachstum',
     stats: '4 capabilities | 8 dimensions | 0-1 scoring',
-    ctaText: 'Diagnose Your Bottleneck',
-    ctaTextDe: 'Diagnose deinen Engpass',
-    link: '/tools/bottleneck-diagnosis'
+    ctaText: 'Discover the Scaling Stack Theory',
+    ctaTextDe: 'Entdecke die Scaling Stack Theory',
+    link: '/expertise/sst'
   },
   {
-    id: 'architecture',
+    id: 'unified',
     icon: <Building2 className="w-6 h-6" />,
     title: 'The Unified Framework',
     titleDe: 'Das Unified Framework',
@@ -90,9 +90,9 @@ const researchCards: ResearchCard[] = [
     keyInsight: 'One framework, three perspectives',
     keyInsightDe: 'Ein Framework, drei Perspektiven',
     stats: '3 frameworks unified | 250,000+ words',
-    ctaText: 'Explore Framework',
-    ctaTextDe: 'Framework erkunden',
-    link: '/expertise/architecture'
+    ctaText: 'Discover the Unified Framework',
+    ctaTextDe: 'Entdecke das Unified Framework',
+    link: '/expertise/unified-framework'
   }
 ];
 
