@@ -92,6 +92,10 @@ export const aiNativeScalingData: PlaybookPageData = {
           { en: "Define your ICP with AI-powered market intelligence", de: "Definiere dein ICP mit AI-gestützter Market Intelligence" },
           { en: "Build differentiated positioning (why should they choose you?)", de: "Baue differenzierte Positionierung (warum sollten sie dich wählen?)" },
           { en: "Make AI core to your strategy, not just a feature", de: "Mach AI zum Kern deiner Strategie, nicht nur ein Feature" },
+        ],
+        examples: [
+          { en: "Midjourney: AI-native image generation (not 'Photoshop + AI')", de: "Midjourney: AI-native Bildgenerierung (nicht 'Photoshop + AI')" },
+          { en: "Cursor: AI-native code editor (not 'VS Code + AI')", de: "Cursor: AI-nativer Code-Editor (nicht 'VS Code + AI')" }
         ]
       },
       {
@@ -113,6 +117,10 @@ export const aiNativeScalingData: PlaybookPageData = {
           { en: "Build flat org structure (not hierarchical)", de: "Baue flache Org-Struktur (nicht hierarchisch)" },
           { en: "Implement AI-powered systems (not manual tools)", de: "Implementiere AI-gestützte Systeme (nicht manuelle Tools)" },
           { en: "Automate processes (not just digitize)", de: "Automatisiere Prozesse (nicht nur digitalisieren)" },
+        ],
+        examples: [
+          { en: "Perplexity: 40 people, €100M ARR (€2.5M/Employee)", de: "Perplexity: 40 Mitarbeiter, €100M ARR (€2.5M/Mitarbeiter)" },
+          { en: "Harvey: 50 people, €300M valuation (AI-native legal)", de: "Harvey: 50 Mitarbeiter, €300M Bewertung (AI-native Legal)" }
         ]
       },
       {
@@ -134,6 +142,10 @@ export const aiNativeScalingData: PlaybookPageData = {
           { en: "Build AI-powered GTM (not manual sales)", de: "Baue AI-gestütztes GTM (nicht manueller Vertrieb)" },
           { en: "Build AI-native product (not 'product + AI features')", de: "Baue AI-natives Produkt (nicht 'Produkt + AI Features')" },
           { en: "Build AI-powered CS (not manual support)", de: "Baue AI-gestütztes CS (nicht manueller Support)" },
+        ],
+        examples: [
+          { en: "Notion: AI-native product (AI writes, organizes, searches)", de: "Notion: AI-natives Produkt (AI schreibt, organisiert, sucht)" },
+          { en: "Figma: AI-native design (AI generates, suggests, automates)", de: "Figma: AI-natives Design (AI generiert, schlägt vor, automatisiert)" }
         ]
       },
       {
@@ -155,6 +167,10 @@ export const aiNativeScalingData: PlaybookPageData = {
           { en: "Build AI-powered dashboards (not static reports)", de: "Baue AI-gestützte Dashboards (nicht statische Reports)" },
           { en: "Build automated playbooks (not manual processes)", de: "Baue automatisierte Playbooks (nicht manuelle Prozesse)" },
           { en: "Build AI-driven automation (not rule-based)", de: "Baue AI-gesteuerte Automation (nicht regelbasiert)" },
+        ],
+        examples: [
+          { en: "Ramp: AI-powered finance (automated expense management)", de: "Ramp: AI-gestützte Finanzen (automatisiertes Expense Management)" },
+          { en: "Brex: AI-native banking (automated credit decisions)", de: "Brex: AI-natives Banking (automatisierte Kreditentscheidungen)" }
         ]
       }
     ]
