@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -241,5 +241,37 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cto'],
+  },
+  {
+    id: 'strategic-governance',
+    slug: 'board-governance/strategic',
+    title: {
+      en: 'Strategic Governance Playbook',
+      de: 'Strategic Governance Playbook',
+    },
+    description: {
+      en: 'How to build board and governance systems that scale with AI. Learn the 5-component framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance) used by AI-native companies to reduce board prep time by 80% and increase board confidence by 100%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Board- und Governance-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance), das AI-native Unternehmen nutzen, um Board Prep Time um 80% zu reduzieren und Board Confidence um 100% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Board prep time reduction of 80-90%',
+        'Board confidence increase of 100-200%',
+        'Strategic decision velocity increase of 200%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Board Prep Time Reduktion von 80-90%',
+        'Board Confidence Steigerung von 100-200%',
+        'Strategic Decision Velocity Steigerung von 200%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Board Prep -85%)', 'Series B SaaS (Board Confidence 95%)', 'Series C (4-hour Board Prep)'],
+    icon: React.createElement(Shield, { className: 'w-6 h-6' }),
+    gradient: 'from-orange-500 to-amber-500',
+    impact: ['board-governance'],
+    bottleneck: ['strategy', 'operationalization'],
+    role: ['ceo', 'vc-board'],
   },
 ];
