@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -305,5 +305,37 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cto', 'coo'],
+  },
+  {
+    id: 'exit-ma',
+    slug: 'board-governance/exit-ma',
+    title: {
+      en: 'Exit & M&A Playbook',
+      de: 'Exit & M&A Playbook',
+    },
+    description: {
+      en: 'How to build exit and M&A readiness that maximizes valuation. Learn the 5-component framework (Valuation Optimization, Due Diligence Preparation, Exit Strategy & Timing, M&A Integration, AI-Powered Exit Intelligence) used by AI-native companies to increase exit valuation by 200-400% and reduce due diligence time by 60%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Exit- und M&A-Bereitschaft aufbaust, die Bewertungen maximiert. Lerne das 5-Komponenten-Framework (Valuation Optimization, Due Diligence Preparation, Exit Strategy & Timing, M&A Integration, AI-Powered Exit Intelligence), das AI-native Unternehmen nutzen, um Exit-Bewertungen um 200-400% zu steigern und Due Diligence Zeit um 60% zu reduzieren. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Exit valuation increase of 200-400%',
+        'Due diligence time reduction of 60-80%',
+        'M&A success rate increase of 100%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Exit-Bewertung Steigerung von 200-400%',
+        'Due Diligence Zeit Reduktion von 60-80%',
+        'M&A Erfolgsrate Steigerung von 100%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Valuation +250%)', 'Series B SaaS (Due Diligence 6 Weeks)', 'Series C (IPO, 25x ARR)'],
+    icon: React.createElement(Briefcase, { className: 'w-6 h-6' }),
+    gradient: 'from-rose-500 to-red-500',
+    impact: ['board-governance'],
+    bottleneck: ['strategy'],
+    role: ['ceo', 'vc-board'],
   },
 ];
