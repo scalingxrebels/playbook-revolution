@@ -65,10 +65,10 @@ const CaseStudyComparisonTable = () => {
   };
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
       <Table>
         <TableHeader>
-          <TableRow className="border-border/50">
+          <TableRow className="border-border/50 bg-muted/30">
             <TableHead>
               <Button variant="ghost" size="sm" onClick={() => handleSort('name')} className="flex items-center -ml-3">
                 {language === 'en' ? 'Company' : 'Unternehmen'}
@@ -105,7 +105,7 @@ const CaseStudyComparisonTable = () => {
         </TableHeader>
         <TableBody>
           {sortedCompanies.map((company) => (
-            <TableRow key={company.name} className="border-border/30 hover:bg-muted/50 transition-colors">
+            <TableRow key={company.name} className="border-border/30 hover:bg-primary/5 transition-colors duration-200">
               <TableCell className="font-semibold">
                 <div className="flex items-center gap-2">
                   <div 

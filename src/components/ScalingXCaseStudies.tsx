@@ -432,15 +432,21 @@ const ScalingXCaseStudies = () => {
         </div>
 
         {/* Case Study Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-          {caseStudies.map((study) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {caseStudies.map((study, idx) => {
             const Icon = study.icon;
             return (
               <div
                 key={study.id}
                 onClick={() => setSelectedStudy(study)}
-                className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1"
-                style={{ '--study-color': study.color } as React.CSSProperties}
+                className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer 
+                           transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1
+                           opacity-0 animate-fade-in"
+                style={{ 
+                  '--study-color': study.color,
+                  animationDelay: `${idx * 80}ms`,
+                  animationFillMode: 'forwards'
+                } as React.CSSProperties}
               >
                 {/* θ_index Badge */}
                 <div className="absolute top-4 right-4">

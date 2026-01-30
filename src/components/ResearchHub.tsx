@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
 import SharedHero from '@/components/shared/SharedHero';
 import { Link } from 'react-router-dom';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { 
   Dna, Rocket, Target, Building2, 
   Lightbulb, BarChart3, ChevronRight, XCircle, CheckCircle2,
@@ -213,13 +214,21 @@ const downloadCards = [
 
 const ResearchHub: React.FC = () => {
   const { language } = useLanguage();
+  
+  // Scroll animations for all sections
+  const { ref: whyMattersRef, isVisible: whyMattersVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: researchRef, isVisible: researchVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: playbooksRef, isVisible: playbooksVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: teamRef, isVisible: teamVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: downloadRef, isVisible: downloadVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <>
-      {/* Hero - Standalone */}
+      {/* Hero - Standalone with Parallax */}
       <SharedHero
-        overlineEn="Expertise × Speed = Impact"
-        overlineDe="Expertise × Speed = Impact"
+        overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
+        overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
         headlineLine1En="The Science Behind"
         headlineLine1De="Die Wissenschaft hinter"
         headlineLine2En="AI-Native Scaling"
@@ -227,10 +236,14 @@ const ResearchHub: React.FC = () => {
         subheadlineEn="We analyzed 22 AI-native companies (Midjourney, Perplexity, Cursor, etc.) to understand why they scale 8.2x faster than traditional startups. Here's what we found."
         subheadlineDe="Wir haben 22 AI-native Unternehmen (Midjourney, Perplexity, Cursor, etc.) analysiert, um zu verstehen, warum sie 8.2x schneller skalieren als traditionelle Startups. Das haben wir herausgefunden."
         stats={researchStats}
+        enableParallax={true}
       />
 
       {/* Section 2: Why This Matters */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section 
+        ref={whyMattersRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-muted/30 transition-all duration-700 ${whyMattersVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Text */}
@@ -330,7 +343,11 @@ const ResearchHub: React.FC = () => {
       </section>
 
       {/* Section 3: Our Research */}
-      <section id="research" className="py-16 md:py-24 bg-background">
+      <section 
+        id="research" 
+        ref={researchRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-background transition-all duration-700 ${researchVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-7xl mx-auto px-6">
           
           {/* Section Headline */}
@@ -345,12 +362,13 @@ const ResearchHub: React.FC = () => {
             </p>
           </div>
 
-          {/* 2x2 Grid */}
+          {/* 2x2 Grid with staggered animation */}
           <div className="grid md:grid-cols-2 gap-6 mb-12">
-            {researchCards.map(card => (
+            {researchCards.map((card, idx) => (
               <Card 
                 key={card.id}
                 className="p-6 glass border-border/50 hover:border-accent/50 hover:shadow-[0_0_30px_hsl(var(--accent)/0.15)] transition-all duration-300"
+                style={{ transitionDelay: `${idx * 100}ms` }}
               >
                 <div className="flex flex-col h-full">
                   {/* Icon & Title */}
@@ -407,7 +425,11 @@ const ResearchHub: React.FC = () => {
       </section>
 
       {/* Section 4: Applied Research */}
-      <section id="playbooks" className="py-16 md:py-24 bg-muted/30">
+      <section 
+        id="playbooks" 
+        ref={playbooksRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-muted/30 transition-all duration-700 ${playbooksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Text */}
@@ -470,7 +492,10 @@ const ResearchHub: React.FC = () => {
       </section>
 
       {/* Section 5: Our Expertise (Team) */}
-      <section className="py-16 md:py-24 bg-background">
+      <section 
+        ref={teamRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-background transition-all duration-700 ${teamVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -485,9 +510,13 @@ const ResearchHub: React.FC = () => {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {teamMembers.map((member, i) => (
-              <Card key={i} className="p-6 text-center border-border/50 hover:border-primary/50 transition-all">
+              <Card 
+                key={i} 
+                className="p-6 text-center border-border/50 hover:border-primary/50 hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] transition-all duration-300 group"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
                 {/* Team Image */}
-                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-foreground/10">
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-foreground/10 transition-transform duration-300 group-hover:scale-105">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -536,7 +565,11 @@ const ResearchHub: React.FC = () => {
       </section>
 
       {/* Section 6: Download Research */}
-      <section id="download" className="py-16 md:py-24 bg-muted/30">
+      <section 
+        id="download" 
+        ref={downloadRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-muted/30 transition-all duration-700 ${downloadVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -575,7 +608,10 @@ const ResearchHub: React.FC = () => {
       </section>
 
       {/* Section 7: Final CTA */}
-      <section className="py-16 md:py-24 bg-background">
+      <section 
+        ref={ctaRef as React.RefObject<HTMLElement>}
+        className={`py-16 md:py-24 bg-background transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="container max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             {language === 'de' ? 'Möchtest du AI-Native werden?' : 'Want to Become AI-Native?'}
