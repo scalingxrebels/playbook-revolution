@@ -1,16 +1,16 @@
 
 
-# Analyse: Strategic Governance Playbook v2.0 Briefing vs. Aktueller Stand
+# Analyse: Operational Governance Playbook v2.0 Briefing vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #8** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
+Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #9** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
 
-1. **Kachel FEHLT komplett** - Strategic Governance ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
-2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 14) - aber **Teaser veraltet**, Icon falsch (`Compass` statt `Shield`), Bottleneck unvollständig
-3. **Content-Skelett leer** in `src/data/playbooks/content/strategic-governance.ts` (nur Platzhalter "...")
-4. **Route FEHLT** - Keine Route für `/playbooks/board-governance/strategic` in `App.tsx`
-5. **Page-Komponente FEHLT** - Keine `PlaybookStrategicGovernance.tsx` Datei vorhanden
+1. **Kachel FEHLT komplett** - Operational Governance ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
+2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 15) - aber **Teaser veraltet**, Icon falsch (`Activity` statt `ShieldCheck`), Bottleneck unvollständig, Role falsch
+3. **Content-Skelett leer** in `src/data/playbooks/content/operational-governance.ts` (nur Platzhalter "...")
+4. **Route FEHLT** - Keine Route für `/playbooks/board-governance/operational` in `App.tsx`
+5. **Page-Komponente FEHLT** - Keine `PlaybookOperationalGovernance.tsx` Datei vorhanden
 
 ---
 
@@ -18,14 +18,14 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #8** und die
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 14) | Status |
+| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 15) | Status |
 |---------|----------|------------------|--------------------------|--------|
-| **Icon** | `Shield` (32px) | FEHLT | `Compass` | **ICON FALSCH** |
-| **Headline** | "Strategic Governance Playbook" | FEHLT | OK | Legacy FEHLT |
+| **Icon** | `ShieldCheck` (32px) | FEHLT | `Activity` | **ICON FALSCH** |
+| **Headline** | "Operational Governance Playbook" | FEHLT | OK | Legacy FEHLT |
 | **Badges Area** | Board & Governance | FEHLT | `['board-governance']` | Legacy FEHLT |
-| **Badges Bottleneck** | Strategy, Operationalization | FEHLT | `['strategy']` | **Operationalization FEHLT** |
-| **Badges Role** | CEO, Board, VC | FEHLT | `['ceo', 'vc-board']` | OK |
-| **Teaser** | 60 Wörter, 5-Komponenten Framework | FEHLT | Generisch (alt) | MUSS AKTUALISIERT WERDEN |
+| **Badges Bottleneck** | Setup, Operationalization | FEHLT | `['operationalization']` | **Setup FEHLT** |
+| **Badges Role** | CEO, CTO, COO | FEHLT | `['ceo', 'coo', 'vc-board']` | **CTO FEHLT, vc-board entfernen** |
+| **Teaser** | 57 Wörter, 5-Komponenten Framework | FEHLT | Generisch (alt) | MUSS AKTUALISIERT WERDEN |
 
 ---
 
@@ -35,145 +35,145 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #8** und die
 
 ```typescript
 // Neuer Import hinzufügen
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck } from 'lucide-react';
 
 // Neuer Eintrag am Ende des Arrays:
 {
-  id: 'strategic-governance',
-  slug: 'board-governance/strategic',
+  id: 'operational-governance',
+  slug: 'board-governance/operational',
   title: {
-    en: 'Strategic Governance Playbook',
-    de: 'Strategic Governance Playbook',
+    en: 'Operational Governance Playbook',
+    de: 'Operational Governance Playbook',
   },
   description: {
-    en: 'How to build board and governance systems that scale with AI. Learn the 5-component framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance) used by AI-native companies to reduce board prep time by 80% and increase board confidence by 100%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du Board- und Governance-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance), das AI-native Unternehmen nutzen, um Board Prep Time um 80% zu reduzieren und Board Confidence um 100% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to build operational governance systems that scale with AI. Learn the 5-component framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance) used by AI-native companies to improve data quality by 80% and reduce compliance risk by 70%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Operational Governance Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance), das AI-native Unternehmen nutzen, um Datenqualität um 80% zu verbessern und Compliance-Risiko um 70% zu reduzieren. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
   outcomes: {
     en: [
-      'Board prep time reduction of 80-90%',
-      'Board confidence increase of 100-200%',
-      'Strategic decision velocity increase of 200%',
+      'Data quality improvement of 80-100%',
+      'Compliance risk reduction of 70-80%',
+      'Incident response time reduction of 96%',
       'Clear 90-day implementation roadmap',
     ],
     de: [
-      'Board Prep Time Reduktion von 80-90%',
-      'Board Confidence Steigerung von 100-200%',
-      'Strategic Decision Velocity Steigerung von 200%',
+      'Datenqualitäts-Verbesserung von 80-100%',
+      'Compliance-Risiko Reduktion von 70-80%',
+      'Incident Response Zeit Reduktion von 96%',
       'Klare 90-Tage-Implementierungs-Roadmap',
     ],
   },
-  caseStudies: ['Series A SaaS (Board Prep -85%)', 'Series B SaaS (Board Confidence 95%)', 'Series C (4-hour Board Prep)'],
-  icon: React.createElement(Shield, { className: 'w-6 h-6' }),
-  gradient: 'from-orange-500 to-amber-500',
+  caseStudies: ['Series A SaaS (Data Quality +88%)', 'Series B SaaS (Compliance Risk -80%)', 'Series C (98% Data Quality)'],
+  icon: React.createElement(ShieldCheck, { className: 'w-6 h-6' }),
+  gradient: 'from-amber-500 to-orange-500',
   impact: ['board-governance'],
-  bottleneck: ['strategy', 'operationalization'],
-  role: ['ceo', 'vc-board'],
+  bottleneck: ['setup', 'operationalization'],
+  role: ['ceo', 'cto', 'coo'],
 }
 ```
 
-### 2.2 Update für index.ts (ID 14)
+### 2.2 Update für index.ts (ID 15)
 
 ```typescript
 {
-  id: 14,
-  slug: 'board-governance/strategic-governance',
+  id: 15,
+  slug: 'board-governance/operational-governance',
   title: {
-    en: 'Strategic Governance Playbook',
-    de: 'Strategic Governance Playbook',
+    en: 'Operational Governance Playbook',
+    de: 'Operational Governance Playbook',
   },
   description: {
-    en: 'How to build board and governance systems that scale with AI. Learn the 5-component framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance) used by AI-native companies to reduce board prep time by 80% and increase board confidence by 100%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du Board- und Governance-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Board Intelligence & Reporting, Strategic Planning & OKRs, Risk Management & Compliance, Investor Relations & Communication, AI-Powered Governance), das AI-native Unternehmen nutzen, um Board Prep Time um 80% zu reduzieren und Board Confidence um 100% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to build operational governance systems that scale with AI. Learn the 5-component framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance) used by AI-native companies to improve data quality by 80% and reduce compliance risk by 70%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Operational Governance Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Data Governance, Legal & Compliance, AI Governance & Ethics, Operational Risk Management, AI-Powered Operational Governance), das AI-native Unternehmen nutzen, um Datenqualität um 80% zu verbessern und Compliance-Risiko um 70% zu reduzieren. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
-  icon: 'Shield', // GEÄNDERT von 'Compass'
-  color: 'orange',
-  gradient: 'from-orange-500 to-amber-500',
+  icon: 'ShieldCheck', // GEÄNDERT von 'Activity'
+  color: 'amber',
+  gradient: 'from-amber-500 to-orange-500',
   area: ['board-governance'],
-  bottleneck: ['strategy', 'operationalization'], // +operationalization hinzugefügt
-  role: ['ceo', 'vc-board'],
+  bottleneck: ['setup', 'operationalization'], // +setup hinzugefügt
+  role: ['ceo', 'cto', 'coo'], // GEÄNDERT: +cto, -vc-board
   ebene: 3,
   parent: 4,
   children: [],
 }
 ```
 
-### 2.3 Vollständiger Content für strategic-governance.ts (~500 Zeilen)
+### 2.3 Vollständiger Content für operational-governance.ts (~500 Zeilen)
 
 **Hero Section:**
-- Badge: "Strategic Governance · Board & Governance"
-- Title: "Strategic Governance Playbook"
-- Subtitle: "How to build board and governance systems that scale with AI"
-- Description: 95 Wörter (Briefing-Text)
+- Badge: "Operational Governance · Board & Governance"
+- Title: "Operational Governance Playbook"
+- Subtitle: "How to build operational governance systems that scale with AI"
+- Description: 96 Wörter (Briefing-Text)
 - Trust Badges: ~3,000 Words, 3 Case Studies, 90-Day Roadmap
-- Gradient: from-orange-500 to-amber-500
+- Gradient: from-amber-500 to-orange-500
 
 **Summary Section:**
-- Problem: 20-40 hours board prep, 40-60% board confidence, 2-4 weeks decision speed
-- Why It Matters: Board governance is the foundation for strategic clarity and investor confidence
+- Problem: Data quality 40%, reactive compliance, 80% no AI governance, 48h incident response
+- Why It Matters: Operational governance protects against risk and enables trust
 - Solution: 5-Komponenten-Framework
 
 **Problem Section:**
 4 Bullets:
-- Board Prep Time: 20-40 hours per meeting (vs. 4-8 hours AI-native)
-- Board Confidence: 40-60% average (vs. 95% AI-native)
-- Strategic Decision Speed: 2-4 weeks (vs. 2-4 days AI-native)
-- Investor Relations: Reactive communication (vs. proactive AI-native)
+- Data Quality: 40% average (vs. 95% AI-native)
+- Compliance Risk: Reactive compliance, discover issues during audits
+- AI Governance: 80% of companies have no AI governance framework
+- Operational Risk: 48 hours incident response (vs. 2 hours AI-native)
 
 4 Metrics:
-- Board Prep Time: 20-40h, trend up
-- Board Confidence: 40-60%, trend down
-- Decision Speed: 2-4 weeks, trend up
-- Investor Communication: Reactive, trend down
+- Data Quality: 40%, trend down
+- Compliance: Reactive, trend down
+- AI Governance: 20%, trend down
+- Incident Response: 48h, trend up
 
 **Framework Section (5 Komponenten):**
 
-1. **Board Intelligence & Reporting**
-   - Icon: BarChart3, Color: cyan
-   - Impact: Board Prep Time -80%, Board Confidence +100%
-   - Actions: Board Dashboard (Real-Time KPIs), Board Materials (Deck, Memo, Appendix), Board Reporting Automation, Board Intelligence (Insights, Trends), AI-Powered Board Intelligence
+1. **Data Governance & Quality**
+   - Icon: Database, Color: cyan
+   - Impact: Data Quality +80%, Data Access Time -90%
+   - Actions: Data Governance Framework (Policies, Ownership, Stewardship), Data Quality Management, Data Catalog & Discovery, Data Access & Security, AI-Powered Data Governance
 
-2. **Strategic Planning & OKRs**
-   - Icon: Target, Color: blue
-   - Impact: Strategic Clarity +200%, OKR Achievement +50%
-   - Actions: Strategic Planning (Vision, Mission, Strategy), OKR Framework, Strategic Initiatives, Strategic Reviews, AI-Powered Strategic Planning
+2. **Legal & Compliance Management**
+   - Icon: Scale, Color: blue
+   - Impact: Compliance Risk -70%, Audit Time -80%
+   - Actions: Compliance Framework (GDPR, SOC 2, ISO 27001), Compliance Automation, Contract Management, Legal Operations, AI-Powered Compliance
 
-3. **Risk Management & Compliance**
-   - Icon: ShieldCheck, Color: violet
-   - Impact: Risk Reduction -50%, Compliance Confidence +100%
-   - Actions: Risk Framework (Identification, Assessment, Mitigation), Compliance Management, Risk Dashboard, Crisis Management, AI-Powered Risk Management
+3. **AI Governance & Ethics**
+   - Icon: Brain, Color: violet
+   - Impact: AI Risk -60%, AI Trust +100%
+   - Actions: AI Ethics Framework (Fairness, Accountability, Transparency), AI Risk Management, AI Model Governance, AI Explainability & Transparency, AI-Powered AI Governance
 
-4. **Investor Relations & Communication**
-   - Icon: Users, Color: amber
-   - Impact: Investor Confidence +100%, Fundraising Success +50%
-   - Actions: Investor Communication Strategy, Investor Updates (Monthly/Quarterly), Investor Relations Materials, Investor Engagement, AI-Powered Investor Relations
+4. **Operational Risk Management**
+   - Icon: ShieldAlert, Color: amber
+   - Impact: Operational Risk -50%, Incident Response Time -80%
+   - Actions: Risk Framework (Categories, Assessment, Mitigation), Incident Management, Business Continuity, Vendor Risk Management, AI-Powered Risk Management
 
-5. **AI-Powered Governance**
+5. **AI-Powered Operational Governance**
    - Icon: Sparkles, Color: pink
-   - Impact: Governance Efficiency +300%, Board Confidence +100%
-   - Actions: AI Board Intelligence, AI Strategic Planning, AI Risk Management, AI Investor Relations, AI Governance Intelligence
+   - Impact: Governance Efficiency +300%, Risk Reduction -60%
+   - Actions: AI Data Governance, AI Compliance, AI Ethics Monitoring, AI Risk Management, AI Governance Intelligence
 
 **Case Studies (3 anonymisiert):**
 
-1. **Series A SaaS Company** (Board Prep Time -85%)
-   - Challenge: Board prep 40 hours, board confidence 50%, no board intelligence
-   - Results: Board Prep 40h → 6h, Board Confidence 50% → 90%, Decision Speed 3wk → 3d
+1. **Series A SaaS Company** (Data Quality +88%)
+   - Challenge: Data quality 40%, no data governance, high compliance risk
+   - Results: Data Quality 40% → 95%, Compliance Risk -70%, SOC 2 in 3 months
    - Timeline: 6 months | Power Up + Boost
 
-2. **Series B SaaS Company** (Board Confidence 95%)
-   - Challenge: Board confidence 60%, no risk management, reactive investor relations
-   - Results: Board Confidence 60% → 95%, Risk Reduction -50%, Series C raised in 30 days
+2. **Series B SaaS Company** (Compliance Risk -80%)
+   - Challenge: No compliance framework, high regulatory risk, no AI governance
+   - Results: Compliance Risk -80%, HIPAA + SOC 2 in 6 months, Audit Time -90%
    - Timeline: 12 months | Boost + Accelerate
 
-3. **Series C Company** (AI Governance, 4-Hour Board Prep)
+3. **Series C Company** (AI Governance, 98% Data Quality)
    - Challenge: Scale governance 5x without 5x governance team
-   - Results: Board Prep 35h → 4h, Governance Team 5 → 6, Board Confidence 65% → 98%
+   - Results: Data Quality 60% → 98%, Governance Team 8 → 10, Incident Response 48h → 2h
    - Timeline: 18 months | Accelerate × 2
 
 **Roadmap (90-Day):**
-- Phase 1: Strategy (Week 1-2) - Board Intelligence Design, Strategic Planning Framework, Risk Management Framework
-- Phase 2: Setup (Week 3-4) - Board Dashboard, OKR System, Risk Dashboard, Investor Portal
-- Phase 3: Execution (Week 5-8) - Board Intelligence Tracking, OKR Tracking, Risk Monitoring, Investor Communication
+- Phase 1: Strategy (Week 1-2) - Data Governance Framework, Compliance Roadmap, AI Ethics Framework
+- Phase 2: Setup (Week 3-4) - Data Catalog, Compliance Automation, AI Governance System, Risk Dashboard
+- Phase 3: Execution (Week 5-8) - Data Governance Tracking, Compliance Execution, AI Governance Monitoring, Risk Monitoring
 
 **Solutions Connection:**
 1. Power Up: Board Readiness (30 Days, €23.6K)
@@ -182,10 +182,10 @@ import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shiel
    - Link: /solutions/boost/board-excellence
 
 **Personas:**
-- CEO: Need to reduce board prep time and increase board confidence
-- Board Members: Need better board intelligence and strategic clarity
-- VCs: Need portfolio governance and investor relations systems
-- CFO/COO: Responsible for board reporting and governance operations
+- CEO: Need to reduce governance risk and improve data quality
+- CTO: Responsible for data governance and AI governance
+- COO: Need operational risk management and business continuity
+- Legal/Compliance: Need to achieve compliance and reduce legal risk
 
 **Final CTA:**
 - Headline: "Get Started Today"
@@ -194,27 +194,27 @@ import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shiel
 
 ### 2.4 Neue Page-Komponente
 
-**Datei:** `src/pages/PlaybookStrategicGovernance.tsx`
+**Datei:** `src/pages/PlaybookOperationalGovernance.tsx`
 ```typescript
 import React from 'react';
 import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
-import { strategicGovernanceData } from '@/data/playbooks/content/strategic-governance';
+import { operationalGovernanceData } from '@/data/playbooks/content/operational-governance';
 
-const PlaybookStrategicGovernance: React.FC = () => {
-  return <PlaybookLandingPage data={strategicGovernanceData} />;
+const PlaybookOperationalGovernance: React.FC = () => {
+  return <PlaybookLandingPage data={operationalGovernanceData} />;
 };
 
-export default PlaybookStrategicGovernance;
+export default PlaybookOperationalGovernance;
 ```
 
 ### 2.5 Route in App.tsx
 
 ```typescript
 // Lazy Import hinzufügen
-const PlaybookStrategicGovernance = lazy(() => import("./pages/PlaybookStrategicGovernance"));
+const PlaybookOperationalGovernance = lazy(() => import("./pages/PlaybookOperationalGovernance"));
 
 // Route hinzufügen (vor dem Catch-All)
-<Route path="/playbooks/board-governance/strategic" element={<PlaybookStrategicGovernance />} />
+<Route path="/playbooks/board-governance/operational" element={<PlaybookOperationalGovernance />} />
 ```
 
 ---
@@ -223,38 +223,39 @@ const PlaybookStrategicGovernance = lazy(() => import("./pages/PlaybookStrategic
 
 | Datei | Aktion | Geschätzte Zeilen |
 |-------|--------|-------------------|
-| `src/data/playbooks.ts` | Strategic Governance Eintrag + Shield Import | ~40 Zeilen |
-| `src/data/playbooks/index.ts` | Description + Icon + Bottleneck für ID 14 | ~15 Zeilen |
-| `src/data/playbooks/content/strategic-governance.ts` | Vollständiger Content | ~500 Zeilen |
-| `src/pages/PlaybookStrategicGovernance.tsx` | Neue Datei erstellen | ~10 Zeilen |
+| `src/data/playbooks.ts` | Operational Governance Eintrag + ShieldCheck Import | ~40 Zeilen |
+| `src/data/playbooks/index.ts` | Description + Icon + Bottleneck + Role für ID 15 | ~15 Zeilen |
+| `src/data/playbooks/content/operational-governance.ts` | Vollständiger Content | ~500 Zeilen |
+| `src/pages/PlaybookOperationalGovernance.tsx` | Neue Datei erstellen | ~10 Zeilen |
 | `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
 
 ---
 
 ## Technische Notizen
 
-1. **Startet Board & Governance Serie** (1/2 Playbooks)
+1. **Komplettiert Board & Governance Serie** (2/2 Playbooks)
 2. **5 Komponenten**:
-   - Board Intelligence & Reporting
-   - Strategic Planning & OKRs
-   - Risk Management & Compliance
-   - Investor Relations & Communication
-   - AI-Powered Governance
+   - Data Governance & Quality
+   - Legal & Compliance Management
+   - AI Governance & Ethics
+   - Operational Risk Management
+   - AI-Powered Operational Governance
 3. **Bilingual Content** (EN/DE) in allen Sections
 4. **Solutions Connection** verlinkt auf Board Readiness (Power Up) und Board Excellence (Boost)
-5. **Icon-Palette**: BarChart3 (Board Intelligence), Target (Strategic Planning), ShieldCheck (Risk), Users (Investor Relations), Sparkles (AI Governance)
-6. **Gradient**: from-orange-500 to-amber-500 (Board & Governance-Theme)
-7. **Icon korrigiert**: Shield statt Compass
-8. **Bottleneck erweitert**: strategy + operationalization
+5. **Icon-Palette**: Database (Data Governance), Scale (Legal), Brain (AI Ethics), ShieldAlert (Risk), Sparkles (AI Governance)
+6. **Gradient**: from-amber-500 to-orange-500 (Operational Governance-Theme)
+7. **Icon korrigiert**: ShieldCheck statt Activity
+8. **Bottleneck erweitert**: setup + operationalization
+9. **Role korrigiert**: ceo, cto, coo (ohne vc-board)
 
 ---
 
 ## Erwartetes Ergebnis
 
 Nach Implementierung:
-- `/playbooks` Übersichtsseite zeigt **8 Kacheln** (3 Growth Engines + 4 Operating Systems + 1 Board & Governance)
-- Strategic Governance Kachel zeigt **5-Komponenten-Framework Teaser**
-- "Learn More" Link führt zu `/playbooks/board-governance/strategic`
+- `/playbooks` Übersichtsseite zeigt **9 Kacheln** (3 Growth Engines + 4 Operating Systems + 2 Board & Governance)
+- Operational Governance Kachel zeigt **5-Komponenten-Framework Teaser**
+- "Learn More" Link führt zu `/playbooks/board-governance/operational`
 - Landing Page zeigt alle 8 Sections mit vollständigem bilingualen Content
-- **Board & Governance Serie gestartet** (1/2 Playbooks)
+- **Board & Governance Serie komplett** (2/2 Playbooks)
 
