@@ -84,6 +84,7 @@ const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScali
 const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
 const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
 const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
+const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 
 const queryClient = new QueryClient();
 
@@ -181,6 +182,7 @@ const App = () => (
                 <Route path="/expertise/amf" element={<ExpertiseAMF />} />
                 <Route path="/expertise/anst" element={<ExpertiseANST />} />
                 <Route path="/expertise/sst" element={<ExpertiseSST />} />
+                <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
