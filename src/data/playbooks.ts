@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -145,5 +145,37 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo', 'cto'],
+  },
+  {
+    id: 'finance',
+    slug: 'operating-systems/finance',
+    title: {
+      en: 'Finance Playbook',
+      de: 'Finance Playbook',
+    },
+    description: {
+      en: 'How to build finance systems that scale with AI. Learn the 5-component framework (Unit Economics, FP&A Systems, Scenario Planning, Financial Reporting, AI-Powered Finance) used by AI-native companies to improve Rule of 40 by 20-40pp and increase forecast accuracy from 60% to 95%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Finanzsysteme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Unit Economics, FP&A Systeme, Szenarioplanung, Financial Reporting, AI-Powered Finance), das AI-native Unternehmen nutzen, um Rule of 40 um 20-40pp zu verbessern und Forecast-Genauigkeit von 60% auf 95% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Rule of 40 improvement of 20-40pp',
+        'Forecast accuracy increase from 60% to 95%',
+        'Financial close time reduction from 10 to 2 days',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Rule of 40 Verbesserung von 20-40pp',
+        'Forecast-Genauigkeit Steigerung von 60% auf 95%',
+        'Financial Close Zeit Reduktion von 10 auf 2 Tage',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Rule of 40 +30pp)', 'Series B SaaS (Forecast 95%)', 'Series C (€3M/year saved)'],
+    icon: React.createElement(DollarSign, { className: 'w-6 h-6' }),
+    gradient: 'from-emerald-500 to-green-500',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'cfo', 'coo'],
   },
 ];

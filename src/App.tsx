@@ -68,6 +68,7 @@ const PlaybookGtmRevenue = lazy(() => import("./pages/PlaybookGtmRevenue"));
 const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));
 const PlaybookCustomerSuccess = lazy(() => import("./pages/PlaybookCustomerSuccess"));
 const PlaybookOperations = lazy(() => import("./pages/PlaybookOperations"));
+const PlaybookFinance = lazy(() => import("./pages/PlaybookFinance"));
 
 const queryClient = new QueryClient();
 
@@ -149,6 +150,7 @@ const App = () => (
                 <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />
                 <Route path="/playbooks/growth-engines/customer-success" element={<PlaybookCustomerSuccess />} />
                 <Route path="/playbooks/operating-systems/operations" element={<PlaybookOperations />} />
+                <Route path="/playbooks/operating-systems/finance" element={<PlaybookFinance />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
