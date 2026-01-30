@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -113,5 +113,37 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['execution-focus'],
     role: ['ceo', 'coo'],
+  },
+  {
+    id: 'operations',
+    slug: 'operating-systems/operations',
+    title: {
+      en: 'Operations Playbook',
+      de: 'Operations Playbook',
+    },
+    description: {
+      en: 'How to build operations that scale with AI. Learn the 5-component framework (Process Design, Workflow Automation, AI Orchestration, Operational Analytics, AI-Powered Operations) used by AI-native companies to reduce operational costs by 60% and increase efficiency by 200%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Operations aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Process Design, Workflow Automation, AI Orchestration, Operational Analytics, AI-Powered Operations), das AI-native Unternehmen nutzen, um Betriebskosten um 60% zu senken und Effizienz um 200% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Operational cost reduction of 40-60%',
+        'Manual work reduction of 50-70%',
+        'Efficiency improvement of 200-400%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Betriebskosten-Reduktion von 40-60%',
+        'Manuelle Arbeit Reduktion von 50-70%',
+        'Effizienz-Steigerung von 200-400%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Cost -60%)', 'Series B SaaS (200+ Workflows)', 'Series C (€2M/year saved)'],
+    icon: React.createElement(Settings, { className: 'w-6 h-6' }),
+    gradient: 'from-blue-500 to-indigo-500',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'coo', 'cto'],
   },
 ];
