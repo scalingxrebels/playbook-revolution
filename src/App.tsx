@@ -79,6 +79,7 @@ const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrateg
 const PlaybookGrowthEngines = lazy(() => import("./pages/PlaybookGrowthEngines"));
 const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSystems"));
 const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
+const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
 
 const queryClient = new QueryClient();
 
@@ -171,6 +172,7 @@ const App = () => (
                 <Route path="/playbooks/growth-engines" element={<PlaybookGrowthEngines />} />
                 <Route path="/playbooks/operating-systems" element={<PlaybookOperatingSystems />} />
                 <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
+                <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
