@@ -124,12 +124,12 @@ export const playbookIndex: PlaybookMeta[] = [
     id: 6,
     slug: 'strategic-capabilities',
     title: {
-      en: 'Strategic Capabilities (C₁-C₄) Playbook',
-      de: 'Strategic Capabilities (C₁-C₄) Playbook',
+      en: 'Strategic Capabilities Playbook',
+      de: 'Strategic Capabilities Playbook',
     },
     description: {
-      en: 'Master the 4 core capabilities: Strategy, Setup, Execution, and Operationalization. The meta-framework for scaling.',
-      de: 'Meistere die 4 Kern-Capabilities: Strategy, Setup, Execution und Operationalization. Das Meta-Framework für Skalierung.',
+      en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
     },
     icon: 'Target',
     color: 'red',
