@@ -1,9 +1,16 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { z } from 'https://deno.land/x/zod@v3.22.4/mod.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 }
+
+// Input validation schema for POST requests
+const updateRoleSchema = z.object({
+  targetUserId: z.string().uuid({ message: 'targetUserId must be a valid UUID' }),
+  makeAdmin: z.boolean({ invalid_type_error: 'makeAdmin must be a boolean' }),
+})
 
 Deno.serve(async (req) => {
   // Handle CORS preflight
@@ -93,14 +100,30 @@ Deno.serve(async (req) => {
 
     // Assign or remove admin role
     if (req.method === 'POST') {
-      const { targetUserId, makeAdmin } = await req.json()
-
-      if (!targetUserId) {
-        return new Response(JSON.stringify({ error: 'targetUserId required' }), { 
+      // Parse and validate request body
+      let body: unknown
+      try {
+        body = await req.json()
+      } catch {
+        return new Response(JSON.stringify({ error: 'Invalid JSON body' }), { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
         })
       }
+
+      const validation = updateRoleSchema.safeParse(body)
+      
+      if (!validation.success) {
+        return new Response(JSON.stringify({ 
+          error: 'Invalid request format', 
+          details: validation.error.issues.map(i => i.message)
+        }), { 
+          status: 400, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' } 
+        })
+      }
+
+      const { targetUserId, makeAdmin } = validation.data
 
       // Prevent self-demotion
       if (targetUserId === userId && !makeAdmin) {

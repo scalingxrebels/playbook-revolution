@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import SolutionHero from '@/components/solutions/SolutionHero';
+import FilterOnboardingHint from '@/components/solutions/FilterOnboardingHint';
 import ChallengeTabNavigation from '@/components/solutions/ChallengeTabNavigation';
 import SolutionTypeChips from '@/components/solutions/SolutionTypeChips';
 import SolutionTileGrid from '@/components/solutions/SolutionTileGrid';
@@ -126,6 +127,9 @@ const Solutions: React.FC = () => {
               </button>
             )}
           </div>
+          
+          {/* Onboarding Hint */}
+          <FilterOnboardingHint />
           
           {/* Level 1: Challenge Tabs */}
           <div>

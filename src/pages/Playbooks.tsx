@@ -11,9 +11,7 @@ const Playbooks: React.FC = () => {
       <LanguageProvider>
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
-          <main className="pt-20">
-            <PlaybookLibrary />
-          </main>
+          <PlaybookLibrary />
           <Footer />
         </div>
       </LanguageProvider>

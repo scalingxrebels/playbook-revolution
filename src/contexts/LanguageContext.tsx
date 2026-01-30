@@ -298,7 +298,10 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>(() => {
+    const stored = localStorage.getItem('preferred-language');
+    return (stored === 'de' || stored === 'en') ? stored : 'en';
+  });
 
   const t = useCallback((key: string): string => {
     const translation = translations[key];
@@ -310,11 +313,20 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   }, [language]);
 
   const toggleLanguage = useCallback(() => {
-    setLanguage(prev => prev === 'en' ? 'de' : 'en');
+    setLanguage(prev => {
+      const next = prev === 'en' ? 'de' : 'en';
+      localStorage.setItem('preferred-language', next);
+      return next;
+    });
+  }, []);
+
+  const handleSetLanguage = useCallback((lang: Language) => {
+    localStorage.setItem('preferred-language', lang);
+    setLanguage(lang);
   }, []);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t, toggleLanguage }}>
       {children}
     </LanguageContext.Provider>
   );

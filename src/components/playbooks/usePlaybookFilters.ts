@@ -1,0 +1,141 @@
+import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { playbooks, type Playbook } from '@/data/playbooks';
+import { 
+  type ActiveFilters, 
+  defaultFilters,
+  FILTER_WEIGHTS,
+  type ImpactTag,
+  type BottleneckTag,
+  type RoleTag,
+} from '@/data/playbookFilters';
+
+interface PlaybookWithScore extends Playbook {
+  matchScore: number;
+}
+
+function calculateMatchScore(playbook: Playbook, filters: ActiveFilters): number {
+  let score = 0;
+  
+  // Impact: +45 points if match
+  if (filters.impact === 'all' || playbook.impact.includes(filters.impact)) {
+    score += FILTER_WEIGHTS.impact;
+  }
+  
+  // Bottleneck: +35 points if match (note: 'none' means no filter = show all)
+  if (filters.bottleneck === 'none' || playbook.bottleneck.includes(filters.bottleneck)) {
+    score += FILTER_WEIGHTS.bottleneck;
+  }
+  
+  // Role: +20 points if match
+  if (filters.role === 'all' || playbook.role.includes(filters.role)) {
+    score += FILTER_WEIGHTS.role;
+  }
+  
+  return score;
+}
+
+export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  // Initialize filters from URL params
+  const [filters, setFilters] = useState<ActiveFilters>(() => {
+    return {
+      impact: (searchParams.get('impact') as ImpactTag) || 'all',
+      bottleneck: (searchParams.get('bottleneck') as BottleneckTag) || 'none',
+      role: (searchParams.get('role') as RoleTag) || 'all',
+    };
+  });
+
+  // Sync filters to URL
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (filters.impact !== 'all') params.set('impact', filters.impact);
+    if (filters.bottleneck !== 'none') params.set('bottleneck', filters.bottleneck);
+    if (filters.role !== 'all') params.set('role', filters.role);
+    setSearchParams(params, { replace: true });
+  }, [filters, setSearchParams]);
+
+  const updateFilter = useCallback(<K extends keyof ActiveFilters>(
+    key: K, 
+    value: ActiveFilters[K]
+  ) => {
+    setFilters(prev => ({ ...prev, [key]: value }));
+  }, []);
+
+  const resetFilters = useCallback(() => {
+    setFilters(defaultFilters);
+  }, []);
+
+  // Check if any filter is active (not default)
+  const hasActiveFilters = useMemo(() => {
+    return filters.impact !== 'all' || 
+           filters.bottleneck !== 'none' || 
+           filters.role !== 'all';
+  }, [filters]);
+
+  // Filter and score playbooks
+  const filteredPlaybooks = useMemo(() => {
+    // First, apply text search
+    let results = playbooks.filter(playbook => {
+      if (searchQuery === '') return true;
+      const searchLower = searchQuery.toLowerCase();
+      return (
+        playbook.title[language].toLowerCase().includes(searchLower) ||
+        playbook.description[language].toLowerCase().includes(searchLower)
+      );
+    });
+
+    // If any filter is active, filter by match
+    if (hasActiveFilters) {
+      results = results.filter(playbook => {
+        // Check each non-default filter
+        if (filters.impact !== 'all' && !playbook.impact.includes(filters.impact)) {
+          return false;
+        }
+        if (filters.bottleneck !== 'none' && !playbook.bottleneck.includes(filters.bottleneck)) {
+          return false;
+        }
+        if (filters.role !== 'all' && !playbook.role.includes(filters.role)) {
+          return false;
+        }
+        return true;
+      });
+    }
+
+    // Calculate match scores and sort by score descending
+    const withScores: PlaybookWithScore[] = results.map(playbook => ({
+      ...playbook,
+      matchScore: calculateMatchScore(playbook, filters),
+    }));
+
+    // Sort by: 1. ebene (asc), 2. sortOrder (asc), 3. matchScore (desc), 4. title (alpha)
+    withScores.sort((a, b) => {
+      // 1. Primär: ebene aufsteigend (1 → 2 → 3)
+      if (a.ebene !== b.ebene) {
+        return a.ebene - b.ebene;
+      }
+      // 2. Sekundär: sortOrder aufsteigend innerhalb der Ebene
+      if (a.sortOrder !== b.sortOrder) {
+        return a.sortOrder - b.sortOrder;
+      }
+      // 3. Tertiär: matchScore absteigend (Filter-Relevanz)
+      if (b.matchScore !== a.matchScore) {
+        return b.matchScore - a.matchScore;
+      }
+      // 4. Fallback: alphabetisch
+      return a.title[language].localeCompare(b.title[language]);
+    });
+
+    return withScores;
+  }, [searchQuery, language, filters, hasActiveFilters]);
+
+  return {
+    filters,
+    updateFilter,
+    resetFilters,
+    hasActiveFilters,
+    filteredPlaybooks,
+    totalPlaybooks: playbooks.length,
+  };
+}

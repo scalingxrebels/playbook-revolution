@@ -64,6 +64,23 @@ const Keynote = lazy(() => import("./pages/Keynote"));
 const ExpertSession = lazy(() => import("./pages/ExpertSession"));
 const Maxxeed = lazy(() => import("./pages/Maxxeed"));
 const FixGrowthBook = lazy(() => import("./pages/FixGrowthBook"));
+const PlaybookGtmRevenue = lazy(() => import("./pages/PlaybookGtmRevenue"));
+const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));
+const PlaybookCustomerSuccess = lazy(() => import("./pages/PlaybookCustomerSuccess"));
+const PlaybookOperations = lazy(() => import("./pages/PlaybookOperations"));
+const PlaybookFinance = lazy(() => import("./pages/PlaybookFinance"));
+const PlaybookTalent = lazy(() => import("./pages/PlaybookTalent"));
+const PlaybookDataTech = lazy(() => import("./pages/PlaybookDataTech"));
+const PlaybookStrategicGovernance = lazy(() => import("./pages/PlaybookStrategicGovernance"));
+const PlaybookOperationalGovernance = lazy(() => import("./pages/PlaybookOperationalGovernance"));
+const PlaybookExitMA = lazy(() => import("./pages/PlaybookExitMA"));
+const PlaybookPortfolioExcellence = lazy(() => import("./pages/PlaybookPortfolioExcellence"));
+const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrategicCapabilities"));
+const PlaybookGrowthEngines = lazy(() => import("./pages/PlaybookGrowthEngines"));
+const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSystems"));
+const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
+const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
+const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
 
 const queryClient = new QueryClient();
 
@@ -141,6 +158,23 @@ const App = () => (
                 <Route path="/solutions/expert-session" element={<ExpertSession />} />
                 <Route path="/tools/maxxeed" element={<Maxxeed />} />
                 <Route path="/book/fix-growth" element={<FixGrowthBook />} />
+                <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
+                <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />
+                <Route path="/playbooks/growth-engines/customer-success" element={<PlaybookCustomerSuccess />} />
+                <Route path="/playbooks/operating-systems/operations" element={<PlaybookOperations />} />
+                <Route path="/playbooks/operating-systems/finance" element={<PlaybookFinance />} />
+                <Route path="/playbooks/operating-systems/talent" element={<PlaybookTalent />} />
+                <Route path="/playbooks/operating-systems/data-tech" element={<PlaybookDataTech />} />
+                <Route path="/playbooks/board-governance/strategic" element={<PlaybookStrategicGovernance />} />
+                <Route path="/playbooks/board-governance/operational" element={<PlaybookOperationalGovernance />} />
+                <Route path="/playbooks/board-governance/exit-ma" element={<PlaybookExitMA />} />
+                <Route path="/playbooks/portfolio/excellence" element={<PlaybookPortfolioExcellence />} />
+                <Route path="/playbooks/strategic-capabilities" element={<PlaybookStrategicCapabilities />} />
+                <Route path="/playbooks/growth-engines" element={<PlaybookGrowthEngines />} />
+                <Route path="/playbooks/operating-systems" element={<PlaybookOperatingSystems />} />
+                <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
+                <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
+                <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

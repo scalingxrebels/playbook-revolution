@@ -1,99 +1,121 @@
 
 
-# Plan: Fördermittel-Navigator Solution Tile hinzufügen
+# Plan: Dynamische Stats im Playbook Hero
 
-## Übersicht
+## Analyse
 
-| Element | Details |
-|---------|---------|
-| Tile ID | 45 (nach Fix Growth Book mit ID 44) |
-| Solution Type | `tools` (AI-Powered Tools) |
-| Challenges | `board-pressure`, `portfolio-performance`, `orientation` |
-| Preis | Free |
-
----
-
-## Änderung in `src/data/solutionTiles.ts`
-
-### Neue Tile-Konfiguration (nach Zeile 1610)
-
+**Aktueller Stand (Zeilen 42-47 in PlaybookLibrary.tsx):**
 ```typescript
-// ============================================
-// AI-POWERED TOOLS - FUNDING NAVIGATOR (ID 45)
-// ============================================
-{
-  id: 45,
-  slug: 'funding-navigator',
-  solutionType: 'tools',
-  challenges: ['board-pressure', 'portfolio-performance', 'orientation'],
-  price: 'Free',
-  priceTag: 'free',
-  
-  headlineEn: 'Funding Navigator',
-  headlineDe: 'Fördermittel-Navigator',
-  
-  problemEn: "German startups waste 4-8 weeks researching funding programs (EXIST, ZIM, KfW)—and still miss opportunities. 70% miss relevant funding, leaving €150k-€350k on the table.",
-  problemDe: "Deutsche Startups verschwenden 4-8 Wochen mit der Recherche von Förderprogrammen (EXIST, ZIM, KfW)—und verpassen trotzdem Chancen. 70% verpassen relevante Förderungen und lassen €150k-€350k liegen.",
-  
-  solutionEn: "AI-native funding matching platform that automates the entire funding process in 10 minutes. Get AI-powered matching to specialized consultants.",
-  solutionDe: "AI-native Fördermittel-Matching-Plattform, die den gesamten Förderprozess in 10 Minuten automatisiert. Erhalte AI-gestütztes Matching zu spezialisierten Beratern.",
-  
-  deliverablesEn: [
-    'Intelligent questionnaire (10 min)',
-    'AI-powered matching (A/B/C scoring)',
-    'Personal consultation (24h)',
-    'All programs (EXIST, ZIM, KfW, etc.)'
-  ],
-  deliverablesDe: [
-    'Intelligenter Fragebogen (10 Min)',
-    'AI-gestütztes Matching (A/B/C Scoring)',
-    'Persönliche Beratung (24h)',
-    'Alle Programme (EXIST, ZIM, KfW, etc.)'
-  ],
-  
-  impactEn: "-99% research time (10 min vs. 4-8 weeks), +400-600% programs identified, +200-400% funding volume. Free.",
-  impactDe: "-99% Recherchezeit (10 Min statt 4-8 Wochen), +400-600% identifizierte Programme, +200-400% Fördervolumen. Kostenlos.",
-  
-  primaryCtaEn: 'Start Funding Check',
-  primaryCtaDe: 'Förder-Check starten',
-  primaryCtaAction: 'external',
-  primaryCtaUrl: 'https://foerdermittelnavigator.com/',
-  
-  secondaryCtaEn: 'Learn more',
-  secondaryCtaDe: 'Mehr erfahren',
-  secondaryCtaUrl: '/about'
-}
+const playbookStats = [
+  { value: '1', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' },
+  { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' },
+  { value: '3', label: { en: 'Filters', de: 'Filter' }, color: 'primary' },
+  { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' },
+];
+```
+
+**Problem:** 
+- Stats hardcoded
+- Nur einzeiliges Label unterstützt
+- Aktuelles Design zeigt nicht die gewünschten zweizeiligen Labels
+
+**Gewünschtes Design:**
+```text
+┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
+│   17 Playbooks   │   5 Areas        │   10-30x ROI     │   FREE           │
+│   Complete       │   Growth, Ops,   │   Proven         │   Download       │
+│   Framework      │   Board, More    │   Results        │   All PDFs       │
+└──────────────────┴──────────────────┴──────────────────┴──────────────────┘
 ```
 
 ---
 
-## Tile-Verhalten
+## Implementierung
 
-### Visuelles Design (automatisch durch `solutionType: 'tools'`)
-- Orange Rahmen (`border-accent/50`)
-- Gradient-Button für Primary CTA
-- Wrench-Icon (🔧) als Kategorie-Icon
+### 1. SharedHero Interface erweitern (`src/components/shared/SharedHero.tsx`)
 
-### CTAs
-| CTA | Aktion | URL |
-|-----|--------|-----|
-| Primary: "Start Funding Check" | Externes Tool öffnen | `https://foerdermittelnavigator.com/` |
-| Secondary: "Learn more" | Interne Navigation | `/about` |
+**Änderung:** `sublabel` Property hinzufügen für zweite Zeile
 
-### Filter-Sichtbarkeit
-Die Kachel erscheint bei:
-- **Alle Challenges** (All)
-- **Board Pressure**
-- **Portfolio Performance**  
-- **Need Orientation**
-- **Alle Tools** (AI-Powered Tools Filter)
+```typescript
+interface StatItem {
+  value: string;
+  label: { en: string; de: string };
+  sublabel?: { en: string; de: string };  // NEU
+  color?: 'primary' | 'accent';
+}
+```
+
+### 2. SharedHero Rendering erweitern (Zeilen 96-104)
+
+**Vorher:**
+```typescript
+<span className="block text-xs text-muted-foreground uppercase tracking-wide">
+  {language === 'de' ? stat.label.de : stat.label.en}
+</span>
+```
+
+**Nachher:**
+```typescript
+<span className="block text-xs text-muted-foreground uppercase tracking-wide">
+  {language === 'de' ? stat.label.de : stat.label.en}
+</span>
+{stat.sublabel && (
+  <span className="block text-[10px] text-muted-foreground/70 mt-0.5">
+    {language === 'de' ? stat.sublabel.de : stat.sublabel.en}
+  </span>
+)}
+```
+
+### 3. PlaybookLibrary Stats dynamisch generieren (`src/components/PlaybookLibrary.tsx`)
+
+**Änderung (Zeilen 42-47):**
+
+```typescript
+const playbookStats = [
+  { 
+    value: String(totalPlaybooks),  // DYNAMISCH!
+    label: { en: 'Playbooks', de: 'Playbooks' }, 
+    sublabel: { en: 'Complete Framework', de: 'Komplettes Framework' },
+    color: 'primary' as const 
+  },
+  { 
+    value: '5', 
+    label: { en: 'Areas', de: 'Bereiche' }, 
+    sublabel: { en: 'Growth, Ops, Board...', de: 'Growth, Ops, Board...' },
+    color: 'accent' as const 
+  },
+  { 
+    value: '10-30x', 
+    label: { en: 'ROI', de: 'ROI' }, 
+    sublabel: { en: 'Proven Results', de: 'Bewiesene Ergebnisse' },
+    color: 'primary' as const 
+  },
+  { 
+    value: 'FREE', 
+    label: { en: 'Download', de: 'Download' }, 
+    sublabel: { en: 'All PDFs', de: 'Alle PDFs' },
+    color: 'accent' as const 
+  },
+];
+```
 
 ---
 
-## Technische Details
+## Zusammenfassung der Änderungen
 
-- `primaryCtaAction: 'external'` öffnet URL in neuem Tab
-- `priceTag: 'free'` aktiviert grünen "Free" Badge
-- Kein `partnerBadge` (wie gewünscht)
-- Array-Challenges (kein `'universal'`)
+| Datei | Änderung | Zeilen |
+|-------|----------|--------|
+| `src/components/shared/SharedHero.tsx` | Interface + Rendering erweitern | ~10 Zeilen |
+| `src/components/PlaybookLibrary.tsx` | Stats dynamisch + neue Texte | ~20 Zeilen |
+
+---
+
+## Ergebnis
+
+- **STAT 1:** `{totalPlaybooks} Playbooks` - dynamisch generiert aus der Playbook-Registry
+- **STAT 2:** `5 Areas` - Coverage der 5 Domains
+- **STAT 3:** `10-30x ROI` - bewiesene Ergebnisse
+- **STAT 4:** `FREE Download` - Value Proposition
+
+Die Playbook-Anzahl aktualisiert sich automatisch, wenn neue Playbooks hinzugefügt werden.
 

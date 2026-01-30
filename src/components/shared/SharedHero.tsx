@@ -5,6 +5,7 @@ import TwinklingStars from '@/components/TwinklingStars';
 interface StatItem {
   value: string;
   label: { en: string; de: string };
+  sublabel?: { en: string; de: string };
   color?: 'primary' | 'accent';
 }
 
@@ -102,6 +103,11 @@ const SharedHero: React.FC<SharedHeroProps> = ({
                   <span className="block text-xs text-muted-foreground uppercase tracking-wide">
                     {language === 'de' ? stat.label.de : stat.label.en}
                   </span>
+                  {stat.sublabel && (
+                    <span className="block text-[10px] text-muted-foreground/70 mt-0.5">
+                      {language === 'de' ? stat.sublabel.de : stat.sublabel.en}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
