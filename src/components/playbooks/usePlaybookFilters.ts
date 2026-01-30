@@ -109,11 +109,21 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
       matchScore: calculateMatchScore(playbook, filters),
     }));
 
-    // Sort by match score (descending), then by title alphabetically
+    // Sort by: 1. ebene (asc), 2. sortOrder (asc), 3. matchScore (desc), 4. title (alpha)
     withScores.sort((a, b) => {
+      // 1. Primär: ebene aufsteigend (1 → 2 → 3)
+      if (a.ebene !== b.ebene) {
+        return a.ebene - b.ebene;
+      }
+      // 2. Sekundär: sortOrder aufsteigend innerhalb der Ebene
+      if (a.sortOrder !== b.sortOrder) {
+        return a.sortOrder - b.sortOrder;
+      }
+      // 3. Tertiär: matchScore absteigend (Filter-Relevanz)
       if (b.matchScore !== a.matchScore) {
         return b.matchScore - a.matchScore;
       }
+      // 4. Fallback: alphabetisch
       return a.title[language].localeCompare(b.title[language]);
     });
 
