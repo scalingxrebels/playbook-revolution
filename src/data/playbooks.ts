@@ -26,8 +26,8 @@ export const playbooks: Playbook[] = [
       de: 'GTM/Revenue Playbook',
     },
     description: {
-      en: 'How to build a revenue engine that scales with AI. Learn the 3-component framework (ICP Clarity + Sales Motion + RevOps) used by AI-native companies to reduce CAC by 50% and increase win rates by 100%.',
-      de: 'Wie du eine Revenue Engine aufbaust, die mit AI skaliert. Lerne das 3-Komponenten-Framework (ICP Clarity + Sales Motion + RevOps), das AI-native Unternehmen nutzen, um CAC um 50% zu senken und Win Rates um 100% zu steigern.',
+      en: 'How to build a revenue engine that scales with AI. Learn the 7-lever framework (ICP Clarity, Outbound Sales, Inbound Marketing, Channel Partners, Pricing, Sales Process, PLG) used by AI-native companies to reduce CAC by 50% and increase win rates by 100%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du eine Revenue Engine aufbaust, die mit AI skaliert. Lerne das 7-Hebel-Framework (ICP Clarity, Outbound Sales, Inbound Marketing, Channel Partner, Pricing, Sales Process, PLG), das AI-native Unternehmen nutzen, um CAC um 50% zu senken und Win Rates um 100% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
     },
     outcomes: {
       en: [
