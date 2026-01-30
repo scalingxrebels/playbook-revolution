@@ -149,21 +149,36 @@ const teamMembers = [
   {
     name: 'Michel Lason',
     role: { en: 'Lead Researcher', de: 'Lead Researcher' },
-    description: { en: '18+ years scaling experience\nEx-Haufe, Ex-smapOne', de: '18+ Jahre Scaling-Erfahrung\nEx-Haufe, Ex-smapOne' },
+    tagline: { en: 'Strategy. Scaling. Impact.', de: 'Strategy. Scaling. Impact.' },
+    description: { 
+      en: 'Ex-Management Consultant, SaaS-VP, Scaling Executive, Investor & Captain.', 
+      de: 'Ex-Managementberater, SaaS-VP, Scaling Executive, Investor & Captain.' 
+    },
+    image: '/images/team-michel.png',
     linkedIn: 'https://linkedin.com/in/michel-lason',
     link: '/ml'
   },
   {
     name: 'Alban Halili',
     role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
-    description: { en: 'Operator & Data Analyst\nGTM & Revenue Expert', de: 'Operator & Daten-Analyst\nGTM & Revenue Experte' },
+    tagline: { en: 'Growth. AI Solutions. Automation.', de: 'Growth. AI Solutions. Automation.' },
+    description: { 
+      en: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.', 
+      de: 'Sales- & Marketing-Guru, Innovator, King of Agents & Automations.' 
+    },
+    image: '/images/team-alban.png',
     linkedIn: 'https://linkedin.com/in/alban-halili',
     link: '/ah'
   },
   {
     name: 'Florian Metzger',
     role: { en: 'Theoretical Framework', de: 'Theoretisches Framework' },
-    description: { en: 'AI Architect\nProduct & Tech Expert', de: 'AI Architekt\nProduct & Tech Experte' },
+    tagline: { en: 'RevOps. GTM. Venture Architect.', de: 'RevOps. GTM. Venture Architect.' },
+    description: { 
+      en: 'Growth-Hacker and GTM-Architect for SaaS & B2C with Co-Founder-Mindset.', 
+      de: 'Growth-Hacker und GTM-Architekt für SaaS & B2C mit Co-Founder-Mindset.' 
+    },
+    image: '/images/team-florian.png',
     linkedIn: 'https://linkedin.com/in/florian-metzger',
     link: '/fm'
   }
@@ -467,12 +482,24 @@ const ResearchHub: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {teamMembers.map((member, i) => (
               <Card key={i} className="p-6 text-center border-border/50 hover:border-primary/50 transition-all">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <Users className="w-10 h-10 text-accent-foreground" />
+                {/* Team Image */}
+                <div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-foreground/10">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="font-bold text-xl mb-1">{member.name}</h3>
-                <p className="text-primary font-medium mb-3">{member.role[language]}</p>
-                <p className="text-sm text-muted-foreground whitespace-pre-line mb-4">{member.description[language]}</p>
+                <p className="text-primary font-medium mb-1">{member.role[language]}</p>
+                {/* Tagline */}
+                <p className="text-accent font-medium italic text-sm mb-2">
+                  {member.tagline[language]}
+                </p>
+                {/* Description */}
+                <p className="text-sm text-muted-foreground mb-4">
+                  {member.description[language]}
+                </p>
                 <a 
                   href={member.linkedIn} 
                   target="_blank" 
