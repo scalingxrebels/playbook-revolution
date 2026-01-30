@@ -213,3 +213,92 @@ export interface AMFPageData {
   download: DownloadData;
   finalCta: FinalCTAData;
 }
+
+// ============================================
+// ANST (AI-Native Scaling Theory) Types
+// ============================================
+
+// Problem Section (Traditional Scaling is Linear)
+export interface ProblemSectionData {
+  headline: BilingualText;
+  content: BilingualText;
+  pattern: BilingualText[];
+  problem: BilingualText[];
+  result: BilingualText;
+  bottleneck: BilingualText;
+  chartTitle: BilingualText;
+  chartAnnotation: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// Solution Section (4 Capabilities × AI Multiplier)
+export interface CapabilityItem {
+  id: 'strategy' | 'setup' | 'execution' | 'operationalization';
+  name: BilingualText;
+  tagline: BilingualText;
+  whatItIs: BilingualText[];
+  whyItMatters: BilingualText;
+  exponent?: number; // 1.5 for Strategy & Execution
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+export interface SolutionSectionData {
+  headline: BilingualText;
+  content: BilingualText;
+  pattern: BilingualText[];
+  secret: BilingualText;
+  result: BilingualText;
+  formula: BilingualText;
+  capabilities: CapabilityItem[];
+}
+
+// Formula Section (Illustrative)
+export interface FormulaSectionData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  formulaDisplay: string;
+  components: Array<{
+    symbol: string;
+    name: BilingualText;
+    description: BilingualText;
+  }>;
+  explanation: BilingualText;
+  exponentInsight: {
+    title: BilingualText;
+    content: BilingualText;
+    example: BilingualText;
+  };
+}
+
+// Evidence Section (n=22 Companies)
+export interface EvidenceSectionData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  intro: BilingualText;
+  findings: Array<{
+    number: number;
+    title: BilingualText;
+    content: BilingualText;
+  }>;
+  caveat: { title: BilingualText; content: BilingualText };
+  chartTitle: BilingualText;
+  chartAnnotation: BilingualText;
+  chartData: Array<{
+    maturity: number;
+    timeToRevenue: number;
+    level: 1 | 2 | 3;
+  }>;
+}
+
+// Complete ANST Page Data
+export interface ANSTPageData {
+  hero: AMFHeroData;
+  problem: ProblemSectionData;
+  solution: SolutionSectionData;
+  evidence: EvidenceSectionData;
+  formula: FormulaSectionData;
+  caseStudies: CaseStudiesData;
+  implications: ImplicationsData;
+  download: DownloadData;
+  finalCta: FinalCTAData;
+}
