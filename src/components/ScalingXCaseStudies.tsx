@@ -31,6 +31,7 @@ interface CaseStudy {
   growthTimeline: { year: string; value: string; label?: string }[];
   learnings: { en: string[]; de: string[] };
   highlight: { en: string; de: string };
+  dataSource: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -78,6 +79,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'Community-First AI Image Generation', de: 'Community-First KI-Bildgenerierung' },
+    dataSource: 'ANST v4.5.3, AMF v4.5.1',
   },
   {
     id: 'cursor',
@@ -121,6 +123,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'AI-Native Code Editor', de: 'AI-Nativer Code Editor' },
+    dataSource: 'AMF v4.1, ANST v4.1, TechCrunch (Aug 2024)',
   },
   {
     id: 'perplexity',
@@ -166,6 +169,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Google Challenger', de: 'Der Google-Herausforderer' },
+    dataSource: 'AMF v4.1, ANST v4.1',
   },
   {
     id: 'openai',
@@ -210,6 +214,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: '100M Users in 2 Months (Fastest Ever)', de: '100M Nutzer in 2 Monaten (schnellstes je)' },
+    dataSource: 'Public data (TechCrunch, OpenAI announcements)',
   },
   {
     id: 'stripe',
@@ -254,6 +259,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Developer-First Payments Pioneer', de: 'Der Developer-First Zahlungs-Pionier' },
+    dataSource: 'Public data (Stripe financial reports)',
   },
   {
     id: 'figma',
@@ -298,6 +304,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Collaborative Design Leader', de: 'Der Collaborative Design Leader' },
+    dataSource: 'Public data (Figma announcements)',
   },
   {
     id: 'notion',
@@ -342,6 +349,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Community-Driven Workspace', de: 'Der Community-Driven Workspace' },
+    dataSource: 'Public data (Notion announcements)',
   },
 ];
 
@@ -674,6 +682,11 @@ const ScalingXCaseStudies = () => {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Data Source */}
+                <div className="text-xs text-muted-foreground mb-6 pt-4 border-t border-border/30">
+                  📊 {language === 'de' ? 'Quelle' : 'Source'}: {selectedStudy.dataSource}
                 </div>
 
                 {/* CTA */}
