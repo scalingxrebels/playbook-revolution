@@ -194,6 +194,46 @@ export interface RelatedSolution {
 }
 
 // ============================================================================
+// 8 DIMENSIONS SECTION (Only for Ebene 1 Master Playbook)
+// ============================================================================
+
+export interface DimensionItem {
+  id: string;
+  icon: string;
+  title: BilingualText;
+  description: BilingualText;
+  aiPowered: BilingualText;
+  aiNative: BilingualText;
+  impact: BilingualText;
+}
+
+export interface PlaybookDimensionsSection {
+  title: BilingualText;
+  subtitle: BilingualText;
+  items: DimensionItem[];
+}
+
+// ============================================================================
+// AI MATURITY LEVELS SECTION (Only for Ebene 1 Master Playbook)
+// ============================================================================
+
+export interface MaturityLevel {
+  level: 1 | 2 | 3;
+  name: BilingualText;
+  definition: BilingualText;
+  examples: BilingualText;
+  impact: BilingualText;
+  scaling: BilingualText;
+  timeline: BilingualText;
+}
+
+export interface PlaybookMaturitySection {
+  title: BilingualText;
+  subtitle: BilingualText;
+  levels: MaturityLevel[];
+}
+
+// ============================================================================
 // MASTER PAGE DATA (Complete Landing Page)
 // ============================================================================
 
@@ -224,5 +264,7 @@ export interface PlaybookPageData {
   solutionsConnection: PlaybookSolutionsConnection;
   whoThisIsFor: PlaybookWhoThisIsFor;
   finalCta: FinalCTAData;
-  subPlaybooks?: PlaybookSubPlaybooksSection; // Only for Ebene 2
+  subPlaybooks?: PlaybookSubPlaybooksSection; // Only for Ebene 1 + 2
+  dimensions?: PlaybookDimensionsSection; // Only for Ebene 1 Master Playbook
+  maturityLevels?: PlaybookMaturitySection; // Only for Ebene 1 Master Playbook
 }

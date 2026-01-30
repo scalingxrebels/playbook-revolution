@@ -8,3 +8,5 @@ export { default as PlaybookSolutionsSection } from './PlaybookSolutionsSection'
 export { default as PlaybookPersonasSection } from './PlaybookPersonasSection';
 export { default as PlaybookFinalCTASection } from './PlaybookFinalCTASection';
 export { default as PlaybookSubPlaybooksSection } from './PlaybookSubPlaybooksSection';
+export { default as PlaybookDimensionsSection } from './PlaybookDimensionsSection';
+export { default as PlaybookMaturitySection } from './PlaybookMaturitySection';
