@@ -1,357 +1,242 @@
 
-# Implementierungsplan: AI Maturity Framework (AMF) Research Detail Page
+# Plan: Research-Seite an Playbook-Design anpassen
 
-## Übersicht
+## Identifizierte Design-Unterschiede
 
-Die neue Seite `/expertise/amf` ist eine **Research Detail Page** im HBR-Stil, die das AI Maturity Framework wissenschaftlich aber zugänglich erklärt. Sie unterscheidet sich von Playbooks (praktisch) und Tools (self-service) durch ihren Fokus auf "What we discovered".
+### Hero Section
 
----
+| Aspekt | Playbook (Richtig) | Research (Falsch) |
+|--------|-------------------|-------------------|
+| Background | `#0A0A0F`, `#0F0F1A`, `#1A1A2E` (Deep Space) | `from-background via-background/95` (zu hell) |
+| Mesh Overlay | `bg-mesh opacity-60` | Fehlt komplett |
+| Grid Pattern | `bg-grid-pattern bg-grid-lg opacity-20` | Inline CSS mit `opacity-[0.03]` (zu schwach) |
+| Layout | `max-w-5xl text-center` | Linksbündig, keine max-width |
+| Breadcrumb | Shadcn `<Breadcrumb>` Komponente | Manuelles `<nav>` mit Icons |
+| Badge | `variant="gradient"` mit Icon | `variant="outline"` ohne Icon |
+| Headline | `font-display text-hero-lg text-gradient animate-gradient` | `text-4xl font-bold` (langweilig) |
+| CTAs | `size="xl"` + `shadow-accent-glow` | `size="lg"` ohne Glow |
+| Scroll Indicator | Vorhanden (ChevronDown bounce) | Fehlt |
+| min-height | `min-h-screen` | `min-h-[90vh]` |
 
-## 1. Architektur-Entscheidung
+### Content Sections
 
-### Neues Komponenten-System für Research Pages
+| Aspekt | Playbook (Richtig) | Research (Falsch) |
+|--------|-------------------|-------------------|
+| Section Background | `bg-gradient-to-b from-background via-muted/30 to-background` | Einfaches `py-20` |
+| Header-Badge | Inline-badge mit Icon + `bg-primary/10` | Fehlt |
+| Headline | `font-display` | Standard `font-bold` |
 
-Da die bestehenden Playbook-Sections nicht 1:1 passen (andere Struktur, anderer Ton), erstellen wir ein eigenes Section-System:
+### Final CTA Section
 
-```
-src/
-├── components/
-│   └── research/                        # NEU
-│       ├── ResearchLandingPage.tsx      # Master-Component
-│       ├── types.ts                     # TypeScript Interfaces
-│       └── sections/
-│           ├── ResearchHeroSection.tsx
-│           ├── ResearchWhyItMattersSection.tsx
-│           ├── ResearchThreeLevelsSection.tsx
-│           ├── ResearchMeasurementSection.tsx
-│           ├── ResearchFindingsSection.tsx
-│           ├── ResearchCaseStudiesSection.tsx
-│           ├── ResearchImplicationsSection.tsx
-│           ├── ResearchDownloadSection.tsx
-│           └── ResearchFinalCTASection.tsx
-├── data/
-│   └── research/                        # NEU
-│       ├── types.ts
-│       └── amf.ts                       # Vollständiger Content
-└── pages/
-    └── ExpertiseAMF.tsx                 # NEU - Page Component
-```
+| Aspekt | Playbook (Richtig) | Research (Falsch) |
+|--------|-------------------|-------------------|
+| Background | Deep Space + `bg-mesh` + radial Glow | Einfacher Gradient |
+| Trust Signals | `bg-white/10 backdrop-blur border border-white/20` | Standard Badges |
+| Stats Row | Am Ende mit `border-t border-white/10` | Fehlt |
 
 ---
 
-## 2. Zu erstellende Dateien
+## Zu ändernde Dateien
 
-### 2.1 Types (`src/data/research/types.ts`)
+### 1. `ResearchHeroSection.tsx` (Komplett überarbeiten)
 
-```typescript
-export interface BilingualText {
-  en: string;
-  de: string;
-}
-
-export interface AMFHeroData {
-  breadcrumb: { parent: BilingualText; current: BilingualText };
-  headline: BilingualText;
-  subheadline: BilingualText;
-  description: BilingualText;
-  stats: { value: string; label: BilingualText }[];
-  primaryCta: { text: BilingualText; href: string };
-  secondaryCta: { text: BilingualText; href: string };
-}
-
-export interface MaturityLevel {
-  level: 1 | 2 | 3;
-  name: BilingualText;
-  tagline: BilingualText;
-  whatItLooksLike: BilingualText[];
-  whatWeObserved: {
-    productivity: string;
-    timeToRevenue: string;
-    revenuePerEmployee: string;
-  };
-  example: BilingualText;
-  description: BilingualText;
-}
-
-export interface MeasurementDimension {
-  id: string;
-  icon: string;
-  title: BilingualText;
-  question: BilingualText;
-  levels: {
-    low: BilingualText;
-    medium: BilingualText;
-    high: BilingualText;
-  };
-  example: { level: 'high'; company: string; description: BilingualText };
-  whyItMatters: BilingualText;
-}
-
-export interface CaseStudyAMF {
-  id: string;
-  company: string;
-  logo?: string;
-  level: 3;
-  revenue: string;
-  employees: string;
-  revenuePerEmployee: string;
-  valuation?: string;
-  whatMakesThemLevel3: BilingualText[];
-  keyInsights: BilingualText[];
-  pattern: BilingualText;
-}
-
-export interface ImplicationItem {
-  number: number;
-  title: BilingualText;
-  question: BilingualText;
-  bullets: BilingualText[];
-  action: BilingualText;
-  cta: { text: BilingualText; href: string };
-}
-
-export interface AMFPageData {
-  hero: AMFHeroData;
-  whyItMatters: { ... };
-  threeLevels: { levels: MaturityLevel[] };
-  measurement: { dimensions: MeasurementDimension[] };
-  findings: { ... };
-  caseStudies: { cases: CaseStudyAMF[] };
-  implications: { items: ImplicationItem[] };
-  download: { ... };
-  finalCta: { ... };
-}
-```
-
----
-
-### 2.2 Content-Daten (`src/data/research/amf.ts`)
-
-Vollständiger Content aus dem Briefing für alle 9 Sections, inklusive:
-
-| Section | Key Content |
-|---------|-------------|
-| Hero | H1: "The Three Levels of AI Maturity", Stats: 47 companies, 8.2x faster |
-| Why It Matters | Korrelation r=0.89, Chart-Daten, Callout "Correlation ≠ Causation" |
-| Three Levels | Level 1-3 Cards mit Metriken (qualitativ, keine deterministischen Formeln) |
-| Measurement | 6 Dimensionen: Strategy, Architecture, Workflow, Data, Talent, Adoption |
-| Findings | 4 empirische Erkenntnisse mit Stats |
-| Case Studies | Midjourney ($4.6M/emp), Cursor ($1.67M/emp), Perplexity ($9B) |
-| Implications | 3 Cards: Assess, Decide, Build Roadmap |
-| Download | PDF-Download Card (optional email-gated) |
-| Final CTA | "Calculate Your AI Maturity" + "Book Strategy Call" |
-
----
-
-### 2.3 Section Components
-
-#### A) `ResearchHeroSection.tsx`
-
-**Pattern:** Basiert auf `PlaybookHeroSection` mit 3-Layer Parallax
-- Deep Space Background + TwinklingStars + Grid
-- Breadcrumb: "Home > Expertise > AI Maturity Framework"
-- Stats Bar: "47 companies | 3 levels | 8.2x faster | r=0.89"
-- 2 CTAs: Primary (Calculate AI Maturity) + Secondary (Download Research)
-
-#### B) `ResearchWhyItMattersSection.tsx`
-
-**Layout:** 2-Column (Text links, Chart rechts)
-- HBR-Style Fließtext zu linearem vs. exponentiellen Wachstum
-- Scatter-Chart mit Trendlinie (Recharts)
-- Callout-Box "Correlation, Not Causation"
-
-#### C) `ResearchThreeLevelsSection.tsx`
-
-**Layout:** 3-Column Cards
-- Level 1: AI-Powered (Tool) - Amber
-- Level 2: AI-Enabled (Capability) - Blue  
-- Level 3: AI-Native (Architecture) - Emerald + "Target" Badge
-- Vergleichstabelle darunter
-
-**WICHTIG:** Sprache wie im Briefing
-- "What we observed" statt "θ_index = 0.8 → ARR/Employee $2M"
-- Korrelationssprache: "correlates with" statt "determines"
-
-#### D) `ResearchMeasurementSection.tsx`
-
-**Layout:** 2×3 Grid mit 6 Dimension-Cards
-- Strategy, Architecture, Workflow, Data, Talent, Adoption
-- Jede Card zeigt: Question, Low/Medium/High, Example, Why It Matters
-- Keine Formeln, keine technischen Details
-
-#### E) `ResearchFindingsSection.tsx`
-
-**Layout:** 2-Column (Text links, Stats rechts)
-- 4 Findings mit HBR-Style Paragraphen
-- Stats Panel: 47 companies, r=0.89, 8.2x, 10x
-- Caveat prominent: "Correlation ≠ Causation"
-
-#### F) `ResearchCaseStudiesSection.tsx`
-
-**Layout:** 3-Column Cards
-- Midjourney: $492M, 107 emp, $4.6M/emp
-- Cursor: $100M ARR, 60 emp, $1.67M/emp
-- Perplexity: $200M+, 80-100 emp, $9B valuation
-- "What makes them Level 3" Bulletpoints
-- CTA: "View Full Case Study →"
-
-#### G) `ResearchImplicationsSection.tsx`
-
-**Layout:** 3-Column Cards
-1. "Assess Your Current State" → Calculate θ_index
-2. "Decide Your Ambition" → Book Strategy Call
-3. "Build Your Roadmap" → View Playbooks
-
-#### H) `ResearchDownloadSection.tsx`
-
-**Layout:** Centered Download Card
-- "AI Maturity Framework v4.5.1 Executive Summary"
-- 3,000 words, HBR-style
-- What's Inside Checklist
-- Download CTA (optional: email-gated via LeadCapture)
-
-#### I) `ResearchFinalCTASection.tsx`
-
-**Pattern:** Basiert auf `PlaybookFinalCTASection`
-- Deep Space Parallax Background
-- "What's Your AI Maturity?"
-- Primary CTA: "Calculate Your AI Maturity →"
-- Secondary CTA: "Book Strategy Call →"
-
----
-
-### 2.4 Page Component (`src/pages/ExpertiseAMF.tsx`)
-
+**Änderungen:**
 ```tsx
-import React from 'react';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import { LanguageProvider } from '@/contexts/LanguageContext';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import ResearchLandingPage from '@/components/research/ResearchLandingPage';
-import { amfPageData } from '@/data/research/amf';
+// Background: Deep Space statt CSS-Variablen
+- from-background via-background/95 to-muted/30
++ from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]
 
-const ExpertiseAMF: React.FC = () => {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <div className="min-h-screen bg-background text-foreground">
-          <Navigation />
-          <ResearchLandingPage data={amfPageData} />
-          <Footer />
-        </div>
-      </LanguageProvider>
-    </ThemeProvider>
-  );
-};
+// Mesh Overlay hinzufügen
++ <div className="absolute inset-0 bg-mesh opacity-60" />
 
-export default ExpertiseAMF;
+// Grid Pattern: bg-grid-pattern statt inline CSS
+- backgroundImage: linear-gradient(...)
++ bg-grid-pattern bg-grid-lg opacity-20
+
+// Layout zentrieren
+- <div className="container mx-auto px-4 py-20">
++ <div className="container max-w-5xl mx-auto px-6 py-24 text-center">
+
+// Breadcrumb: Shadcn-Komponente verwenden
+- <nav className="flex items-center gap-2">
++ <Breadcrumb className="justify-center mb-6">
+
+// Badge: variant="gradient" + Icon
+- <Badge variant="outline" className="border-primary/50">
++ <Badge variant="gradient" className="mb-8">
++   <BookOpen className="w-4 h-4 mr-2" />
+
+// Headline: Design-System Klassen
+- text-4xl md:text-5xl lg:text-6xl font-bold
++ font-display text-hero-lg
++ <span className="text-gradient animate-gradient bg-gradient-primary">
+
+// CTAs: Größer + Glow
+- <Button size="lg">
++ <Button size="xl" className="shadow-accent-glow">
+
+// Scroll Indicator hinzufügen
++ <button onClick={scrollToSection} className="absolute bottom-12 ...">
 ```
 
----
+### 2. `ResearchWhyItMattersSection.tsx`
 
-### 2.5 Routing (`src/App.tsx`)
-
+**Änderungen:**
 ```tsx
-// Neue Lazy-Load Definition
-const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
+// Section Background-Gradient
+- py-20 bg-muted/30
++ py-16 md:py-24 bg-gradient-to-b from-background via-muted/30 to-background
 
-// Neue Route
-<Route path="/expertise/amf" element={<ExpertiseAMF />} />
+// Header-Badge hinzufügen (wie Playbook)
++ <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
++   <TrendingUp className="w-4 h-4" />
++   <span className="text-sm font-medium uppercase tracking-wide">Why It Matters</span>
++ </div>
+
+// Headline
+- text-3xl md:text-4xl font-bold
++ font-display text-3xl md:text-4xl font-bold
+```
+
+### 3. `ResearchThreeLevelsSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background
++ bg-gradient-to-b from-muted/30 via-background to-muted/30
+
+// Header-Badge hinzufügen
++ <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
++   <Layers className="w-4 h-4" />
++   <span>The Framework</span>
++ </div>
+
+// Card-Design verbessern
+- border-2 ${colors.border}
++ border-2 border-l-4 ${colors.border} hover:bg-${colors.bg}/5
+```
+
+### 4. `ResearchMeasurementSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background + Header-Badge
++ bg-gradient-to-b from-background via-muted/30 to-background
+
++ <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10">
++   <Target className="w-4 h-4" />
++   <span>Measurement</span>
++ </div>
+```
+
+### 5. `ResearchFindingsSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background
++ bg-gradient-to-b from-muted/30 via-background to-muted/30
+
+// Header-Badge
++ <div className="inline-flex ...">
++   <Lightbulb className="w-4 h-4" />
++   <span>Key Findings</span>
++ </div>
+```
+
+### 6. `ResearchCaseStudiesSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background
++ bg-gradient-to-b from-background via-muted/30 to-background
+
+// Header-Badge
++ <Building className="w-4 h-4" />
+```
+
+### 7. `ResearchImplicationsSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background
++ bg-gradient-to-b from-muted/30 via-background to-muted/30
+
+// Header-Badge
++ <Compass className="w-4 h-4" />
+```
+
+### 8. `ResearchDownloadSection.tsx`
+
+**Änderungen:**
+```tsx
+// Section Background
++ bg-gradient-to-b from-background via-muted/30 to-background
+
+// Download-Card mit Glow-Effekt
++ hover:shadow-glow
+```
+
+### 9. `ResearchFinalCTASection.tsx` (Komplett überarbeiten)
+
+**Änderungen:**
+```tsx
+// Background: Deep Space wie Playbook
+- from-muted/30 via-background to-background
++ from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]
+
+// Mesh + Radial Glow hinzufügen
++ <div className="bg-mesh opacity-40" />
++ <div className="bg-[radial-gradient(ellipse_at_center,...)] from-primary/20" />
+
+// Badge: variant="gradient"
+- <Badge variant="outline">
++ <Badge variant="gradient">
++   <Sparkles className="w-4 h-4 mr-2" />
+
+// Headline: Weiß statt foreground
+- text-foreground
++ text-white
+
+// Benefits: Glass-Effekt wie Playbook Trust Signals
+- bg-card/50 border border-border/50
++ bg-white/10 backdrop-blur-sm border border-white/20 text-white/90
+
+// CTAs mit Glow
++ shadow-accent-glow hover:shadow-glow
+
+// Stats Row am Ende hinzufügen
++ <div className="grid grid-cols-3 gap-6 mt-16 pt-12 border-t border-white/10">
 ```
 
 ---
 
-## 3. Design-Spezifikationen
+## Zusammenfassung
 
-### Visuelles Theming
-
-| Element | Spezifikation |
-|---------|---------------|
-| Background | Deep Space Gradient (Hero, Final CTA) |
-| Sections | Alternierend: `bg-muted/30` ↔ `bg-background` |
-| Cards | `glass`, `border-border/50`, `hover:shadow-glow` |
-| Level Colors | L1: Amber, L2: Blue, L3: Emerald |
-| Parallax | 3-Layer System (0.1, 0.3, 0.5) |
-| Animations | `useScrollAnimation`, staggered entry |
-
-### Chart (Why It Matters)
-
-```
-Scatter Plot via Recharts:
-- X-Axis: AI Maturity (Low → High)
-- Y-Axis: Time to €100M ARR (months)
-- 47 Datenpunkte (simuliert, da keine echten Daten)
-- Trendlinie mit r=0.89 Annotation
-- Responsive: 1 Column auf Mobile
-```
+| Datei | Änderungsumfang |
+|-------|-----------------|
+| `ResearchHeroSection.tsx` | Komplett überarbeiten (Deep Space, Mesh, Grid, Breadcrumb, Badge, Headline, CTAs, Scroll) |
+| `ResearchWhyItMattersSection.tsx` | Header-Badge + Section-Gradient |
+| `ResearchThreeLevelsSection.tsx` | Header-Badge + Section-Gradient + Card-Border |
+| `ResearchMeasurementSection.tsx` | Header-Badge + Section-Gradient |
+| `ResearchFindingsSection.tsx` | Header-Badge + Section-Gradient |
+| `ResearchCaseStudiesSection.tsx` | Header-Badge + Section-Gradient |
+| `ResearchImplicationsSection.tsx` | Header-Badge + Section-Gradient |
+| `ResearchDownloadSection.tsx` | Section-Gradient + Card-Glow |
+| `ResearchFinalCTASection.tsx` | Komplett überarbeiten (Deep Space, Mesh, Glow, Stats Row) |
 
 ---
 
-## 4. Content-Highlights (aus Briefing)
+## Erwartetes Ergebnis
 
-### HBR-Stil Sprache
+Nach der Implementierung wird die AMF Research-Seite visuell identisch sein mit den Playbook Landing Pages:
 
-| ❌ Vermeiden | ✅ Verwenden |
-|--------------|--------------|
-| "θ_index = Σ(w_i × d_i)" | "We measure across six dimensions" |
-| "p<0.001" | "Strong correlation (r=0.89)" |
-| "determiniert" | "correlates with" |
-| "AI Maturity causes" | "We observed that..." |
+- Deep Space Background mit Mesh und Grid
+- Zentriertes Layout mit `max-w-5xl`
+- Gradient Badges mit Icons
+- Animierte Headlines (`text-gradient animate-gradient`)
+- Glowing CTAs (`shadow-accent-glow`)
+- Konsistente Section-Gradients
+- Header-Badges für jeden Abschnitt
+- Scroll-Indicator im Hero
+- Stats Row im Final CTA
 
-### Korrelation-Caveat (durchgehend)
-
-```
-💡 Strong Correlation, Not Causation
-
-We observed that companies with higher AI maturity scale faster. 
-But correlation doesn't prove causation. Other factors (market, 
-timing, team) also matter.
-
-What we can say: AI maturity is a strong predictor of scaling speed.
-```
-
----
-
-## 5. Implementierungs-Reihenfolge
-
-| Phase | Tasks | Dateien |
-|-------|-------|---------|
-| 1 | Types + Interfaces | `src/data/research/types.ts` |
-| 2 | Content-Daten | `src/data/research/amf.ts` |
-| 3 | Hero + Final CTA Sections | 2 Components |
-| 4 | Core Sections (Levels, Measurement, Findings) | 4 Components |
-| 5 | Case Studies + Implications | 2 Components |
-| 6 | Master Component + Page | 2 Dateien |
-| 7 | Routing | `App.tsx` |
-| 8 | Testing + Feinschliff | - |
-
----
-
-## 6. Verknüpfung mit ResearchHub
-
-Update in `src/components/ResearchHub.tsx`:
-- Card "AI Maturity Framework" verlinkt bereits auf `/expertise/amf` (Zeile 47)
-- Keine Änderung nötig - Route existiert nur noch nicht
-
----
-
-## 7. Zusammenfassung
-
-| Aspekt | Details |
-|--------|---------|
-| Neue Dateien | ~15 (Types, Data, 9 Sections, Page, Master) |
-| Wiederverwendbar | Parallax, ScrollAnimation, Card, Badge, Button |
-| Tone | HBR-Style: wissenschaftlich, aber zugänglich |
-| Sprache | Bilingual DE/EN |
-| Key Differentiator | "Correlation, not causation" durchgehend |
-| CTAs | Calculate θ_index Tool, Book Strategy Call, Download PDF |
-
----
-
-## Nächste Schritte nach Implementierung
-
-1. **ANST Detail Page** (`/expertise/anst`) - gleiche Architektur
-2. **Bottleneck Framework Page** (`/expertise/bottleneck`)
-3. **Unified Framework Page** (`/expertise/architecture`)
-4. **θ_index Calculator Tool** (`/tools/calculate-theta`)
