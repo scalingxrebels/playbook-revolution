@@ -1,155 +1,164 @@
 
-# Implementierungsplan: Scaling Stack Theory (SST) Research Page
+# Implementierungsplan: The Unified Framework Research Page
 
 ## Übersicht
 
-Die SST-Seite (`/expertise/sst`) erklärt **warum Bottlenecks wichtig sind** und wie die schwächste Capability (C_min) die Skalierungsgeschwindigkeit bestimmt. Sie fokussiert auf Diagnose statt Messung oder Wachstumstheorie.
+Die Unified Framework-Seite (`/expertise/unified-framework`) ist die **Meta-Seite**, die erklärt, wie alle 4 Formeln (AMF, ANST, SST, META) als ein System zusammenarbeiten. Sie unterscheidet sich von den anderen Research-Seiten durch:
+- Fokus auf **Systemverständnis** statt Einzelformeln
+- **Flow-Visualisierung** (AMF → ANST → SST → META)
+- **Einzelne detaillierte Case Study** (Midjourney mit allen 4 Formeln)
+- **Praktische Anwendungsfälle** (Diagnose, Transformation, Tracking)
 
 ---
 
 ## 1. Architektur-Analyse
 
-### Wiederverwendbare Components von AMF/ANST
+### Wiederverwendbare Components
 
-| Component | Für SST nutzbar? | Anpassung |
-|-----------|------------------|-----------|
-| `ResearchHeroSection` | ✅ Ja | Gleiche Datenstruktur |
-| `ResearchImplicationsSection` | ✅ Ja | Gleiche 3-Cards-Struktur |
-| `ResearchDownloadSection` | ✅ Ja | Gleiche Struktur |
-| `ResearchFinalCTASection` | ✅ Ja | Gleiche Struktur |
-| `ResearchCapabilitiesSection` | ⚠️ Teilweise | Braucht "Common bottleneck %" statt Exponents |
-| `ResearchProblemSection` | ❌ Nein | SST braucht Bar Chart statt Line Chart |
-| `ResearchEvidenceSection` | ⚠️ Teilweise | Andere X-Achse (C_min statt AI Maturity) |
-| `ResearchFormulaSection` | ❌ Nein | Andere Formel (C_min statt Scaling Velocity) |
-| `ResearchCaseStudiesSection` | ❌ Nein | SST braucht anonymisierte Before/After Case Studies |
+| Component | Für Unified nutzbar? | Anpassung |
+|-----------|---------------------|-----------|
+| `ResearchHeroSection` | Ja | Gleiche Datenstruktur (`AMFHeroData`) |
+| `ResearchImplicationsSection` | Ja | Gleiche 3-Cards-Struktur |
+| `ResearchDownloadSection` | Ja | Gleiche Struktur |
+| `ResearchFinalCTASection` | Ja | Gleiche Struktur |
 
-### Neue Components für SST
+### Neue Components für Unified Framework
 
-| Neue Section | Beschreibung |
-|--------------|--------------|
-| `ResearchBottleneckDistributionSection` | Bar Chart: Bottleneck-Verteilung (36% Setup, etc.) |
-| `ResearchBottleneckPrincipleSection` | C_min = min(C₁, C₂, C₃, C₄) + Multiplicative Explanation |
-| `ResearchBottleneckCaseStudiesSection` | 3 anonymisierte Companies mit Before/After |
+| Neue Section | Beschreibung | Layout |
+|--------------|--------------|--------|
+| `ResearchWhyFourFormulasSection` | "Why We Need 4 Formulas" | 2-Column (Text + Visual) |
+| `ResearchFourFormulasSection` | 4 Formula Cards (AMF, ANST, SST, META) | 4-Column Grid |
+| `ResearchFrameworkFlowSection` | "How They Work Together" Flow | Centered, Step-by-Step |
+| `ResearchPracticalApplicationSection` | 3 Use Case Cards | 3-Column Grid |
+| `ResearchUnifiedCaseStudySection` | Midjourney Complete Analysis | 2-Column (Analysis + Metrics) |
 
 ---
 
-## 2. Zu erstellende/ändernde Dateien
+## 2. Zu erstellende Dateien
 
 ### 2.1 Type Extensions (`src/data/research/types.ts`)
 
 Neue Interfaces hinzufügen:
 
 ```typescript
-// SST Problem Section (Bottleneck Distribution)
-export interface SSTBottleneckDistributionData {
+// Why Four Formulas Section
+export interface WhyFourFormulasData {
   headline: BilingualText;
-  content: BilingualText;
-  findings: Array<{
-    number: number;
-    title: BilingualText;
-    content: BilingualText;
+  questions: Array<{
+    question: BilingualText;
+    formula: string; // 'AMF' | 'ANST' | 'SST' | 'META'
+    explanation: BilingualText;
   }>;
-  chartTitle: BilingualText;
-  chartData: Array<{
-    capability: 'C₁' | 'C₂' | 'C₃' | 'C₄';
-    name: BilingualText;
-    percentage: number;
-    color: string;
-  }>;
+  insight: BilingualText;
   callout: { title: BilingualText; content: BilingualText };
 }
 
-// SST Capabilities Section (with bottleneck percentage)
-export interface SSTCapabilityItem {
-  id: 'strategy' | 'setup' | 'execution' | 'operationalization';
-  symbol: string; // 'C₁', 'C₂', etc.
+// Four Formulas Section
+export interface FormulaCard {
+  id: 'amf' | 'anst' | 'sst' | 'meta';
   name: BilingualText;
-  tagline: BilingualText;
-  whatItIs: BilingualText[];
-  whyItMatters: BilingualText;
-  bottleneckPercentage: number; // 23%, 36%, etc.
+  fullName: BilingualText;
+  question: BilingualText; // WHAT, WHY, WHAT, WHEN
+  input: BilingualText;
+  inputDetails: BilingualText[];
+  output: BilingualText;
+  outputDetails: BilingualText[];
+  validation: BilingualText;
+  href: string;
   color: 'violet' | 'blue' | 'emerald' | 'amber';
 }
 
-export interface SSTCapabilitiesData {
+export interface FourFormulasData {
   headline: BilingualText;
   subheadline: BilingualText;
-  capabilities: SSTCapabilityItem[];
+  formulas: FormulaCard[];
 }
 
-// SST Evidence Section (C_min vs Time)
-export interface SSTEvidenceData {
-  headline: BilingualText;
-  subheadline: BilingualText;
-  intro: BilingualText;
-  findings: Array<{
-    number: number;
-    title: BilingualText;
-    content: BilingualText;
-  }>;
-  caveat: { title: BilingualText; content: BilingualText };
-  chartTitle: BilingualText;
-  chartAnnotation: BilingualText;
-  chartData: Array<{
-    cMin: number; // 0-1 (weakest capability score)
-    timeToRevenue: number; // months
-    hasBottleneck: boolean;
-  }>;
+// Framework Flow Section
+export interface FlowStep {
+  number: number;
+  name: BilingualText;
+  formula: string;
+  description: BilingualText;
+  output: BilingualText;
+  outputValue: string;
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
 }
 
-// SST Bottleneck Principle Section
-export interface SSTBottleneckPrincipleData {
+export interface FrameworkFlowData {
   headline: BilingualText;
   subheadline: BilingualText;
-  formulaDisplay: string; // "C_min = min(C₁, C₂, C₃, C₄)"
-  principle: BilingualText;
-  whyMultiplicative: BilingualText;
-  example: {
-    companyA: { scores: string; product: string; label: BilingualText };
-    companyB: { scores: string; product: string; label: BilingualText };
-  };
-  implication: BilingualText;
+  steps: FlowStep[];
+  result: BilingualText;
   callout: { title: BilingualText; content: BilingualText };
 }
 
-// SST Case Study (Anonymized with Before/After)
-export interface SSTCaseStudy {
-  id: string;
-  name: BilingualText; // "Company A (Anonymized)"
-  bottleneck: 'strategy' | 'setup' | 'execution' | 'operationalization';
-  bottleneckName: BilingualText;
-  before: {
-    scores: string; // "C₁=0.4, C₂=0.7, C₃=0.8, C₄=0.7"
-    cMin: string;
-    timeToRevenue: string;
-  };
-  after: {
-    fixedScore: string;
-    timeToRevenue: string;
-    improvement: string; // "40% faster"
-  };
-  problem: BilingualText;
-  observations: BilingualText[];
-  fix: BilingualText[];
-  result: BilingualText;
-  roi: string;
-  color: 'violet' | 'blue' | 'emerald' | 'amber';
+// Practical Application Section
+export interface ApplicationCard {
+  number: number;
+  title: BilingualText;
+  useFormulas: string[]; // ['AMF', 'SST']
+  steps: BilingualText[];
+  output: BilingualText[];
+  cta: { text: BilingualText; href: string };
+  color: 'violet' | 'blue' | 'emerald';
 }
 
-export interface SSTCaseStudiesData {
+export interface PracticalApplicationData {
   headline: BilingualText;
   subheadline: BilingualText;
-  cases: SSTCaseStudy[];
+  applications: ApplicationCard[];
 }
 
-// Complete SST Page Data
-export interface SSTPageData {
+// Unified Case Study Section (Midjourney with all 4 formulas)
+export interface UnifiedCaseStudyData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  company: {
+    name: string;
+    founded: string;
+    revenue: string;
+    employees: string;
+    timeToRevenue: string;
+  };
+  analysis: {
+    amf: {
+      headline: BilingualText;
+      thetaIndex: string;
+      level: string;
+      dimensions: Array<{ name: BilingualText; score: string }>;
+    };
+    anst: {
+      headline: BilingualText;
+      result: BilingualText;
+      enablers: BilingualText;
+      capabilities: string;
+    };
+    sst: {
+      headline: BilingualText;
+      cMin: string;
+      bottleneck: BilingualText;
+      scores: Array<{ capability: string; score: string }>;
+    };
+    meta: {
+      headline: BilingualText;
+      prediction: string;
+      actual: string;
+      validated: boolean;
+    };
+  };
+  insight: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// Complete Unified Framework Page Data
+export interface UnifiedFrameworkPageData {
   hero: AMFHeroData;
-  bottleneckDistribution: SSTBottleneckDistributionData;
-  capabilities: SSTCapabilitiesData;
-  evidence: SSTEvidenceData;
-  bottleneckPrinciple: SSTBottleneckPrincipleData;
-  caseStudies: SSTCaseStudiesData;
+  whyFourFormulas: WhyFourFormulasData;
+  fourFormulas: FourFormulasData;
+  frameworkFlow: FrameworkFlowData;
+  practicalApplication: PracticalApplicationData;
+  unifiedCaseStudy: UnifiedCaseStudyData;
   implications: ImplicationsData;
   download: DownloadData;
   finalCta: FinalCTAData;
@@ -158,133 +167,130 @@ export interface SSTPageData {
 
 ---
 
-### 2.2 SST Data File (`src/data/research/sst.ts`)
+### 2.2 Unified Framework Data File (`src/data/research/unified-framework.ts`)
 
 Vollständiger bilingualer Content für alle 9 Sections:
 
 | Section | Key Content |
 |---------|-------------|
-| **Hero** | "What's Blocking Your Growth?", Stats: 22 companies, 36% Setup bottleneck, r=0.72 |
-| **Bottleneck Distribution** | Bar Chart (C₂: 36%, C₁: 23%, C₄: 23%, C₃: 18%), 3 Findings |
-| **4 Capabilities** | Strategy/Setup/Execution/Ops mit "Common bottleneck: XX%" |
-| **Evidence** | Scatter Chart (C_min vs Time), r=0.72, 50% slower |
-| **Bottleneck Principle** | C_min = min(C₁, C₂, C₃, C₄), Multiplicative Example |
-| **Case Studies** | Company A (Strategy), Company B (Setup), Company C (Execution) - Before/After |
-| **Implications** | Diagnose Bottleneck, Fix Bottleneck, Measure Progress |
-| **Download** | SST v4.5.1 Executive Summary |
-| **Final CTA** | "What's Your Bottleneck?", "Diagnose Your Bottleneck →" |
+| **Hero** | "How It All Fits Together", Stats: 4 formulas, 1 system, 22 companies, 3 years |
+| **Why Four Formulas** | 4 Questions (WHAT, WHY, WHAT, WHEN) → 4 Formulas, Callout: "Why Not 1 Formula?" |
+| **Four Formulas** | AMF (WHAT level), ANST (WHY faster), SST (WHAT blocking), META (WHEN €100M) |
+| **Framework Flow** | Step 1-4 Flow: Measure → Explain → Diagnose → Predict |
+| **Practical Application** | Diagnose State, Plan Transformation, Track Progress |
+| **Case Study** | Midjourney: All 4 formulas applied, θ_index=0.88, C_min=0.80, 18 months |
+| **Implications** | Use Complete System, Start with Diagnosis, Track Quarterly |
+| **Download** | Architecture Document v4.5.1 (15,000 words) |
+| **Final CTA** | "Ready to Use the Framework?", Book Strategy Call |
 
 ---
 
 ### 2.3 Neue Section Components
 
-#### A) `ResearchBottleneckDistributionSection.tsx`
+#### A) `ResearchWhyFourFormulasSection.tsx`
 
-**Layout:** 2-Column (Text links, Bar Chart rechts)
+**Layout:** 2-Column (Text links, Visual rechts)
 
 **Design-Elemente:**
-- Header-Badge: `<AlertTriangle />` + "The Problem" (Amber)
-- Horizontal Bar Chart: 4 Balken (C₂=36%, C₁=23%, C₄=23%, C₃=18%)
-- 3 Finding Cards mit nummerierten Badges
-- Callout Box: "The Bottleneck Principle"
+- Header-Badge: `<HelpCircle />` + "The Challenge"
+- 4 Questions mit farbigen Formula-Tags (WHAT→AMF, WHY→ANST, WHAT→SST, WHEN→META)
+- Rechte Seite: Visual "4 Questions = 4 Formulas"
+- Callout Box: "Why Not 1 Formula?"
 
-**Unterschied zu ANST ResearchProblemSection:**
-- Bar Chart statt Line Chart
-- Zeigt Distribution statt lineares Wachstum
+**Farbschema:**
+- AMF (WHAT level): Violet
+- ANST (WHY): Blue  
+- SST (WHAT blocking): Emerald
+- META (WHEN): Amber
 
 ---
 
-#### B) `ResearchSSTCapabilitiesSection.tsx`
+#### B) `ResearchFourFormulasSection.tsx`
 
-**Layout:** Header + 4-Column Grid (responsive: 2×2 auf Tablet, 1 Column Mobile)
+**Layout:** Header + 4-Column Grid (responsive: 2×2 Tablet, 1 Column Mobile)
 
 **Design-Elemente:**
-- Header-Badge: `<Layers />` + "The 4 Capabilities"
-- 4 Capability Cards mit:
-  - Symbol (C₁, C₂, C₃, C₄) + Name
-  - Tagline ("WHERE you play", "HOW you operate", etc.)
-  - What it is (Bullet List)
-  - Why it matters
-  - **NEU:** "Common bottleneck: 23%" Badge (statt Exponent)
-- Farbkodierung: Violet, Blue, Emerald, Amber
-
-**Unterschied zu ANST ResearchCapabilitiesSection:**
-- Zeigt `bottleneckPercentage` statt `exponent`
-- Keine Pattern/Secret/Result Cards oben
-- Fokus auf "Which capability is YOUR bottleneck?"
+- Header-Badge: `<Layers />` + "The 4 Formulas"
+- 4 Formula Cards mit:
+  - Formula Name Badge (AMF, ANST, SST, META)
+  - Full Name
+  - Question (WHAT, WHY, WHAT, WHEN)
+  - Input (was wird gemessen)
+  - Output (was kommt raus)
+  - Validation (n=XX, r=XX)
+  - "Learn More →" Link zu Detail-Seite
+- Farbkodierte Borders (Violet, Blue, Emerald, Amber)
 
 ---
 
-#### C) `ResearchSSTEvidenceSection.tsx`
+#### C) `ResearchFrameworkFlowSection.tsx`
 
-**Layout:** 2-Column (Findings links, Scatter Chart rechts)
+**Layout:** Centered, Dark Background (Deep Space), Vertikaler Flow
 
 **Design-Elemente:**
-- Header-Badge: `<BarChart3 />` + "Empirical Evidence"
-- Scatter Chart: X = C_min (0-1), Y = Time to €100M (months)
-- Color-coded: Rot (C_min < 0.6), Grün (C_min > 0.8)
-- Trendlinie mit r=0.72
-- 3 Findings + Caveat Box
-
-**Unterschied zu ANST ResearchEvidenceSection:**
-- X-Achse: C_min (0-1) statt AI Maturity (0-100)
-- Einfachere Farbcodierung (hasBottleneck vs. Level 1/2/3)
+- Header-Badge: `<ArrowRight />` + "The Flow"
+- 4 verbundene Step-Cards mit Pfeilen:
+  ```
+  Step 1: Measure (AMF) → θ_index = 0.88
+        ↓
+  Step 2: Explain (ANST) → S = High
+        ↓
+  Step 3: Diagnose (SST) → C_min = 0.80
+        ↓
+  Step 4: Predict (META) → 8-18 months
+  ```
+- Jeder Step zeigt: Name, Formula, Output, Value
+- Callout: "Why This Order Matters"
 
 ---
 
-#### D) `ResearchBottleneckPrincipleSection.tsx`
+#### D) `ResearchPracticalApplicationSection.tsx`
 
-**Layout:** Centered, Dark Background (Deep Space)
-
-**Design-Elemente:**
-- Header-Badge: `<Calculator />` + "The Bottleneck Principle"
-- Große Formel: `C_min = min(C₁, C₂, C₃, C₄)`
-- Side-by-Side Comparison:
-  - Company A: C₁=0.9, C₂=0.9, C₃=0.9, C₄=0.9 → Product = 0.66 ✅
-  - Company B: C₁=0.9, C₂=0.5, C₃=0.9, C₄=0.9 → Product = 0.36 ❌
-- "Why Multiplicative, Not Additive?" Callout
-
-**Unterschied zu ANST ResearchFormulaSection:**
-- Einfachere Formel (keine Exponenten)
-- Fokus auf Multiplicative vs. Additive Erklärung
-- Before/After Beispiel statt Component Grid
-
----
-
-#### E) `ResearchBottleneckCaseStudiesSection.tsx`
-
-**Layout:** 3-Column Grid (responsive: 1 Column Mobile)
+**Layout:** Header + 3-Column Grid
 
 **Design-Elemente:**
-- Header-Badge: `<Building />` + "Bottlenecks in Action"
-- 3 anonymisierte Case Study Cards:
-  - Company A (Strategy Bottleneck) - Violet
-  - Company B (Setup Bottleneck) - Blue
-  - Company C (Execution Bottleneck) - Emerald
+- Header-Badge: `<Wrench />` + "How to Use"
+- 3 Use Case Cards:
+  1. "Diagnose Your Current State" (AMF + SST)
+  2. "Plan Your Transformation" (AMF + SST + META)
+  3. "Track Progress" (AMF + SST quarterly)
 - Jede Card zeigt:
-  - Before: Scores, C_min, Time to €100M
-  - After: Fixed Score, Time to €100M, Improvement %
-  - Problem, Fix, Result
-  - ROI Badge
-
-**Unterschied zu ANST/AMF ResearchCaseStudiesSection:**
-- Anonymisierte Companies (nicht Midjourney/Cursor/Perplexity)
-- Before/After Format statt "What makes them Level 3"
-- Fokus auf Bottleneck-Fixing Journey
+  - Nummer + Titel
+  - "Use: AMF + SST" Badges
+  - Steps (1, 2, 3)
+  - Output
+  - CTA Button
 
 ---
 
-### 2.4 Master Component (`src/components/research/SSTLandingPage.tsx`)
+#### E) `ResearchUnifiedCaseStudySection.tsx`
+
+**Layout:** 2-Column (Analysis links, Metrics rechts)
+
+**Design-Elemente:**
+- Header-Badge: `<Building />` + "Case Study: Midjourney"
+- Linke Spalte: 4 Sub-Sections (AMF, ANST, SST, META Analyse)
+  - Jede Sub-Section mit farbigem Border
+  - Zeigt Formel-Anwendung auf Midjourney
+- Rechte Spalte: Metrics Card
+  - Company Profile
+  - θ_index, C_min, Time to €100M
+  - Validation: Predicted vs. Actual ✅
+- Insight Callout: "Why Midjourney Succeeded"
+
+---
+
+### 2.4 Master Component (`src/components/research/UnifiedFrameworkLandingPage.tsx`)
 
 ```tsx
-const SSTLandingPage: React.FC<SSTLandingPageProps> = ({ data }) => (
+const UnifiedFrameworkLandingPage: React.FC<UnifiedFrameworkLandingPageProps> = ({ data }) => (
   <main>
     <ResearchHeroSection data={data.hero} />
-    <ResearchBottleneckDistributionSection data={data.bottleneckDistribution} />
-    <ResearchSSTCapabilitiesSection data={data.capabilities} />
-    <ResearchSSTEvidenceSection data={data.evidence} />
-    <ResearchBottleneckPrincipleSection data={data.bottleneckPrinciple} />
-    <ResearchBottleneckCaseStudiesSection data={data.caseStudies} />
+    <ResearchWhyFourFormulasSection data={data.whyFourFormulas} />
+    <ResearchFourFormulasSection data={data.fourFormulas} />
+    <ResearchFrameworkFlowSection data={data.frameworkFlow} />
+    <ResearchPracticalApplicationSection data={data.practicalApplication} />
+    <ResearchUnifiedCaseStudySection data={data.unifiedCaseStudy} />
     <ResearchImplicationsSection data={data.implications} />
     <ResearchDownloadSection data={data.download} />
     <ResearchFinalCTASection data={data.finalCta} />
@@ -294,24 +300,24 @@ const SSTLandingPage: React.FC<SSTLandingPageProps> = ({ data }) => (
 
 ---
 
-### 2.5 Page Component (`src/pages/ExpertiseSST.tsx`)
+### 2.5 Page Component (`src/pages/ExpertiseUnifiedFramework.tsx`)
 
 ```tsx
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import SSTLandingPage from '@/components/research/SSTLandingPage';
-import { sstPageData } from '@/data/research/sst';
+import UnifiedFrameworkLandingPage from '@/components/research/UnifiedFrameworkLandingPage';
+import { unifiedFrameworkPageData } from '@/data/research/unified-framework';
 
-const ExpertiseSST: React.FC = () => (
+const ExpertiseUnifiedFramework: React.FC = () => (
   <div className="min-h-screen bg-background text-foreground">
     <Navigation />
-    <SSTLandingPage data={sstPageData} />
+    <UnifiedFrameworkLandingPage data={unifiedFrameworkPageData} />
     <Footer />
   </div>
 );
 
-export default ExpertiseSST;
+export default ExpertiseUnifiedFramework;
 ```
 
 ---
@@ -319,57 +325,56 @@ export default ExpertiseSST;
 ### 2.6 Routing (`src/App.tsx`)
 
 ```tsx
-const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
+const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 
-<Route path="/expertise/sst" element={<ExpertiseSST />} />
+<Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
 ```
 
 ---
 
 ## 3. Design-Spezifikationen
 
-### Visuelles Theming (konsistent mit AMF/ANST)
+### Visuelles Theming (konsistent mit AMF/ANST/SST)
 
 | Element | Spezifikation |
 |---------|---------------|
 | Hero Background | Deep Space (`#0A0A0F` → `#0F0F1A` → `#1A1A2E`) |
 | Section Gradients | `bg-gradient-to-b from-background via-muted/30 to-background` |
 | Header Badges | `bg-primary/10 text-primary` + Icon |
-| Problem Section | Amber Töne (wie ANST) |
-| Capabilities | Farbkodiert: Violet (Strategy), Blue (Setup), Emerald (Execution), Amber (Ops) |
-| Bottleneck Principle | Deep Space + Monospace Formel |
-| Case Studies | Before/After Cards mit farbigen Borders |
+| Formula Cards | Farbkodierte Borders (Violet=AMF, Blue=ANST, Emerald=SST, Amber=META) |
+| Flow Section | Deep Space + Vertikale Pfeil-Verbindungen |
+| Case Study | Split-Layout mit Metrics-Sidebar |
 
-### Charts (Recharts)
+### Farbschema für 4 Formulas
 
-| Chart | Typ | Daten |
-|-------|-----|-------|
-| Bottleneck Distribution | **Bar Chart (Horizontal)** | C₂=36%, C₁=23%, C₄=23%, C₃=18% |
-| Evidence | Scatter Plot | 22 Companies (C_min vs. Time to €100M) |
+| Formula | Farbe | Hex | Verwendung |
+|---------|-------|-----|------------|
+| AMF | Violet | `#8B5CF6` | Level, θ_index |
+| ANST | Blue | `#3B82F6` | Scaling Velocity |
+| SST | Emerald | `#10B981` | Bottleneck, C_min |
+| META | Amber | `#F59E0B` | Time Prediction |
 
 ---
 
 ## 4. Content-Highlights
 
-### Unterschiede zu AMF und ANST
+### Unterschiede zu AMF, ANST, SST
 
-| Aspekt | AMF | ANST | SST |
-|--------|-----|------|-----|
-| **Fokus** | "How to measure" | "Why AI-native scales faster" | "What's blocking growth" |
-| **Kernkonzept** | 3 Levels | 4 Capabilities × θ_index | C_min (weakest capability) |
-| **Formel** | θ_index | S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ | C_min = min(C₁, C₂, C₃, C₄) |
-| **Sample Size** | n=47 | n=22 | n=22 |
-| **Chart Typ** | Scatter (Maturity vs. Time) | Scatter (Maturity vs. Time) | **Bar (Distribution) + Scatter (C_min vs. Time)** |
-| **Case Studies** | Named (Midjourney, etc.) | Named | **Anonymized (Company A, B, C)** |
-| **Primary CTA** | "Calculate θ_index" | "Book Strategy Call" | **"Diagnose Your Bottleneck"** |
+| Aspekt | AMF | ANST | SST | **Unified** |
+|--------|-----|------|-----|-------------|
+| **Fokus** | Messung | Mechanismus | Diagnose | **System-Verständnis** |
+| **Kernkonzept** | 3 Levels | 4 Capabilities × θ | C_min | **4 Formeln = 1 System** |
+| **Chart Typ** | Scatter | Scatter | Bar + Scatter | **Flow-Diagram** |
+| **Case Studies** | 3 Named | 3 Named | 3 Anonymized | **1 Detailed (Midjourney)** |
+| **Primary CTA** | Calculate θ | Book Call | Diagnose | **Download Framework** |
 
 ### HBR-Stil Sprache
 
 | ❌ Vermeiden | ✅ Verwenden |
 |--------------|--------------|
-| "C_min = min(C₁, C₂, C₃, C₄)" als Fließtext | Formel nur als Visual |
-| "O(n²)" | "Coordination costs explode" |
-| "Determiniert" | "Correlates with", "We observed" |
+| "META = f(θ_index, C_min)" | "META predicts WHEN you'll reach €100M" |
+| Technische Formeldetails | "4 questions, 4 formulas, 1 system" |
+| Akademische Statistik | "We tested on 22 companies" |
 
 ---
 
@@ -378,14 +383,14 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 | Phase | Tasks | Dateien |
 |-------|-------|---------|
 | 1 | Types erweitern | `src/data/research/types.ts` |
-| 2 | Content-Daten erstellen | `src/data/research/sst.ts` |
-| 3 | Bottleneck Distribution Section | `ResearchBottleneckDistributionSection.tsx` |
-| 4 | SST Capabilities Section | `ResearchSSTCapabilitiesSection.tsx` |
-| 5 | SST Evidence Section | `ResearchSSTEvidenceSection.tsx` |
-| 6 | Bottleneck Principle Section | `ResearchBottleneckPrincipleSection.tsx` |
-| 7 | Bottleneck Case Studies Section | `ResearchBottleneckCaseStudiesSection.tsx` |
-| 8 | SST Landing Page | `SSTLandingPage.tsx` |
-| 9 | Page Component | `ExpertiseSST.tsx` |
+| 2 | Content-Daten erstellen | `src/data/research/unified-framework.ts` |
+| 3 | Why Four Formulas Section | `ResearchWhyFourFormulasSection.tsx` |
+| 4 | Four Formulas Section | `ResearchFourFormulasSection.tsx` |
+| 5 | Framework Flow Section | `ResearchFrameworkFlowSection.tsx` |
+| 6 | Practical Application Section | `ResearchPracticalApplicationSection.tsx` |
+| 7 | Unified Case Study Section | `ResearchUnifiedCaseStudySection.tsx` |
+| 8 | Unified Landing Page | `UnifiedFrameworkLandingPage.tsx` |
+| 9 | Page Component | `ExpertiseUnifiedFramework.tsx` |
 | 10 | Routing | `App.tsx` |
 | 11 | Section Index Export | `sections/index.ts` |
 
@@ -397,23 +402,31 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 |--------|---------|
 | **Neue Dateien** | ~9 (5 neue Sections, 1 Landing Page, 1 Page, Data, Types) |
 | **Wiederverwendet** | 4 Sections (Hero, Implications, Download, FinalCTA) |
-| **Tone** | HBR-Style: "Why bottlenecks matter" |
+| **Tone** | HBR-Style: "How it all fits together" |
 | **Sprache** | Bilingual DE/EN |
-| **Key Visual** | Bar Chart (Distribution) + C_min Formel + Before/After Case Studies |
-| **CTAs** | Diagnose Bottleneck, View Playbooks, Book Strategy Call |
+| **Key Visual** | Flow-Diagram (AMF → ANST → SST → META) |
+| **CTAs** | Download Framework, Book Strategy Call, Calculate Now |
 
 ---
 
-## 7. Verknüpfung mit ResearchHub
+## 7. Cross-Linking nach Implementierung
 
-Update in `src/components/ResearchHub.tsx`:
-- Card "Scaling Stack Theory" sollte auf `/expertise/sst` verlinken
-- Prüfen ob Link bereits existiert
+Nach Abschluss aller 4 Research-Seiten sollten Cross-Links hinzugefügt werden:
+
+| Von | Nach | Link-Text |
+|-----|------|-----------|
+| Unified → AMF | `/expertise/amf` | "Learn More about AI Maturity" |
+| Unified → ANST | `/expertise/anst` | "Learn More about Scaling Velocity" |
+| Unified → SST | `/expertise/sst` | "Learn More about Bottlenecks" |
+| AMF → Unified | `/expertise/unified-framework` | "See the Complete Framework" |
+| ANST → Unified | `/expertise/unified-framework` | "See the Complete Framework" |
+| SST → Unified | `/expertise/unified-framework` | "See the Complete Framework" |
 
 ---
 
 ## 8. Nächste Schritte nach Implementierung
 
-1. **Bottleneck Diagnose Tool** (`/tools/bottleneck-diagnosis`)
-2. **Unified Framework Page** (`/expertise/architecture`)
-3. **Cross-Linking** zwischen AMF ↔ ANST ↔ SST
+1. **Cross-Linking** zwischen allen 4 Research-Seiten
+2. **ResearchHub Update** - Links zu allen 4 Seiten prüfen/aktualisieren
+3. **θ_index Calculator Tool** (`/tools/calculate-theta`)
+4. **Bottleneck Diagnose Tool** (`/tools/bottleneck-diagnosis`)
