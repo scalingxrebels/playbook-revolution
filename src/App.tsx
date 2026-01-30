@@ -76,6 +76,7 @@ const PlaybookOperationalGovernance = lazy(() => import("./pages/PlaybookOperati
 const PlaybookExitMA = lazy(() => import("./pages/PlaybookExitMA"));
 const PlaybookPortfolioExcellence = lazy(() => import("./pages/PlaybookPortfolioExcellence"));
 const PlaybookStrategicCapabilities = lazy(() => import("./pages/PlaybookStrategicCapabilities"));
+const PlaybookGrowthEngines = lazy(() => import("./pages/PlaybookGrowthEngines"));
 
 const queryClient = new QueryClient();
 
@@ -165,6 +166,7 @@ const App = () => (
                 <Route path="/playbooks/board-governance/exit-ma" element={<PlaybookExitMA />} />
                 <Route path="/playbooks/portfolio/excellence" element={<PlaybookPortfolioExcellence />} />
                 <Route path="/playbooks/strategic-capabilities" element={<PlaybookStrategicCapabilities />} />
+                <Route path="/playbooks/growth-engines" element={<PlaybookGrowthEngines />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
