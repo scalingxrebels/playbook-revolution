@@ -15,6 +15,9 @@ export interface Playbook {
   impact: ImpactTag[];
   bottleneck: BottleneckTag[];
   role: RoleTag[];
+  // Sorting Properties
+  ebene: 1 | 2 | 3;
+  sortOrder: number;
 }
 
 export const playbooks: Playbook[] = [
@@ -52,6 +55,8 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
+    ebene: 1,
+    sortOrder: 1,
   },
   // ============================================================================
   // EBENE 3: SUB-PLAYBOOKS
@@ -87,6 +92,8 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['strategy', 'execution-focus'],
     role: ['ceo', 'cmo-cro'],
+    ebene: 3,
+    sortOrder: 1,
   },
   {
     id: 'product',
@@ -119,6 +126,8 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['strategy', 'execution-focus'],
     role: ['ceo', 'cpo', 'cto'],
+    ebene: 3,
+    sortOrder: 2,
   },
   {
     id: 'customer-success',
@@ -151,6 +160,8 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['execution-focus'],
     role: ['ceo', 'coo'],
+    ebene: 3,
+    sortOrder: 3,
   },
   {
     id: 'operations',
@@ -183,6 +194,8 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo', 'cto'],
+    ebene: 3,
+    sortOrder: 4,
   },
   {
     id: 'finance',
@@ -215,6 +228,8 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cfo', 'coo'],
+    ebene: 3,
+    sortOrder: 5,
   },
   {
     id: 'talent',
@@ -247,6 +262,8 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo'],
+    ebene: 3,
+    sortOrder: 6,
   },
   {
     id: 'data-tech',
@@ -279,6 +296,8 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cto'],
+    ebene: 3,
+    sortOrder: 7,
   },
   {
     id: 'strategic-governance',
@@ -311,6 +330,8 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['ceo', 'vc-board'],
+    ebene: 3,
+    sortOrder: 8,
   },
   {
     id: 'operational-governance',
@@ -343,6 +364,8 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cto', 'coo'],
+    ebene: 3,
+    sortOrder: 9,
   },
   // ============================================================================
   // EBENE 2: DOMAIN PLAYBOOK - BOARD & GOVERNANCE
@@ -378,6 +401,8 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['ceo', 'vc-board'],
+    ebene: 2,
+    sortOrder: 3,
   },
   // ============================================================================
   // EBENE 2: DOMAIN PLAYBOOK - PORTFOLIO TRANSFORMATION
@@ -413,6 +438,8 @@ export const playbooks: Playbook[] = [
     impact: ['portfolio'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['vc-board'],
+    ebene: 2,
+    sortOrder: 4,
   },
   {
     id: 'exit-ma',
@@ -445,6 +472,8 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['strategy'],
     role: ['ceo', 'vc-board'],
+    ebene: 3,
+    sortOrder: 10,
   },
   {
     id: 'portfolio-excellence',
@@ -477,6 +506,8 @@ export const playbooks: Playbook[] = [
     impact: ['portfolio'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['vc-board'],
+    ebene: 3,
+    sortOrder: 11,
   },
   {
     id: 'growth-engines',
@@ -509,6 +540,8 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['strategy', 'execution-focus'],
     role: ['ceo', 'cmo-cro', 'cpo'],
+    ebene: 2,
+    sortOrder: 1,
   },
   {
     id: 'operating-systems',
@@ -541,6 +574,8 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo', 'cfo', 'cto'],
+    ebene: 2,
+    sortOrder: 2,
   },
   {
     id: 'strategic-capabilities',
@@ -573,5 +608,7 @@ export const playbooks: Playbook[] = [
     impact: ['strategic-capabilities'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['ceo'],
+    ebene: 2,
+    sortOrder: 5,
   },
 ];
