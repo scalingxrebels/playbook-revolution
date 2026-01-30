@@ -1,218 +1,152 @@
 
-# Implementierungsplan: Expertise-Seite UX/UI-Optimierung
+# Plan: Notion-Kachel Dark Mode + Animation Fix
 
-## Ziel
-Die Expertise-Seite soll visuell und animationstechnisch auf das Niveau von Homepage, Solutions und Playbook Landing Pages angehoben werden.
+## Übersicht
+
+Es gibt zwei separate Probleme zu beheben:
+
+1. **Notion-Kachel**: Die Farbe `#171717` ist im Dark Mode nicht lesbar
+2. **Animation**: Die Cards bleiben nach der Animation unsichtbar wegen fehlendem `animation-fill-mode: forwards`
 
 ---
 
-## Teil 1: Hero-Section mit Parallax-Effekten
+## Problem 1: Notion Dark Mode Lesbarkeit
 
-### Problem
-`SharedHero` ist statisch, wahrend `HeroOptimized` und `PlaybookHeroSection` das 3-Layer-Parallax-System nutzen.
+### Ursache
+Die Notion Case Study verwendet `color: '#171717'` (fast Schwarz). Diese Farbe wird verwendet für:
+- Icon-Farbe
+- θ-Badge Text und Background
+- Headline-Metrik (z.B. "$10B")
 
-### Anderungen in `src/components/shared/SharedHero.tsx`
+Im Dark Mode ist der Card-Hintergrund dunkel, daher sind diese Elemente kaum sichtbar.
 
-**Neue Imports hinzufugen:**
+### Lösung: Theme-Aware Color für Notion
+
+**Datei:** `src/components/ScalingXCaseStudies.tsx`
+
+**Zeile 313 ändern:**
 ```typescript
-import { useParallaxLayers } from '@/hooks/useParallax';
+// ALT:
+color: '#171717',
+
+// NEU:
+color: 'var(--notion-color, #171717)',
+darkColor: '#E5E5E5',  // Helles Grau für Dark Mode
 ```
 
-**Props erweitern:**
+**BESSER - Direkte Lösung ohne CSS-Variable:**
+
+Da nur Notion dieses Problem hat, können wir eine bedingte Farbe basierend auf dem Theme verwenden:
+
 ```typescript
-interface SharedHeroProps {
-  // ... existing props
-  enableParallax?: boolean;  // NEU - Standard: false fur Abwartskompatibilitat
+// In der caseStudies Array (Zeile 310-354):
+{
+  id: 'notion',
+  name: 'Notion',
+  icon: FileText,
+  color: '#171717',
+  lightColor: '#171717',  // NEU: Explizite Light Mode Farbe
+  darkColor: '#E5E5E5',   // NEU: Explizite Dark Mode Farbe
+  // ... rest bleibt gleich
 }
 ```
 
-**Parallax-Layer implementieren:**
-- Slow Layer (0.1): Deep Space Background
-- Medium Layer (0.3): TwinklingStars
-- Fast Layer (0.5): Grid Pattern
+**Dann im Rendering (Zeilen 445-497):**
 
-### Expertise-Seite aktivieren
-In `ResearchHub.tsx` den Hero mit `enableParallax={true}` aufrufen.
+Wir müssen den `useTheme` Hook importieren und die Farbe dynamisch setzen:
 
----
-
-## Teil 2: Scroll-Animationen fur alle Sections
-
-### Problem
-Sections in ResearchHub haben keine Entry-Animationen wie `PlaybookFrameworkSection`.
-
-### Anderungen in `src/components/ResearchHub.tsx`
-
-**Import hinzufugen:**
 ```typescript
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-```
+import { useTheme } from '@/contexts/ThemeContext';
 
-**Jede Section mit Animation versehen:**
+// Im Component:
+const { theme } = useTheme();
 
-| Section | Zeilen | Animation |
-|---------|--------|-----------|
-| "Why This Matters" | 233-330 | Fade-in beim Scrollen |
-| "Our Research" | 332-402 | Staggered Card Entry |
-| "Applied Research" | 409-470 | Slide-in Left/Right |
-| "Who's Behind This Research?" | 472-535 | Staggered Team Cards |
-| "Download Research" | 538-574 | Fade-in |
-| "Final CTA" | 577-627 | Fade-in |
-
-**Beispiel-Pattern (Research Cards):**
-```tsx
-const { ref: researchRef, isVisible: researchVisible } = useScrollAnimation({ threshold: 0.1 });
-
-<div 
-  ref={researchRef}
-  className={`grid md:grid-cols-2 gap-6 mb-12 transition-all duration-700 ${researchVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
->
-  {researchCards.map((card, idx) => (
-    <Card 
-      key={card.id}
-      className="..."
-      style={{ transitionDelay: `${idx * 100}ms` }}
-    >
+// In der map-Funktion:
+const studyColor = study.darkColor && theme === 'dark' 
+  ? study.darkColor 
+  : study.color;
 ```
 
 ---
 
-## Teil 3: Case Studies Grid optimieren
+## Problem 2: Animation funktioniert nicht
 
-### Problem
-Das Grid nutzt `xl:grid-cols-4` - zu dicht fur optimale Lesbarkeit.
+### Ursache
+Die Animation in Tailwind:
+```css
+animation: "fade-in": "fade-in 0.5s ease-out"
+```
 
-### Anderungen in `src/components/ScalingXCaseStudies.tsx`
+Das Element startet mit `opacity: 0` (className) und animiert zu `opacity: 1`, aber weil kein `animation-fill-mode: forwards` in der Tailwind-Definition ist, springt die Opazität nach der Animation zurück auf 0.
 
-**Zeile 435 - Grid anpassen:**
-```tsx
+Der inline-style `animationFillMode: 'forwards'` wird überschrieben von der Tailwind-Klasse.
+
+### Lösung A: Tailwind Config anpassen
+
+**Datei:** `tailwind.config.ts`
+
+**Zeile 153 ändern:**
+```typescript
 // ALT:
-<div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+"fade-in": "fade-in 0.5s ease-out",
 
 // NEU:
-<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+"fade-in": "fade-in 0.5s ease-out forwards",
 ```
 
-**Staggered Entry-Animation hinzufugen:**
-```tsx
-{caseStudies.map((study, idx) => (
-  <div
-    key={study.id}
-    onClick={() => setSelectedStudy(study)}
-    className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer 
-               transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1
-               opacity-0 animate-fade-in"
-    style={{ 
-      '--study-color': study.color,
-      animationDelay: `${idx * 80}ms`,
-      animationFillMode: 'forwards'
-    } as React.CSSProperties}
-  >
+### Lösung B: Alternativ - CSS-Utility-Klasse verwenden
+
+Falls wir die globale Animation nicht ändern wollen:
+
+**Datei:** `src/index.css`
+
+```css
+.animate-fade-in-forwards {
+  animation: fade-in 0.5s ease-out forwards;
+}
 ```
+
+Dann im Component `animate-fade-in-forwards` statt `animate-fade-in opacity-0` verwenden.
 
 ---
 
-## Teil 4: Comparison Table Lesbarkeit
+## Empfohlene Implementierung
 
-### Problem
-Tabelle hat keinen visuellen Rahmen und wirkt flach.
-
-### Anderungen in `src/components/CaseStudyComparisonTable.tsx`
-
-**Container-Styling verbessern:**
-```tsx
-<div className="w-full overflow-x-auto rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
-```
-
-**Header-Zeile hervorheben:**
-```tsx
-<TableRow className="border-border/50 bg-muted/30">
-```
-
-**Hover-States verbessern:**
-```tsx
-<TableRow 
-  key={company.name} 
-  className="border-border/30 hover:bg-primary/5 transition-colors duration-200"
->
-```
+| Datei | Änderung |
+|-------|----------|
+| `src/components/ScalingXCaseStudies.tsx` | Theme-Hook importieren, `darkColor` zu Notion hinzufügen, dynamische Farbauswahl |
+| `tailwind.config.ts` | `forwards` zu `fade-in` Animation hinzufügen |
 
 ---
 
-## Teil 5: Branding-Konsistenz
+## Erwartetes Ergebnis
 
-### Problem
-Overline "Expertise x Speed = Impact" weicht von der Kernformel ab.
-
-### Anderung in `src/components/ResearchHub.tsx` (Zeile 221-222)
-
-```tsx
-// ALT:
-overlineEn="Expertise × Speed = Impact"
-overlineDe="Expertise × Speed = Impact"
-
-// NEU:
-overlineEn="Growth Engines × Scaling Systems × AI = Hypergrowth"
-overlineDe="Growth Engines × Scaling Systems × AI = Hypergrowth"
-```
-
----
-
-## Teil 6: Team Section Hover-Effekte
-
-### Anderungen in `src/components/ResearchHub.tsx` (Zeilen 487-524)
-
-**Hover-Glow wie bei Research Cards:**
-```tsx
-<Card 
-  key={i} 
-  className="p-6 text-center border-border/50 hover:border-primary/50 
-             hover:shadow-[0_0_30px_hsl(var(--primary)/0.15)] 
-             transition-all duration-300 group"
->
-```
-
-**Bild-Animation bei Hover:**
-```tsx
-<div className="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-foreground/10 
-                transition-transform duration-300 group-hover:scale-105">
-```
-
----
-
-## Zusammenfassung der Datei-Anderungen
-
-| Datei | Anderungen |
-|-------|------------|
-| `src/components/shared/SharedHero.tsx` | Optionales Parallax-System |
-| `src/components/ResearchHub.tsx` | useScrollAnimation, Branding, Team Hover |
-| `src/components/ScalingXCaseStudies.tsx` | Grid 3-spaltig, Staggered Animation |
-| `src/components/CaseStudyComparisonTable.tsx` | Container-Styling, Hover-States |
-
----
-
-## Erwartete Verbesserungen
-
-| Metrik | Vorher | Nachher |
-|--------|--------|---------|
-| Konsistenz | 6/10 | 9/10 |
-| Lesbarkeit | 7/10 | 9/10 |
-| Animationen | 4/10 | 9/10 |
-| Branding | 7/10 | 10/10 |
+| Problem | Vorher | Nachher |
+|---------|--------|---------|
+| Notion Dark Mode | Schwarzer Text auf dunklem Hintergrund | Heller Text (#E5E5E5) auf dunklem Hintergrund |
+| Animation | Cards bleiben unsichtbar | Cards werden eingeblendet und bleiben sichtbar |
 
 ---
 
 ## Technische Details
 
-### Verwendete Hooks
-- `useScrollAnimation` - Intersection Observer fur Entry-Animationen
-- `useParallaxLayers` - 3-Layer Parallax mit speeds [0.1, 0.3, 0.5]
+### CaseStudy Interface erweitern
+```typescript
+interface CaseStudy {
+  // ... existing
+  color: string;
+  darkColor?: string;  // NEU: Optional für Kacheln, die im Dark Mode andere Farbe brauchen
+}
+```
 
-### Animation-Timing
-- Base Duration: 700ms
-- Stagger Delay: 80-100ms pro Element
-- Easing: CSS default ease-out
+### Dynamische Farblogik
+```typescript
+const studyColor = (theme === 'dark' && study.darkColor) 
+  ? study.darkColor 
+  : study.color;
 
-### Grid-Anderung
-- Von 4-spaltig auf 3-spaltig fur bessere Lesbarkeit
-- Gap von 6 auf 8 fur mehr Whitespace
+// Verwendung in:
+// - style={{ color: studyColor }}
+// - style={{ backgroundColor: `${studyColor}20` }}
+// - style={{ backgroundColor: `${studyColor}15` }}
+```
