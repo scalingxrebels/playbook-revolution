@@ -421,3 +421,130 @@ export interface SSTPageData {
   download: DownloadData;
   finalCta: FinalCTAData;
 }
+
+// ============================================
+// UNIFIED FRAMEWORK Types
+// ============================================
+
+// Why Four Formulas Section
+export interface WhyFourFormulasData {
+  headline: BilingualText;
+  questions: Array<{
+    question: BilingualText;
+    formula: 'AMF' | 'ANST' | 'SST' | 'META';
+    explanation: BilingualText;
+  }>;
+  insight: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// Four Formulas Section
+export interface FormulaCard {
+  id: 'amf' | 'anst' | 'sst' | 'meta';
+  name: BilingualText;
+  fullName: BilingualText;
+  question: BilingualText;
+  input: BilingualText;
+  inputDetails: BilingualText[];
+  output: BilingualText;
+  outputDetails: BilingualText[];
+  validation: BilingualText;
+  href: string;
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+export interface FourFormulasData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  formulas: FormulaCard[];
+}
+
+// Framework Flow Section
+export interface FlowStep {
+  number: number;
+  name: BilingualText;
+  formula: string;
+  description: BilingualText;
+  output: BilingualText;
+  outputValue: string;
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+export interface FrameworkFlowData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  steps: FlowStep[];
+  result: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// Practical Application Section
+export interface ApplicationCard {
+  number: number;
+  title: BilingualText;
+  useFormulas: string[];
+  steps: BilingualText[];
+  output: BilingualText[];
+  cta: { text: BilingualText; href: string };
+  color: 'violet' | 'blue' | 'emerald';
+}
+
+export interface PracticalApplicationData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  applications: ApplicationCard[];
+}
+
+// Unified Case Study Section (Midjourney with all 4 formulas)
+export interface UnifiedCaseStudyData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  company: {
+    name: string;
+    founded: string;
+    revenue: string;
+    employees: string;
+    timeToRevenue: string;
+  };
+  analysis: {
+    amf: {
+      headline: BilingualText;
+      thetaIndex: string;
+      level: string;
+      dimensions: Array<{ name: BilingualText; score: string }>;
+    };
+    anst: {
+      headline: BilingualText;
+      result: BilingualText;
+      enablers: BilingualText;
+      capabilities: string;
+    };
+    sst: {
+      headline: BilingualText;
+      cMin: string;
+      bottleneck: BilingualText;
+      scores: Array<{ capability: string; score: string }>;
+    };
+    meta: {
+      headline: BilingualText;
+      prediction: string;
+      actual: string;
+      validated: boolean;
+    };
+  };
+  insight: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// Complete Unified Framework Page Data
+export interface UnifiedFrameworkPageData {
+  hero: AMFHeroData;
+  whyFourFormulas: WhyFourFormulasData;
+  fourFormulas: FourFormulasData;
+  frameworkFlow: FrameworkFlowData;
+  practicalApplication: PracticalApplicationData;
+  unifiedCaseStudy: UnifiedCaseStudyData;
+  implications: ImplicationsData;
+  download: DownloadData;
+  finalCta: FinalCTAData;
+}
