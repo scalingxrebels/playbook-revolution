@@ -14,3 +14,10 @@ export { default as ResearchProblemSection } from './ResearchProblemSection';
 export { default as ResearchCapabilitiesSection } from './ResearchCapabilitiesSection';
 export { default as ResearchFormulaSection } from './ResearchFormulaSection';
 export { default as ResearchEvidenceSection } from './ResearchEvidenceSection';
+
+// SST Section Components
+export { default as ResearchBottleneckDistributionSection } from './ResearchBottleneckDistributionSection';
+export { default as ResearchSSTCapabilitiesSection } from './ResearchSSTCapabilitiesSection';
+export { default as ResearchSSTEvidenceSection } from './ResearchSSTEvidenceSection';
+export { default as ResearchBottleneckPrincipleSection } from './ResearchBottleneckPrincipleSection';
+export { default as ResearchBottleneckCaseStudiesSection } from './ResearchBottleneckCaseStudiesSection';

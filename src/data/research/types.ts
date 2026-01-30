@@ -302,3 +302,122 @@ export interface ANSTPageData {
   download: DownloadData;
   finalCta: FinalCTAData;
 }
+
+// ============================================
+// SST (Scaling Stack Theory) Types
+// ============================================
+
+// SST Problem Section (Bottleneck Distribution)
+export interface SSTBottleneckDistributionData {
+  headline: BilingualText;
+  content: BilingualText;
+  findings: Array<{
+    number: number;
+    title: BilingualText;
+    content: BilingualText;
+  }>;
+  chartTitle: BilingualText;
+  chartData: Array<{
+    capability: 'C₁' | 'C₂' | 'C₃' | 'C₄';
+    name: BilingualText;
+    percentage: number;
+    color: string;
+  }>;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// SST Capabilities Section (with bottleneck percentage)
+export interface SSTCapabilityItem {
+  id: 'strategy' | 'setup' | 'execution' | 'operationalization';
+  symbol: string;
+  name: BilingualText;
+  tagline: BilingualText;
+  whatItIs: BilingualText[];
+  whyItMatters: BilingualText;
+  bottleneckPercentage: number;
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+export interface SSTCapabilitiesData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  capabilities: SSTCapabilityItem[];
+}
+
+// SST Evidence Section (C_min vs Time)
+export interface SSTEvidenceData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  intro: BilingualText;
+  findings: Array<{
+    number: number;
+    title: BilingualText;
+    content: BilingualText;
+  }>;
+  caveat: { title: BilingualText; content: BilingualText };
+  chartTitle: BilingualText;
+  chartAnnotation: BilingualText;
+  chartData: Array<{
+    cMin: number;
+    timeToRevenue: number;
+    hasBottleneck: boolean;
+  }>;
+}
+
+// SST Bottleneck Principle Section
+export interface SSTBottleneckPrincipleData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  formulaDisplay: string;
+  principle: BilingualText;
+  whyMultiplicative: BilingualText;
+  example: {
+    companyA: { scores: string; product: string; label: BilingualText };
+    companyB: { scores: string; product: string; label: BilingualText };
+  };
+  implication: BilingualText;
+  callout: { title: BilingualText; content: BilingualText };
+}
+
+// SST Case Study (Anonymized with Before/After)
+export interface SSTCaseStudy {
+  id: string;
+  name: BilingualText;
+  bottleneck: 'strategy' | 'setup' | 'execution' | 'operationalization';
+  bottleneckName: BilingualText;
+  before: {
+    scores: string;
+    cMin: string;
+    timeToRevenue: string;
+  };
+  after: {
+    fixedScore: string;
+    timeToRevenue: string;
+    improvement: string;
+  };
+  problem: BilingualText;
+  observations: BilingualText[];
+  fix: BilingualText[];
+  result: BilingualText;
+  roi: string;
+  color: 'violet' | 'blue' | 'emerald' | 'amber';
+}
+
+export interface SSTCaseStudiesData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  cases: SSTCaseStudy[];
+}
+
+// Complete SST Page Data
+export interface SSTPageData {
+  hero: AMFHeroData;
+  bottleneckDistribution: SSTBottleneckDistributionData;
+  capabilities: SSTCapabilitiesData;
+  evidence: SSTEvidenceData;
+  bottleneckPrinciple: SSTBottleneckPrincipleData;
+  caseStudies: SSTCaseStudiesData;
+  implications: ImplicationsData;
+  download: DownloadData;
+  finalCta: FinalCTAData;
+}

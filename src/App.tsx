@@ -83,6 +83,7 @@ const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortf
 const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
 const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
 const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
+const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 
 const queryClient = new QueryClient();
 
@@ -179,6 +180,7 @@ const App = () => (
                 <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
                 <Route path="/expertise/amf" element={<ExpertiseAMF />} />
                 <Route path="/expertise/anst" element={<ExpertiseANST />} />
+                <Route path="/expertise/sst" element={<ExpertiseSST />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
