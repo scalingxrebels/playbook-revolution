@@ -1,13 +1,14 @@
 
-# Analyse: GTM/Revenue Playbook Briefing vs. Aktueller Stand
+# Analyse: Product Playbook v2.0 Briefing vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing enthält umfassende Spezifikationen für die **Kachel** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
+Das Briefing enthält umfassende Spezifikationen für **Kachel #2** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
 
-1. **Zwei parallele Implementierungen** - eine alte monolithische (`PlaybookGtmRevenue.tsx` mit 1164 Zeilen) und eine neue modulare (`PlaybookLandingPage.tsx` + Data-Dateien)
-2. **Kachel-Design** nutzt veraltete `src/data/playbooks.ts` statt der neuen `src/data/playbooks/index.ts`
-3. **Content-Skelett** in `src/data/playbooks/content/gtm-revenue.ts` ist leer (nur Platzhalter)
+1. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 8) - aber **Teaser veraltet**
+2. **Content-Skelett leer** in `src/data/playbooks/content/product.ts` (nur Platzhalter "...")
+3. **Route fehlt** - Keine Route für `/playbooks/growth-engines/product` in `App.tsx`
+4. **Page-Komponente fehlt** - Keine `PlaybookProduct.tsx` Datei vorhanden
 
 ---
 
@@ -15,29 +16,39 @@ Das Briefing enthält umfassende Spezifikationen für die **Kachel** und die **L
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell | Status |
-|---------|----------|---------|--------|
-| **Badges** | Growth Engines, Strategy/Execution, CEO/CMO-CRO | Ja (area, bottleneck, role vorhanden) | Daten vorhanden aber outdated |
-| **Icon** | TrendingUp (32px) | TrendingUp (vorhanden) | OK |
-| **Headline** | "GTM/Revenue Playbook" | OK | OK |
-| **Teaser** | 60 Woerter, 7-Lever Framework | "3-component framework" (alt) | MUSS AKTUALISIERT WERDEN |
-| **CTA** | "Learn More" | OK | OK |
+| Element | Briefing | Aktuell (ID 8) | Status |
+|---------|----------|----------------|--------|
+| **Icon** | `Rocket` (32px) | `Rocket` ✓ | OK |
+| **Headline** | "Product Playbook" | "Product Playbook" ✓ | OK |
+| **Badges Area** | Growth Engines | `['growth-engines']` ✓ | OK |
+| **Badges Bottleneck** | Strategy, Execution | `['execution-focus']` ❌ | FEHLT Strategy |
+| **Badges Role** | CEO, CPO, CTO | `['ceo', 'cpo', 'cto']` ✓ | OK |
+| **Teaser** | 58 Wörter, 5-Komponenten Framework | "Build products that users love..." (alt) | MUSS AKTUALISIERT WERDEN |
 
-### Probleme
+### Änderungen für index.ts (ID 8, Zeilen 169-189)
 
-1. **Veraltete Datenquelle**: `PlaybookLibrary.tsx` nutzt `src/data/playbooks.ts` (alte Struktur) statt `src/data/playbooks/index.ts` (neue Struktur)
-2. **Falscher Teaser**: Aktuell "3-component framework", Briefing sagt "7-lever framework"
-3. **Fehlende Role-Badges**: VP Sales, VP Marketing werden im Briefing erwaehnt, aber nicht in den Tags
-
-### Aenderungen erforderlich
-
-```text
-src/data/playbooks/index.ts (ID 7):
-- description.en: Update auf 7-Lever Framework Teaser (60 Woerter)
-- description.de: Deutsche Uebersetzung
-
-src/data/playbooks.ts (Legacy):
-- Synchronisieren mit index.ts oder migrieren
+```typescript
+{
+  id: 8,
+  slug: 'growth-engines/product',
+  title: {
+    en: 'Product Playbook',
+    de: 'Product Playbook',
+  },
+  description: {
+    en: 'How to build products that scale with AI. Learn the 5-component framework (Product-Led Growth, Shipping Velocity, Feature Quality, Product Analytics, AI-Powered Development) used by AI-native companies to ship 10x faster and achieve product-market fit in weeks, not years. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Produkte baust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Product-Led Growth, Shipping Velocity, Feature Quality, Product Analytics, AI-Powered Development), das AI-native Unternehmen nutzen, um 10x schneller zu shippen und Product-Market Fit in Wochen statt Jahren zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+  },
+  icon: 'Rocket',
+  color: 'green',
+  gradient: 'from-green-500 to-teal-500',
+  area: ['growth-engines'],
+  bottleneck: ['strategy', 'execution-focus'], // + Strategy hinzugefügt
+  role: ['ceo', 'cpo', 'cto'],
+  ebene: 3,
+  parent: 2,
+  children: [],
+}
 ```
 
 ---
@@ -46,136 +57,182 @@ src/data/playbooks.ts (Legacy):
 
 ### Aktuelle Struktur vs. Briefing
 
-| Section | Briefing | Komponente | Daten-Interface | Status |
-|---------|----------|------------|-----------------|--------|
-| 1. Hero | Headline, Subheadline, 2 CTAs | PlaybookHeroSection | PlaybookHeroData | Komponente OK, Daten fehlen |
-| 2. The Problem | 4 Bullets + Charts | PlaybookProblemSection | PlaybookProblemSection | Komponente OK, Daten fehlen |
-| 3. The Solution (7 Levers) | 7 Accordion Items | PlaybookFrameworkSection | FrameworkItem[] | Komponente OK, Daten fehlen |
-| 4. Case Studies | 3 anonymisierte Cases | PlaybookCaseStudiesSection | CaseStudy[] | Komponente OK, Daten fehlen |
-| 5. Implementation (90-Day) | 3 Phasen | PlaybookRoadmapSection | RoadmapPhase[] | Komponente OK, Daten fehlen |
-| 6. Solutions Connection | Power Up + Boost | PlaybookSolutionsSection | SolutionConnectionItem[] | Komponente OK, Daten fehlen |
-| 7. Who This Is For | 4 Personas | PlaybookPersonasSection | PersonaItem[] | Komponente OK, Daten fehlen |
-| 8. Next Steps / Final CTA | 3 CTAs | PlaybookFinalCTASection | FinalCTAData | Komponente OK, Daten fehlen |
-
-### Daten-Struktur-Check
-
-Die Type-Definitionen in `src/data/playbooks/types.ts` sind **vollstaendig kompatibel** mit dem Briefing:
-
-| Briefing-Feld | Interface | Match |
-|---------------|-----------|-------|
-| 7 Lever Items | FrameworkItem[] | OK (id, icon, color, title, subtitle, description, metrics, actions) |
-| Case Study Results | CaseStudyResult[] | OK (metric, before, after, change) |
-| Roadmap Phases | RoadmapPhase[] | OK (phase, title, timeline, focus, deliverables) |
-| Solutions Connection | SolutionConnectionItem[] | OK (type, name, duration, price, outcome, link) |
-| Personas | PersonaItem[] | OK (icon, role, pain, outcome) |
-
-### Fehlende Elemente im Interface
-
-1. **Best Practices Section** - Im Briefing nicht enthalten, aber Interface existiert
-2. **Sub-Playbooks Section** - Nur fuer Ebene 2, GTM ist Ebene 3 (korrekt nicht angezeigt)
+| Section | Briefing | Komponente | Status |
+|---------|----------|------------|--------|
+| 1. Hero | Headline, Subheadline, 2 CTAs | PlaybookHeroSection | Komponente OK, **Daten fehlen** |
+| 2. The Problem | 4 Bullets + Metrics | PlaybookProblemSection | Komponente OK, **Daten fehlen** |
+| 3. The Solution (5 Components) | 5 Accordion Items | PlaybookFrameworkSection | Komponente OK, **Daten fehlen** |
+| 4. Case Studies | 3 anonymisierte Cases | PlaybookCaseStudiesSection | Komponente OK, **Daten fehlen** |
+| 5. Implementation (90-Day) | 3 Phasen | PlaybookRoadmapSection | Komponente OK, **Daten fehlen** |
+| 6. Solutions Connection | Power Up + Boost | PlaybookSolutionsSection | Komponente OK, **Daten fehlen** |
+| 7. Who This Is For | 4 Personas | PlaybookPersonasSection | Komponente OK, **Daten fehlen** |
+| 8. Final CTA | 3 CTAs | PlaybookFinalCTASection | Komponente OK, **Daten fehlen** |
 
 ---
 
-## Teil 3: KONKRETE IMPLEMENTIERUNG
+## Teil 3: IMPLEMENTATION PLAN
 
 ### Phase 1: Kachel-Daten aktualisieren
 
-**Datei:** `src/data/playbooks/index.ts` (Zeilen 147-168)
+**Datei:** `src/data/playbooks/index.ts`
+- Zeilen 169-189: Description auf 5-Component Framework aktualisieren
+- Bottleneck-Array um `'strategy'` erweitern
 
-```typescript
-{
-  id: 7,
-  slug: 'growth-engines/gtm-revenue',
-  title: {
-    en: 'GTM/Revenue Playbook',
-    de: 'GTM/Revenue Playbook',
-  },
-  description: {
-    en: 'How to build a revenue engine that scales with AI. Learn the 7-lever framework (ICP Clarity, Outbound Sales, Inbound Marketing, Channel Partners, Pricing, Sales Process, PLG) used by AI-native companies to reduce CAC by 50% and increase win rates by 100%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du eine Revenue Engine aufbaust, die mit AI skaliert. Lerne das 7-Hebel-Framework (ICP Clarity, Outbound Sales, Inbound Marketing, Channel Partner, Pricing, Sales Process, PLG), das AI-native Unternehmen nutzen, um CAC um 50% zu senken und Win Rates um 100% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
-  },
-  // ... rest bleibt gleich
-}
-```
+### Phase 2: Landing Page Content befüllen
 
-**Datei:** `src/data/playbooks.ts` (Legacy synchronisieren)
-
-### Phase 2: Landing Page Content befuellen
-
-**Datei:** `src/data/playbooks/content/gtm-revenue.ts`
+**Datei:** `src/data/playbooks/content/product.ts` (~450 Zeilen)
 
 **2.1 Hero Section:**
 ```typescript
 hero: {
   breadcrumb: { en: "Playbooks", de: "Playbooks" },
-  badge: { en: "GTM · Growth Engines", de: "GTM · Growth Engines" },
-  title: "GTM/Revenue Playbook",
+  badge: { en: "Product · Growth Engines", de: "Product · Growth Engines" },
+  title: "Product Playbook",
   subtitle: { 
-    en: "How to build a revenue engine that scales with AI", 
-    de: "Wie du eine Revenue Engine aufbaust, die mit AI skaliert" 
+    en: "How to build products that scale with AI", 
+    de: "Wie du Produkte baust, die mit AI skalieren" 
   },
   description: { 
-    en: "Traditional GTM is broken. Companies hire more salespeople, spend more on ads, and still see CAC rising and win rates falling. AI-native companies use a different playbook. They leverage the 7-lever framework to reduce CAC by 50%, increase win rates by 100%, and scale revenue 3-5x faster.", 
-    de: "Traditionelles GTM ist kaputt. Unternehmen stellen mehr Vertriebler ein, geben mehr fuer Ads aus und sehen trotzdem steigende CAC und sinkende Win Rates. AI-native Unternehmen nutzen ein anderes Playbook. Sie nutzen das 7-Hebel-Framework, um CAC um 50% zu senken, Win Rates um 100% zu steigern und Revenue 3-5x schneller zu skalieren."
+    en: "Traditional product development is too slow. Companies spend months building features nobody wants. AI-native companies use a different playbook. They leverage the 5-component framework to ship 10x faster and achieve product-market fit in weeks, not years.", 
+    de: "Traditionelle Produktentwicklung ist zu langsam. Unternehmen verbringen Monate damit, Features zu bauen, die niemand will. AI-native Unternehmen nutzen ein anderes Playbook. Sie nutzen das 5-Komponenten-Framework, um 10x schneller zu shippen und Product-Market Fit in Wochen statt Jahren zu erreichen."
   },
   trustBadges: [
-    { en: "~2,400 Words", de: "~2.400 Woerter" },
+    { en: "~2,800 Words", de: "~2.800 Wörter" },
     { en: "3 Case Studies", de: "3 Fallstudien" },
     { en: "90-Day Roadmap", de: "90-Tage Roadmap" }
   ],
   bookingUrl: "https://scalingx.fillout.com/inflection-call",
-  downloadUrl: "/downloads/gtm-revenue-playbook.pdf",
-  gradient: "from-orange-500 to-amber-500"
+  downloadUrl: "/downloads/product-playbook.pdf",
+  gradient: "from-green-500 to-teal-500"
 }
 ```
 
 **2.2 Problem Section:**
 ```typescript
 problem: {
-  title: { en: "Why Traditional GTM is Broken", de: "Warum traditionelles GTM kaputt ist" },
-  subtitle: { en: "The symptoms holding you back", de: "Die Symptome, die dich zurueckhalten" },
+  title: { en: "Why Traditional Product Development is Broken", de: "Warum traditionelle Produktentwicklung kaputt ist" },
+  subtitle: { en: "The symptoms holding you back", de: "Die Symptome, die dich zurückhalten" },
   bullets: [
-    { text: { en: "CAC Rising: Traditional companies see CAC increase 20-40% YoY", de: "CAC steigt: Traditionelle Unternehmen sehen CAC-Anstieg von 20-40% YoY" } },
-    { text: { en: "Win Rates Falling: Average win rate is 15-25% (vs. 40-60% for AI-native)", de: "Win Rates sinken: Durchschnittliche Win Rate 15-25% (vs. 40-60% bei AI-native)" } },
-    { text: { en: "Sales Cycles Lengthening: 6-12 months (vs. 2-4 months for AI-native)", de: "Sales Cycles verlaengern sich: 6-12 Monate (vs. 2-4 Monate bei AI-native)" } },
-    { text: { en: "Revenue Per Employee Stagnant: EUR150k-EUR250k (vs. EUR1M-EUR4.6M for AI-native)", de: "Revenue Per Employee stagniert: EUR150k-EUR250k (vs. EUR1M-EUR4.6M bei AI-native)" } }
+    { text: { en: "Shipping Too Slow: Traditional companies ship quarterly (vs. weekly for AI-native)", de: "Zu langsames Shipping: Traditionelle Unternehmen shippen quartalsweise (vs. wöchentlich bei AI-native)" } },
+    { text: { en: "Building Wrong Features: 70% of features are rarely/never used", de: "Falsche Features gebaut: 70% der Features werden selten/nie genutzt" } },
+    { text: { en: "PMF Takes Too Long: 12-24 months to PMF (vs. 3-6 months for AI-native)", de: "PMF dauert zu lange: 12-24 Monate bis PMF (vs. 3-6 Monate bei AI-native)" } },
+    { text: { en: "Technical Debt Growing: 30-50% of engineering time spent on debt (vs. 10-20% for AI-native)", de: "Technical Debt wächst: 30-50% der Engineering-Zeit für Debt (vs. 10-20% bei AI-native)" } }
   ],
   metrics: [
-    { label: { en: "CAC Increase YoY", de: "CAC-Anstieg YoY" }, value: "+40%", trend: "up" },
-    { label: { en: "Win Rate (Traditional)", de: "Win Rate (Traditionell)" }, value: "15-25%", trend: "down" },
-    { label: { en: "Sales Cycle", de: "Sales Cycle" }, value: "6-12 mo", trend: "up" },
-    { label: { en: "Revenue/Employee", de: "Revenue/Mitarbeiter" }, value: "EUR150k", trend: "down" }
+    { label: { en: "Shipping Cadence", de: "Shipping-Kadenz" }, value: "Quarterly", trend: "down" },
+    { label: { en: "Feature Waste", de: "Feature-Verschwendung" }, value: "70%", trend: "up" },
+    { label: { en: "Time to PMF", de: "Zeit bis PMF" }, value: "12-24 mo", trend: "up" },
+    { label: { en: "Technical Debt", de: "Technical Debt" }, value: "30-50%", trend: "up" }
   ]
 }
 ```
 
-**2.3 Framework Section (7 Levers):**
+**2.3 Framework Section (5 Components):**
 ```typescript
 framework: {
-  title: { en: "The 7-Lever Framework", de: "Das 7-Hebel-Framework" },
-  subtitle: { en: "How AI-native companies build revenue engines that scale", de: "Wie AI-native Unternehmen Revenue Engines bauen, die skalieren" },
+  title: { en: "The 5-Component Framework", de: "Das 5-Komponenten-Framework" },
+  subtitle: { en: "How AI-native companies build products that scale", de: "Wie AI-native Unternehmen Produkte bauen, die skalieren" },
   items: [
     {
-      id: "icp",
-      icon: "Crosshair",
-      color: "text-violet-500",
-      bgColor: "bg-violet-500/10",
-      title: { en: "ICP Clarity & Positioning", de: "ICP Clarity & Positioning" },
-      subtitle: { en: "Define your ideal customer profile with precision", de: "Definiere dein Ideal Customer Profile mit Praezision" },
-      description: { en: "50% of sales time wasted on wrong prospects. AI-powered ICP discovery identifies high-value segments automatically.", de: "50% der Sales-Zeit wird fuer falsche Prospects verschwendet. AI-gestuetzte ICP Discovery identifiziert High-Value Segmente automatisch." },
+      id: "plg",
+      icon: "Rocket",
+      color: "text-green-500",
+      bgColor: "bg-green-500/10",
+      title: { en: "Product-Led Growth Architecture", de: "Product-Led Growth Architektur" },
+      subtitle: { en: "5 Principles: Time-to-Value, Self-Service, Viral Loops, Usage-Based Monetization, Product Analytics", de: "5 Prinzipien: Time-to-Value, Self-Service, Viral Loops, Usage-Based Monetization, Product Analytics" },
+      description: { en: "Get users to 'Aha Moment' in <5 minutes. 40-60% of users churn before activation. AI-powered onboarding identifies optimal paths automatically.", de: "Bringe Nutzer in <5 Minuten zum 'Aha Moment'. 40-60% der Nutzer churnen vor der Aktivierung. AI-gestütztes Onboarding identifiziert optimale Pfade automatisch." },
       metrics: [
-        { label: { en: "CAC Reduction", de: "CAC-Reduktion" }, value: "-30-50%" },
-        { label: { en: "Win Rate Increase", de: "Win Rate Steigerung" }, value: "+50-100%" }
+        { label: { en: "Activation Rate", de: "Aktivierungsrate" }, value: "+50-100%" },
+        { label: { en: "CAC Reduction", de: "CAC-Reduktion" }, value: "-50-70%" }
       ],
       actions: [
-        { en: "Firmographics Analysis", de: "Firmographics Analyse" },
-        { en: "Technographics Mapping", de: "Technographics Mapping" },
-        { en: "Psychographics Profiling", de: "Psychographics Profiling" },
-        { en: "Positioning Canvas", de: "Positioning Canvas" },
-        { en: "AI-Powered ICP Discovery", de: "AI-gestuetzte ICP Discovery" }
+        { en: "Onboarding Flow Design", de: "Onboarding Flow Design" },
+        { en: "In-App Guidance", de: "In-App Guidance" },
+        { en: "Viral Loop Mechanics", de: "Viral Loop Mechaniken" },
+        { en: "Usage-Based Monetization", de: "Usage-Based Monetization" },
+        { en: "AI-Powered Analytics", de: "AI-Powered Analytics" }
       ]
     },
-    // ... 6 weitere Levers analog
+    {
+      id: "velocity",
+      icon: "Zap",
+      color: "text-amber-500",
+      bgColor: "bg-amber-500/10",
+      title: { en: "Shipping Velocity Acceleration", de: "Shipping Velocity Acceleration" },
+      subtitle: { en: "Ship 10x faster: Weekly vs. Quarterly", de: "10x schneller shippen: Wöchentlich vs. Quartalsweise" },
+      description: { en: "Speed = competitive advantage. Weekly releases, feature flags, A/B testing, and AI copilots.", de: "Speed = Wettbewerbsvorteil. Wöchentliche Releases, Feature Flags, A/B Testing und AI Copilots." },
+      metrics: [
+        { label: { en: "Shipping Velocity", de: "Shipping Velocity" }, value: "+300-500%" },
+        { label: { en: "Time-to-Market", de: "Time-to-Market" }, value: "-60-80%" }
+      ],
+      actions: [
+        { en: "Weekly/Bi-Weekly Releases", de: "Wöchentliche/Bi-Wöchentliche Releases" },
+        { en: "Feature Flags (LaunchDarkly)", de: "Feature Flags (LaunchDarkly)" },
+        { en: "A/B Testing Framework", de: "A/B Testing Framework" },
+        { en: "Automated CI/CD", de: "Automatisiertes CI/CD" },
+        { en: "AI Copilots (GitHub Copilot, Cursor)", de: "AI Copilots (GitHub Copilot, Cursor)" }
+      ]
+    },
+    {
+      id: "quality",
+      icon: "Shield",
+      color: "text-blue-500",
+      bgColor: "bg-blue-500/10",
+      title: { en: "Feature Quality & Technical Debt Management", de: "Feature Quality & Technical Debt Management" },
+      subtitle: { en: "Build quality, manage debt systematically", de: "Qualität bauen, Debt systematisch managen" },
+      description: { en: "Quality = retention, debt = velocity killer. 20% time rule for debt paydown.", de: "Qualität = Retention, Debt = Velocity-Killer. 20%-Zeit-Regel für Debt-Abbau." },
+      metrics: [
+        { label: { en: "Bug Rate", de: "Bug Rate" }, value: "-50-70%" },
+        { label: { en: "Technical Debt", de: "Technical Debt" }, value: "-30-50%" }
+      ],
+      actions: [
+        { en: "Code Reviews (2+ engineers)", de: "Code Reviews (2+ Engineers)" },
+        { en: "Automated Testing (80%+ coverage)", de: "Automatisiertes Testing (80%+ Coverage)" },
+        { en: "Performance Monitoring", de: "Performance Monitoring" },
+        { en: "20% Debt Paydown Rule", de: "20% Debt Paydown Regel" },
+        { en: "AI Code Review", de: "AI Code Review" }
+      ]
+    },
+    {
+      id: "analytics",
+      icon: "BarChart3",
+      color: "text-violet-500",
+      bgColor: "bg-violet-500/10",
+      title: { en: "Product Analytics & Feedback Loops", de: "Product Analytics & Feedback Loops" },
+      subtitle: { en: "Measure everything, learn fast, iterate", de: "Alles messen, schnell lernen, iterieren" },
+      description: { en: "Data-driven product = 3-5x faster PMF. Track activation, retention, feature adoption.", de: "Datengetriebenes Produkt = 3-5x schnellerer PMF. Tracke Aktivierung, Retention, Feature Adoption." },
+      metrics: [
+        { label: { en: "PMF Time", de: "PMF Zeit" }, value: "-50-70%" },
+        { label: { en: "Feature Success Rate", de: "Feature Success Rate" }, value: "+100-200%" }
+      ],
+      actions: [
+        { en: "Analytics Setup (Mixpanel/Amplitude)", de: "Analytics Setup (Mixpanel/Amplitude)" },
+        { en: "Cohort Analysis", de: "Kohorten-Analyse" },
+        { en: "Funnel Analysis", de: "Funnel-Analyse" },
+        { en: "User Research & Interviews", de: "User Research & Interviews" },
+        { en: "AI-Powered Insights", de: "AI-Powered Insights" }
+      ]
+    },
+    {
+      id: "ai-dev",
+      icon: "Sparkles",
+      color: "text-pink-500",
+      bgColor: "bg-pink-500/10",
+      title: { en: "AI-Powered Product Development", de: "AI-Powered Product Development" },
+      subtitle: { en: "Use AI to build products 10x faster", de: "Nutze AI, um Produkte 10x schneller zu bauen" },
+      description: { en: "AI = 10x productivity boost. Code copilots, test generation, AI-powered features.", de: "AI = 10x Produktivitäts-Boost. Code Copilots, Test-Generierung, AI-Powered Features." },
+      metrics: [
+        { label: { en: "Development Velocity", de: "Development Velocity" }, value: "+300-500%" },
+        { label: { en: "Feature Quality", de: "Feature Quality" }, value: "+50-100%" }
+      ],
+      actions: [
+        { en: "GitHub Copilot / Cursor", de: "GitHub Copilot / Cursor" },
+        { en: "AI Test Generation", de: "AI Test-Generierung" },
+        { en: "AI-Powered UX", de: "AI-Powered UX" },
+        { en: "Predictive Analytics", de: "Predictive Analytics" },
+        { en: "AI Governance", de: "AI Governance" }
+      ]
+    }
   ]
 }
 ```
@@ -184,48 +241,120 @@ framework: {
 ```typescript
 caseStudies: {
   title: { en: "Real-World Results", de: "Echte Ergebnisse" },
-  subtitle: { en: "How 3 companies transformed their GTM with the 7-lever framework", de: "Wie 3 Unternehmen ihr GTM mit dem 7-Hebel-Framework transformiert haben" },
+  subtitle: { en: "How 3 companies transformed their product development with the 5-component framework", de: "Wie 3 Unternehmen ihre Produktentwicklung mit dem 5-Komponenten-Framework transformiert haben" },
   cases: [
     {
       company: { en: "Series A SaaS Company", de: "Series A SaaS Unternehmen" },
-      problem: { en: "CAC rising 40% YoY, win rate falling to 12%", de: "CAC stieg 40% YoY, Win Rate fiel auf 12%" },
-      solution: { en: "Applied Lever 1 (ICP), Lever 2 (Outbound), Lever 5 (Pricing), Lever 6 (Sales Process)", de: "Hebel 1 (ICP), Hebel 2 (Outbound), Hebel 5 (Pricing), Hebel 6 (Sales Process) angewendet" },
+      problem: { en: "12 months to PMF, slow shipping velocity", de: "12 Monate bis PMF, langsame Shipping Velocity" },
+      solution: { en: "Applied Component 1 (PLG), Component 2 (Velocity), Component 4 (Analytics), Component 5 (AI Dev)", de: "Komponente 1 (PLG), Komponente 2 (Velocity), Komponente 4 (Analytics), Komponente 5 (AI Dev) angewendet" },
       results: [
-        { metric: { en: "ARR", de: "ARR" }, before: "EUR5M", after: "EUR25M", change: "+400%" },
-        { metric: { en: "CAC", de: "CAC" }, before: "EUR8,000", after: "EUR3,200", change: "-60%" },
-        { metric: { en: "Win Rate", de: "Win Rate" }, before: "12%", after: "45%", change: "+275%" },
-        { metric: { en: "Sales Cycle", de: "Sales Cycle" }, before: "120 days", after: "45 days", change: "-63%" }
+        { metric: { en: "Time to PMF", de: "Zeit bis PMF" }, before: "12 months", after: "3 months", change: "-75%" },
+        { metric: { en: "Shipping Velocity", de: "Shipping Velocity" }, before: "Quarterly", after: "Weekly", change: "+12x" },
+        { metric: { en: "Activation Rate", de: "Aktivierungsrate" }, before: "25%", after: "65%", change: "+160%" },
+        { metric: { en: "Feature Success", de: "Feature Success" }, before: "30%", after: "80%", change: "+167%" }
       ],
-      timeline: { en: "12 months | Power Up + Boost", de: "12 Monate | Power Up + Boost" }
+      timeline: { en: "6 months | Power Up + Boost", de: "6 Monate | Power Up + Boost" }
     },
-    // ... 2 weitere Cases analog
+    {
+      company: { en: "Series B SaaS Company", de: "Series B SaaS Unternehmen" },
+      problem: { en: "Slow shipping (quarterly releases), high technical debt", de: "Langsames Shipping (quartalsweise Releases), hohe Technical Debt" },
+      solution: { en: "Applied Component 2 (Velocity), Component 3 (Quality), Component 5 (AI Dev)", de: "Komponente 2 (Velocity), Komponente 3 (Quality), Komponente 5 (AI Dev) angewendet" },
+      results: [
+        { metric: { en: "Shipping Velocity", de: "Shipping Velocity" }, before: "Quarterly", after: "Weekly", change: "+12x" },
+        { metric: { en: "Technical Debt", de: "Technical Debt" }, before: "40%", after: "15%", change: "-63%" },
+        { metric: { en: "Bug Rate", de: "Bug Rate" }, before: "50/release", after: "5/release", change: "-90%" },
+        { metric: { en: "Feature Adoption", de: "Feature Adoption" }, before: "Baseline", after: "+150%", change: "+150%" }
+      ],
+      timeline: { en: "12 months | Boost + Accelerate", de: "12 Monate | Boost + Accelerate" }
+    },
+    {
+      company: { en: "Series C Company", de: "Series C Unternehmen" },
+      problem: { en: "Need to reach 1M users for IPO readiness", de: "Müssen 1M Nutzer für IPO-Bereitschaft erreichen" },
+      solution: { en: "Applied all 5 components, focus on PLG + viral loops", de: "Alle 5 Komponenten angewendet, Fokus auf PLG + Viral Loops" },
+      results: [
+        { metric: { en: "Users", de: "Nutzer" }, before: "50k", after: "1M", change: "+1,900%" },
+        { metric: { en: "Freemium Conversion", de: "Freemium Conversion" }, before: "3%", after: "8%", change: "+167%" },
+        { metric: { en: "K-Factor", de: "K-Factor" }, before: "0.5", after: "1.8", change: "+260%" },
+        { metric: { en: "CAC", de: "CAC" }, before: "€500", after: "€50", change: "-90%" }
+      ],
+      timeline: { en: "18 months | Accelerate + Extension", de: "18 Monate | Accelerate + Extension" }
+    }
   ]
 }
 ```
 
-**2.5 Solutions Connection:**
+**2.5 Roadmap (90-Day):**
+```typescript
+roadmap: {
+  title: { en: "How to Implement (90-Day Roadmap)", de: "Wie implementieren (90-Tage Roadmap)" },
+  subtitle: { en: "From strategy to execution in 12 weeks", de: "Von Strategie zu Execution in 12 Wochen" },
+  phases: [
+    {
+      phase: 1,
+      title: { en: "Strategy", de: "Strategie" },
+      timeline: { en: "Week 1-2", de: "Woche 1-2" },
+      focus: { en: "Define product vision, prioritize features", de: "Produktvision definieren, Features priorisieren" },
+      deliverables: [
+        { en: "Product Vision Document", de: "Produktvisions-Dokument" },
+        { en: "Feature Roadmap (3-6 months)", de: "Feature Roadmap (3-6 Monate)" },
+        { en: "PLG Strategy Deck", de: "PLG Strategy Deck" },
+        { en: "Success Metrics Dashboard", de: "Success Metrics Dashboard" }
+      ],
+      gradient: "from-violet-500 to-purple-500"
+    },
+    {
+      phase: 2,
+      title: { en: "Setup", de: "Setup" },
+      timeline: { en: "Week 3-4", de: "Woche 3-4" },
+      focus: { en: "Set up analytics, CI/CD, AI tools", de: "Analytics, CI/CD, AI Tools aufsetzen" },
+      deliverables: [
+        { en: "Product Analytics (Mixpanel/Amplitude)", de: "Product Analytics (Mixpanel/Amplitude)" },
+        { en: "CI/CD Pipeline", de: "CI/CD Pipeline" },
+        { en: "AI Copilots (GitHub Copilot/Cursor)", de: "AI Copilots (GitHub Copilot/Cursor)" },
+        { en: "Feature Flags (LaunchDarkly)", de: "Feature Flags (LaunchDarkly)" }
+      ],
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      phase: 3,
+      title: { en: "Execution", de: "Execution" },
+      timeline: { en: "Week 5-8", de: "Woche 5-8" },
+      focus: { en: "Ship weekly, measure everything, iterate", de: "Wöchentlich shippen, alles messen, iterieren" },
+      deliverables: [
+        { en: "4+ Weekly Releases", de: "4+ Wöchentliche Releases" },
+        { en: "Feature Adoption Tracking", de: "Feature Adoption Tracking" },
+        { en: "User Feedback Loop", de: "User Feedback Loop" },
+        { en: "A/B Testing Playbook", de: "A/B Testing Playbook" }
+      ],
+      gradient: "from-emerald-500 to-green-500"
+    }
+  ]
+}
+```
+
+**2.6 Solutions Connection:**
 ```typescript
 solutionsConnection: {
   title: { en: "Ready to Execute?", de: "Bereit zur Umsetzung?" },
-  subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Waehle das richtige Engagement-Modell fuer deinen Zeitplan und Budget" },
+  subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und Budget" },
   items: [
     {
       type: "power-up",
-      name: { en: "Power Up: CAC Crisis Averted", de: "Power Up: CAC Krise abgewendet" },
+      name: { en: "Power Up: Product Velocity Boost", de: "Power Up: Product Velocity Boost" },
       duration: { en: "30 Days", de: "30 Tage" },
-      price: { en: "From EUR23.6K", de: "Ab EUR23.6K" },
-      outcome: { en: "CAC -40-60%, Win Rate +20-100%", de: "CAC -40-60%, Win Rate +20-100%" },
+      price: { en: "From €23.6K", de: "Ab €23.6K" },
+      outcome: { en: "Shipping Velocity +200-400%, Feature Success +50-100%", de: "Shipping Velocity +200-400%, Feature Success +50-100%" },
       cta: { en: "Start Power Up", de: "Power Up starten" },
-      link: "/solutions/power-up/cac-crisis",
+      link: "/solutions/power-up/scaling-velocity",
       icon: "Zap",
       color: "orange"
     },
     {
       type: "boost",
-      name: { en: "Boost: GTM Transformation", de: "Boost: GTM Transformation" },
+      name: { en: "Boost: Product Transformation", de: "Boost: Product Transformation" },
       duration: { en: "90 Days", de: "90 Tage" },
-      price: { en: "EUR60K-EUR78K", de: "EUR60K-EUR78K" },
-      outcome: { en: "Revenue +30-50%, CAC -50-70%", de: "Revenue +30-50%, CAC -50-70%" },
+      price: { en: "€60K-€78K", de: "€60K-€78K" },
+      outcome: { en: "PMF in 3-6 months, Shipping Velocity +500-1000%", de: "PMF in 3-6 Monaten, Shipping Velocity +500-1000%" },
       cta: { en: "Start Boost", de: "Boost starten" },
       link: "/solutions/boost/growth-engine",
       icon: "Rocket",
@@ -235,80 +364,74 @@ solutionsConnection: {
 }
 ```
 
-**2.6 Personas:**
+**2.7 Personas:**
 ```typescript
 whoThisIsFor: {
-  title: { en: "Who Should Use This Playbook?", de: "Fuer wen ist dieses Playbook?" },
-  subtitle: { en: "Ideal for B2B SaaS companies EUR5M-EUR100M ARR", de: "Ideal fuer B2B SaaS Unternehmen EUR5M-EUR100M ARR" },
-  icp: { en: "Series A-C B2B SaaS companies scaling from EUR5M to EUR100M ARR", de: "Series A-C B2B SaaS Unternehmen, die von EUR5M auf EUR100M ARR skalieren" },
+  title: { en: "Who Should Use This Playbook?", de: "Für wen ist dieses Playbook?" },
+  subtitle: { en: "Ideal for B2B SaaS companies €3M-€100M ARR", de: "Ideal für B2B SaaS Unternehmen €3M-€100M ARR" },
+  icp: { en: "Series A-C B2B SaaS companies scaling product from MVP to scale", de: "Series A-C B2B SaaS Unternehmen, die Produkt von MVP zu Scale skalieren" },
   personas: [
-    { icon: "User", role: { en: "CEO", de: "CEO" }, pain: { en: "Need scalable GTM engine, not more headcount", de: "Brauche skalierbare GTM Engine, nicht mehr Headcount" }, outcome: { en: "3-5x revenue growth with same team", de: "3-5x Revenue Wachstum mit gleichem Team" }, color: "violet" },
-    { icon: "Target", role: { en: "CMO/CRO", de: "CMO/CRO" }, pain: { en: "Responsible for revenue growth and CAC efficiency", de: "Verantwortlich fuer Revenue Wachstum und CAC Effizienz" }, outcome: { en: "50% CAC reduction, 100% win rate increase", de: "50% CAC Reduktion, 100% Win Rate Steigerung" }, color: "blue" },
-    { icon: "Users", role: { en: "VP Sales", de: "VP Sales" }, pain: { en: "Need repeatable sales process and better win rates", de: "Brauche wiederholbaren Sales Prozess und bessere Win Rates" }, outcome: { en: "Standardized playbook, predictable pipeline", de: "Standardisiertes Playbook, vorhersagbare Pipeline" }, color: "green" },
-    { icon: "Megaphone", role: { en: "VP Marketing", de: "VP Marketing" }, pain: { en: "Need more qualified leads at lower cost", de: "Brauche mehr qualifizierte Leads zu geringeren Kosten" }, outcome: { en: "5x inbound leads, 50% lower CPL", de: "5x Inbound Leads, 50% niedrigere CPL" }, color: "amber" }
+    { icon: "User", role: { en: "CEO", de: "CEO" }, pain: { en: "Need product that scales, not just more features", de: "Brauche Produkt das skaliert, nicht nur mehr Features" }, outcome: { en: "10x faster shipping, PMF in weeks", de: "10x schnelleres Shipping, PMF in Wochen" }, color: "violet" },
+    { icon: "Rocket", role: { en: "CPO", de: "CPO" }, pain: { en: "Responsible for product velocity and PMF", de: "Verantwortlich für Product Velocity und PMF" }, outcome: { en: "Weekly releases, 80%+ feature success rate", de: "Wöchentliche Releases, 80%+ Feature Success Rate" }, color: "green" },
+    { icon: "Code", role: { en: "CTO", de: "CTO" }, pain: { en: "Need to ship faster without sacrificing quality", de: "Muss schneller shippen ohne Qualitätsverlust" }, outcome: { en: "AI copilots, 80% test coverage, <15% debt", de: "AI Copilots, 80% Test Coverage, <15% Debt" }, color: "blue" },
+    { icon: "Users", role: { en: "VP Engineering", de: "VP Engineering" }, pain: { en: "Need to reduce technical debt and increase velocity", de: "Muss Technical Debt reduzieren und Velocity steigern" }, outcome: { en: "10x velocity, 63% debt reduction", de: "10x Velocity, 63% Debt-Reduktion" }, color: "amber" }
   ]
 }
 ```
 
-**2.7 Final CTA:**
+**2.8 Final CTA:**
 ```typescript
 finalCta: {
   headline: { en: "Get Started Today", de: "Starte heute" },
-  subline: { en: "Transform your GTM with the 7-lever framework", de: "Transformiere dein GTM mit dem 7-Hebel-Framework" },
+  subline: { en: "Transform your product development with the 5-component framework", de: "Transformiere deine Produktentwicklung mit dem 5-Komponenten-Framework" },
   trustSignals: [
     { en: "50-page playbook with templates", de: "50-Seiten Playbook mit Templates" },
     { en: "3 real-world case studies", de: "3 echte Fallstudien" },
     { en: "90-day implementation roadmap", de: "90-Tage Implementierungs-Roadmap" }
   ],
   bookingUrl: "https://scalingx.fillout.com/inflection-call",
-  downloadUrl: "/downloads/gtm-revenue-playbook.pdf"
+  downloadUrl: "/downloads/product-playbook.pdf"
 }
 ```
 
----
+### Phase 3: Page-Komponente erstellen
 
-## Teil 4: MIGRATION
+**Neue Datei:** `src/pages/PlaybookProduct.tsx`
+```typescript
+import React from 'react';
+import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
+import { productData } from '@/data/playbooks/content/product';
 
-### Option A: Modulare Architektur (Empfohlen)
+const PlaybookProduct: React.FC = () => {
+  return <PlaybookLandingPage data={productData} />;
+};
 
-1. **Route beibehalten:** `/playbooks/growth-engines/gtm-revenue`
-2. **Page aendern:** `PlaybookGtmRevenue.tsx` importiert `PlaybookLandingPage` + `gtmRevenueData`
-3. **Content befuellen:** `gtm-revenue.ts` mit vollstaendigen Daten
+export default PlaybookProduct;
+```
 
-**Vorteile:**
-- Konsistenz mit anderen Playbooks
-- Wiederverwendbare Komponenten
-- Einfachere Wartung
+### Phase 4: Route registrieren
 
-### Option B: Monolithische Seite behalten
-
-- Die bestehende `PlaybookGtmRevenue.tsx` (1164 Zeilen) weiter pflegen
-- 7-Lever Inhalte direkt dort aktualisieren
-
-**Nachteile:**
-- Duplizierter Code
-- Inkonsistenz mit neuer Architektur
+**Datei:** `src/App.tsx`
+- Lazy Import hinzufügen: `const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));`
+- Route hinzufügen: `<Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />`
 
 ---
 
-## Empfehlung
+## Zusammenfassung der Änderungen
 
-**Option A: Modulare Migration**
-
-1. `gtm-revenue.ts` mit vollstaendigem Content befuellen
-2. `PlaybookGtmRevenue.tsx` auf 10 Zeilen reduzieren (importiert nur `PlaybookLandingPage`)
-3. Kachel-Daten in `index.ts` aktualisieren
-4. Legacy `playbooks.ts` synchronisieren oder entfernen
-
-**Geschaetzte Zeilen:**
-- `gtm-revenue.ts`: ~400 Zeilen (reiner Content)
-- `PlaybookGtmRevenue.tsx`: ~10 Zeilen (nur Import)
+| Datei | Aktion | Geschätzte Zeilen |
+|-------|--------|-------------------|
+| `src/data/playbooks/index.ts` | Update description + bottleneck für ID 8 | ~5 Zeilen |
+| `src/data/playbooks/content/product.ts` | Vollständiger Content befüllen | ~450 Zeilen |
+| `src/pages/PlaybookProduct.tsx` | Neue Datei erstellen | ~10 Zeilen |
+| `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
 
 ---
 
-## Naechste Schritte
+## Technische Notizen
 
-1. **Kachel aktualisieren**: Teaser auf 7-Lever Framework aendern
-2. **Landing Page Content**: Alle 8 Sections mit DE/EN Content befuellen
-3. **Page migrieren**: Von monolithisch auf modular umstellen
-4. **Testen**: Route `/playbooks/growth-engines/gtm-revenue` pruefen
+1. **Gleiche modulare Architektur** wie GTM/Revenue Playbook
+2. **Alle Section-Komponenten** bereits mit Deep Space Design vorhanden
+3. **Bilingual Content** (EN/DE) in allen Sections
+4. **Solutions Connection** verlinkt auf bestehende Power Up/Boost Seiten
+5. **Icon-Palette**: Rocket (PLG), Zap (Velocity), Shield (Quality), BarChart3 (Analytics), Sparkles (AI)
