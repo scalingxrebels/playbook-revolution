@@ -1,15 +1,15 @@
 
-# Analyse: Finance Playbook v2.0 Briefing vs. Aktueller Stand
+# Analyse: Talent Playbook v2.0 Briefing vs. Aktueller Stand
 
 ## Zusammenfassung
 
-Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #5** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
+Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #6** und die **Landing Page**. Der aktuelle Code-Stand zeigt:
 
-1. **Kachel FEHLT komplett** - Finance ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
-2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 11) - aber **Teaser veraltet** und COO fehlt in Role
-3. **Content-Skelett leer** in `src/data/playbooks/content/finance.ts` (nur Platzhalter "...")
-4. **Route FEHLT** - Keine Route für `/playbooks/operating-systems/finance` in `App.tsx`
-5. **Page-Komponente FEHLT** - Keine `PlaybookFinance.tsx` Datei vorhanden
+1. **Kachel FEHLT komplett** - Talent ist NICHT in `src/data/playbooks.ts` (Legacy-Datei für Tile-Grid)
+2. **Kachel-Metadaten vorhanden** in `src/data/playbooks/index.ts` (ID 12) - aber **Teaser veraltet** und COO fehlt in Role
+3. **Content-Skelett leer** in `src/data/playbooks/content/talent.ts` (nur Platzhalter "...")
+4. **Route FEHLT** - Keine Route für `/playbooks/operating-systems/talent` in `App.tsx`
+5. **Page-Komponente FEHLT** - Keine `PlaybookTalent.tsx` Datei vorhanden
 
 ---
 
@@ -17,14 +17,14 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #5** und die
 
 ### Aktueller Stand vs. Briefing
 
-| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 11) | Status |
+| Element | Briefing | Aktuell (Legacy) | Aktuell (index.ts ID 12) | Status |
 |---------|----------|------------------|--------------------------|--------|
-| **Icon** | `DollarSign` (32px) | FEHLT | `DollarSign` | Legacy FEHLT |
-| **Headline** | "Finance Playbook" | FEHLT | OK | Legacy FEHLT |
+| **Icon** | `Users` (32px) | FEHLT | `Users` | Legacy FEHLT |
+| **Headline** | "Talent Playbook" | FEHLT | OK | Legacy FEHLT |
 | **Badges Area** | Operating Systems | FEHLT | `['operating-systems']` | Legacy FEHLT |
 | **Badges Bottleneck** | Setup, Operationalization | FEHLT | `['setup', 'operationalization']` | OK |
-| **Badges Role** | CEO, CFO, COO | FEHLT | `['ceo', 'cfo']` | **COO FEHLT** |
-| **Teaser** | 55 Wörter, 5-Komponenten Framework | FEHLT | Generisch (alt) | MUSS AKTUALISIERT WERDEN |
+| **Badges Role** | CEO, COO, CHRO | FEHLT | `['ceo']` | **COO FEHLT, CHRO nicht verfügbar** |
+| **Teaser** | 52 Wörter, 5-Komponenten Framework | FEHLT | Generisch (alt) | MUSS AKTUALISIERT WERDEN |
 
 ---
 
@@ -34,157 +34,157 @@ Das Briefing v2.0 enthält umfassende Spezifikationen für **Kachel #5** und die
 
 ```typescript
 // Neuer Import hinzufügen
-import { TrendingUp, Rocket, Heart, Settings, DollarSign } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users } from 'lucide-react';
 
 // Neuer Eintrag am Ende des Arrays:
 {
-  id: 'finance',
-  slug: 'operating-systems/finance',
+  id: 'talent',
+  slug: 'operating-systems/talent',
   title: {
-    en: 'Finance Playbook',
-    de: 'Finance Playbook',
+    en: 'Talent Playbook',
+    de: 'Talent Playbook',
   },
   description: {
-    en: 'How to build finance systems that scale with AI. Learn the 5-component framework (Unit Economics, FP&A Systems, Scenario Planning, Financial Reporting, AI-Powered Finance) used by AI-native companies to improve Rule of 40 by 20-40pp and increase forecast accuracy from 60% to 95%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du Finanzsysteme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Unit Economics, FP&A Systeme, Szenarioplanung, Financial Reporting, AI-Powered Finance), das AI-native Unternehmen nutzen, um Rule of 40 um 20-40pp zu verbessern und Forecast-Genauigkeit von 60% auf 95% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to build talent systems that scale with AI. Learn the 5-component framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent) used by AI-native companies to reduce time-to-hire by 60% and increase retention by 40%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Talent-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent), das AI-native Unternehmen nutzen, um Time-to-Hire um 60% zu reduzieren und Retention um 40% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
   outcomes: {
     en: [
-      'Rule of 40 improvement of 20-40pp',
-      'Forecast accuracy increase from 60% to 95%',
-      'Financial close time reduction from 10 to 2 days',
+      'Time-to-hire reduction of 60-80%',
+      'Retention rate increase of 30-50%',
+      'Onboarding time reduction of 50-70%',
       'Clear 90-day implementation roadmap',
     ],
     de: [
-      'Rule of 40 Verbesserung von 20-40pp',
-      'Forecast-Genauigkeit Steigerung von 60% auf 95%',
-      'Financial Close Zeit Reduktion von 10 auf 2 Tage',
+      'Time-to-Hire Reduktion von 60-80%',
+      'Retention Rate Steigerung von 30-50%',
+      'Onboarding Zeit Reduktion von 50-70%',
       'Klare 90-Tage-Implementierungs-Roadmap',
     ],
   },
-  caseStudies: ['Series A SaaS (Rule of 40 +30pp)', 'Series B SaaS (Forecast 95%)', 'Series C (€3M/year saved)'],
-  icon: React.createElement(DollarSign, { className: 'w-6 h-6' }),
-  gradient: 'from-emerald-500 to-green-500',
+  caseStudies: ['Series A SaaS (Time-to-Hire -67%)', 'Series B SaaS (Retention 95%)', 'Series C (20-day hiring)'],
+  icon: React.createElement(Users, { className: 'w-6 h-6' }),
+  gradient: 'from-violet-500 to-purple-500',
   impact: ['operating-systems'],
   bottleneck: ['setup', 'operationalization'],
-  role: ['ceo', 'cfo', 'coo'],
+  role: ['ceo', 'coo'],
 }
 ```
 
-### 2.2 Update für index.ts (ID 11)
+### 2.2 Update für index.ts (ID 12)
 
 ```typescript
 {
-  id: 11,
-  slug: 'operating-systems/finance',
+  id: 12,
+  slug: 'operating-systems/talent',
   title: {
-    en: 'Finance Playbook',
-    de: 'Finance Playbook',
+    en: 'Talent Playbook',
+    de: 'Talent Playbook',
   },
   description: {
-    en: 'How to build finance systems that scale with AI. Learn the 5-component framework (Unit Economics, FP&A Systems, Scenario Planning, Financial Reporting, AI-Powered Finance) used by AI-native companies to improve Rule of 40 by 20-40pp and increase forecast accuracy from 60% to 95%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-    de: 'Wie du Finanzsysteme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Unit Economics, FP&A Systeme, Szenarioplanung, Financial Reporting, AI-Powered Finance), das AI-native Unternehmen nutzen, um Rule of 40 um 20-40pp zu verbessern und Forecast-Genauigkeit von 60% auf 95% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    en: 'How to build talent systems that scale with AI. Learn the 5-component framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent) used by AI-native companies to reduce time-to-hire by 60% and increase retention by 40%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+    de: 'Wie du Talent-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent), das AI-native Unternehmen nutzen, um Time-to-Hire um 60% zu reduzieren und Retention um 40% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
   },
-  icon: 'DollarSign',
-  color: 'emerald',
-  gradient: 'from-emerald-500 to-green-500',
+  icon: 'Users',
+  color: 'violet',
+  gradient: 'from-violet-500 to-purple-500',
   area: ['operating-systems'],
   bottleneck: ['setup', 'operationalization'],
-  role: ['ceo', 'cfo', 'coo'], // +COO hinzugefügt
+  role: ['ceo', 'coo'], // +COO hinzugefügt (CHRO nicht im System verfügbar)
   ebene: 3,
   parent: 3,
   children: [],
 }
 ```
 
-### 2.3 Vollständiger Content für finance.ts (~500 Zeilen)
+### 2.3 Vollständiger Content für talent.ts (~500 Zeilen)
 
 **Hero Section:**
-- Badge: "Finance · Operating Systems"
-- Title: "Finance Playbook"
-- Subtitle: "How to build finance systems that scale with AI"
-- Description: 98 Wörter (Briefing-Text)
+- Badge: "Talent · Operating Systems"
+- Title: "Talent Playbook"
+- Subtitle: "How to build talent systems that scale with AI"
+- Description: 99 Wörter (Briefing-Text)
 - Trust Badges: ~3,000 Words, 3 Case Studies, 90-Day Roadmap
-- Gradient: from-emerald-500 to-green-500
+- Gradient: from-violet-500 to-purple-500
 
 **Summary Section:**
-- Problem: 70% don't track unit economics, 60-80% manual FP&A
-- Why It Matters: Financial clarity = investor confidence + better decisions
+- Problem: 90+ days time-to-hire, 70% no structured onboarding, 75% retention
+- Why It Matters: Talent is the foundation for hypergrowth
 - Solution: 5-Komponenten-Framework
 
 **Problem Section:**
 4 Bullets:
-- Unit Economics Unknown: 70% don't track CAC, LTV, Payback Period
-- Manual FP&A: 60-80% time on manual data entry
-- Forecast Accuracy: 60% average (vs. 95% AI-native)
-- Financial Close: 10 days average (vs. 2 days AI-native)
+- Slow Hiring: 90+ days average (vs. 30 days AI-native)
+- Chaotic Onboarding: 70% have no structured onboarding
+- Low Retention: 75% average (vs. 95% AI-native)
+- No Performance Management: 60% have no performance system
 
 4 Metrics:
-- Unit Economics Tracking: 30%, trend down
-- Manual FP&A Work: 60-80%, trend up
-- Forecast Accuracy: 60%, trend down
-- Financial Close: 10 days, trend up
+- Time-to-Hire: 90+ days, trend up
+- Structured Onboarding: 30%, trend down
+- Retention Rate: 75%, trend down
+- Performance Systems: 40%, trend down
 
 **Framework Section (5 Komponenten):**
 
-1. **Unit Economics & Profitability**
-   - Icon: Calculator, Color: green
-   - Impact: Rule of 40 +20-40pp, CAC Payback -30-50%
-   - Actions: CAC/LTV Framework, Cohort Analysis, Profitability Modeling, AI-Powered Unit Economics
+1. **Hiring Pipeline & Recruiting Excellence**
+   - Icon: UserPlus, Color: green
+   - Impact: Time-to-Hire -60%, Quality of Hire +50%
+   - Actions: Hiring Strategy, Sourcing Pipeline, Screening Process, Interview Process, AI-Powered Recruiting
 
-2. **FP&A Systems & Forecasting**
-   - Icon: BarChart3, Color: blue
-   - Impact: Forecast Accuracy +30-50pp, Planning Time -60-80%
-   - Actions: 3-Statement Model, Rolling Forecasts, Budgeting Process, AI-Powered Forecasting
+2. **Onboarding Excellence & Time-to-Value**
+   - Icon: GraduationCap, Color: blue
+   - Impact: Onboarding Time -70%, Time-to-Productivity -50%
+   - Actions: Onboarding Plan, Checklists, Role-Specific Training, Manager Enablement, AI-Powered Onboarding
 
-3. **Scenario Planning & Modeling**
-   - Icon: GitBranch, Color: violet
-   - Impact: Strategic Clarity +100%, Risk Mitigation +50-70%
-   - Actions: Scenario Design, Sensitivity Analysis, Strategic Planning, Monte Carlo Simulations
+3. **Performance Management & Development**
+   - Icon: Target, Color: violet
+   - Impact: Performance +30%, Retention +40%
+   - Actions: Performance Framework (OKRs), Feedback Culture, Career Development, Compensation Framework, AI-Powered Performance
 
-4. **Financial Reporting & Analytics**
-   - Icon: FileText, Color: amber
-   - Impact: Reporting Time -70-90%, Decision Velocity +100-200%
-   - Actions: Financial Dashboards, Board Reporting, Compliance Reporting, AI-Powered Reporting
+4. **Talent Analytics & Insights**
+   - Icon: BarChart3, Color: amber
+   - Impact: Talent Visibility +100%, Predictive Accuracy +50%
+   - Actions: Talent Dashboards, Hiring Metrics, Retention Metrics, Performance Metrics, AI-Powered Analytics
 
-5. **AI-Powered Finance**
+5. **AI-Powered Talent**
    - Icon: Sparkles, Color: pink
-   - Impact: Forecast Accuracy +30-50pp, Finance Team Productivity +200-400%
-   - Actions: AI Forecasting, AI Anomaly Detection, AI Financial Planning, AI Decision Intelligence
+   - Impact: Talent Efficiency +200-400%, Time-to-Hire -60-80%
+   - Actions: AI Recruiting, AI Onboarding, AI Performance, AI Retention, AI Talent Intelligence
 
 **Case Studies (3 anonymisiert):**
 
-1. **Series A SaaS Company** (Rule of 40 +30pp)
-   - Challenge: Unit economics unknown, no FP&A systems, board pressure
-   - Results: Rule of 40 15% → 45%, CAC Payback 18 → 9 months, Forecast 60% → 88%
+1. **Series A SaaS Company** (Time-to-Hire -67%)
+   - Challenge: Slow hiring (90 days), no onboarding, high churn (25%)
+   - Results: Time-to-Hire 90d → 30d, Onboarding 6mo → 6wk, Retention 75% → 90%
    - Timeline: 6 months | Power Up + Boost
 
-2. **Series B SaaS Company** (Forecast Accuracy 95%)
-   - Challenge: Manual FP&A, forecast accuracy 65%, slow financial close
-   - Results: Forecast 65% → 95%, Close 12d → 2d, FP&A Productivity +300%
+2. **Series B SaaS Company** (Retention 95%)
+   - Challenge: High churn (25%), no performance management
+   - Results: Retention 75% → 95%, eNPS 20 → 65, High Performer Retention 80% → 98%
    - Timeline: 12 months | Boost + Accelerate
 
-3. **Series C Company** (€3M/year Saved)
-   - Challenge: Scale finance 5x without 5x team
-   - Results: Finance team 15 → 18, €3M/year saved, Close 15d → 2d
+3. **Series C Company** (AI Recruiting, 20-Day Hiring)
+   - Challenge: Scale hiring 3x without 3x recruiting team
+   - Results: Time-to-Hire 90d → 20d, Hiring Volume 50 → 150/year, Talent Efficiency +300%
    - Timeline: 18 months | Accelerate × 2
 
 **Roadmap (90-Day):**
-- Phase 1: Strategy (Week 1-2) - Unit Economics Framework, FP&A Design, Scenario Planning
-- Phase 2: Setup (Week 3-4) - 3-Statement Model, Forecasting Models, Dashboards
-- Phase 3: Execution (Week 5-8) - System Rollout, Accuracy Monitoring, AI Optimization
+- Phase 1: Strategy (Week 1-2) - Hiring Plan, Onboarding Framework, Performance Design
+- Phase 2: Setup (Week 3-4) - Hiring Process, Onboarding Program, Talent Dashboard
+- Phase 3: Execution (Week 5-8) - Hiring Rollout, Onboarding Execution, Performance Tracking
 
 **Solutions Connection:**
-1. Power Up: Finance Fixed (30 Days, €23.6K)
-   - Link: /solutions/power-up/finance-fixed
-2. Boost: Finance Transformation (90 Days, €60K-€78K)
-   - Link: /solutions/boost/finance-transformation
+1. Power Up: Talent Fixed (30 Days, €23.6K)
+   - Link: /solutions/power-up/scaling-velocity
+2. Boost: Talent Transformation (90 Days, €60K-€78K)
+   - Link: /solutions/boost/scaling-os
 
 **Personas:**
-- CEO: Need financial clarity and investor confidence
-- CFO: Responsible for financial planning and reporting
-- COO: Need to understand unit economics and profitability
-- Board Members: Need accurate forecasts and strategic scenarios
+- CEO: Need to scale hiring without scaling recruiting team
+- COO: Responsible for talent operations and retention
+- CHROs: Need to build world-class talent systems
+- Hiring Managers: Need to hire faster and onboard better
 
 **Final CTA:**
 - Headline: "Get Started Today"
@@ -193,27 +193,27 @@ import { TrendingUp, Rocket, Heart, Settings, DollarSign } from 'lucide-react';
 
 ### 2.4 Neue Page-Komponente
 
-**Datei:** `src/pages/PlaybookFinance.tsx`
+**Datei:** `src/pages/PlaybookTalent.tsx`
 ```typescript
 import React from 'react';
 import PlaybookLandingPage from '@/components/playbooks/PlaybookLandingPage';
-import { financeData } from '@/data/playbooks/content/finance';
+import { talentData } from '@/data/playbooks/content/talent';
 
-const PlaybookFinance: React.FC = () => {
-  return <PlaybookLandingPage data={financeData} />;
+const PlaybookTalent: React.FC = () => {
+  return <PlaybookLandingPage data={talentData} />;
 };
 
-export default PlaybookFinance;
+export default PlaybookTalent;
 ```
 
 ### 2.5 Route in App.tsx
 
 ```typescript
 // Lazy Import hinzufügen
-const PlaybookFinance = lazy(() => import("./pages/PlaybookFinance"));
+const PlaybookTalent = lazy(() => import("./pages/PlaybookTalent"));
 
 // Route hinzufügen (vor dem Catch-All)
-<Route path="/playbooks/operating-systems/finance" element={<PlaybookFinance />} />
+<Route path="/playbooks/operating-systems/talent" element={<PlaybookTalent />} />
 ```
 
 ---
@@ -222,36 +222,36 @@ const PlaybookFinance = lazy(() => import("./pages/PlaybookFinance"));
 
 | Datei | Aktion | Geschätzte Zeilen |
 |-------|--------|-------------------|
-| `src/data/playbooks.ts` | Finance Eintrag + DollarSign Import | ~40 Zeilen |
-| `src/data/playbooks/index.ts` | Description + Role für ID 11 | ~10 Zeilen |
-| `src/data/playbooks/content/finance.ts` | Vollständiger Content | ~500 Zeilen |
-| `src/pages/PlaybookFinance.tsx` | Neue Datei erstellen | ~10 Zeilen |
+| `src/data/playbooks.ts` | Talent Eintrag + Users Import | ~40 Zeilen |
+| `src/data/playbooks/index.ts` | Description + Role für ID 12 | ~10 Zeilen |
+| `src/data/playbooks/content/talent.ts` | Vollständiger Content | ~500 Zeilen |
+| `src/pages/PlaybookTalent.tsx` | Neue Datei erstellen | ~10 Zeilen |
 | `src/App.tsx` | Route + Import hinzufügen | ~2 Zeilen |
 
 ---
 
 ## Technische Notizen
 
-1. **Fortsetzung Operating Systems Serie** (2/4 Playbooks)
+1. **Fortsetzung Operating Systems Serie** (3/4 Playbooks)
 2. **5 Komponenten**:
-   - Unit Economics & Profitability
-   - FP&A Systems & Forecasting
-   - Scenario Planning & Modeling
-   - Financial Reporting & Analytics
-   - AI-Powered Finance
+   - Hiring Pipeline & Recruiting Excellence
+   - Onboarding Excellence & Time-to-Value
+   - Performance Management & Development
+   - Talent Analytics & Insights
+   - AI-Powered Talent
 3. **Bilingual Content** (EN/DE) in allen Sections
-4. **Solutions Connection** verlinkt auf Finance Fixed (Power Up) und Finance Transformation (Boost)
-5. **Icon-Palette**: Calculator (Unit Economics), BarChart3 (FP&A), GitBranch (Scenarios), FileText (Reporting), Sparkles (AI Finance)
-6. **Gradient**: from-emerald-500 to-green-500 (Finance-Theme)
-7. **Role hinzugefügt**: COO (für Unit Economics + Profitability)
+4. **Solutions Connection** verlinkt auf Scaling Velocity (Power Up) und Scaling OS (Boost)
+5. **Icon-Palette**: UserPlus (Hiring), GraduationCap (Onboarding), Target (Performance), BarChart3 (Analytics), Sparkles (AI Talent)
+6. **Gradient**: from-violet-500 to-purple-500 (Talent-Theme)
+7. **Role hinzugefügt**: COO (CHRO ist nicht im Filter-System verfügbar)
 
 ---
 
 ## Erwartetes Ergebnis
 
 Nach Implementierung:
-- `/playbooks` Übersichtsseite zeigt **5 Kacheln** (3 Growth Engines + 2 Operating Systems)
-- Finance Kachel zeigt **5-Komponenten-Framework Teaser**
-- "Learn More" Link führt zu `/playbooks/operating-systems/finance`
+- `/playbooks` Übersichtsseite zeigt **6 Kacheln** (3 Growth Engines + 3 Operating Systems)
+- Talent Kachel zeigt **5-Komponenten-Framework Teaser**
+- "Learn More" Link führt zu `/playbooks/operating-systems/talent`
 - Landing Page zeigt alle 8 Sections mit vollständigem bilingualen Content
-- **Operating Systems Serie fortgesetzt** (2/4 Playbooks)
+- **Operating Systems Serie fortgesetzt** (3/4 Playbooks)
