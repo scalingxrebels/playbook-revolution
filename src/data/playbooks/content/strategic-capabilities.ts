@@ -417,31 +417,5 @@ export const strategicCapabilitiesData: PlaybookPageData = {
     ], 
     bookingUrl: "https://scalingx.fillout.com/inflection-call", 
     downloadUrl: "#" 
-  },
-  subPlaybooks: {
-    title: { 
-      en: "Deep Dive Playbook", 
-      de: "Deep Dive Playbook" 
-    },
-    subtitle: { 
-      en: "Master each of the 4 capabilities (C₁-C₄) in depth", 
-      de: "Meistere jede der 4 Capabilities (C₁-C₄) im Detail" 
-    },
-    items: [
-      {
-        id: 18,
-        slug: 'strategic-capabilities/deep-dive',
-        title: { 
-          en: "Strategic Capabilities Deep Dive", 
-          de: "Strategic Capabilities Deep Dive" 
-        },
-        teaser: { 
-          en: "Detailed frameworks, assessment tools, and implementation guides for mastering C₁ Strategy, C₂ Setup, C₃ Execution, and C₄ Operationalization.", 
-          de: "Detaillierte Frameworks, Assessment-Tools und Implementierungsguides für C₁ Strategie, C₂ Setup, C₃ Execution und C₄ Operationalisierung." 
-        },
-        icon: "Target",
-        color: "bg-red-500/10 text-red-500"
-      }
-    ]
   }
 };
