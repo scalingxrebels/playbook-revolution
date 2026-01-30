@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -209,5 +209,37 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'coo'],
+  },
+  {
+    id: 'data-tech',
+    slug: 'operating-systems/data-tech',
+    title: {
+      en: 'Data/Tech Playbook',
+      de: 'Data/Tech Playbook',
+    },
+    description: {
+      en: 'How to build data and tech infrastructure that scales with AI. Learn the 5-component framework (Data Architecture, Tech Stack Excellence, Analytics & BI, ML Ops & AI Platform, AI-Powered Data/Tech) used by AI-native companies to improve data quality by 80% and reduce tech debt by 60%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Daten- und Tech-Infrastruktur aufbaust, die mit AI skaliert. Lerne das 5-Komponenten-Framework (Data Architecture, Tech Stack Excellence, Analytics & BI, ML Ops & AI Platform, AI-Powered Data/Tech), das AI-native Unternehmen nutzen, um Datenqualität um 80% zu verbessern und Tech Debt um 60% zu reduzieren. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Data quality improvement of 80-100%',
+        'Tech debt reduction of 60-80%',
+        'Model deployment time reduction of 90%+',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Datenqualitäts-Verbesserung von 80-100%',
+        'Tech Debt Reduktion von 60-80%',
+        'Model Deployment Zeit Reduktion von 90%+',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Data Quality +85%)', 'Series B SaaS (Tech Debt -70%)', 'Series C (100+ ML Models)'],
+    icon: React.createElement(Database, { className: 'w-6 h-6' }),
+    gradient: 'from-cyan-500 to-blue-500',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'cto'],
   },
 ];
