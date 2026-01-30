@@ -1,172 +1,96 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import ScalingXCaseStudies from '@/components/ScalingXCaseStudies';
 import SharedHero from '@/components/shared/SharedHero';
+import { Link } from 'react-router-dom';
 import { 
-  FileText, Download, ExternalLink, BookOpen, 
-  BarChart3, Brain, Layers, Settings, ChevronRight,
-  Clock, Users, Star, Code2
+  Dna, Rocket, Target, Building2, 
+  Lightbulb, BarChart3, ChevronRight
 } from 'lucide-react';
 
-interface ResearchPaper {
+interface ResearchCard {
   id: string;
+  icon: React.ReactNode;
   title: string;
   titleDe: string;
-  shortTitle: string;
-  wordCount: string;
-  summary: string;
-  summaryDe: string;
-  keyFindings: string[];
-  keyFindingsDe: string[];
-  methodology: string[];
-  version: string;
-  lastUpdated: string;
-  citations: number;
-  downloads: number;
-  icon: React.ReactNode;
+  tagline: string;
+  taglineDe: string;
+  description: string;
+  descriptionDe: string;
+  keyInsight: string;
+  keyInsightDe: string;
+  stats: string;
+  ctaText: string;
+  ctaTextDe: string;
+  link: string;
 }
 
-const researchPapers: ResearchPaper[] = [
+const researchCards: ResearchCard[] = [
   {
-    id: 'architecture',
-    title: 'Scaling Architecture v4.5.3',
-    titleDe: 'Scaling Architektur v4.5.3',
-    shortTitle: 'Architecture',
-    wordCount: '35,000',
-    summary: 'The complete architectural framework for AI-Native scaling. Defines the 4 Capabilities (C₁-C₄), 8 Dimensions Grid, and 5 Operating System dimensions that form the foundation of superlinear growth.',
-    summaryDe: 'Das vollständige Architektur-Framework für AI-Native Scaling. Definiert die 4 Capabilities (C₁-C₄), das 8-Dimensionen-Grid und die 5 Operating System Dimensionen, die die Grundlage für superlineares Wachstum bilden.',
-    keyFindings: [
-      'Companies with θ_index > 0.7 reach €100M ARR 4-10x faster',
-      'Coordination cost reduction from O(n²) to O(n log n) enables 10x team efficiency',
-      '4 distinct capability levels determine scaling trajectory',
-      'AI-Native operating systems enable superlinear growth patterns'
-    ],
-    keyFindingsDe: [
-      'Unternehmen mit θ_index > 0.7 erreichen €100M ARR 4-10x schneller',
-      'Koordinationskostenreduktion von O(n²) zu O(n log n) ermöglicht 10x Team-Effizienz',
-      '4 verschiedene Capability-Levels bestimmen die Scaling-Trajektorie',
-      'AI-Native Operating Systems ermöglichen superlineare Wachstumsmuster'
-    ],
-    methodology: ['Empirical study of n=22 companies', 'Statistical validation (R²=0.76)', 'Longitudinal analysis 2020-2024'],
-    version: '4.5.3',
-    lastUpdated: 'December 2024',
-    citations: 47,
-    downloads: 2341,
-    icon: <Layers className="w-6 h-6" />
+    id: 'amf',
+    icon: <Dna className="w-6 h-6" />,
+    title: 'AI Maturity Framework',
+    titleDe: 'AI Maturity Framework',
+    tagline: 'The Three Levels of AI Maturity',
+    taglineDe: 'Die drei Stufen der AI-Reife',
+    description: 'We analyzed how 22 companies use AI and found 3 distinct levels: AI-Powered (tools), AI-Enabled (workflows), AI-Native (architecture). Companies at Level 3 scale 8.2x faster.',
+    descriptionDe: 'Wir haben analysiert, wie 22 Unternehmen AI nutzen und 3 verschiedene Stufen gefunden: AI-Powered (Tools), AI-Enabled (Workflows), AI-Native (Architektur). Unternehmen auf Level 3 skalieren 8.2x schneller.',
+    keyInsight: 'AI Maturity predicts Time to €100M ARR',
+    keyInsightDe: 'AI-Reife sagt Zeit bis €100M ARR voraus',
+    stats: 'n=22 companies | 3 levels | 6 dimensions',
+    ctaText: 'Read Research',
+    ctaTextDe: 'Forschung lesen',
+    link: '/expertise/amf'
   },
   {
     id: 'anst',
-    title: 'AI-Native Scaling Theory (ANST)',
-    titleDe: 'AI-Native Scaling Theory (ANST)',
-    shortTitle: 'ANST',
-    wordCount: '50,000',
-    summary: 'Comprehensive theoretical foundation explaining why AI-Native companies achieve superlinear scaling. Introduces the θ_index metric and validates it against real-world company performance.',
-    summaryDe: 'Umfassende theoretische Grundlage, die erklärt, warum AI-Native Unternehmen superlineares Scaling erreichen. Führt die θ_index Metrik ein und validiert sie gegen reale Unternehmensleistung.',
-    keyFindings: [
-      'θ_index strongly predicts scaling velocity (r=0.89, p<0.001)',
-      'AI augmentation shifts growth from linear to superlinear',
-      '3 distinct scaling phases: Foundation, Acceleration, Optimization',
-      'Network effects compound faster with AI-Native architecture'
-    ],
-    keyFindingsDe: [
-      'θ_index sagt Scaling-Geschwindigkeit stark voraus (r=0.89, p<0.001)',
-      'AI-Augmentation verschiebt Wachstum von linear zu superlinear',
-      '3 verschiedene Scaling-Phasen: Foundation, Acceleration, Optimization',
-      'Netzwerkeffekte verstärken sich schneller mit AI-Native Architektur'
-    ],
-    methodology: ['Cross-sectional analysis', 'Regression modeling', 'Case study validation'],
-    version: '3.2.1',
-    lastUpdated: 'November 2024',
-    citations: 89,
-    downloads: 4567,
-    icon: <Brain className="w-6 h-6" />
+    icon: <Rocket className="w-6 h-6" />,
+    title: 'AI-Native Scaling Theory',
+    titleDe: 'AI-Native Scaling Theory',
+    tagline: 'Why AI-Native Companies Scale 8.2x Faster',
+    taglineDe: 'Warum AI-Native Unternehmen 8.2x schneller skalieren',
+    description: 'We studied 22 AI-native companies to understand why they reach €100M ARR in 8-18 months (vs. 60-84 months for traditional startups). The answer: Strategy × Setup × Execution × Operationalization × AI Maturity.',
+    descriptionDe: 'Wir haben 22 AI-native Unternehmen untersucht, um zu verstehen, warum sie €100M ARR in 8-18 Monaten erreichen (vs. 60-84 Monate für traditionelle Startups). Die Antwort: Strategy × Setup × Execution × Operationalization × AI Maturity.',
+    keyInsight: 'Scaling success = 4 Capabilities × AI Multiplier',
+    keyInsightDe: 'Scaling-Erfolg = 4 Capabilities × AI Multiplier',
+    stats: 'n=22 companies | 8-18 months to €100M | 4 capabilities',
+    ctaText: 'Read Research',
+    ctaTextDe: 'Forschung lesen',
+    link: '/expertise/anst'
   },
   {
-    id: 'sst',
-    title: 'Scaling Stack Theory (SST)',
-    titleDe: 'Scaling Stack Theory (SST)',
-    shortTitle: 'SST',
-    wordCount: '45,000',
-    summary: 'Framework for building scalable technology and organizational stacks. Details how AI-Native companies structure their tech, data, and team architectures for maximum velocity.',
-    summaryDe: 'Framework für den Aufbau skalierbarer Technologie- und Organisations-Stacks. Beschreibt, wie AI-Native Unternehmen ihre Tech-, Daten- und Team-Architekturen für maximale Velocity strukturieren.',
-    keyFindings: [
-      '7-layer scaling stack model enables systematic growth',
-      'Data layer optimization drives 80% of AI-Native advantage',
-      'Team topology patterns correlate with scaling success',
-      'Infrastructure automation is prerequisite for Level 3+'
-    ],
-    keyFindingsDe: [
-      '7-Layer Scaling Stack Modell ermöglicht systematisches Wachstum',
-      'Daten-Layer-Optimierung treibt 80% des AI-Native Vorteils',
-      'Team-Topologie-Muster korrelieren mit Scaling-Erfolg',
-      'Infrastruktur-Automatisierung ist Voraussetzung für Level 3+'
-    ],
-    methodology: ['Technical architecture analysis', 'Team structure interviews', 'Performance benchmarking'],
-    version: '2.8.0',
-    lastUpdated: 'October 2024',
-    citations: 56,
-    downloads: 3234,
-    icon: <Settings className="w-6 h-6" />
+    id: 'bottleneck',
+    icon: <Target className="w-6 h-6" />,
+    title: 'Bottleneck Framework',
+    titleDe: 'Bottleneck Framework',
+    tagline: "What's Blocking Your Growth?",
+    taglineDe: 'Was blockiert dein Wachstum?',
+    description: 'We found that 36% of scaling bottlenecks are in Setup (org structure, systems), 23% in Strategy, 18% in Execution, 23% in Operationalization. Fix the bottleneck, unlock growth.',
+    descriptionDe: 'Wir haben festgestellt, dass 36% der Scaling-Engpässe im Setup (Org-Struktur, Systeme) liegen, 23% in Strategy, 18% in Execution, 23% in Operationalization. Behebe den Engpass, entfessle Wachstum.',
+    keyInsight: 'Your weakest capability determines your growth',
+    keyInsightDe: 'Deine schwächste Capability bestimmt dein Wachstum',
+    stats: '4 capabilities | 8 dimensions | 0-1 scoring',
+    ctaText: 'Diagnose Your Bottleneck',
+    ctaTextDe: 'Diagnose deinen Engpass',
+    link: '/tools/bottleneck-diagnosis'
   },
   {
-    id: 'amf',
-    title: 'AI Maturity Framework (AMF)',
-    titleDe: 'AI Maturity Framework (AMF)',
-    shortTitle: 'AMF',
-    wordCount: '40,000',
-    summary: 'Diagnostic framework for assessing organizational AI maturity. Provides scoring methodology, benchmarks, and roadmaps for progression from Level 1 to Level 3.',
-    summaryDe: 'Diagnostisches Framework zur Bewertung der organisatorischen AI-Reife. Bietet Scoring-Methodik, Benchmarks und Roadmaps für die Progression von Level 1 zu Level 3.',
-    keyFindings: [
-      '6 maturity dimensions with weighted scoring',
-      'Clear progression pathways from each level',
-      'Industry-specific benchmarks available',
-      'Predictive validity for scaling outcomes'
-    ],
-    keyFindingsDe: [
-      '6 Reifegrad-Dimensionen mit gewichteter Bewertung',
-      'Klare Progressionspfade von jedem Level',
-      'Branchenspezifische Benchmarks verfügbar',
-      'Prädiktive Validität für Scaling-Ergebnisse'
-    ],
-    methodology: ['Expert panel development', 'Validation across 50+ companies', 'Iterative refinement'],
-    version: '3.0.0',
-    lastUpdated: 'December 2024',
-    citations: 34,
-    downloads: 1892,
-    icon: <BarChart3 className="w-6 h-6" />
-  },
-  {
-    id: 'ai-native-dev',
-    title: 'AI-Native Software Development',
-    titleDe: 'AI-Native Software Development',
-    shortTitle: 'AI-Dev',
-    wordCount: '25,000',
-    summary: 'Research-based framework for CTOs: Can a single developer orchestrating AI match a 5-person team? Empirical evidence from a 10-week case study with θ_observed = 6.0.',
-    summaryDe: 'Forschungsbasiertes Framework für CTOs: Kann ein einzelner Entwickler mit AI-Orchestrierung ein 5-Personen-Team ersetzen? Empirische Evidenz aus einer 10-Wochen-Fallstudie mit θ_observed = 6.0.',
-    keyFindings: [
-      '95% AI-generated code, 5% human-written in production SaaS',
-      '6x efficiency gain (θ_observed = 6.0) vs. traditional teams',
-      '60% of gains from coordination reduction, 40% from faster implementation',
-      'AI-Native requires architectural clarity, not just AI tools',
-      'Comprehension debt accumulates 5x faster than traditional development'
-    ],
-    keyFindingsDe: [
-      '95% AI-generierter Code, 5% menschlich geschrieben in Produktions-SaaS',
-      '6x Effizienzgewinn (θ_observed = 6.0) vs. traditionelle Teams',
-      '60% der Gewinne durch Koordinationsreduktion, 40% durch schnellere Implementierung',
-      'AI-Native erfordert architektonische Klarheit, nicht nur AI-Tools',
-      'Comprehension Debt akkumuliert 5x schneller als traditionelle Entwicklung'
-    ],
-    methodology: ['10-week empirical case study', 'Quantitative output tracking', 'Comparison with n=22 AI-native companies'],
-    version: '1.0.0',
-    lastUpdated: 'January 2026',
-    citations: 12,
-    downloads: 856,
-    icon: <Code2 className="w-6 h-6" />
+    id: 'architecture',
+    icon: <Building2 className="w-6 h-6" />,
+    title: 'The Unified Framework',
+    titleDe: 'Das Unified Framework',
+    tagline: 'How It All Fits Together',
+    taglineDe: 'Wie alles zusammenpasst',
+    description: 'We integrated AI Maturity, Scaling Theory, and Bottleneck Framework into one unified system. Use it to diagnose your current state, identify bottlenecks, and plan your transformation.',
+    descriptionDe: 'Wir haben AI Maturity, Scaling Theory und Bottleneck Framework in ein einheitliches System integriert. Nutze es, um deinen aktuellen Stand zu diagnostizieren, Engpässe zu identifizieren und deine Transformation zu planen.',
+    keyInsight: 'One framework, three perspectives',
+    keyInsightDe: 'Ein Framework, drei Perspektiven',
+    stats: '3 frameworks unified | 250,000+ words',
+    ctaText: 'Explore Framework',
+    ctaTextDe: 'Framework erkunden',
+    link: '/expertise/architecture'
   }
 ];
 
@@ -199,9 +123,6 @@ const researchStats = [
 
 const ResearchHub: React.FC = () => {
   const { language } = useLanguage();
-  const [selectedPaper, setSelectedPaper] = useState<string | null>(null);
-
-  const activePaper = researchPapers.find(p => p.id === selectedPaper);
 
   return (
     <>
@@ -221,186 +142,154 @@ const ResearchHub: React.FC = () => {
       {/* Content Section */}
       <section className="py-12 md:py-16 bg-background">
         <div className="container max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {researchPapers.map(paper => (
-            <Card 
-              key={paper.id}
-              className={`p-6 glass border-border/50 hover:border-accent/50 transition-all cursor-pointer ${
-                selectedPaper === paper.id ? 'border-accent ring-2 ring-accent/20' : ''
-              }`}
-              onClick={() => setSelectedPaper(selectedPaper === paper.id ? null : paper.id)}
-            >
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-accent flex items-center justify-center text-accent-foreground flex-shrink-0">
-                  {paper.icon}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-bold text-xl">
-                      {language === 'de' ? paper.titleDe : paper.title}
-                    </h3>
-                    <Badge variant="outline" className="text-xs">v{paper.version}</Badge>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {language === 'de' ? paper.summaryDe : paper.summary}
-                  </p>
-                  <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-                    <span className="flex items-center gap-1">
-                      <FileText className="w-3 h-3" />
-                      {paper.wordCount} {language === 'de' ? 'Wörter' : 'words'}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Star className="w-3 h-3" />
-                      {paper.citations} citations
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Download className="w-3 h-3" />
-                      {paper.downloads}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Clock className="w-3 h-3" />
-                      {paper.lastUpdated}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Expanded Content */}
-              {selectedPaper === paper.id && (
-                <div className="mt-6 pt-6 border-t border-border/50">
-                  <Tabs defaultValue="findings">
-                    <TabsList className="mb-4">
-                      <TabsTrigger value="findings">
-                        {language === 'de' ? 'Kernerkenntnisse' : 'Key Findings'}
-                      </TabsTrigger>
-                      <TabsTrigger value="methodology">
-                        {language === 'de' ? 'Methodik' : 'Methodology'}
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="findings">
-                      <ul className="space-y-2">
-                        {(language === 'de' ? paper.keyFindingsDe : paper.keyFindings).map((finding, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <ChevronRight className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                            <span>{finding}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </TabsContent>
-                    <TabsContent value="methodology">
-                      <ul className="space-y-2">
-                        {paper.methodology.map((method, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm">
-                            <ChevronRight className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
-                            <span>{method}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </TabsContent>
-                  </Tabs>
-
-                  <div className="flex gap-3 mt-6">
-                    <Button className="bg-gradient-accent flex-1">
-                      <Download className="w-4 h-4 mr-2" />
-                      {language === 'de' ? 'Paper herunterladen' : 'Download Paper'}
-                    </Button>
-                    <Button variant="outline" className="flex-1">
-                      <BookOpen className="w-4 h-4 mr-2" />
-                      {language === 'de' ? 'Online lesen' : 'Read Online'}
-                    </Button>
-                    <Button variant="outline">
-                      <ExternalLink className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-            </Card>
-          ))}
-        </div>
-
-        {/* Executive Summary Section */}
-        <Card className="p-8 glass border-accent/20 mb-12">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold mb-2">
-              {language === 'de' ? 'Executive Summary' : 'Executive Summary'}
+          
+          {/* Section Headline */}
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              {language === 'de' ? 'Unsere Forschung' : 'Our Research'}
             </h2>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-lg">
               {language === 'de' 
-                ? 'Die wichtigsten Erkenntnisse aus 170,000+ Wörtern Forschung'
-                : 'The key insights from 170,000+ words of research'}
+                ? 'Vier Frameworks, die AI-native Scaling erklären'
+                : 'Four frameworks that explain AI-native scaling'}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                <span className="text-2xl font-bold text-accent-foreground">C₁-C₄</span>
-              </div>
-              <h3 className="font-bold mb-2">{language === 'de' ? '4 Capabilities' : '4 Capabilities'}</h3>
-              <p className="text-sm text-muted-foreground">
+          {/* 2x2 Grid */}
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            {researchCards.map(card => (
+              <Card 
+                key={card.id}
+                className="p-6 glass border-border/50 hover:border-accent/50 hover:shadow-[0_0_30px_hsl(var(--accent)/0.15)] transition-all duration-300"
+              >
+                <div className="flex flex-col h-full">
+                  {/* Icon & Title */}
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-accent flex items-center justify-center text-accent-foreground flex-shrink-0">
+                      {card.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-xl mb-1">
+                        {language === 'de' ? card.titleDe : card.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === 'de' ? card.taglineDe : card.tagline}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm mb-4 flex-grow">
+                    {language === 'de' ? card.descriptionDe : card.description}
+                  </p>
+
+                  {/* Key Insight */}
+                  <div className="flex items-start gap-2 mb-3 p-3 rounded-lg bg-accent/10 border border-accent/20">
+                    <Lightbulb className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                    <span className="text-sm font-medium">
+                      {language === 'de' ? card.keyInsightDe : card.keyInsight}
+                    </span>
+                  </div>
+
+                  {/* Stats */}
+                  <div className="flex items-center gap-2 mb-4 text-xs text-muted-foreground">
+                    <BarChart3 className="w-3.5 h-3.5" />
+                    <span>{card.stats}</span>
+                  </div>
+
+                  {/* CTA */}
+                  <Link to={card.link}>
+                    <Button className="w-full bg-gradient-accent hover:opacity-90 group">
+                      {language === 'de' ? card.ctaTextDe : card.ctaText}
+                      <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          {/* Executive Summary Section */}
+          <Card className="p-8 glass border-accent/20 mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold mb-2">
+                {language === 'de' ? 'Executive Summary' : 'Executive Summary'}
+              </h2>
+              <p className="text-muted-foreground">
                 {language === 'de' 
-                  ? 'Strategy, Execution, Learning, Adaptive'
-                  : 'Strategy, Execution, Learning, Adaptive'}
+                  ? 'Die wichtigsten Erkenntnisse aus 250,000+ Wörtern Forschung'
+                  : 'The key insights from 250,000+ words of research'}
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                <span className="text-2xl font-bold text-accent-foreground">8D</span>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
+                  <span className="text-2xl font-bold text-accent-foreground">C₁-C₄</span>
+                </div>
+                <h3 className="font-bold mb-2">{language === 'de' ? '4 Capabilities' : '4 Capabilities'}</h3>
+                <p className="text-sm text-muted-foreground">
+                  Strategy, Setup, Execution, Operationalization
+                </p>
               </div>
-              <h3 className="font-bold mb-2">{language === 'de' ? '8 Dimensionen' : '8 Dimensions'}</h3>
-              <p className="text-sm text-muted-foreground">
-                GTM, Product, Ops, Finance, Talent, Tech, Data, Culture
-              </p>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
+                  <span className="text-2xl font-bold text-accent-foreground">8D</span>
+                </div>
+                <h3 className="font-bold mb-2">{language === 'de' ? '8 Dimensionen' : '8 Dimensions'}</h3>
+                <p className="text-sm text-muted-foreground">
+                  GTM, Product, Ops, Finance, Talent, Tech, Data, Culture
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
+                  <span className="text-2xl font-bold text-accent-foreground">θ</span>
+                </div>
+                <h3 className="font-bold mb-2">θ_index</h3>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'de' 
+                    ? 'AI-Maturity Score mit r=0.89 Prädiktivität'
+                    : 'AI-Maturity score with r=0.89 predictivity'}
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
+                  <span className="text-2xl font-bold text-accent-foreground">L3</span>
+                </div>
+                <h3 className="font-bold mb-2">{language === 'de' ? '3 Levels' : '3 Levels'}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'de' 
+                    ? 'Linear → Sublinear → Superlinear'
+                    : 'Linear → Sublinear → Superlinear'}
+                </p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                <span className="text-2xl font-bold text-accent-foreground">θ</span>
-              </div>
-              <h3 className="font-bold mb-2">θ_index</h3>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' 
-                  ? 'AI-Maturity Score mit r=0.89 Prädiktivität'
-                  : 'AI-Maturity score with r=0.89 predictivity'}
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                <span className="text-2xl font-bold text-accent-foreground">L3</span>
-              </div>
-              <h3 className="font-bold mb-2">{language === 'de' ? '3 Levels' : '3 Levels'}</h3>
-              <p className="text-sm text-muted-foreground">
-                {language === 'de' 
-                  ? 'Linear → Sublinear → Superlinear'
-                  : 'Linear → Sublinear → Superlinear'}
-              </p>
+          </Card>
+
+          {/* Case Studies Section */}
+          <div id="cases" className="scroll-mt-24">
+            <ScalingXCaseStudies />
+          </div>
+
+          {/* CTA Section */}
+          <div className="text-center py-16">
+            <h2 className="text-2xl font-bold mb-4">
+              {language === 'de' ? 'Möchtest du die Forschung anwenden?' : 'Want to Apply the Research?'}
+            </h2>
+            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+              {language === 'de' 
+                ? 'Buche einen Diagnose-Call, um deine θ_index zu berechnen und einen personalisierten Scaling-Plan zu erhalten.'
+                : 'Book a diagnostic call to calculate your θ_index and get a personalized scaling plan.'}
+            </p>
+            <div className="flex justify-center gap-4">
+              <Button size="lg" className="bg-gradient-accent hover:opacity-90">
+                {language === 'de' ? 'Diagnose-Call buchen' : 'Book Diagnostic Call'}
+              </Button>
+              <Button size="lg" variant="outline">
+                {language === 'de' ? 'Alle Papers herunterladen' : 'Download All Papers'}
+              </Button>
             </div>
           </div>
-        </Card>
-
-        {/* Case Studies Section */}
-        <div id="cases" className="scroll-mt-24">
-          <ScalingXCaseStudies />
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center py-16">
-          <h2 className="text-2xl font-bold mb-4">
-            {language === 'de' ? 'Möchtest du die Forschung anwenden?' : 'Want to Apply the Research?'}
-          </h2>
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-            {language === 'de' 
-              ? 'Buche einen Diagnose-Call, um deine θ_index zu berechnen und einen personalisierten Scaling-Plan zu erhalten.'
-              : 'Book a diagnostic call to calculate your θ_index and get a personalized scaling plan.'}
-          </p>
-          <div className="flex justify-center gap-4">
-            <Button size="lg" className="bg-gradient-accent hover:opacity-90">
-              {language === 'de' ? 'Diagnose-Call buchen' : 'Book Diagnostic Call'}
-            </Button>
-            <Button size="lg" variant="outline">
-              {language === 'de' ? 'Alle Papers herunterladen' : 'Download All Papers'}
-            </Button>
-          </div>
-        </div>
         </div>
       </section>
     </>
