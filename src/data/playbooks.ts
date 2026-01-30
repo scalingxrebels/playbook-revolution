@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket } from 'lucide-react';
+import { TrendingUp, Rocket, Heart } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -81,5 +81,37 @@ export const playbooks: Playbook[] = [
     impact: ['growth-engines'],
     bottleneck: ['strategy', 'execution-focus'],
     role: ['ceo', 'cpo', 'cto'],
+  },
+  {
+    id: 'customer-success',
+    slug: 'growth-engines/customer-success',
+    title: {
+      en: 'Customer Success Playbook',
+      de: 'Customer Success Playbook',
+    },
+    description: {
+      en: 'How to build customer success that scales with AI. Learn the 5-component framework (Onboarding Excellence, Health Scoring, Retention Loops, Expansion Playbooks, AI-Powered CS Operations) used by AI-native companies to reduce churn by 60% and increase NRR by 30-50pp. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Customer Success aufbaust, das mit AI skaliert. Lerne das 5-Komponenten-Framework (Onboarding Excellence, Health Scoring, Retention Loops, Expansion Playbooks, AI-Powered CS Operations), das AI-native Unternehmen nutzen, um Churn um 60% zu senken und NRR um 30-50pp zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Churn reduction of 40-60%',
+        'NRR increase of 30-50pp',
+        'CSM productivity improvement of 200-400%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Churn-Reduktion von 40-60%',
+        'NRR-Steigerung von 30-50pp',
+        'CSM Produktivitätssteigerung von 200-400%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Churn 20% → 8%)', 'Series B SaaS (NRR 100% → 135%)', 'Series C (1k → 10k Customers)'],
+    icon: React.createElement(Heart, { className: 'w-6 h-6' }),
+    gradient: 'from-pink-500 to-rose-500',
+    impact: ['growth-engines'],
+    bottleneck: ['execution-focus'],
+    role: ['ceo', 'coo'],
   },
 ];
