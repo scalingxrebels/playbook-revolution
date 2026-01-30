@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase, Layers } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase, Layers, Target } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -369,5 +369,37 @@ export const playbooks: Playbook[] = [
     impact: ['portfolio'],
     bottleneck: ['strategy', 'operationalization'],
     role: ['vc-board'],
+  },
+  {
+    id: 'strategic-capabilities',
+    slug: 'strategic-capabilities',
+    title: {
+      en: 'Strategic Capabilities Playbook',
+      de: 'Strategic Capabilities Playbook',
+    },
+    description: {
+      en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'θ_index improvement from 0.35 to 0.75+',
+        'Scaling velocity increase of 3-5x',
+        'Capability bottleneck (C_min) identification and fix',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'θ_index Verbesserung von 0.35 auf 0.75+',
+        'Skalierungsgeschwindigkeit Steigerung von 3-5x',
+        'Capability Bottleneck (C_min) Identifikation und Fix',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (θ_index +123%)', 'Series B SaaS (All C > 0.7)', 'Series C (θ_index 0.88 AI-Native)'],
+    icon: React.createElement(Target, { className: 'w-6 h-6' }),
+    gradient: 'from-red-500 to-rose-500',
+    impact: ['strategic-capabilities'],
+    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
+    role: ['ceo'],
   },
 ];
