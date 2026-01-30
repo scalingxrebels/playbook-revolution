@@ -179,7 +179,8 @@ const researchStats = [
   },
   { 
     value: '22+', 
-    label: { en: 'AI-Native Companies', de: 'AI-Native Unternehmen' }, 
+    label: { en: 'Companies', de: 'Unternehmen' }, 
+    sublabel: { en: 'AI-native analyzed', de: 'AI-native analysiert' },
     color: 'accent' as const 
   },
   { 
