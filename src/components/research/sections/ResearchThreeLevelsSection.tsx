@@ -18,21 +18,27 @@ const levelIcons = {
 const levelColorClasses = {
   amber: {
     border: 'border-amber-500/50',
+    borderLeft: 'border-l-amber-500',
     bg: 'bg-amber-500/10',
     text: 'text-amber-500',
     badge: 'border-amber-500/50 text-amber-500',
+    hover: 'hover:bg-amber-500/5',
   },
   blue: {
     border: 'border-blue-500/50',
+    borderLeft: 'border-l-blue-500',
     bg: 'bg-blue-500/10',
     text: 'text-blue-500',
     badge: 'border-blue-500/50 text-blue-500',
+    hover: 'hover:bg-blue-500/5',
   },
   emerald: {
     border: 'border-emerald-500/50',
+    borderLeft: 'border-l-emerald-500',
     bg: 'bg-emerald-500/10',
     text: 'text-emerald-500',
     badge: 'border-emerald-500/50 text-emerald-500',
+    hover: 'hover:bg-emerald-500/5',
   },
 };
 
@@ -43,12 +49,18 @@ const ResearchThreeLevelsSection: React.FC<ResearchThreeLevelsSectionProps> = ({
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className={`py-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`py-16 md:py-24 bg-gradient-to-b from-muted/30 via-background to-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
+            <Layers className="w-4 h-4" />
+            <span className="text-sm font-medium uppercase tracking-wide">
+              {language === 'de' ? 'Das Framework' : 'The Framework'}
+            </span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
             {data.headline[language]}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -65,7 +77,7 @@ const ResearchThreeLevelsSection: React.FC<ResearchThreeLevelsSectionProps> = ({
             return (
               <div
                 key={level.level}
-                className={`relative p-6 rounded-2xl border-2 ${colors.border} bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg`}
+                className={`relative p-6 rounded-2xl border-2 border-l-4 ${colors.border} ${colors.borderLeft} bg-card/50 backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${colors.hover}`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 {/* Level Badge */}

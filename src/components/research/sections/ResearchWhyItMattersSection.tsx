@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useTheme } from '@/contexts/ThemeContext';
 import { WhyItMattersData } from '@/data/research/types';
-import { Lightbulb } from 'lucide-react';
+import { TrendingUp, Info } from 'lucide-react';
 
 interface ResearchWhyItMattersSectionProps {
   data: WhyItMattersData;
@@ -26,13 +26,23 @@ const ResearchWhyItMattersSection: React.FC<ResearchWhyItMattersSectionProps> = 
 
   return (
     <section
+      id="research-why-it-matters"
       ref={ref as React.RefObject<HTMLElement>}
-      className={`py-20 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`py-16 md:py-24 bg-gradient-to-b from-background via-muted/30 to-background transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          {data.headline[language]}
-        </h2>
+      <div className="container max-w-6xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-6">
+            <TrendingUp className="w-4 h-4" />
+            <span className="text-sm font-medium uppercase tracking-wide">
+              {language === 'de' ? 'Warum es wichtig ist' : 'Why It Matters'}
+            </span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+            {data.headline[language]}
+          </h2>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Column - Text */}
@@ -51,11 +61,11 @@ const ResearchWhyItMattersSection: React.FC<ResearchWhyItMattersSectionProps> = 
             </div>
 
             {/* Callout Box */}
-            <div className="p-6 rounded-xl bg-primary/5 border border-primary/20">
+            <div className="p-6 rounded-xl bg-amber-500/10 border border-amber-500/30">
               <div className="flex items-start gap-3">
-                <Lightbulb className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <Info className="w-6 h-6 text-amber-500 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-lg mb-2">{data.callout.title[language]}</h4>
+                  <h4 className="font-semibold text-lg mb-2 text-amber-600 dark:text-amber-400">{data.callout.title[language]}</h4>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {data.callout.content[language]}
                   </p>
@@ -70,7 +80,7 @@ const ResearchWhyItMattersSection: React.FC<ResearchWhyItMattersSectionProps> = 
               {data.chartTitle[language]}
             </h3>
             
-            <div className="h-[400px] bg-card/50 rounded-xl p-4 border border-border/50">
+            <div className="h-[400px] bg-card/50 backdrop-blur-sm rounded-xl p-4 border border-border/50">
               <ResponsiveContainer width="100%" height="100%">
                 <ScatterChart margin={{ top: 20, right: 20, bottom: 60, left: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />

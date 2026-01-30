@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, ChevronDown, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
@@ -16,100 +23,135 @@ const ResearchHeroSection: React.FC<ResearchHeroSectionProps> = ({ data }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
+  const scrollToSection = () => {
+    document.getElementById('research-why-it-matters')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
     >
       {/* Deep Space Background */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-muted/30"
-        style={{ transform: `translateY(${offsets[0]}px)` }}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      
-      {/* Grid Pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, hsl(var(--foreground)) 1px, transparent 1px),
-            linear-gradient(to bottom, hsl(var(--foreground)) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          transform: `translateY(${offsets[1]}px)`
-        }}
+
+      {/* Mesh Gradient Overlay */}
+      <div
+        className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      
-      {/* Stars */}
-      <div style={{ transform: `translateY(${offsets[2]}px)` }}>
+
+      {/* Twinkling Stars */}
+      <div
+        className="absolute inset-0 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px)` }}
+      >
         <TwinklingStars />
       </div>
 
+      {/* Grid Pattern */}
+      <div
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
+      />
+
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 py-20">
+      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-8 animate-fade-in">
-          <Link to="/" className="hover:text-foreground transition-colors">
-            {data.breadcrumb.home[language]}
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <Link to="/expertise" className="hover:text-foreground transition-colors">
-            {data.breadcrumb.parent[language]}
-          </Link>
-          <ChevronRight className="w-4 h-4" />
-          <span className="text-foreground">{data.breadcrumb.current[language]}</span>
-        </nav>
+        <Breadcrumb className="justify-center mb-6 animate-fade-in">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
+                {data.breadcrumb.home[language]}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
+                {data.breadcrumb.parent[language]}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
 
         {/* Badge */}
-        <Badge variant="outline" className="mb-6 animate-fade-in border-primary/50 text-primary">
+        <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <BookOpen className="w-4 h-4 mr-2" />
           Research Framework
         </Badge>
 
         {/* Headline */}
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 max-w-4xl animate-fade-in">
-          {data.headline[language]}
+        <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
+          <span className="block text-gradient animate-gradient bg-gradient-primary">
+            {data.headline[language]}
+          </span>
         </h1>
 
         {/* Subheadline */}
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl animate-fade-in">
+        <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {data.subheadline[language]}
         </p>
 
         {/* Description */}
-        <div className="prose prose-lg dark:prose-invert max-w-3xl mb-10 animate-fade-in">
+        <div className="max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.25s' }}>
           {data.description[language].split('\n\n').map((paragraph, i) => (
-            <p key={i} className="text-muted-foreground leading-relaxed">
+            <p key={i} className="text-lg text-muted-foreground/80 leading-relaxed mb-4 last:mb-0">
               {paragraph}
             </p>
           ))}
         </div>
 
         {/* Stats Bar */}
-        <div className="flex flex-wrap gap-6 md:gap-10 mb-10 animate-fade-in">
+        <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-12 animate-slide-up" style={{ animationDelay: '0.3s' }}>
           {data.stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label[language]}</div>
-            </div>
+            <Badge key={index} variant="secondary" className="text-xs bg-card/50 backdrop-blur-sm border border-border">
+              <span className="font-bold text-primary mr-1">{stat.value}</span>
+              {stat.label[language]}
+            </Badge>
           ))}
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-wrap gap-4 animate-fade-in">
-          <Button asChild size="lg" className="gap-2">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+          <Button
+            size="xl"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            asChild
+          >
             <Link to={data.primaryCta.href}>
               {data.primaryCta.text[language]}
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="gap-2">
-            <a href={data.secondaryCta.href}>
-              <Download className="w-4 h-4" />
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-2"
+            asChild
+          >
+            <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+              <Download className="w-4 h-4 mr-2" />
               {data.secondaryCta.text[language]}
             </a>
           </Button>
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <button
+        onClick={scrollToSection}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors animate-fade-in cursor-pointer"
+        style={{ animationDelay: '1s' }}
+      >
+        <ChevronDown className="w-5 h-5 animate-bounce" />
+      </button>
     </section>
   );
 };
