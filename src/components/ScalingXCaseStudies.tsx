@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { 
   Image, Code, Search, Bot, CreditCard, Palette, FileText,
   TrendingUp, Users, Zap, Target, ArrowRight, Sparkles, Globe, Rocket
@@ -16,6 +17,7 @@ interface CaseStudy {
   name: string;
   icon: React.ElementType;
   color: string;
+  darkColor?: string;
   founded: string;
   founder: string;
   focus: { en: string; de: string };
@@ -311,6 +313,7 @@ const caseStudies: CaseStudy[] = [
     name: 'Notion',
     icon: FileText,
     color: '#171717',
+    darkColor: '#E5E5E5',
     founded: '2016',
     founder: 'Ivan Zhao',
     focus: { en: 'All-in-One Workspace', de: 'All-in-One Workspace' },
@@ -406,6 +409,7 @@ const keyInsights = {
 
 const ScalingXCaseStudies = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
 
   const scrollToBooking = () => {
@@ -435,24 +439,24 @@ const ScalingXCaseStudies = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {caseStudies.map((study, idx) => {
             const Icon = study.icon;
+            const studyColor = (theme === 'dark' && study.darkColor) ? study.darkColor : study.color;
             return (
               <div
                 key={study.id}
                 onClick={() => setSelectedStudy(study)}
                 className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer 
                            transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1
-                           opacity-0 animate-fade-in"
+                           animate-fade-in"
                 style={{ 
-                  '--study-color': study.color,
-                  animationDelay: `${idx * 80}ms`,
-                  animationFillMode: 'forwards'
+                  '--study-color': studyColor,
+                  animationDelay: `${idx * 80}ms`
                 } as React.CSSProperties}
               >
                 {/* θ_index Badge */}
                 <div className="absolute top-4 right-4">
                   <span 
                     className="text-sm font-bold px-2 py-1 rounded-full"
-                    style={{ backgroundColor: `${study.color}20`, color: study.color }}
+                    style={{ backgroundColor: `${studyColor}20`, color: studyColor }}
                   >
                     θ {study.thetaIndex.overall}
                   </span>
@@ -462,9 +466,9 @@ const ScalingXCaseStudies = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div 
                     className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `${study.color}15` }}
+                    style={{ backgroundColor: `${studyColor}15` }}
                   >
-                    <Icon className="w-6 h-6" style={{ color: study.color }} />
+                    <Icon className="w-6 h-6" style={{ color: studyColor }} />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">{study.name}</h3>
@@ -474,7 +478,7 @@ const ScalingXCaseStudies = () => {
 
                 {/* Headline Metric */}
                 <div className="mb-4">
-                  <p className="text-3xl font-bold" style={{ color: study.color }}>
+                  <p className="text-3xl font-bold" style={{ color: studyColor }}>
                     {study.headline.metric}
                   </p>
                   <p className="text-sm text-muted-foreground">
