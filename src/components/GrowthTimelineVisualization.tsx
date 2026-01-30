@@ -35,10 +35,7 @@ const companies: TimelineCompany[] = [
     metric: 'Valuation ($B)',
     data: [
       { year: 2022, value: 0, label: 'Founded' },
-      { year: 2023, value: 0.1, label: '$100M', milestone: 'Series A' },
-      { year: 2024, value: 0.6, label: '$600M', milestone: 'Series B' },
-      { year: 2025, value: 9.9, label: '$9.9B', milestone: 'Series C' },
-      { year: 2025.5, value: 29.3, label: '$29.3B', milestone: 'Series D' },
+      { year: 2024, value: 0.4, label: '$400M', milestone: 'Series B (Aug 2024)' },
     ],
   },
   {
@@ -50,9 +47,8 @@ const companies: TimelineCompany[] = [
     metric: 'Valuation ($B)',
     data: [
       { year: 2022, value: 0, label: 'Founded' },
-      { year: 2023, value: 0.5, label: '$500M' },
-      { year: 2024, value: 3, label: '$3B' },
-      { year: 2025, value: 9, label: '$9B', milestone: '18x in 2 years' },
+      { year: 2024, value: 0.2, label: '$200M (est.)', milestone: 'Revenue' },
+      { year: 2025, value: 9, label: '$9B', milestone: '$9B Valuation' },
     ],
   },
   {
@@ -125,7 +121,7 @@ const companies: TimelineCompany[] = [
       { year: 2022, value: 50, label: '$50M' },
       { year: 2023, value: 200, label: '$200M', milestone: '+300%' },
       { year: 2024, value: 300, label: '$300M', milestone: '+50%' },
-      { year: 2025, value: 500, label: '$500M', milestone: '21M Discord' },
+      { year: 2025, value: 492, label: '$492M', milestone: '107 employees' },
     ],
   },
 ];
