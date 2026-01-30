@@ -171,10 +171,30 @@ const researchPapers: ResearchPaper[] = [
 ];
 
 const researchStats = [
-  { value: '195K+', label: { en: 'Words', de: 'Wörter' }, color: 'primary' as const },
-  { value: '5', label: { en: 'Papers', de: 'Papers' }, color: 'accent' as const },
-  { value: '22', label: { en: 'Companies', de: 'Unternehmen' }, color: 'primary' as const },
-  { value: '238', label: { en: 'Citations', de: 'Zitierungen' }, color: 'accent' as const },
+  { 
+    value: '250,000+', 
+    label: { en: 'Words', de: 'Wörter' }, 
+    sublabel: { en: 'of research', de: 'Forschung' },
+    color: 'primary' as const 
+  },
+  { 
+    value: '22+', 
+    label: { en: 'Companies', de: 'Unternehmen' }, 
+    sublabel: { en: 'AI-native analyzed', de: 'AI-native analysiert' },
+    color: 'accent' as const 
+  },
+  { 
+    value: '3', 
+    label: { en: 'Frameworks', de: 'Frameworks' }, 
+    sublabel: { en: 'developed', de: 'entwickelt' },
+    color: 'primary' as const 
+  },
+  { 
+    value: 'OPEN', 
+    label: { en: 'Shared', de: 'Geteilt' }, 
+    sublabel: { en: 'not peer-reviewed yet', de: 'noch nicht peer-reviewed' },
+    color: 'accent' as const 
+  },
 ];
 
 const ResearchHub: React.FC = () => {
@@ -189,12 +209,12 @@ const ResearchHub: React.FC = () => {
       <SharedHero
         overlineEn="Expertise × Speed = Impact"
         overlineDe="Expertise × Speed = Impact"
-        headlineLine1En="Research Hub"
-        headlineLine1De="Forschungs-Hub"
-        headlineLine2En="The Science of Scaling"
-        headlineLine2De="Die Wissenschaft des Skalierens"
-        subheadlineEn="The scientific foundation of the AI-Native Scaling Framework. 195,000+ words of empirically validated research."
-        subheadlineDe="Die wissenschaftliche Grundlage des AI-Native Scaling Frameworks. 195,000+ Wörter empirisch validierter Forschung."
+        headlineLine1En="The Science Behind"
+        headlineLine1De="Die Wissenschaft hinter"
+        headlineLine2En="AI-Native Scaling"
+        headlineLine2De="AI-Native Scaling"
+        subheadlineEn="We analyzed 22 AI-native companies (Midjourney, Perplexity, Cursor, etc.) to understand why they scale 8.2x faster than traditional startups. Here's what we found."
+        subheadlineDe="Wir haben 22 AI-native Unternehmen (Midjourney, Perplexity, Cursor, etc.) analysiert, um zu verstehen, warum sie 8.2x schneller skalieren als traditionelle Startups. Das haben wir herausgefunden."
         stats={researchStats}
       />
 
