@@ -7,7 +7,8 @@ import SharedHero from '@/components/shared/SharedHero';
 import { Link } from 'react-router-dom';
 import { 
   Dna, Rocket, Target, Building2, 
-  Lightbulb, BarChart3, ChevronRight
+  Lightbulb, BarChart3, ChevronRight, XCircle, CheckCircle2,
+  BookOpen, Users, Download, ArrowRight, Linkedin
 } from 'lucide-react';
 
 interface ResearchCard {
@@ -121,6 +122,76 @@ const researchStats = [
   },
 ];
 
+const playbookCards = [
+  {
+    title: { en: 'AI-Native Growth Engines', de: 'AI-Native Growth Engines' },
+    description: { en: 'How to grow with AI', de: 'Wie man mit AI wächst' },
+    link: '/playbooks/growth-engines'
+  },
+  {
+    title: { en: 'AI-Native Operating Systems', de: 'AI-Native Operating Systems' },
+    description: { en: 'How to operate at scale', de: 'Wie man in Skala operiert' },
+    link: '/playbooks/operating-systems'
+  },
+  {
+    title: { en: 'AI-Native Governance', de: 'AI-Native Governance' },
+    description: { en: 'How Boards govern AI-native companies', de: 'Wie Boards AI-native Unternehmen führen' },
+    link: '/playbooks/board-governance'
+  },
+  {
+    title: { en: 'Portfolio Transformation', de: 'Portfolio Transformation' },
+    description: { en: 'How to transform your portfolio', de: 'Wie man das Portfolio transformiert' },
+    link: '/playbooks/portfolio-transformation'
+  }
+];
+
+const teamMembers = [
+  {
+    name: 'Michel Lason',
+    role: { en: 'Lead Researcher', de: 'Lead Researcher' },
+    description: { en: '18+ years scaling experience\nEx-Haufe, Ex-smapOne', de: '18+ Jahre Scaling-Erfahrung\nEx-Haufe, Ex-smapOne' },
+    linkedIn: 'https://linkedin.com/in/michel-lason',
+    link: '/ml'
+  },
+  {
+    name: 'Alban Halili',
+    role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
+    description: { en: 'Operator & Data Analyst\nGTM & Revenue Expert', de: 'Operator & Daten-Analyst\nGTM & Revenue Experte' },
+    linkedIn: 'https://linkedin.com/in/alban-halili',
+    link: '/ah'
+  },
+  {
+    name: 'Florian Metzger',
+    role: { en: 'Theoretical Framework', de: 'Theoretisches Framework' },
+    description: { en: 'AI Architect\nProduct & Tech Expert', de: 'AI Architekt\nProduct & Tech Experte' },
+    linkedIn: 'https://linkedin.com/in/florian-metzger',
+    link: '/fm'
+  }
+];
+
+const downloadCards = [
+  {
+    title: 'AI Maturity Framework',
+    wordCount: '3,000',
+    tagline: { en: 'The Three Levels of AI Maturity', de: 'Die drei Stufen der AI-Reife' },
+  },
+  {
+    title: 'AI-Native Scaling Theory',
+    wordCount: '3,000',
+    tagline: { en: 'Why AI-Native Companies Scale 8.2x Faster', de: 'Warum AI-Native Unternehmen 8.2x schneller skalieren' },
+  },
+  {
+    title: 'Bottleneck Framework',
+    wordCount: '3,000',
+    tagline: { en: "What's Blocking Your Growth?", de: 'Was blockiert dein Wachstum?' },
+  },
+  {
+    title: 'The Unified Framework',
+    wordCount: '3,000',
+    tagline: { en: 'How It All Fits Together', de: 'Wie alles zusammenpasst' },
+  }
+];
+
 const ResearchHub: React.FC = () => {
   const { language } = useLanguage();
 
@@ -139,12 +210,112 @@ const ResearchHub: React.FC = () => {
         stats={researchStats}
       />
 
-      {/* Content Section */}
-      <section className="py-12 md:py-16 bg-background">
+      {/* Section 2: Why This Matters */}
+      <section className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8">
+                {language === 'de' 
+                  ? 'Die meisten Scaling-Ratschläge sind anekdotisch. Unsere sind systematisch.'
+                  : 'Most Scaling Advice is Anecdotal. Ours is Systematic.'}
+              </h2>
+              
+              <div className="space-y-6">
+                <div>
+                  <p className="font-medium text-muted-foreground mb-3">
+                    {language === 'de' ? 'Traditionelle Scaling-Ratschläge kommen von:' : 'Traditional scaling advice comes from:'}
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">
+                        {language === 'de' ? 'War Stories (was für ein Unternehmen funktioniert hat)' : 'War stories (what worked for one company)'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">
+                        {language === 'de' ? 'Best Practices (von erfolgreichen Unternehmen kopiert)' : 'Best practices (copied from successful companies)'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <XCircle className="w-5 h-5 text-destructive flex-shrink-0 mt-0.5" />
+                      <span className="text-muted-foreground">
+                        {language === 'de' ? 'Berater-Meinungen (basierend auf Erfahrung, nicht Daten)' : 'Consultant opinions (based on experience, not data)'}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <p className="font-medium mb-3">
+                    {language === 'de' ? 'Unser Ansatz:' : 'Our approach:'}
+                  </p>
+                  <ul className="space-y-2">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span>
+                        {language === 'de' ? 'Systematische Analyse (n=22 AI-native Unternehmen)' : 'Systematic analysis (n=22 AI-native companies)'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span>
+                        {language === 'de' ? 'Mustererkennung (was über Unternehmen hinweg funktioniert)' : 'Pattern recognition (what works across companies)'}
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                      <span>
+                        {language === 'de' ? 'Frameworks (Strategy, Setup, Execution, Operationalization)' : 'Frameworks (Strategy, Setup, Execution, Operationalization)'}
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+
+                <p className="text-lg font-medium text-primary">
+                  {language === 'de' 
+                    ? 'Das Ergebnis: Eine einheitliche Theorie des AI-nativen Scaling.'
+                    : 'The result: A unified theory of AI-native scaling.'}
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column - Stats */}
+            <div className="grid grid-cols-2 gap-6">
+              <Card className="p-6 text-center border-border/50">
+                <p className="text-4xl font-bold text-primary mb-2">22</p>
+                <p className="font-medium mb-1">{language === 'de' ? 'Unternehmen analysiert' : 'companies analyzed'}</p>
+                <p className="text-sm text-muted-foreground">Midjourney, Perplexity, Cursor, Harvey, Lovable, etc.</p>
+              </Card>
+              <Card className="p-6 text-center border-border/50">
+                <p className="text-4xl font-bold text-primary mb-2">3</p>
+                <p className="font-medium mb-1">{language === 'de' ? 'Frameworks entwickelt' : 'frameworks developed'}</p>
+                <p className="text-sm text-muted-foreground">AI Maturity, Scaling Theory, Bottleneck Framework</p>
+              </Card>
+              <Card className="p-6 text-center border-border/50">
+                <p className="text-4xl font-bold text-primary mb-2">250K+</p>
+                <p className="font-medium mb-1">{language === 'de' ? 'Wörter dokumentiert' : 'words documented'}</p>
+                <p className="text-sm text-muted-foreground">{language === 'de' ? '3 Research Papers, peer-review ready' : '3 research papers, peer-review ready'}</p>
+              </Card>
+              <Card className="p-6 text-center border-border/50">
+                <p className="text-4xl font-bold text-primary mb-2">∞</p>
+                <p className="font-medium mb-1">{language === 'de' ? 'Offen geteilt' : 'Openly shared'}</p>
+                <p className="text-sm text-muted-foreground">{language === 'de' ? 'Wir glauben an Transparenz' : 'We believe in transparency'}</p>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Our Research */}
+      <section id="research" className="py-16 md:py-24 bg-background">
         <div className="container max-w-7xl mx-auto px-6">
           
           {/* Section Headline */}
-          <div className="text-center mb-10">
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
               {language === 'de' ? 'Unsere Forschung' : 'Our Research'}
             </h2>
@@ -208,87 +379,211 @@ const ResearchHub: React.FC = () => {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
 
-          {/* Executive Summary Section */}
-          <Card className="p-8 glass border-accent/20 mb-12">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2">
-                {language === 'de' ? 'Executive Summary' : 'Executive Summary'}
+      {/* Section 3A: Case Studies */}
+      <section id="case-studies" className="scroll-mt-24">
+        <ScalingXCaseStudies />
+      </section>
+
+      {/* Section 4: Applied Research */}
+      <section id="playbooks" className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Left Column - Text */}
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                {language === 'de' ? 'Möchtest du diese Forschung anwenden?' : 'Want to Apply This Research?'}
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-lg text-muted-foreground mb-6">
                 {language === 'de' 
-                  ? 'Die wichtigsten Erkenntnisse aus 250,000+ Wörtern Forschung'
-                  : 'The key insights from 250,000+ words of research'}
+                  ? 'Unsere Forschung ist die Grundlage. Unsere Playbooks zeigen dir, wie du sie ausführst.'
+                  : 'Our research is the foundation. Our playbooks show you how to execute.'}
               </p>
+              <p className="text-muted-foreground mb-8">
+                {language === 'de' ? 'Entdecke unsere Playbooks:' : 'Explore our playbooks:'}
+              </p>
+              <ul className="space-y-2 mb-8">
+                <li className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  <span>{language === 'de' ? 'AI-Native Growth Engines (Wie man mit AI wächst)' : 'AI-Native Growth Engines (How to grow with AI)'}</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  <span>{language === 'de' ? 'AI-Native Operating Systems (Wie man in Skala operiert)' : 'AI-Native Operating Systems (How to operate at scale)'}</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  <span>{language === 'de' ? 'AI-Native Governance (Wie Boards AI-native Unternehmen führen)' : 'AI-Native Governance (How Boards govern AI-native companies)'}</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 text-primary" />
+                  <span>{language === 'de' ? 'Strategic Capabilities (Wie man alle 4 Fähigkeiten aufbaut)' : 'Strategic Capabilities (How to build all 4 capabilities)'}</span>
+                </li>
+              </ul>
+              <Link to="/playbooks">
+                <Button size="lg" className="bg-gradient-accent hover:opacity-90 group">
+                  {language === 'de' ? 'Alle Playbooks erkunden' : 'Explore All Playbooks'}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <span className="text-2xl font-bold text-accent-foreground">C₁-C₄</span>
-                </div>
-                <h3 className="font-bold mb-2">{language === 'de' ? '4 Capabilities' : '4 Capabilities'}</h3>
-                <p className="text-sm text-muted-foreground">
-                  Strategy, Setup, Execution, Operationalization
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <span className="text-2xl font-bold text-accent-foreground">8D</span>
-                </div>
-                <h3 className="font-bold mb-2">{language === 'de' ? '8 Dimensionen' : '8 Dimensions'}</h3>
-                <p className="text-sm text-muted-foreground">
-                  GTM, Product, Ops, Finance, Talent, Tech, Data, Culture
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <span className="text-2xl font-bold text-accent-foreground">θ</span>
-                </div>
-                <h3 className="font-bold mb-2">θ_index</h3>
-                <p className="text-sm text-muted-foreground">
-                  {language === 'de' 
-                    ? 'AI-Maturity Score mit r=0.89 Prädiktivität'
-                    : 'AI-Maturity score with r=0.89 predictivity'}
-                </p>
-              </div>
-              <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
-                  <span className="text-2xl font-bold text-accent-foreground">L3</span>
-                </div>
-                <h3 className="font-bold mb-2">{language === 'de' ? '3 Levels' : '3 Levels'}</h3>
-                <p className="text-sm text-muted-foreground">
-                  {language === 'de' 
-                    ? 'Linear → Sublinear → Superlinear'
-                    : 'Linear → Sublinear → Superlinear'}
-                </p>
-              </div>
+            {/* Right Column - Playbook Cards */}
+            <div className="grid grid-cols-2 gap-4">
+              {playbookCards.map((card, i) => (
+                <Link key={i} to={card.link}>
+                  <Card className="p-5 h-full border-border/50 hover:border-primary/50 hover:shadow-lg transition-all duration-300 group">
+                    <BookOpen className="w-8 h-8 text-primary mb-3" />
+                    <h4 className="font-bold mb-2">{card.title[language]}</h4>
+                    <p className="text-sm text-muted-foreground">{card.description[language]}</p>
+                    <span className="mt-3 inline-flex items-center text-sm text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                      {language === 'de' ? 'Playbook erkunden' : 'Explore Playbook'}
+                      <ArrowRight className="w-4 h-4 ml-1" />
+                    </span>
+                  </Card>
+                </Link>
+              ))}
             </div>
-          </Card>
+          </div>
+        </div>
+      </section>
 
-          {/* Case Studies Section */}
-          <div id="cases" className="scroll-mt-24">
-            <ScalingXCaseStudies />
+      {/* Section 5: Our Expertise (Team) */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {language === 'de' ? 'Wer steckt hinter dieser Forschung?' : "Who's Behind This Research?"}
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              {language === 'de'
+                ? 'Diese Forschung wurde vom ScalingX Hypergrowth Team durchgeführt. Wir sind Operatoren, die zu Forschern wurden. Wir haben dieses Framework gebaut, weil wir es selbst brauchten.'
+                : "This research was conducted by the ScalingX Hypergrowth team. We're operators who became researchers. We built this framework because we needed it ourselves."}
+            </p>
           </div>
 
-          {/* CTA Section */}
-          <div className="text-center py-16">
-            <h2 className="text-2xl font-bold mb-4">
-              {language === 'de' ? 'Möchtest du die Forschung anwenden?' : 'Want to Apply the Research?'}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {teamMembers.map((member, i) => (
+              <Card key={i} className="p-6 text-center border-border/50 hover:border-primary/50 transition-all">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-accent flex items-center justify-center">
+                  <Users className="w-10 h-10 text-accent-foreground" />
+                </div>
+                <h3 className="font-bold text-xl mb-1">{member.name}</h3>
+                <p className="text-primary font-medium mb-3">{member.role[language]}</p>
+                <p className="text-sm text-muted-foreground whitespace-pre-line mb-4">{member.description[language]}</p>
+                <a 
+                  href={member.linkedIn} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-sm text-primary hover:underline"
+                >
+                  <Linkedin className="w-4 h-4 mr-1" />
+                  LinkedIn
+                </a>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/about">
+              <Button variant="outline" size="lg" className="group">
+                {language === 'de' ? 'Das komplette Team kennenlernen' : 'Meet the Full Team'}
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Download Research */}
+      <section id="download" className="py-16 md:py-24 bg-muted/30">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              {language === 'de' ? 'Hol dir die komplette Forschung' : 'Get the Complete Research'}
             </h2>
-            <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-              {language === 'de' 
-                ? 'Buche einen Diagnose-Call, um deine θ_index zu berechnen und einen personalisierten Scaling-Plan zu erhalten.'
-                : 'Book a diagnostic call to calculate your θ_index and get a personalized scaling plan.'}
+            <p className="text-lg text-muted-foreground">
+              {language === 'de' ? 'Lade unsere Research Papers herunter (Executive Summaries)' : 'Download our research papers (Executive Summaries)'}
             </p>
-            <div className="flex justify-center gap-4">
-              <Button size="lg" className="bg-gradient-accent hover:opacity-90">
-                {language === 'de' ? 'Diagnose-Call buchen' : 'Book Diagnostic Call'}
-              </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {downloadCards.map((card, i) => (
+              <Card key={i} className="p-6 border-border/50 hover:border-primary/50 transition-all">
+                <Download className="w-8 h-8 text-primary mb-4" />
+                <h4 className="font-bold text-lg mb-1">{card.title}</h4>
+                <p className="text-sm text-muted-foreground mb-3">Executive Summary ({card.wordCount} words)</p>
+                <p className="text-xs text-muted-foreground mb-4">{card.tagline[language]}</p>
+                <Button variant="outline" size="sm" className="w-full">
+                  {language === 'de' ? 'PDF herunterladen' : 'Download PDF'}
+                  <Download className="w-4 h-4 ml-2" />
+                </Button>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <p className="text-sm text-muted-foreground mb-4">
+              {language === 'de' ? '~12.000 Wörter Research Insights' : '~12,000 words of research insights'}
+            </p>
+            <Button size="lg" className="bg-gradient-accent hover:opacity-90">
+              {language === 'de' ? 'Alle Papers herunterladen' : 'Download All Research'}
+              <Download className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 7: Final CTA */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container max-w-3xl mx-auto px-6 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            {language === 'de' ? 'Möchtest du AI-Native werden?' : 'Want to Become AI-Native?'}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            {language === 'de' 
+              ? 'Wir helfen Unternehmen bei der Transformation in 90 Tagen.'
+              : 'We help companies transform in 90 days.'}
+          </p>
+          
+          <ul className="text-left max-w-md mx-auto mb-10 space-y-3">
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span className="text-muted-foreground">
+                {language === 'de' 
+                  ? 'Diagnose deines aktuellen Stands (AI Maturity Level, Bottleneck)'
+                  : 'Diagnose your current state (AI Maturity Level, Bottleneck)'}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span className="text-muted-foreground">
+                {language === 'de' 
+                  ? 'Aufbau deines Transformationsplans (Strategy, Setup, Execution)'
+                  : 'Build your transformation plan (Strategy, Setup, Execution)'}
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span className="text-muted-foreground">
+                {language === 'de' 
+                  ? 'Umsetzung mit unserem Team (Hands-on, nicht nur Slides)'
+                  : 'Execute with our team (Hands-on, not just slides)'}
+              </span>
+            </li>
+          </ul>
+
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" className="bg-gradient-accent hover:opacity-90">
+              {language === 'de' ? 'Strategy Call buchen' : 'Book Strategy Call'}
+            </Button>
+            <Link to="/tools/ai-maturity-assessment">
               <Button size="lg" variant="outline">
-                {language === 'de' ? 'Alle Papers herunterladen' : 'Download All Papers'}
+                {language === 'de' ? 'AI Maturity berechnen' : 'Calculate Your AI Maturity'}
               </Button>
-            </div>
+            </Link>
           </div>
         </div>
       </section>
