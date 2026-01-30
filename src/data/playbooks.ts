@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users, Database, Shield, ShieldCheck, Briefcase, Layers } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -337,5 +337,37 @@ export const playbooks: Playbook[] = [
     impact: ['board-governance'],
     bottleneck: ['strategy'],
     role: ['ceo', 'vc-board'],
+  },
+  {
+    id: 'portfolio-excellence',
+    slug: 'portfolio/excellence',
+    title: {
+      en: 'Portfolio Excellence Playbook',
+      de: 'Portfolio Excellence Playbook',
+    },
+    description: {
+      en: 'How to transform portfolio performance with AI-native operations. Learn the 5-component framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence) used by VCs/PEs to increase portfolio valuation by 200-400% and achieve 3-5x faster growth. Includes best practices, implementation guide, and real-world case studies from VC/PE portfolios.',
+      de: 'Wie du Portfolio-Performance mit AI-native Operations transformierst. Lerne das 5-Komponenten-Framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence), das VCs/PEs nutzen, um Portfolio-Bewertungen um 200-400% zu steigern und 3-5x schnelleres Wachstum zu erzielen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von VC/PE Portfolios.',
+    },
+    outcomes: {
+      en: [
+        'Portfolio valuation increase of 200-400%',
+        'Portfolio growth acceleration of 3-5x',
+        'Portfolio IRR improvement of 50-100%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Portfolio-Bewertung Steigerung von 200-400%',
+        'Portfolio-Wachstum Beschleunigung von 3-5x',
+        'Portfolio IRR Verbesserung von 50-100%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A-B VC (Valuation +250%)', 'Series B-C PE (IRR 35%)', 'Multi-Stage VC (4-hour Reporting)'],
+    icon: React.createElement(Layers, { className: 'w-6 h-6' }),
+    gradient: 'from-purple-500 to-indigo-500',
+    impact: ['portfolio'],
+    bottleneck: ['strategy', 'operationalization'],
+    role: ['vc-board'],
   },
 ];
