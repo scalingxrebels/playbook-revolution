@@ -40,10 +40,30 @@ const PlaybookLibrary: React.FC = () => {
   };
 
   const playbookStats = [
-    { value: '1', label: { en: 'Playbooks', de: 'Playbooks' }, color: 'primary' as const },
-    { value: '5', label: { en: 'Areas', de: 'Bereiche' }, color: 'accent' as const },
-    { value: '3', label: { en: 'Filters', de: 'Filter' }, color: 'primary' as const },
-    { value: '7', label: { en: 'Roles', de: 'Rollen' }, color: 'accent' as const },
+    { 
+      value: String(totalPlaybooks),
+      label: { en: 'Playbooks', de: 'Playbooks' }, 
+      sublabel: { en: 'Complete Framework', de: 'Komplettes Framework' },
+      color: 'primary' as const 
+    },
+    { 
+      value: '5', 
+      label: { en: 'Areas', de: 'Bereiche' }, 
+      sublabel: { en: 'Growth, Ops, Board...', de: 'Growth, Ops, Board...' },
+      color: 'accent' as const 
+    },
+    { 
+      value: '10-30x', 
+      label: { en: 'ROI', de: 'ROI' }, 
+      sublabel: { en: 'Proven Results', de: 'Bewiesene Ergebnisse' },
+      color: 'primary' as const 
+    },
+    { 
+      value: 'FREE', 
+      label: { en: 'Download', de: 'Download' }, 
+      sublabel: { en: 'All PDFs', de: 'Alle PDFs' },
+      color: 'accent' as const 
+    },
   ];
 
   return (
