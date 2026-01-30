@@ -1,4 +1,4 @@
-import { TrendingUp, Rocket, Heart, Settings, DollarSign } from 'lucide-react';
+import { TrendingUp, Rocket, Heart, Settings, DollarSign, Users } from 'lucide-react';
 import React from 'react';
 import type { ImpactTag, BottleneckTag, RoleTag } from './playbookFilters';
 
@@ -177,5 +177,37 @@ export const playbooks: Playbook[] = [
     impact: ['operating-systems'],
     bottleneck: ['setup', 'operationalization'],
     role: ['ceo', 'cfo', 'coo'],
+  },
+  {
+    id: 'talent',
+    slug: 'operating-systems/talent',
+    title: {
+      en: 'Talent Playbook',
+      de: 'Talent Playbook',
+    },
+    description: {
+      en: 'How to build talent systems that scale with AI. Learn the 5-component framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent) used by AI-native companies to reduce time-to-hire by 60% and increase retention by 40%. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
+      de: 'Wie du Talent-Systeme aufbaust, die mit AI skalieren. Lerne das 5-Komponenten-Framework (Hiring Pipeline, Onboarding Excellence, Performance Management, Talent Analytics, AI-Powered Talent), das AI-native Unternehmen nutzen, um Time-to-Hire um 60% zu reduzieren und Retention um 40% zu steigern. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+    },
+    outcomes: {
+      en: [
+        'Time-to-hire reduction of 60-80%',
+        'Retention rate increase of 30-50%',
+        'Onboarding time reduction of 50-70%',
+        'Clear 90-day implementation roadmap',
+      ],
+      de: [
+        'Time-to-Hire Reduktion von 60-80%',
+        'Retention Rate Steigerung von 30-50%',
+        'Onboarding Zeit Reduktion von 50-70%',
+        'Klare 90-Tage-Implementierungs-Roadmap',
+      ],
+    },
+    caseStudies: ['Series A SaaS (Time-to-Hire -67%)', 'Series B SaaS (Retention 95%)', 'Series C (20-day hiring)'],
+    icon: React.createElement(Users, { className: 'w-6 h-6' }),
+    gradient: 'from-violet-500 to-purple-500',
+    impact: ['operating-systems'],
+    bottleneck: ['setup', 'operationalization'],
+    role: ['ceo', 'coo'],
   },
 ];
