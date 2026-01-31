@@ -95,7 +95,7 @@ const teamMembers: TeamMember[] = [
       en: 'Sales cycle –30%, improved lead throughput' 
     },
     expertise: ['RevOps', 'GTM Engineering', 'Marketing Automation'],
-    image: '/images/team-florian.png',
+    image: '/images/team-florian-square.png',
     linkedin: 'https://www.linkedin.com/in/florianmetzger/',
     profileLink: '/fm'
   }
