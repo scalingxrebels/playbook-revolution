@@ -3301,6 +3301,477 @@ Der CEO wusste, dass sie alles ändern mussten. Aber wo anfangen?`
     ]
   },
 
+  // ============================================
+  // CASE STUDY 9: Growth Engine Activated → Leadership Program Scaled
+  // ============================================
+  {
+    id: 'growth-engine-leadership-development',
+    slug: 'growth-engine-activated-leadership-program-scaled',
+    company: 'Leadership Development Company',
+    industry: 'B2B Leadership Development & Training',
+    stage: 'Early-Stage',
+    gradient: 'from-green-500 to-emerald-500',
+    confidential: true,
+    
+    tags: ['growth-engine', 'marketing-automation', 'lead-generation', 'early-stage', 'b2b'],
+    challengeType: 'growth-stalled',
+    
+    // HERO
+    headline: {
+      en: 'Growth Engine Activated → Leadership Program Scaled',
+      de: 'Growth Engine aktiviert → Leadership-Programm skaliert'
+    },
+    challenge: {
+      en: 'A leadership development company with powerful programs but no systematic growth engine—ad-hoc sales, no pipeline visibility, no automation.',
+      de: 'Ein Leadership-Development-Unternehmen mit starken Programmen, aber ohne systematische Growth Engine—ad-hoc Sales, keine Pipeline-Sichtbarkeit, keine Automation.'
+    },
+    result: {
+      en: '26 confirmed bookings (€117K revenue), 150+ qualified leads with lead-scoring, multi-channel campaigns live, 100% process clarity',
+      de: '26 bestätigte Buchungen (€117K Umsatz), 150+ qualifizierte Leads mit Lead-Scoring, Multi-Channel-Kampagnen live, 100% Prozessklarheit'
+    },
+    investment: '€60K-€78K',
+    roi: '2x',
+    heroMetrics: [
+      { label: 'Confirmed Bookings', before: 'Ad-hoc', after: '26 (€117K)', impact: '+€117K' },
+      { label: 'Qualified Leads', before: '0', after: '150+', impact: 'Systematic' },
+      { label: 'Multi-Channel', before: 'None', after: 'Google, LinkedIn, Meta', impact: 'Live' },
+      { label: 'Process Clarity', before: '0%', after: '100%', impact: 'Self-sustainable' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A leadership development company offering transformative Masterclass and Inhouse programs. Powerful content with authentic, profound impact on leadership development. Early-stage with strong product but no systematic go-to-market.',
+      de: 'Ein Leadership-Development-Unternehmen mit transformativen Masterclass- und Inhouse-Programmen. Kraftvoller Content mit authentischer, tiefgreifender Wirkung auf Leadership-Entwicklung. Early-Stage mit starkem Produkt, aber ohne systematischen Go-to-Market.'
+    },
+    crisisStory: {
+      en: `The company had developed leadership programs that truly moved people—authentic, profound, transformative.
+
+But to fully realize this potential, more than just great content was needed. It required a systematic, AI-native growth engine—a motor that continuously generates qualified leads, converts prospects into participants, and carries the vision scalably into the market.
+
+The founder knew the programs worked. The challenge: How do you build a systematic growth machine around powerful content?
+
+Sales was ad-hoc—no CRM, no tracking, no pipeline visibility. Marketing was non-existent—no campaigns, no lead magnets, no content engine. Infrastructure was missing—no tracking, no automation, no dashboards.
+
+The question wasn't whether the programs could sell. It was whether the company could scale without burning out.`,
+      de: `Das Unternehmen hatte Leadership-Programme entwickelt, die Menschen wirklich bewegten—authentisch, tiefgreifend, transformativ.
+
+Aber um dieses Potenzial voll auszuschöpfen, brauchte es mehr als nur großartigen Content. Es brauchte eine systematische, AI-native Growth Engine—einen Motor, der kontinuierlich qualifizierte Leads generiert, Interessenten in Teilnehmer konvertiert und die Vision skalierbar in den Markt trägt.
+
+Der Gründer wusste, dass die Programme funktionierten. Die Herausforderung: Wie baut man eine systematische Wachstumsmaschine um kraftvollen Content?
+
+Sales war ad-hoc—kein CRM, kein Tracking, keine Pipeline-Sichtbarkeit. Marketing war nicht existent—keine Kampagnen, keine Lead Magnets, keine Content Engine. Infrastruktur fehlte—kein Tracking, keine Automation, keine Dashboards.
+
+Die Frage war nicht, ob die Programme verkaufen konnten. Es war, ob das Unternehmen skalieren konnte, ohne auszubrennen.`
+    },
+    problemDescription: {
+      en: 'The company faced a growth infrastructure challenge: powerful programs with no systematic way to bring them to market at scale.',
+      de: 'Das Unternehmen stand vor einer Growth-Infrastruktur-Challenge: kraftvolle Programme ohne systematischen Weg, sie skalierbar in den Markt zu bringen.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Sales & Marketing', de: 'Sales & Marketing' },
+        symptoms: [
+          { en: 'No CRM—leads were tracked in spreadsheets or not at all', de: 'Kein CRM—Leads wurden in Spreadsheets getrackt oder gar nicht' },
+          { en: 'No marketing automation—no nurture flows, no follow-ups', de: 'Keine Marketing-Automation—keine Nurture-Flows, keine Follow-ups' },
+          { en: 'No multi-channel campaigns—no Google Ads, no LinkedIn Ads, no Meta Ads', de: 'Keine Multi-Channel-Kampagnen—keine Google Ads, keine LinkedIn Ads, keine Meta Ads' },
+          { en: 'Sales was reactive, not proactive', de: 'Sales war reaktiv, nicht proaktiv' }
+        ]
+      },
+      {
+        area: { en: 'Content & Messaging', de: 'Content & Messaging' },
+        symptoms: [
+          { en: 'No content engine—no systematic content production', de: 'Keine Content Engine—keine systematische Content-Produktion' },
+          { en: 'No lead magnets—no systematic lead capture mechanism', de: 'Keine Lead Magnets—kein systematischer Lead-Capture-Mechanismus' },
+          { en: 'No use-case assets—no industry-specific messaging', de: 'Keine Use-Case Assets—kein branchenspezifisches Messaging' }
+        ]
+      },
+      {
+        area: { en: 'Infrastructure', de: 'Infrastruktur' },
+        symptoms: [
+          { en: 'No tracking—no pixel, no events, no UTMs', de: 'Kein Tracking—kein Pixel, keine Events, keine UTMs' },
+          { en: 'No lead-scoring—no way to prioritize leads', de: 'Kein Lead-Scoring—keine Möglichkeit, Leads zu priorisieren' },
+          { en: 'No dashboards—no performance visibility', de: 'Keine Dashboards—keine Performance-Sichtbarkeit' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'CRM', before: 'None', after: 'Implemented', impact: 'Operational' },
+      { label: 'Marketing Automation', before: 'None', after: 'ActiveCampaign', impact: 'Live' },
+      { label: 'Multi-Channel', before: 'None', after: '3 channels', impact: 'Performing' },
+      { label: 'Process Documentation', before: 'None', after: 'Playbooks', impact: '100%' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We ran a 4-month growth engine build and activation program. Not a short-term campaign sprint—we built a motor that continues running after the collaboration, with clear playbooks, automations, and a content engine that can be controlled independently.',
+      de: 'Wir führten ein 4-monatiges Growth-Engine-Aufbau- und Aktivierungsprogramm durch. Kein kurzfristiger Kampagnen-Sprint—wir bauten einen Motor, der nach der Zusammenarbeit weiterläuft, mit klaren Playbooks, Automationen und einer Content Engine, die eigenständig gesteuert werden kann.'
+    },
+    phases: [
+      {
+        name: { en: 'Foundation', de: 'Foundation' },
+        timeline: 'Month 1',
+        actions: [
+          {
+            name: { en: 'Asset Inventory & Gap Analysis', de: 'Asset-Inventur & Gap-Analyse' },
+            description: {
+              en: 'We assessed existing assets (landing pages, lead magnets, LinkedIn, CRM, automations), identified gaps, and created an implementation roadmap.',
+              de: 'Wir bewerteten bestehende Assets (Landing Pages, Lead Magnets, LinkedIn, CRM, Automationen), identifizierten Lücken und erstellten eine Implementierungs-Roadmap.'
+            },
+            deliverables: [
+              { en: 'Asset inventory document', de: 'Asset-Inventur-Dokument' },
+              { en: 'Gap analysis report', de: 'Gap-Analyse-Bericht' },
+              { en: 'Implementation roadmap', de: 'Implementierungs-Roadmap' }
+            ],
+            whyItMattered: {
+              en: 'You can\'t build on what you don\'t understand. The inventory showed us exactly what existed and what needed to be built.',
+              de: 'Man kann nicht auf etwas aufbauen, das man nicht versteht. Die Inventur zeigte uns genau, was existierte und was gebaut werden musste.'
+            }
+          },
+          {
+            name: { en: 'Funnel & Tracking Setup', de: 'Funnel & Tracking Setup' },
+            description: {
+              en: 'We designed the funnel logic (Awareness → Consideration → Decision), implemented tracking (Pixel, Events, UTMs), and set up a KPI dashboard.',
+              de: 'Wir designten die Funnel-Logik (Awareness → Consideration → Decision), implementierten Tracking (Pixel, Events, UTMs) und richteten ein KPI-Dashboard ein.'
+            },
+            deliverables: [
+              { en: 'Funnel design document', de: 'Funnel-Design-Dokument' },
+              { en: 'Tracking implementation', de: 'Tracking-Implementierung' },
+              { en: 'KPI dashboard', de: 'KPI-Dashboard' }
+            ],
+            whyItMattered: {
+              en: 'Without tracking, you\'re flying blind. The dashboard gave immediate visibility into what was working.',
+              de: 'Ohne Tracking fliegt man blind. Das Dashboard gab sofortige Sichtbarkeit, was funktionierte.'
+            }
+          },
+          {
+            name: { en: 'CRM & Marketing Automation', de: 'CRM & Marketing Automation' },
+            description: {
+              en: 'We set up CRM architecture, built nurture flows (Welcome, Webinar, Follow-up), and implemented lead-scoring.',
+              de: 'Wir richteten die CRM-Architektur ein, bauten Nurture-Flows (Welcome, Webinar, Follow-up) und implementierten Lead-Scoring.'
+            },
+            deliverables: [
+              { en: 'CRM configuration', de: 'CRM-Konfiguration' },
+              { en: 'Nurture flow sequences', de: 'Nurture-Flow-Sequenzen' },
+              { en: 'Lead-scoring model', de: 'Lead-Scoring-Modell' }
+            ],
+            whyItMattered: {
+              en: 'For the first time, leads were captured, scored, and nurtured automatically. No more lost opportunities.',
+              de: 'Zum ersten Mal wurden Leads automatisch erfasst, bewertet und gepflegt. Keine verlorenen Opportunities mehr.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Ignition', de: 'Ignition' },
+        timeline: 'Month 2',
+        actions: [
+          {
+            name: { en: 'Campaign Launch', de: 'Kampagnen-Launch' },
+            description: {
+              en: 'We launched Google Ads, LinkedIn Ads, and Meta Ads campaigns with A/B tests on landing pages, ads, and angles.',
+              de: 'Wir launchten Google Ads, LinkedIn Ads und Meta Ads Kampagnen mit A/B-Tests auf Landing Pages, Ads und Angles.'
+            },
+            deliverables: [
+              { en: 'Google Ads campaigns', de: 'Google Ads Kampagnen' },
+              { en: 'LinkedIn Ads campaigns', de: 'LinkedIn Ads Kampagnen' },
+              { en: 'Meta Ads campaigns', de: 'Meta Ads Kampagnen' },
+              { en: 'A/B test framework', de: 'A/B-Test-Framework' }
+            ],
+            whyItMattered: {
+              en: 'Multi-channel launch reduced dependency on any single source and generated immediate traction.',
+              de: 'Multi-Channel-Launch reduzierte die Abhängigkeit von einer einzelnen Quelle und generierte sofortige Traction.'
+            }
+          },
+          {
+            name: { en: 'Webinar Execution', de: 'Webinar-Durchführung' },
+            description: {
+              en: 'We designed and executed a webinar as a conversion asset with full follow-up sequences.',
+              de: 'Wir designten und führten ein Webinar als Conversion-Asset mit vollständigen Follow-up-Sequenzen durch.'
+            },
+            deliverables: [
+              { en: 'Webinar content and presentation', de: 'Webinar-Content und Präsentation' },
+              { en: 'Registration and follow-up flows', de: 'Registrierungs- und Follow-up-Flows' },
+              { en: 'Conversion tracking', de: 'Conversion-Tracking' }
+            ],
+            whyItMattered: {
+              en: 'Webinars are high-intent conversion points. The follow-up sequences ensured no registrant was left behind.',
+              de: 'Webinare sind High-Intent-Conversion-Points. Die Follow-up-Sequenzen stellten sicher, dass kein Registrant zurückgelassen wurde.'
+            }
+          },
+          {
+            name: { en: 'Use-Case Asset Creation', de: 'Use-Case-Asset-Erstellung' },
+            description: {
+              en: 'We created 3+ use-case assets with industry-specific messaging and built campaign modules per use-case.',
+              de: 'Wir erstellten 3+ Use-Case-Assets mit branchenspezifischem Messaging und bauten Kampagnen-Module pro Use-Case.'
+            },
+            deliverables: [
+              { en: 'Industry-specific use-case documents', de: 'Branchenspezifische Use-Case-Dokumente' },
+              { en: 'Campaign modules per use-case', de: 'Kampagnen-Module pro Use-Case' },
+              { en: 'Messaging effectiveness data', de: 'Messaging-Effektivitäts-Daten' }
+            ],
+            whyItMattered: {
+              en: 'Generic messaging doesn\'t convert. Industry-specific content resonated with target segments.',
+              de: 'Generisches Messaging konvertiert nicht. Branchenspezifischer Content resonierte mit Zielsegmenten.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Scaling', de: 'Scaling' },
+        timeline: 'Month 3',
+        actions: [
+          {
+            name: { en: 'Campaign Scaling', de: 'Kampagnen-Scaling' },
+            description: {
+              en: 'We increased ad spend on performing channels, expanded targeting (new segments, lookalikes), and launched retargeting campaigns.',
+              de: 'Wir erhöhten Ad Spend auf performenden Kanälen, erweiterten Targeting (neue Segmente, Lookalikes) und launchten Retargeting-Kampagnen.'
+            },
+            deliverables: [
+              { en: 'Scaled campaign budgets', de: 'Skalierte Kampagnen-Budgets' },
+              { en: 'Expanded audience targeting', de: 'Erweitertes Audience-Targeting' },
+              { en: 'Retargeting campaign setup', de: 'Retargeting-Kampagnen-Setup' }
+            ],
+            whyItMattered: {
+              en: 'Scaling what works accelerates results. Retargeting captured warm leads who hadn\'t converted yet.',
+              de: 'Was funktioniert zu skalieren beschleunigt Ergebnisse. Retargeting erfasste warme Leads, die noch nicht konvertiert hatten.'
+            }
+          },
+          {
+            name: { en: 'Content Engine Activation', de: 'Content Engine Aktivierung' },
+            description: {
+              en: 'We built a semi-automated content system with content calendar, AI-assisted production, and distribution workflows.',
+              de: 'Wir bauten ein semi-automatisiertes Content-System mit Content-Kalender, AI-gestützter Produktion und Distributions-Workflows.'
+            },
+            deliverables: [
+              { en: 'Content calendar', de: 'Content-Kalender' },
+              { en: 'AI-assisted content production system', de: 'AI-gestütztes Content-Produktionssystem' },
+              { en: 'Distribution workflows', de: 'Distributions-Workflows' }
+            ],
+            whyItMattered: {
+              en: 'Content engines need systems, not heroics. The semi-automated approach ensured consistent output without burnout.',
+              de: 'Content Engines brauchen Systeme, keine Heldenaktionen. Der semi-automatisierte Ansatz stellte konstanten Output ohne Burnout sicher.'
+            }
+          },
+          {
+            name: { en: 'Inhouse Pipeline Development', de: 'Inhouse-Pipeline-Entwicklung' },
+            description: {
+              en: 'We launched an inhouse landing page, started outreach campaigns (LinkedIn, Email), and built inhouse-specific nurture flows.',
+              de: 'Wir launchten eine Inhouse-Landing-Page, starteten Outreach-Kampagnen (LinkedIn, E-Mail) und bauten inhouse-spezifische Nurture-Flows.'
+            },
+            deliverables: [
+              { en: 'Inhouse landing page', de: 'Inhouse-Landing-Page' },
+              { en: 'Outreach campaign sequences', de: 'Outreach-Kampagnen-Sequenzen' },
+              { en: 'Inhouse nurture flows', de: 'Inhouse-Nurture-Flows' }
+            ],
+            whyItMattered: {
+              en: 'Inhouse programs represent a different buyer. Dedicated pipeline development opened a new revenue stream.',
+              de: 'Inhouse-Programme repräsentieren einen anderen Käufer. Dedizierte Pipeline-Entwicklung eröffnete einen neuen Umsatzstrom.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Optimization', de: 'Optimierung' },
+        timeline: 'Month 4',
+        actions: [
+          {
+            name: { en: 'Performance Optimization', de: 'Performance-Optimierung' },
+            description: {
+              en: 'We refined targeting (best-performing segments), optimized creative (best-performing angles), and improved landing pages (best-performing variants).',
+              de: 'Wir verfeinerten Targeting (best-performende Segmente), optimierten Creative (best-performende Angles) und verbesserten Landing Pages (best-performende Varianten).'
+            },
+            deliverables: [
+              { en: 'Optimized targeting configuration', de: 'Optimierte Targeting-Konfiguration' },
+              { en: 'Best-performing creative assets', de: 'Best-performende Creative Assets' },
+              { en: 'Optimized landing page variants', de: 'Optimierte Landing-Page-Varianten' }
+            ],
+            whyItMattered: {
+              en: 'Continuous optimization ensures the engine runs at peak efficiency.',
+              de: 'Kontinuierliche Optimierung stellt sicher, dass die Engine mit maximaler Effizienz läuft.'
+            }
+          },
+          {
+            name: { en: 'Process Documentation', de: 'Prozess-Dokumentation' },
+            description: {
+              en: 'We created playbooks (Campaign Management, Lead Nurturing, Content Production), documented automations, and built performance dashboards.',
+              de: 'Wir erstellten Playbooks (Campaign Management, Lead Nurturing, Content Production), dokumentierten Automationen und bauten Performance-Dashboards.'
+            },
+            deliverables: [
+              { en: 'Campaign management playbook', de: 'Campaign Management Playbook' },
+              { en: 'Lead nurturing playbook', de: 'Lead Nurturing Playbook' },
+              { en: 'Content production playbook', de: 'Content Production Playbook' },
+              { en: 'Automation documentation', de: 'Automation-Dokumentation' }
+            ],
+            whyItMattered: {
+              en: 'Process clarity is the difference between dependency and independence. The team could now operate the growth engine on their own.',
+              de: 'Prozessklarheit ist der Unterschied zwischen Abhängigkeit und Unabhängigkeit. Das Team konnte die Growth Engine jetzt eigenständig betreiben.'
+            }
+          },
+          {
+            name: { en: 'Team Enablement & Handover', de: 'Team Enablement & Handover' },
+            description: {
+              en: 'We trained the team on tools (CRM, Google Ads, LinkedIn Ads), handed over playbooks and documentation, and provided ongoing support.',
+              de: 'Wir trainierten das Team auf Tools (CRM, Google Ads, LinkedIn Ads), übergaben Playbooks und Dokumentation und boten laufenden Support.'
+            },
+            deliverables: [
+              { en: 'Tool training sessions', de: 'Tool-Training-Sessions' },
+              { en: 'Complete playbook handover', de: 'Vollständige Playbook-Übergabe' },
+              { en: 'Support documentation', de: 'Support-Dokumentation' }
+            ],
+            whyItMattered: {
+              en: 'The goal was never dependency. The handover ensured the company could continue scaling independently.',
+              de: 'Das Ziel war nie Abhängigkeit. Die Übergabe stellte sicher, dass das Unternehmen eigenständig weiter skalieren konnte.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '4 months',
+    resultMetrics: [
+      { label: 'Confirmed Bookings', before: 'Ad-hoc', after: '26 bookings', impact: '€117K revenue' },
+      { label: 'Qualified Leads', before: '0', after: '150+', impact: 'With lead-scoring' },
+      { label: 'Multi-Channel Campaigns', before: 'None', after: 'Google, LinkedIn, Meta', impact: 'Performing' },
+      { label: 'Content Engine', before: 'None', after: 'Semi-automated', impact: 'Consistent output' },
+      { label: 'Inhouse Pipeline', before: 'None', after: 'Landing page + outreach', impact: 'New revenue stream' },
+      { label: 'Process Clarity', before: '0%', after: '100%', impact: 'Self-sustainable' }
+    ],
+    roiCalculation: {
+      investment: '€60K-€78K',
+      returnValue: '€117K+',
+      roi: '2x',
+      breakdown: [
+        { en: 'Direct bookings: 26 × €4.5K avg = €117K revenue', de: 'Direkte Buchungen: 26 × €4.5K Ø = €117K Umsatz' },
+        { en: 'Pipeline value: 150+ leads × conversion rate = ongoing revenue', de: 'Pipeline-Wert: 150+ Leads × Conversion Rate = laufender Umsatz' },
+        { en: 'Infrastructure value: Growth engine continues running independently', de: 'Infrastruktur-Wert: Growth Engine läuft eigenständig weiter' },
+        { en: 'ROI: 2x direct return, ongoing value from infrastructure', de: 'ROI: 2x direkter Return, laufender Wert aus Infrastruktur' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We went from hoping for leads to having a systematic engine that generates them. The process clarity was the real game-changer—we can now operate this independently."',
+      de: '"Wir gingen von Hoffnung auf Leads zu einer systematischen Engine, die sie generiert. Die Prozessklarheit war der echte Game-Changer—wir können das jetzt eigenständig betreiben."'
+    },
+    quoteContext: {
+      en: 'The founder now operates the growth engine independently, with 100% process clarity and a content engine that runs semi-automatically.',
+      de: 'Der Gründer betreibt die Growth Engine jetzt eigenständig, mit 100% Prozessklarheit und einer Content Engine, die semi-automatisch läuft.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Infrastructure first, campaigns second', de: 'Infrastruktur zuerst, Kampagnen danach' },
+        whatWeLearned: {
+          en: 'Before launching any campaigns, we built the complete infrastructure: tracking, CRM, automations, dashboards. Without infrastructure, campaigns generate noise, not insights.',
+          de: 'Bevor wir Kampagnen launchten, bauten wir die komplette Infrastruktur: Tracking, CRM, Automationen, Dashboards. Ohne Infrastruktur generieren Kampagnen Rauschen, keine Insights.'
+        },
+        keyInsight: {
+          en: 'You can\'t optimize what you can\'t measure. Build the measurement system first.',
+          de: 'Man kann nicht optimieren, was man nicht messen kann. Baue zuerst das Mess-System.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. The infrastructure-first approach was essential to the success.',
+          de: 'Nichts. Der Infrastructure-first-Ansatz war essentiell für den Erfolg.'
+        }
+      },
+      {
+        title: { en: 'Multi-channel diversification reduces risk', de: 'Multi-Channel-Diversifizierung reduziert Risiko' },
+        whatWeLearned: {
+          en: 'Launching on Google, LinkedIn, and Meta simultaneously reduced dependency on any single channel. When one channel underperformed, others compensated.',
+          de: 'Gleichzeitiger Launch auf Google, LinkedIn und Meta reduzierte die Abhängigkeit von einem einzelnen Kanal. Wenn ein Kanal underperformte, kompensierten andere.'
+        },
+        keyInsight: {
+          en: 'Single-channel strategies are fragile. Multi-channel strategies are resilient.',
+          de: 'Single-Channel-Strategien sind fragil. Multi-Channel-Strategien sind resilient.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would have tested more creative angles earlier to find winners faster.',
+          de: 'Wir hätten früher mehr Creative Angles getestet, um schneller Gewinner zu finden.'
+        }
+      },
+      {
+        title: { en: 'Process clarity enables independence', de: 'Prozessklarheit ermöglicht Unabhängigkeit' },
+        whatWeLearned: {
+          en: 'Documenting everything (playbooks, automations, dashboards) enabled the team to operate the growth engine independently after handover. Process clarity is the difference between dependency and independence.',
+          de: 'Alles zu dokumentieren (Playbooks, Automationen, Dashboards) ermöglichte dem Team, die Growth Engine nach der Übergabe eigenständig zu betreiben. Prozessklarheit ist der Unterschied zwischen Abhängigkeit und Unabhängigkeit.'
+        },
+        keyInsight: {
+          en: 'The goal isn\'t to build something that works. It\'s to build something that works without you.',
+          de: 'Das Ziel ist nicht, etwas zu bauen, das funktioniert. Es ist, etwas zu bauen, das ohne dich funktioniert.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would start documentation earlier—from day one, not just in the final phase.',
+          de: 'Wir würden früher mit Dokumentation beginnen—ab Tag eins, nicht erst in der Endphase.'
+        }
+      }
+    ],
+    
+    // META
+    playbooks: ['gtm-revenue', 'growth-engines'],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { 
+          en: 'Complete Growth Engine Rebuild - ARR Growth, Win Rate, Pipeline', 
+          de: 'Kompletter Growth Engine Neuaufbau - ARR-Wachstum, Win Rate, Pipeline' 
+        },
+        outcome: { 
+          en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', 
+          de: 'ARR-Wachstum +50-100%, Win Rate +30-50%, Pipeline +50-100%' 
+        },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Complete growth infrastructure build', de: 'Kompletter Growth-Infrastruktur-Aufbau' },
+          { en: 'Multi-channel campaign execution', de: 'Multi-Channel-Kampagnen-Durchführung' },
+          { en: 'Process documentation and handover', de: 'Prozess-Dokumentation und Übergabe' }
+        ]
+      },
+      {
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { 
+          en: 'Quick Growth Sprint - Diagnose Stall, Test Levers, Build Momentum', 
+          de: 'Schneller Growth Sprint - Stall diagnostizieren, Hebel testen, Momentum aufbauen' 
+        },
+        outcome: { 
+          en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
+          de: 'ARR-Wachstum +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
+        },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'GTM Effectiveness Review', de: 'GTM Effectiveness Review' },
+        url: '/solutions/gtm-effectiveness-review',
+        duration: '2-4 Weeks',
+        investment: '€3.9K-€5.9K',
+        focus: { 
+          en: 'Diagnose GTM Bottlenecks - ICP, Funnel, Sales Process', 
+          de: 'GTM-Engpässe diagnostizieren - ICP, Funnel, Sales-Prozess' 
+        },
+        outcome: { 
+          en: 'GTM Clarity +80%, Decision Velocity +50-100%, CAC Roadmap -30-50%', 
+          de: 'GTM-Klarheit +80%, Decision Velocity +50-100%, CAC-Roadmap -30-50%' 
+        },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC um 58% in 12 Wochen senkte' } },
+      { slug: 'partner-channel-transformed-scalable-growth', teaser: { en: 'How an SME software provider achieved €425K revenue growth (+45.6%)', de: 'Wie ein KMU-Softwareanbieter €425K Umsatzwachstum (+45,6%) erzielte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'growth-engines', teaser: { en: 'Complete framework for systematic growth', de: 'Vollständiges Framework für systematisches Wachstum' } }
+    ]
+  },
+
 ];
 
 // Helper functions
