@@ -9,7 +9,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { 
   Dna, Rocket, Target, Building2, 
   Lightbulb, BarChart3, ChevronRight, XCircle, CheckCircle2,
-  BookOpen, Users, Download, ArrowRight, Linkedin
+  BookOpen, Users, Download, ArrowRight, Linkedin, Phone, Check
 } from 'lucide-react';
 
 interface ResearchCard {
@@ -608,57 +608,71 @@ const ResearchHub: React.FC = () => {
         </div>
       </section>
 
-      {/* Section 7: Final CTA */}
+      {/* Section 7: Final CTA - Aligned with Solutions/Cases */}
       <section 
         ref={ctaRef as React.RefObject<HTMLElement>}
-        className={`py-16 md:py-24 bg-background transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`py-24 lg:py-32 relative overflow-hidden transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
-        <div className="container max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {language === 'de' ? 'Möchtest du AI-Native werden?' : 'Want to Become AI-Native?'}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-8">
-            {language === 'de' 
-              ? 'Wir helfen Unternehmen bei der Transformation in 90 Tagen.'
-              : 'We help companies transform in 90 days.'}
-          </p>
-          
-          <ul className="text-left max-w-md mx-auto mb-10 space-y-3">
-            <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span className="text-muted-foreground">
-                {language === 'de' 
-                  ? 'Diagnose deines aktuellen Stands (AI Maturity Level, Bottleneck)'
-                  : 'Diagnose your current state (AI Maturity Level, Bottleneck)'}
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span className="text-muted-foreground">
-                {language === 'de' 
-                  ? 'Aufbau deines Transformationsplans (Strategy, Setup, Execution)'
-                  : 'Build your transformation plan (Strategy, Setup, Execution)'}
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span className="text-muted-foreground">
-                {language === 'de' 
-                  ? 'Umsetzung mit unserem Team (Hands-on, nicht nur Slides)'
-                  : 'Execute with our team (Hands-on, not just slides)'}
-              </span>
-            </li>
-          </ul>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" className="bg-gradient-accent hover:opacity-90">
-              {language === 'de' ? 'Strategy Call buchen' : 'Book Strategy Call'}
-            </Button>
-            <Link to="/tools/ai-maturity-assessment">
-              <Button size="lg" variant="outline">
-                {language === 'de' ? 'AI Maturity berechnen' : 'Calculate Your AI Maturity'}
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
+        <div className="absolute inset-0 noise opacity-30" />
+        
+        {/* Decorative */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+        
+        <div className="container max-w-4xl mx-auto px-6 relative z-10">
+          <div className="text-center">
+            {/* Headline */}
+            <h2 className="font-display text-display-md text-foreground mb-6">
+              {language === 'de' ? (
+                <>
+                  Bereit, die Forschung
+                  <span className="block italic text-gradient">anzuwenden?</span>
+                </>
+              ) : (
+                <>
+                  Ready to apply
+                  <span className="block italic text-gradient">the research?</span>
+                </>
+              )}
+            </h2>
+            
+            {/* Subline */}
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+              {language === 'de' 
+                ? 'Buche einen kostenlosen Inflection Call. Wir identifizieren deinen Engpass in 30 Minuten und empfehlen den richtigen Weg.'
+                : 'Book a free Inflection Call. We\'ll identify your bottleneck in 30 minutes and recommend the right path.'
+              }
+            </p>
+            
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button 
+                size="xl" 
+                className="shadow-brutal hover-brutal group"
+                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-            </Link>
+            </div>
+            
+            {/* Trust Signals */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                {language === 'de' ? 'Unverbindlich' : 'No commitment'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                {language === 'de' ? '30 Minuten' : '30 minutes'}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-accent" />
+                {language === 'de' ? 'Konkrete nächste Schritte' : 'Concrete next steps'}
+              </span>
+            </div>
           </div>
         </div>
       </section>
