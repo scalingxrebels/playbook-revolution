@@ -366,7 +366,7 @@ export const exitMaData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full exit transformation, AI Maturity Level 3, Exit Valuation +200-400%", de: "Vollständige Exit-Transformation, AI Maturity Level 3, Exit-Bewertung +200-400%" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/exit-readiness",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500",
       },

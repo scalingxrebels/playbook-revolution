@@ -420,7 +420,7 @@ export const boardGovernanceData: PlaybookPageData = {
           de: "Vollständige AI-native Transformation, alle 3 Systeme, 2-5x Bewertungsprämie"
         },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/exit-readiness",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }

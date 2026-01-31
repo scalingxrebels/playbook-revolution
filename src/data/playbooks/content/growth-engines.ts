@@ -339,7 +339,7 @@ export const growthEnginesData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full AI-native transformation, all 3 growth engines, AI Maturity Level 3, 3-5x scaling velocity", de: "Volle AI-native Transformation, alle 3 Growth Engines, AI Maturity Level 3, 3-5x Skalierungsgeschwindigkeit" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/hypergrowth",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       },
