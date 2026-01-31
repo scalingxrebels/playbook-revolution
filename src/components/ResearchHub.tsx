@@ -162,6 +162,7 @@ const teamMembers = [
   },
   {
     name: 'Alban Halili',
+    credentials: 'Certified Google AI Expert',
     role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
     tagline: { en: 'Growth. AI Solutions. Automation.', de: 'Growth. AI Solutions. Automation.' },
     description: { 
