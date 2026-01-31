@@ -1731,6 +1731,451 @@ Das Führungsteam stand vor einer klaren Wahl: weiter maßgeschneiderte Brillanz
       { slug: 'product', teaser: { en: '5-component framework for AI-native product development', de: '5-Komponenten-Framework für AI-native Produktentwicklung' } },
       { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } }
     ]
+  },
+  
+  // ============================================
+  // CASE STUDY 4: Strategic Transformation to Market Leadership
+  // ============================================
+  {
+    id: 'strategic-transformation-nocode-saas',
+    slug: 'strategic-transformation-market-leadership',
+    company: 'Series B No-Code SaaS Platform',
+    industry: 'B2B SaaS',
+    stage: 'Series B',
+    gradient: 'from-indigo-500 to-purple-500',
+    confidential: true,
+    
+    tags: ['transformation', 'ai', 'gtm', 'organizational', 'series-b', 'no-code'],
+    challengeType: 'ai-transformation',
+    
+    // HERO
+    headline: {
+      en: 'Strategic Transformation to Market Leadership',
+      de: 'Strategische Transformation zur Marktführerschaft'
+    },
+    challenge: {
+      en: 'Growth slowing from 150% to 80% YoY, NRR declining below 100%, organizational chaos with 50+ meetings/week. The board demanded a fix—or a new CEO.',
+      de: 'Wachstum verlangsamt von 150% auf 80% YoY, NRR unter 100% gesunken, organisatorisches Chaos mit 50+ Meetings/Woche. Der Board forderte eine Lösung—oder einen neuen CEO.'
+    },
+    result: {
+      en: 'ARR €3.6M → €7.7M (+114%), NRR 96.5% → 114.3% (+17.8pp), Market Position #8 → #3 (Top 3 Category)',
+      de: 'ARR €3.6M → €7.7M (+114%), NRR 96.5% → 114.3% (+17.8pp), Marktposition #8 → #3 (Top 3 Kategorie)'
+    },
+    investment: '€2.5M',
+    roi: '30x',
+    heroMetrics: [
+      { label: 'ARR', before: '€3.6M', after: '€7.7M', impact: '+114%' },
+      { label: 'NRR', before: '96.5%', after: '114.3%', impact: '+17.8pp' },
+      { label: 'ACV', before: '€13K', after: '€15K', impact: '+15.3%' },
+      { label: 'Market Position', before: '#8', after: '#3', impact: 'Top 3' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A Series B No-Code SaaS platform (€3.6M ARR, 45 employees) had achieved product-market fit in the SME segment. The product was loved by early adopters, but the company faced a critical inflection point: how to scale from €3.6M to €10M+ ARR while maintaining product quality and customer satisfaction.',
+      de: 'Eine Series B No-Code SaaS-Plattform (€3.6M ARR, 45 Mitarbeiter) hatte Product-Market Fit im KMU-Segment erreicht. Das Produkt wurde von Early Adopters geliebt, aber das Unternehmen stand vor einem kritischen Wendepunkt: Wie skaliert man von €3.6M auf €10M+ ARR bei gleichbleibender Produktqualität und Kundenzufriedenheit.'
+    },
+    crisisStory: {
+      en: `The founding team (CEO, CTO, CPO) had built a strong product, but organizational readiness was low. No VP Sales, no VP Marketing, no formal GTM strategy. The company was operating like a Series A startup, but needed to scale like a Series B company.
+
+By mid-2022, the cracks were showing:
+
+❌ Growth Slowing: ARR growth slowed from 150% YoY to 80% YoY
+❌ NRR Declining: NRR dropped from 105% to 96.5% (below 100% = churn > expansion)
+❌ Market Position Weak: Competitors gaining market share, no clear differentiation
+❌ Organizational Chaos: 5 organizational layers, 50+ meetings/week, decision paralysis
+❌ No GTM Engine: No sales motions, no marketing engine, no expansion strategy
+
+The board was losing patience. "Fix it in 12 months or we'll bring in a new CEO."`,
+      de: `Das Gründerteam (CEO, CTO, CPO) hatte ein starkes Produkt gebaut, aber die organisatorische Bereitschaft war niedrig. Kein VP Sales, kein VP Marketing, keine formale GTM-Strategie. Das Unternehmen operierte wie ein Series A Startup, musste aber wie ein Series B Unternehmen skalieren.
+
+Mitte 2022 zeigten sich die Risse:
+
+❌ Wachstum verlangsamt: ARR-Wachstum sank von 150% YoY auf 80% YoY
+❌ NRR sinkend: NRR fiel von 105% auf 96.5% (unter 100% = Churn > Expansion)
+❌ Schwache Marktposition: Wettbewerber gewinnen Marktanteile, keine klare Differenzierung
+❌ Organisatorisches Chaos: 5 Hierarchieebenen, 50+ Meetings/Woche, Entscheidungslähmung
+❌ Kein GTM-Motor: Keine Vertriebsprozesse, keine Marketing-Engine, keine Expansionsstrategie
+
+Der Board verlor die Geduld. "Behebe es in 12 Monaten oder wir holen einen neuen CEO."`
+    },
+    problemDescription: {
+      en: 'The stakes were existential: Series C at risk (investors wanted ARR >€10M, NRR >110%, market leadership), 3 well-funded competitors launching similar products (market window closing), key employees leaving (no clear vision), and churn increasing (product quality declining).',
+      de: 'Die Einsätze waren existenziell: Series C gefährdet (Investoren wollten ARR >€10M, NRR >110%, Marktführerschaft), 3 gut finanzierte Wettbewerber launchten ähnliche Produkte (Marktfenster schließt sich), Schlüsselmitarbeiter gingen (keine klare Vision), Churn steigend (Produktqualität sinkend).'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Leadership & Organization', de: 'Führung & Organisation' },
+        symptoms: [
+          { en: '5 organizational layers causing decision paralysis', de: '5 Hierarchieebenen verursachen Entscheidungslähmung' },
+          { en: '50+ meetings per week consuming leadership time', de: '50+ Meetings pro Woche verbrauchen Führungszeit' },
+          { en: 'No VP-level leadership in Sales, Marketing, CS, Engineering', de: 'Keine VP-Level-Führung in Vertrieb, Marketing, CS, Engineering' }
+        ]
+      },
+      {
+        area: { en: 'GTM & Revenue', de: 'GTM & Umsatz' },
+        symptoms: [
+          { en: 'No formal sales motions (SME, Mid-Market, Enterprise)', de: 'Keine formalen Vertriebsprozesse (KMU, Mittelstand, Enterprise)' },
+          { en: 'Win rate stuck at 20% (benchmark: 35%+)', de: 'Win Rate bei 20% feststeckend (Benchmark: 35%+)' },
+          { en: 'Sales cycle 90 days (benchmark: 60 days)', de: 'Vertriebszyklus 90 Tage (Benchmark: 60 Tage)' }
+        ]
+      },
+      {
+        area: { en: 'Product & Technology', de: 'Produkt & Technologie' },
+        symptoms: [
+          { en: 'Monolithic architecture limiting scalability', de: 'Monolithische Architektur begrenzt Skalierbarkeit' },
+          { en: 'Feature velocity: 1 release/quarter (benchmark: 2/month)', de: 'Feature-Geschwindigkeit: 1 Release/Quartal (Benchmark: 2/Monat)' },
+          { en: 'No AI features despite market demand', de: 'Keine AI-Features trotz Marktnachfrage' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'ARR Growth', before: '150% YoY', after: '80% YoY', impact: '-47%' },
+      { label: 'NRR', before: '105%', after: '96.5%', impact: '-8.5pp' },
+      { label: 'Decision Velocity', before: '24-48h', after: '7 days', impact: '+350%' },
+      { label: 'Meeting Load', before: 'Manageable', after: '50+/week', impact: 'Crisis' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We designed a 24-month transformation program with 5 parallel workstreams: (1) Organizational Readiness & HR Build-Up, (2) R&D Strategy & Technical Transformation, (3) Scaling the GTM Engine, (4) Positioning, Awareness & Ecosystem Influence, and (5) Strategic Innovation Bet (AI Integration). The goal: Transform from a Series A-style startup to a Series B market leader in 24 months.',
+      de: 'Wir entwickelten ein 24-Monats-Transformationsprogramm mit 5 parallelen Workstreams: (1) Organisatorische Bereitschaft & HR-Aufbau, (2) R&D-Strategie & Technische Transformation, (3) Skalierung der GTM-Engine, (4) Positionierung, Awareness & Ecosystem-Einfluss, und (5) Strategische Innovationswette (AI-Integration). Das Ziel: Von einem Series A-Startup zu einem Series B Marktführer in 24 Monaten.'
+    },
+    phases: [
+      {
+        name: { en: 'Workstream 1: Organizational Readiness & HR Build-Up', de: 'Workstream 1: Organisatorische Bereitschaft & HR-Aufbau' },
+        timeline: 'Months 1-12',
+        actions: [
+          {
+            name: { en: 'Build Leadership Team', de: 'Führungsteam aufbauen' },
+            description: {
+              en: 'Hired 4 VPs (VP Sales, VP Marketing, VP CS, VP Engineering) to create a complete C-level leadership team capable of scaling the business.',
+              de: 'Einstellung von 4 VPs (VP Sales, VP Marketing, VP CS, VP Engineering) zur Schaffung eines kompletten C-Level-Führungsteams, das das Geschäft skalieren kann.'
+            },
+            deliverables: [
+              { en: 'VP Sales hired (Month 3)', de: 'VP Sales eingestellt (Monat 3)' },
+              { en: 'VP Marketing hired (Month 4)', de: 'VP Marketing eingestellt (Monat 4)' },
+              { en: 'VP CS hired (Month 6)', de: 'VP CS eingestellt (Monat 6)' },
+              { en: 'VP Engineering hired (Month 8)', de: 'VP Engineering eingestellt (Monat 8)' }
+            ],
+            whyItMattered: {
+              en: 'Without VP-level leadership, the founders were the bottleneck for every decision. Now each function had an owner who could move fast.',
+              de: 'Ohne VP-Level-Führung waren die Gründer der Engpass für jede Entscheidung. Jetzt hatte jede Funktion einen Verantwortlichen, der schnell handeln konnte.'
+            }
+          },
+          {
+            name: { en: 'Flatten Organization Structure', de: 'Organisationsstruktur flachen' },
+            description: {
+              en: 'Reduced organizational layers from 5 to 3, eliminated 70% of recurring meetings, and created a decision playbook with clear RACI, approval thresholds, and escalation paths.',
+              de: 'Reduzierte Hierarchieebenen von 5 auf 3, eliminierte 70% der wiederkehrenden Meetings und erstellte ein Entscheidungs-Playbook mit klarem RACI, Genehmigungsschwellen und Eskalationspfaden.'
+            },
+            deliverables: [
+              { en: 'Org restructure complete', de: 'Org-Restrukturierung abgeschlossen' },
+              { en: 'Decision playbook (RACI)', de: 'Entscheidungs-Playbook (RACI)' },
+              { en: 'Meeting audit & reduction', de: 'Meeting-Audit & Reduzierung' }
+            ],
+            whyItMattered: {
+              en: 'Decision velocity improved from 7 days to 24 hours. The organization could now move at startup speed again.',
+              de: 'Die Entscheidungsgeschwindigkeit verbesserte sich von 7 Tagen auf 24 Stunden. Die Organisation konnte wieder mit Startup-Geschwindigkeit agieren.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Workstream 2: R&D Strategy & Technical Transformation', de: 'Workstream 2: R&D-Strategie & Technische Transformation' },
+        timeline: 'Months 3-18',
+        actions: [
+          {
+            name: { en: 'Define Product Roadmap', de: 'Produkt-Roadmap definieren' },
+            description: {
+              en: 'Created a 3-year product vision with quarterly OKRs, enabling clear prioritization and stakeholder alignment.',
+              de: 'Erstellte eine 3-Jahres-Produktvision mit vierteljährlichen OKRs, ermöglichte klare Priorisierung und Stakeholder-Alignment.'
+            },
+            deliverables: [
+              { en: '3-year product vision', de: '3-Jahres-Produktvision' },
+              { en: 'Quarterly OKRs', de: 'Vierteljährliche OKRs' },
+              { en: 'Product ops function', de: 'Product Ops Funktion' }
+            ],
+            whyItMattered: {
+              en: 'The team now had clarity on what to build and why. Feature velocity increased 8x.',
+              de: 'Das Team hatte jetzt Klarheit darüber, was zu bauen ist und warum. Die Feature-Geschwindigkeit stieg um das 8-fache.'
+            }
+          },
+          {
+            name: { en: 'Rebuild Technical Architecture', de: 'Technische Architektur neu aufbauen' },
+            description: {
+              en: 'Transitioned from monolith to microservices architecture, improving scalability from 1,000 to 10,000 users and enabling faster deployments.',
+              de: 'Übergang von Monolith zu Microservices-Architektur, Verbesserung der Skalierbarkeit von 1.000 auf 10.000 Benutzer und Ermöglichung schnellerer Deployments.'
+            },
+            deliverables: [
+              { en: 'Microservices migration', de: 'Microservices-Migration' },
+              { en: '10x scalability improvement', de: '10x Skalierbarkeitsverbesserung' },
+              { en: 'CI/CD pipeline optimization', de: 'CI/CD-Pipeline-Optimierung' }
+            ],
+            whyItMattered: {
+              en: 'Feature velocity improved from 1 release/quarter to 2 releases/month—an 8x improvement.',
+              de: 'Die Feature-Geschwindigkeit verbesserte sich von 1 Release/Quartal auf 2 Releases/Monat—eine 8-fache Verbesserung.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Workstream 3: Scaling the GTM Engine', de: 'Workstream 3: Skalierung der GTM-Engine' },
+        timeline: 'Months 6-24',
+        actions: [
+          {
+            name: { en: 'Build 3 Sales Motions', de: '3 Vertriebsprozesse aufbauen' },
+            description: {
+              en: 'Created three distinct sales motions: SME (self-serve + inside sales, ACV €5K-€15K), Mid-Market (field sales, ACV €15K-€50K), and Enterprise (strategic sales, ACV €50K+).',
+              de: 'Erstellte drei unterschiedliche Vertriebsprozesse: KMU (Self-Service + Inside Sales, ACV €5K-€15K), Mittelstand (Field Sales, ACV €15K-€50K) und Enterprise (Strategic Sales, ACV €50K+).'
+            },
+            deliverables: [
+              { en: 'SME motion (self-serve + inside sales)', de: 'KMU-Prozess (Self-Service + Inside Sales)' },
+              { en: 'Mid-Market motion (field sales)', de: 'Mittelstand-Prozess (Field Sales)' },
+              { en: 'Enterprise motion (strategic sales)', de: 'Enterprise-Prozess (Strategic Sales)' }
+            ],
+            whyItMattered: {
+              en: 'Win rate improved from 20% to 35% (+75%), sales cycle shortened from 90 to 60 days (-33%).',
+              de: 'Win Rate verbesserte sich von 20% auf 35% (+75%), Vertriebszyklus verkürzte sich von 90 auf 60 Tage (-33%).'
+            }
+          },
+          {
+            name: { en: 'Build Customer Success Function', de: 'Customer Success Funktion aufbauen' },
+            description: {
+              en: 'Hired 5 CSMs, implemented CS playbooks (onboarding, QBRs, expansion), and reduced churn from 15% to 8% (-47%).',
+              de: 'Einstellung von 5 CSMs, Implementierung von CS-Playbooks (Onboarding, QBRs, Expansion) und Reduzierung des Churns von 15% auf 8% (-47%).'
+            },
+            deliverables: [
+              { en: '5 CSMs hired', de: '5 CSMs eingestellt' },
+              { en: 'CS playbooks (onboarding, QBRs)', de: 'CS-Playbooks (Onboarding, QBRs)' },
+              { en: 'Expansion playbook', de: 'Expansions-Playbook' }
+            ],
+            whyItMattered: {
+              en: 'NRR improved from 96.5% to 114.3%—expansion now exceeded churn, creating a growth flywheel.',
+              de: 'NRR verbesserte sich von 96.5% auf 114.3%—Expansion überstieg jetzt Churn und schuf ein Wachstums-Flywheel.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Workstream 4: Positioning, Awareness & Ecosystem', de: 'Workstream 4: Positionierung, Awareness & Ecosystem' },
+        timeline: 'Months 12-24',
+        actions: [
+          {
+            name: { en: 'Reposition Brand', de: 'Marke repositionieren' },
+            description: {
+              en: 'Repositioned from "No-Code Tool" to "AI-Powered No-Code Platform"—creating clear differentiation from competitors and aligning with market trends.',
+              de: 'Repositionierte von "No-Code Tool" zu "AI-Powered No-Code Platform"—schuf klare Differenzierung von Wettbewerbern und Ausrichtung auf Markttrends.'
+            },
+            deliverables: [
+              { en: 'New brand positioning', de: 'Neue Markenpositionierung' },
+              { en: 'Messaging framework', de: 'Messaging-Framework' },
+              { en: 'Website redesign', de: 'Website-Redesign' }
+            ],
+            whyItMattered: {
+              en: 'Brand awareness increased from 15% to 45% (+200%), positioning the company as a category leader.',
+              de: 'Die Markenbekanntheit stieg von 15% auf 45% (+200%), was das Unternehmen als Kategorieführer positionierte.'
+            }
+          },
+          {
+            name: { en: 'Build Thought Leadership', de: 'Thought Leadership aufbauen' },
+            description: {
+              en: 'CEO speaking at 5 conferences (SaaStr, Slush, etc.), published 3 research reports, launched podcast (20 episodes, 10K+ downloads).',
+              de: 'CEO-Vorträge auf 5 Konferenzen (SaaStr, Slush, etc.), 3 Research-Reports veröffentlicht, Podcast gestartet (20 Episoden, 10K+ Downloads).'
+            },
+            deliverables: [
+              { en: '5 conference speaking slots', de: '5 Konferenz-Speaking-Slots' },
+              { en: '3 research reports', de: '3 Research-Reports' },
+              { en: 'Podcast (20 episodes)', de: 'Podcast (20 Episoden)' }
+            ],
+            whyItMattered: {
+              en: 'Inbound leads increased from 50/month to 200/month (+300%), reducing dependency on outbound.',
+              de: 'Inbound-Leads stiegen von 50/Monat auf 200/Monat (+300%), reduzierten Abhängigkeit von Outbound.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Workstream 5: Strategic Innovation Bet (AI Integration)', de: 'Workstream 5: Strategische Innovationswette (AI-Integration)' },
+        timeline: 'Months 18-24',
+        actions: [
+          {
+            name: { en: 'Integrate AI Features', de: 'AI-Features integrieren' },
+            description: {
+              en: 'Launched 5 AI-powered features: workflow suggestions, predictive analytics, dynamic UI personalization, AI chatbot for support, and data analysis recommendations.',
+              de: 'Launch von 5 AI-gestützten Features: Workflow-Vorschläge, Predictive Analytics, dynamische UI-Personalisierung, AI-Chatbot für Support und Datenanalyse-Empfehlungen.'
+            },
+            deliverables: [
+              { en: 'AI-powered workflow automation', de: 'AI-gestützte Workflow-Automatisierung' },
+              { en: 'Predictive analytics', de: 'Predictive Analytics' },
+              { en: 'AI assistant chatbot', de: 'AI-Assistent-Chatbot' }
+            ],
+            whyItMattered: {
+              en: '30% of new customers chose the AI tier, generating €1.2M in new ARR and creating competitive differentiation.',
+              de: '30% der Neukunden wählten das AI-Tier, generierten €1.2M neuen ARR und schufen Wettbewerbsdifferenzierung.'
+            }
+          },
+          {
+            name: { en: 'Build AI Team & Premium Tier', de: 'AI-Team & Premium-Tier aufbauen' },
+            description: {
+              en: 'Hired 3 AI engineers, partnered with AI research lab, and launched premium AI tier (ACV €20K+).',
+              de: 'Einstellung von 3 AI-Ingenieuren, Partnerschaft mit AI-Forschungslabor und Launch des Premium-AI-Tiers (ACV €20K+).'
+            },
+            deliverables: [
+              { en: '3 AI engineers hired', de: '3 AI-Ingenieure eingestellt' },
+              { en: 'AI research partnership', de: 'AI-Forschungspartnerschaft' },
+              { en: 'Premium AI tier launched', de: 'Premium-AI-Tier gestartet' }
+            ],
+            whyItMattered: {
+              en: 'Created a unique "AI-Powered" positioning that competitors couldn\'t easily replicate.',
+              de: 'Schuf eine einzigartige "AI-Powered" Positionierung, die Wettbewerber nicht leicht replizieren konnten.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '24 months',
+    resultMetrics: [
+      { label: 'ARR', before: '€3.6M', after: '€7.7M', impact: '+114%' },
+      { label: 'NRR', before: '96.5%', after: '114.3%', impact: '+17.8pp' },
+      { label: 'ACV', before: '€13K', after: '€15K', impact: '+15.3%' },
+      { label: 'Market Position', before: '#8', after: '#3', impact: 'Top 3' },
+      { label: 'Team Size', before: '45', after: '120', impact: '+167%' },
+      { label: 'ARR/Employee', before: '€80K', after: '€148K', impact: '+85%' }
+    ],
+    roiCalculation: {
+      investment: '€2.5M',
+      returnValue: '€75M (valuation increase)',
+      roi: '30x',
+      breakdown: [
+        { en: '€2.5M total investment (consulting + hiring + tech)', de: '€2.5M Gesamtinvestition (Beratung + Einstellungen + Tech)' },
+        { en: '€4.1M ARR increase (+114%)', de: '€4.1M ARR-Steigerung (+114%)' },
+        { en: '€75M estimated valuation increase (15x ARR multiple)', de: '€75M geschätzte Bewertungssteigerung (15x ARR Multiple)' },
+        { en: '30x ROI (€75M / €2.5M)', de: '30x ROI (€75M / €2.5M)' }
+      ]
+    },
+    ceoQuote: {
+      en: 'We went from survival mode to market leadership in 24 months. This transformation saved the company. The key was building organizational readiness first, then executing 5 workstreams in parallel, and making strategic innovation bets on AI.',
+      de: 'Wir gingen von Überlebensmodus zu Marktführerschaft in 24 Monaten. Diese Transformation rettete das Unternehmen. Der Schlüssel war, zuerst organisatorische Bereitschaft aufzubauen, dann 5 Workstreams parallel auszuführen und strategische Innovationswetten auf AI zu setzen.'
+    },
+    quoteContext: {
+      en: 'CEO, Series B No-Code SaaS Platform',
+      de: 'CEO, Series B No-Code SaaS Platform'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Organizational Readiness First', de: 'Organisatorische Bereitschaft zuerst' },
+        whatWeLearned: {
+          en: 'You can\'t scale GTM or R&D without a leadership team, flat org structure, and scalable processes. We spent the first 12 months building organizational readiness (hiring 4 VPs, flattening org, creating decision playbook).',
+          de: 'Man kann GTM oder R&D nicht skalieren ohne Führungsteam, flache Org-Struktur und skalierbare Prozesse. Wir verbrachten die ersten 12 Monate mit dem Aufbau organisatorischer Bereitschaft (4 VPs einstellen, Org flachen, Entscheidungs-Playbook erstellen).'
+        },
+        keyInsight: {
+          en: 'You can\'t scale a broken organization.',
+          de: 'Man kann eine kaputte Organisation nicht skalieren.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start leadership hiring even earlier—ideally 6 months before scaling GTM.',
+          de: 'Führungskräfte-Einstellungen noch früher beginnen—idealerweise 6 Monate vor der GTM-Skalierung.'
+        }
+      },
+      {
+        title: { en: 'Multi-Workstream Execution', de: 'Multi-Workstream-Ausführung' },
+        whatWeLearned: {
+          en: 'Market leadership requires multi-workstream execution. You can\'t just fix GTM or just fix product. You need to transform organizational readiness, R&D strategy, GTM engine, positioning, and AI innovation—all in parallel.',
+          de: 'Marktführerschaft erfordert Multi-Workstream-Ausführung. Man kann nicht nur GTM oder nur Produkt reparieren. Man muss organisatorische Bereitschaft, R&D-Strategie, GTM-Engine, Positionierung und AI-Innovation transformieren—alles parallel.'
+        },
+        keyInsight: {
+          en: 'Market leadership is a multi-dimensional transformation.',
+          de: 'Marktführerschaft ist eine mehrdimensionale Transformation.'
+        },
+        whatWedDoDifferently: {
+          en: 'More aggressive milestone tracking—we had some workstreams drift in the middle months.',
+          de: 'Aggressiveres Milestone-Tracking—einige Workstreams drifteten in den mittleren Monaten.'
+        }
+      },
+      {
+        title: { en: 'Strategic Innovation Bets', de: 'Strategische Innovationswetten' },
+        whatWeLearned: {
+          en: 'Strategic innovation bets create competitive moats. We made a bet on AI integration (5 AI features, 3 AI engineers, premium AI tier). This bet paid off: 30% of new customers chose the AI tier, creating €1.2M in new ARR.',
+          de: 'Strategische Innovationswetten schaffen Wettbewerbsvorteile. Wir setzten auf AI-Integration (5 AI-Features, 3 AI-Ingenieure, Premium-AI-Tier). Diese Wette zahlte sich aus: 30% der Neukunden wählten das AI-Tier, generierten €1.2M neuen ARR.'
+        },
+        keyInsight: {
+          en: 'Innovation bets create category leadership.',
+          de: 'Innovationswetten schaffen Kategorieführerschaft.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start AI integration earlier (Month 12 instead of Month 18)—the market was ready sooner than we thought.',
+          de: 'AI-Integration früher beginnen (Monat 12 statt Monat 18)—der Markt war früher bereit als gedacht.'
+        }
+      }
+    ],
+    
+    // META
+    playbooks: ['gtm-revenue', 'product', 'strategic-governance'],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Accelerate: AI-Native Scaling', de: 'Accelerate: AI-Native Scaling' },
+        url: '/solutions/accelerate/ai-native-scaling',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Operating System Transformation - Decision Velocity, ARR/Employee', de: 'Operating System Transformation - Entscheidungsgeschwindigkeit, ARR/Mitarbeiter' },
+        outcome: { en: 'Decision Velocity +500-900%, ARR/Employee +100-200%, Operational Debt -60-80%', de: 'Decision Velocity +500-900%, ARR/Employee +100-200%, Operational Debt -60-80%' },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Leadership Team Build-Up', de: 'Führungsteam-Aufbau' },
+          { en: 'Organizational Restructuring', de: 'Organisatorische Restrukturierung' },
+          { en: 'Decision Playbook & Processes', de: 'Entscheidungs-Playbook & Prozesse' },
+          { en: 'AI Integration Strategy', de: 'AI-Integrationsstrategie' },
+          { en: 'Operational Excellence', de: 'Operational Excellence' }
+        ]
+      },
+      {
+        name: { en: 'Accelerate: Hypergrowth', de: 'Accelerate: Hypergrowth' },
+        url: '/solutions/accelerate/hypergrowth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Full Business Transformation - Time to €100M, CAC, ARR Growth', de: 'Volle Business Transformation - Time to €100M, CAC, ARR Growth' },
+        outcome: { en: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%', de: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%' },
+        type: 'alternative',
+        whatYouGet: [
+          { en: 'Full GTM Transformation', de: 'Volle GTM-Transformation' },
+          { en: 'Product-Market Fit Acceleration', de: 'Product-Market Fit Beschleunigung' },
+          { en: 'Revenue Engine Build', de: 'Revenue Engine Aufbau' },
+          { en: 'Scaling Playbooks', de: 'Scaling Playbooks' }
+        ]
+      },
+      {
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'GTM Engine Rebuild - ARR Growth, Win Rate, Pipeline', de: 'GTM-Engine Neuaufbau - ARR Growth, Win Rate, Pipeline' },
+        outcome: { en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%' },
+        type: 'related',
+        whatYouGet: [
+          { en: '3 Sales Motion Design', de: '3 Vertriebsprozess-Design' },
+          { en: 'CS Function Build', de: 'CS-Funktions-Aufbau' },
+          { en: 'GTM Playbooks', de: 'GTM-Playbooks' },
+          { en: 'Sales Enablement', de: 'Sales Enablement' }
+        ]
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'new-market-segment-entry', teaser: { en: 'How a B2B/B2C company achieved €13.72M revenue (+955%)', de: 'Wie ein B2B/B2C-Unternehmen €13.72M Umsatz (+955%) erreichte' } },
+      { slug: 'partner-channel-transformed-scalable-growth', teaser: { en: 'How an SME software provider achieved +45.6% revenue growth', de: 'Wie ein KMU-Softwareanbieter +45.6% Umsatzwachstum erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'product', teaser: { en: '5-component framework for AI-native product development', de: '5-Komponenten-Framework für AI-native Produktentwicklung' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } }
+    ]
   }
 ];
 
