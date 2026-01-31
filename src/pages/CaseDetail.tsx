@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Download, Calendar, TrendingUp, Quote, Lightbulb, CheckCircle2, ExternalLink, Clock, Target } from 'lucide-react';
+import { ArrowLeft, Download, TrendingUp, Quote, Lightbulb, CheckCircle2, ExternalLink, Clock, Target, Sparkles, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -64,9 +64,9 @@ const CaseDetail: React.FC = () => {
             {t(caseStudy.challenge)}
           </p>
 
-          {/* Hero Metrics */}
+          {/* Hero Metrics - Top 3 only */}
           <div className="grid grid-cols-3 gap-4 mb-8">
-            {caseStudy.heroMetrics.map((metric, idx) => (
+            {caseStudy.heroMetrics.slice(0, 3).map((metric, idx) => (
               <Card key={idx} className="p-4 text-center bg-card/50 backdrop-blur border-primary/20">
                 <p className="text-2xl md:text-3xl font-bold text-primary">{metric.impact}</p>
                 <p className="text-xs text-muted-foreground uppercase tracking-wide">{metric.label}</p>
@@ -112,7 +112,7 @@ const CaseDetail: React.FC = () => {
       <section className="py-16 bg-muted/30">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-mono text-primary">2</span>
+            <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-mono text-primary">1</span>
             {language === 'de' ? 'Die Situation' : 'The Situation'}
           </h2>
 
@@ -176,7 +176,7 @@ const CaseDetail: React.FC = () => {
       <section className="py-16">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-4 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-mono text-primary">3</span>
+            <span className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-sm font-mono text-primary">2</span>
             {language === 'de' ? 'Was wir gemacht haben' : 'What We Did'}
           </h2>
 
@@ -255,7 +255,7 @@ const CaseDetail: React.FC = () => {
       <section className="py-16 bg-emerald-500/5">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-sm font-mono text-emerald-500">4</span>
+            <span className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-sm font-mono text-emerald-500">3</span>
             {language === 'de' ? 'Die Ergebnisse' : 'The Results'}
           </h2>
 
@@ -321,7 +321,7 @@ const CaseDetail: React.FC = () => {
       <section className="py-16">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="font-display text-2xl font-bold mb-8 flex items-center gap-3">
-            <span className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm font-mono text-amber-500">5</span>
+            <span className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-sm font-mono text-amber-500">4</span>
             {language === 'de' ? 'Wichtigste Learnings' : 'Key Lessons'}
           </h2>
 
@@ -368,7 +368,7 @@ const CaseDetail: React.FC = () => {
         <section className="py-16 bg-muted/30">
           <div className="container max-w-4xl mx-auto px-4">
             <h2 className="font-display text-2xl font-bold mb-4 flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-mono text-blue-500">6</span>
+              <span className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-mono text-blue-500">5</span>
               {language === 'de' ? 'Passende Lösungen' : 'Related Solutions'}
             </h2>
             <p className="text-muted-foreground mb-8">
@@ -429,55 +429,80 @@ const CaseDetail: React.FC = () => {
         </section>
       )}
 
-      {/* SECTION 6: NEXT STEPS / CTA */}
-      <section className="py-16 bg-gradient-to-b from-background to-primary/5">
-        <div className="container max-w-4xl mx-auto px-4 text-center">
-          <h2 className="font-display text-2xl font-bold mb-4">
-            {language === 'de' ? 'Bereit für ähnliche Ergebnisse?' : 'Want similar results?'}
+      {/* SECTION 6: FINAL CTA - Deep Space Design */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        {/* Deep Space Background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
+        <TwinklingStars />
+        
+        {/* Radial Glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-50" />
+        
+        <div className="container max-w-4xl mx-auto px-4 text-center relative z-10">
+          {/* Badge */}
+          <Badge variant="secondary" className="mb-8 gap-2 bg-primary/20 text-primary border-primary/30">
+            <Sparkles className="w-4 h-4" />
+            {language === 'de' ? 'Bereit für ähnliche Ergebnisse?' : 'Ready for Similar Results?'}
+          </Badge>
+          
+          {/* Headline */}
+          <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-white">
+            {language === 'de' ? 'Ähnliche Transformation für Ihr Unternehmen?' : 'Similar Transformation for Your Company?'}
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+          
+          {/* Subline */}
+          <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
             {language === 'de'
-              ? 'Wir helfen SaaS-Unternehmen (Series A-C), ihre Wachstumsblocker zu finden und zu beheben.'
-              : 'We help SaaS companies (Series A-C) find and fix their growth blockers.'}
+              ? 'Wir helfen SaaS-Unternehmen, ihre Wachstumsblocker zu finden und systematisch zu beheben.'
+              : 'We help SaaS companies find and systematically fix their growth blockers.'}
           </p>
-
-          {/* What to Expect */}
-          <div className="grid md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
-            <Card className="p-4 bg-card/50">
-              <span className="text-2xl font-bold text-primary">1</span>
-              <p className="text-sm font-medium mt-1">Inflection Call</p>
-              <p className="text-xs text-muted-foreground">30 {language === 'de' ? 'Min, kostenlos' : 'min, free'}</p>
-            </Card>
-            <Card className="p-4 bg-card/50">
-              <span className="text-2xl font-bold text-primary">2</span>
-              <p className="text-sm font-medium mt-1">Sprint</p>
-              <p className="text-xs text-muted-foreground">4-12 {language === 'de' ? 'Wochen' : 'weeks'}</p>
-            </Card>
-            <Card className="p-4 bg-card/50">
-              <span className="text-2xl font-bold text-primary">3</span>
-              <p className="text-sm font-medium mt-1">{language === 'de' ? 'Ergebnisse' : 'Results'}</p>
-              <p className="text-xs text-muted-foreground">3-5x ROI</p>
-            </Card>
+          
+          {/* Trust Signals */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {[
+              { en: '30 min, free', de: '30 Min, kostenlos' },
+              { en: 'No commitment', de: 'Unverbindlich' },
+              { en: 'Concrete next steps', de: 'Konkrete nächste Schritte' },
+            ].map((signal, i) => (
+              <Badge key={i} variant="secondary" className="gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/90">
+                <CheckCircle2 className="w-3 h-3 text-green-400" />
+                {language === 'de' ? signal.de : signal.en}
+              </Badge>
+            ))}
           </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
+          
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button 
               size="lg" 
-              className="bg-primary text-primary-foreground shadow-brutal-sm"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-10 py-6 uppercase tracking-wide"
               onClick={() => window.open('https://cal.com/scalingx/inflection-call', '_blank')}
             >
-              <Calendar className="w-5 h-5 mr-2" />
               {language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
-            
             {caseStudy.downloadUrl && (
-              <Button variant="outline" size="lg" asChild>
+              <Button size="lg" variant="outline" className="border-2 border-white/30 text-white hover:bg-white/10" asChild>
                 <a href={caseStudy.downloadUrl} download>
-                  <Download className="w-5 h-5 mr-2" />
-                  {language === 'de' ? 'PDF herunterladen' : 'Download PDF'}
+                  <Download className="w-4 h-4 mr-2" />
+                  {language === 'de' ? 'Case Study PDF' : 'Case Study PDF'}
                 </a>
               </Button>
             )}
+          </div>
+          
+          {/* Stats Row */}
+          <div className="grid grid-cols-3 gap-6 mt-16 pt-12 border-t border-white/10">
+            {[
+              { value: '80+', label: language === 'de' ? 'Unternehmen skaliert' : 'Companies Scaled' },
+              { value: '€2.5B+', label: language === 'de' ? 'Valuation managed' : 'Valuation Managed' },
+              { value: '92%', label: language === 'de' ? 'Erfolgsrate' : 'Success Rate' },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <p className="text-2xl md:text-3xl font-bold text-white mb-1">{stat.value}</p>
+                <p className="text-sm text-gray-400">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
