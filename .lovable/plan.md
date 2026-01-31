@@ -1,5 +1,6 @@
 
-# Implementierungskonzept: Strategy Workshop Case Study
+
+# Implementierungskonzept: Strategic Advisory Case Study
 
 ## 1. Übersicht
 
@@ -8,9 +9,10 @@
 |---------------------|--------------|
 | KODE | Leadership Development Company |
 | KODE IGNITE | (entfernt) |
-| KODE® Methodology | Proprietäre Methodik |
-| Cloud-Produkte | SaaS-Produkte |
 | SRH | Enterprise Customer |
+| Wertemodell | New Product Line |
+| MetK | Strategic Partner |
+| Cloud-Produkte | SaaS Products |
 
 ### 1.2 Korrigiertes Solution Mapping
 
@@ -18,13 +20,14 @@
 
 | Rolle | Briefing (FALSCH) | Korrekt (REAL) |
 |-------|-------------------|----------------|
-| Primary | `/solutions/workshops/strategy-workshop` | `/solutions/workshop` (ID 34) |
-| Alternative | `/solutions/advisory/strategic-advisory` | `/solutions/strategic-advisory` (ID 35) |
-| Related | `/solutions/power-up/growth-momentum` | `/solutions/power-up/growth-momentum` (OK) |
+| Primary | `/solutions/advisory/strategic-advisory` | `/solutions/strategic-advisory` (ID 35) |
+| Alternative | `/solutions/accelerate/strategic-transformation` | `/solutions/accelerate/sustainable-growth` (ID 30) |
+| Related 1 | `/solutions/workshops/strategy-workshop` | `/solutions/workshop` (ID 34) |
+| Related 2 | `/solutions/power-up/growth-momentum` | `/solutions/power-up/growth-momentum` (OK) |
 
 ---
 
-## 2. Dateianderungen
+## 2. Dateiänderungen
 
 ### 2.1 Neue Case Study Daten
 
@@ -34,61 +37,39 @@
 
 ```typescript
 {
-  id: 'strategy-workshop-vision-2030',
-  slug: 'vision-2030-strategy-workshop',
+  id: 'strategic-advisory-saas-transition',
+  slug: 'saas-transition-accelerated',
   company: 'Leadership Development Company',
   industry: 'B2B Services',
   stage: 'Established',
-  gradient: 'from-indigo-500 to-purple-600',
+  gradient: 'from-purple-500 to-indigo-600',
   confidential: true,
   
-  tags: ['strategy', 'vision', 'saas-transition', 'roadmap', 'okrs', 'b2b-services'],
-  challengeType: 'orientation', // Passender Challenge Type
+  tags: ['saas-transition', 'strategic-advisory', 'customer-development', 'okrs', 'b2b-services'],
+  challengeType: 'growth-stalled',
   
   // HERO
   headline: {
-    en: 'Vision 2030 Defined → 3-Year Roadmap Created',
-    de: 'Vision 2030 definiert → 3-Jahres-Roadmap erstellt'
+    en: 'SaaS-Transition Accelerated → €10M Roadmap Executed',
+    de: 'SaaS-Transition beschleunigt → €10M Roadmap umgesetzt'
   },
   challenge: {
-    en: 'No clear Vision 2030, fragmented strategy, team misaligned on growth priorities—needed strategic clarity for SaaS-transition.',
-    de: 'Keine klare Vision 2030, fragmentierte Strategie, Team nicht abgestimmt auf Wachstumsprioritaten—brauchte strategische Klarheit fur SaaS-Transition.'
+    en: 'Vision 2030 defined but execution uncertain—needed ongoing strategic support to accelerate SaaS-transition and develop customers systematically.',
+    de: 'Vision 2030 definiert aber Umsetzung unsicher—brauchte laufende strategische Unterstützung zur Beschleunigung der SaaS-Transition und systematischen Kundenentwicklung.'
   },
   result: {
-    en: 'Vision 2030 defined, 12 OKRs created, 100% team alignment, SaaS-transition roadmap established',
-    de: 'Vision 2030 definiert, 12 OKRs erstellt, 100% Team-Alignment, SaaS-Transition Roadmap etabliert'
+    en: 'Revenue +40-70%, ARR +200-300% (€420K), 11 model customers, Sales Cycle -33%',
+    de: 'Umsatz +40-70%, ARR +200-300% (€420K), 11 Modell-Kunden, Sales Cycle -33%'
   },
-  investment: '€3K-€5K',
-  roi: '10x+',
+  investment: '€156K-€216K',
+  roi: '5-10x',
   heroMetrics: [
-    { label: 'Strategic Clarity', before: '0%', after: '100%', impact: 'Achieved' },
-    { label: 'Team Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' },
-    { label: 'OKRs Defined', before: '0', after: '12', impact: 'Q1-Q4' },
-    { label: 'Roadmap', before: 'None', after: '3-Year', impact: '€10M Target' }
+    { label: 'Revenue', before: '€1.8M', after: '€2.8M', impact: '+56%' },
+    { label: 'ARR', before: '€120K', after: '€420K', impact: '+250%' },
+    { label: 'Customers', before: '1', after: '11', impact: '+10' },
+    { label: 'Sales Cycle', before: '9 Mo', after: '6 Mo', impact: '-33%' }
   ],
-  
-  // SITUATION
-  companyDescription: {
-    en: 'A leadership development company with €1.7-1.8M revenue, 4-8 employees, and strong customer relationships (NPS: 83). First SaaS revenue (€80K-150K ARR) achieved, but lacking strategic clarity for scaling.',
-    de: 'Ein Leadership-Development-Unternehmen mit €1,7-1,8M Umsatz, 4-8 Mitarbeitern und starken Kundenbeziehungen (NPS: 83). Erste SaaS-Umsatze (€80K-150K ARR) erzielt, aber ohne strategische Klarheit fur Skalierung.'
-  },
-  crisisStory: {
-    en: `After a successful year with strong Academy growth and first SaaS revenue, the leadership team faced a strategic crossroads:
-
-"What does success look like in 2030? €10M revenue? Market leadership? SaaS-first?"
-
-The team had multiple strategic options but no clear direction. Each team member had a different understanding of priorities. OKRs for the new year weren't defined. Sales cycles were 6-12 months—too long for scalability.
-
-The CEO realized: Without strategic clarity, we're executing on multiple fronts without focus.`,
-    de: `Nach einem erfolgreichen Jahr mit starkem Academy-Wachstum und ersten SaaS-Umsatzen stand das Fuhrungsteam an einem strategischen Scheideweg:
-
-"Wie sieht Erfolg 2030 aus? €10M Umsatz? Marktfuhrerschaft? SaaS-first?"
-
-Das Team hatte mehrere strategische Optionen, aber keine klare Richtung. Jedes Teammitglied hatte ein anderes Verstandnis der Prioritaten. OKRs fur das neue Jahr waren nicht definiert. Sales Cycles waren 6-12 Monate—zu lang fur Skalierbarkeit.
-
-Der CEO erkannte: Ohne strategische Klarheit fuhren wir auf mehreren Fronten aus, ohne Fokus.`
-  },
-  // ... (vollstandige Daten gemas Briefing-Struktur)
+  // ... (vollständige Daten gemäß Briefing-Struktur)
 }
 ```
 
@@ -96,23 +77,19 @@ Der CEO erkannte: Ohne strategische Klarheit fuhren wir auf mehreren Fronten aus
 
 **Datei:** `src/data/solutionTiles.ts`
 
-**Anderung 1: Workshop (ID 34) - secondaryCtaUrl hinzufugen**
+**Änderung: Strategic Advisory (ID 35) - secondaryCtaUrl ändern**
 
 ```typescript
-// Zeile ~1286-1288
+// Zeile ~1323-1325 (aktuelle Version)
 secondaryCtaEn: 'See case study',
 secondaryCtaDe: 'Case Study ansehen',
-secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
+secondaryCtaUrl: '/cases/vision-2030-strategy-workshop' // ALT
+
+// NEU:
+secondaryCtaUrl: '/cases/saas-transition-accelerated'
 ```
 
-**Anderung 2: Strategic Advisory (ID 35) - secondaryCtaUrl hinzufugen**
-
-```typescript
-// Zeile ~1323-1325 (nach primaryCtaUrl)
-secondaryCtaEn: 'See case study',
-secondaryCtaDe: 'Case Study ansehen',
-secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
-```
+**Begründung:** Strategic Advisory Tile sollte auf Strategic Advisory Case verlinken (nicht Workshop Case).
 
 ---
 
@@ -123,56 +100,57 @@ secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
 ```text
 HERO METRICS (4 Karten):
 +------------------+------------------+------------------+------------------+
-| Strategic        | Team             | OKRs             | Roadmap          |
-| Clarity          | Alignment        | Defined          |                  |
-| 0% → 100%        | Fragmented→100%  | 0 → 12           | None → 3-Year    |
-| "Achieved"       | "Unified"        | "Q1-Q4"          | "€10M Target"    |
+| Revenue          | ARR              | Model            | Sales Cycle      |
+|                  | (SaaS)           | Customers        |                  |
+| €1.8M → €2.8M    | €120K → €420K    | 1 → 11           | 9 → 6 Monate     |
+| "+56%"           | "+250%"          | "+10 Kunden"     | "-33%"           |
 +------------------+------------------+------------------+------------------+
 
-RESULT METRICS (Workshop-Outcomes):
+RESULT METRICS (12-Monats-Ergebnisse):
 | Metric              | Before              | After                  |
 |---------------------|---------------------|------------------------|
-| Vision 2030         | Not defined         | €10M, SaaS-first       |
-| Strategic Priorities| Multiple, unclear   | 5 priorities defined   |
-| OKRs                | 0 for 2025          | 12 (Q1-Q4)             |
-| Team Alignment      | Fragmented          | 100% unified           |
+| Revenue             | €1.7-1.8M           | €2.5-3M (+40-70%)      |
+| ARR                 | €80K-150K (10-20%)  | €420K (40-50%)         |
+| Model Customers     | 1                   | 11                     |
+| Sales Cycle         | 9 months            | 6 months (-33%)        |
+| New Product ARR     | €0                  | €280K                  |
+| SQLs per Month      | 8                   | 14 (+75%)              |
 ```
 
-### 3.2 Phasen-Struktur (Workshop)
+### 3.2 Phasen-Struktur (12 Monate Strategic Advisory)
 
 ```text
-DAY 1: FOUNDATION & VISION 2030
-├── Session 1: Performance 2024 & Assets (2h)
-├── Session 2: Learnings 2024 (2h)  
-├── Session 3: Vision 2030 - The €10M Case (3h)
-└── Session 4: Growth Strategy Framework (1h)
+ONGOING STRUCTURE:
+├── Monthly Strategy Sessions (1 day/month)
+├── Quarterly OKR Reviews (half-day/quarter)
+├── Board Prep (quarterly)
+└── Ad-hoc Strategic Support (as needed)
 
-DAY 2: STRATEGY 2025 & ROADMAP
-├── Session 5: Growth Strategy Options (2h)
-├── Session 6: Strategy 2025 Priorities (3h)
-├── Session 7: OKRs 2025 (Q1-Q4) (2h)
-└── Session 8: Recommendations & Next Steps (1h)
+Q1 2025: FOUNDATION
+├── OKR 1: Cloud-ARR €100K → €120K achieved
+├── OKR 2: Customer Showcase completed
+└── OKR 3: Sales Velocity Tracking established
+
+Q2 2025: ACCELERATION
+├── OKR 4: Cloud-ARR €180K (+50% vs target)
+├── OKR 5: 3 model customers (+50% vs target)
+└── OKR 6: Sales Cycle 7 months (-22%)
+
+Q3 2025: SCALING
+├── OKR 7: Cloud-ARR €280K (+12% vs target)
+├── OKR 8: 6 model customers (Total: 9)
+└── OKR 9: SQLs 14/month (+75%)
+
+Q4 2025: MOMENTUM
+├── OKR 10: Cloud-ARR €420K (+50% vs Q3)
+├── OKR 11: 11 model customers
+└── OKR 12: New Product €280K ARR
 ```
 
 ### 3.3 Related Solutions (korrigiert)
 
 ```typescript
 relatedSolutions: [
-  {
-    name: { en: 'Workshop', de: 'Workshop' },
-    url: '/solutions/workshop',
-    duration: '1-2 Days',
-    investment: '€9.6K-€12.9K',
-    focus: { 
-      en: 'Team Alignment, Strategic Clarity, Execution Frameworks', 
-      de: 'Team Alignment, Strategische Klarheit, Execution Frameworks' 
-    },
-    outcome: { 
-      en: 'Team Alignment +80%, Playbook, Execution Ready Day 1', 
-      de: 'Team Alignment +80%, Playbook, Execution Ready Tag 1' 
-    },
-    type: 'primary'
-  },
   {
     name: { en: 'Strategic Advisory', de: 'Strategic Advisory' },
     url: '/solutions/strategic-advisory',
@@ -183,8 +161,38 @@ relatedSolutions: [
       de: 'Laufende strategische Begleitung, OKR Reviews, Board Prep' 
     },
     outcome: { 
-      en: 'Decision Velocity +50-100%, Strategic Clarity +80%', 
-      de: 'Decision Velocity +50-100%, Strategische Klarheit +80%' 
+      en: 'Revenue +40-70%, ARR +200-300%, Sales Cycle -33%', 
+      de: 'Umsatz +40-70%, ARR +200-300%, Sales Cycle -33%' 
+    },
+    type: 'primary'
+  },
+  {
+    name: { en: 'Workshop', de: 'Workshop' },
+    url: '/solutions/workshop',
+    duration: '1-2 Days',
+    investment: '€9.6K-€12.9K',
+    focus: { 
+      en: 'Foundation: Vision 2030, Strategy, OKRs', 
+      de: 'Foundation: Vision 2030, Strategie, OKRs' 
+    },
+    outcome: { 
+      en: 'Strategic Clarity, Team Alignment, Actionable Roadmap', 
+      de: 'Strategische Klarheit, Team-Alignment, Actionable Roadmap' 
+    },
+    type: 'related'
+  },
+  {
+    name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
+    url: '/solutions/accelerate/sustainable-growth',
+    duration: '12 Months',
+    investment: '€153K',
+    focus: { 
+      en: 'Comprehensive Transformation (GTM, Operations, AI)', 
+      de: 'Umfassende Transformation (GTM, Operations, AI)' 
+    },
+    outcome: { 
+      en: 'Revenue +50-100%, Rule of 40 +20-40pp', 
+      de: 'Umsatz +50-100%, Rule of 40 +20-40pp' 
     },
     type: 'alternative'
   },
@@ -194,12 +202,12 @@ relatedSolutions: [
     duration: '4-6 Weeks',
     investment: '€23.6K',
     focus: { 
-      en: '90-Day Execution Sprint after Workshop', 
-      de: '90-Tage Execution Sprint nach Workshop' 
+      en: '90-Day Execution Sprints', 
+      de: '90-Tage Execution Sprints' 
     },
     outcome: { 
-      en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
-      de: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
+      en: 'ARR Growth +30-60pp, Win Rate +30-50%', 
+      de: 'ARR Growth +30-60pp, Win Rate +30-50%' 
     },
     type: 'related'
   }
@@ -211,35 +219,39 @@ relatedSolutions: [
 ## 4. Bidirektionale Verlinkung
 
 ### 4.1 Case Study → Solutions (via relatedSolutions)
-- Primary: Workshop (`/solutions/workshop`)
-- Alternative: Strategic Advisory (`/solutions/strategic-advisory`)
+- Primary: Strategic Advisory (`/solutions/strategic-advisory`)
+- Alternative: Accelerate: Sustainable Growth (`/solutions/accelerate/sustainable-growth`)
+- Related: Workshop (`/solutions/workshop`)
 - Related: Power Up: Growth Momentum (`/solutions/power-up/growth-momentum`)
 
 ### 4.2 Solutions → Case Study (via secondaryCtaUrl)
 
-| Solution ID | Name | Neuer secondaryCtaUrl |
-|-------------|------|----------------------|
-| 34 | Workshop | `/cases/vision-2030-strategy-workshop` |
-| 35 | Strategic Advisory | `/cases/vision-2030-strategy-workshop` |
+| Solution ID | Name | Aktueller Link | Neuer Link |
+|-------------|------|----------------|------------|
+| 34 | Workshop | `/cases/vision-2030-strategy-workshop` | (bleibt) |
+| 35 | Strategic Advisory | `/cases/vision-2030-strategy-workshop` | `/cases/saas-transition-accelerated` |
+
+**Logik:** Jede Solution verlinkt auf ihre "eigene" Case Study:
+- Workshop → Workshop Case (Vision 2030)
+- Strategic Advisory → Strategic Advisory Case (SaaS-Transition)
 
 ---
 
-## 5. Card Design fur Cases Hub
+## 5. Card Design für Cases Hub
 
 ```text
 +------------------------------------------+
 | [Established] [B2B Services]             |
 |                                          |
-| Vision 2030 Defined →                    |
-| 3-Year Roadmap Created                   |
+| SaaS-Transition Accelerated →            |
+| €10M Roadmap Executed                    |
 |                                          |
-| Vision 2030 definiert, 12 OKRs erstellt, |
-| 100% Team-Alignment erreicht             |
+| Umsatz +56%, ARR +250%, 11 Modell-Kunden |
 +------------------------------------------+
-| Clarity  | Alignment | OKRs   | Roadmap  |
-| 100%     | Unified   | 12     | 3-Year   |
+| Revenue  | ARR      | Customers | Cycle  |
+| +56%     | +250%    | +10       | -33%   |
 +------------------------------------------+
-| Investment: €3K-€5K    |    ROI: 10x+    |
+| Investment: €156K-€216K  |  ROI: 5-10x   |
 +------------------------------------------+
 |           [ Case lesen → ]               |
 +------------------------------------------+
@@ -251,34 +263,66 @@ relatedSolutions: [
 
 | # | Lesson | Key Insight |
 |---|--------|-------------|
-| 1 | Strategic clarity requires structured facilitation | 2-day workshop beats months of internal discussions |
-| 2 | Vision 2030 is the North Star | Without Vision 2030, strategy fragments |
-| 3 | Learnings are foundation for Strategy | 24 learnings inform priorities |
-| 4 | Strategic options need evaluation | 3 options with pros/cons create confidence |
-| 5 | OKRs translate strategy into execution | 12 OKRs create accountability |
-| 6 | SaaS-Transition is multi-year journey | 5-6 years from 10% to 70% ARR |
-| 7 | Customer development > New acquisition | Existing customers faster & more profitable |
+| 1 | Strategic Advisory accelerates execution | Monthly sessions + OKR reviews = execution velocity |
+| 2 | SaaS-Transition can be accelerated | 10-20% → 40-50% ARR in 12 months (vs. 3-4 years without support) |
+| 3 | Customer model is replicable at scale | 1 → 11 customers in 12 months |
+| 4 | Sales Velocity optimization drives growth | Focus on quality, not quantity: -33% Sales Cycle |
+| 5 | Product Innovation drives Cross-Selling | €280K new product ARR in 9 months |
+| 6 | Team Growth enables scaling | +2 specialists enabled 10x customer growth |
+| 7 | €10M roadmap is now credible | Execution confidence through ongoing support |
 
 ---
 
-## 7. Routing (keine Anderung notig)
-
-Die Route `/cases/:slug` in `App.tsx` handled bereits alle Case Studies dynamisch:
+## 7. Related Case Studies (Cross-Links)
 
 ```typescript
-<Route path="/cases/:slug" element={<CaseDetail />} />
+relatedCaseStudies: [
+  { 
+    slug: 'vision-2030-strategy-workshop', 
+    teaser: { 
+      en: 'The foundation: How we defined Vision 2030 in 2 days', 
+      de: 'Das Fundament: Wie wir Vision 2030 in 2 Tagen definierten' 
+    } 
+  },
+  { 
+    slug: 'strategic-transformation-market-leadership', 
+    teaser: { 
+      en: 'Similar journey: Series B SaaS achieved €7.7M ARR', 
+      de: 'Ähnliche Reise: Series B SaaS erreichte €7,7M ARR' 
+    } 
+  }
+]
 ```
-
-Der neue slug `vision-2030-strategy-workshop` wird automatisch von `CaseDetail.tsx` uber `getCaseStudyBySlug()` gefunden.
 
 ---
 
-## 8. Zusammenfassung der Anderungen
+## 8. Zusammenfassung der Änderungen
 
-| Datei | Anderung | Zeilen |
+| Datei | Änderung | Zeilen |
 |-------|----------|--------|
-| `src/data/cases/caseStudies.ts` | Neuen Case Study Eintrag hinzufugen | ~300 neue Zeilen |
-| `src/data/solutionTiles.ts` | Workshop (ID 34): secondaryCtaUrl andern | 2 Zeilen |
-| `src/data/solutionTiles.ts` | Strategic Advisory (ID 35): secondaryCtaUrl andern | 2 Zeilen |
+| `src/data/cases/caseStudies.ts` | Neuen Case Study Eintrag hinzufügen | ~400 neue Zeilen |
+| `src/data/solutionTiles.ts` | Strategic Advisory (ID 35): secondaryCtaUrl ändern | 1 Zeile |
 
-**Keine neuen Dateien erforderlich** - die bestehende Architektur (CaseDetail.tsx + caseStudies.ts) handled alles.
+---
+
+## 9. Verknüpfung mit Workshop Case
+
+Diese Case Study ist die **Fortsetzung** der Workshop Case Study:
+- Workshop Case: Vision 2030 definiert (2 Tage)
+- Strategic Advisory Case: Vision 2030 umgesetzt (12 Monate)
+
+**Cross-Reference im Text:**
+- Strategic Advisory Case verweist auf Workshop Case als "Foundation"
+- Workshop Case verweist auf Strategic Advisory Case als "Next Step"
+
+---
+
+## 10. Challenge Type Filter
+
+Der Case verwendet `challengeType: 'growth-stalled'` da:
+- Es um Wachstumsbeschleunigung geht
+- SaaS-Transition = Geschäftsmodell-Transformation
+- Passt zu Filter "Growth Stalled" auf Cases Hub
+
+**Alternativ möglich:** Neuen Filter `orientation` hinzufügen (falls gewünscht für beide Cases).
+
