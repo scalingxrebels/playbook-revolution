@@ -101,15 +101,15 @@ export const solutionTiles: SolutionTile[] = [
     headlineDe: 'Inflection Call',
     problemEn: "You're stuck. CAC is rising, growth is slowing, or your board is asking tough questions. You need clarity on what's holding you back—fast.",
     problemDe: 'Du steckst fest. CAC steigt, Wachstum verlangsamt sich, oder dein Board stellt harte Fragen. Du brauchst schnell Klarheit, was dich zurückhält.',
-    solutionEn: 'In 30 minutes, we identify your C_min (minimum capability bottleneck) and give you 3 prioritized next steps with predicted ROI.',
-    solutionDe: 'In 30 Minuten identifizieren wir dein C_min (minimaler Capability-Engpass) und geben dir 3 priorisierte nächste Schritte mit vorhergesagtem ROI.',
+    solutionEn: 'In 30 minutes, we identify your #1 Blocker (biggest capability gap) and give you 3 prioritized next steps with predicted ROI.',
+    solutionDe: 'In 30 Minuten identifizieren wir deinen #1 Blocker (größte Capability-Lücke) und geben dir 3 priorisierte nächste Schritte mit vorhergesagtem ROI.',
     deliverablesEn: [
-      'Bottleneck diagnosis (C_min identification)',
+      'Bottleneck diagnosis (#1 Blocker identification)',
       '3 next steps with ROI prediction (2-5x)',
       'Program recommendation (if applicable)'
     ],
     deliverablesDe: [
-      'Engpass-Diagnose (C_min Identifikation)',
+      'Engpass-Diagnose (#1 Blocker Identifikation)',
       '3 nächste Schritte mit ROI-Prognose (2-5x)',
       'Programmempfehlung (falls zutreffend)'
     ],
@@ -280,18 +280,18 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'AI Maturity Assessment',
     headlineDe: 'AI Maturity Assessment',
-    problemEn: "You're using AI—but not becoming AI-Native. Your θ_index is 0.3 (Level 1: AI-Powered). Competitors are at θ_index 0.7-0.8 (Level 2-3: AI-Native). You don't know which AI lever to pull first.",
-    problemDe: 'Du nutzt AI—aber wirst nicht AI-Native. Dein θ_index ist 0.3 (Level 1: AI-Powered). Wettbewerber sind bei θ_index 0.7-0.8 (Level 2-3: AI-Native). Du weißt nicht, welchen AI-Hebel du zuerst ziehen sollst.',
-    solutionEn: 'We analyze your AI maturity in 3-5 days (8 dimensions: Strategy, Infrastructure, Capabilities, Use Cases, Operations, Decision-Making, CX, Innovation). You get: AI Clarity +90%, θ_index Roadmap +50-150%, Efficiency Roadmap +30-80%—with board-ready report.',
-    solutionDe: 'Wir analysieren deine AI-Reife in 3-5 Tagen (8 Dimensionen: Strategy, Infrastructure, Capabilities, Use Cases, Operations, Decision-Making, CX, Innovation). Du erhältst: AI Clarity +90%, θ_index Roadmap +50-150%, Efficiency Roadmap +30-80%—mit Board-Ready Report.',
+    problemEn: "You're using AI—but not becoming AI-Native. Your AI Maturity Score is 30% (Level 1: AI-Powered). Competitors are at 70-80% (Level 2-3: AI-Native). You don't know which AI lever to pull first.",
+    problemDe: 'Du nutzt AI—aber wirst nicht AI-Native. Dein AI Maturity Score ist 30% (Level 1: AI-Powered). Wettbewerber sind bei 70-80% (Level 2-3: AI-Native). Du weißt nicht, welchen AI-Hebel du zuerst ziehen sollst.',
+    solutionEn: 'We analyze your AI maturity in 3-5 days (8 dimensions: Strategy, Infrastructure, Capabilities, Use Cases, Operations, Decision-Making, CX, Innovation). You get: AI Clarity +90%, AI Maturity Roadmap +50-150%, Efficiency Roadmap +30-80%—with board-ready report.',
+    solutionDe: 'Wir analysieren deine AI-Reife in 3-5 Tagen (8 Dimensionen: Strategy, Infrastructure, Capabilities, Use Cases, Operations, Decision-Making, CX, Innovation). Du erhältst: AI Clarity +90%, AI Maturity Roadmap +50-150%, Efficiency Roadmap +30-80%—mit Board-Ready Report.',
     deliverablesEn: [
       'AI Clarity: +90%',
-      'θ_index Roadmap: +50-150%',
+      'AI Maturity Roadmap: +50-150%',
       'Efficiency Roadmap: +30-80%'
     ],
     deliverablesDe: [
       'AI Clarity: +90%',
-      'θ_index Roadmap: +50-150%',
+      'AI Maturity Roadmap: +50-150%',
       'Efficiency Roadmap: +30-80%'
     ],
     impactEn: 'Know exactly which AI lever to pull first. Predict 10-30x ROI from AI efficiency and competitive advantage.',
@@ -391,8 +391,8 @@ export const solutionTiles: SolutionTile[] = [
     priceTag: 'paid',
     headlineEn: 'Portfolio Assessment',
     headlineDe: 'Portfolio Assessment',
-    problemEn: "Your portfolio is underperforming—but you don't know why. 5/15 companies struggling (33%), average θ_index 0.35 (Level 1: AI-Powered). LPs asking 'Why isn't portfolio AI-Native?' You don't know which companies to fix first.",
-    problemDe: 'Dein Portfolio underperformt—aber du weißt nicht warum. 5/15 Companies strugglen (33%), durchschnittlicher θ_index 0.35 (Level 1: AI-Powered). LPs fragen „Warum ist das Portfolio nicht AI-Native?" Du weißt nicht, welche Companies du zuerst fixen sollst.',
+    problemEn: "Your portfolio is underperforming—but you don't know why. 5/15 companies struggling (33%), average AI Maturity Score 35% (Level 1: AI-Powered). LPs asking 'Why isn't portfolio AI-Native?' You don't know which companies to fix first.",
+    problemDe: 'Dein Portfolio underperformt—aber du weißt nicht warum. 5/15 Companies strugglen (33%), durchschnittlicher AI Maturity Score 35% (Level 1: AI-Powered). LPs fragen „Warum ist das Portfolio nicht AI-Native?" Du weißt nicht, welche Companies du zuerst fixen sollst.',
     solutionEn: 'We analyze your portfolio in 3-5 days (6 dimensions: Growth, Unit Economics, AI Maturity, Operations, Market Position, Exit Readiness). You get: Portfolio Clarity +85%, Value Roadmap +30-60%, LP Confidence +40-70%—with LP-ready report + Portfolio Heatmap.',
     solutionDe: 'Wir analysieren dein Portfolio in 3-5 Tagen (6 Dimensionen: Growth, Unit Economics, AI Maturity, Operations, Market Position, Exit Readiness). Du erhältst: Portfolio Clarity +85%, Value Roadmap +30-60%, LP Confidence +40-70%—mit LP-Ready Report + Portfolio Heatmap.',
     deliverablesEn: [
@@ -647,15 +647,15 @@ export const solutionTiles: SolutionTile[] = [
     deliverablesEn: [
       'AI Use Cases Implemented: 3-5',
       'Operations Speed: +30-50%',
-      'θ_index Improvement: +0.2-0.3'
+      'AI Maturity Improvement: +20-30%'
     ],
     deliverablesDe: [
       'AI Use Cases implementiert: 3-5',
       'Operations Speed: +30-50%',
-      'θ_index Verbesserung: +0.2-0.3'
+      'AI Maturity Verbesserung: +20-30%'
     ],
-    impactEn: 'Implement 3-5 AI use cases, increase operations speed by 30-50%, improve θ_index by 0.2-0.3 in 4-6 weeks. Guaranteed: 2 of 3 or 50% refund.',
-    impactDe: 'Implementiere 3-5 AI Use Cases, steigere Operations Speed um 30-50%, verbessere θ_index um 0.2-0.3 in 4-6 Wochen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
+    impactEn: 'Implement 3-5 AI use cases, increase operations speed by 30-50%, improve AI Maturity by 20-30% in 4-6 weeks. Guaranteed: 2 of 3 or 50% refund.',
+    impactDe: 'Implementiere 3-5 AI Use Cases, steigere Operations Speed um 30-50%, verbessere AI Maturity um 20-30% in 4-6 Wochen. Garantiert: 2 von 3 oder 50% Rückerstattung.',
     primaryCtaEn: 'More About AI Quick Wins',
     primaryCtaDe: 'Mehr über AI Quick Wins',
     primaryCtaAction: 'learn-more',
@@ -1542,24 +1542,24 @@ export const solutionTiles: SolutionTile[] = [
     challenges: ['cac-crisis', 'growth-stalled'],
     price: '€135/User/Mo',
     priceTag: 'paid',
-    headlineEn: 'Maxxeed Digital Showrooms',
-    headlineDe: 'Maxxeed Digital Showrooms',
-    problemEn: "Your sales team relies on email and PowerPoint—unpersonal, inefficient. 78% of buyers demand better experiences, but get boring presentations. 30% win rate.",
-    problemDe: 'Dein Sales-Team nutzt E-Mail und PowerPoint—unpersönlich, ineffizient. 78% der Käufer fordern bessere Erfahrungen, bekommen aber langweilige Präsentationen. 30% Win Rate.',
-    solutionEn: 'Maxxeed automates creation of hyper-personalized Digital Showrooms in 30 seconds. AI transforms meeting notes into stunning showrooms you can share with your prospects.',
-    solutionDe: 'Maxxeed automatisiert die Erstellung hyper-personalisierter Digital Showrooms in 30 Sekunden. KI verwandelt Gesprächsnotizen in beeindruckende Showrooms, die du mit deinen Prospects teilen kannst.',
+    headlineEn: 'Maxxeed – Digital Buyer Experience',
+    headlineDe: 'Maxxeed – Digital Buyer Experience',
+    problemEn: "B2B Sales is a 'black box.' Sales teams are unable to provide customer-specific value and are absent when 90% of internal buying decisions happen. Only a 30% win rate as 78% of buyers demand better experiences.",
+    problemDe: "B2B-Vertrieb ist eine 'Black Box'. Sales-Teams können keinen kundenspezifischen Mehrwert bieten und sind abwesend, wenn 90% der internen Kaufentscheidungen getroffen werden. Nur 30% Win Rate, da 78% der Käufer bessere Experiences fordern.",
+    solutionEn: "Maxxeed digitizes the entire Buyer Value Cycle. It automates personalized insights and creates a collaborative workspace that empowers your champion to sell internally. Map the buying center and stay present even when you're not in the room.",
+    solutionDe: 'Maxxeed digitalisiert den gesamten Buyer Value Cycle. Es automatisiert personalisierte Insights und schafft einen kollaborativen Workspace, der deinen Champion befähigt, intern zu verkaufen. Mappe das Buying Center und bleibe präsent, auch wenn du nicht im Raum bist.',
     deliverablesEn: [
-      'Automatic showroom creation (30s)',
-      'Buyer value cycle (stakeholder maps)',
-      'Deal health score & analytics'
+      'Instant Buyer Value Cycle Creation (30s)',
+      'Stakeholder Alignment & Guidance',
+      'Deal Health Intelligence & Analytics'
     ],
     deliverablesDe: [
-      'Automatische Showroom-Erstellung (30s)',
-      'Buyer Value Cycle (Stakeholder Maps)',
-      'Deal Health Score & Analytics'
+      'Instant Buyer Value Cycle Erstellung (30s)',
+      'Stakeholder Alignment & Guidance',
+      'Deal Health Intelligence & Analytics'
     ],
-    impactEn: '+31% close rate, +24% deal size, 98% email open rate. €50M ARR: +€12M ARR.',
-    impactDe: '+31% Close Rate, +24% Deal Size, 98% E-Mail-Öffnungsrate. €50M ARR: +€12M ARR.',
+    impactEn: '+31% close rate, +24% deal size, +56% faster team onboarding. €50M ARR company: +€12M ARR/year.',
+    impactDe: '+31% Close Rate, +24% Deal Size, +56% schnelleres Team-Onboarding. €50M ARR Unternehmen: +€12M ARR/Jahr.',
     primaryCtaEn: 'More about Buyer Excitement',
     primaryCtaDe: 'Mehr über Buyer Excitement',
     primaryCtaAction: 'learn-more',

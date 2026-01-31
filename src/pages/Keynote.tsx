@@ -55,10 +55,10 @@ const Keynote = () => {
       keynoteTitleDe: '"Wie AI-Native Unternehmen 10x schneller skalieren"',
       whenEn: 'Your audience needs AI inspiration (AI strategy unclear), your team is skeptical about AI (AI FOMO, no clear path), you want to create AI momentum (not just theory).',
       whenDe: 'Dein Publikum braucht AI-Inspiration (AI-Strategie unklar), dein Team ist skeptisch gegenüber AI (AI FOMO, kein klarer Weg), du willst AI-Momentum schaffen (nicht nur Theorie).',
-      coverEn: ['Why AI-Native companies scale 10x faster (data + stories)', 'The AI-Native Framework (θ_index, 4 levels)', 'How to become AI-Native (tactical roadmap)', 'Real examples (Series A-B companies that became AI-Native)'],
-      coverDe: ['Warum AI-Native Unternehmen 10x schneller skalieren (Daten + Stories)', 'Das AI-Native Framework (θ_index, 4 Level)', 'Wie man AI-Native wird (taktische Roadmap)', 'Echte Beispiele (Series A-B Unternehmen, die AI-Native wurden)'],
-      outcomeEn: 'High Inspiration, 3-5 Takeaways (AI roadmap, θ_index assessment)',
-      outcomeDe: 'High Inspiration, 3-5 Takeaways (AI-Roadmap, θ_index Assessment)'
+      coverEn: ['Why AI-Native companies scale 10x faster (data + stories)', 'The AI-Native Framework (AI Maturity Levels, 4 levels)', 'How to become AI-Native (tactical roadmap)', 'Real examples (Series A-B companies that became AI-Native)'],
+      coverDe: ['Warum AI-Native Unternehmen 10x schneller skalieren (Daten + Stories)', 'Das AI-Native Framework (AI Maturity Levels, 4 Level)', 'Wie man AI-Native wird (taktische Roadmap)', 'Echte Beispiele (Series A-B Unternehmen, die AI-Native wurden)'],
+      outcomeEn: 'High Inspiration, 3-5 Takeaways (AI roadmap, AI Maturity assessment)',
+      outcomeDe: 'High Inspiration, 3-5 Takeaways (AI-Roadmap, AI Maturity Assessment)'
     },
     {
       id: 'hypergrowth',
@@ -175,8 +175,8 @@ const Keynote = () => {
       challengeDe: 'Team skeptisch gegenüber AI, keine klare AI-Strategie',
       formatEn: 'AI-Native Scaling (90 min + 30 min Q&A)',
       formatDe: 'AI-Native Scaling (90 Min + 30 Min Q&A)',
-      outcomeEn: 'Audience Inspiration High, 5 Actionable Takeaways (θ_index assessment, AI roadmap), Team AI Momentum +80%',
-      outcomeDe: 'Audience Inspiration High, 5 umsetzbare Takeaways (θ_index Assessment, AI-Roadmap), Team AI Momentum +80%'
+      outcomeEn: 'Audience Inspiration High, 5 Actionable Takeaways (AI Maturity assessment, AI roadmap), Team AI Momentum +80%',
+      outcomeDe: 'Audience Inspiration High, 5 umsetzbare Takeaways (AI Maturity Assessment, AI-Roadmap), Team AI Momentum +80%'
     },
     {
       typeEn: 'Efficient Hypergrowth Keynote',

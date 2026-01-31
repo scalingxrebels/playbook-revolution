@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TwinklingStars from '@/components/TwinklingStars';
+import { useParallaxLayers } from '@/hooks/useParallax';
 
 interface StatItem {
   value: string;
@@ -21,6 +22,7 @@ interface SharedHeroProps {
   stats?: StatItem[];
   children?: React.ReactNode;
   variant?: 'dark' | 'light';
+  enableParallax?: boolean;
 }
 
 const SharedHero: React.FC<SharedHeroProps> = ({
@@ -34,9 +36,11 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   subheadlineDe,
   stats,
   children,
-  variant = 'dark'
+  variant = 'dark',
+  enableParallax = false
 }) => {
   const { language } = useLanguage();
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
   const overline = language === 'de' ? overlineDe : overlineEn;
   const headlineLine1 = language === 'de' ? headlineLine1De : headlineLine1En;
@@ -44,16 +48,36 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   const subheadline = language === 'de' ? subheadlineDe : subheadlineEn;
 
   return (
-    <section className="relative overflow-hidden noise pt-32 pb-16">
+    <section 
+      ref={enableParallax ? containerRef as React.RefObject<HTMLElement> : undefined}
+      className="relative overflow-hidden noise pt-32 pb-16"
+    >
       {/* Background - only for dark variant */}
       {variant === 'dark' && (
         <>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
-          <div className="absolute inset-0 bg-mesh opacity-60" />
-          <div className="absolute inset-0">
+          {/* Layer 1: Deep Space Background (slowest) */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+          />
+          <div 
+            className="absolute inset-0 bg-mesh opacity-60"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+          />
+          
+          {/* Layer 2: Stars (medium speed) */}
+          <div 
+            className="absolute inset-0"
+            style={enableParallax ? { transform: `translateY(${offsets[1]}px)` } : undefined}
+          >
             <TwinklingStars />
           </div>
-          <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
+          
+          {/* Layer 3: Grid Pattern (fastest) */}
+          <div 
+            className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
+            style={enableParallax ? { transform: `translateY(${offsets[2]}px)` } : undefined}
+          />
         </>
       )}
 

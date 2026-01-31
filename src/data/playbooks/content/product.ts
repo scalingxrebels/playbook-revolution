@@ -258,26 +258,48 @@ export const productData: PlaybookPageData = {
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und Budget" },
     items: [
       {
+        type: "assessment",
+        name: { en: "Product Assessment", de: "Product Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full product maturity report + 90-day roadmap", de: "Vollständiger Product Maturity Report + 90-Tage Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/scaling-readiness-assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: Product Velocity Boost", de: "Power Up: Product Velocity Boost" },
+        name: { en: "Product Sprint", de: "Product Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Shipping Velocity +200-400%, Feature Success Rate +50-100%", de: "Shipping Velocity +200-400%, Feature Success Rate +50-100%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "orange"
+        color: "bg-green-500/10 text-green-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: Product Transformation", de: "Boost: Product Transformation" },
+        name: { en: "Product Excellence", de: "Product Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "PMF in 3-6 months, Shipping Velocity +500-1000%", de: "PMF in 3-6 Monaten, Shipping Velocity +500-1000%" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/growth-engine",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Product", de: "AI-Native Product" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full product transformation, AI Maturity Level 3, 3-5x velocity", de: "Vollständige Product Transformation, AI Maturity Level 3, 3-5x Velocity" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate/ai-native-scaling",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

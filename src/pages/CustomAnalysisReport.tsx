@@ -169,15 +169,15 @@ const CustomAnalysisReport = () => {
         icon: Brain,
         title: isGerman ? 'AI Strategy Design' : 'AI Strategy Design',
         whenToChoose: isGerman
-          ? ['Deine AI Strategy fehlt (θ_index 0.2-0.4, keine klare AI Roadmap)', 'Dein AI Investment ist unklar (€50K-€200K ausgegeben, kein ROI)', 'Dein Board fragt „Was ist unsere AI Strategy?"']
-          : ['Your AI strategy is missing (θ_index 0.2-0.4, no clear AI roadmap)', 'Your AI investment is unclear (€50K-€200K spent, no ROI)', 'Your board is asking "What\'s our AI strategy?"'],
+          ? ['Deine AI Strategy fehlt (AI Maturity Score 20-40%, keine klare AI Roadmap)', 'Dein AI Investment ist unklar (€50K-€200K ausgegeben, kein ROI)', 'Dein Board fragt „Was ist unsere AI Strategy?"']
+          : ['Your AI strategy is missing (AI Maturity Score 20-40%, no clear AI roadmap)', 'Your AI investment is unclear (€50K-€200K spent, no ROI)', 'Your board is asking "What\'s our AI strategy?"'],
         whatWeAnalyze: isGerman
-          ? ['AI Maturity (θ_index Assessment)', 'AI Use Cases (welche AI Use Cases priorisieren)', 'AI ROI (welche AI Investments machen)', 'AI Roadmap (wie AI-Native werden)']
-          : ['AI maturity (θ_index assessment)', 'AI use cases (which AI use cases to prioritize)', 'AI ROI (which AI investments to make)', 'AI roadmap (how to become AI-Native)'],
+          ? ['AI Maturity (AI Maturity Assessment)', 'AI Use Cases (welche AI Use Cases priorisieren)', 'AI ROI (welche AI Investments machen)', 'AI Roadmap (wie AI-Native werden)']
+          : ['AI maturity (AI Maturity assessment)', 'AI use cases (which AI use cases to prioritize)', 'AI ROI (which AI investments to make)', 'AI roadmap (how to become AI-Native)'],
         whatYouGet: isGerman
           ? ['AI Strategy Report (15-25 Seiten)', 'AI Roadmap (90-Tage Plan)', 'AI Recommendations (5-10 Key Actions)']
           : ['AI Strategy Report (15-25 pages)', 'AI Roadmap (90-day plan)', 'AI Recommendations (5-10 key actions)'],
-        typicalOutcome: isGerman ? 'AI Clarity +90%, θ_index Roadmap +50-150%' : 'AI Clarity +90%, θ_index Roadmap +50-150%'
+        typicalOutcome: isGerman ? 'AI Clarity +90%, AI Maturity Roadmap +50-150%' : 'AI Clarity +90%, AI Maturity Roadmap +50-150%'
       },
       {
         icon: Briefcase,

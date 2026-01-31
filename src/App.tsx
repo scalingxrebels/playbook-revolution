@@ -81,6 +81,11 @@ const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSys
 const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
 const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
 const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
+const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
+const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
+const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
+const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
+const Glossar = lazy(() => import("./pages/Glossar"));
 
 const queryClient = new QueryClient();
 
@@ -175,6 +180,11 @@ const App = () => (
                 <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
                 <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
                 <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
+                <Route path="/expertise/amf" element={<ExpertiseAMF />} />
+                <Route path="/expertise/anst" element={<ExpertiseANST />} />
+                <Route path="/expertise/sst" element={<ExpertiseSST />} />
+                <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
+                <Route path="/glossar" element={<Glossar />} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
               </Routes>

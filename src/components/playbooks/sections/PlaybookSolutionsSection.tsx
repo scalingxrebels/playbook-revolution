@@ -22,6 +22,13 @@ const PlaybookSolutionsSection: React.FC<Props> = ({ data }) => {
   };
 
   const typeConfig = {
+    'assessment': {
+      label: 'Assessment',
+      gradient: 'from-emerald-500 to-green-500',
+      bgGlow: 'hover:shadow-emerald-500/20',
+      border: 'hover:border-emerald-500/50',
+      icon: icons.ClipboardCheck || Zap
+    },
     'power-up': { 
       label: 'Power Up', 
       gradient: 'from-orange-500 to-amber-500',
@@ -68,7 +75,7 @@ const PlaybookSolutionsSection: React.FC<Props> = ({ data }) => {
         </div>
 
         {/* Solution Cards with Glow Effects */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className={`grid gap-6 ${data.items.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
           {data.items.map((item, idx) => {
             const Icon = getIcon(item.icon);
             const config = typeConfig[item.type];

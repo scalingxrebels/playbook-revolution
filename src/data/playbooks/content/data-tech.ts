@@ -307,26 +307,48 @@ export const dataTechData: PlaybookPageData = {
     },
     items: [
       {
+        type: "assessment",
+        name: { en: "Data/Tech Assessment", de: "Data/Tech Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full data/tech maturity report + 90-day roadmap", de: "Vollständiger Data/Tech-Maturity-Report + 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/ai-maturity-assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: Data/Tech Fixed", de: "Power Up: Data/Tech Fixed" },
+        name: { en: "Data/Tech Sprint", de: "Data/Tech Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "€23.6K", de: "€23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Data Quality +60-80%, Tech Debt -40-60%", de: "Datenqualität +60-80%, Tech Debt -40-60%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "cyan"
+        color: "bg-cyan-500/10 text-cyan-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: Data/Tech Transformation", de: "Boost: Data/Tech Transformation" },
+        name: { en: "Data/Tech Excellence", de: "Data/Tech Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Data Quality +80-100%, Tech Debt -60-80%, ML Ops deployed", de: "Datenqualität +80-100%, Tech Debt -60-80%, ML Ops deployed" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Data/Tech", de: "AI-Native Data/Tech" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full data/tech transformation, AI Maturity Level 3, Data Quality +80%, Tech Debt -60%", de: "Vollständige Data/Tech-Transformation, AI Maturity Level 3, Datenqualität +80%, Tech Debt -60%" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate/ai-native-scaling",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

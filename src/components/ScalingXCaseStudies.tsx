@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { 
   Image, Code, Search, Bot, CreditCard, Palette, FileText,
   TrendingUp, Users, Zap, Target, ArrowRight, Sparkles, Globe, Rocket
@@ -16,6 +17,7 @@ interface CaseStudy {
   name: string;
   icon: React.ElementType;
   color: string;
+  darkColor?: string;
   founded: string;
   founder: string;
   focus: { en: string; de: string };
@@ -31,6 +33,7 @@ interface CaseStudy {
   growthTimeline: { year: string; value: string; label?: string }[];
   learnings: { en: string[]; de: string[] };
   highlight: { en: string; de: string };
+  dataSource: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -42,13 +45,13 @@ const caseStudies: CaseStudy[] = [
     founded: '2021',
     founder: 'David Holz',
     focus: { en: 'AI Image Generation', de: 'KI-Bildgenerierung' },
-    headline: { metric: '$500M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
+    headline: { metric: '$492M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
     secondaryMetrics: [
       { value: '21M+', label: { en: 'Discord Members', de: 'Discord Mitglieder' } },
       { value: '26.8%', label: { en: 'Market Share', de: 'Marktanteil' } },
-      { value: '10x', label: { en: '3 Year Growth', de: '3 Jahre Wachstum' } },
+      { value: '107', label: { en: 'Employees', de: 'Mitarbeiter' } },
     ],
-    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.8, c3: 0.8, c4: 0.7 },
+    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.85, c3: 0.85, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Best-in-class image quality', de: 'Beste Bildqualität' },
       c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
@@ -59,7 +62,7 @@ const caseStudies: CaseStudy[] = [
       { year: '2022', value: '$50M' },
       { year: '2023', value: '$200M', label: '+300%' },
       { year: '2024', value: '$300M', label: '+50%' },
-      { year: '2025', value: '$500M', label: '+66.7%' },
+      { year: '2025', value: '$492M', label: '+64%' },
     ],
     learnings: {
       en: [
@@ -78,6 +81,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'Community-First AI Image Generation', de: 'Community-First KI-Bildgenerierung' },
+    dataSource: 'ANST v4.5.3, AMF v4.5.1',
   },
   {
     id: 'cursor',
@@ -87,13 +91,13 @@ const caseStudies: CaseStudy[] = [
     founded: '2022',
     founder: 'Anystic Team',
     focus: { en: 'AI Code Editor', de: 'KI Code Editor' },
-    headline: { metric: '$29.3B', label: { en: 'Valuation Nov 2025', de: 'Bewertung Nov 2025' } },
+    headline: { metric: '$400M', label: { en: 'Valuation Aug 2024', de: 'Bewertung Aug 2024' } },
     secondaryMetrics: [
-      { value: '$1B+', label: { en: 'ARR in 6 months', de: 'ARR in 6 Monaten' } },
-      { value: '2M+', label: { en: 'Monthly Active Users', de: 'Monatl. aktive Nutzer' } },
-      { value: '85%+', label: { en: 'Retention Rate', de: 'Retention Rate' } },
+      { value: '$100M', label: { en: 'ARR 2024', de: 'ARR 2024' } },
+      { value: '60', label: { en: 'Employees', de: 'Mitarbeiter' } },
+      { value: '$1.67M', label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' } },
     ],
-    thetaIndex: { overall: 0.92, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.9 },
+    thetaIndex: { overall: 0.90, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.85 },
     thetaLabels: {
       c1: { en: 'Exceptional developer experience', de: 'Außergewöhnliche Developer Experience' },
       c2: { en: 'Organic developer adoption', de: 'Organische Developer-Adoption' },
@@ -101,28 +105,27 @@ const caseStudies: CaseStudy[] = [
       c4: { en: 'Efficient capital deployment', de: 'Effiziente Kapitalnutzung' },
     },
     growthTimeline: [
-      { year: '2023', value: '$100M', label: 'Series A' },
-      { year: '2024 Q1', value: '$600M', label: 'Series B' },
-      { year: '2025 May', value: '$9.9B', label: 'Series C' },
-      { year: '2025 Nov', value: '$29.3B', label: 'Series D' },
+      { year: '2022', value: '$0', label: 'Founded' },
+      { year: '2024', value: '$400M', label: 'Series B' },
     ],
     learnings: {
       en: [
         'Developer-First Product - Solve real developer pain points',
         'AI Integration - Seamless AI assistance in existing workflow',
-        'Rapid Monetization - $1B ARR in <6 months',
+        'Capital Efficiency - $100M ARR with 60 employees',
         'Viral Adoption - Word-of-mouth among developers',
         'Premium Positioning - High-value justifies premium pricing',
       ],
       de: [
         'Developer-First Produkt - Löst echte Developer Pain Points',
         'KI-Integration - Nahtlose KI-Assistenz im Workflow',
-        'Schnelle Monetarisierung - $1B ARR in <6 Monaten',
+        'Kapitaleffizienz - $100M ARR mit 60 Mitarbeitern',
         'Virale Adoption - Mundpropaganda unter Developern',
         'Premium-Positionierung - Hoher Wert rechtfertigt Premium-Preis',
       ],
     },
-    highlight: { en: 'Fastest $1B ARR Ever', de: 'Schnellstes $1B ARR aller Zeiten' },
+    highlight: { en: 'AI-Native Code Editor', de: 'AI-Nativer Code Editor' },
+    dataSource: 'AMF v4.1, ANST v4.1, TechCrunch (Aug 2024)',
   },
   {
     id: 'perplexity',
@@ -135,10 +138,10 @@ const caseStudies: CaseStudy[] = [
     headline: { metric: '$9B', label: { en: 'Valuation 2025', de: 'Bewertung 2025' } },
     secondaryMetrics: [
       { value: '780M', label: { en: 'Queries/Month', de: 'Anfragen/Monat' } },
-      { value: '18x', label: { en: '2 Year Growth', de: '2 Jahre Wachstum' } },
-      { value: '10M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
+      { value: '$200M+', label: { en: 'Revenue (est.)', de: 'Umsatz (est.)' } },
+      { value: '80-100', label: { en: 'Employees', de: 'Mitarbeiter' } },
     ],
-    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.9, c3: 0.8, c4: 0.8 },
+    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.85, c3: 0.8, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Superior search quality', de: 'Überlegene Suchqualität' },
       c2: { en: 'Aggressive growth hacking', de: 'Aggressives Growth Hacking' },
@@ -168,6 +171,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Google Challenger', de: 'Der Google-Herausforderer' },
+    dataSource: 'AMF v4.1, ANST v4.1',
   },
   {
     id: 'openai',
@@ -212,6 +216,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: '100M Users in 2 Months (Fastest Ever)', de: '100M Nutzer in 2 Monaten (schnellstes je)' },
+    dataSource: 'Public data (TechCrunch, OpenAI announcements)',
   },
   {
     id: 'stripe',
@@ -256,6 +261,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Developer-First Payments Pioneer', de: 'Der Developer-First Zahlungs-Pionier' },
+    dataSource: 'Public data (Stripe financial reports)',
   },
   {
     id: 'figma',
@@ -300,12 +306,14 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Collaborative Design Leader', de: 'Der Collaborative Design Leader' },
+    dataSource: 'Public data (Figma announcements)',
   },
   {
     id: 'notion',
     name: 'Notion',
     icon: FileText,
     color: '#171717',
+    darkColor: '#E5E5E5',
     founded: '2016',
     founder: 'Ivan Zhao',
     focus: { en: 'All-in-One Workspace', de: 'All-in-One Workspace' },
@@ -344,6 +352,7 @@ const caseStudies: CaseStudy[] = [
       ],
     },
     highlight: { en: 'The Community-Driven Workspace', de: 'Der Community-Driven Workspace' },
+    dataSource: 'Public data (Notion announcements)',
   },
 ];
 
@@ -384,14 +393,14 @@ const keyInsights = {
   },
   capitalEfficiency: {
     en: [
-      { company: 'Cursor', highlight: '$1B ARR in <6 months (most efficient)' },
-      { company: 'Perplexity', highlight: '$500M+ revenue, $9B valuation' },
+      { company: 'Cursor', highlight: '$100M ARR with 60 employees (most efficient per employee)' },
+      { company: 'Perplexity', highlight: '$200M+ revenue, $9B valuation' },
       { company: 'OpenAI', highlight: '$3.4B revenue, $80B valuation' },
       { company: 'Stripe', highlight: '$14B revenue, $95B valuation' },
     ],
     de: [
-      { company: 'Cursor', highlight: '$1B ARR in <6 Monaten (effizienteste)' },
-      { company: 'Perplexity', highlight: '$500M+ Umsatz, $9B Bewertung' },
+      { company: 'Cursor', highlight: '$100M ARR mit 60 Mitarbeitern (effizienteste pro Mitarbeiter)' },
+      { company: 'Perplexity', highlight: '$200M+ Umsatz, $9B Bewertung' },
       { company: 'OpenAI', highlight: '$3.4B Umsatz, $80B Bewertung' },
       { company: 'Stripe', highlight: '$14B Umsatz, $95B Bewertung' },
     ],
@@ -400,6 +409,7 @@ const keyInsights = {
 
 const ScalingXCaseStudies = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
 
   const scrollToBooking = () => {
@@ -426,21 +436,27 @@ const ScalingXCaseStudies = () => {
         </div>
 
         {/* Case Study Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-          {caseStudies.map((study) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {caseStudies.map((study, idx) => {
             const Icon = study.icon;
+            const studyColor = (theme === 'dark' && study.darkColor) ? study.darkColor : study.color;
             return (
               <div
                 key={study.id}
                 onClick={() => setSelectedStudy(study)}
-                className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1"
-                style={{ '--study-color': study.color } as React.CSSProperties}
+                className="group relative bg-card border border-border rounded-2xl p-6 cursor-pointer 
+                           transition-all duration-500 hover:border-primary/50 hover:shadow-xl hover:-translate-y-1
+                           animate-fade-in"
+                style={{ 
+                  '--study-color': studyColor,
+                  animationDelay: `${idx * 80}ms`
+                } as React.CSSProperties}
               >
                 {/* θ_index Badge */}
                 <div className="absolute top-4 right-4">
                   <span 
                     className="text-sm font-bold px-2 py-1 rounded-full"
-                    style={{ backgroundColor: `${study.color}20`, color: study.color }}
+                    style={{ backgroundColor: `${studyColor}20`, color: studyColor }}
                   >
                     θ {study.thetaIndex.overall}
                   </span>
@@ -450,9 +466,9 @@ const ScalingXCaseStudies = () => {
                 <div className="flex items-center gap-3 mb-4">
                   <div 
                     className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `${study.color}15` }}
+                    style={{ backgroundColor: `${studyColor}15` }}
                   >
-                    <Icon className="w-6 h-6" style={{ color: study.color }} />
+                    <Icon className="w-6 h-6" style={{ color: studyColor }} />
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">{study.name}</h3>
@@ -462,7 +478,7 @@ const ScalingXCaseStudies = () => {
 
                 {/* Headline Metric */}
                 <div className="mb-4">
-                  <p className="text-3xl font-bold" style={{ color: study.color }}>
+                  <p className="text-3xl font-bold" style={{ color: studyColor }}>
                     {study.headline.metric}
                   </p>
                   <p className="text-sm text-muted-foreground">
@@ -676,6 +692,11 @@ const ScalingXCaseStudies = () => {
                       </div>
                     ))}
                   </div>
+                </div>
+
+                {/* Data Source */}
+                <div className="text-xs text-muted-foreground mb-6 pt-4 border-t border-border/30">
+                  📊 {language === 'de' ? 'Quelle' : 'Source'}: {selectedStudy.dataSource}
                 </div>
 
                 {/* CTA */}

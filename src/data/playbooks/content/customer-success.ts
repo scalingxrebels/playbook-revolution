@@ -258,26 +258,48 @@ export const customerSuccessData: PlaybookPageData = {
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und Budget" },
     items: [
       {
+        type: "assessment",
+        name: { en: "CS Assessment", de: "CS Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full CS maturity report + 90-day roadmap", de: "Vollständiger CS-Maturity-Report + 90-Tage Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/gtm-effectiveness-review",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: NRR Engine", de: "Power Up: NRR Engine" },
+        name: { en: "CS Sprint", de: "CS Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Churn -40-60%, CSM Productivity +200-400%", de: "Churn -40-60%, CSM Produktivität +200-400%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/nrr-engine",
         icon: "Zap",
-        color: "orange"
+        color: "bg-pink-500/10 text-pink-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: NRR Machine", de: "Boost: NRR Machine" },
+        name: { en: "CS Excellence", de: "CS Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Churn -60-80%, NRR +30-50pp", de: "Churn -60-80%, NRR +30-50pp" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/nrr-machine",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native CS", de: "AI-Native CS" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full CS transformation, AI Maturity Level 3, Churn -60%, NRR +30-50pp", de: "Vollständige CS-Transformation, AI Maturity Level 3, Churn -60%, NRR +30-50pp" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate/sustainable-growth",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

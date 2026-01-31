@@ -303,33 +303,55 @@ export const talentData: PlaybookPageData = {
     ]
   },
   solutionsConnection: {
-    title: { en: "Ready to Execute? Here's How We Can Help", de: "Bereit zur Umsetzung? So können wir helfen" },
+    title: { en: "How We Can Help", de: "Wie wir helfen können" },
     subtitle: { 
       en: "Choose the right engagement model for your timeline and budget", 
       de: "Wähle das richtige Engagement-Modell für deine Timeline und dein Budget" 
     },
     items: [
       {
+        type: "assessment",
+        name: { en: "Talent Assessment", de: "Talent Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full talent maturity report + 90-day roadmap", de: "Vollständiger Talent-Maturity-Report + 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/scaling-readiness-assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: Scaling Velocity", de: "Power Up: Scaling Velocity" },
-        duration: { en: "30 days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
-        outcome: { en: "Time-to-Hire -40-60%, Onboarding Time -50-70%, Talent visibility +100%", de: "Time-to-Hire -40-60%, Onboarding-Zeit -50-70%, Talent-Sichtbarkeit +100%" },
-        cta: { en: "Start Power Up", de: "Power Up starten" },
+        name: { en: "Talent Sprint", de: "Talent Sprint" },
+        duration: { en: "30 Days", de: "30 Tage" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
+        outcome: { en: "Fix one talent component with measurable results", de: "Eine Talent-Komponente mit messbaren Ergebnissen verbessern" },
+        cta: { en: "Start Sprint", de: "Sprint starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "violet"
+        color: "bg-violet-500/10 text-violet-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: Scaling OS", de: "Boost: Scaling OS" },
-        duration: { en: "90 days", de: "90 Tage" },
+        name: { en: "Talent Excellence", de: "Talent Excellence" },
+        duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
-        outcome: { en: "Time-to-Hire -60-80%, Retention +30-50%, Talent efficiency +200%", de: "Time-to-Hire -60-80%, Retention +30-50%, Talent-Effizienz +200%" },
+        outcome: { en: "Transform 2-3 talent components with AI integration", de: "2-3 Talent-Komponenten mit AI-Integration transformieren" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Talent", de: "AI-Native Talent" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full talent transformation, AI Maturity Level 3, Time-to-Hire -60%, Retention +30-50pp", de: "Vollständige Talent-Transformation, AI Maturity Level 3, Time-to-Hire -60%, Retention +30-50pp" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate/hypergrowth",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

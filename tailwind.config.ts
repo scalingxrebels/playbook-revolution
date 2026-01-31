@@ -150,7 +150,7 @@ export default {
         "slide-up": "slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-in-right": "slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
         "slide-in-left": "slide-in-left 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
-        "fade-in": "fade-in 0.5s ease-out",
+        "fade-in": "fade-in 0.5s ease-out forwards",
         "scale-in": "scale-in 0.3s ease-out",
         "blur-in": "blur-in 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
         "reveal-up": "reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1)",

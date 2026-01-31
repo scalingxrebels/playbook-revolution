@@ -21,16 +21,17 @@ interface CompanyData {
   growth: string;
   thetaIndex: number;
   color: string;
+  dataSource: string;
 }
 
 const companies: CompanyData[] = [
-  { name: 'Cursor', founded: '2022', valuation: '$29.3B', valuationNum: 29.3, revenue: '$1B+', revenueNum: 1000, growth: '293x/2y', thetaIndex: 0.92, color: '#3B82F6' },
-  { name: 'OpenAI', founded: '2015', valuation: '$80B+', valuationNum: 80, revenue: '$3.4B', revenueNum: 3400, growth: '42.5x/1y', thetaIndex: 0.95, color: '#10B981' },
-  { name: 'Stripe', founded: '2010', valuation: '$95B', valuationNum: 95, revenue: '$14B', revenueNum: 14000, growth: '95x/13y', thetaIndex: 0.90, color: '#6366F1' },
-  { name: 'Perplexity', founded: '2022', valuation: '$9B', valuationNum: 9, revenue: '$500M+', revenueNum: 500, growth: '18x/2y', thetaIndex: 0.88, color: '#14B8A6' },
-  { name: 'Figma', founded: '2012', valuation: '$20B', valuationNum: 20, revenue: '$425M', revenueNum: 425, growth: '20x/11y', thetaIndex: 0.87, color: '#F97316' },
-  { name: 'Midjourney', founded: '2021', valuation: 'N/A', valuationNum: 0, revenue: '$500M', revenueNum: 500, growth: '10x/3y', thetaIndex: 0.85, color: '#8B5CF6' },
-  { name: 'Notion', founded: '2016', valuation: '$10B', valuationNum: 10, revenue: '$100M+', revenueNum: 100, growth: '10x/8y', thetaIndex: 0.85, color: '#171717' },
+  { name: 'OpenAI', founded: '2015', valuation: '$80B+', valuationNum: 80, revenue: '$3.4B', revenueNum: 3400, growth: '42.5x/1y', thetaIndex: 0.95, color: '#10B981', dataSource: 'Public data' },
+  { name: 'Cursor', founded: '2022', valuation: '$400M', valuationNum: 0.4, revenue: '$100M', revenueNum: 100, growth: '40x/2y', thetaIndex: 0.90, color: '#3B82F6', dataSource: 'AMF v4.1, TechCrunch' },
+  { name: 'Stripe', founded: '2010', valuation: '$95B', valuationNum: 95, revenue: '$14B', revenueNum: 14000, growth: '95x/13y', thetaIndex: 0.90, color: '#6366F1', dataSource: 'Public data' },
+  { name: 'Midjourney', founded: '2021', valuation: 'N/A', valuationNum: 0, revenue: '$492M', revenueNum: 492, growth: '10x/3y', thetaIndex: 0.88, color: '#8B5CF6', dataSource: 'ANST v4.5.3' },
+  { name: 'Figma', founded: '2012', valuation: '$20B', valuationNum: 20, revenue: '$425M', revenueNum: 425, growth: '20x/11y', thetaIndex: 0.87, color: '#F97316', dataSource: 'Public data' },
+  { name: 'Perplexity', founded: '2022', valuation: '$9B', valuationNum: 9, revenue: '$200M+', revenueNum: 200, growth: '18x/2y', thetaIndex: 0.85, color: '#14B8A6', dataSource: 'AMF v4.1' },
+  { name: 'Notion', founded: '2016', valuation: '$10B', valuationNum: 10, revenue: '$100M+', revenueNum: 100, growth: '10x/8y', thetaIndex: 0.85, color: '#171717', dataSource: 'Public data' },
 ];
 
 type SortKey = 'name' | 'founded' | 'valuationNum' | 'revenueNum' | 'thetaIndex';
@@ -64,10 +65,10 @@ const CaseStudyComparisonTable = () => {
   };
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm">
       <Table>
         <TableHeader>
-          <TableRow className="border-border/50">
+          <TableRow className="border-border/50 bg-muted/30">
             <TableHead>
               <Button variant="ghost" size="sm" onClick={() => handleSort('name')} className="flex items-center -ml-3">
                 {language === 'en' ? 'Company' : 'Unternehmen'}
@@ -99,11 +100,12 @@ const CaseStudyComparisonTable = () => {
                 <SortIcon column="thetaIndex" />
               </Button>
             </TableHead>
+            <TableHead className="text-xs text-muted-foreground">Source</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {sortedCompanies.map((company) => (
-            <TableRow key={company.name} className="border-border/30 hover:bg-muted/50 transition-colors">
+            <TableRow key={company.name} className="border-border/30 hover:bg-primary/5 transition-colors duration-200">
               <TableCell className="font-semibold">
                 <div className="flex items-center gap-2">
                   <div 
@@ -129,6 +131,7 @@ const CaseStudyComparisonTable = () => {
                   {company.thetaIndex}
                 </span>
               </TableCell>
+              <TableCell className="text-xs text-muted-foreground">{company.dataSource}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -53,7 +53,7 @@ const HeroSection: React.FC = () => {
   };
 
   const heroStats = [
-    { value: '+0.3-0.5', label: { en: 'θ_index', de: 'θ_index' }, sublabel: { en: 'AI Maturity', de: 'AI Maturity' } },
+    { value: '+30-50%', label: { en: 'AI Maturity Score', de: 'AI Maturity Score' }, sublabel: { en: 'AI Maturity', de: 'AI Maturity' } },
     { value: '+10-20', label: { en: 'AI Use Cases', de: 'AI Use Cases' }, sublabel: { en: 'Deployed', de: 'Deployed' } },
     { value: '+40-60%', label: { en: 'Automation', de: 'Automation' }, sublabel: { en: 'Process', de: 'Prozess' } },
   ];
@@ -129,8 +129,8 @@ const HeroSection: React.FC = () => {
         {/* Subheadline */}
         <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de'
-            ? 'Baue deine AI Maturity in 90 Tagen. Typische Ergebnisse: θ_index +0.3-0.5, AI Use Cases +10-20, Automation +40-60% – mit 2 von 3 Ergebnissen garantiert.'
-            : 'Build your AI maturity in 90 days. Typical outcomes: θ_index +0.3-0.5, AI Use Cases +10-20, Process Automation +40-60%—with 2 of 3 outcomes guaranteed.'}
+            ? 'Baue deine AI Maturity in 90 Tagen. Typische Ergebnisse: AI Maturity Score +30-50%, AI Use Cases +10-20, Automation +40-60% – mit 2 von 3 Ergebnissen garantiert.'
+            : 'Build your AI maturity in 90 days. Typical outcomes: AI Maturity Score +30-50%, AI Use Cases +10-20, Process Automation +40-60%—with 2 of 3 outcomes guaranteed.'}
         </p>
 
         {/* Hero Stats */}
@@ -200,7 +200,7 @@ const ProblemSection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const symptoms = [
-    { en: 'Low AI maturity: θ_index 0.3 (Level 1: AI-Powered), using AI as tool only', de: 'Niedrige AI Maturity: θ_index 0.3 (Level 1: AI-Powered), AI nur als Tool' },
+    { en: 'Low AI maturity: AI Maturity Score 30% (Level 1: AI-Powered), using AI as tool only', de: 'Niedrige AI Maturity: AI Maturity Score 30% (Level 1: AI-Powered), AI nur als Tool' },
     { en: 'Few AI use cases: 2-5 use cases (benchmark: 20-50+), mostly pilots', de: 'Wenige AI Use Cases: 2-5 Use Cases (Benchmark: 20-50+), meist Piloten' },
     { en: 'Low automation: 10-20% (benchmark: 60-80%+), still manual processes', de: 'Niedrige Automation: 10-20% (Benchmark: 60-80%+), noch manuelle Prozesse' },
     { en: 'Slow time to market: 60-84 months to €100M (benchmark: 8-18 months)', de: 'Langsame Time-to-Market: 60-84 Monate bis €100M (Benchmark: 8-18 Monate)' },
@@ -209,12 +209,12 @@ const ProblemSection: React.FC = () => {
 
   const beforeAfter = {
     before: [
-      { metric: 'θ_index', value: '0.3 (Level 1)' },
+      { metric: 'AI Maturity Score', value: '30% (Level 1)' },
       { metric: 'AI Use Cases', value: '2-5' },
       { metric: 'Automation', value: '10-20%' },
     ],
     after: [
-      { metric: 'θ_index', value: '0.6-0.8 (Level 2)' },
+      { metric: 'AI Maturity Score', value: '60-80% (Level 2)' },
       { metric: 'AI Use Cases', value: '15-25' },
       { metric: 'Automation', value: '50-80%' },
     ],
@@ -243,8 +243,8 @@ const ProblemSection: React.FC = () => {
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
             {language === 'de'
-              ? 'Dein θ_index liegt bei 0.3 (Level 1: AI-Powered). Deine Wettbewerber sind bei 0.8+ (Level 3: AI-Native). Du nutzt AI als Tool (ChatGPT, Copilot), aber nicht als System. Deine Time-to-€100M liegt bei 60-84 Monaten (Benchmark: 8-18 Monate für AI-Native). Und das Schlimmste: Das Board fragt: "Wann werden wir AI-native?"'
-              : 'Your θ_index is 0.3 (Level 1: AI-Powered). Your competitors are 0.8+ (Level 3: AI-Native). You\'re using AI as a tool (ChatGPT, Copilot), but not as a system. Your time to €100M is 60-84 months (benchmark: 8-18 months for AI-native). And worst of all—the board is asking: "When will we become AI-native?"'}
+              ? 'Dein AI Maturity Score liegt bei 30% (Level 1: AI-Powered). Deine Wettbewerber sind bei 80%+ (Level 3: AI-Native). Du nutzt AI als Tool (ChatGPT, Copilot), aber nicht als System. Deine Time-to-€100M liegt bei 60-84 Monaten (Benchmark: 8-18 Monate für AI-Native). Und das Schlimmste: Das Board fragt: "Wann werden wir AI-native?"'
+              : 'Your AI Maturity Score is 30% (Level 1: AI-Powered). Your competitors are 80%+ (Level 3: AI-Native). You\'re using AI as a tool (ChatGPT, Copilot), but not as a system. Your time to €100M is 60-84 months (benchmark: 8-18 months for AI-native). And worst of all—the board is asking: "When will we become AI-native?"'}
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mt-4">
             {language === 'de'
@@ -323,7 +323,7 @@ const SolutionSection: React.FC = () => {
   const components = [
     {
       icon: Target,
-      title: { en: 'AI Strategy (C₁)', de: 'AI Strategy (C₁)' },
+      title: { en: 'AI Strategy', de: 'AI Strategy' },
       items: [
         { en: 'Design AI vision (where will AI create value?)', de: 'AI Vision designen (wo wird AI Wert schaffen?)' },
         { en: 'Build AI roadmap (which use cases first?)', de: 'AI Roadmap bauen (welche Use Cases zuerst?)' },
@@ -333,7 +333,7 @@ const SolutionSection: React.FC = () => {
     },
     {
       icon: Settings,
-      title: { en: 'AI Setup (C₂)', de: 'AI Setup (C₂)' },
+      title: { en: 'AI Setup', de: 'AI Setup' },
       items: [
         { en: 'Select AI tools (which tools for which use cases?)', de: 'AI Tools auswählen (welche Tools für welche Use Cases?)' },
         { en: 'Build AI infrastructure (data, APIs, integrations)', de: 'AI Infrastruktur bauen (Daten, APIs, Integrationen)' },
@@ -343,7 +343,7 @@ const SolutionSection: React.FC = () => {
     },
     {
       icon: Rocket,
-      title: { en: 'AI Execution (C₃)', de: 'AI Execution (C₃)' },
+      title: { en: 'AI Execution', de: 'AI Execution' },
       items: [
         { en: 'Deploy AI use cases (10-20 across GTM, product, ops)', de: 'AI Use Cases deployen (10-20 über GTM, Produkt, Ops)' },
         { en: 'Implement AI automation (workflow automation)', de: 'AI Automation implementieren (Workflow-Automation)' },
@@ -353,7 +353,7 @@ const SolutionSection: React.FC = () => {
     },
     {
       icon: Users,
-      title: { en: 'AI Operationalization (C₄)', de: 'AI Operationalization (C₄)' },
+      title: { en: 'AI Operationalization', de: 'AI Operationalization' },
       items: [
         { en: 'Build AI culture (AI-first mindset)', de: 'AI Kultur bauen (AI-first Mindset)' },
         { en: 'Create AI playbooks (systematic AI usage)', de: 'AI Playbooks erstellen (systematische AI-Nutzung)' },
@@ -368,7 +368,7 @@ const SolutionSection: React.FC = () => {
       title: { en: 'Diagnose', de: 'Diagnose' },
       timeline: { en: 'Week 1-2', de: 'Woche 1-2' },
       items: [
-        { en: 'θ_index Assessment: What\'s your AI maturity? (0-1 scale, 8 dimensions)', de: 'θ_index Assessment: Wie hoch ist deine AI Maturity? (0-1 Skala, 8 Dimensionen)' },
+        { en: 'AI Maturity Assessment: What\'s your current level? (0-100% scale, 8 dimensions)', de: 'AI Maturity Assessment: Wie hoch ist dein aktuelles Level? (0-100% Skala, 8 Dimensionen)' },
         { en: 'AI Use Case Analysis: Where should AI be deployed?', de: 'AI Use Case Analyse: Wo sollte AI deployed werden?' },
         { en: 'AI Capability Analysis: What AI capabilities are missing?', de: 'AI Capability Analyse: Welche AI Capabilities fehlen?' },
         { en: 'AI Readiness: What\'s blocking AI adoption?', de: 'AI Readiness: Was blockiert AI-Adoption?' },

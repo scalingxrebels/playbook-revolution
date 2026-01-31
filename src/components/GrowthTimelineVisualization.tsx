@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { 
   Image, Code, Search, Bot, CreditCard, Palette, FileText,
   TrendingUp, Play, Pause
@@ -20,6 +21,7 @@ interface TimelineCompany {
   name: string;
   icon: React.ElementType;
   color: string;
+  darkColor?: string;
   founded: number;
   data: { year: number; value: number; label: string; milestone?: string }[];
   metric: string;
@@ -35,10 +37,7 @@ const companies: TimelineCompany[] = [
     metric: 'Valuation ($B)',
     data: [
       { year: 2022, value: 0, label: 'Founded' },
-      { year: 2023, value: 0.1, label: '$100M', milestone: 'Series A' },
-      { year: 2024, value: 0.6, label: '$600M', milestone: 'Series B' },
-      { year: 2025, value: 9.9, label: '$9.9B', milestone: 'Series C' },
-      { year: 2025.5, value: 29.3, label: '$29.3B', milestone: 'Series D' },
+      { year: 2024, value: 0.4, label: '$400M', milestone: 'Series B (Aug 2024)' },
     ],
   },
   {
@@ -50,9 +49,8 @@ const companies: TimelineCompany[] = [
     metric: 'Valuation ($B)',
     data: [
       { year: 2022, value: 0, label: 'Founded' },
-      { year: 2023, value: 0.5, label: '$500M' },
-      { year: 2024, value: 3, label: '$3B' },
-      { year: 2025, value: 9, label: '$9B', milestone: '18x in 2 years' },
+      { year: 2024, value: 0.2, label: '$200M (est.)', milestone: 'Revenue' },
+      { year: 2025, value: 9, label: '$9B', milestone: '$9B Valuation' },
     ],
   },
   {
@@ -103,7 +101,8 @@ const companies: TimelineCompany[] = [
     id: 'notion',
     name: 'Notion',
     icon: FileText,
-    color: '#A855F7',
+    color: '#171717',
+    darkColor: '#E5E5E5',
     founded: 2016,
     metric: 'Valuation ($B)',
     data: [
@@ -125,14 +124,19 @@ const companies: TimelineCompany[] = [
       { year: 2022, value: 50, label: '$50M' },
       { year: 2023, value: 200, label: '$200M', milestone: '+300%' },
       { year: 2024, value: 300, label: '$300M', milestone: '+50%' },
-      { year: 2025, value: 500, label: '$500M', milestone: '21M Discord' },
+      { year: 2025, value: 492, label: '$492M', milestone: '107 employees' },
     ],
   },
 ];
 
 const GrowthTimelineVisualization = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [selectedCompanies, setSelectedCompanies] = useState<string[]>(['cursor', 'openai', 'stripe']);
+  
+  // Helper to get theme-aware color
+  const getCompanyColor = (company: TimelineCompany) => 
+    (theme === 'dark' && company.darkColor) ? company.darkColor : company.color;
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationProgress, setAnimationProgress] = useState(1);
   const [hoveredPoint, setHoveredPoint] = useState<{ company: string; year: number } | null>(null);
@@ -168,16 +172,15 @@ const GrowthTimelineVisualization = () => {
   const minYear = Math.min(...allYears);
   const maxYear = Math.max(...allYears);
   
-  // Create unified timeline data
+  // Create unified timeline data - NO animation on values for stable curves
   const timelineData: { year: number; [key: string]: number | string | undefined }[] = [];
-  for (let year = minYear; year <= maxYear; year += 0.5) {
+  for (let year = minYear; year <= maxYear; year++) {
     const point: { year: number; [key: string]: number | string | undefined } = { year };
     selectedData.forEach(company => {
       const dataPoint = company.data.find(d => d.year === year);
       const prevPoint = company.data.filter(d => d.year <= year).pop();
       if (dataPoint) {
-        const animatedValue = dataPoint.value * animationProgress;
-        point[company.id] = animatedValue;
+        point[company.id] = dataPoint.value;
         point[`${company.id}_label`] = dataPoint.label;
         point[`${company.id}_milestone`] = dataPoint.milestone;
       } else if (prevPoint && year > prevPoint.year) {
@@ -185,7 +188,7 @@ const GrowthTimelineVisualization = () => {
         if (nextPoint) {
           const progress = (year - prevPoint.year) / (nextPoint.year - prevPoint.year);
           const interpolated = prevPoint.value + (nextPoint.value - prevPoint.value) * progress;
-          point[company.id] = interpolated * animationProgress;
+          point[company.id] = interpolated;
         }
       }
     });
@@ -264,6 +267,7 @@ const GrowthTimelineVisualization = () => {
         {companies.map(company => {
           const Icon = company.icon;
           const isSelected = selectedCompanies.includes(company.id);
+          const companyColor = getCompanyColor(company);
           return (
             <button
               key={company.id}
@@ -272,11 +276,14 @@ const GrowthTimelineVisualization = () => {
                 flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium
                 transition-all duration-200 border
                 ${isSelected 
-                  ? 'border-transparent text-white shadow-lg' 
+                  ? 'border-transparent shadow-lg' 
                   : 'border-border bg-background/50 text-muted-foreground hover:text-foreground hover:border-primary/50'
                 }
               `}
-              style={isSelected ? { backgroundColor: company.color } : undefined}
+              style={isSelected ? { 
+                backgroundColor: companyColor,
+                color: theme === 'dark' && company.darkColor ? '#171717' : '#FFFFFF'
+              } : undefined}
             >
               <Icon className="w-4 h-4" />
               {company.name}
@@ -306,40 +313,54 @@ const GrowthTimelineVisualization = () => {
             />
             <Tooltip content={<CustomTooltip />} />
             
-            {selectedData.map(company => (
-              <Line
-                key={company.id}
-                type="monotone"
-                dataKey={company.id}
-                stroke={company.color}
-                strokeWidth={3}
-                dot={false}
-                activeDot={{ 
-                  r: 6, 
-                  fill: company.color,
-                  stroke: 'hsl(var(--background))',
-                  strokeWidth: 2
-                }}
-                connectNulls
-              />
-            ))}
+            {selectedData.map(company => {
+              const companyColor = getCompanyColor(company);
+              return (
+                <Line
+                  key={company.id}
+                  type="monotone"
+                  dataKey={company.id}
+                  stroke={companyColor}
+                  strokeWidth={3}
+                  dot={false}
+                  activeDot={{ 
+                    r: 6, 
+                    fill: companyColor,
+                    stroke: 'hsl(var(--background))',
+                    strokeWidth: 2
+                  }}
+                  connectNulls
+                  strokeDasharray="2000"
+                  strokeDashoffset={2000 * (1 - animationProgress)}
+                  style={{
+                    transition: 'stroke-dashoffset 0.1s linear'
+                  }}
+                />
+              );
+            })}
 
-            {/* Milestone dots */}
-            {selectedData.map(company => 
-              company.data
+            {/* Milestone dots - appear sequentially as animation progresses */}
+            {selectedData.map(company => {
+              const companyColor = getCompanyColor(company);
+              return company.data
                 .filter(d => d.milestone)
-                .map((d, i) => (
-                  <ReferenceDot
-                    key={`${company.id}-${i}`}
-                    x={d.year}
-                    y={d.value * animationProgress}
-                    r={8}
-                    fill={company.color}
-                    stroke="hsl(var(--background))"
-                    strokeWidth={2}
-                  />
-                ))
-            )}
+                .map((d, i) => {
+                  const pointProgress = (d.year - minYear) / (maxYear - minYear);
+                  const isVisible = animationProgress >= pointProgress;
+                  
+                  return (
+                    <ReferenceDot
+                      key={`${company.id}-${i}`}
+                      x={d.year}
+                      y={d.value}
+                      r={isVisible ? 8 : 0}
+                      fill={companyColor}
+                      stroke="hsl(var(--background))"
+                      strokeWidth={2}
+                    />
+                  );
+                });
+            })}
           </LineChart>
         </ResponsiveContainer>
       </div>
@@ -348,8 +369,8 @@ const GrowthTimelineVisualization = () => {
       <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {selectedData.map(company => {
           const Icon = company.icon;
-          const latestData = company.data[company.data.length - 1];
           const milestones = company.data.filter(d => d.milestone);
+          const companyColor = getCompanyColor(company);
           
           return (
             <div 
@@ -359,9 +380,9 @@ const GrowthTimelineVisualization = () => {
               <div className="flex items-center gap-2 mb-3">
                 <div 
                   className="w-8 h-8 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `${company.color}20` }}
+                  style={{ backgroundColor: `${companyColor}20` }}
                 >
-                  <Icon className="w-4 h-4" style={{ color: company.color }} />
+                  <Icon className="w-4 h-4" style={{ color: companyColor }} />
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">{company.name}</p>
@@ -378,7 +399,7 @@ const GrowthTimelineVisualization = () => {
                     className="flex items-center justify-between text-sm"
                   >
                     <span className="text-muted-foreground">{Math.floor(m.year)}</span>
-                    <span className="font-medium" style={{ color: company.color }}>
+                    <span className="font-medium" style={{ color: companyColor }}>
                       {m.label}
                     </span>
                     {m.milestone && (

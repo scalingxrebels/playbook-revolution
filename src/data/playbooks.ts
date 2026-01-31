@@ -32,27 +32,27 @@ export const playbooks: Playbook[] = [
       de: 'AI-Native Scaling Playbook',
     },
     description: {
-      en: 'The complete framework for AI-native transformation. Learn the complete framework (4 Capabilities × 8 Dimensions × AI) used by AI-native companies to scale 10-30x faster, reach €100M ARR in 8-18 months (vs. 8-12 years traditional), and achieve 2-5x ARR/Employee. Includes 5 domain playbooks, 12 sub-playbooks, implementation guides, and real-world case studies from 22 companies.',
-      de: 'Das komplette Framework für AI-native Transformation. Lerne das komplette Framework (4 Capabilities × 8 Dimensionen × AI), das AI-native Unternehmen nutzen, um 10-30x schneller zu skalieren, €100M ARR in 8-18 Monaten zu erreichen (vs. 8-12 Jahre traditionell) und 2-5x ARR/Mitarbeiter zu erzielen. Inklusive 5 Domain Playbooks, 12 Sub-Playbooks, Implementierungsguides und echten Case Studies von 22 Unternehmen.',
+      en: 'Your complete guide to AI-native scaling.\n\nLearn how AI-native companies scale 10-30x faster, reach €100M ARR in 8-18 months (vs. 8-12 years traditional), and achieve 2-5x ARR/Employee.\n\nIncludes practical guides for Strategy, Setup, Execution, and Operationalization—plus 4 domain playbooks, 12 sub-playbooks, and real-world case studies from 22 companies.',
+      de: 'Dein kompletter Guide für AI-native Skalierung.\n\nLerne, wie AI-native Unternehmen 10-30x schneller skalieren, €100M ARR in 8-18 Monaten erreichen (vs. 8-12 Jahre traditionell) und 2-5x ARR/Mitarbeiter erzielen.\n\nInklusive praktischer Guides für Strategy, Setup, Execution und Operationalization—plus 4 Domain Playbooks, 12 Sub-Playbooks und echte Case Studies von 22 Unternehmen.',
     },
     outcomes: {
       en: [
         'Scale 10-30x faster than traditional companies',
         'Reach €100M ARR in 8-18 months (vs. 8-12 years)',
-        'Achieve €500k-€1.5M ARR/Employee (vs. €150k-€200k)',
-        '5 domain playbooks + 12 sub-playbooks included',
+        'Achieve 2-5x ARR/Employee (vs. traditional)',
+        '4 domain playbooks + 12 sub-playbooks included',
       ],
       de: [
         '10-30x schneller skalieren als traditionelle Unternehmen',
         '€100M ARR in 8-18 Monaten erreichen (vs. 8-12 Jahre)',
-        '€500k-€1.5M ARR/Mitarbeiter erzielen (vs. €150k-€200k)',
-        '5 Domain Playbooks + 12 Sub-Playbooks inklusive',
+        '2-5x ARR/Mitarbeiter erzielen (vs. traditionell)',
+        '4 Domain Playbooks + 12 Sub-Playbooks inklusive',
       ],
     },
-    caseStudies: ['Series A (€100M ARR in 14 months)', 'Series B (θ_index 0.88)', 'Series C (IPO-Ready, €150M ARR)'],
+    caseStudies: ['Series A (€100M ARR in 14 months)', 'Series B (AI-Native Transformation)', 'Series C (IPO-Ready, €150M ARR)'],
     icon: React.createElement(Zap, { className: 'w-6 h-6' }),
     gradient: 'from-purple-500 to-violet-500',
-    impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio', 'strategic-capabilities'],
+    impact: ['growth-engines', 'operating-systems', 'board-governance', 'portfolio'],
     bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
     role: ['ceo', 'cmo-cro', 'coo', 'cfo', 'cto', 'cpo', 'vc-board'],
     ebene: 1,
@@ -374,8 +374,8 @@ export const playbooks: Playbook[] = [
     id: 'board-governance',
     slug: 'board-governance',
     title: {
-      en: 'AI-Native Board & Governance Playbook',
-      de: 'AI-Native Board & Governance Playbook',
+      en: 'Board & Governance Playbook',
+      de: 'Board & Governance Playbook',
     },
     description: {
       en: 'How to transform board and governance systems with AI-native frameworks. Learn the complete framework (Strategic Governance, Operational Governance, Exit/M&A) used by AI-native companies to reduce board prep time by 80%, increase board confidence by 100%, and achieve 2-5x valuation premiums. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
@@ -411,8 +411,8 @@ export const playbooks: Playbook[] = [
     id: 'portfolio-transformation',
     slug: 'portfolio-transformation',
     title: {
-      en: 'AI-Native Portfolio Transformation Playbook',
-      de: 'AI-Native Portfolio Transformation Playbook',
+      en: 'Portfolio Transformation Playbook',
+      de: 'Portfolio Transformation Playbook',
     },
     description: {
       en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
@@ -483,8 +483,8 @@ export const playbooks: Playbook[] = [
       de: 'Portfolio Excellence Playbook',
     },
     description: {
-      en: 'How to transform portfolio performance with AI-native operations. Learn the 5-component framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence) used by VCs/PEs to increase portfolio valuation by 200-400% and achieve 3-5x faster growth. Includes best practices, implementation guide, and real-world case studies from VC/PE portfolios.',
-      de: 'Wie du Portfolio-Performance mit AI-native Operations transformierst. Lerne das 5-Komponenten-Framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence), das VCs/PEs nutzen, um Portfolio-Bewertungen um 200-400% zu steigern und 3-5x schnelleres Wachstum zu erzielen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von VC/PE Portfolios.',
+      en: 'How to transform portfolio companies systematically and achieve 3-5x value increase. Learn the 5-component framework (Assessment, Prioritization, Playbook, Execution, Measurement) used by top-tier VCs/PEs to transform 10-30 companies, improve portfolio IRR from 15% to 40%+, and achieve faster exits. Includes implementation guides, assessment tools, and real-world case studies from leading VC/PE firms.',
+      de: 'Wie du Portfolio-Unternehmen systematisch transformierst und 3-5x Wertsteigerung erreichst. Lerne das 5-Komponenten-Framework (Assessment, Priorisierung, Playbook, Execution, Measurement), das Top-Tier VCs/PEs nutzen, um 10-30 Unternehmen zu transformieren, Portfolio-IRR von 15% auf 40%+ zu verbessern und schnellere Exits zu erzielen. Inklusive Implementierungsguides, Assessment-Tools und echten Case Studies von führenden VC/PE-Firmen.',
     },
     outcomes: {
       en: [
@@ -513,8 +513,8 @@ export const playbooks: Playbook[] = [
     id: 'growth-engines',
     slug: 'growth-engines',
     title: {
-      en: 'AI-Native Growth Engines Playbook',
-      de: 'AI-Native Growth Engines Playbook',
+      en: 'Growth Engines Playbook',
+      de: 'Growth Engines Playbook',
     },
     description: {
       en: 'How to transform revenue generation with AI-native growth engines. Learn the complete framework (GTM/Revenue, Product, Customer Success) used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
@@ -547,8 +547,8 @@ export const playbooks: Playbook[] = [
     id: 'operating-systems',
     slug: 'operating-systems',
     title: {
-      en: 'AI-Native Operating Systems Playbook',
-      de: 'AI-Native Operating Systems Playbook',
+      en: 'Operating Systems Playbook',
+      de: 'Operating Systems Playbook',
     },
     description: {
       en: 'How to transform infrastructure and processes with AI-native operating systems. Learn the complete framework (Operations, Finance, Talent, Data/Tech) used by AI-native companies to achieve 2-5x efficiency gains, reduce operational costs by 30-50%, and scale without linear headcount growth. Includes 4 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
@@ -585,24 +585,24 @@ export const playbooks: Playbook[] = [
       de: 'Strategic Capabilities Playbook',
     },
     description: {
-      en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the 5-component framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence) used by AI-native companies to improve θ_index from 0.35 to 0.75+ and achieve 3-5x faster scaling. Includes best practices, implementation guide, and real-world case studies from Series A-C companies.',
-      de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das 5-Komponenten-Framework (Capability Assessment, Capability Development, Capability Integration, Capability Optimization, AI-Powered Capability Excellence), das AI-native Unternehmen nutzen, um θ_index von 0.35 auf 0.75+ zu verbessern und 3-5x schnellere Skalierung zu erreichen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von Series A-C Unternehmen.',
+      en: 'How to improve the 4 core capabilities that drive AI-native scaling. Learn the practical framework (Strategy, Setup, Execution, Operationalization) used by AI-native companies to reach AI-Native Maturity (Level 3) and achieve 3-5x faster scaling. Includes implementation guides, capability assessment tools, and real-world case studies from Series A-C companies.',
+      de: 'Wie du die 4 Kern-Capabilities verbesserst, die AI-native Skalierung antreiben. Lerne das praktische Framework (Strategy, Setup, Execution, Operationalization), das AI-native Unternehmen nutzen, um AI-Native Maturity (Level 3) zu erreichen und 3-5x schnellere Skalierung zu erzielen. Inklusive Implementierungsguides, Capability-Assessment-Tools und echten Case Studies von Series A-C Unternehmen.',
     },
     outcomes: {
       en: [
-        'θ_index improvement from 0.35 to 0.75+',
+        'Reach AI-Native Maturity (Level 3)',
         'Scaling velocity increase of 3-5x',
-        'Capability bottleneck (C_min) identification and fix',
+        'Capability bottleneck identification and fix',
         'Clear 90-day implementation roadmap',
       ],
       de: [
-        'θ_index Verbesserung von 0.35 auf 0.75+',
+        'AI-Native Maturity (Level 3) erreichen',
         'Skalierungsgeschwindigkeit Steigerung von 3-5x',
-        'Capability Bottleneck (C_min) Identifikation und Fix',
+        'Capability-Bottleneck-Identifikation und Fix',
         'Klare 90-Tage-Implementierungs-Roadmap',
       ],
     },
-    caseStudies: ['Series A SaaS (θ_index +123%)', 'Series B SaaS (All C > 0.7)', 'Series C (θ_index 0.88 AI-Native)'],
+    caseStudies: ['Series A SaaS (CAC -50%)', 'Series B SaaS (ARR +60%)', 'Series C (AI-Native Level 3)'],
     icon: React.createElement(Target, { className: 'w-6 h-6' }),
     gradient: 'from-red-500 to-rose-500',
     impact: ['strategic-capabilities'],

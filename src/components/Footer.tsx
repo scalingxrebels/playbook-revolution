@@ -142,6 +142,19 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* AI-Native Scaling */}
+              <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 mt-8">
+                AI-Native Scaling
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/glossar" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    <span>{language === 'de' ? 'Glossar' : 'Glossary'}</span>
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                </li>
+              </ul>
             </div>
 
             {/* Contact */}
