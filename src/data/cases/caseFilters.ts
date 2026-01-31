@@ -12,6 +12,7 @@ export const challengeFilters: CaseFilterOption[] = [
   { id: 'growth-stalled', label: { en: 'Growth Stalled', de: 'Wachstum stagniert' } },
   { id: 'ops-chaos', label: { en: 'Ops Chaos', de: 'Ops-Chaos' } },
   { id: 'exit-prep', label: { en: 'Exit Prep', de: 'Exit-Vorbereitung' } },
+  { id: 'partner-channel', label: { en: 'Partner Channel', de: 'Partner Channel' } },
 ];
 
 export const industryFilters: CaseFilterOption[] = [
@@ -21,6 +22,7 @@ export const industryFilters: CaseFilterOption[] = [
   { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
   { id: 'enterprise', label: { en: 'Enterprise', de: 'Enterprise' } },
   { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
+  { id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } },
 ];
 
 export const stageFilters: CaseFilterOption[] = [
@@ -30,6 +32,7 @@ export const stageFilters: CaseFilterOption[] = [
   { id: 'series-b', label: { en: 'Series B', de: 'Series B' } },
   { id: 'series-c', label: { en: 'Series C', de: 'Series C' } },
   { id: 'pe-backed', label: { en: 'PE-Backed', de: 'PE-Backed' } },
+  { id: 'established', label: { en: 'Established', de: 'Etabliert' } },
 ];
 
 export const timelineFilters: CaseFilterOption[] = [

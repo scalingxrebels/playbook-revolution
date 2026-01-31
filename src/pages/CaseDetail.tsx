@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, Download, Calendar, TrendingUp, Quote, Lightbulb, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Download, Calendar, TrendingUp, Quote, Lightbulb, CheckCircle2, ExternalLink, Clock, Target } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import TwinklingStars from '@/components/TwinklingStars';
-import { getCaseStudyBySlug, ClientCaseStudy } from '@/data/cases';
+import { getCaseStudyBySlug, ClientCaseStudy, RelatedSolution } from '@/data/cases';
 
 const CaseDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -357,6 +357,72 @@ const CaseDetail: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* SECTION 6: RELATED SOLUTIONS (conditional) */}
+      {caseStudy.relatedSolutions && caseStudy.relatedSolutions.length > 0 && (
+        <section className="py-16 bg-muted/30">
+          <div className="container max-w-4xl mx-auto px-4">
+            <h2 className="font-display text-2xl font-bold mb-4 flex items-center gap-3">
+              <span className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center text-sm font-mono text-blue-500">6</span>
+              {language === 'de' ? 'Passende Lösungen' : 'Related Solutions'}
+            </h2>
+            <p className="text-muted-foreground mb-8">
+              {language === 'de' 
+                ? 'Wenn Sie ähnliche Herausforderungen haben, können diese Lösungen helfen:'
+                : 'If you\'re facing similar challenges, these solutions can help:'}
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-4">
+              {caseStudy.relatedSolutions.map((solution, idx) => (
+                <Card key={idx} className="p-5 bg-card hover:border-primary/50 transition-colors">
+                  {/* Type Badge */}
+                  <Badge 
+                    variant={solution.type === 'primary' ? 'default' : solution.type === 'alternative' ? 'secondary' : 'outline'}
+                    className="mb-3"
+                  >
+                    {solution.type === 'primary' 
+                      ? (language === 'de' ? 'Empfohlen' : 'Recommended')
+                      : solution.type === 'alternative'
+                        ? (language === 'de' ? 'Alternative' : 'Alternative')
+                        : (language === 'de' ? 'Verwandt' : 'Related')}
+                  </Badge>
+
+                  {/* Solution Name */}
+                  <h3 className="font-semibold text-lg mb-2">{t(solution.name)}</h3>
+
+                  {/* Duration & Investment */}
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" />
+                      {solution.duration}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Target className="w-3.5 h-3.5" />
+                      {solution.investment}
+                    </span>
+                  </div>
+
+                  {/* Focus */}
+                  <p className="text-sm text-muted-foreground mb-3">{t(solution.focus)}</p>
+
+                  {/* Outcome */}
+                  <div className="p-2 bg-emerald-500/10 rounded text-sm text-emerald-600 dark:text-emerald-400 mb-4">
+                    {t(solution.outcome)}
+                  </div>
+
+                  {/* CTA */}
+                  <Button asChild variant="outline" size="sm" className="w-full">
+                    <Link to={solution.url}>
+                      {language === 'de' ? 'Mehr erfahren' : 'Learn More'}
+                      <ExternalLink className="w-3.5 h-3.5 ml-2" />
+                    </Link>
+                  </Button>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SECTION 6: NEXT STEPS / CTA */}
       <section className="py-16 bg-gradient-to-b from-background to-primary/5">
