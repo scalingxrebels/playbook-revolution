@@ -23,6 +23,13 @@ const casesStats = [
   { value: '94%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
 ];
 
+const clientNames = [
+  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
+  'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
+  'SBB E-Business', 'Swarovski', 'local.ch', 'BWK Group', 'DBA', 'Burda Media',
+  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax', 'BeQueen', 'BonGusto'
+];
+
 interface CaseDetailModalProps {
   caseStudy: ClientCase | null;
   open: boolean;
@@ -158,6 +165,29 @@ const Cases: React.FC = () => {
         subheadlineDe="Echte Ergebnisse von Unternehmen, die den Sprung von linearem zu superlinearem Wachstum geschafft haben."
         stats={casesStats}
       />
+
+      {/* Client Ticker */}
+      <div className="relative z-10 border-y border-border py-4 bg-background/50">
+        <div className="container max-w-7xl mx-auto px-4 mb-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
+          </span>
+        </div>
+        <div className="overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="flex items-center gap-6 px-4">
+                {clientNames.map((name, idx) => (
+                  <span key={`${i}-${idx}`} className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
+                    <span className="w-1 h-1 rounded-full bg-primary/40" />
+                    {name}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       
       <main className="pt-6 md:pt-8 pb-20">
         <div className="container max-w-7xl mx-auto px-4">
