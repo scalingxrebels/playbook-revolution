@@ -513,8 +513,8 @@ export const playbooks: Playbook[] = [
     id: 'growth-engines',
     slug: 'growth-engines',
     title: {
-      en: 'AI-Native Growth Engines Playbook',
-      de: 'AI-Native Growth Engines Playbook',
+      en: 'Growth Engines Playbook',
+      de: 'Growth Engines Playbook',
     },
     description: {
       en: 'How to transform revenue generation with AI-native growth engines. Learn the complete framework (GTM/Revenue, Product, Customer Success) used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',

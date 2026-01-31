@@ -8,14 +8,14 @@ export const growthEnginesData: PlaybookPageData = {
   hero: {
     breadcrumb: { en: "Playbooks", de: "Playbooks" },
     badge: { en: "Growth Engines · Domain Playbook", de: "Growth Engines · Domain Playbook" },
-    title: "AI-Native Growth Engines Playbook",
+    title: "Growth Engines Playbook",
     subtitle: { 
       en: "How to transform revenue generation with AI-native growth engines", 
       de: "Wie du Revenue-Generierung mit AI-native Growth Engines transformierst" 
     },
     description: { 
-      en: "Traditional growth engines are broken. Companies rely on manual sales, slow product development, and reactive customer success. The result? High CAC (€10k-€50k), low LTV/CAC (2-3x), and slow growth (30-50% YoY). They scale linearly: Revenue ≈ People.\n\nAI-native companies use a different playbook. They leverage the Growth Engines Framework (GTM/Revenue × Product × Customer Success × AI) to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%. They scale superlinearly: Revenue >>> People.\n\nThis playbook gives you the complete framework used by AI-native companies to build world-class growth engines. Learn from 3 detailed sub-playbooks, implementation guides, and real-world case studies.", 
-      de: "Traditionelle Growth Engines sind kaputt. Unternehmen verlassen sich auf manuellen Vertrieb, langsame Produktentwicklung und reaktiven Customer Success. Das Ergebnis? Hohe CAC (€10k-€50k), niedriger LTV/CAC (2-3x), und langsames Wachstum (30-50% YoY). Sie skalieren linear: Revenue ≈ People.\n\nAI-native Unternehmen nutzen ein anderes Playbook. Sie nutzen das Growth Engines Framework (GTM/Revenue × Product × Customer Success × AI) um 3-5x schnelleres Wachstum zu erzielen, CAC um 60-75% zu senken und LTV/CAC um 50-100% zu steigern. Sie skalieren superlinear: Revenue >>> People.\n\nDieses Playbook gibt dir das komplette Framework, das AI-native Unternehmen nutzen, um erstklassige Growth Engines aufzubauen. Lerne von 3 detaillierten Sub-Playbooks, Implementierungsguides und echten Case Studies." 
+      en: "Most companies struggle with revenue growth because they focus on individual tactics instead of systematic growth engines. They optimize CAC, improve product features, or enhance customer success—but don't integrate all three into a cohesive growth system.\n\nThis playbook teaches you the complete framework used by AI-native companies to achieve 3-5x faster growth, reduce CAC by 60-75%, and increase LTV/CAC by 50-100%.\n\nYou'll learn how to build AI-native GTM/Revenue engines, create AI-powered Product engines, scale Customer Success with AI, integrate all 3 engines into one growth system, and measure progress with Growth Maturity Levels. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies.", 
+      de: "Die meisten Unternehmen kämpfen mit Revenue-Wachstum, weil sie sich auf einzelne Taktiken statt auf systematische Growth Engines konzentrieren. Sie optimieren CAC, verbessern Product Features oder erweitern Customer Success—aber integrieren nicht alle drei in ein kohärentes Wachstumssystem.\n\nDieses Playbook lehrt dich das komplette Framework, das AI-native Unternehmen nutzen, um 3-5x schnelleres Wachstum zu erzielen, CAC um 60-75% zu senken und LTV/CAC um 50-100% zu steigern.\n\nDu lernst, wie du AI-native GTM/Revenue Engines baust, AI-powered Product Engines erstellst, Customer Success mit AI skalierst, alle 3 Engines in ein Growth System integrierst und Fortschritt mit Growth Maturity Levels misst. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echten Case Studies." 
     },
     trustBadges: [
       { en: "~3,000 Words", de: "~3.000 Wörter" },
@@ -38,15 +38,15 @@ export const growthEnginesData: PlaybookPageData = {
     whyItMatters: { 
       title: { en: "Why It Matters", de: "Warum es wichtig ist" }, 
       text: { 
-        en: "Growth Engines are MULTIPLICATIVE (not additive). Weak GTM × Strong Product × Strong CS = Bottleneck. You need all three firing.", 
-        de: "Growth Engines sind MULTIPLIKATIV (nicht additiv). Schwacher GTM × Starkes Product × Starker CS = Bottleneck. Du brauchst alle drei." 
+        en: "GTM, Product, and Customer Success must work together as one integrated system. A weak engine becomes a bottleneck for the entire growth system.", 
+        de: "GTM, Product und Customer Success müssen als ein integriertes System zusammenarbeiten. Eine schwache Engine wird zum Bottleneck für das gesamte Wachstumssystem." 
       } 
     },
     solution: { 
       title: { en: "The Solution", de: "Die Lösung" }, 
       text: { 
-        en: "The Growth Engines Framework: Hypergrowth = GTM × Product × Customer Success × AI. Build all three engines systematically with AI at the core.", 
-        de: "Das Growth Engines Framework: Hypergrowth = GTM × Product × Customer Success × AI. Baue alle drei Engines systematisch mit AI im Kern." 
+        en: "The Growth Engines Framework: Build all 3 engines (GTM, Product, CS) systematically with AI integration at each level.", 
+        de: "Das Growth Engines Framework: Baue alle 3 Engines (GTM, Product, CS) systematisch mit AI-Integration auf jeder Ebene." 
       } 
     }
   },
@@ -72,9 +72,9 @@ export const growthEnginesData: PlaybookPageData = {
   framework: { 
     title: { en: "The Growth Engines Framework", de: "Das Growth Engines Framework" }, 
     subtitle: { 
-      en: "Hypergrowth = GTM/Revenue × Product × Customer Success × AI", 
-      de: "Hypergrowth = GTM/Revenue × Product × Customer Success × AI" 
-    }, 
+      en: "A systematic approach to transform GTM, Product, and Customer Success", 
+      de: "Ein systematischer Ansatz zur Transformation von GTM, Product und Customer Success" 
+    },
     items: [
       {
         id: "gtm-revenue",
@@ -261,8 +261,8 @@ export const growthEnginesData: PlaybookPageData = {
           de: "Muss Hypergrowth (100%+ YoY) für Series C Finanzierung erreichen" 
         },
         solution: { 
-          en: "Multi-channel GTM + AI-powered sales + AI-native product features + rapid iteration + Expansion playbooks + AI-powered CS. Full AI-native transformation (θ_index 0.42 → 0.85)", 
-          de: "Multi-Channel GTM + AI-gestützter Vertrieb + AI-native Product Features + schnelle Iteration + Expansion Playbooks + AI-gestützter CS. Volle AI-native Transformation (θ_index 0.42 → 0.85)" 
+          en: "Multi-channel GTM + AI-powered sales + AI-native product features + rapid iteration + Expansion playbooks + AI-powered CS. AI Maturity: Level 1 → Level 3", 
+          de: "Multi-Channel GTM + AI-gestützter Vertrieb + AI-native Product Features + schnelle Iteration + Expansion Playbooks + AI-gestützter CS. AI Maturity: Level 1 → Level 3" 
         },
         results: [
           { metric: { en: "CAC", de: "CAC" }, before: "€25k", after: "€8k", change: "-68%" },
@@ -279,8 +279,8 @@ export const growthEnginesData: PlaybookPageData = {
           de: "Muss €100M ARR in 18 Monaten für IPO-Bereitschaft erreichen" 
         },
         solution: { 
-          en: "All 3 Growth Engines (comprehensive transformation). AI across all dimensions (θ_index 0.55 → 0.92). Full AI-native GTM + Product + CS stack.", 
-          de: "Alle 3 Growth Engines (umfassende Transformation). AI über alle Dimensionen (θ_index 0.55 → 0.92). Voller AI-native GTM + Product + CS Stack." 
+          en: "All 3 Growth Engines (comprehensive transformation). Full AI-native GTM + Product + CS stack. AI Maturity: Level 1 → Level 3", 
+          de: "Alle 3 Growth Engines (umfassende Transformation). Voller AI-native GTM + Product + CS Stack. AI Maturity: Level 1 → Level 3" 
         },
         results: [
           { metric: { en: "CAC", de: "CAC" }, before: "€30k", after: "€10k", change: "-67%" },
@@ -301,10 +301,21 @@ export const growthEnginesData: PlaybookPageData = {
     items: [
       {
         type: 'power-up',
+        name: { en: "Comprehensive Assessment", de: "Comprehensive Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full growth engine assessment (GTM, Product, CS), maturity scoring, bottleneck identification, 90-day roadmap", de: "Volle Growth Engine Bewertung (GTM, Product, CS), Maturity Scoring, Bottleneck-Identifikation, 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "emerald"
+      },
+      {
+        type: 'power-up',
         name: { en: "Growth Momentum", de: "Growth Momentum" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "€23.6K", de: "€23.6K" },
-        outcome: { en: "Growth Engines Assessment + Roadmap + Quick Wins", de: "Growth Engines Assessment + Roadmap + Quick Wins" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
+        outcome: { en: "Fix one growth engine in 30 days: focused sprint, one engine improvement, quick wins", de: "Fixe eine Growth Engine in 30 Tagen: fokussierter Sprint, eine Engine-Verbesserung, Quick Wins" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/growth-momentum",
         icon: "Zap",
@@ -315,13 +326,24 @@ export const growthEnginesData: PlaybookPageData = {
         name: { en: "Growth Engine", de: "Growth Engine" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
-        outcome: { en: "Full Growth Engine Transformation: CAC -60-75%, LTV/CAC +50-100%", de: "Volle Growth Engine Transformation: CAC -60-75%, LTV/CAC +50-100%" },
+        outcome: { en: "Transform 2-3 growth engines in 90 days: full transformation, AI integration, systematic improvement", de: "Transformiere 2-3 Growth Engines in 90 Tagen: volle Transformation, AI-Integration, systematische Verbesserung" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/growth-engine",
         icon: "Rocket",
         color: "blue"
       },
-    ] 
+      {
+        type: 'accelerate',
+        name: { en: "Full AI-Native Transformation", de: "Volle AI-Native Transformation" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full AI-native transformation, all 3 growth engines, AI Maturity Level 3, 3-5x scaling velocity", de: "Volle AI-native Transformation, alle 3 Growth Engines, AI Maturity Level 3, 3-5x Skalierungsgeschwindigkeit" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "violet"
+      },
+    ]
   },
   whoThisIsFor: { 
     title: { en: "Who Should Use This Playbook?", de: "Wer sollte dieses Playbook nutzen?" }, 
