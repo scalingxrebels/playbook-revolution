@@ -1,5 +1,5 @@
 
-# Plan: Strategic Capabilities Playbook v3.0 Synchronisation
+# Plan: Portfolio Transformation Playbook v3.0 Synchronisation
 
 ## Analyse der Inkonsistenzen
 
@@ -7,100 +7,136 @@
 
 | Aktuell | Briefing v3.0 | Status |
 |---------|---------------|--------|
-| C₁, C₂, C₃, C₄ | Strategy, Setup, Execution, Operationalization | ÄNDERN |
-| θ_index | AI Maturity Level (Level 1-3) | ÄNDERN |
-| C_min | "Capability Bottleneck" / "lowest maturity capability" | ÄNDERN |
-| Formeln (S = E × ...) | ENTFERNEN | ÄNDERN |
-| EXPERTISE-Tone | PLAYBOOKS-Tone (praktisch/hilfreich) | ÄNDERN |
+| θ_index 0.28 → 0.72 | AI Maturity: Level 1 → Level 2/3 | ÄNDERN |
+| θ_index 0.35 → 0.85 | AI Maturity: Level 1 → Level 3 | ÄNDERN |
+| θ_index 0.42 → 0.92 | AI Maturity: Level 1 → Level 3 | ÄNDERN |
+| "Achieve θ_index 0.8-1.0" | "Achieve AI-Native Maturity (Level 3)" | ÄNDERN |
+| "scored on θ_index" | "Portfolio Maturity scoring" | ÄNDERN |
+| EXPERTISE-Tone | PLAYBOOKS-Tone (Praktisch/Helpful) | ÄNDERN |
 
 ---
 
 ## Betroffene Dateien
 
-### 1. Kachel: `src/data/playbooks.ts` (Zeilen 581-613)
+### 1. Kachel: `src/data/playbooks.ts` (Zeilen 411-442)
 
-**Aktuelle Description:**
+**Aktuelle Titel:**
 ```
-"...used by AI-native companies to improve θ_index from 0.35 to 0.75+..."
-```
-
-**Briefing v3.0 Teaser:**
-```
-How to improve the 4 core capabilities that drive AI-native scaling.
-
-Learn the practical framework (Strategy, Setup, Execution, Operationalization) 
-used by AI-native companies to reach AI-Native Maturity (Level 3) and achieve 
-3-5x faster scaling.
-
-Includes implementation guides, capability assessment tools, and real-world 
-case studies from Series A-C companies.
+'AI-Native Portfolio Transformation Playbook'
 ```
 
-**Outcomes (aktuell vs. neu):**
-| Aktuell | Briefing v3.0 |
-|---------|---------------|
-| θ_index improvement from 0.35 to 0.75+ | Reach AI-Native Maturity (Level 3) |
-| Capability bottleneck (C_min) identification | Capability bottleneck identification |
-| 90-day implementation roadmap | 90-day implementation roadmap |
+**Briefing v3.0 Titel:**
+```
+'Portfolio Transformation Playbook'
+```
+
+**Bottleneck Tags:**
+- Aktuell: `['strategy', 'setup', 'execution-focus', 'operationalization']`
+- Briefing: "Portfolio Performance" (aber dieses Tag existiert nicht im Filter-System)
+- **Entscheidung:** Behalte aktuelle Tags, da "Portfolio Performance" kein gültiger Filter-Wert ist
 
 ---
 
-### 2. Landing Page: `src/data/playbooks/content/strategic-capabilities.ts`
+### 2. Landing Page: `src/data/playbooks/content/portfolio-transformation.ts`
 
-#### Section-by-Section Änderungen:
+#### θ_index Referenzen (KRITISCH - ALLE ENTFERNEN):
 
-**HERO (Zeilen 8-29):**
-- Badge: "Strategic Capabilities · Domain Playbook" → "Strategic Capabilities · Standalone Playbook"
-- Description: Entferne C_min, θ_index, Formeln
-- Trust Badges: "θ_index Framework" → "4 Capabilities Framework" oder "AI Maturity Levels"
+| Zeile | Aktuell | Briefing v3.0 |
+|-------|---------|---------------|
+| 186 | "Achieve θ_index 0.8-1.0" | "Achieve AI-Native Maturity (Level 3)" |
+| 222-223 | "scored on θ_index, performance, potential" | "scored on Portfolio Maturity" |
+| 272-273 | "θ_index 0.28 → 0.72" | "AI Maturity: Level 1 → Level 2" |
+| 290-291 | "θ_index 0.35 → 0.85" | "AI Maturity: Level 1 → Level 3" |
+| 307-309 | "θ_index 0.42 → 0.92" | "AI Maturity: Level 1 → Level 3" |
 
-**SUMMARY (Zeilen 30-51):**
-| Feld | Aktuell | Briefing v3.0 |
-|------|---------|---------------|
-| Problem | "C_min < 0.5, θ_index 0.35" | "Low capability maturity, no AI integration" |
-| Why It Matters | "S = E × (C₁^1.5...)" Formel | "Capabilities are multiplicative" (keine Formel) |
-| Solution | "θ_index 0.75+" | "AI-Native Maturity (Level 3)" |
+#### HERO Section (Zeilen 8-29):
 
-**PROBLEM SECTION (Zeilen 53-70):**
-- Ersetze alle C_min, θ_index Referenzen
-- Neue 3 Pain Points aus Briefing:
-  1. Low Capability Maturity
-  2. Capability Bottlenecks
-  3. No AI Maturity Roadmap
+**Aktuell:**
+- Title: "AI-Native Portfolio Transformation Playbook"
+- Badge: "Portfolio Transformation · Domain Playbook"
 
-**FRAMEWORK SECTION (Zeilen 72-189):**
-- Aktuell: 5 Components mit C₁-C₄ Referenzen
-- Neu: 5 Components ohne technische Variablen
-  1. Capability Assessment
-  2. Bottleneck Identification
-  3. Improvement Roadmap
-  4. AI Integration Plan
-  5. Progress Measurement
+**Briefing v3.0:**
+- Title: "Portfolio Transformation Playbook"
+- Badge: Beibehalten (Domain Playbook korrekt)
 
-**BEST PRACTICES (Zeilen 191-215):**
-- Entferne "θ_index Framework Deep Dive"
-- Entferne C₁-C₄ Referenzen
-- Neu: "4 Capabilities Overview" mit praktischen Definitionen
+#### SUMMARY Section (Zeilen 30-51):
 
-**ROADMAP (Zeilen 217-263):**
-- Entferne θ_index, C_min Referenzen
-- Fokus auf praktische Deliverables
+**Aktuell (Why It Matters):**
+```
+"Portfolio Transformation is MULTIPLICATIVE (not additive). 
+Portfolio Value = Portfolio Excellence × AI × Scale."
+```
 
-**CASE STUDIES (Zeilen 265-326):**
-- Ersetze θ_index Werte durch AI Maturity Levels
-- Ersetze C₂ durch "Setup capability"
-- Anonymisierte Cases beibehalten, aber Metriken anpassen
+**Briefing v3.0:** 
+Formel entfernen, praktischere Sprache:
+```
+"Portfolio Transformation requires systematic approach across all companies.
+Single company improvements don't scale—portfolio-wide transformation does."
+```
 
-**SOLUTIONS CONNECTION (Zeilen 328-363):**
-- Entferne θ_index Referenzen
-- "Capability Assessment" statt "θ_index assessment"
+#### FRAMEWORK Section (Zeilen 72-189):
 
-**WHO THIS IS FOR (Zeilen 365-404):**
-- Entferne θ_index Referenzen
-- Fokus auf "AI-Native Maturity (Level 3)"
+**Aktuelles Framework (5 Components):**
+1. Portfolio Intelligence & Analytics
+2. Value Creation Playbooks
+3. Operating Partner System
+4. Portfolio Governance
+5. AI-Powered Portfolio Operations
 
-**FINAL CTA (Zeilen 406-420):**
-- Trust Signals: "θ_index Framework (4×8 Matrix)" → "4 Capabilities × AI Maturity Levels"
+**Briefing v3.0 Framework (5 Pillars):**
+1. Portfolio Assessment
+2. Transformation Roadmap
+3. Systematic Execution
+4. AI Integration
+5. Portfolio Optimization
+
+**Empfehlung:** Framework-Struktur aktualisieren auf Briefing v3.0 Pillars
+
+#### ROADMAP Section (Zeilen 210-256):
+
+**Aktuell (Zeile 222-223):**
+```
+"Portfolio Assessment (All companies scored on θ_index, performance, potential)"
+```
+
+**Briefing v3.0:**
+```
+"Portfolio Assessment (All companies scored on Portfolio Maturity)"
+```
+
+#### CASE STUDIES Section (Zeilen 258-319):
+
+**Case Study 1 (Series A-B VC Firm):**
+- Aktuell: "θ_index 0.28 → 0.72"
+- Briefing: "AI Maturity: Level 1 → Level 2"
+- Portfolio Maturity: "Low → Medium"
+
+**Case Study 2 (Series B-C VC Firm):**
+- Aktuell: "θ_index 0.35 → 0.85"
+- Briefing: "AI Maturity: Level 1 → Level 3"
+- Portfolio Maturity: "Low → High"
+
+**Case Study 3 (PE Firm 30 Companies):**
+- Aktuell: "θ_index 0.42 → 0.92"
+- Briefing: "AI Maturity: Level 1 → Level 3"
+- Portfolio Maturity: "Low → High"
+
+#### SOLUTIONS CONNECTION Section (Zeilen 321-361):
+
+**Aktuelle Preise vs. Briefing v3.0:**
+
+| Tier | Aktuell | Briefing v3.0 | Aktion |
+|------|---------|---------------|--------|
+| Assessment | - | €10K-€25K | NEU HINZUFÜGEN |
+| Power Up | €23.6K | €50K-€150K (Quick Fix) | AKTUALISIEREN |
+| Boost | €200K-€500K | €200K-€500K (Transformation) | OK |
+| Accelerate | €360K-€720K | €350K-€720K (AI-Native) | LEICHT ANPASSEN |
+
+**Empfehlung:** Solution Tiers gemäß Briefing aktualisieren:
+1. Portfolio Assessment (€10K-€25K, 2-4 Wochen)
+2. Portfolio Quick Fix (€50K-€150K, 6 Monate)
+3. Portfolio Transformation (€200K-€500K, 12-18 Monate)
+4. AI-Native Portfolio (€350K-€720K, 24 Monate)
 
 ---
 
@@ -109,24 +145,18 @@ case studies from Series A-C companies.
 ### Datei 1: `src/data/playbooks.ts`
 | Zeilen | Änderung |
 |--------|----------|
-| 587-589 | Description ohne θ_index |
-| 591-603 | Outcomes ohne θ_index, C_min |
-| 605 | Case Studies ohne θ_index |
-| 608-610 | Impact/Bottleneck/Role Tags prüfen |
+| 413-415 | Title: "AI-Native Portfolio Transformation Playbook" → "Portfolio Transformation Playbook" |
+| 417-419 | Description bereits gut, nur Title-Anpassung |
 
-### Datei 2: `src/data/playbooks/content/strategic-capabilities.ts`
+### Datei 2: `src/data/playbooks/content/portfolio-transformation.ts`
 | Section | Änderungen |
 |---------|------------|
-| Hero | Badge, Description, Trust Badges |
-| Summary | Problem/Why/Solution Cards |
-| Problem | 3 Pain Points + Metrics |
-| Framework | 5 Components ohne C₁-C₄ |
-| Best Practices | Ohne θ_index Deep Dive |
-| Roadmap | Ohne θ_index, C_min |
-| Case Studies | AI Maturity statt θ_index |
-| Solutions | Capability Assessment statt θ_index |
-| Personas | Ohne θ_index |
-| Final CTA | Trust Signals anpassen |
+| Hero (8-29) | Title, Description anpassen (θ_index entfernen) |
+| Summary (30-51) | Formel entfernen, praktische Sprache |
+| Framework (72-189) | 5 Pillars statt 5 Components, θ_index entfernen (Zeile 186) |
+| Roadmap (210-256) | θ_index entfernen (Zeile 222-223) |
+| Case Studies (258-319) | θ_index → AI Maturity Levels (3 Stellen) |
+| Solutions (321-361) | 4 Tiers gemäß Briefing aktualisieren |
 
 ---
 
@@ -134,17 +164,13 @@ case studies from Series A-C companies.
 
 | Alt (ENTFERNEN) | Neu (VERWENDEN) |
 |-----------------|-----------------|
-| C₁ | Strategy |
-| C₂ | Setup |
-| C₃ | Execution |
-| C₄ | Operationalization |
 | θ_index | AI Maturity Level |
-| θ_index 0.35 | Level 1 (AI-Powered) |
-| θ_index 0.55 | Level 2 (AI-Enhanced) |
-| θ_index 0.75+ | Level 3 (AI-Native) |
-| C_min | Bottleneck capability / lowest maturity |
-| C_min < 0.5 | Low capability maturity |
-| C_min > 0.7 | High capability maturity |
+| θ_index 0.28-0.40 | Level 1 (AI-Powered) |
+| θ_index 0.50-0.70 | Level 2 (AI-Enhanced) |
+| θ_index 0.75-0.92+ | Level 3 (AI-Native) |
+| "scored on θ_index" | "scored on Portfolio Maturity" |
+| "Achieve θ_index 0.8-1.0" | "Achieve AI-Native Maturity (Level 3)" |
+| "Portfolio Value = X × Y × Z" Formel | Entfernen |
 
 ---
 
@@ -152,18 +178,20 @@ case studies from Series A-C companies.
 
 | Aspekt | Details |
 |--------|---------|
-| **Dateien** | 2 (playbooks.ts, strategic-capabilities.ts) |
-| **Zeilen** | ~500+ Zeilen Änderungen |
+| **Dateien** | 2 (playbooks.ts, portfolio-transformation.ts) |
+| **θ_index Stellen** | 5 (alle entfernen) |
+| **Framework-Update** | 5 Pillars statt 5 Components |
+| **Solutions-Update** | 4 Tiers gemäß Briefing |
 | **Kritikalität** | Hoch (Tone-Shift + Terminologie) |
-| **Priorität** | Kachel zuerst, dann Landing Page |
 
 ---
 
 ## Nächste Schritte
 
-1. **Kachel aktualisieren** (`playbooks.ts`, Zeilen 581-613)
-2. **Hero Section** (`strategic-capabilities.ts`, Zeilen 8-29)
-3. **Summary Section** (Zeilen 30-51)
-4. **Problem Section** (Zeilen 53-70)
-5. **Framework Section** (Zeilen 72-189) - größte Änderung
-6. **Remaining Sections** (Best Practices, Roadmap, Case Studies, etc.)
+1. **Kachel aktualisieren** (`playbooks.ts`, Zeilen 411-442) - Title ändern
+2. **Hero Section** (`portfolio-transformation.ts`, Zeilen 8-29)
+3. **Summary Section** (Zeilen 30-51) - Formel entfernen
+4. **Framework Section** (Zeilen 72-189) - θ_index Zeile 186 entfernen
+5. **Roadmap Section** (Zeilen 210-256) - θ_index Zeile 222-223 entfernen
+6. **Case Studies** (Zeilen 258-319) - 3× θ_index → AI Maturity Level
+7. **Solutions Connection** (Zeilen 321-361) - 4 Tiers gemäß Briefing
