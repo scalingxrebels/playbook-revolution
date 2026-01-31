@@ -37,8 +37,8 @@ export const aiNativeScalingData: PlaybookPageData = {
     whyItMatters: {
       title: { en: "Why It Matters", de: "Warum es wichtig ist" },
       text: {
-        en: "The 4 capabilities are multiplicative, not additive. A weak capability bottlenecks the entire system. You can only achieve hypergrowth when Strategy, Setup, Execution, and Operationalization all work together.",
-        de: "Die 4 Capabilities sind multiplikativ, nicht additiv. Eine schwache Capability bremst das gesamte System. Du erreichst nur Hypergrowth, wenn Strategy, Setup, Execution und Operationalization zusammenwirken."
+        en: "To scale without adding headcount, you need 4 core capabilities: Strategy (where to play), Setup (how to build), Execution (how to deliver), and Operationalization (how to run). If any one is weak, it bottlenecks your entire scaling potential—no matter how strong the others are.",
+        de: "Um ohne Headcount-Wachstum zu skalieren, brauchst du 4 Kern-Capabilities: Strategy (wo spielen), Setup (wie bauen), Execution (wie liefern) und Operationalization (wie betreiben). Ist eine davon schwach, begrenzt sie dein gesamtes Skalierungspotenzial—egal wie stark die anderen sind."
       }
     },
     solution: {
