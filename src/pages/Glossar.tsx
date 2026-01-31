@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -13,10 +14,12 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Target, Settings, Zap, BarChart3, AlertTriangle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Target, Settings, Zap, BarChart3, AlertTriangle, Sparkles, ArrowLeft } from 'lucide-react';
 
 const Glossar: React.FC = () => {
   const { language } = useLanguage();
+  const navigate = useNavigate();
 
   const capabilities = [
     {
@@ -64,6 +67,18 @@ const Glossar: React.FC = () => {
       borderColor: 'border-amber-500/30',
     },
   ];
+
+  const aiMultiplier = {
+    icon: Sparkles,
+    name: 'AI as Multiplier',
+    label: language === 'de' ? 'Der Verstärker' : 'The Force Multiplier',
+    description: language === 'de'
+      ? 'AI multipliziert die Wirkung aller 4 Capabilities – nicht additiv, sondern exponentiell'
+      : 'AI multiplies the impact of all 4 capabilities – not additive, but exponential',
+    color: 'text-cyan-500',
+    bgColor: 'bg-cyan-500/10',
+    borderColor: 'border-cyan-500/30',
+  };
 
   const metrics = [
     { value: '10-30x', label: language === 'de' ? 'schnellere Skalierung' : 'faster scaling' },
@@ -113,6 +128,15 @@ const Glossar: React.FC = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main className="container max-w-4xl mx-auto px-4 py-24">
+        <Button 
+          variant="ghost" 
+          onClick={() => navigate(-1)} 
+          className="mb-6 -ml-2"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          {language === 'de' ? 'Zurück' : 'Back'}
+        </Button>
+
         <h1 className="font-display text-4xl md:text-5xl italic mb-4">
           {language === 'de' ? 'Glossar' : 'Glossary'}
         </h1>
@@ -162,6 +186,20 @@ const Glossar: React.FC = () => {
                 </Card>
               ))}
             </div>
+
+            {/* AI as Multiplier - Full Width */}
+            <Card className={`${aiMultiplier.bgColor} ${aiMultiplier.borderColor} border mt-4`}>
+              <CardHeader className="pb-2">
+                <CardTitle className="flex items-center justify-center gap-2 text-xl">
+                  <aiMultiplier.icon className={`h-6 w-6 ${aiMultiplier.color}`} />
+                  <span className={aiMultiplier.color}>{aiMultiplier.name}</span>
+                </CardTitle>
+                <p className="text-sm text-muted-foreground text-center">{aiMultiplier.label}</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-center">{aiMultiplier.description}</p>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Core Principle Alert */}
