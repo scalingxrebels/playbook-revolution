@@ -363,8 +363,8 @@ Die Zahlen waren brutal: Aktueller CAC €12k (Benchmark: €5k, +140%). Aktuell
       de: 'NRR bei 105% festgefahren → Durchbruch zu 142%'
     },
     challenge: {
-      en: 'NRR stuck at 105% for 18 months. Churn at 8%. Investors wanted 130%+ before next round.',
-      de: 'NRR seit 18 Monaten bei 105% festgefahren. Churn bei 8%. Investoren wollten 130%+ vor der nächsten Runde.'
+      en: 'NRR stuck at 105% for 18 months despite product improvements—investors demanded 130%+ before the next round, but nothing was working.',
+      de: 'NRR seit 18 Monaten bei 105% festgefahren trotz Produktverbesserungen—Investoren forderten 130%+ vor der nächsten Runde, aber nichts funktionierte.'
     },
     result: {
       en: 'NRR 105% → 142%, Churn 8% → 3%, Expansion Revenue +180%',
@@ -1465,8 +1465,8 @@ Die Rechnung war klar: Ein €31M-Geschäft mit 61% EBITDA—aber Pricing-Komple
       de: 'Markteintritt in neues Segment → Skalierbare Revenue Engine'
     },
     challenge: {
-      en: '€1.3M in bespoke projects with 26 customers. No scalability, no flywheel effect. Leadership knew there was €10M+ potential—but no system to capture it.',
-      de: '€1.3M in maßgeschneiderten Projekten mit 26 Kunden. Keine Skalierbarkeit, kein Flywheel-Effekt. Die Führung wusste, es gibt €10M+ Potenzial—aber kein System, es zu nutzen.'
+      en: '€1.3M in bespoke projects with 26 customers—no scalability, no flywheel effect, and €10M+ potential left untapped without a systematic GTM engine.',
+      de: '€1.3M in maßgeschneiderten Projekten mit 26 Kunden—keine Skalierbarkeit, kein Flywheel-Effekt, und €10M+ Potenzial ungenutzt ohne systematische GTM-Engine.'
     },
     result: {
       en: 'Revenue €1.3M → €13.72M (+955%), Customers 26 → 208 (8x), Sales Velocity €5.5K → €56K/day (10x), EBITDA -€300K → +€150K',
@@ -2336,8 +2336,8 @@ Der Board verlor die Geduld. "Behebe es in 12 Monaten oder wir holen einen neuen
       de: 'Exit Readiness erreicht → Series C Ready'
     },
     challenge: {
-      en: 'Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%. Neither Series C nor strategic exit was possible.',
-      de: 'Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k, Board Confidence bei 40-50%. Weder Series C noch strategischer Exit waren möglich.'
+      en: 'Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%—neither Series C nor strategic exit was possible without a complete transformation.',
+      de: 'Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k, Board Confidence bei 40-50%—weder Series C noch strategischer Exit waren ohne komplette Transformation möglich.'
     },
     result: {
       en: 'ARR €6.6M → €10.1M (+53%), ARR per FTE €64.9k → €96.1k (+48%), Rule of 40 18.2% → 29.6% (+11.4pp)',
