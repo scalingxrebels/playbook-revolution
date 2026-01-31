@@ -1,133 +1,96 @@
 
-# Implementierungskonzept: Case Study Kachel-Beschreibungen harmonisieren
 
-## Ist-Analyse: Alle 8 Case Studies
+# Implementierungskonzept: Client Ticker auf einer Zeile
 
-Die `CaseCard.tsx` zeigt als Teaser den **ersten Satz** des `challenge`-Feldes. Hier ist der aktuelle Stand:
+## Ziel
 
-| # | Slug | Headline | Challenge-Teaser (1. Satz) | Status |
-|---|------|----------|---------------------------|--------|
-| 1 | `cac-crisis-turnaround` | "CAC Crisis Averted -> Back to Growth" | "CAC exploded from €5k to €12k in 6 months." | OK - klar, metrisch |
-| 2 | `nrr-machine-breakthrough` | "NRR Stuck at 105% -> Broke Through to 142%" | "NRR stuck at 105% for 18 months." | KURZ - fehlt Kontext |
-| 3 | `partner-channel-transformed-scalable-growth` | "Partner Channel Transformed -> Scalable Growth Accelerated" | "A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months." | REFERENZ |
-| 4 | `pricing-redesigned-scalable-growth` | "Pricing Redesigned -> Scalable Growth Unlocked" | "High-margin business with 61% EBITDA—but growth capped by 27 fragmented products, outdated pricing, and no recurring revenue." | OK - vollstaendig |
-| 5 | `new-market-segment-entry` | "New Market Segment Entry -> Scalable Revenue Engine" | "€1.3M in bespoke projects with 26 customers." | KURZ - fehlt "So what?" |
-| 6 | `strategic-transformation-market-leadership` | "Strategic Transformation to Market Leadership" | "Growth slowing from 150% to 80% YoY, NRR declining below 100%, organizational chaos with 50+ meetings/week." | OK - Multi-Metrik |
-| 7 | `exit-readiness-achieved` | "Exit Readiness Achieved -> Series C Ready" | "Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%." | KURZ - fehlt "So what?" |
-| 8 | `stage-transition-series-b-ready` | "Stage Transition Mastered -> Series B Ready" | "Stuck at €5M ARR, board demanded €25M ARR in 12 months—or no Series B." | OK - dramatisch |
+Den Client Ticker so umgestalten, dass "Who we have worked with" links steht und der Ticker daneben scrollt, wobei die Einträge hinter dem Label verschwinden (Fade-Effekt).
 
----
-
-## Referenz-Muster (Partner Channel Transformed)
-
-Der ideale Teaser folgt dem Muster:
+## Aktuelle Struktur
 
 ```
-[Spezifische Situation] + [Problem/Gap] + [Metriken als Beweis]
+┌────────────────────────────────────────────────────────┐
+│ Who we have worked with                                │  ← Zeile 1
+├────────────────────────────────────────────────────────┤
+│ ← Pigtie • truth • KODE® • FILADOS • 2p Team • ...     │  ← Zeile 2
+└────────────────────────────────────────────────────────┘
 ```
 
-Beispiel:
-> "A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months."
+## Neue Struktur
 
-**Warum gut:**
-- Kontext (1,000 Partner)
-- Problem (high activity, low yield)
-- Metriken (9,819 contacts, 344 SQLs)
-- Zeitrahmen (6 months)
-
----
-
-## Anpassungen erforderlich
-
-### Case 2: NRR Machine Breakthrough
-**Aktuell:**
-> "NRR stuck at 105% for 18 months."
-
-**Neu:**
-> "NRR stuck at 105% for 18 months despite product improvements—investors demanded 130%+ before the next round, but nothing was working."
-
-### Case 5: New Market Segment Entry
-**Aktuell:**
-> "€1.3M in bespoke projects with 26 customers."
-
-**Neu:**
-> "€1.3M in bespoke projects with 26 customers—no scalability, no flywheel effect, and €10M+ potential left untapped."
-
-### Case 7: Exit Readiness Achieved
-**Aktuell:**
-> "Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%."
-
-**Neu:**
-> "Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%—neither Series C nor strategic exit was possible without transformation."
-
----
-
-## Technische Aenderungen
-
-### Datei: `src/data/cases/caseStudies.ts`
-
-**Case 2 (Zeile 365-368):**
-```typescript
-// VORHER
-challenge: {
-  en: 'NRR stuck at 105% for 18 months. Churn at 8%. Investors wanted 130%+ before next round.',
-  de: 'NRR seit 18 Monaten bei 105% festgefahren. Churn bei 8%. Investoren wollten 130%+ vor der nächsten Runde.'
-},
-
-// NACHHER
-challenge: {
-  en: 'NRR stuck at 105% for 18 months despite product improvements—investors demanded 130%+ before the next round, but nothing was working.',
-  de: 'NRR seit 18 Monaten bei 105% festgefahren trotz Produktverbesserungen—Investoren forderten 130%+ vor der nächsten Runde, aber nichts funktionierte.'
-},
+```
+┌────────────────────────────────────────────────────────┐
+│ Who we have worked with  ← Pigtie • truth • KODE® ... │  ← Eine Zeile
+│                         ↑                              │
+│                    Fade-Mask                           │
+└────────────────────────────────────────────────────────┘
 ```
 
-**Case 5 (Zeile 1467-1470):**
-```typescript
-// VORHER
-challenge: {
-  en: '€1.3M in bespoke projects with 26 customers. No scalability, no flywheel effect. Leadership knew there was €10M+ potential—but no system to capture it.',
-  de: '€1.3M in maßgeschneiderten Projekten mit 26 Kunden. Keine Skalierbarkeit, kein Flywheel-Effekt. Die Führung wusste, es gibt €10M+ Potenzial—aber kein System, es zu nutzen.'
-},
+## Technische Umsetzung
 
-// NACHHER
-challenge: {
-  en: '€1.3M in bespoke projects with 26 customers—no scalability, no flywheel effect, and €10M+ potential left untapped without a systematic GTM engine.',
-  de: '€1.3M in maßgeschneiderten Projekten mit 26 Kunden—keine Skalierbarkeit, kein Flywheel-Effekt, und €10M+ Potenzial ungenutzt ohne systematische GTM-Engine.'
-},
+### Datei: `src/pages/Cases.tsx` (Zeilen 60-81)
+
+**Vorher:**
+```tsx
+{/* Client Ticker */}
+<div className="relative z-10 border-y border-border py-4 bg-background/50">
+  <div className="container max-w-7xl mx-auto px-4 mb-2">
+    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
+    </span>
+  </div>
+  <div className="overflow-hidden">
+    <div className="flex animate-marquee whitespace-nowrap">
+      ...
+    </div>
+  </div>
+</div>
 ```
 
-**Case 7 (Zeile 2338-2341):**
-```typescript
-// VORHER
-challenge: {
-  en: 'Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%. Neither Series C nor strategic exit was possible.',
-  de: 'Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k, Board Confidence bei 40-50%. Weder Series C noch strategischer Exit waren möglich.'
-},
-
-// NACHHER
-challenge: {
-  en: 'Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%—neither Series C nor strategic exit was possible without a complete transformation.',
-  de: 'Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k, Board Confidence bei 40-50%—weder Series C noch strategischer Exit waren ohne komplette Transformation möglich.'
-},
+**Nachher:**
+```tsx
+{/* Client Ticker - Single Line */}
+<div className="relative z-10 border-y border-border py-4 bg-background/50">
+  <div className="container max-w-7xl mx-auto px-4">
+    <div className="flex items-center gap-6">
+      {/* Static Label */}
+      <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap flex-shrink-0 relative z-10 bg-background/50 pr-4">
+        {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
+      </span>
+      
+      {/* Scrolling Ticker with Left Fade */}
+      <div className="relative flex-1 overflow-hidden">
+        {/* Left fade mask */}
+        <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background/50 to-transparent z-10 pointer-events-none" />
+        
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="flex items-center gap-6 px-4">
+              {clientNames.map((name, idx) => (
+                <span key={`${i}-${idx}`} className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
+                  <span className="w-1 h-1 rounded-full bg-primary/40" />
+                  {name}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 ```
 
----
+## Kernprinzipien
+
+1. **Flexbox Layout**: Label und Ticker nebeneinander mit `flex items-center`
+2. **Label fixiert**: `flex-shrink-0` verhindert Schrumpfen des Labels
+3. **Fade-Mask**: CSS-Gradient überlagert den Ticker links für den "Verschwindeeffekt"
+4. **Background Match**: Label hat gleichen Hintergrund wie Container für nahtlosen Übergang
 
 ## Zusammenfassung
 
-| Datei | Aenderung | Zeilen |
-|-------|-----------|--------|
-| `src/data/cases/caseStudies.ts` | Case 2 challenge verbessern | 365-368 |
-| `src/data/cases/caseStudies.ts` | Case 5 challenge verbessern | 1467-1470 |
-| `src/data/cases/caseStudies.ts` | Case 7 challenge verbessern | 2338-2341 |
+| Datei | Änderung |
+|-------|----------|
+| `src/pages/Cases.tsx` | Ticker-Struktur auf einzeilig umbauen (Zeilen 60-81) |
 
----
-
-## Ergebnis nach Implementation
-
-Alle 8 Case Studies folgen dann dem konsistenten Muster:
-
-- Spezifische Metriken im ersten Satz
-- Klarer Problem-Kontext ("but", "despite", "—")
-- Selbsterklaerend ohne Landing Page lesen zu muessen
-- Dramatik/Urgenz ("demanded", "nothing was working", "left untapped")
