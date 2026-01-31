@@ -5,10 +5,14 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import GrowthTrails from '@/components/GrowthTrails';
 import TwinklingStars from '@/components/TwinklingStars';
+import { useTheme } from 'next-themes';
 
 const HeroOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const { resolvedTheme } = useTheme();
+
+  const isDark = resolvedTheme === 'dark';
 
   const scrollToNext = () => {
     document.getElementById('problem-section')?.scrollIntoView({ behavior: 'smooth' });
@@ -23,19 +27,37 @@ const HeroOptimized: React.FC = () => {
       ref={containerRef as React.RefObject<HTMLElement>}
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
     >
-      {/* Deep Space Background */}
-      <div 
-        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
-        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
-      />
+      {/* Background - Theme Aware */}
+      {isDark ? (
+        <>
+          {/* Dark Mode: Deep Space Background */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+            style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+          />
+          <div 
+            className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+            style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+          />
+        </>
+      ) : (
+        <>
+          {/* Light Mode: Warm Cream Gradient */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-bg-start))] via-[hsl(var(--hero-bg-mid))] to-[hsl(var(--hero-bg-end))] transition-transform duration-100"
+            style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+          />
+          <div 
+            className="absolute inset-0 transition-transform duration-100"
+            style={{ 
+              transform: `translateY(${offsets[0]}px) scale(1.1)`,
+              backgroundImage: 'var(--gradient-mesh-hero)'
+            }}
+          />
+        </>
+      )}
 
-      {/* Mesh Gradient Overlay */}
-      <div 
-        className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
-        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
-      />
-
-      {/* Twinkling Stars - Medium Parallax */}
+      {/* Stars/Orbs Layer - Medium Parallax */}
       <div 
         className="absolute inset-0 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px)` }}
@@ -43,12 +65,14 @@ const HeroOptimized: React.FC = () => {
         <TwinklingStars />
       </div>
 
-      {/* Superlinear Growth Trajectories - S-Curves */}
+      {/* Superlinear Growth Trajectories */}
       <GrowthTrails />
 
-      {/* Subtle Grid Pattern - Fast Parallax */}
+      {/* Grid Pattern - Fast Parallax */}
       <div 
-        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+        className={`absolute inset-0 bg-grid-pattern bg-grid-lg transition-transform duration-100 ${
+          isDark ? 'opacity-20' : 'opacity-10'
+        }`}
         style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
       />
 
