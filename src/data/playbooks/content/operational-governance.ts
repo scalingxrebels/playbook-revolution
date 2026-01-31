@@ -303,7 +303,7 @@ export const operationalGovernanceData: PlaybookPageData = {
         price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
         outcome: { en: "Full governance maturity report + 90-day roadmap", de: "Vollständiger Governance-Reifegrad-Report + 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/scaling-readiness-assessment",
         icon: "ClipboardCheck",
         color: "bg-emerald-500/10 text-emerald-500"
       },
@@ -314,7 +314,7 @@ export const operationalGovernanceData: PlaybookPageData = {
         price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Fix one governance component, Data Quality +60-80%", de: "Eine Governance-Komponente fixen, Datenqualität +60-80%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
-        link: "/solutions/power-up/governance-sprint",
+        link: "/solutions/power-up/board-readiness",
         icon: "Zap",
         color: "bg-amber-500/10 text-amber-500"
       },
@@ -325,7 +325,7 @@ export const operationalGovernanceData: PlaybookPageData = {
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Transform 2-3 components, Compliance Costs -40-60%", de: "2-3 Komponenten transformieren, Compliance-Kosten -40-60%" },
         cta: { en: "Start Boost", de: "Boost starten" },
-        link: "/solutions/boost/governance-excellence",
+        link: "/solutions/boost/board-excellence",
         icon: "Rocket",
         color: "bg-blue-500/10 text-blue-500"
       },
@@ -336,7 +336,7 @@ export const operationalGovernanceData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full governance transformation, AI Maturity Level 3, Compliance Costs -60%", de: "Vollständige Governance-Transformation, AI Maturity Level 3, Compliance-Kosten -60%" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/hypergrowth",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }

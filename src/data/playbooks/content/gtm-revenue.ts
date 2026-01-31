@@ -366,7 +366,7 @@ export const gtmRevenueData: PlaybookPageData = {
         price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
         outcome: { en: "Full GTM maturity report + 90-day roadmap", de: "Vollständiger GTM Maturity Report + 90-Tage Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/gtm-effectiveness-review",
         icon: "ClipboardCheck",
         color: "bg-emerald-500/10 text-emerald-500"
       },
@@ -399,7 +399,7 @@ export const gtmRevenueData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full GTM transformation, AI Maturity Level 3", de: "Vollständige GTM Transformation, AI Maturity Level 3" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/hypergrowth",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }

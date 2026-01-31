@@ -316,7 +316,7 @@ export const talentData: PlaybookPageData = {
         price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
         outcome: { en: "Full talent maturity report + 90-day roadmap", de: "Vollständiger Talent-Maturity-Report + 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/scaling-readiness-assessment",
         icon: "ClipboardCheck",
         color: "bg-emerald-500/10 text-emerald-500"
       },
@@ -349,7 +349,7 @@ export const talentData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full talent transformation, AI Maturity Level 3, Time-to-Hire -60%, Retention +30-50pp", de: "Vollständige Talent-Transformation, AI Maturity Level 3, Time-to-Hire -60%, Retention +30-50pp" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/hypergrowth",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }
