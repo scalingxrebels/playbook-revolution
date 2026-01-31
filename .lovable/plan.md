@@ -1,55 +1,49 @@
 
-# Systematische Lösung: Deep Space Hero Kontrast-Problem
+# Fix: Explizite Farbklassen für Hero-Texte in CaseDetail.tsx
 
-## Problem-Diagnose
+## Problem-Analyse
 
-Das Screenshot zeigt, dass im Light Mode der Text auf dunklen "Deep Space" Hero-Sektionen fast unsichtbar ist. 
+Das Screenshot zeigt, dass trotz `dark-section` einige Texte im Light Mode nicht lesbar sind:
+1. **Headline** (Zeile 58): Keine explizite Farbklasse definiert
+2. **Investment-Wert** (Zeile 84): `font-semibold` ohne Farbklasse
+3. **Timeline-Wert** (Zeile 93): `font-semibold` ohne Farbklasse
 
-**Ursache:** Die CSS-Klasse `.dark-section` (definiert in `index.css` Zeilen 133-161) überschreibt die Theme-Variablen korrekt auf dunkle Werte. **Aber diese Klasse fehlt auf einigen Seiten.**
-
-### Aktuelle Situation
-
-| Seite | Hat `dark-section` | Status |
-|-------|-------------------|--------|
-| Workshop.tsx | Ja (Zeile 345) | OK |
-| Keynote.tsx | Ja (Zeile 322) | OK |
-| **CaseDetail.tsx** | **NEIN** (Zeile 36) | **PROBLEM** |
-| Boost*.tsx Pages | Ja | OK |
-| PowerUp*.tsx Pages | Ja | OK |
-| Accelerate*.tsx Pages | Ja | OK |
+Die `.dark-section` CSS-Variablen werden zwar überschrieben, aber diese Elemente erben nicht automatisch `text-foreground` weil sie keine Farbklasse haben.
 
 ## Lösung
 
-**Einzeilige Änderung** in `CaseDetail.tsx`:
+Explizite Tailwind-Klasse `text-foreground` zu den betroffenen Elementen hinzufügen:
 
 ### Datei: `src/pages/CaseDetail.tsx`
 
-**Zeile 36 - Aktuell:**
+| Zeile | Element | Aktuell | Neu |
+|-------|---------|---------|-----|
+| 58 | Headline h1 | `font-bold mb-4` | `font-bold mb-4 text-foreground` |
+| 84 | Investment-Wert | `font-semibold` | `font-semibold text-foreground` |
+| 93 | Timeline-Wert | `font-semibold` | `font-semibold text-foreground` |
+
+## Code-Änderungen
+
 ```tsx
-<section className="relative pt-24 pb-16 overflow-hidden">
+// Zeile 58: Headline
+<h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+
+// Zeile 84: Investment-Wert  
+<span className="font-semibold text-foreground">{caseStudy.investment}</span>
+
+// Zeile 93: Timeline-Wert
+<span className="font-semibold text-foreground">{caseStudy.timeline}</span>
 ```
-
-**Zeile 36 - Neu:**
-```tsx
-<section className="dark-section relative pt-24 pb-16 overflow-hidden noise">
-```
-
-## Technische Details
-
-Die `.dark-section` Klasse in `index.css` überschreibt automatisch alle relevanten CSS-Variablen:
-
-| Variable | Light Mode (ohne dark-section) | Mit dark-section |
-|----------|-------------------------------|------------------|
-| `--foreground` | `240 10% 8%` (dunkel) | `40 20% 95%` (hell) |
-| `--muted-foreground` | `240 5% 45%` (dunkel) | `40 10% 55%` (hell) |
-| `--background` | `40 20% 98%` (hell) | `240 15% 6%` (dunkel) |
-| `--card` | `0 0% 100%` (weiß) | `240 12% 9%` (dunkel) |
-| `--border` | `40 15% 82%` (hell) | `240 10% 18%` (dunkel) |
 
 ## Erwartetes Ergebnis
 
-Nach der Änderung werden alle Texte, Badges, Cards und Links im Hero-Bereich der Case Detail Seiten korrekt angezeigt - sowohl im Light als auch im Dark Mode.
+Nach dieser Änderung werden alle Texte im Hero-Bereich korrekt angezeigt:
+- Headline: Heller Text auf dunklem Hintergrund
+- Investment & Timeline Werte: Heller Text, gut lesbar
+- ROI bleibt unverändert (nutzt bereits `text-emerald-500`)
 
-## Präventive Maßnahme (Optional)
+## Präventive Maßnahme
 
-Für zukünftige Konsistenz könnte ein `SharedCaseHero` Component erstellt werden, der den `dark-section` Standard garantiert - ähnlich wie `SharedHero.tsx` es bereits für andere Seiten tut.
+Diese Lösung ist lokal für CaseDetail.tsx. Für eine systematischere Lösung könnte man:
+1. Ein Audit aller Deep Space Hero Sektionen durchführen
+2. Sicherstellen, dass alle Text-Elemente explizite Farbklassen haben
