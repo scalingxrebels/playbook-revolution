@@ -483,8 +483,8 @@ export const playbooks: Playbook[] = [
       de: 'Portfolio Excellence Playbook',
     },
     description: {
-      en: 'How to transform portfolio performance with AI-native operations. Learn the 5-component framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence) used by VCs/PEs to increase portfolio valuation by 200-400% and achieve 3-5x faster growth. Includes best practices, implementation guide, and real-world case studies from VC/PE portfolios.',
-      de: 'Wie du Portfolio-Performance mit AI-native Operations transformierst. Lerne das 5-Komponenten-Framework (Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, AI-Powered Portfolio Excellence), das VCs/PEs nutzen, um Portfolio-Bewertungen um 200-400% zu steigern und 3-5x schnelleres Wachstum zu erzielen. Inklusive Best Practices, Implementierungsguide und echten Case Studies von VC/PE Portfolios.',
+      en: 'How to transform portfolio companies systematically and achieve 3-5x value increase. Learn the 5-component framework (Assessment, Prioritization, Playbook, Execution, Measurement) used by top-tier VCs/PEs to transform 10-30 companies, improve portfolio IRR from 15% to 40%+, and achieve faster exits. Includes implementation guides, assessment tools, and real-world case studies from leading VC/PE firms.',
+      de: 'Wie du Portfolio-Unternehmen systematisch transformierst und 3-5x Wertsteigerung erreichst. Lerne das 5-Komponenten-Framework (Assessment, Priorisierung, Playbook, Execution, Measurement), das Top-Tier VCs/PEs nutzen, um 10-30 Unternehmen zu transformieren, Portfolio-IRR von 15% auf 40%+ zu verbessern und schnellere Exits zu erzielen. Inklusive Implementierungsguides, Assessment-Tools und echten Case Studies von führenden VC/PE-Firmen.',
     },
     outcomes: {
       en: [
