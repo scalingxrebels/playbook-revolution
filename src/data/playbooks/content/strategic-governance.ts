@@ -340,28 +340,50 @@ export const strategicGovernanceData: PlaybookPageData = {
     }, 
     items: [
       {
+        type: "assessment",
+        name: { en: "Governance Assessment", de: "Governance-Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full governance maturity report + 90-day roadmap", de: "Vollständiger Governance-Reifebericht + 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Board Readiness", de: "Board Readiness" },
-        duration: { en: "30 days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
-        outcome: { en: "Board Prep Time -60-80%, Board Confidence +50-100%", de: "Board Prep Time -60-80%, Board Confidence +50-100%" },
+        name: { en: "Board Readiness Sprint", de: "Board-Bereitschaft Sprint" },
+        duration: { en: "30 Days", de: "30 Tage" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
+        outcome: { en: "One governance component transformed, board prep time reduced", de: "Eine Governance-Komponente transformiert, Board-Vorbereitungszeit reduziert" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/board-readiness",
         icon: "Zap",
-        color: "orange"
+        color: "bg-amber-500/10 text-amber-500"
       },
       {
         type: "boost",
-        name: { en: "Board Excellence", de: "Board Excellence" },
-        duration: { en: "90 days", de: "90 Tage" },
+        name: { en: "Board Excellence", de: "Board-Exzellenz" },
+        duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
-        outcome: { en: "Board Prep Time -80-90%, Board Confidence +100-200%", de: "Board Prep Time -80-90%, Board Confidence +100-200%" },
+        outcome: { en: "2-3 governance components transformed, AI integration, board confidence +100%", de: "2-3 Governance-Komponenten transformiert, KI-Integration, Board-Vertrauen +100%" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/board-excellence",
         icon: "Rocket",
-        color: "amber"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Governance", de: "KI-Native Governance" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full governance transformation, AI Maturity Level 3, Board Prep Time -80%", de: "Vollständige Governance-Transformation, KI-Reifegrad Level 3, Board-Vorbereitungszeit -80%" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
-    ] 
+    ]
   },
   whoThisIsFor: { 
     title: { en: "Who Should Use This Playbook?", de: "Für wen ist dieses Playbook?" }, 
