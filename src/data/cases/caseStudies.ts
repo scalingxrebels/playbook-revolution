@@ -1,0 +1,527 @@
+import { ClientCaseStudy } from './types';
+
+export const caseStudies: ClientCaseStudy[] = [
+  {
+    id: 'cac-crisis-series-b-saas',
+    slug: 'cac-crisis-turnaround',
+    company: 'Sales Tech Platform',
+    industry: 'B2B SaaS',
+    stage: 'Series B',
+    gradient: 'from-red-500 to-orange-500',
+    confidential: true,
+    
+    tags: ['cac', 'sales', 'gtm', 'series-b', 'b2b-saas'],
+    challengeType: 'cac-crisis',
+    
+    // HERO
+    headline: {
+      en: 'CAC Crisis Averted → Back to Growth',
+      de: 'CAC-Krise abgewendet → Zurück auf Wachstumskurs'
+    },
+    challenge: {
+      en: 'CAC exploded from €5k to €12k in 6 months. The board demanded a fix—or a new CEO.',
+      de: 'CAC explodierte von €5k auf €12k in 6 Monaten. Der Board forderte eine Lösung—oder einen neuen CEO.'
+    },
+    result: {
+      en: 'CAC €12k → €5k (-58%), Win Rate 18% → 40% (+122%), ARR €15M → €28M (+87%)',
+      de: 'CAC €12k → €5k (-58%), Win Rate 18% → 40% (+122%), ARR €15M → €28M (+87%)'
+    },
+    investment: '€120k',
+    roi: '5x',
+    heroMetrics: [
+      { label: 'CAC', before: '€12k', after: '€5k', impact: '-58%' },
+      { label: 'Win Rate', before: '18%', after: '40%', impact: '+122%' },
+      { label: 'ARR', before: '€15M', after: '€28M', impact: '+87%' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A sales tech platform for mid-market companies. €15M ARR, 80 employees, €20M Series B raised 12 months ago. Strong product-market fit, but growth was slowing.',
+      de: 'Eine Sales-Tech-Plattform für den Mittelstand. €15M ARR, 80 Mitarbeiter, €20M Series B vor 12 Monaten. Starker Product-Market Fit, aber das Wachstum verlangsamte sich.'
+    },
+    crisisStory: {
+      en: `The CEO walked into the quarterly board meeting feeling confident. ARR was growing (+30% YoY), the team was executing, customers were happy.
+
+But the lead investor opened with a question that changed everything:
+
+"Your CAC has doubled in 6 months. From €5k to €12k. If this continues, you'll run out of money in 9 months. What's your plan?"
+
+The CEO had no answer. They hadn't noticed the CAC creeping up. And now the board was demanding a fix—or a new CEO.
+
+The math was brutal: Current CAC €12k (benchmark: €5k, +140%). Current runway: 18 months. Runway at current CAC trend: 9 months.`,
+      de: `Der CEO betrat das Board Meeting voller Zuversicht. ARR wuchs (+30% YoY), das Team lieferte, Kunden waren zufrieden.
+
+Aber der Lead Investor eröffnete mit einer Frage, die alles veränderte:
+
+"Euer CAC hat sich in 6 Monaten verdoppelt. Von €5k auf €12k. Wenn das so weitergeht, ist in 9 Monaten das Geld alle. Was ist euer Plan?"
+
+Der CEO hatte keine Antwort. Sie hatten nicht bemerkt, wie der CAC stieg. Und jetzt forderte der Board eine Lösung—oder einen neuen CEO.
+
+Die Zahlen waren brutal: Aktueller CAC €12k (Benchmark: €5k, +140%). Aktuelle Runway: 18 Monate. Runway bei aktuellem CAC-Trend: 9 Monate.`
+    },
+    problemDescription: {
+      en: 'The company had been scaling aggressively. They hired fast, added new markets, launched new products. But no one had noticed the fundamentals were breaking.',
+      de: 'Das Unternehmen hatte aggressiv skaliert. Sie stellten schnell ein, erschlossen neue Märkte, launchten neue Produkte. Aber niemand bemerkte, dass die Grundlagen brachen.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Sales Process', de: 'Vertriebsprozess' },
+        symptoms: [
+          { en: 'Sales reps were reinventing the wheel on every deal', de: 'Vertriebsmitarbeiter erfanden das Rad bei jedem Deal neu' },
+          { en: 'No one knew which leads to prioritize', de: 'Niemand wusste, welche Leads Priorität haben' },
+          { en: 'Salesforce was purchased but never implemented', de: 'Salesforce wurde gekauft, aber nie implementiert' }
+        ]
+      },
+      {
+        area: { en: 'Marketing', de: 'Marketing' },
+        symptoms: [
+          { en: 'Marketing was generating 200+ leads/month', de: 'Marketing generierte 200+ Leads/Monat' },
+          { en: 'But only 10% were qualified', de: 'Aber nur 10% waren qualifiziert' },
+          { en: 'Sales was wasting time on bad leads', de: 'Vertrieb verschwendete Zeit mit schlechten Leads' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'CAC', before: '€12k', after: '€5k (target)', impact: '+140%' },
+      { label: 'Win Rate', before: '18%', after: '40% (target)', impact: '-55%' },
+      { label: 'Sales Cycle', before: '8-14 weeks', after: '2-4 weeks (target)', impact: '+200%' },
+      { label: 'LTV/CAC', before: '2.5x', after: '5x (target)', impact: '-50%' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We ran a 12-week sprint to fix the broken sales process. No long-term transformation, no 6-month roadmap. Just: diagnose the problem, fix the bottlenecks, prove the results.',
+      de: 'Wir führten einen 12-Wochen-Sprint durch, um den defekten Vertriebsprozess zu reparieren. Keine langfristige Transformation, keine 6-Monats-Roadmap. Nur: Problem diagnostizieren, Engpässe beheben, Ergebnisse beweisen.'
+    },
+    phases: [
+      {
+        name: { en: 'Diagnose the Problem', de: 'Problem diagnostizieren' },
+        timeline: 'Week 1-4',
+        actions: [
+          {
+            name: { en: 'Analyze the sales process', de: 'Vertriebsprozess analysieren' },
+            description: {
+              en: 'We interviewed 10 sales reps, reviewed 50 deals, and analyzed the data. The problem was clear: no repeatable process, no lead qualification, no data.',
+              de: 'Wir interviewten 10 Vertriebler, prüften 50 Deals und analysierten die Daten. Das Problem war klar: kein wiederholbarer Prozess, keine Lead-Qualifizierung, keine Daten.'
+            },
+            deliverables: [
+              { en: 'Process audit report', de: 'Prozess-Audit-Bericht' },
+              { en: 'Deal win/loss analysis', de: 'Deal Win/Loss-Analyse' },
+              { en: 'Data quality assessment', de: 'Datenqualitäts-Assessment' }
+            ],
+            whyItMattered: {
+              en: 'Without understanding the root causes, any fix would be a band-aid. We needed to see the full picture.',
+              de: 'Ohne Verständnis der Ursachen wäre jede Lösung nur ein Pflaster. Wir brauchten das vollständige Bild.'
+            }
+          },
+          {
+            name: { en: 'Build the ICP', de: 'ICP definieren' },
+            description: {
+              en: 'We analyzed the top 20% of customers (highest LTV, fastest close). They all had the same profile: 100-500 employees, €50k+ ACV, specific use case.',
+              de: 'Wir analysierten die Top 20% der Kunden (höchster LTV, schnellster Abschluss). Alle hatten das gleiche Profil: 100-500 Mitarbeiter, €50k+ ACV, spezifischer Use Case.'
+            },
+            deliverables: [
+              { en: 'ICP definition (who to sell to)', de: 'ICP-Definition (an wen verkaufen)' },
+              { en: 'Lead scoring model (how to prioritize)', de: 'Lead-Scoring-Modell (wie priorisieren)' },
+              { en: 'Disqualification criteria (who to ignore)', de: 'Disqualifikationskriterien (wen ignorieren)' }
+            ],
+            whyItMattered: {
+              en: 'Sales reps could now focus on the right leads, not waste time on bad fits.',
+              de: 'Vertriebler konnten sich jetzt auf die richtigen Leads konzentrieren, statt Zeit mit schlechten Fits zu verschwenden.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Fix the Infrastructure', de: 'Infrastruktur reparieren' },
+        timeline: 'Week 5-8',
+        actions: [
+          {
+            name: { en: 'Implement CRM', de: 'CRM implementieren' },
+            description: {
+              en: 'We configured Salesforce in 2 weeks (not 6 months). Focus on the 20% of features that drive 80% of value: pipeline tracking, activity logging, reporting.',
+              de: 'Wir konfigurierten Salesforce in 2 Wochen (nicht 6 Monate). Fokus auf die 20% der Features, die 80% des Werts liefern: Pipeline-Tracking, Aktivitäts-Logging, Reporting.'
+            },
+            deliverables: [
+              { en: 'Salesforce configuration', de: 'Salesforce-Konfiguration' },
+              { en: 'Sales rep training', de: 'Vertriebstraining' },
+              { en: 'Dashboard setup', de: 'Dashboard-Setup' }
+            ],
+            whyItMattered: {
+              en: 'For the first time, leadership could see what was actually happening in the pipeline.',
+              de: 'Zum ersten Mal konnte die Führung sehen, was wirklich in der Pipeline passierte.'
+            }
+          },
+          {
+            name: { en: 'Build sales playbook', de: 'Sales Playbook erstellen' },
+            description: {
+              en: 'We documented the winning process based on top performers. Step-by-step: discovery call structure, demo flow, objection handling, proposal format.',
+              de: 'Wir dokumentierten den erfolgreichen Prozess basierend auf Top-Performern. Schritt für Schritt: Discovery-Call-Struktur, Demo-Flow, Einwand-Behandlung, Proposal-Format.'
+            },
+            deliverables: [
+              { en: 'Sales playbook document', de: 'Sales Playbook-Dokument' },
+              { en: 'Call scripts and templates', de: 'Gesprächsleitfäden und Vorlagen' },
+              { en: 'Training materials', de: 'Trainingsmaterialien' }
+            ],
+            whyItMattered: {
+              en: 'New hires could now ramp in 4 weeks instead of 12. The process was repeatable.',
+              de: 'Neue Mitarbeiter konnten jetzt in 4 Wochen statt 12 eingearbeitet werden. Der Prozess war wiederholbar.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Prove the Results', de: 'Ergebnisse beweisen' },
+        timeline: 'Week 9-12',
+        actions: [
+          {
+            name: { en: 'Run pilot with 3 reps', de: 'Pilot mit 3 Reps durchführen' },
+            description: {
+              en: 'We tested the new process with 3 sales reps for 4 weeks. Compared their results to the control group (same period, old process).',
+              de: 'Wir testeten den neuen Prozess mit 3 Vertrieblern für 4 Wochen. Verglichen ihre Ergebnisse mit der Kontrollgruppe (gleicher Zeitraum, alter Prozess).'
+            },
+            deliverables: [
+              { en: 'A/B test results', de: 'A/B-Test-Ergebnisse' },
+              { en: 'CAC comparison', de: 'CAC-Vergleich' },
+              { en: 'Win rate comparison', de: 'Win Rate-Vergleich' }
+            ],
+            whyItMattered: {
+              en: 'We had proof, not just theory. The board saw real data showing the fix worked.',
+              de: 'Wir hatten Beweise, nicht nur Theorie. Der Board sah echte Daten, die zeigten, dass die Lösung funktionierte.'
+            }
+          },
+          {
+            name: { en: 'Roll out to full team', de: 'Rollout für gesamtes Team' },
+            description: {
+              en: 'Based on pilot success, we rolled out to all 10 reps. Weekly coaching sessions, real-time feedback, continuous optimization.',
+              de: 'Basierend auf dem Pilot-Erfolg rollten wir für alle 10 Reps aus. Wöchentliche Coaching-Sessions, Echtzeit-Feedback, kontinuierliche Optimierung.'
+            },
+            deliverables: [
+              { en: 'Full team rollout', de: 'Vollständiger Team-Rollout' },
+              { en: 'Weekly metrics tracking', de: 'Wöchentliches Metriken-Tracking' },
+              { en: 'Optimization playbook', de: 'Optimierungs-Playbook' }
+            ],
+            whyItMattered: {
+              en: 'The entire sales org was now operating on a proven, scalable process.',
+              de: 'Die gesamte Vertriebs-Organisation arbeitete jetzt mit einem bewährten, skalierbaren Prozess.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '12 weeks',
+    resultMetrics: [
+      { label: 'CAC', before: '€12k', after: '€5k', impact: '-58%' },
+      { label: 'Win Rate', before: '18%', after: '40%', impact: '+122%' },
+      { label: 'Sales Cycle', before: '8-14 weeks', after: '2-4 weeks', impact: '-67%' },
+      { label: 'ARR (12 months)', before: '€15M', after: '€28M', impact: '+87%' }
+    ],
+    roiCalculation: {
+      investment: '€120k',
+      returnValue: '€600k',
+      roi: '5x',
+      breakdown: [
+        { en: 'CAC reduction: €7k per customer × 50 customers = €350k saved', de: 'CAC-Reduktion: €7k pro Kunde × 50 Kunden = €350k gespart' },
+        { en: 'Win rate increase: 20 additional deals × €50k ACV = €1M ARR', de: 'Win Rate-Steigerung: 20 zusätzliche Deals × €50k ACV = €1M ARR' },
+        { en: '12-month value: €600k', de: '12-Monats-Wert: €600k' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We went from board pressure to board confidence in 12 weeks. CAC dropped 58%, win rate doubled, and we\'re back to hypergrowth. This was the reset we needed."',
+      de: '"Wir gingen in 12 Wochen von Board-Druck zu Board-Zuversicht. CAC sank um 58%, Win Rate verdoppelte sich, und wir sind zurück auf Hypergrowth. Das war der Reset, den wir brauchten."'
+    },
+    quoteContext: {
+      en: 'The CEO presented the results at the next board meeting. The board approved the plan to scale the sales team from 10 to 30 reps.',
+      de: 'Der CEO präsentierte die Ergebnisse im nächsten Board Meeting. Der Board genehmigte den Plan, das Sales-Team von 10 auf 30 Reps zu skalieren.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Fix the process before scaling the team', de: 'Prozess reparieren, bevor das Team skaliert wird' },
+        whatWeLearned: {
+          en: 'The company had been hiring aggressively (5 → 10 reps in 6 months). But without a repeatable process, every new hire made the problem worse. CAC went up, not down.',
+          de: 'Das Unternehmen hatte aggressiv eingestellt (5 → 10 Reps in 6 Monaten). Aber ohne wiederholbaren Prozess machte jeder neue Mitarbeiter das Problem schlimmer. CAC stieg, anstatt zu fallen.'
+        },
+        keyInsight: {
+          en: 'Scaling a broken process just breaks it faster. Fix the process first, then scale the team.',
+          de: 'Einen defekten Prozess zu skalieren macht ihn nur schneller kaputt. Erst den Prozess reparieren, dann das Team skalieren.'
+        },
+        whatWedDoDifferently: {
+          en: 'Pause hiring earlier (at 5 reps, not 10 reps). This would have prevented the CAC crisis.',
+          de: 'Einstellung früher pausieren (bei 5 Reps, nicht 10 Reps). Das hätte die CAC-Krise verhindert.'
+        }
+      },
+      {
+        title: { en: 'Data beats intuition', de: 'Daten schlagen Intuition' },
+        whatWeLearned: {
+          en: 'The CEO thought they knew the ICP. But when we analyzed the data, the real ICP was different. The top 20% of customers had a completely different profile than what the CEO thought.',
+          de: 'Der CEO dachte, er kennt das ICP. Aber als wir die Daten analysierten, war das echte ICP anders. Die Top 20% der Kunden hatten ein völlig anderes Profil als der CEO dachte.'
+        },
+        keyInsight: {
+          en: 'Your intuition is often wrong. Data tells the truth.',
+          de: 'Ihre Intuition liegt oft falsch. Daten sagen die Wahrheit.'
+        },
+        whatWedDoDifferently: {
+          en: 'Build the data infrastructure earlier (Month 1, not Month 6). This would have caught the CAC trend sooner.',
+          de: 'Daten-Infrastruktur früher aufbauen (Monat 1, nicht Monat 6). Das hätte den CAC-Trend früher erkannt.'
+        }
+      },
+      {
+        title: { en: 'Speed matters', de: 'Geschwindigkeit zählt' },
+        whatWeLearned: {
+          en: 'We ran a 12-week sprint (not a 6-month transformation). This forced us to focus on the highest-impact actions and ignore everything else.',
+          de: 'Wir führten einen 12-Wochen-Sprint durch (keine 6-Monats-Transformation). Das zwang uns, uns auf die wirkungsvollsten Maßnahmen zu konzentrieren und alles andere zu ignorieren.'
+        },
+        keyInsight: {
+          en: 'Constraints force focus. A 12-week deadline eliminates all the "nice to have" projects.',
+          de: 'Einschränkungen erzwingen Fokus. Eine 12-Wochen-Deadline eliminiert alle "nice to have"-Projekte.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. 12 weeks was the right timeline.',
+          de: 'Nichts. 12 Wochen war der richtige Zeitrahmen.'
+        }
+      }
+    ],
+    
+    playbooks: ['gtm-revenue', 'growth-engines'],
+    downloadUrl: '/downloads/cases/cac-crisis-turnaround.pdf'
+  },
+  {
+    id: 'nrr-breakthrough-analytics',
+    slug: 'nrr-machine-breakthrough',
+    company: 'Analytics Platform',
+    industry: 'Data & Analytics',
+    stage: 'Series B',
+    gradient: 'from-rose-500 to-pink-500',
+    confidential: true,
+    
+    tags: ['nrr', 'customer-success', 'expansion', 'series-b', 'analytics'],
+    challengeType: 'nrr-stuck',
+    
+    headline: {
+      en: 'NRR Stuck at 105% → Broke Through to 142%',
+      de: 'NRR bei 105% festgefahren → Durchbruch zu 142%'
+    },
+    challenge: {
+      en: 'NRR stuck at 105% for 18 months. Churn at 8%. Investors wanted 130%+ before next round.',
+      de: 'NRR seit 18 Monaten bei 105% festgefahren. Churn bei 8%. Investoren wollten 130%+ vor der nächsten Runde.'
+    },
+    result: {
+      en: 'NRR 105% → 142%, Churn 8% → 3%, Expansion Revenue +180%',
+      de: 'NRR 105% → 142%, Churn 8% → 3%, Expansion Revenue +180%'
+    },
+    investment: '€95k',
+    roi: '8x',
+    heroMetrics: [
+      { label: 'NRR', before: '105%', after: '142%', impact: '+37pp' },
+      { label: 'Churn', before: '8%', after: '3%', impact: '-62%' },
+      { label: 'Expansion', before: '€1.2M', after: '€3.4M', impact: '+180%' }
+    ],
+    
+    companyDescription: {
+      en: 'A data analytics platform for enterprise companies. €12M ARR, 65 employees, solid product adoption but customers weren\'t expanding.',
+      de: 'Eine Datenanalyse-Plattform für Enterprise-Unternehmen. €12M ARR, 65 Mitarbeiter, solide Produkt-Adoption, aber Kunden expandierten nicht.'
+    },
+    crisisStory: {
+      en: `The VP of Customer Success sat in the all-hands meeting, dreading the slide she had to present. NRR: 105%. Same as last quarter. And the quarter before.
+
+The CEO had been clear: "We need 130% NRR before the Series C. Investors won't touch us below that."
+
+But nothing was working. Customer health scores were fine. Support tickets were down. Product usage was stable. Yet customers just... weren't buying more.
+
+"Why won't they expand?" the CEO asked. Nobody had a good answer.`,
+      de: `Die VP Customer Success saß im All-Hands Meeting und fürchtete die Folie, die sie präsentieren musste. NRR: 105%. Wie letztes Quartal. Und das Quartal davor.
+
+Der CEO war klar gewesen: "Wir brauchen 130% NRR vor der Series C. Investoren fassen uns unter dem Wert nicht an."
+
+Aber nichts funktionierte. Customer Health Scores waren in Ordnung. Support-Tickets gingen zurück. Produktnutzung war stabil. Und trotzdem... kauften Kunden nicht mehr.
+
+"Warum expandieren sie nicht?" fragte der CEO. Niemand hatte eine gute Antwort.`
+    },
+    problemDescription: {
+      en: 'The company had great retention (customers stayed) but no expansion motion. CS team was reactive, not proactive. No systematic approach to identifying expansion opportunities.',
+      de: 'Das Unternehmen hatte großartige Retention (Kunden blieben), aber keine Expansion-Motion. Das CS-Team war reaktiv, nicht proaktiv. Kein systematischer Ansatz zur Identifizierung von Expansions-Opportunities.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Customer Success', de: 'Customer Success' },
+        symptoms: [
+          { en: 'CS managers focused on support, not growth', de: 'CS-Manager fokussierten auf Support, nicht Wachstum' },
+          { en: 'No expansion playbook or triggers', de: 'Kein Expansion-Playbook oder Trigger' },
+          { en: 'QBRs were status updates, not strategic sessions', de: 'QBRs waren Status-Updates, nicht strategische Sessions' }
+        ]
+      },
+      {
+        area: { en: 'Data & Insights', de: 'Daten & Insights' },
+        symptoms: [
+          { en: 'No visibility into product usage patterns', de: 'Keine Sichtbarkeit in Produktnutzungs-Muster' },
+          { en: 'Health scores didn\'t predict expansion', de: 'Health Scores sagten Expansion nicht vorher' },
+          { en: 'No trigger-based alerts for CS team', de: 'Keine trigger-basierten Alerts für das CS-Team' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'NRR', before: '105%', after: '130%+ (target)', impact: '-25pp gap' },
+      { label: 'Churn', before: '8%', after: '5% (target)', impact: '+60%' },
+      { label: 'Expansion Rate', before: '15%', after: '40% (target)', impact: '-63%' },
+      { label: 'CS Ratio', before: '1:40', after: '1:50 (target)', impact: 'inefficient' }
+    ],
+    
+    approach: {
+      en: 'We built an "NRR Machine"—a systematic approach to identifying, triggering, and closing expansion opportunities. Data-driven, proactive, scalable.',
+      de: 'Wir bauten eine "NRR-Maschine"—einen systematischen Ansatz zur Identifizierung, Triggerung und Abschluss von Expansion-Opportunities. Datengetrieben, proaktiv, skalierbar.'
+    },
+    phases: [
+      {
+        name: { en: 'Understand Expansion Patterns', de: 'Expansion-Muster verstehen' },
+        timeline: 'Week 1-3',
+        actions: [
+          {
+            name: { en: 'Analyze historical expansions', de: 'Historische Expansionen analysieren' },
+            description: {
+              en: 'We analyzed every expansion deal from the past 2 years. What triggered them? What usage patterns preceded them? What did successful QBRs look like?',
+              de: 'Wir analysierten jeden Expansion-Deal der letzten 2 Jahre. Was triggerte sie? Welche Nutzungsmuster gingen ihnen voraus? Wie sahen erfolgreiche QBRs aus?'
+            },
+            deliverables: [
+              { en: 'Expansion trigger analysis', de: 'Expansion-Trigger-Analyse' },
+              { en: 'Usage pattern correlation', de: 'Nutzungsmuster-Korrelation' },
+              { en: 'Best practice QBR structure', de: 'Best Practice QBR-Struktur' }
+            ],
+            whyItMattered: {
+              en: 'We found 5 clear "expansion signals" that predicted 80% of successful expansions.',
+              de: 'Wir fanden 5 klare "Expansion-Signale", die 80% der erfolgreichen Expansionen vorhersagten.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Build the Expansion Engine', de: 'Expansion-Engine bauen' },
+        timeline: 'Week 4-8',
+        actions: [
+          {
+            name: { en: 'Implement signal detection', de: 'Signal-Erkennung implementieren' },
+            description: {
+              en: 'Built automated alerts when customers hit expansion triggers: usage thresholds, team growth, feature adoption milestones.',
+              de: 'Automatisierte Alerts gebaut, wenn Kunden Expansion-Trigger erreichten: Nutzungs-Schwellenwerte, Team-Wachstum, Feature-Adoptions-Meilensteine.'
+            },
+            deliverables: [
+              { en: 'Expansion signal dashboard', de: 'Expansion-Signal-Dashboard' },
+              { en: 'Automated CS alerts', de: 'Automatisierte CS-Alerts' },
+              { en: 'Prioritized account list', de: 'Priorisierte Account-Liste' }
+            ],
+            whyItMattered: {
+              en: 'CS managers now knew exactly which accounts to focus on and why—before the customer asked.',
+              de: 'CS-Manager wussten jetzt genau, auf welche Accounts sie sich konzentrieren sollten und warum—bevor der Kunde fragte.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Execute & Optimize', de: 'Ausführen & Optimieren' },
+        timeline: 'Week 9-12',
+        actions: [
+          {
+            name: { en: 'Run expansion playbooks', de: 'Expansion-Playbooks durchführen' },
+            description: {
+              en: 'Deployed new QBR format, expansion talk tracks, and ROI calculators. CS team shifted from reactive support to proactive growth.',
+              de: 'Neues QBR-Format, Expansion-Gesprächsleitfäden und ROI-Rechner eingeführt. CS-Team wechselte von reaktivem Support zu proaktivem Wachstum.'
+            },
+            deliverables: [
+              { en: 'New QBR playbook', de: 'Neues QBR-Playbook' },
+              { en: 'Expansion talk tracks', de: 'Expansion-Gesprächsleitfäden' },
+              { en: 'Customer ROI calculator', de: 'Kunden-ROI-Rechner' }
+            ],
+            whyItMattered: {
+              en: 'Expansion conversations became natural, value-driven discussions instead of awkward upsell pitches.',
+              de: 'Expansion-Gespräche wurden natürliche, wertorientierte Diskussionen statt unangenehmer Upsell-Pitches.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    timeline: '12 weeks',
+    resultMetrics: [
+      { label: 'NRR', before: '105%', after: '142%', impact: '+37pp' },
+      { label: 'Churn', before: '8%', after: '3%', impact: '-62%' },
+      { label: 'Expansion Revenue', before: '€1.2M', after: '€3.4M', impact: '+180%' },
+      { label: 'CS Efficiency', before: '1:40', after: '1:55', impact: '+38%' }
+    ],
+    roiCalculation: {
+      investment: '€95k',
+      returnValue: '€760k',
+      roi: '8x',
+      breakdown: [
+        { en: 'Expansion revenue increase: €2.2M additional ARR', de: 'Expansion Revenue Steigerung: €2.2M zusätzlicher ARR' },
+        { en: 'Churn reduction: €400k ARR saved', de: 'Churn-Reduktion: €400k ARR gespart' },
+        { en: '12-month value: €760k', de: '12-Monats-Wert: €760k' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We went from NRR mediocrity to best-in-class in one quarter. Series C closed at 3x the valuation we expected. The NRR machine made all the difference."',
+      de: '"Wir gingen in einem Quartal von NRR-Mittelmäßigkeit zu Best-in-Class. Series C schloss bei 3x der erwarteten Bewertung ab. Die NRR-Maschine machte den gesamten Unterschied."'
+    },
+    quoteContext: {
+      en: 'The company closed their Series C three months later at a €180M valuation—3x what they expected before the NRR improvement.',
+      de: 'Das Unternehmen schloss drei Monate später ihre Series C bei einer €180M-Bewertung ab—3x dessen, was sie vor der NRR-Verbesserung erwartet hatten.'
+    },
+    
+    lessons: [
+      {
+        title: { en: 'Retention ≠ Expansion', de: 'Retention ≠ Expansion' },
+        whatWeLearned: {
+          en: 'The company was great at keeping customers (low churn) but had no motion for growing them. These are two different muscles that require different playbooks.',
+          de: 'Das Unternehmen war großartig darin, Kunden zu halten (niedriger Churn), aber hatte keine Motion, um sie zu vergrößern. Das sind zwei verschiedene Muskeln, die unterschiedliche Playbooks erfordern.'
+        },
+        keyInsight: {
+          en: 'Happy customers don\'t automatically expand. You need a systematic approach to identify and capture expansion opportunities.',
+          de: 'Zufriedene Kunden expandieren nicht automatisch. Man braucht einen systematischen Ansatz, um Expansion-Opportunities zu identifizieren und zu nutzen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Build the expansion motion earlier, not after NRR becomes a crisis.',
+          de: 'Die Expansion-Motion früher aufbauen, nicht nachdem NRR zur Krise wird.'
+        }
+      },
+      {
+        title: { en: 'Data enables proactivity', de: 'Daten ermöglichen Proaktivität' },
+        whatWeLearned: {
+          en: 'The CS team wasn\'t lazy—they just didn\'t know which accounts to focus on. Usage data and expansion signals gave them clarity and confidence.',
+          de: 'Das CS-Team war nicht faul—sie wussten nur nicht, auf welche Accounts sie sich konzentrieren sollten. Nutzungsdaten und Expansion-Signale gaben ihnen Klarheit und Zuversicht.'
+        },
+        keyInsight: {
+          en: 'Give your team data, not just goals. They\'ll figure out the rest.',
+          de: 'Geben Sie Ihrem Team Daten, nicht nur Ziele. Den Rest werden sie selbst herausfinden.'
+        },
+        whatWedDoDifferently: {
+          en: 'Instrument product usage from Day 1. Retroactively building this is painful.',
+          de: 'Produktnutzung von Tag 1 an instrumentieren. Das nachträglich aufzubauen ist schmerzhaft.'
+        }
+      }
+    ],
+    
+    playbooks: ['customer-success', 'growth-engines'],
+    downloadUrl: '/downloads/cases/nrr-machine-breakthrough.pdf'
+  }
+];
+
+// Helper functions
+export const getCaseStudyBySlug = (slug: string): ClientCaseStudy | undefined => {
+  return caseStudies.find(c => c.slug === slug);
+};
+
+export const getCaseStudyById = (id: string): ClientCaseStudy | undefined => {
+  return caseStudies.find(c => c.id === id);
+};
+
+export const getCaseStudiesByChallenge = (challengeType: string): ClientCaseStudy[] => {
+  if (challengeType === 'all') return caseStudies;
+  return caseStudies.filter(c => c.challengeType === challengeType);
+};
+
+export const getCaseStudiesByIndustry = (industry: string): ClientCaseStudy[] => {
+  if (industry === 'all') return caseStudies;
+  return caseStudies.filter(c => c.industry.toLowerCase().includes(industry.toLowerCase()));
+};
