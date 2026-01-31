@@ -1,68 +1,91 @@
 
-
-# Implementierungsplan: Glossar-Seite für Fachbegriffe
+# Implementierungsplan: Glossar mit AI-Native Scaling Zusammenfassung erweitern
 
 ## Übersicht
 
-Erstellung einer neuen Glossar-Seite (`/glossar`) mit einer Tabelle, die technische Begriffe und ihre CEO-freundlichen Ersetzungen dokumentiert.
+Erweiterung der Glossar-Seite um eine Zusammenfassung der Grundidee aus dem AI-Native Scaling Playbook.
 
 ---
 
-## Neue Seite: `src/pages/Glossar.tsx`
+## Zu ergänzende Inhalte
 
-### Struktur
+### Die Grundidee (DE/EN)
 
-Die Seite folgt dem bestehenden Pattern (wie Impressum/Datenschutz):
-- Navigation
-- Hero-Bereich mit Titel
-- Tabelle mit den Begriffen
-- Footer
+**Das Problem:**
+- Traditionelles Skalieren = Linear (Revenue ≈ People)
+- 8-12 Jahre bis €100M ARR
+- 60-80% der Unternehmen stagnieren bei €10-30M ARR
 
-### Glossar-Tabelle
+**Die Lösung - 4 Kern-Capabilities:**
 
-| Technischer Begriff | CEO-freundlicher Ersatz | Kontext |
-|---------------------|------------------------|---------|
-| θ_index | AI Maturity Score | Messwerte, Metriken |
-| θ_index 0.3 | AI Maturity Score 30% | Konkrete Werte (0-1 → 0-100%) |
-| C_min | #1 Blocker / Größte Schwachstelle | Engpass-Diagnose |
-| C₁ | Strategy | Capability-Bereich |
-| C₂ | Setup | Capability-Bereich |
-| C₃ | Execution | Capability-Bereich |
-| C₄ | Operationalization | Capability-Bereich |
+| Capability | Bedeutung | Beschreibung |
+|------------|-----------|--------------|
+| **Strategy** | Wo spielen, Wie gewinnen | Klares ICP, differenzierte Positionierung, AI-native Strategie |
+| **Setup** | Fundament bauen | Org-Struktur, AI-gestützte Systeme, automatisierte Prozesse |
+| **Execution** | Ergebnisse liefern | GTM, Product, Customer Success - alles AI-gestützt |
+| **Operationalization** | Skalieren | AI-Dashboards, automatisierte Playbooks, AI-gesteuerte Automation |
+
+**Das Kernprinzip:**
+> "Ist eine Capability schwach, begrenzt sie dein gesamtes Skalierungspotenzial—egal wie stark die anderen sind."
+
+**Das Ergebnis:**
+- 10-30x schnellere Skalierung
+- 8-18 Monate bis €100M ARR (statt 8-12 Jahre)
+- 2-5x ARR/Mitarbeiter
 
 ---
 
-## Technische Details
+## Technische Änderungen
 
-### 1. Neue Datei erstellen
-**Pfad:** `src/pages/Glossar.tsx`
+### Datei: `src/pages/Glossar.tsx`
+
+**Neue Sektion vor der Glossar-Tabelle hinzufügen:**
 
 ```text
-- Navigation + Footer (wie andere Seiten)
-- Titel: "Glossar" / "Glossary"
-- Kurze Einleitung zur Erklärung
-- Responsive Tabelle mit shadcn/ui Table-Komponente
-- Zweisprachig (DE/EN) via LanguageContext
+1. Neuer Abschnitt "Die Grundidee: AI-Native Scaling"
+2. Card-basiertes Layout für die 4 Capabilities
+3. Highlight-Box für das Kernprinzip (Bottleneck-Logik)
+4. Metriken-Badges für die Ergebnisse
+5. Zweisprachig (DE/EN) via LanguageContext
 ```
 
-### 2. Route hinzufügen
-**Datei:** `src/App.tsx`
+**Struktur der neuen Sektion:**
 
 ```text
-Neue Route: /glossar → Glossar
+┌─────────────────────────────────────────────────┐
+│ Die Grundidee: AI-Native Scaling                │
+│ ─────────────────────────────────────────────── │
+│ [Einleitungstext zum Problem/Lösung]            │
+│                                                 │
+│ ┌─────────────┐ ┌─────────────┐                │
+│ │ Strategy    │ │ Setup       │                │
+│ │ Wo spielen  │ │ Fundament   │                │
+│ └─────────────┘ └─────────────┘                │
+│ ┌─────────────┐ ┌─────────────┐                │
+│ │ Execution   │ │ Operational.│                │
+│ │ Liefern     │ │ Skalieren   │                │
+│ └─────────────┘ └─────────────┘                │
+│                                                 │
+│ ⚠️ Kernprinzip: Schwächste Capability begrenzt │
+│    das gesamte Skalierungspotenzial            │
+│                                                 │
+│ 📊 10-30x | 8-18 Mo. | 2-5x ARR/MA             │
+└─────────────────────────────────────────────────┘
 ```
-
-### 3. Optional: Footer-Link
-Falls gewünscht, kann ein Link im Footer hinzugefügt werden (neben Impressum, Datenschutz, AGB).
 
 ---
 
-## Design
+## Design-Details
 
-- Verwendet bestehende `Table`-Komponenten aus `src/components/ui/table.tsx`
-- Dark-Mode kompatibel
-- Mobile-responsive (horizontales Scrolling bei kleinen Bildschirmen)
-- Konsistentes Styling mit anderen Legal-Seiten
+- Verwendet bestehende Card-Komponenten
+- Farbcodierung für die 4 Capabilities:
+  - Strategy: `purple-500`
+  - Setup: `blue-500`
+  - Execution: `green-500`
+  - Operationalization: `amber-500`
+- Alert-Box für das Kernprinzip
+- Badge-Komponenten für Metriken
+- Responsive: 2x2 Grid auf Desktop, Stack auf Mobile
 
 ---
 
@@ -70,7 +93,5 @@ Falls gewünscht, kann ein Link im Footer hinzugefügt werden (neben Impressum, 
 
 | Aktion | Datei |
 |--------|-------|
-| **Neu** | `src/pages/Glossar.tsx` |
-| **Bearbeiten** | `src/App.tsx` (Route hinzufügen) |
-| **Optional** | `src/components/Footer.tsx` (Link hinzufügen) |
+| **Bearbeiten** | `src/pages/Glossar.tsx` |
 
