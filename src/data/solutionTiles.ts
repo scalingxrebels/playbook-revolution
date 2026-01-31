@@ -1542,24 +1542,24 @@ export const solutionTiles: SolutionTile[] = [
     challenges: ['cac-crisis', 'growth-stalled'],
     price: '€135/User/Mo',
     priceTag: 'paid',
-    headlineEn: 'Maxxeed Digital Showrooms',
-    headlineDe: 'Maxxeed Digital Showrooms',
-    problemEn: "Your sales team relies on email and PowerPoint—unpersonal, inefficient. 78% of buyers demand better experiences, but get boring presentations. 30% win rate.",
-    problemDe: 'Dein Sales-Team nutzt E-Mail und PowerPoint—unpersönlich, ineffizient. 78% der Käufer fordern bessere Erfahrungen, bekommen aber langweilige Präsentationen. 30% Win Rate.',
-    solutionEn: 'Maxxeed automates creation of hyper-personalized Digital Showrooms in 30 seconds. AI transforms meeting notes into stunning showrooms you can share with your prospects.',
-    solutionDe: 'Maxxeed automatisiert die Erstellung hyper-personalisierter Digital Showrooms in 30 Sekunden. KI verwandelt Gesprächsnotizen in beeindruckende Showrooms, die du mit deinen Prospects teilen kannst.',
+    headlineEn: 'Maxxeed – Digital Buyer Experience',
+    headlineDe: 'Maxxeed – Digital Buyer Experience',
+    problemEn: "B2B Sales is a 'black box.' Sales teams are unable to provide customer-specific value and are absent when 90% of internal buying decisions happen. Only a 30% win rate as 78% of buyers demand better experiences.",
+    problemDe: "B2B-Vertrieb ist eine 'Black Box'. Sales-Teams können keinen kundenspezifischen Mehrwert bieten und sind abwesend, wenn 90% der internen Kaufentscheidungen getroffen werden. Nur 30% Win Rate, da 78% der Käufer bessere Experiences fordern.",
+    solutionEn: "Maxxeed digitizes the entire Buyer Value Cycle. It automates personalized insights and creates a collaborative workspace that empowers your champion to sell internally. Map the buying center and stay present even when you're not in the room.",
+    solutionDe: 'Maxxeed digitalisiert den gesamten Buyer Value Cycle. Es automatisiert personalisierte Insights und schafft einen kollaborativen Workspace, der deinen Champion befähigt, intern zu verkaufen. Mappe das Buying Center und bleibe präsent, auch wenn du nicht im Raum bist.',
     deliverablesEn: [
-      'Automatic showroom creation (30s)',
-      'Buyer value cycle (stakeholder maps)',
-      'Deal health score & analytics'
+      'Instant Buyer Value Cycle Creation (30s)',
+      'Stakeholder Alignment & Guidance',
+      'Deal Health Intelligence & Analytics'
     ],
     deliverablesDe: [
-      'Automatische Showroom-Erstellung (30s)',
-      'Buyer Value Cycle (Stakeholder Maps)',
-      'Deal Health Score & Analytics'
+      'Instant Buyer Value Cycle Erstellung (30s)',
+      'Stakeholder Alignment & Guidance',
+      'Deal Health Intelligence & Analytics'
     ],
-    impactEn: '+31% close rate, +24% deal size, 98% email open rate. €50M ARR: +€12M ARR.',
-    impactDe: '+31% Close Rate, +24% Deal Size, 98% E-Mail-Öffnungsrate. €50M ARR: +€12M ARR.',
+    impactEn: '+31% close rate, +24% deal size, +56% faster team onboarding. €50M ARR company: +€12M ARR/year.',
+    impactDe: '+31% Close Rate, +24% Deal Size, +56% schnelleres Team-Onboarding. €50M ARR Unternehmen: +€12M ARR/Jahr.',
     primaryCtaEn: 'More about Buyer Excitement',
     primaryCtaDe: 'Mehr über Buyer Excitement',
     primaryCtaAction: 'learn-more',
