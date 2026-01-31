@@ -8,14 +8,14 @@ export const boardGovernanceData: PlaybookPageData = {
   hero: {
     breadcrumb: { en: "Playbooks", de: "Playbooks" },
     badge: { en: "Board & Governance · Domain Playbook", de: "Board & Governance · Domain Playbook" },
-    title: "AI-Native Board & Governance Playbook",
+    title: "Board & Governance Playbook",
     subtitle: {
       en: "How to transform board and governance systems with AI-native frameworks",
       de: "Wie du Board- und Governance-Systeme mit AI-native Frameworks transformierst"
     },
     description: {
-      en: "Traditional board and governance systems are broken. Companies rely on manual board prep (5-7 days), reactive risk management, and fragmented governance frameworks. The result? Low board confidence (40-60%), slow decision velocity (2-4 weeks), and missed exit opportunities. They can't scale governance without proportional overhead.\n\nAI-native companies use a different playbook. They leverage the Board & Governance Framework (Strategic Governance × Operational Governance × Exit/M&A × AI) to reduce board prep time by 80%, increase board confidence by 100%, and achieve 2-5x valuation premiums. They scale governance superlinearly: Board Effectiveness >>> Overhead.\n\nThis playbook gives you the complete framework used by AI-native companies to build world-class board and governance systems. Learn from 3 detailed sub-playbooks, implementation guides, and real-world case studies.",
-      de: "Traditionelle Board- und Governance-Systeme sind kaputt. Unternehmen verlassen sich auf manuelle Board-Vorbereitung (5-7 Tage), reaktives Risikomanagement und fragmentierte Governance-Frameworks. Das Ergebnis? Niedrige Board-Confidence (40-60%), langsame Entscheidungsgeschwindigkeit (2-4 Wochen) und verpasste Exit-Chancen. Sie können Governance nicht ohne proportionalen Overhead skalieren.\n\nAI-native Unternehmen nutzen ein anderes Playbook. Sie nutzen das Board & Governance Framework (Strategic Governance × Operational Governance × Exit/M&A × AI), um Board Prep Time um 80% zu reduzieren, Board Confidence um 100% zu steigern und 2-5x Bewertungsprämien zu erzielen. Sie skalieren Governance superlinear: Board Effectiveness >>> Overhead.\n\nDieses Playbook gibt dir das komplette Framework, das AI-native Unternehmen nutzen, um erstklassige Board- und Governance-Systeme aufzubauen. Lerne von 3 detaillierten Sub-Playbooks, Implementierungsguides und echten Case Studies."
+      en: "Most companies struggle with board governance because they focus on reactive board management instead of building proactive governance systems. They prepare board decks last-minute, have unproductive board meetings, and don't leverage the board for strategic guidance.\n\nThis playbook teaches you the complete framework used by AI-native companies to reduce board prep time by 80%, increase board confidence by 100%, and achieve 2-5x valuation premiums.\n\nYou'll learn how to build AI-native Strategic Governance systems, create AI-powered Operational Governance, prepare for Exit/M&A with AI, integrate all 3 governance systems, and measure progress with Governance Maturity Levels. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies.",
+      de: "Die meisten Unternehmen kämpfen mit Board Governance, weil sie sich auf reaktives Board-Management konzentrieren, anstatt proaktive Governance-Systeme aufzubauen. Sie bereiten Board-Decks in letzter Minute vor, haben unproduktive Board-Meetings und nutzen das Board nicht für strategische Führung.\n\nDieses Playbook zeigt dir das komplette Framework, das AI-native Unternehmen nutzen, um Board Prep Time um 80% zu reduzieren, Board Confidence um 100% zu steigern und 2-5x Bewertungsprämien zu erzielen.\n\nDu lernst, wie du AI-native Strategic Governance Systeme aufbaust, AI-powered Operational Governance erstellst, dich mit AI auf Exit/M&A vorbereitest, alle 3 Governance-Systeme integrierst und Fortschritte mit Governance Maturity Levels misst. Inklusive 3 detaillierter Sub-Playbooks, Implementierungsguides und echter Case Studies."
     },
     trustBadges: [
       { en: "~3,000 Words", de: "~3.000 Wörter" },
@@ -38,15 +38,15 @@ export const boardGovernanceData: PlaybookPageData = {
     whyItMatters: {
       title: { en: "Why It Matters", de: "Warum es wichtig ist" },
       text: {
-        en: "Board & Governance is MULTIPLICATIVE (not additive). Weak strategic governance × strong operational = bottleneck. Strong strategic × weak operational = bottleneck. Only when all 3 systems fire together do you achieve Board Excellence.",
-        de: "Board & Governance ist MULTIPLIKATIV (nicht additiv). Schwache strategische Governance × starke operative = Engpass. Starke strategische × schwache operative = Engpass. Nur wenn alle 3 Systeme zusammen feuern, erreichst du Board Excellence."
+        en: "Strategic Governance, Operational Governance, and Exit/M&A must work together as one integrated system. A weak system becomes a bottleneck for the entire governance infrastructure. Only when all 3 systems work together do you achieve Board Excellence.",
+        de: "Strategic Governance, Operational Governance und Exit/M&A müssen als ein integriertes System zusammenarbeiten. Ein schwaches System wird zum Engpass für die gesamte Governance-Infrastruktur. Nur wenn alle 3 Systeme zusammenarbeiten, erreichst du Board Excellence."
       }
     },
     solution: {
       title: { en: "The Solution", de: "Die Lösung" },
       text: {
-        en: "The Board & Governance Framework: Board Effectiveness = Strategic Governance × Operational Governance × Exit/M&A × AI. AI-native companies achieve 80% faster board prep, 100% higher board confidence, and 2-5x valuation premiums.",
-        de: "Das Board & Governance Framework: Board Effectiveness = Strategic Governance × Operational Governance × Exit/M&A × AI. AI-native Unternehmen erreichen 80% schnellere Board-Vorbereitung, 100% höhere Board-Confidence und 2-5x Bewertungsprämien."
+        en: "The Board & Governance Framework: Build all 3 systems (Strategic Governance, Operational Governance, Exit/M&A) systematically with AI integration at each level. AI-native companies achieve 80% faster board prep, 100% higher board confidence, and 2-5x valuation premiums.",
+        de: "Das Board & Governance Framework: Baue alle 3 Systeme (Strategic Governance, Operational Governance, Exit/M&A) systematisch mit AI-Integration auf jeder Ebene auf. AI-native Unternehmen erreichen 80% schnellere Board-Vorbereitung, 100% höhere Board-Confidence und 2-5x Bewertungsprämien."
       }
     }
   },
@@ -96,8 +96,8 @@ export const boardGovernanceData: PlaybookPageData = {
   framework: {
     title: { en: "The Board & Governance Framework", de: "Das Board & Governance Framework" },
     subtitle: {
-      en: "Board Effectiveness = Strategic Governance × Operational Governance × Exit/M&A × AI",
-      de: "Board Effectiveness = Strategic Governance × Operational Governance × Exit/M&A × AI"
+      en: "A systematic approach to transform Strategic Governance, Operational Governance, and Exit/M&A",
+      de: "Ein systematischer Ansatz zur Transformation von Strategic Governance, Operational Governance und Exit/M&A"
     },
     items: [
       {
@@ -270,8 +270,8 @@ export const boardGovernanceData: PlaybookPageData = {
           de: "Manuelle Board-Vorbereitung (7 Tage), niedrige Board-Confidence (45%), muss Governance für Series B skalieren"
         },
         solution: {
-          en: "Implemented Strategic Governance (Board Intelligence, OKRs), Operational Governance (Data Governance, Compliance), Exit/M&A prep. AI integration across all systems (θ_index 0.32 → 0.75).",
-          de: "Strategic Governance implementiert (Board Intelligence, OKRs), Operational Governance (Data Governance, Compliance), Exit/M&A Vorbereitung. AI-Integration über alle Systeme (θ_index 0.32 → 0.75)."
+          en: "Implemented Strategic Governance (Board Intelligence, OKRs), Operational Governance (Data Governance, Compliance), Exit/M&A prep. AI integration across all systems (AI Maturity: Level 1 → Level 2).",
+          de: "Strategic Governance implementiert (Board Intelligence, OKRs), Operational Governance (Data Governance, Compliance), Exit/M&A Vorbereitung. AI-Integration über alle Systeme (AI Maturity: Level 1 → Level 2)."
         },
         results: [
           {
@@ -302,8 +302,8 @@ export const boardGovernanceData: PlaybookPageData = {
           de: "Muss sich auf Series C oder Exit vorbereiten, Board will Exit-Bereitschaft innerhalb von 18 Monaten"
         },
         solution: {
-          en: "Full governance transformation: Strategic (Board Intelligence, Investor Relations), Operational (GDPR, SOC 2, ISO 27001), Exit/M&A (Valuation, Due Diligence, Exit Strategy). Full AI-native transformation (θ_index 0.45 → 0.88).",
-          de: "Vollständige Governance-Transformation: Strategic (Board Intelligence, Investor Relations), Operational (GDPR, SOC 2, ISO 27001), Exit/M&A (Valuation, Due Diligence, Exit Strategy). Vollständige AI-native Transformation (θ_index 0.45 → 0.88)."
+          en: "Full governance transformation: Strategic (Board Intelligence, Investor Relations), Operational (GDPR, SOC 2, ISO 27001), Exit/M&A (Valuation, Due Diligence, Exit Strategy). Full AI-native transformation (AI Maturity: Level 1 → Level 3).",
+          de: "Vollständige Governance-Transformation: Strategic (Board Intelligence, Investor Relations), Operational (GDPR, SOC 2, ISO 27001), Exit/M&A (Valuation, Due Diligence, Exit Strategy). Vollständige AI-native Transformation (AI Maturity: Level 1 → Level 3)."
         },
         results: [
           {
@@ -334,8 +334,8 @@ export const boardGovernanceData: PlaybookPageData = {
           de: "Muss IPO-Bereitschaft erreichen, Board will €1B Bewertung innerhalb von 24 Monaten"
         },
         solution: {
-          en: "Comprehensive all-3-systems transformation: AI-native Strategic + Operational + Exit governance. Full AI integration across all dimensions (θ_index 0.58 → 0.95).",
-          de: "Umfassende Transformation aller 3 Systeme: AI-native Strategic + Operational + Exit Governance. Vollständige AI-Integration über alle Dimensionen (θ_index 0.58 → 0.95)."
+          en: "Comprehensive all-3-systems transformation: AI-native Strategic + Operational + Exit governance. Full AI integration across all dimensions (AI Maturity: Level 1 → Level 3).",
+          de: "Umfassende Transformation aller 3 Systeme: AI-native Strategic + Operational + Exit Governance. Vollständige AI-Integration über alle Dimensionen (AI Maturity: Level 1 → Level 3)."
         },
         results: [
           {
@@ -362,7 +362,7 @@ export const boardGovernanceData: PlaybookPageData = {
     ]
   },
   solutionsConnection: {
-    title: { en: "Ready to Execute?", de: "Bereit zur Umsetzung?" },
+    title: { en: "How We Can Help", de: "Wie wir helfen können" },
     subtitle: {
       en: "Choose the right engagement model for your timeline and budget",
       de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und dein Budget"
@@ -370,12 +370,26 @@ export const boardGovernanceData: PlaybookPageData = {
     items: [
       {
         type: "power-up",
+        name: { en: "Comprehensive Assessment", de: "Comprehensive Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: {
+          en: "Full assessment, maturity scoring, 90-day roadmap",
+          de: "Vollständiges Assessment, Maturity Scoring, 90-Tage-Roadmap"
+        },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "cyan"
+      },
+      {
+        type: "power-up",
         name: { en: "Board Readiness", de: "Board Readiness" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: {
-          en: "Governance Visibility +100%, Assessment Time -90%",
-          de: "Governance-Sichtbarkeit +100%, Assessment-Zeit -90%"
+          en: "Fix one governance system, quick wins, measurable results",
+          de: "Ein Governance-System beheben, Quick Wins, messbare Ergebnisse"
         },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/board-readiness",
@@ -388,13 +402,27 @@ export const boardGovernanceData: PlaybookPageData = {
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: {
-          en: "Board Prep -80%, Board Confidence +100%, Valuation +2-5x",
-          de: "Board Prep -80%, Board Confidence +100%, Bewertung +2-5x"
+          en: "Transform 2-3 governance systems, AI integration, measurable ROI",
+          de: "2-3 Governance-Systeme transformieren, AI-Integration, messbarer ROI"
         },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/board-excellence",
         icon: "Rocket",
         color: "purple"
+      },
+      {
+        type: "accelerate",
+        name: { en: "Governance Transformation", de: "Governance Transformation" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: {
+          en: "Full AI-native transformation, all 3 systems, 2-5x valuation premium",
+          de: "Vollständige AI-native Transformation, alle 3 Systeme, 2-5x Bewertungsprämie"
+        },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "emerald"
       }
     ]
   },

@@ -374,8 +374,8 @@ export const playbooks: Playbook[] = [
     id: 'board-governance',
     slug: 'board-governance',
     title: {
-      en: 'AI-Native Board & Governance Playbook',
-      de: 'AI-Native Board & Governance Playbook',
+      en: 'Board & Governance Playbook',
+      de: 'Board & Governance Playbook',
     },
     description: {
       en: 'How to transform board and governance systems with AI-native frameworks. Learn the complete framework (Strategic Governance, Operational Governance, Exit/M&A) used by AI-native companies to reduce board prep time by 80%, increase board confidence by 100%, and achieve 2-5x valuation premiums. Includes 3 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',
