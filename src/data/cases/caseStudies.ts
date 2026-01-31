@@ -1308,6 +1308,429 @@ Die Rechnung war klar: Ein €31M-Geschäft mit 61% EBITDA—aber Pricing-Komple
       { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
       { slug: 'ai-native-scaling', teaser: { en: 'The complete framework for AI-native execution', de: 'Das komplette Framework für AI-native Execution' } }
     ]
+  },
+  {
+    id: 'new-market-segment-b2b-b2c',
+    slug: 'new-market-segment-entry',
+    company: 'B2B/B2C Company',
+    industry: 'Professional Services',
+    stage: 'Growth Stage',
+    gradient: 'from-emerald-500 to-teal-500',
+    confidential: true,
+    
+    tags: ['market-entry', 'gtm', 'growth', 'b2b-b2c', 'professional-services'],
+    challengeType: 'market-entry',
+    
+    // HERO
+    headline: {
+      en: 'New Market Segment Entry → Scalable Revenue Engine',
+      de: 'Markteintritt in neues Segment → Skalierbare Revenue Engine'
+    },
+    challenge: {
+      en: '€1.3M in bespoke projects with 26 customers. No scalability, no flywheel effect. Leadership knew there was €10M+ potential—but no system to capture it.',
+      de: '€1.3M in maßgeschneiderten Projekten mit 26 Kunden. Keine Skalierbarkeit, kein Flywheel-Effekt. Die Führung wusste, es gibt €10M+ Potenzial—aber kein System, es zu nutzen.'
+    },
+    result: {
+      en: 'Revenue €1.3M → €13.72M (+955%), Customers 26 → 208 (8x), Sales Velocity €5.5K → €56K/day (10x), EBITDA -€300K → +€150K',
+      de: 'Revenue €1.3M → €13.72M (+955%), Kunden 26 → 208 (8x), Sales Velocity €5.5K → €56K/Tag (10x), EBITDA -€300K → +€150K'
+    },
+    investment: '€200K-€600K',
+    roi: '10x+',
+    heroMetrics: [
+      { label: 'Revenue', before: '€1.3M', after: '€13.72M', impact: '+955%' },
+      { label: 'Customers', before: '26', after: '208', impact: '+700%' },
+      { label: 'Sales Velocity', before: '€5.5K/day', after: '€56K/day', impact: '+915%' },
+      { label: 'EBITDA', before: '-€300K', after: '+€150K', impact: '+€450K' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A B2B/B2C company operating in both sectors, delivering custom, high-touch project work through a dedicated project office. Strong expertise, exceptional results—but no scalable model.',
+      de: 'Ein B2B/B2C-Unternehmen, das in beiden Sektoren tätig ist und maßgeschneiderte, hochwertige Projektarbeit über ein dediziertes Projektbüro liefert. Starke Expertise, exzellente Ergebnisse—aber kein skalierbares Modell.'
+    },
+    crisisStory: {
+      en: `The company operated successfully in both B2B and B2C sectors, delivering custom, high-touch project work through a dedicated project office. These "lighthouse projects" delivered exceptional value—but lacked scalability and repeatability.
+
+Before the transformation, the project office delivered roughly €1.3M in revenue from 26 customers, primarily through one-off, high-effort projects. While these were successful, they didn't create a flywheel effect—each deal was custom, resource-heavy, and hard to replicate.
+
+An internal analysis revealed that around €150K/year of these lighthouse projects had the potential to be productized and scaled into a new business segment with €10M+ potential within 60 months.
+
+The leadership team faced a clear choice: continue with bespoke brilliance that couldn't scale, or build a system to transform that expertise into a repeatable growth engine.`,
+      de: `Das Unternehmen war erfolgreich in B2B- und B2C-Sektoren tätig und lieferte maßgeschneiderte, hochwertige Projektarbeit über ein dediziertes Projektbüro. Diese "Leuchtturmprojekte" lieferten außergewöhnlichen Wert—aber fehlte es an Skalierbarkeit und Wiederholbarkeit.
+
+Vor der Transformation generierte das Projektbüro etwa €1.3M Umsatz von 26 Kunden, hauptsächlich durch einmalige, ressourcenintensive Projekte. Obwohl diese erfolgreich waren, schufen sie keinen Flywheel-Effekt—jeder Deal war maßgeschneidert, ressourcenintensiv und schwer replizierbar.
+
+Eine interne Analyse ergab, dass etwa €150K/Jahr dieser Leuchtturmprojekte das Potenzial hatten, in ein neues Geschäftssegment mit €10M+ Potenzial innerhalb von 60 Monaten produktisiert und skaliert zu werden.
+
+Das Führungsteam stand vor einer klaren Wahl: weiter maßgeschneiderte Brillanz liefern, die nicht skaliert, oder ein System aufbauen, das diese Expertise in eine wiederholbare Wachstumsmaschine transformiert.`
+    },
+    problemDescription: {
+      en: 'Strong demand—but no scale, no system, no profit. Each deal was custom, each project was high-touch, and the business was stuck at €1.3M with negative EBITDA.',
+      de: 'Starke Nachfrage—aber keine Skalierung, kein System, kein Profit. Jeder Deal war maßgeschneidert, jedes Projekt war hochindividuell, und das Geschäft steckte bei €1.3M mit negativem EBITDA fest.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Product-Market Fit', de: 'Product-Market Fit' },
+        symptoms: [
+          { en: '26 customers, each with completely different requirements', de: '26 Kunden, jeder mit völlig unterschiedlichen Anforderungen' },
+          { en: 'No clear ICP definition', de: 'Keine klare ICP-Definition' },
+          { en: 'No repeatable use cases identified', de: 'Keine wiederholbaren Use Cases identifiziert' }
+        ]
+      },
+      {
+        area: { en: 'GTM Motion', de: 'GTM-Motion' },
+        symptoms: [
+          { en: 'No standardized sales process', de: 'Kein standardisierter Vertriebsprozess' },
+          { en: 'No playbooks or templates', de: 'Keine Playbooks oder Vorlagen' },
+          { en: 'Each deal reinvented from scratch', de: 'Jeder Deal von Grund auf neu erfunden' }
+        ]
+      },
+      {
+        area: { en: 'Business Model', de: 'Geschäftsmodell' },
+        symptoms: [
+          { en: 'EBITDA: -€300K (segment loss)', de: 'EBITDA: -€300K (Segment-Verlust)' },
+          { en: 'No path to profitability at current scale', de: 'Kein Weg zur Profitabilität bei aktueller Skalierung' },
+          { en: 'High customer acquisition effort', de: 'Hoher Kundenakquisitionsaufwand' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Revenue', before: '€1.3M', after: '€13.72M (target)', impact: 'Starting point' },
+      { label: 'Customers', before: '26', after: '208 (target)', impact: 'Limited base' },
+      { label: 'Sales Velocity', before: '€5,516/day', after: '€56K/day (target)', impact: 'Low velocity' },
+      { label: 'EBITDA', before: '-€300K', after: '+€150K (target)', impact: 'Segment loss' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We executed a structured four-phase market entry program over 24 months: 6 months of intensive market validation, GTM execution, and scaling—followed by 18 months of growth acceleration to reach €13.72M.',
+      de: 'Wir führten ein strukturiertes Vier-Phasen-Markteintrittsprogramm über 24 Monate durch: 6 Monate intensive Marktvalidierung, GTM-Execution und Skalierung—gefolgt von 18 Monaten Wachstumsbeschleunigung bis €13.72M.'
+    },
+    phases: [
+      {
+        name: { en: 'Market Segment Validation & ICP Alignment', de: 'Marktsegment-Validierung & ICP-Alignment' },
+        timeline: 'Months 1-2',
+        actions: [
+          {
+            name: { en: 'ICP & Use Case Refinement', de: 'ICP & Use Case Verfeinerung' },
+            description: {
+              en: 'We assessed TAM, SAM, and SOM. Identified high-LTV, low-CAC profiles. Defined pain points and repeatable use cases that could scale beyond bespoke projects.',
+              de: 'Wir bewerteten TAM, SAM und SOM. Identifizierten Profile mit hohem LTV und niedrigem CAC. Definierten Pain Points und wiederholbare Use Cases, die über maßgeschneiderte Projekte hinaus skalieren können.'
+            },
+            deliverables: [
+              { en: 'TAM/SAM/SOM analysis', de: 'TAM/SAM/SOM-Analyse' },
+              { en: 'ICP definition with scoring model', de: 'ICP-Definition mit Scoring-Modell' },
+              { en: 'Use case mapping and prioritization', de: 'Use Case Mapping und Priorisierung' }
+            ],
+            whyItMattered: {
+              en: 'Without a clear ICP, the company was chasing every opportunity. With a defined ICP, they could focus resources on the highest-potential segments.',
+              de: 'Ohne klares ICP jagte das Unternehmen jeder Gelegenheit nach. Mit definiertem ICP konnten sie Ressourcen auf die Segmente mit dem höchsten Potenzial konzentrieren.'
+            }
+          },
+          {
+            name: { en: 'Competitive Positioning', de: 'Wettbewerbspositionierung' },
+            description: {
+              en: 'We crafted a segment-specific value proposition and identified key differentiators across price, features, and service that would set the company apart from incumbents.',
+              de: 'Wir erarbeiteten ein segmentspezifisches Wertversprechen und identifizierten wichtige Differenzierungsmerkmale bei Preis, Features und Service, die das Unternehmen von Wettbewerbern abheben.'
+            },
+            deliverables: [
+              { en: 'Competitive analysis', de: 'Wettbewerbsanalyse' },
+              { en: 'Value proposition framework', de: 'Wertversprechen-Framework' },
+              { en: 'Positioning statement', de: 'Positionierungsaussage' }
+            ],
+            whyItMattered: {
+              en: 'Clear positioning enabled the sales team to articulate why customers should choose them over alternatives—a critical factor in new market entry.',
+              de: 'Klare Positionierung ermöglichte dem Vertriebsteam zu artikulieren, warum Kunden sie gegenüber Alternativen wählen sollten—ein kritischer Faktor beim Markteintritt.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Market Entry & First Revenue Traction', de: 'Markteintritt & Erste Revenue-Traktion' },
+        timeline: 'Months 3-4',
+        actions: [
+          {
+            name: { en: 'Targeted Outbound & ABM Campaigns', de: 'Gezielte Outbound- & ABM-Kampagnen' },
+            description: {
+              en: 'We launched focused demand-gen and outbound strategies targeting the defined ICP. Built early pipeline with pilot programs and partnerships to establish credibility.',
+              de: 'Wir starteten fokussierte Demand-Gen- und Outbound-Strategien für das definierte ICP. Bauten frühe Pipeline mit Pilotprogrammen und Partnerschaften auf, um Glaubwürdigkeit zu etablieren.'
+            },
+            deliverables: [
+              { en: 'ABM campaign playbook', de: 'ABM-Kampagnen-Playbook' },
+              { en: 'Pilot program structure', de: 'Pilotprogramm-Struktur' },
+              { en: 'Partnership agreements', de: 'Partnerschaftsvereinbarungen' }
+            ],
+            whyItMattered: {
+              en: 'First ARR traction secured within 3-4 months—proving the market entry thesis before committing to full-scale investment.',
+              de: 'Erste ARR-Traktion innerhalb von 3-4 Monaten gesichert—die Markteintrittsthese bewiesen, bevor in volle Skalierung investiert wurde.'
+            }
+          },
+          {
+            name: { en: 'Pricing & Packaging Iteration', de: 'Pricing & Packaging Iteration' },
+            description: {
+              en: 'We iterated on pricing and packaging based on early customer feedback. Closed lighthouse deals and created initial case studies to fuel further growth.',
+              de: 'Wir iterierten Pricing und Packaging basierend auf frühem Kundenfeedback. Schlossen Leuchtturm-Deals und erstellten erste Fallstudien, um weiteres Wachstum anzutreiben.'
+            },
+            deliverables: [
+              { en: 'Pricing model v1.0', de: 'Pricing-Modell v1.0' },
+              { en: 'Package definitions', de: 'Paketdefinitionen' },
+              { en: 'Initial case studies', de: 'Erste Fallstudien' }
+            ],
+            whyItMattered: {
+              en: 'High lead-to-deal conversion validated the product-market fit in the new segment and provided confidence to scale.',
+              de: 'Hohe Lead-zu-Deal-Conversion validierte den Product-Market Fit im neuen Segment und gab Vertrauen zur Skalierung.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Scaling & Competitive Positioning', de: 'Skalierung & Wettbewerbspositionierung' },
+        timeline: 'Months 5-6',
+        actions: [
+          {
+            name: { en: 'Standardize Winning Sales Motions', de: 'Erfolgreiche Sales Motions Standardisieren' },
+            description: {
+              en: 'We documented and standardized the winning sales motions into playbooks. Expanded local partners and ecosystem integrations to accelerate market penetration.',
+              de: 'Wir dokumentierten und standardisierten die erfolgreichen Sales Motions in Playbooks. Erweiterten lokale Partner und Ökosystem-Integrationen, um Marktdurchdringung zu beschleunigen.'
+            },
+            deliverables: [
+              { en: 'Sales playbook v2.0', de: 'Sales Playbook v2.0' },
+              { en: 'Partner program', de: 'Partnerprogramm' },
+              { en: 'Ecosystem integration roadmap', de: 'Ökosystem-Integrations-Roadmap' }
+            ],
+            whyItMattered: {
+              en: 'Achieved +30-50% faster market penetration vs. legacy cycles. Created a platform for future scale with growing inbound pull.',
+              de: 'Erreichten +30-50% schnellere Marktdurchdringung vs. Legacy-Zyklen. Schufen eine Plattform für zukünftige Skalierung mit wachsendem Inbound-Pull.'
+            }
+          },
+          {
+            name: { en: 'Thought Leadership & Moat Building', de: 'Thought Leadership & Moat-Aufbau' },
+            description: {
+              en: 'We launched PR, analyst relations, and thought leadership initiatives to build visibility. Developed customer advocacy and competitive defense strategies.',
+              de: 'Wir starteten PR, Analysten-Beziehungen und Thought Leadership-Initiativen, um Sichtbarkeit aufzubauen. Entwickelten Kunden-Advocacy und kompetitive Verteidigungsstrategien.'
+            },
+            deliverables: [
+              { en: 'Thought leadership content', de: 'Thought Leadership-Inhalte' },
+              { en: 'PR & analyst program', de: 'PR & Analysten-Programm' },
+              { en: 'Customer advocacy program', de: 'Kunden-Advocacy-Programm' }
+            ],
+            whyItMattered: {
+              en: 'Established market credibility and defensibility—creating barriers to entry for competitors.',
+              de: 'Etablierten Marktglaubwürdigkeit und Verteidigungsfähigkeit—schufen Eintrittsbarrieren für Wettbewerber.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Growth Acceleration', de: 'Wachstumsbeschleunigung' },
+        timeline: 'Months 7-24',
+        actions: [
+          {
+            name: { en: 'Operational Scaling', de: 'Operative Skalierung' },
+            description: {
+              en: 'We scaled team, processes, and systems to support growth from €1.3M to €13.72M. Focused on customer success, retention, and NRR optimization.',
+              de: 'Wir skalierten Team, Prozesse und Systeme, um das Wachstum von €1.3M auf €13.72M zu unterstützen. Fokus auf Customer Success, Retention und NRR-Optimierung.'
+            },
+            deliverables: [
+              { en: 'Team expansion plan', de: 'Team-Expansionsplan' },
+              { en: 'Process automation', de: 'Prozessautomatisierung' },
+              { en: 'Customer success framework', de: 'Customer Success Framework' }
+            ],
+            whyItMattered: {
+              en: 'Revenue reached €13.72M (+955%), customers grew to 208 (8x), and EBITDA swung +€450K from loss to profit.',
+              de: 'Revenue erreichte €13.72M (+955%), Kunden wuchsen auf 208 (8x), und EBITDA schwenkte +€450K von Verlust zu Profit.'
+            }
+          },
+          {
+            name: { en: 'Strategic Partnerships & Expansion', de: 'Strategische Partnerschaften & Expansion' },
+            description: {
+              en: 'We established strategic partnerships and explored geographic expansion to unlock additional growth vectors beyond the initial market segment.',
+              de: 'Wir etablierten strategische Partnerschaften und erkundeten geografische Expansion, um zusätzliche Wachstumsvektoren jenseits des initialen Marktsegments zu erschließen.'
+            },
+            deliverables: [
+              { en: 'Strategic partnership agreements', de: 'Strategische Partnerschaftsvereinbarungen' },
+              { en: 'Geographic expansion plan', de: 'Geografischer Expansionsplan' },
+              { en: 'New use case development', de: 'Entwicklung neuer Use Cases' }
+            ],
+            whyItMattered: {
+              en: 'The segment now operates as a repeatable, standalone business line with scale potential beyond €20M+.',
+              de: 'Das Segment operiert jetzt als wiederholbare, eigenständige Geschäftslinie mit Skalierungspotenzial jenseits von €20M+.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '24 months',
+    resultMetrics: [
+      { label: 'Revenue', before: '€1.3M', after: '€13.72M', impact: '+955%' },
+      { label: 'Customers', before: '26', after: '208', impact: '+700%' },
+      { label: 'Sales Velocity', before: '€5,516/day', after: '€56,000/day', impact: '+915%' },
+      { label: 'EBITDA', before: '-€300K', after: '+€150K', impact: '+€450K' }
+    ],
+    roiCalculation: {
+      investment: '€200K-€600K',
+      returnValue: '€12.42M',
+      roi: '10x+',
+      breakdown: [
+        { en: 'Revenue growth: €1.3M → €13.72M = +€12.42M', de: 'Umsatzwachstum: €1.3M → €13.72M = +€12.42M' },
+        { en: 'EBITDA swing: -€300K → +€150K = +€450K profit', de: 'EBITDA-Schwung: -€300K → +€150K = +€450K Profit' },
+        { en: 'Customer base: 26 → 208 = 8x expansion', de: 'Kundenbasis: 26 → 208 = 8x Expansion' },
+        { en: 'Strategic optionality: €20M+ segment potential created', de: 'Strategische Optionalität: €20M+ Segment-Potenzial geschaffen' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We transformed bespoke brilliance into a repeatable growth engine. From €1.3M to €13.72M in 24 months. Sales velocity went from €5K to €56K per day. The segment now has €20M+ potential—and it\'s only getting started."',
+      de: '"Wir transformierten maßgeschneiderte Brillanz in eine wiederholbare Wachstumsmaschine. Von €1.3M auf €13.72M in 24 Monaten. Sales Velocity ging von €5K auf €56K pro Tag. Das Segment hat jetzt €20M+ Potenzial—und es fängt gerade erst an."'
+    },
+    quoteContext: {
+      en: 'The leadership team presented the 24-month results to the board. The segment was established as a standalone business line with dedicated resources and a clear path to €20M+.',
+      de: 'Das Führungsteam präsentierte die 24-Monats-Ergebnisse dem Board. Das Segment wurde als eigenständige Geschäftslinie mit dedizierten Ressourcen und einem klaren Weg zu €20M+ etabliert.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Start with repeatable pain points, not spreadsheets', de: 'Starte mit wiederholbaren Pain Points, nicht Spreadsheets' },
+        whatWeLearned: {
+          en: 'Segment selection and use case clarity were more important than any single feature. The company focused on solving real, recurring problems rather than building features based on assumptions.',
+          de: 'Segmentauswahl und Use Case Klarheit waren wichtiger als jedes einzelne Feature. Das Unternehmen konzentrierte sich darauf, echte, wiederkehrende Probleme zu lösen, anstatt Features auf Annahmen zu bauen.'
+        },
+        keyInsight: {
+          en: 'Don\'t productize from a spreadsheet. Find the pain points that repeat across customers, then build for those.',
+          de: 'Produktisiere nicht aus einem Spreadsheet. Finde die Pain Points, die sich bei Kunden wiederholen, dann baue dafür.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would have run customer discovery interviews even earlier (Month 0, not Month 1) to accelerate ICP clarity.',
+          de: 'Wir hätten Customer Discovery Interviews noch früher durchgeführt (Monat 0, nicht Monat 1), um ICP-Klarheit zu beschleunigen.'
+        }
+      },
+      {
+        title: { en: 'Focused GTM motion is 10x more effective', de: 'Fokussierte GTM-Motion ist 10x effektiver' },
+        whatWeLearned: {
+          en: 'Tailoring messaging, pricing, and playbooks to the new segment drastically improved traction and conversion. Generic sales approaches don\'t work in new markets.',
+          de: 'Die Anpassung von Messaging, Pricing und Playbooks auf das neue Segment verbesserte Traktion und Conversion drastisch. Generische Vertriebsansätze funktionieren nicht in neuen Märkten.'
+        },
+        keyInsight: {
+          en: 'A focused GTM motion beats a generalized one every time. Customize everything for the segment.',
+          de: 'Eine fokussierte GTM-Motion schlägt jedes Mal eine generalisierte. Passe alles für das Segment an.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would have built segment-specific playbooks even faster and tested messaging variations more aggressively.',
+          de: 'Wir hätten segmentspezifische Playbooks noch schneller gebaut und Messaging-Variationen aggressiver getestet.'
+        }
+      },
+      {
+        title: { en: 'Validate fast, scale smart', de: 'Schnell validieren, intelligent skalieren' },
+        whatWeLearned: {
+          en: 'The phased approach—from signal → pilot → system—allowed the company to de-risk investments and double down only where it made sense.',
+          de: 'Der phasenweise Ansatz—von Signal → Pilot → System—ermöglichte dem Unternehmen, Investitionen zu de-risken und nur dort zu verdoppeln, wo es sinnvoll war.'
+        },
+        keyInsight: {
+          en: 'Don\'t bet big before you have proof. Validate in phases, then scale what works.',
+          de: 'Wette nicht groß, bevor du Beweise hast. Validiere in Phasen, dann skaliere, was funktioniert.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. The phased approach prevented costly mistakes and accelerated learning.',
+          de: 'Nichts. Der phasenweise Ansatz verhinderte kostspielige Fehler und beschleunigte das Lernen.'
+        }
+      },
+      {
+        title: { en: 'Sales velocity is the truth', de: 'Sales Velocity ist die Wahrheit' },
+        whatWeLearned: {
+          en: 'Sales velocity became the leading indicator of momentum, and the single most telling metric of go-to-market success. It revealed what was working and what wasn\'t, faster than any other metric.',
+          de: 'Sales Velocity wurde zum führenden Indikator für Momentum und zur aussagekräftigsten Metrik für Go-to-Market-Erfolg. Sie zeigte schneller als jede andere Metrik, was funktioniert und was nicht.'
+        },
+        keyInsight: {
+          en: 'Track sales velocity daily. It\'s the canary in the coal mine for GTM health.',
+          de: 'Tracke Sales Velocity täglich. Sie ist der Kanarienvogel in der Kohlenmine für GTM-Gesundheit.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would have implemented velocity tracking on Day 1, not Week 4.',
+          de: 'Wir hätten Velocity-Tracking an Tag 1 implementiert, nicht in Woche 4.'
+        }
+      },
+      {
+        title: { en: 'Ecosystem positioning is leverage, not luxury', de: 'Ökosystem-Positionierung ist Hebel, nicht Luxus' },
+        whatWeLearned: {
+          en: 'PR, analyst engagement, and customer advocacy built trust and drove acceleration far beyond what performance marketing alone could achieve.',
+          de: 'PR, Analysten-Engagement und Kunden-Advocacy bauten Vertrauen auf und trieben Beschleunigung weit über das hinaus, was Performance Marketing allein erreichen konnte.'
+        },
+        keyInsight: {
+          en: 'Thought leadership creates inbound pull and competitive moats. Don\'t skip it.',
+          de: 'Thought Leadership schafft Inbound-Pull und kompetitive Gräben. Überspinge es nicht.'
+        },
+        whatWedDoDifferently: {
+          en: 'We would have started thought leadership earlier (Month 3, not Month 5) to build credibility faster.',
+          de: 'Wir hätten Thought Leadership früher gestartet (Monat 3, nicht Monat 5), um Glaubwürdigkeit schneller aufzubauen.'
+        }
+      }
+    ],
+    
+    playbooks: ['gtm-revenue', 'product', 'strategic-governance'],
+    downloadUrl: '/downloads/cases/new-market-segment-entry.pdf',
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Accelerate: Hypergrowth', de: 'Accelerate: Hypergrowth' },
+        url: '/solutions/accelerate/hypergrowth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Full Business Transformation - Time to €100M, CAC, ARR Growth', de: 'Volle Business Transformation - Time to €100M, CAC, ARR Growth' },
+        outcome: { en: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%', de: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%' },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Full Growth Transformation', de: 'Volle Growth Transformation' },
+          { en: 'GTM Engine Rebuild', de: 'GTM-Engine Neuaufbau' },
+          { en: 'Market Entry Execution', de: 'Markteintritts-Execution' },
+          { en: 'Scaling Playbooks', de: 'Skalierungs-Playbooks' },
+          { en: 'Outcome Guarantee', de: 'Ergebnis-Garantie' }
+        ]
+      },
+      {
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'GTM Engine Rebuild - ARR Growth, Win Rate, Pipeline', de: 'GTM-Engine Neuaufbau - ARR Growth, Win Rate, Pipeline' },
+        outcome: { en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%' },
+        type: 'alternative',
+        whatYouGet: [
+          { en: 'ICP & Positioning Clarity', de: 'ICP & Positionierungs-Klarheit' },
+          { en: 'Sales Process Optimization', de: 'Vertriebsprozess-Optimierung' },
+          { en: 'Outbound Playbooks', de: 'Outbound-Playbooks' },
+          { en: 'Sales Enablement', de: 'Sales Enablement' },
+          { en: 'GTM Iteration Support', de: 'GTM-Iterations-Support' }
+        ]
+      },
+      {
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { en: 'Quick Growth Activation - ICP, Positioning, Playbooks', de: 'Schnelle Growth-Aktivierung - ICP, Positionierung, Playbooks' },
+        outcome: { en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%' },
+        type: 'related',
+        whatYouGet: [
+          { en: 'ICP Definition', de: 'ICP-Definition' },
+          { en: 'Positioning Framework', de: 'Positionierungs-Framework' },
+          { en: 'GTM Recommendations', de: 'GTM-Empfehlungen' },
+          { en: 'Quick Win Playbooks', de: 'Quick Win Playbooks' }
+        ]
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'partner-channel-transformed-scalable-growth', teaser: { en: 'How an SME software provider achieved +45.6% revenue growth with 11 partners', de: 'Wie ein KMU-Softwareanbieter +45.6% Umsatzwachstum mit 11 Partnern erreichte' } },
+      { slug: 'pricing-redesigned-scalable-growth', teaser: { en: 'How a post-IPO TecDAX company achieved €13.6M revenue growth', de: 'Wie ein Post-IPO TecDAX-Unternehmen €13.6M Umsatzwachstum erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'product', teaser: { en: '5-component framework for AI-native product development', de: '5-Komponenten-Framework für AI-native Produktentwicklung' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } }
+    ]
   }
 ];
 

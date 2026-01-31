@@ -13,6 +13,7 @@ export const challengeFilters: CaseFilterOption[] = [
   { id: 'ops-chaos', label: { en: 'Ops Chaos', de: 'Ops-Chaos' } },
   { id: 'exit-prep', label: { en: 'Exit Prep', de: 'Exit-Vorbereitung' } },
   { id: 'partner-channel', label: { en: 'Partner Channel', de: 'Partner Channel' } },
+  { id: 'market-entry', label: { en: 'Market Entry', de: 'Markteintritt' } },
 ];
 
 export const industryFilters: CaseFilterOption[] = [
@@ -24,6 +25,7 @@ export const industryFilters: CaseFilterOption[] = [
   { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
   { id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } },
   { id: 'social-network', label: { en: 'Social Network / Job Ads', de: 'Social Network / Job Ads' } },
+  { id: 'professional-services', label: { en: 'Professional Services', de: 'Professional Services' } },
 ];
 
 export const stageFilters: CaseFilterOption[] = [
@@ -35,6 +37,7 @@ export const stageFilters: CaseFilterOption[] = [
   { id: 'pe-backed', label: { en: 'PE-Backed', de: 'PE-Backed' } },
   { id: 'established', label: { en: 'Established', de: 'Etabliert' } },
   { id: 'post-ipo', label: { en: 'Post-IPO', de: 'Post-IPO' } },
+  { id: 'growth-stage', label: { en: 'Growth Stage', de: 'Wachstumsphase' } },
 ];
 
 export const timelineFilters: CaseFilterOption[] = [
