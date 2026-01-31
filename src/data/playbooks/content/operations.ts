@@ -258,26 +258,48 @@ export const operationsData: PlaybookPageData = {
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und Budget" },
     items: [
       {
+        type: "assessment",
+        name: { en: "Operations Assessment", de: "Operations Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full operations maturity report + 90-day roadmap", de: "Vollständiger Operations-Maturity-Report + 90-Tage Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: Scaling Velocity", de: "Power Up: Scaling Velocity" },
+        name: { en: "Operations Sprint", de: "Operations Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Operational Cost -40-60%, Manual Work -50-70%", de: "Betriebskosten -40-60%, Manuelle Arbeit -50-70%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: Scaling OS", de: "Boost: Scaling OS" },
+        name: { en: "Operations Excellence", de: "Operations Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Efficiency +200-400%, Cost -60-80%", de: "Effizienz +200-400%, Kosten -60-80%" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Operations", de: "AI-Native Operations" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full operations transformation, AI Maturity Level 3, Costs -60%, Efficiency +200%", de: "Vollständige Operations-Transformation, AI Maturity Level 3, Kosten -60%, Effizienz +200%" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },
