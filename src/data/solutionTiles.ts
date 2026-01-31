@@ -1006,7 +1006,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/board-excellence',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/board-boost'
+    secondaryCtaUrl: '/cases/exit-readiness-achieved'
   },
   {
     id: 27,
@@ -1214,7 +1214,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/exit-readiness',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/exit-accelerate'
+    secondaryCtaUrl: '/cases/exit-readiness-achieved'
   },
   {
     id: 33,
