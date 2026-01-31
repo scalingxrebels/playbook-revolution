@@ -431,6 +431,17 @@ export const aiNativeScalingData: PlaybookPageData = {
     },
     items: [
       {
+        type: 'assessment',
+        name: { en: "AI Maturity Assessment", de: "AI Maturity Assessment" },
+        duration: { en: "3-5 Days", de: "3-5 Tage" },
+        price: { en: "€3.9K-€5.9K", de: "€3.9K-€5.9K" },
+        outcome: { en: "Full AI maturity assessment (8 dimensions), AI Maturity Level scoring, 90-day roadmap", de: "Vollständiges AI Maturity Assessment (8 Dimensionen), AI Maturity Level Scoring, 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/ai-maturity-assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: 'power-up',
         name: { en: "AI-Native Sprint", de: "AI-Native Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
@@ -439,7 +450,7 @@ export const aiNativeScalingData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: 'boost',
@@ -450,7 +461,7 @@ export const aiNativeScalingData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: 'accelerate',
@@ -461,7 +472,7 @@ export const aiNativeScalingData: PlaybookPageData = {
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
         link: "/solutions/accelerate/ai-native-scaling",
         icon: "TrendingUp",
-        color: "purple"
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

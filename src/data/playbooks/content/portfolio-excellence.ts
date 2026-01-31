@@ -344,7 +344,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
     },
     items: [
       {
-        type: "power-up",
+        type: "assessment",
         name: { en: "Portfolio Assessment", de: "Portfolio Assessment" },
         duration: { en: "2-4 Weeks", de: "2-4 Wochen" },
         price: { en: "€10K-€25K", de: "€10K-€25K" },
@@ -355,10 +355,10 @@ export const portfolioExcellenceData: PlaybookPageData = {
         cta: { en: "Book Assessment", de: "Assessment buchen" },
         link: "/solutions/portfolio-assessment",
         icon: "ClipboardCheck",
-        color: "cyan"
+        color: "bg-emerald-500/10 text-emerald-500"
       },
       {
-        type: "boost",
+        type: "power-up",
         name: { en: "Portfolio Quick Fix", de: "Portfolio Quick Fix" },
         duration: { en: "6 Months", de: "6 Monate" },
         price: { en: "€50K-€150K", de: "€50K-€150K" },
@@ -369,10 +369,10 @@ export const portfolioExcellenceData: PlaybookPageData = {
         cta: { en: "Start Quick Fix", de: "Quick Fix starten" },
         link: "/solutions/boost/portfolio-value",
         icon: "Zap",
-        color: "green"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
-        type: "accelerate",
+        type: "boost",
         name: { en: "Portfolio Transformation", de: "Portfolio Transformation" },
         duration: { en: "12-18 Months", de: "12-18 Monate" },
         price: { en: "€200K-€500K", de: "€200K-€500K" },
@@ -383,7 +383,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
         cta: { en: "Start Transformation", de: "Transformation starten" },
         link: "/solutions/accelerate/portfolio-transformation",
         icon: "Rocket",
-        color: "purple"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: "accelerate",
@@ -397,7 +397,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
         cta: { en: "Start AI-Native", de: "AI-Native starten" },
         link: "/solutions/accelerate/ai-native-scaling",
         icon: "TrendingUp",
-        color: "pink"
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },

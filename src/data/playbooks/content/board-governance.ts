@@ -369,18 +369,18 @@ export const boardGovernanceData: PlaybookPageData = {
     },
     items: [
       {
-        type: "power-up",
-        name: { en: "Comprehensive Assessment", de: "Comprehensive Assessment" },
+        type: "assessment",
+        name: { en: "Investor-Readiness Pitch Deck Check", de: "Investor-Readiness Pitch Deck Check" },
         duration: { en: "2-3 Days", de: "2-3 Tage" },
-        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        price: { en: "€1.9K-€2.5K", de: "€1.9K-€2.5K" },
         outcome: {
-          en: "Full assessment, maturity scoring, 90-day roadmap",
-          de: "Vollständiges Assessment, Maturity Scoring, 90-Tage-Roadmap"
+          en: "Full board readiness assessment, pitch deck review, investor-readiness scoring, 90-day roadmap",
+          de: "Vollständiges Board-Readiness-Assessment, Pitch-Deck-Review, Investor-Readiness-Scoring, 90-Tage-Roadmap"
         },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/investor-readiness-pitch-deck-check",
         icon: "ClipboardCheck",
-        color: "cyan"
+        color: "bg-emerald-500/10 text-emerald-500"
       },
       {
         type: "power-up",
@@ -394,7 +394,7 @@ export const boardGovernanceData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/board-readiness",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
@@ -408,7 +408,7 @@ export const boardGovernanceData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/board-excellence",
         icon: "Rocket",
-        color: "purple"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: "accelerate",
@@ -422,7 +422,7 @@ export const boardGovernanceData: PlaybookPageData = {
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
         link: "/solutions/accelerate",
         icon: "TrendingUp",
-        color: "emerald"
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },
