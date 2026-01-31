@@ -1,44 +1,71 @@
 
 
-# Florian Metzger Bild auf Expertise-Seite anpassen
+# Case-Kacheln Verbesserung: Executive Summary & Stat-Korrektur
 
-## Aktuelle Situation
+## Probleme
 
-**Datei:** `src/components/ResearchHub.tsx` (Zeilen 186-187)
+### 1. Beschreibung zeigt nur Metriken statt Executive Summary
+**Aktuell:** Die Beschreibung zeigt `result`-Feld (z.B. "Leads +1,000-1,500%, Conversion +50-75%...")
+**Gewünscht:** Zielgruppen-gerechte 2-Zeilen Executive Summary
 
-```tsx
-image: '/images/team-florian.png',
-imageStyle: 'scale-150 translate-y-[20%]',
+### 2. Erster Stat "+1,000-1,500%" zu lang
+**Aktuell:** `impact: '+1,000-1,500%'` - passt nicht gut in die kleine Box
+**Gewünscht:** Kürzere Darstellung wie `'10-15x'`
+
+## Lösung
+
+### A. Neues Feld für Kachel-Beschreibung
+
+Ein neues optionales Feld `cardSummary` in `ClientCaseStudy` hinzufügen:
+
+**Datei:** `src/data/cases/types.ts`
+```typescript
+// Nach 'result: BilingualText;'
+cardSummary?: BilingualText; // Executive Summary für Kacheln (2 Zeilen)
 ```
 
-Das Portrait-Bild wird mit Scaling und Verschiebung angepasst, um in den Container zu passen.
+### B. CaseCard anpassen
 
-## Option A: Quadratisches Bild verwenden (empfohlen)
-
-Wie auf der About-Seite das quadratische Bild verwenden und die speziellen Transformationen entfernen:
-
-```tsx
+**Datei:** `src/components/cases/CaseCard.tsx`
+```typescript
 // Vorher:
-image: '/images/team-florian.png',
-imageStyle: 'scale-150 translate-y-[20%]',
+const description = language === 'de' ? caseStudy.result.de : caseStudy.result.en;
 
 // Nachher:
-image: '/images/team-florian-square.png',
-imageStyle: '',
+const description = caseStudy.cardSummary 
+  ? (language === 'de' ? caseStudy.cardSummary.de : caseStudy.cardSummary.en)
+  : (language === 'de' ? caseStudy.result.de : caseStudy.result.en);
 ```
 
-## Option B: Portrait-Bild beibehalten
+### C. Case Study Daten aktualisieren
 
-Das aktuelle Setup beibehalten - das Portrait-Bild mit den CSS-Transformationen sollte funktionieren.
+**Datei:** `src/data/cases/caseStudies.ts`
 
-## Empfehlung
+Für Case "Diagnostic-Led Acquisition Scaled" (Zeile ~4183):
 
-**Option A** für Konsistenz mit der About-Seite. Das quadratische Bild passt besser in die Team-Karten.
+```typescript
+// Stat korrigieren (Zeile 4183):
+heroMetrics: [
+  { label: 'Leads/Qtr', before: '3-4', after: '40-60', impact: '10-15x' }, // Statt '+1,000-1,500%'
+  ...
+]
 
-## Änderung
+// Neue cardSummary hinzufügen (nach result):
+cardSummary: {
+  en: 'Transformed founder-dependent consulting firm into scalable growth engine with AI-powered diagnostics and systematic value ladder.',
+  de: 'Gründer-abhängige Beratungsfirma in skalierbare Growth Engine transformiert durch AI-gestützte Diagnostik und systematische Value Ladder.'
+},
+```
 
-| Datei | Zeile | Änderung |
-|-------|-------|----------|
-| `src/components/ResearchHub.tsx` | 186 | `image: '/images/team-florian-square.png'` |
-| `src/components/ResearchHub.tsx` | 187 | `imageStyle: ''` |
+### D. Alle Case Studies updaten
+
+Für jede Case Study eine passende `cardSummary` erstellen - zielgruppen-gerecht, CEO-freundlich, auf 2 Zeilen optimiert.
+
+## Zusammenfassung
+
+| Datei | Änderung |
+|-------|----------|
+| `src/data/cases/types.ts` | Neues Feld `cardSummary?: BilingualText` |
+| `src/components/cases/CaseCard.tsx` | `cardSummary` mit Fallback auf `result` |
+| `src/data/cases/caseStudies.ts` | `cardSummary` + Stat-Korrektur für alle Cases |
 
