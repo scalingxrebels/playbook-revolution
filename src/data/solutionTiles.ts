@@ -560,7 +560,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/pricing-power',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/pricing-transformation'
+    secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
   },
   {
     id: 14,
@@ -870,7 +870,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/pricing-dominance',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/pricing-boost'
+    secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
   },
   {
     id: 23,
