@@ -1,25 +1,76 @@
 
 
-# Avg. ROI mit Dezimalstelle
+# Expertise Breadcrumb: Anpassung an Playbooks/Solutions Pattern
+
+## Aktuelle Situation
+
+**Expertise (3-Ebenen):**
+```
+Home → Expertise → AI Maturity Framework
+```
+
+**Playbooks/Solutions (2-Ebenen):**
+```
+Playbooks → Growth Engines
+Solutions → Power Up CAC Crisis
+```
 
 ## Änderung
 
-**Datei:** `src/pages/Cases.tsx` (Zeile 48)
+### Datei: `src/components/research/sections/ResearchHeroSection.tsx`
 
-**Aktuell:**
-```typescript
-return `${Math.round(median)}x`;
+**Aktuell (Zeilen 64-82):**
+```tsx
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.home[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.parent[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
 
-**Neu:**
-```typescript
-return `${median % 1 === 0 ? median : median.toFixed(1)}x`;
+**Neu (2-Ebenen Pattern):**
+```tsx
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.parent[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
 
 ## Ergebnis
 
-- Wenn Median eine ganze Zahl ist (z.B. 8) → "8x"
-- Wenn Median eine Dezimalzahl ist (z.B. 8.6) → "8.6x"
+| Seite | Vorher | Nachher |
+|-------|--------|---------|
+| AMF | Home → Expertise → AI Maturity Framework | Expertise → AI Maturity Framework |
+| ANST | Home → Expertise → AI-Native Scaling Theory | Expertise → AI-Native Scaling Theory |
+| SST | Home → Expertise → Scaling Stack Theory | Expertise → Scaling Stack Theory |
+| Unified | Home → Expertise → Unified Framework | Expertise → Unified Framework |
 
-Mit den aktuellen Daten wird der Median **8.6x** angezeigt statt gerundet **9x**.
+## Geänderte Dateien
+
+| Datei | Änderung |
+|-------|----------|
+| `src/components/research/sections/ResearchHeroSection.tsx` | Home-Link + Separator entfernen |
 
