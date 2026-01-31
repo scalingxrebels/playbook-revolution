@@ -1,57 +1,58 @@
 
-# Florian Metzger Bild Update auf About-Seite
 
-## Übersicht
+# Korrektur: Florian Metzger Bild nur auf About-Seite
 
-Ersetzt das aktuelle Bild von Florian Metzger durch das neue quadratische Bild und entfernt die speziellen CSS-Transformationen, sodass es sich wie Michel Lasons Bild verhält.
+## Problem
+
+Das Bild `team-florian.png` wurde überschrieben und betrifft nun alle Seiten. Die FM-Detailseite verwendet ein Portrait-Format (3/4), das mit dem neuen quadratischen Bild nicht optimal aussieht.
+
+## Lösung
+
+Zwei separate Bilder verwenden:
+- **Quadratisches Bild** für About-Seite: `team-florian-square.png`
+- **Portrait-Bild** für FM-Detailseite: `team-florian.png` (wiederherstellen)
 
 ## Änderungen
 
-### 1. Bild kopieren
+### 1. Neues Bild umbenennen
 
-Das hochgeladene Bild in den public-Ordner kopieren und das bestehende Bild überschreiben:
-
+Das hochgeladene quadratische Bild unter neuem Namen speichern:
 ```
-user-uploads://Flo_Square.png → public/images/team-florian.png
+user-uploads://Flo_Square.png → public/images/team-florian-square.png
 ```
 
-### 2. CSS-Anpassung in About.tsx
+### 2. Altes Bild wiederherstellen
 
-**Datei:** `src/pages/About.tsx`  
-**Zeilen:** 241-247
+Das ursprüngliche Portrait-Bild wiederherstellen:
+```
+public/images/team-florian.png → (vorherige Version aus Git/History)
+```
 
-Aktuelle Logik entfernt die spezielle Behandlung für Florian:
+### 3. About.tsx anpassen
 
-| Vorher | Nachher |
-|--------|---------|
-| `member.name === 'Florian Metzger' ? 'scale-150 translate-y-[20%]'` | Keine spezielle Behandlung |
+**Datei:** `src/pages/About.tsx` (Zeile 98)
 
-**Änderung:**
 ```tsx
-// Vorher (Zeile 241-247):
-className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-  member.name === 'Florian Metzger' 
-    ? 'scale-150 translate-y-[20%]' 
-    : member.name === 'Alban Halili' 
-      ? 'object-top' 
-      : ''
-}`}
+// Vorher:
+image: '/images/team-florian.png',
 
 // Nachher:
-className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-  member.name === 'Alban Halili' ? 'object-top' : ''
-}`}
+image: '/images/team-florian-square.png',
 ```
 
 ## Ergebnis
 
-- Florian Metzgers Bild wird wie Michel Lasons Bild behandelt (keine speziellen Transformationen)
-- Das quadratische Format des neuen Bildes passt perfekt in den `aspect-square` Container
-- Alban Halilis Bild behält weiterhin `object-top` für korrekte Positionierung
+| Seite | Bild | Format |
+|-------|------|--------|
+| /about | team-florian-square.png | Quadratisch (neu) |
+| /fm | team-florian.png | Portrait 3:4 (original) |
+| /expertise | team-florian.png | Portrait (original) |
 
 ## Zusammenfassung
 
 | Datei | Änderung |
 |-------|----------|
-| `public/images/team-florian.png` | Neues Bild überschreiben |
-| `src/pages/About.tsx` | CSS-Logik vereinfachen (Zeile 241-247) |
+| `public/images/team-florian-square.png` | Neues quadratisches Bild hinzufügen |
+| `public/images/team-florian.png` | Altes Portrait-Bild wiederherstellen |
+| `src/pages/About.tsx` | Zeile 98: Bildpfad auf `-square.png` ändern |
+
