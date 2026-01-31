@@ -1,121 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, TrendingUp, Users, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Calendar, Briefcase, CheckCircle2 } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
-
-interface CaseStudy {
-  id: string;
-  company: string;
-  industry: string;
-  challenge: { de: string; en: string };
-  result: { de: string; en: string };
-  metrics: { label: string; value: string }[];
-  gradient: string;
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: 'techscale-ai',
-    company: 'TechScale AI',
-    industry: 'B2B SaaS',
-    challenge: { 
-      de: 'Stagnation bei €15M ARR trotz Product-Market Fit',
-      en: 'Stagnation at €15M ARR despite Product-Market Fit'
-    },
-    result: {
-      de: '3.2x ARR in 18 Monaten durch AI-native GTM',
-      en: '3.2x ARR in 18 months through AI-native GTM'
-    },
-    metrics: [
-      { label: 'ARR Growth', value: '3.2x' },
-      { label: 'Time to Result', value: '18 Mo' },
-      { label: 'Team Size', value: '+12%' }
-    ],
-    gradient: 'from-violet-500 to-purple-600'
-  },
-  {
-    id: 'dataflow-systems',
-    company: 'DataFlow Systems',
-    industry: 'Enterprise Software',
-    challenge: {
-      de: 'Linear wachsende Kosten bei Skalierung',
-      en: 'Linearly growing costs during scaling'
-    },
-    result: {
-      de: '67% Kostenreduktion durch AI Operations',
-      en: '67% cost reduction through AI Operations'
-    },
-    metrics: [
-      { label: 'Cost Reduction', value: '67%' },
-      { label: 'Efficiency', value: '+340%' },
-      { label: 'ROI', value: '12x' }
-    ],
-    gradient: 'from-blue-500 to-cyan-500'
-  },
-  {
-    id: 'scaleup-ventures',
-    company: 'ScaleUp Ventures',
-    industry: 'FinTech',
-    challenge: {
-      de: 'Bottleneck in der Product Development Pipeline',
-      en: 'Bottleneck in the product development pipeline'
-    },
-    result: {
-      de: '5x schnellere Feature Velocity mit AI-augmented Teams',
-      en: '5x faster feature velocity with AI-augmented teams'
-    },
-    metrics: [
-      { label: 'Feature Velocity', value: '5x' },
-      { label: 'Time to Market', value: '-70%' },
-      { label: 'Quality Score', value: '+45%' }
-    ],
-    gradient: 'from-emerald-500 to-teal-500'
-  },
-  {
-    id: 'growth-dynamics',
-    company: 'Growth Dynamics',
-    industry: 'MarTech',
-    challenge: {
-      de: 'Ineffiziente Sales Cycles trotz starkem Produkt',
-      en: 'Inefficient sales cycles despite strong product'
-    },
-    result: {
-      de: 'Sales Cycle von 90 auf 21 Tage reduziert',
-      en: 'Sales cycle reduced from 90 to 21 days'
-    },
-    metrics: [
-      { label: 'Sales Cycle', value: '-77%' },
-      { label: 'Win Rate', value: '+89%' },
-      { label: 'Deal Size', value: '+34%' }
-    ],
-    gradient: 'from-amber-500 to-orange-500'
-  },
-  {
-    id: 'nexgen-analytics',
-    company: 'NexGen Analytics',
-    industry: 'Data & Analytics',
-    challenge: {
-      de: 'Skalierung des Customer Success bei Enterprise Kunden',
-      en: 'Scaling customer success with enterprise clients'
-    },
-    result: {
-      de: 'NRR von 105% auf 142% gesteigert',
-      en: 'NRR increased from 105% to 142%'
-    },
-    metrics: [
-      { label: 'NRR', value: '142%' },
-      { label: 'Churn', value: '-62%' },
-      { label: 'Expansion', value: '+180%' }
-    ],
-    gradient: 'from-rose-500 to-pink-500'
-  }
-];
+import { clientCases, ClientCase } from '@/data/cases';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
 const casesStats = [
   { value: '22+', label: { en: 'Transformations', de: 'Transformationen' }, color: 'primary' as const },
@@ -124,8 +23,125 @@ const casesStats = [
   { value: '94%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
 ];
 
+interface CaseDetailModalProps {
+  caseStudy: ClientCase | null;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+const CaseDetailModal: React.FC<CaseDetailModalProps> = ({ caseStudy, open, onOpenChange }) => {
+  const { language } = useLanguage();
+  
+  if (!caseStudy) return null;
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <DialogHeader>
+          <div className="flex items-center gap-3 mb-2">
+            <Badge variant="secondary">{caseStudy.industry}</Badge>
+            {caseStudy.stage && (
+              <Badge variant="outline">{caseStudy.stage}</Badge>
+            )}
+          </div>
+          <DialogTitle className="text-2xl">{caseStudy.company}</DialogTitle>
+          <DialogDescription className="text-base">
+            {language === 'de' ? 'Anonymisiertes Kundenprojekt' : 'Anonymized Client Project'}
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-6 mt-4">
+          {/* Challenge */}
+          <div>
+            <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              {language === 'de' ? 'Herausforderung' : 'Challenge'}
+            </h4>
+            <p className="text-foreground">
+              {caseStudy.challenge[language as 'de' | 'en']}
+            </p>
+          </div>
+
+          {/* Solution */}
+          <div>
+            <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              {language === 'de' ? 'Lösung' : 'Solution'}
+            </h4>
+            <p className="text-foreground">
+              {caseStudy.solution[language as 'de' | 'en']}
+            </p>
+          </div>
+
+          {/* Result Highlight */}
+          <div className={`p-4 rounded-xl bg-gradient-to-r ${caseStudy.gradient} text-white`}>
+            <CheckCircle2 className="w-5 h-5 mb-2" />
+            <p className="font-semibold">
+              {caseStudy.result[language as 'de' | 'en']}
+            </p>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid grid-cols-3 gap-3">
+            {caseStudy.metrics.map((metric, idx) => (
+              <div key={idx} className="text-center p-3 bg-muted/50 rounded-lg">
+                <p className="text-2xl font-bold text-primary">{metric.value}</p>
+                <p className="text-xs text-muted-foreground">{metric.label}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Timeline */}
+          {caseStudy.timeline && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Calendar className="w-4 h-4" />
+              <span>{language === 'de' ? 'Projektdauer:' : 'Project Duration:'} {caseStudy.timeline}</span>
+            </div>
+          )}
+
+          {/* Playbooks */}
+          {caseStudy.playbooks && caseStudy.playbooks.length > 0 && (
+            <div>
+              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                {language === 'de' ? 'Eingesetzte Playbooks' : 'Playbooks Applied'}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {caseStudy.playbooks.map((playbook) => (
+                  <Badge key={playbook} variant="outline" className="capitalize">
+                    {playbook.replace('-', ' ')}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* CTA */}
+          <div className="pt-4 border-t">
+            <Button 
+              className="w-full bg-primary text-primary-foreground"
+              onClick={() => {
+                onOpenChange(false);
+                document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <Briefcase className="w-4 h-4 mr-2" />
+              {language === 'de' ? 'Ähnliches Projekt besprechen' : 'Discuss Similar Project'}
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const Cases: React.FC = () => {
   const { language } = useLanguage();
+  const [selectedCase, setSelectedCase] = useState<ClientCase | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCaseClick = (caseStudy: ClientCase) => {
+    setSelectedCase(caseStudy);
+    setModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -147,10 +163,11 @@ const Cases: React.FC = () => {
         <div className="container max-w-7xl mx-auto px-4">
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {caseStudies.map((study) => (
+            {clientCases.map((study) => (
               <Card 
                 key={study.id}
-                className="group overflow-hidden hover:shadow-lg transition-all duration-300 border-border/50"
+                className="group overflow-hidden hover:shadow-lg transition-all duration-300 border-border/50 cursor-pointer"
+                onClick={() => handleCaseClick(study)}
               >
                 {/* Gradient Header */}
                 <div className={`h-2 bg-gradient-to-r ${study.gradient}`} />
@@ -170,8 +187,8 @@ const Cases: React.FC = () => {
                       <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
                         {language === 'de' ? 'Challenge' : 'Challenge'}
                       </p>
-                      <p className="text-sm text-muted-foreground">
-                        {study.challenge[language as 'de' | 'en']}
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {study.challenge[language as 'de' | 'en'].split('.')[0]}.
                       </p>
                     </div>
                     <div>
@@ -194,12 +211,10 @@ const Cases: React.FC = () => {
                     ))}
                   </div>
 
-                  <Link to={`/case-study/${study.id}`}>
-                    <Button variant="ghost" className="w-full group-hover:bg-primary/10">
-                      {language === 'de' ? 'Case Study lesen' : 'Read Case Study'}
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
+                  <Button variant="ghost" className="w-full group-hover:bg-primary/10">
+                    {language === 'de' ? 'Details ansehen' : 'View Details'}
+                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
+                  </Button>
                 </div>
               </Card>
             ))}
@@ -230,6 +245,12 @@ const Cases: React.FC = () => {
           </div>
         </div>
       </main>
+
+      <CaseDetailModal 
+        caseStudy={selectedCase} 
+        open={modalOpen} 
+        onOpenChange={setModalOpen} 
+      />
 
       <Footer />
     </div>
