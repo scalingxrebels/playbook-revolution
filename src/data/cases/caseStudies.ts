@@ -3772,6 +3772,439 @@ Die Frage war nicht, ob die Programme verkaufen konnten. Es war, ob das Unterneh
     ]
   },
 
+  // ============================================
+  // CASE STUDY 10: VC Due Diligence Passed → Investment Secured
+  // ============================================
+  {
+    id: 'vc-due-diligence-fintech-startup',
+    slug: 'vc-due-diligence-passed-investment-secured',
+    company: 'FinTech Startup',
+    industry: 'B2C FinTech',
+    stage: 'Pre-Seed II',
+    gradient: 'from-violet-500 to-purple-500',
+    confidential: true,
+    
+    tags: ['due-diligence', 'fundraising', 'investor-readiness', 'pre-seed', 'fintech'],
+    challengeType: 'board-pressure',
+    
+    // HERO
+    headline: {
+      en: 'VC Due Diligence Passed → Investment Secured',
+      de: 'VC Due Diligence bestanden → Investment gesichert'
+    },
+    challenge: {
+      en: "No due diligence readiness, catastrophic unit economics (LTV/CAC 0.02), unrealistic projections. The pitch deck was impressive—but the fundamentals weren't.",
+      de: 'Keine Due-Diligence-Bereitschaft, katastrophale Unit Economics (LTV/CAC 0,02), unrealistische Projektionen. Das Pitch Deck war beeindruckend—aber die Fundamentaldaten nicht.'
+    },
+    result: {
+      en: 'DD Readiness 0/10 → 8/10, 12 red flags identified + mitigated, Investment Decision: NO-GO → CONDITIONAL YES',
+      de: 'DD Readiness 0/10 → 8/10, 12 Red Flags identifiziert + mitigiert, Investment-Entscheidung: NO-GO → CONDITIONAL YES'
+    },
+    investment: '€5.9K',
+    roi: '10-50x',
+    heroMetrics: [
+      { label: 'DD Readiness', before: '0/10', after: '8/10', impact: '+8 points' },
+      { label: 'Red Flags', before: 'Unknown', after: '12 identified', impact: '+ mitigation plan' },
+      { label: 'Investment Decision', before: 'NO-GO', after: 'CONDITIONAL YES', impact: 'Approved' },
+      { label: 'Deal Structure', before: '€200K', after: '€75K-€100K', impact: 'Milestone-based' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A FinTech startup developing an AI-powered personal finance management app, targeting Gen Z and Millennials. Seeking €200K Pre-Seed II to bridge to a planned €2.4M Seed round.',
+      de: 'Ein FinTech-Startup, das eine KI-gestützte Personal-Finance-Management-App entwickelt, ausgerichtet auf Gen Z und Millennials. Auf der Suche nach €200K Pre-Seed II als Brücke zu einer geplanten €2,4M Seed-Runde.'
+    },
+    crisisStory: {
+      en: `The pitch deck was impressive—visionary product concept, large addressable market (€1.3-6.3B TAM in Europe), and an ambitious plan to raise €74.6M through Series C by 2029.
+
+But when subjected to systematic VC due diligence simulation, the reality was starkly different.
+
+The founding team had never scaled a company. The unit economics were catastrophic: LTV/CAC of 0.02 meant the business lost €73.45 per user acquired. After 6 years, they had only 218 active users. And the financial projections assumed 16,000x user growth without evidence.
+
+The math was brutal: No VC would invest at the proposed €1-2M valuation with these fundamentals. The deal was heading for a NO-GO.`,
+      de: `Das Pitch Deck war beeindruckend—visionäres Produktkonzept, großer adressierbarer Markt (€1,3-6,3B TAM in Europa) und ein ambitionierter Plan, bis 2029 €74,6M durch Series C zu raisen.
+
+Aber bei einer systematischen VC Due Diligence Simulation sah die Realität ganz anders aus.
+
+Das Gründerteam hatte noch nie ein Unternehmen skaliert. Die Unit Economics waren katastrophal: LTV/CAC von 0,02 bedeutete, dass das Business €73,45 pro akquiriertem User verlor. Nach 6 Jahren hatten sie nur 218 aktive User. Und die Finanzprojektionen nahmen 16.000x User-Wachstum ohne Evidenz an.
+
+Die Mathematik war brutal: Kein VC würde bei der vorgeschlagenen €1-2M Bewertung mit diesen Fundamentaldaten investieren. Der Deal steuerte auf ein NO-GO zu.`
+    },
+    problemDescription: {
+      en: 'The startup had a compelling vision but was facing a fundamental credibility gap. Without addressing the unit economics, product-market fit evidence, and team experience, no institutional investor would commit capital.',
+      de: 'Das Startup hatte eine überzeugende Vision, aber stand vor einer fundamentalen Glaubwürdigkeitslücke. Ohne die Unit Economics, Product-Market-Fit-Evidenz und Team-Erfahrung zu adressieren, würde kein institutioneller Investor Kapital committen.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Unit Economics', de: 'Unit Economics' },
+        symptoms: [
+          { en: 'LTV/CAC: 0.02 (benchmark: ≥3.0, 150x below)', de: 'LTV/CAC: 0,02 (Benchmark: ≥3,0, 150x darunter)' },
+          { en: 'CAC: €75 (unsustainable acquisition cost)', de: 'CAC: €75 (nicht tragbare Akquisitionskosten)' },
+          { en: '12-month LTV: €1.50 (far below CAC)', de: '12-Monats-LTV: €1,50 (weit unter CAC)' },
+          { en: 'Business loses €73.45 per user acquired', de: 'Business verliert €73,45 pro akquiriertem User' }
+        ]
+      },
+      {
+        area: { en: 'Product-Market Fit', de: 'Product-Market Fit' },
+        symptoms: [
+          { en: 'App rating: 3.45★ (below critical 4.0 threshold)', de: 'App-Bewertung: 3,45★ (unter kritischer 4,0-Schwelle)' },
+          { en: 'Active users: 218 (after 6 years)', de: 'Aktive User: 218 (nach 6 Jahren)' },
+          { en: 'App downloads: 5,000+ (but minimal activation)', de: 'App-Downloads: 5.000+ (aber minimale Aktivierung)' },
+          { en: 'Retention: 70% (positive, but tiny base)', de: 'Retention: 70% (positiv, aber winzige Basis)' }
+        ]
+      },
+      {
+        area: { en: 'Financial Projections', de: 'Finanzprojektionen' },
+        symptoms: [
+          { en: 'User growth: 16,000x in 5 years (218 → 3.5M)', de: 'User-Wachstum: 16.000x in 5 Jahren (218 → 3,5M)' },
+          { en: 'No profitability through 2030 (despite €74.6M raised)', de: 'Keine Profitabilität bis 2030 (trotz €74,6M geraised)' },
+          { en: 'B2B2C model: 80 bank partners assumed, only 1 pilot (not paying)', de: 'B2B2C-Modell: 80 Bankpartner angenommen, nur 1 Pilot (nicht zahlend)' },
+          { en: 'Fantasy projections, not evidence-based planning', de: 'Fantasy-Projektionen, keine evidenzbasierte Planung' }
+        ]
+      },
+      {
+        area: { en: 'Team & Experience', de: 'Team & Erfahrung' },
+        symptoms: [
+          { en: 'Zero scaling experience (founders never scaled a company)', de: 'Null Scaling-Erfahrung (Gründer haben nie ein Unternehmen skaliert)' },
+          { en: 'Capital management: €74.6M planned deployment far beyond capabilities', de: 'Kapitalmanagement: €74,6M geplante Verwendung weit über Fähigkeiten' },
+          { en: 'Critical team gaps in key functions', de: 'Kritische Team-Lücken in Schlüsselfunktionen' },
+          { en: 'Advisory board strong, but not compensating for founder gaps', de: 'Advisory Board stark, aber kompensiert Gründer-Lücken nicht' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'DD Readiness', before: '0/10', after: '8/10 (target)', impact: 'Not prepared' },
+      { label: 'LTV/CAC', before: '0.02', after: '≥1.5 (target)', impact: '150x below benchmark' },
+      { label: 'Active Users', before: '218', after: '2,000+ (target)', impact: 'After 6 years' },
+      { label: 'App Rating', before: '3.45★', after: '4.3★ (target)', impact: 'Below threshold' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We conducted a comprehensive VC due diligence simulation over 2 weeks, identifying critical red flags, proposing deal restructuring, and designing a milestone-based validation framework. Brutal honesty about the current state, but also a credible path forward.',
+      de: 'Wir führten eine umfassende VC Due Diligence Simulation über 2 Wochen durch, identifizierten kritische Red Flags, schlugen Deal-Restrukturierung vor und designten ein Milestone-basiertes Validierungs-Framework. Brutale Ehrlichkeit über den aktuellen Stand, aber auch ein glaubwürdiger Weg nach vorne.'
+    },
+    phases: [
+      {
+        name: { en: 'Due Diligence Simulation', de: 'Due Diligence Simulation' },
+        timeline: 'Days 1-3',
+        actions: [
+          {
+            name: { en: 'Financial Due Diligence', de: 'Financial Due Diligence' },
+            description: {
+              en: 'Analyzed revenue quality (ARR composition, recurring vs. one-time), assessed unit economics (LTV, CAC, Payback Period), and evaluated financial projections (growth assumptions, profitability path).',
+              de: 'Analysierten Revenue-Qualität (ARR-Zusammensetzung, wiederkehrend vs. einmalig), bewerteten Unit Economics (LTV, CAC, Payback Period) und evaluierten Finanzprojektionen (Wachstumsannahmen, Profitabilitätspfad).'
+            },
+            deliverables: [
+              { en: 'Unit economics analysis (LTV/CAC: 0.02)', de: 'Unit Economics Analyse (LTV/CAC: 0,02)' },
+              { en: 'Revenue quality assessment', de: 'Revenue-Qualitäts-Assessment' },
+              { en: 'Financial projection review', de: 'Finanzprojektions-Review' }
+            ],
+            whyItMattered: {
+              en: 'The catastrophic unit economics were the first red flag. Without fixing this, no amount of growth would make the business viable.',
+              de: 'Die katastrophalen Unit Economics waren die erste Red Flag. Ohne dies zu beheben, würde kein noch so großes Wachstum das Business tragfähig machen.'
+            }
+          },
+          {
+            name: { en: 'Commercial & Product Due Diligence', de: 'Commercial & Product Due Diligence' },
+            description: {
+              en: 'Assessed product-market fit (user feedback, retention, NPS), evaluated technology stack (scalability, security, IP), and analyzed competitive positioning (differentiation, barriers to entry).',
+              de: 'Bewerteten Product-Market Fit (User-Feedback, Retention, NPS), evaluierten Technology Stack (Skalierbarkeit, Sicherheit, IP) und analysierten Wettbewerbspositionierung (Differenzierung, Eintrittsbarrieren).'
+            },
+            deliverables: [
+              { en: 'PMF assessment (3.45★ rating, 218 users)', de: 'PMF-Assessment (3,45★ Bewertung, 218 User)' },
+              { en: 'Technology stack review', de: 'Technology Stack Review' },
+              { en: 'Competitive landscape analysis', de: 'Wettbewerbslandschaft-Analyse' }
+            ],
+            whyItMattered: {
+              en: '218 users after 6 years and a 3.45★ app rating showed no evidence of product-market fit. This needed to be addressed before scaling.',
+              de: '218 User nach 6 Jahren und eine 3,45★ App-Bewertung zeigten keine Evidenz für Product-Market Fit. Dies musste vor dem Skalieren adressiert werden.'
+            }
+          },
+          {
+            name: { en: 'Team & Organization Due Diligence', de: 'Team & Organization Due Diligence' },
+            description: {
+              en: 'Assessed founder capabilities (scaling experience, domain expertise), evaluated team completeness (key roles, gaps), and analyzed organizational readiness (processes, systems, culture).',
+              de: 'Bewerteten Gründer-Fähigkeiten (Scaling-Erfahrung, Domain-Expertise), evaluierten Team-Vollständigkeit (Schlüsselrollen, Lücken) und analysierten organisatorische Bereitschaft (Prozesse, Systeme, Kultur).'
+            },
+            deliverables: [
+              { en: 'Founder capability assessment', de: 'Gründer-Fähigkeits-Assessment' },
+              { en: 'Team gap analysis', de: 'Team-Lücken-Analyse' },
+              { en: 'Organizational readiness review', de: 'Organisatorische Bereitschafts-Review' }
+            ],
+            whyItMattered: {
+              en: 'Zero scaling experience and critical team gaps were significant risk factors that needed to be addressed in the investment terms.',
+              de: 'Null Scaling-Erfahrung und kritische Team-Lücken waren signifikante Risikofaktoren, die in den Investment-Bedingungen adressiert werden mussten.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Red Flag Analysis', de: 'Red Flag Analyse' },
+        timeline: 'Days 4-7',
+        actions: [
+          {
+            name: { en: 'Critical Red Flag Identification', de: 'Kritische Red Flag Identifikation' },
+            description: {
+              en: 'Documented 12 critical red flags across financial, commercial, product, team, and business model dimensions. Assessed severity (Critical, High, Medium) and determined deal-breakers vs. addressable issues.',
+              de: 'Dokumentierten 12 kritische Red Flags über finanzielle, kommerzielle, Produkt-, Team- und Geschäftsmodell-Dimensionen. Bewerteten Schweregrad (Kritisch, Hoch, Mittel) und bestimmten Deal-Breaker vs. adressierbare Issues.'
+            },
+            deliverables: [
+              { en: 'Red Flag 1: Catastrophic Unit Economics (LTV/CAC 0.02)', de: 'Red Flag 1: Katastrophale Unit Economics (LTV/CAC 0,02)' },
+              { en: 'Red Flag 2: No Evidence of Product-Market Fit', de: 'Red Flag 2: Keine Evidenz für Product-Market Fit' },
+              { en: 'Red Flag 3: Unrealistic Financial Projections', de: 'Red Flag 3: Unrealistische Finanzprojektionen' },
+              { en: 'Red Flag 4: Unproven B2B2C Model', de: 'Red Flag 4: Unbewiesenes B2B2C-Modell' },
+              { en: 'Red Flag 5: Inexperienced Team', de: 'Red Flag 5: Unerfahrenes Team' },
+              { en: 'Red Flags 6-12: Additional issues documented', de: 'Red Flags 6-12: Weitere Issues dokumentiert' }
+            ],
+            whyItMattered: {
+              en: 'Full transparency on risks built investor confidence. Better to know the problems upfront than to discover them during external DD.',
+              de: 'Volle Transparenz über Risiken baute Investoren-Vertrauen auf. Besser, die Probleme vorab zu kennen, als sie während externer DD zu entdecken.'
+            }
+          },
+          {
+            name: { en: 'Mitigation Strategy Development', de: 'Mitigationsstrategie-Entwicklung' },
+            description: {
+              en: 'For each red flag, we developed specific mitigation strategies with measurable targets. This transformed "deal-breakers" into "addressable issues with clear action plans."',
+              de: 'Für jede Red Flag entwickelten wir spezifische Mitigationsstrategien mit messbaren Zielen. Dies transformierte "Deal-Breaker" in "adressierbare Issues mit klaren Aktionsplänen."'
+            },
+            deliverables: [
+              { en: 'Mitigation plan for each red flag', de: 'Mitigationsplan für jede Red Flag' },
+              { en: 'Measurable targets (e.g., LTV/CAC >1.5)', de: 'Messbare Ziele (z.B. LTV/CAC >1,5)' },
+              { en: 'Timeline for addressing each issue', de: 'Timeline für Adressierung jedes Issues' }
+            ],
+            whyItMattered: {
+              en: 'Red flags don\'t kill deals—unaddressed red flags do. The mitigation plan showed investors a credible path forward.',
+              de: 'Red Flags töten keine Deals—nicht adressierte Red Flags tun es. Der Mitigationsplan zeigte Investoren einen glaubwürdigen Weg nach vorne.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Restructuring Proposal', de: 'Restrukturierungs-Vorschlag' },
+        timeline: 'Days 8-10',
+        actions: [
+          {
+            name: { en: 'Deal Restructuring', de: 'Deal-Restrukturierung' },
+            description: {
+              en: 'Proposed restructured deal terms that addressed red flags and de-risked the investment: reduced investment amount (€200K → €75K-€100K), adjusted valuation (€1-2M → €500K-€750K), and milestone-based financing.',
+              de: 'Schlugen restrukturierte Deal-Bedingungen vor, die Red Flags adressierten und das Investment de-riskten: reduzierter Investment-Betrag (€200K → €75K-€100K), angepasste Bewertung (€1-2M → €500K-€750K) und Milestone-basierte Finanzierung.'
+            },
+            deliverables: [
+              { en: 'Investment: €200K → €75K-€100K (bridge)', de: 'Investment: €200K → €75K-€100K (Bridge)' },
+              { en: 'Valuation: €1-2M → €500K-€750K (pre-money)', de: 'Bewertung: €1-2M → €500K-€750K (Pre-Money)' },
+              { en: 'Structure: Convertible Note with milestones', de: 'Struktur: Convertible Note mit Milestones' },
+              { en: 'Use of Funds: Product improvement + B2B validation only', de: 'Mittelverwendung: Nur Produktverbesserung + B2B-Validierung' }
+            ],
+            whyItMattered: {
+              en: 'The restructured terms aligned investment amount and valuation with actual traction, not projected fantasy. This made the deal investable.',
+              de: 'Die restrukturierten Bedingungen alignten Investment-Betrag und Bewertung mit tatsächlicher Traction, nicht projizierter Fantasy. Dies machte den Deal investierbar.'
+            }
+          },
+          {
+            name: { en: 'Use of Funds Definition', de: 'Mittelverwendungs-Definition' },
+            description: {
+              en: 'Defined focused use of funds: 100% allocated to product improvement and B2B validation (not general operations). Shorter timeline: 6-9 months to milestone validation (not 12-18 months).',
+              de: 'Definierten fokussierte Mittelverwendung: 100% allokiert auf Produktverbesserung und B2B-Validierung (nicht allgemeine Operations). Kürzere Timeline: 6-9 Monate bis Milestone-Validierung (nicht 12-18 Monate).'
+            },
+            deliverables: [
+              { en: 'Focused budget allocation', de: 'Fokussierte Budget-Allokation' },
+              { en: 'Shortened validation timeline', de: 'Verkürzte Validierungs-Timeline' },
+              { en: 'Clear success criteria', de: 'Klare Erfolgskriterien' }
+            ],
+            whyItMattered: {
+              en: 'Focused use of funds ensured capital went to proving the model, not burning runway on premature scaling.',
+              de: 'Fokussierte Mittelverwendung stellte sicher, dass Kapital in den Beweis des Modells ging, nicht in das Verbrennen von Runway für vorzeitiges Skalieren.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Milestone Framework', de: 'Milestone Framework' },
+        timeline: 'Days 11-14',
+        actions: [
+          {
+            name: { en: 'Mandatory Milestones Design', de: 'Mandatory Milestones Design' },
+            description: {
+              en: 'Designed 4 mandatory milestones for follow-on investment (Seed round), each with specific validation criteria and Go/No-Go decision framework.',
+              de: 'Designten 4 Mandatory Milestones für Follow-on Investment (Seed-Runde), jede mit spezifischen Validierungskriterien und Go/No-Go Entscheidungs-Framework.'
+            },
+            deliverables: [
+              { en: 'Milestone 1: Product-Market Fit (4.3★ rating, 2,000+ MAUs)', de: 'Milestone 1: Product-Market Fit (4,3★ Bewertung, 2.000+ MAUs)' },
+              { en: 'Milestone 2: Unit Economics (LTV/CAC >1.5, CAC <€40)', de: 'Milestone 2: Unit Economics (LTV/CAC >1,5, CAC <€40)' },
+              { en: 'Milestone 3: B2B2C Validation (pilot converted, +1 partner)', de: 'Milestone 3: B2B2C-Validierung (Pilot konvertiert, +1 Partner)' },
+              { en: 'Milestone 4: Team Strengthening (fractional COO/VP Growth)', de: 'Milestone 4: Team-Stärkung (Fractional COO/VP Growth)' }
+            ],
+            whyItMattered: {
+              en: 'Milestone-based financing tied follow-on investment to validated progress. If milestones met: Seed round proceeds. If not: investment written off, but risk was capped.',
+              de: 'Milestone-basierte Finanzierung verknüpfte Follow-on Investment mit validiertem Fortschritt. Wenn Milestones erreicht: Seed-Runde geht weiter. Wenn nicht: Investment abgeschrieben, aber Risiko war gedeckelt.'
+            }
+          },
+          {
+            name: { en: 'Final Recommendation', de: 'Finale Empfehlung' },
+            description: {
+              en: 'Presented final investment recommendation: CONDITIONAL YES with restructured terms and milestone framework. Transformed the deal from NO-GO to investment-ready.',
+              de: 'Präsentierten finale Investment-Empfehlung: CONDITIONAL YES mit restrukturierten Bedingungen und Milestone Framework. Transformierten den Deal von NO-GO zu investment-ready.'
+            },
+            deliverables: [
+              { en: 'Final DD report (8 dimensions)', de: 'Finaler DD-Report (8 Dimensionen)' },
+              { en: 'Investment recommendation: CONDITIONAL YES', de: 'Investment-Empfehlung: CONDITIONAL YES' },
+              { en: 'Risk-adjusted term sheet proposal', de: 'Risk-adjustierter Term Sheet Vorschlag' }
+            ],
+            whyItMattered: {
+              en: 'The comprehensive DD simulation gave investors confidence that risks were properly assessed. The structured approach turned a NO-GO into a CONDITIONAL YES.',
+              de: 'Die umfassende DD-Simulation gab Investoren Vertrauen, dass Risiken korrekt bewertet wurden. Der strukturierte Ansatz verwandelte ein NO-GO in ein CONDITIONAL YES.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '2 weeks',
+    resultMetrics: [
+      { label: 'DD Readiness', before: '0/10', after: '8/10', impact: '+8 points' },
+      { label: 'Red Flags', before: 'Unknown', after: '12 identified', impact: '+ mitigation plan' },
+      { label: 'Investment Decision', before: 'NO-GO', after: 'CONDITIONAL YES', impact: 'Approved' },
+      { label: 'Deal Structure', before: '€200K at €1-2M', after: '€75K-€100K at €500K-€750K', impact: 'Risk-adjusted' },
+      { label: 'Milestone Framework', before: 'None', after: '4 milestones', impact: '6-9 month validation' },
+      { label: 'Investor Confidence', before: 'Low', after: 'High', impact: 'Evidence-based plan' }
+    ],
+    roiCalculation: {
+      investment: '€5.9K',
+      returnValue: '€75K-€100K investment secured',
+      roi: '10-50x',
+      breakdown: [
+        { en: 'DD Simulation investment: €5.9K', de: 'DD Simulation Investment: €5,9K' },
+        { en: 'Investment secured: €75K-€100K (milestone-based)', de: 'Gesichertes Investment: €75K-€100K (Milestone-basiert)' },
+        { en: 'Deal would have been NO-GO without preparation', de: 'Deal wäre ohne Vorbereitung NO-GO gewesen' },
+        { en: 'ROI: 10-50x on DD simulation investment', de: 'ROI: 10-50x auf DD Simulation Investment' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We thought we were ready for investors. The DD simulation showed us we weren\'t—but more importantly, it showed us exactly what to fix. Two weeks later, we had a deal."',
+      de: '"Wir dachten, wir wären bereit für Investoren. Die DD Simulation zeigte uns, dass wir es nicht waren—aber wichtiger noch, sie zeigte uns genau, was zu beheben ist. Zwei Wochen später hatten wir einen Deal."'
+    },
+    quoteContext: {
+      en: 'The startup successfully secured conditional investment approval through systematic due diligence preparation and milestone-based financing structure.',
+      de: 'Das Startup sicherte sich erfolgreich eine bedingte Investment-Genehmigung durch systematische Due-Diligence-Vorbereitung und Milestone-basierte Finanzierungsstruktur.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: "DD readiness is binary—you're ready or you're not", de: 'DD Readiness ist binär—du bist bereit oder nicht' },
+        whatWeLearned: {
+          en: "There's no 'mostly ready' in VC due diligence. Investors either have the data they need to make a confident decision, or they don't. This company went from 0/10 to 8/10 in 2 weeks by systematically addressing gaps across 8 dimensions.",
+          de: 'Es gibt kein "fast bereit" bei VC Due Diligence. Investoren haben entweder die Daten, die sie für eine sichere Entscheidung brauchen, oder nicht. Dieses Unternehmen ging von 0/10 auf 8/10 in 2 Wochen, indem es systematisch Lücken über 8 Dimensionen adressierte.'
+        },
+        keyInsight: {
+          en: 'DD preparation is not about hiding problems. It\'s about knowing your problems, having mitigation plans, and presenting them professionally.',
+          de: 'DD-Vorbereitung geht nicht darum, Probleme zu verstecken. Es geht darum, deine Probleme zu kennen, Mitigationspläne zu haben und sie professionell zu präsentieren.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start DD preparation 3-6 months before fundraising, not 2 weeks. More time allows for actually fixing issues, not just documenting them.',
+          de: 'DD-Vorbereitung 3-6 Monate vor Fundraising starten, nicht 2 Wochen. Mehr Zeit erlaubt, Issues tatsächlich zu beheben, nicht nur zu dokumentieren.'
+        }
+      },
+      {
+        title: { en: "Red flags don't kill deals—unaddressed red flags do", de: 'Red Flags töten keine Deals—nicht adressierte Red Flags tun es' },
+        whatWeLearned: {
+          en: 'We identified 12 critical red flags, but the deal moved forward because we proposed credible mitigation strategies for each. Transparency + action plan = investor confidence.',
+          de: 'Wir identifizierten 12 kritische Red Flags, aber der Deal ging voran, weil wir für jede glaubwürdige Mitigationsstrategien vorschlugen. Transparenz + Aktionsplan = Investoren-Vertrauen.'
+        },
+        keyInsight: {
+          en: 'Every startup has red flags. What matters is whether you know them, acknowledge them, and have a plan to address them.',
+          de: 'Jedes Startup hat Red Flags. Was zählt ist, ob du sie kennst, anerkennst und einen Plan hast, sie zu adressieren.'
+        },
+        whatWedDoDifferently: {
+          en: 'Present red flags proactively in pitch materials. Investors will find them anyway—better to control the narrative.',
+          de: 'Red Flags proaktiv in Pitch-Materialien präsentieren. Investoren werden sie sowieso finden—besser, die Narrative zu kontrollieren.'
+        }
+      },
+      {
+        title: { en: 'Milestone-based financing de-risks early-stage investments', de: 'Milestone-basierte Finanzierung de-risked Early-Stage Investments' },
+        whatWeLearned: {
+          en: 'By tying follow-on investment to 4 mandatory milestones (PMF validation, unit economics proof, B2B2C validation, team strengthening), investors reduced risk while founders got capital to prove their model.',
+          de: 'Indem Follow-on Investment an 4 Mandatory Milestones (PMF-Validierung, Unit Economics Beweis, B2B2C-Validierung, Team-Stärkung) gebunden wurde, reduzierten Investoren Risiko, während Gründer Kapital erhielten, um ihr Modell zu beweisen.'
+        },
+        keyInsight: {
+          en: 'Milestone-based financing aligns incentives: founders prove their model, investors deploy capital incrementally. Risk is shared, not transferred.',
+          de: 'Milestone-basierte Finanzierung alignt Anreize: Gründer beweisen ihr Modell, Investoren deployen Kapital inkrementell. Risiko wird geteilt, nicht transferiert.'
+        },
+        whatWedDoDifferently: {
+          en: 'Define milestones collaboratively with investors. Co-created milestones have higher commitment from both sides.',
+          de: 'Milestones kollaborativ mit Investoren definieren. Co-kreierte Milestones haben höheres Commitment von beiden Seiten.'
+        }
+      }
+    ],
+    
+    // META
+    playbooks: ['strategic-governance', 'exit-ma'],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'VC Due Diligence Simulation', de: 'VC Due Diligence Simulation' },
+        url: '/solutions/vc-dd-simulation',
+        duration: '3-5 Days',
+        investment: '€5.9K',
+        focus: { 
+          en: 'Comprehensive DD simulation across 8 dimensions - Red Flag Analysis, Mitigation Planning', 
+          de: 'Umfassende DD-Simulation über 8 Dimensionen - Red Flag Analyse, Mitigationsplanung' 
+        },
+        outcome: { 
+          en: 'DD Readiness 0% → 100%, Red Flags Fixed 100%, Fundraising Success Rate +40-60pp', 
+          de: 'DD Readiness 0% → 100%, Red Flags Fixed 100%, Fundraising Success Rate +40-60pp' 
+        },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'DD simulation across 8 dimensions', de: 'DD-Simulation über 8 Dimensionen' },
+          { en: 'Red flag identification + mitigation plan', de: 'Red Flag Identifikation + Mitigationsplan' },
+          { en: 'Board-ready report', de: 'Board-Ready Report' }
+        ]
+      },
+      {
+        name: { en: 'Boost: Board Excellence', de: 'Boost: Board Excellence' },
+        url: '/solutions/boost/board-excellence',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { 
+          en: 'Complete board governance overhaul - Strategic Narrative, Investor Relations, Exit Readiness', 
+          de: 'Kompletter Board Governance Overhaul - Strategische Narrative, Investor Relations, Exit Readiness' 
+        },
+        outcome: { 
+          en: 'Board Confidence +80%, Valuation Premium +200-400%, Exit Timeline -6-12 months', 
+          de: 'Board Confidence +80%, Valuation Premium +200-400%, Exit Timeline -6-12 Monate' 
+        },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'Investor-Readiness Pitch Deck Check', de: 'Investor-Readiness Pitch Deck Check' },
+        url: '/solutions/investor-readiness-pitch-deck-check',
+        duration: '1-2 Weeks',
+        investment: '€1.9K-€2.5K',
+        focus: { 
+          en: 'Pitch Deck Review + Financial Model + Q&A Preparation', 
+          de: 'Pitch Deck Review + Financial Model + Q&A-Vorbereitung' 
+        },
+        outcome: { 
+          en: 'Pitch Deck investor-ready, Financial Model credible, 20-30 investor questions answered', 
+          de: 'Pitch Deck investor-ready, Financial Model glaubwürdig, 20-30 Investoren-Fragen beantwortet' 
+        },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'exit-readiness-achieved', teaser: { en: 'How a Series B SaaS company achieved €10.1M ARR and Rule of 40: 29.6%', de: 'Wie ein Series B SaaS-Unternehmen €10,1M ARR und Rule of 40: 29,6% erreichte' } },
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC um 58% in 12 Wochen senkte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence and investor relations', de: '5-Komponenten-Framework für Board-Vertrauen und Investor Relations' } },
+      { slug: 'exit-ma', teaser: { en: '5-component framework for exit readiness and valuation optimization', de: '5-Komponenten-Framework für Exit Readiness und Bewertungsoptimierung' } }
+    ]
+  },
+
 ];
 
 // Helper functions
