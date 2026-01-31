@@ -125,10 +125,10 @@ const Workshop = () => {
       icon: Brain,
       titleEn: 'AI Transformation Workshop',
       titleDe: 'AI Transformation Workshop',
-      whenEn: 'Your AI strategy is missing (θ_index 0.2-0.4, no clear AI roadmap), your team doesn\'t know how to become AI-Native, you need AI frameworks (not just theory).',
-      whenDe: 'Deine AI-Strategie fehlt (θ_index 0.2-0.4, keine klare AI-Roadmap), dein Team weiß nicht, wie es AI-Native werden kann, du brauchst AI-Frameworks (nicht nur Theorie).',
-      coverEn: ['AI Maturity (θ_index assessment)', 'AI Use Cases (which AI use cases to prioritize)', 'AI ROI (which AI investments to make)', 'AI Playbooks (how to become AI-Native)'],
-      coverDe: ['AI Maturity (θ_index Assessment)', 'AI Use Cases (welche AI Use Cases priorisieren)', 'AI ROI (welche AI-Investments tätigen)', 'AI Playbooks (wie AI-Native werden)'],
+      whenEn: 'Your AI strategy is missing (AI Maturity Score 20-40%, no clear AI roadmap), your team doesn\'t know how to become AI-Native, you need AI frameworks (not just theory).',
+      whenDe: 'Deine AI-Strategie fehlt (AI Maturity Score 20-40%, keine klare AI-Roadmap), dein Team weiß nicht, wie es AI-Native werden kann, du brauchst AI-Frameworks (nicht nur Theorie).',
+      coverEn: ['AI Maturity (AI Maturity assessment)', 'AI Use Cases (which AI use cases to prioritize)', 'AI ROI (which AI investments to make)', 'AI Playbooks (how to become AI-Native)'],
+      coverDe: ['AI Maturity (AI Maturity Assessment)', 'AI Use Cases (welche AI Use Cases priorisieren)', 'AI ROI (welche AI-Investments tätigen)', 'AI Playbooks (wie AI-Native werden)'],
       outcomeEn: 'Team Alignment +85%, AI Clarity +90%',
       outcomeDe: 'Team Alignment +85%, AI Clarity +90%'
     },
@@ -221,12 +221,12 @@ const Workshop = () => {
       typeDe: 'AI Transformation Workshop',
       companyEn: 'Series A SaaS, €10M ARR, 70 employees',
       companyDe: 'Series A SaaS, €10M ARR, 70 Mitarbeiter',
-      challengeEn: 'No AI strategy (θ_index 0.35), team doesn\'t know how to become AI-Native',
-      challengeDe: 'Keine AI-Strategie (θ_index 0.35), Team weiß nicht, wie es AI-Native werden kann',
+      challengeEn: 'No AI strategy (AI Maturity Score 35%), team doesn\'t know how to become AI-Native',
+      challengeDe: 'Keine AI-Strategie (AI Maturity Score 35%), Team weiß nicht, wie es AI-Native werden kann',
       transformationEn: 'AI Transformation Workshop (2 days, 30 participants)',
       transformationDe: 'AI Transformation Workshop (2 Tage, 30 Teilnehmer)',
-      outcomeEn: 'Team Alignment +90%, AI Clarity +95%, θ_index Roadmap +114%',
-      outcomeDe: 'Team Alignment +90%, AI Clarity +95%, θ_index Roadmap +114%'
+      outcomeEn: 'Team Alignment +90%, AI Clarity +95%, AI Maturity Roadmap +114%',
+      outcomeDe: 'Team Alignment +90%, AI Clarity +95%, AI Maturity Roadmap +114%'
     },
     {
       typeEn: 'Portfolio Excellence Workshop',

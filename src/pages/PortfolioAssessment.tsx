@@ -57,8 +57,8 @@ const PortfolioAssessment = () => {
     // Problem Section
     problemHeadline: isGerman ? 'Dein Portfolio underperformt—aber du weißt nicht warum' : "Your Portfolio Is Underperforming—But You Don't Know Why",
     problemIntro: isGerman
-      ? 'Dein Portfolio hat 15 Companies. 5 strugglen (Growth <50% YoY), 8 sind OK (Growth 50-100%), 2 sind Stars (Growth >150%). Dein durchschnittlicher θ_index ist 0.35 (Level 1: AI-Powered). Deine LPs fragen: „Warum ist das Portfolio nicht AI-Native?" Und das Schlimmste—du weißt nicht, welche Companies du zuerst fixen sollst.'
-      : "Your portfolio has 15 companies. 5 are struggling (growth <50% YoY), 8 are OK (growth 50-100%), 2 are stars (growth >150%). Your average θ_index is 0.35 (Level 1: AI-Powered). Your LPs are asking: \"Why isn't the portfolio AI-Native?\" And worst of all—you don't know which companies to fix first.",
+      ? 'Dein Portfolio hat 15 Companies. 5 strugglen (Growth <50% YoY), 8 sind OK (Growth 50-100%), 2 sind Stars (Growth >150%). Dein durchschnittlicher AI Maturity Score ist 35% (Level 1: AI-Powered). Deine LPs fragen: „Warum ist das Portfolio nicht AI-Native?" Und das Schlimmste—du weißt nicht, welche Companies du zuerst fixen sollst.'
+      : "Your portfolio has 15 companies. 5 are struggling (growth <50% YoY), 8 are OK (growth 50-100%), 2 are stars (growth >150%). Your average AI Maturity Score is 35% (Level 1: AI-Powered). Your LPs are asking: \"Why isn't the portfolio AI-Native?\" And worst of all—you don't know which companies to fix first.",
     
     symptoms: [
       { 
@@ -67,8 +67,8 @@ const PortfolioAssessment = () => {
         icon: TrendingUp
       },
       { 
-        title: isGerman ? 'Niedriger θ_index' : 'Low θ_index',
-        description: isGerman ? 'Durchschnitt 0.35 (Level 1: AI-Powered, Benchmark: 0.7-0.8 für AI-Native)' : 'Average 0.35 (Level 1: AI-Powered, benchmark: 0.7-0.8 for AI-Native)',
+        title: isGerman ? 'Niedriger AI Maturity Score' : 'Low AI Maturity Score',
+        description: isGerman ? 'Durchschnitt 35% (Level 1: AI-Powered, Benchmark: 70-80% für AI-Native)' : 'Average 35% (Level 1: AI-Powered, benchmark: 70-80% for AI-Native)',
         icon: Brain
       },
       { 
@@ -123,10 +123,10 @@ const PortfolioAssessment = () => {
       },
       {
         icon: Brain,
-        title: isGerman ? 'AI Maturity (θ_index)' : 'AI Maturity (θ_index)',
+        title: isGerman ? 'AI Maturity (AI Maturity Score)' : 'AI Maturity (AI Maturity Score)',
         items: isGerman
-          ? ['θ_index Score (welche Companies sind AI-Native?)', 'AI Adoption (welche nutzen AI effektiv?)', 'AI ROI (welche bekommen Wert aus AI?)', 'AI Competitive Advantage (welche haben AI Moat?)']
-          : ['θ_index score (which companies are AI-Native?)', 'AI adoption (which companies use AI effectively?)', 'AI ROI (which companies get value from AI?)', 'AI competitive advantage (which companies have AI moat?)']
+          ? ['AI Maturity Score (welche Companies sind AI-Native?)', 'AI Adoption (welche nutzen AI effektiv?)', 'AI ROI (welche bekommen Wert aus AI?)', 'AI Competitive Advantage (welche haben AI Moat?)']
+          : ['AI Maturity Score (which companies are AI-Native?)', 'AI adoption (which companies use AI effectively?)', 'AI ROI (which companies get value from AI?)', 'AI competitive advantage (which companies have AI moat?)']
       },
       {
         icon: Settings,
@@ -210,8 +210,8 @@ const PortfolioAssessment = () => {
     realExample: {
       company: isGerman ? 'Series A-B fokussierter VC, €200M AUM, 18 Portfolio Companies' : 'Series A-B focused VC, €200M AUM, 18 portfolio companies',
       challenge: isGerman 
-        ? '6 Companies struggeln (33%), durchschnittlicher θ_index 0.32, LPs fragen „Warum keine AI-Strategie?", Operating Partner überlastet (1:18 Ratio)'
-        : '6 companies struggling (33%), Average θ_index 0.32, LPs asking "Why no AI strategy?", Operating partner overwhelmed (1:18 ratio)',
+        ? '6 Companies struggeln (33%), durchschnittlicher AI Maturity Score 32%, LPs fragen „Warum keine AI-Strategie?", Operating Partner überlastet (1:18 Ratio)'
+        : '6 companies struggling (33%), Average AI Maturity Score 32%, LPs asking "Why no AI strategy?", Operating partner overwhelmed (1:18 ratio)',
       problems: isGerman
         ? 'Keine Priorisierung (weiß nicht, welche Companies zuerst fixen), keine AI-Strategie (Portfolio nicht AI-Native), kein LP-Narrativ (kann LP-Fragen nicht beantworten)'
         : "No prioritization (don't know which companies to fix first), no AI strategy (portfolio not AI-Native), no LP narrative (can't answer LP questions)",
