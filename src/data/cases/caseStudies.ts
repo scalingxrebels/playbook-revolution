@@ -5466,8 +5466,8 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
       en: '12-month strategic advisory accelerated SaaS-transition from 10% to 40% ARR. Quarterly OKR reviews drove disciplined execution.',
       de: '12-monatiges Strategic Advisory beschleunigte SaaS-Transition von 10% auf 40% ARR. Vierteljährliche OKR-Reviews trieben disziplinierte Umsetzung.'
     },
-    investment: '€156K-€216K',
-    roi: '5-10x',
+    investment: '€132K',
+    roi: '6-8x',
     heroMetrics: [
       { label: 'Revenue', before: '€1.8M', after: '€2.8M', impact: '+56%' },
       { label: 'ARR', before: '€120K', after: '€420K', impact: '+250%' },
@@ -5778,9 +5778,9 @@ Der Board war unterstützend aber fordernd: "Zeigt uns jeden Quartal Fortschritt
       { label: 'SQLs/Month', before: '8', after: '14', impact: '+75%' }
     ],
     roiCalculation: {
-      investment: '€156K-€216K',
+      investment: '€132K',
       returnValue: '€780K-€1.1M',
-      roi: '5-10x',
+      roi: '6-8x',
       breakdown: [
         { en: 'ARR growth: €270K-€340K additional ARR (€420K - €80K-150K baseline)', de: 'ARR-Wachstum: €270K-€340K zusätzliches ARR (€420K - €80K-150K Baseline)' },
         { en: 'New product: €280K ARR (new revenue stream)', de: 'Neues Produkt: €280K ARR (neuer Umsatzstrom)' },
