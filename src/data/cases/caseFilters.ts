@@ -23,6 +23,7 @@ export const industryFilters: CaseFilterOption[] = [
   { id: 'enterprise', label: { en: 'Enterprise', de: 'Enterprise' } },
   { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
   { id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } },
+  { id: 'social-network', label: { en: 'Social Network / Job Ads', de: 'Social Network / Job Ads' } },
 ];
 
 export const stageFilters: CaseFilterOption[] = [
@@ -33,6 +34,7 @@ export const stageFilters: CaseFilterOption[] = [
   { id: 'series-c', label: { en: 'Series C', de: 'Series C' } },
   { id: 'pe-backed', label: { en: 'PE-Backed', de: 'PE-Backed' } },
   { id: 'established', label: { en: 'Established', de: 'Etabliert' } },
+  { id: 'post-ipo', label: { en: 'Post-IPO', de: 'Post-IPO' } },
 ];
 
 export const timelineFilters: CaseFilterOption[] = [

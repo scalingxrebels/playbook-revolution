@@ -919,6 +919,395 @@ Die Zahlen waren eindeutig: €543K Umsatz und 344 qualifizierte Leads in 6 Mona
       { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
       { slug: 'ai-native-scaling', teaser: { en: 'The complete framework for AI-native execution', de: 'Das komplette Framework für AI-native Execution' } }
     ]
+  },
+  
+  // ============================================
+  // CASE STUDY 6: PRICING REDESIGNED
+  // ============================================
+  {
+    id: 'pricing-redesigned-tecdax',
+    slug: 'pricing-redesigned-scalable-growth',
+    company: 'Post-IPO TecDAX Company',
+    industry: 'Social Network / Job Ads',
+    stage: 'Post-IPO',
+    gradient: 'from-purple-500 to-pink-500',
+    confidential: true,
+    
+    tags: ['pricing', 'recurring-revenue', 'portfolio', 'post-ipo', 'tecdax'],
+    challengeType: 'pricing-breakdown',
+    
+    // HERO
+    headline: {
+      en: 'Pricing Redesigned → Scalable Growth Unlocked',
+      de: 'Pricing Redesign → Skalierbares Wachstum freigeschaltet'
+    },
+    challenge: {
+      en: 'High-margin business with 61% EBITDA—but growth capped by 27 fragmented products, outdated pricing, and no recurring revenue.',
+      de: 'Hochmargiges Geschäft mit 61% EBITDA—aber Wachstum begrenzt durch 27 fragmentierte Produkte, veraltetes Pricing und keine wiederkehrenden Einnahmen.'
+    },
+    result: {
+      en: 'Revenue €31M → €44.6M (+33%), EBITDA +€5.2M, Rule of 40: 99%, Portfolio -63% complexity',
+      de: 'Revenue €31M → €44.6M (+33%), EBITDA +€5.2M, Rule of 40: 99%, Portfolio -63% Komplexität'
+    },
+    investment: '€60K-€78K',
+    roi: '180x',
+    heroMetrics: [
+      { label: 'Revenue', before: '€31M', after: '€44.6M', impact: '+33%' },
+      { label: 'EBITDA', before: '61% Margin', after: '+€5.2M', impact: 'Reinforced' },
+      { label: 'Rule of 40', before: '85%', after: '99%', impact: '+14pp' },
+      { label: 'Portfolio', before: '27 Products', after: '10 Core', impact: '-63%' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A post-IPO TecDAX company operating a social network for business professionals, with a thriving e-Recruiting business unit focused on job ads and recruiting solutions. €31M revenue, 61% EBITDA margin, Rule of 40 at 85%.',
+      de: 'Ein Post-IPO TecDAX-Unternehmen mit einem Social Network für Geschäftsleute und einer florierenden e-Recruiting-Einheit für Stellenanzeigen und Recruiting-Lösungen. €31M Umsatz, 61% EBITDA-Marge, Rule of 40 bei 85%.'
+    },
+    crisisStory: {
+      en: `The company was already a high-margin engine within the group—a post-IPO social network for business professionals, with a thriving e-Recruiting business unit.
+
+At the time of engagement, the unit was generating €31M in revenue, 61% EBITDA margin, and a Rule of 40 score of 85%.
+
+Despite the strong performance, growth was increasingly constrained. Following a strategic acquisition and post-merger integration, the unit sought to fundamentally modernize its core product line, which had become increasingly outdated in terms of pricing logic, product structure, and customer alignment.
+
+The math was clear: A €31M business with 61% EBITDA—but pricing complexity and misaligned value perception capped growth, leaving significant revenue and margin potential untapped.`,
+      de: `Das Unternehmen war bereits ein Hochmargen-Motor innerhalb der Gruppe—ein Post-IPO Social Network für Geschäftsleute mit einer florierenden e-Recruiting-Einheit.
+
+Zum Zeitpunkt der Zusammenarbeit generierte die Einheit €31M Umsatz, 61% EBITDA-Marge und einen Rule of 40 Score von 85%.
+
+Trotz der starken Performance war das Wachstum zunehmend eingeschränkt. Nach einer strategischen Akquisition und Post-Merger-Integration wollte die Einheit ihre Kernproduktlinie grundlegend modernisieren, die in Bezug auf Pricing-Logik, Produktstruktur und Kundenausrichtung veraltet war.
+
+Die Rechnung war klar: Ein €31M-Geschäft mit 61% EBITDA—aber Pricing-Komplexität und falsch wahrgenommener Wert begrenzten das Wachstum und ließen erhebliches Umsatz- und Margenpotenzial ungenutzt.`
+    },
+    problemDescription: {
+      en: 'The product portfolio had grown organically into 27 fragmented offerings, each with inconsistent pricing logic, no alignment with perceived customer value, and limited focus on recurring revenue despite clear potential.',
+      de: 'Das Produktportfolio war organisch auf 27 fragmentierte Angebote gewachsen, jedes mit inkonsistenter Pricing-Logik, ohne Ausrichtung auf den wahrgenommenen Kundenwert und begrenztem Fokus auf wiederkehrende Einnahmen trotz klarem Potenzial.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Product Structure', de: 'Produktstruktur' },
+        symptoms: [
+          { en: '27 product variants with inconsistent pricing logic', de: '27 Produktvarianten mit inkonsistenter Pricing-Logik' },
+          { en: 'No alignment with perceived customer value', de: 'Keine Ausrichtung auf wahrgenommenen Kundenwert' },
+          { en: 'Product structure difficult to scale or defend competitively', de: 'Produktstruktur schwer zu skalieren oder wettbewerbsfähig zu verteidigen' }
+        ]
+      },
+      {
+        area: { en: 'Revenue Model', de: 'Umsatzmodell' },
+        symptoms: [
+          { en: 'Primarily spot deals with limited predictability', de: 'Primär Einzelverkäufe mit begrenzter Vorhersagbarkeit' },
+          { en: 'No recurring revenue despite clear potential', de: 'Keine wiederkehrenden Einnahmen trotz klarem Potenzial' },
+          { en: 'LTV constrained by transaction-based model', de: 'LTV eingeschränkt durch transaktionsbasiertes Modell' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Revenue', before: '€31M', after: '€44.6M (target)', impact: '+33%' },
+      { label: 'EBITDA', before: '61% Margin', after: '+€5.2M (target)', impact: 'Growth' },
+      { label: 'Products', before: '27 variants', after: '10 core (target)', impact: '-63%' },
+      { label: 'Revenue Model', before: 'Spot Deals', after: 'Recurring (target)', impact: 'Shift' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We restructured the product portfolio, introduced a recurring revenue model, and designed a pricing system aligned with customer value and market dynamics. The transformation followed a structured three-step approach over 8+ weeks.',
+      de: 'Wir haben das Produktportfolio umstrukturiert, ein wiederkehrendes Umsatzmodell eingeführt und ein Pricing-System entwickelt, das auf Kundenwert und Marktdynamik ausgerichtet ist. Die Transformation folgte einem strukturierten Drei-Stufen-Ansatz über 8+ Wochen.'
+    },
+    phases: [
+      {
+        name: { en: 'Strategic Pricing Diagnostics', de: 'Strategische Pricing-Diagnostik' },
+        timeline: 'Weeks 1-4',
+        actions: [
+          {
+            name: { en: 'Customer Willingness to Pay Analysis', de: 'Kundenbereitschafts-Zahlungsanalyse' },
+            description: {
+              en: 'Conducted in-depth research on customer value perception. Result: WTP ~90% of actual price. Strategic decision: Rather than reducing price, increase perceived value.',
+              de: 'Durchführung einer tiefgreifenden Untersuchung zur Kundenwertwahrnehmung. Ergebnis: WTP ~90% des tatsächlichen Preises. Strategische Entscheidung: Statt Preissenkung, wahrgenommenen Wert erhöhen.'
+            },
+            deliverables: [
+              { en: 'WTP analysis report', de: 'WTP-Analysebericht' },
+              { en: 'Value perception mapping', de: 'Wertwahrnehmungs-Mapping' },
+              { en: 'Strategic pricing direction', de: 'Strategische Pricing-Richtung' }
+            ],
+            whyItMattered: {
+              en: 'Understanding the gap between price and perceived value revealed the opportunity: redesign what you sell, not just how you price it.',
+              de: 'Das Verständnis der Lücke zwischen Preis und wahrgenommenem Wert offenbarte die Chance: Redesign was verkauft wird, nicht nur wie es bepreist wird.'
+            }
+          },
+          {
+            name: { en: 'Competitive Benchmarking', de: 'Wettbewerbs-Benchmarking' },
+            description: {
+              en: 'Analyzed industry trends and competitor pricing. Insight: Industry moving toward recurring models. Opportunity: Lead the market shift.',
+              de: 'Analyse von Branchentrends und Wettbewerber-Pricing. Erkenntnis: Branche bewegt sich zu wiederkehrenden Modellen. Chance: Die Marktverschiebung anführen.'
+            },
+            deliverables: [
+              { en: 'Competitive landscape analysis', de: 'Wettbewerbslandschaftsanalyse' },
+              { en: 'Industry trend report', de: 'Branchentrendbericht' },
+              { en: 'Market positioning strategy', de: 'Marktpositionierungsstrategie' }
+            ],
+            whyItMattered: {
+              en: 'Being first to implement the model at scale would shape buyer expectations and force competitors to catch up.',
+              de: 'Als Erster das Modell im großen Maßstab umzusetzen würde Käufererwartungen prägen und Wettbewerber zwingen aufzuholen.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Product Portfolio Streamlining & Innovation', de: 'Produktportfolio-Straffung & Innovation' },
+        timeline: 'Weeks 5-6',
+        actions: [
+          {
+            name: { en: 'Streamline Product Catalog', de: 'Produktkatalog straffen' },
+            description: {
+              en: 'From 27 fragmented offerings to 10 core products plus 6 structured service components. Result: -63% complexity, +100% clarity.',
+              de: 'Von 27 fragmentierten Angeboten zu 10 Kernprodukten plus 6 strukturierten Service-Komponenten. Ergebnis: -63% Komplexität, +100% Klarheit.'
+            },
+            deliverables: [
+              { en: 'Simplified product catalog', de: 'Vereinfachter Produktkatalog' },
+              { en: 'Service component structure', de: 'Service-Komponentenstruktur' },
+              { en: 'Migration roadmap', de: 'Migrations-Roadmap' }
+            ],
+            whyItMattered: {
+              en: 'Complexity was killing growth. Streamlining created clarity—for customers, sales, and operations—and eliminated internal friction.',
+              de: 'Komplexität tötete Wachstum. Straffung schuf Klarheit—für Kunden, Vertrieb und Operations—und eliminierte interne Reibung.'
+            }
+          },
+          {
+            name: { en: 'Launch "Company Slots" Innovation', de: '"Company Slots" Innovation launchen' },
+            description: {
+              en: 'Recurring product bundles offering rotatable job ad slots. Tied to long-term relationships, improving LTV and predictability. Designed for volume use and renewal behavior.',
+              de: 'Wiederkehrende Produktbündel mit rotierbaren Stellenanzeigen-Slots. An langfristige Beziehungen gebunden, LTV und Vorhersagbarkeit verbessernd. Für Volumennutzung und Erneuerungsverhalten konzipiert.'
+            },
+            deliverables: [
+              { en: 'Company Slots product design', de: 'Company Slots Produktdesign' },
+              { en: 'Pricing model for recurring bundles', de: 'Preismodell für wiederkehrende Bundles' },
+              { en: 'Customer value proposition', de: 'Kundenwertversprechen' }
+            ],
+            whyItMattered: {
+              en: 'Company Slots redefined how value is created, priced, and scaled over time. Recurring revenue became the default, not the exception.',
+              de: 'Company Slots definierten neu, wie Wert geschaffen, bepreist und über Zeit skaliert wird. Wiederkehrende Einnahmen wurden zum Standard, nicht zur Ausnahme.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'New Pricing Model & Go-to-Market', de: 'Neues Pricing-Modell & Go-to-Market' },
+        timeline: 'Weeks 7-8+',
+        actions: [
+          {
+            name: { en: 'Implement Dual Pricing Strategy', de: 'Duale Pricing-Strategie implementieren' },
+            description: {
+              en: 'Company Slots (recurring focus) with two primary variants + Regular Job Ads (spot deals) with Fixed Price and Click-Based options. Priority sales focus on recurring for long-term revenue visibility.',
+              de: 'Company Slots (wiederkehrender Fokus) mit zwei Hauptvarianten + Reguläre Stellenanzeigen (Einzelverkäufe) mit Festpreis und Click-Based Optionen. Vertriebsfokus auf wiederkehrend für langfristige Umsatztransparenz.'
+            },
+            deliverables: [
+              { en: 'Complete pricing model documentation', de: 'Vollständige Preismodell-Dokumentation' },
+              { en: 'Sales pricing tools', de: 'Vertriebs-Pricing-Tools' },
+              { en: 'Customer pricing communication', de: 'Kunden-Pricing-Kommunikation' }
+            ],
+            whyItMattered: {
+              en: 'Recurring revenue became the new standard, reducing reliance on spot deals and improving revenue predictability.',
+              de: 'Wiederkehrende Einnahmen wurden zum neuen Standard, reduzierten Abhängigkeit von Einzelverkäufen und verbesserten Umsatzvorhersagbarkeit.'
+            }
+          },
+          {
+            name: { en: 'Go-to-Market Enablement', de: 'Go-to-Market Enablement' },
+            description: {
+              en: 'Sales training on new pricing model, customer migration strategy, and adoption monitoring. Commercial teams empowered with clearer offerings and higher win rates.',
+              de: 'Vertriebstraining zum neuen Preismodell, Kundenmigractionsstrategie und Adoptions-Monitoring. Commercial-Teams befähigt mit klareren Angeboten und höheren Win Rates.'
+            },
+            deliverables: [
+              { en: 'Sales training program', de: 'Vertriebstrainingsprogramm' },
+              { en: 'Customer migration playbook', de: 'Kundenmigrations-Playbook' },
+              { en: 'Adoption tracking dashboard', de: 'Adoptions-Tracking-Dashboard' }
+            ],
+            whyItMattered: {
+              en: 'The entire commercial organization was empowered with clearer offerings and higher win rates—transformation requires execution, not just strategy.',
+              de: 'Die gesamte Commercial-Organisation wurde mit klareren Angeboten und höheren Win Rates befähigt—Transformation erfordert Umsetzung, nicht nur Strategie.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '24 months',
+    resultMetrics: [
+      { label: 'Revenue', before: '€31M', after: '€44.6M', impact: '+33% (+€13.6M)' },
+      { label: 'EBITDA', before: '61% Margin', after: '+€5.2M', impact: 'Margin reinforced' },
+      { label: 'Rule of 40', before: '85%', after: '99%', impact: '+14pp' },
+      { label: 'Portfolio', before: '27 Products', after: '10 Core + 6 Services', impact: '-63% complexity' }
+    ],
+    roiCalculation: {
+      investment: '€60K-€78K',
+      returnValue: '€13.6M',
+      roi: '180x',
+      breakdown: [
+        { en: 'Revenue growth: €31M → €44.6M = +€13.6M', de: 'Umsatzwachstum: €31M → €44.6M = +€13.6M' },
+        { en: 'EBITDA improvement: +€5.2M (margin reinforcement)', de: 'EBITDA-Verbesserung: +€5.2M (Margen-Verstärkung)' },
+        { en: 'Rule of 40 improvement: 85% → 99% = +14pp', de: 'Rule of 40 Verbesserung: 85% → 99% = +14pp' },
+        { en: 'No discounting required—increased perceived value instead', de: 'Keine Rabattierung erforderlich—stattdessen wahrgenommenen Wert erhöht' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We didn\'t just change prices—we changed what we were selling. Company Slots redefined how our customers think about job advertising. Recurring revenue became the default, not the exception. And we set a new market standard that competitors are now scrambling to follow."',
+      de: '"Wir haben nicht nur Preise geändert—wir haben geändert, was wir verkaufen. Company Slots haben neu definiert, wie unsere Kunden über Stellenwerbung denken. Wiederkehrende Einnahmen wurden zum Standard, nicht zur Ausnahme. Und wir haben einen neuen Marktstandard gesetzt, dem Wettbewerber jetzt hinterherlaufen."'
+    },
+    quoteContext: {
+      en: 'The transformation delivered €13.6M revenue growth without any discounting—proving that pricing is a strategic growth lever, not just a finance exercise.',
+      de: 'Die Transformation lieferte €13.6M Umsatzwachstum ohne jegliche Rabattierung—Beweis dafür, dass Pricing ein strategischer Wachstumshebel ist, nicht nur eine Finance-Übung.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Great pricing unlocks growth—even in mature businesses', de: 'Großartiges Pricing erschließt Wachstum—selbst in reifen Unternehmen' },
+        whatWeLearned: {
+          en: 'At 61% EBITDA and Rule of 40 at 85%, the company was already a high performer. But pricing redesign unlocked an additional €13.6M revenue (+33%) and pushed Rule of 40 to 99%.',
+          de: 'Bei 61% EBITDA und Rule of 40 bei 85% war das Unternehmen bereits ein High Performer. Aber Pricing-Redesign erschloss zusätzlich €13.6M Umsatz (+33%) und steigerte Rule of 40 auf 99%.'
+        },
+        keyInsight: {
+          en: 'Pricing is not a cost lever. It\'s a strategic growth tool when aligned with perceived value and customer behavior.',
+          de: 'Pricing ist kein Kostenhebel. Es ist ein strategisches Wachstumsinstrument, wenn es auf wahrgenommenen Wert und Kundenverhalten ausgerichtet ist.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start pricing diagnostics earlier—even when performance looks strong. The opportunity cost of outdated pricing is invisible until you measure it.',
+          de: 'Pricing-Diagnostik früher starten—auch wenn die Performance stark aussieht. Die Opportunitätskosten veralteten Pricings sind unsichtbar, bis man sie misst.'
+        }
+      },
+      {
+        title: { en: 'Don\'t just change the price—change what you\'re selling', de: 'Ändere nicht nur den Preis—ändere was du verkaufst' },
+        whatWeLearned: {
+          en: 'WTP analysis showed customers valued the product at ~90% of price. But instead of discounting, we redesigned the product structure. Company Slots unlocked both buyer understanding and seller confidence.',
+          de: 'WTP-Analyse zeigte, dass Kunden das Produkt bei ~90% des Preises bewerteten. Aber statt zu rabattieren, haben wir die Produktstruktur neu designed. Company Slots erschlossen sowohl Käuferverständnis als auch Verkäufervertrauen.'
+        },
+        keyInsight: {
+          en: 'The innovation wasn\'t in the price—it was in the product structure. Changing what you sell can be more powerful than changing what you charge.',
+          de: 'Die Innovation lag nicht im Preis—sie lag in der Produktstruktur. Zu ändern was man verkauft kann mächtiger sein als zu ändern was man verlangt.'
+        },
+        whatWedDoDifferently: {
+          en: 'Lead with product innovation, not price negotiation. The best pricing strategies change the conversation, not just the number.',
+          de: 'Mit Produktinnovation führen, nicht Preisverhandlung. Die besten Pricing-Strategien ändern das Gespräch, nicht nur die Zahl.'
+        }
+      },
+      {
+        title: { en: 'Complexity kills growth', de: 'Komplexität tötet Wachstum' },
+        whatWeLearned: {
+          en: '27 products → 10 core products = -63% complexity. This single change created clarity for customers (easier to buy), sales (easier to sell), and operations (easier to deliver).',
+          de: '27 Produkte → 10 Kernprodukte = -63% Komplexität. Diese einzelne Änderung schuf Klarheit für Kunden (einfacher zu kaufen), Vertrieb (einfacher zu verkaufen) und Operations (einfacher zu liefern).'
+        },
+        keyInsight: {
+          en: 'Simplification is a growth strategy. Every product you eliminate is a decision you remove from both your team and your customers.',
+          de: 'Vereinfachung ist eine Wachstumsstrategie. Jedes Produkt das du eliminierst ist eine Entscheidung die du sowohl deinem Team als auch deinen Kunden abnimmst.'
+        },
+        whatWedDoDifferently: {
+          en: 'Simplify earlier and more aggressively. The friction cost of complexity compounds faster than most teams realize.',
+          de: 'Früher und aggressiver vereinfachen. Die Reibungskosten von Komplexität wachsen schneller als die meisten Teams realisieren.'
+        }
+      },
+      {
+        title: { en: 'Recurring revenue isn\'t just a metric—it\'s a mindset', de: 'Wiederkehrende Einnahmen sind nicht nur eine Metrik—es ist eine Denkweise' },
+        whatWeLearned: {
+          en: 'Company Slots weren\'t just a new product—they redefined how value is created, priced, and scaled over time. The shift from spot deals to recurring bundles transformed customer relationships.',
+          de: 'Company Slots waren nicht nur ein neues Produkt—sie definierten neu, wie Wert geschaffen, bepreist und über Zeit skaliert wird. Die Verschiebung von Einzelverkäufen zu wiederkehrenden Bundles transformierte Kundenbeziehungen.'
+        },
+        keyInsight: {
+          en: 'Recurring revenue requires recurring value. Design products that customers want to renew, not products you have to re-sell.',
+          de: 'Wiederkehrende Einnahmen erfordern wiederkehrenden Wert. Produkte designen die Kunden erneuern wollen, nicht Produkte die man neu verkaufen muss.'
+        },
+        whatWedDoDifferently: {
+          en: 'Design for renewal from day one. Every product decision should ask: "Will customers want to renew this?"',
+          de: 'Von Tag eins für Erneuerung designen. Jede Produktentscheidung sollte fragen: "Werden Kunden dies erneuern wollen?"'
+        }
+      },
+      {
+        title: { en: 'Market standards can be reset—if you execute with conviction', de: 'Marktstandards können neu gesetzt werden—wenn man mit Überzeugung umsetzt' },
+        whatWeLearned: {
+          en: 'By being first to implement the recurring model at scale, the company shaped buyer expectations and forced competitors to catch up. Market leadership isn\'t just about being better—it\'s about being first.',
+          de: 'Indem das Unternehmen als Erstes das wiederkehrende Modell im großen Maßstab umsetzte, prägte es Käufererwartungen und zwang Wettbewerber aufzuholen. Marktführerschaft bedeutet nicht nur besser zu sein—es bedeutet Erster zu sein.'
+        },
+        keyInsight: {
+          en: 'First-mover advantage in pricing is real. The company that sets the new standard defines what "normal" looks like.',
+          de: 'First-Mover-Vorteil im Pricing ist real. Das Unternehmen das den neuen Standard setzt definiert wie "normal" aussieht.'
+        },
+        whatWedDoDifferently: {
+          en: 'Move faster on market-shaping opportunities. The window for setting new standards is shorter than you think.',
+          de: 'Schneller bei marktgestaltenden Chancen agieren. Das Fenster für neue Standards ist kürzer als man denkt.'
+        }
+      },
+      {
+        title: { en: 'A strong starting point is no excuse to stand still', de: 'Ein starker Ausgangspunkt ist keine Entschuldigung stillzustehen' },
+        whatWeLearned: {
+          en: 'Even with 61% EBITDA and Rule of 40 at 85%, the company identified latent growth potential and executed with discipline to capture it. Complacency would have left €13.6M on the table.',
+          de: 'Selbst mit 61% EBITDA und Rule of 40 bei 85% identifizierte das Unternehmen latentes Wachstumspotenzial und setzte diszipliniert um, es zu erschließen. Selbstzufriedenheit hätte €13.6M auf dem Tisch gelassen.'
+        },
+        keyInsight: {
+          en: 'Success can blind you to opportunity. The best time to transform pricing is when you\'re strong enough to do it right.',
+          de: 'Erfolg kann für Chancen blind machen. Der beste Zeitpunkt Pricing zu transformieren ist wenn man stark genug ist, es richtig zu machen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Regularly question "good enough." High performance today doesn\'t guarantee competitiveness tomorrow.',
+          de: 'Regelmäßig "gut genug" hinterfragen. Hohe Performance heute garantiert nicht Wettbewerbsfähigkeit morgen.'
+        }
+      }
+    ],
+    
+    playbooks: ['gtm-revenue', 'strategic-governance'],
+    downloadUrl: '/downloads/cases/pricing-redesigned.pdf',
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Boost: Pricing Dominance', de: 'Boost: Pricing-Dominanz' },
+        url: '/solutions/boost/pricing-dominance',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'Pricing Architecture Rebuild - ARPU, Margin, Discounting', de: 'Pricing-Architektur Neuaufbau - ARPU, Marge, Rabattierung' },
+        outcome: { en: 'ARPU +50-100%, Gross Margin +15-20pp, Discounting -30-50%', de: 'ARPU +50-100%, Bruttomarge +15-20pp, Rabattierung -30-50%' },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Pricing Diagnostics (WTP Analysis)', de: 'Pricing-Diagnostik (WTP-Analyse)' },
+          { en: 'Product Portfolio Streamlining', de: 'Produktportfolio-Straffung' },
+          { en: 'Recurring Revenue Model Design', de: 'Wiederkehrendes Umsatzmodell-Design' },
+          { en: 'Pricing Model Implementation', de: 'Preismodell-Implementierung' },
+          { en: 'Go-to-Market Enablement', de: 'Go-to-Market Enablement' }
+        ]
+      },
+      {
+        name: { en: 'Power Up: Pricing Power', de: 'Power Up: Pricing Power' },
+        url: '/solutions/power-up/pricing-power',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { en: 'Quick Pricing Audit + Value Metric Redesign', de: 'Schnelles Pricing-Audit + Value Metric Redesign' },
+        outcome: { en: 'Revenue +10-20%, ARPU +15-30%, Discounting -20-40%', de: 'Revenue +10-20%, ARPU +15-30%, Rabattierung -20-40%' },
+        type: 'alternative',
+        whatYouGet: [
+          { en: 'Pricing Audit', de: 'Pricing-Audit' },
+          { en: 'WTP Analysis', de: 'WTP-Analyse' },
+          { en: 'Competitive Benchmarking', de: 'Wettbewerbs-Benchmarking' },
+          { en: 'Pricing Recommendations', de: 'Pricing-Empfehlungen' },
+          { en: 'Implementation Roadmap', de: 'Implementierungs-Roadmap' }
+        ]
+      },
+      {
+        name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
+        url: '/solutions/accelerate/sustainable-growth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Long-term Growth Infrastructure - Rule of 40 Focus', de: 'Langfristige Growth-Infrastruktur - Rule of 40 Fokus' },
+        outcome: { en: 'Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%', de: 'Rule of 40 +30-50pp, ARR-Wachstum +100-200%, Burn Multiple -60-80%' },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'partner-channel-transformed-scalable-growth', teaser: { en: 'How an SME software provider achieved +45.6% revenue growth with 11 partners', de: 'Wie ein KMU-Softwareanbieter +45.6% Umsatzwachstum mit 11 Partnern erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
+      { slug: 'ai-native-scaling', teaser: { en: 'The complete framework for AI-native execution', de: 'Das komplette Framework für AI-native Execution' } }
+    ]
   }
 ];
 
