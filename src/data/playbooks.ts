@@ -411,8 +411,8 @@ export const playbooks: Playbook[] = [
     id: 'portfolio-transformation',
     slug: 'portfolio-transformation',
     title: {
-      en: 'AI-Native Portfolio Transformation Playbook',
-      de: 'AI-Native Portfolio Transformation Playbook',
+      en: 'Portfolio Transformation Playbook',
+      de: 'Portfolio Transformation Playbook',
     },
     description: {
       en: 'How to transform entire portfolios to AI-native at scale. Learn the complete framework (Portfolio Excellence) used by top-tier VCs/PEs to transform 10-30 portfolio companies, achieve 3-5x portfolio value increase, and improve portfolio IRR from 15% to 40%+. Includes 1 detailed sub-playbook, implementation guides, and real-world case studies from leading VC/PE firms.',
