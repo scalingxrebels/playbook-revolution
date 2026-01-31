@@ -2176,6 +2176,476 @@ Der Board verlor die Geduld. "Behebe es in 12 Monaten oder wir holen einen neuen
       { slug: 'product', teaser: { en: '5-component framework for AI-native product development', de: '5-Komponenten-Framework für AI-native Produktentwicklung' } },
       { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } }
     ]
+  },
+  // ============================================
+  // CASE STUDY 3: EXIT READINESS ACHIEVED
+  // ============================================
+  {
+    id: 'exit-readiness-series-b-saas',
+    slug: 'exit-readiness-achieved',
+    company: 'Series B SaaS Platform',
+    industry: 'B2B SaaS',
+    stage: 'Series B',
+    gradient: 'from-violet-500 to-indigo-500',
+    confidential: true,
+    
+    tags: ['exit-prep', 'board', 'governance', 'series-b', 'b2b-saas'],
+    challengeType: 'exit-prep',
+    
+    // HERO
+    headline: {
+      en: 'Exit Readiness Achieved → Series C Ready',
+      de: 'Exit Readiness erreicht → Series C Ready'
+    },
+    challenge: {
+      en: 'Rule of 40 at 18.2%, ARR per FTE at €64.9k, Board Confidence at 40-50%. Neither Series C nor strategic exit was possible.',
+      de: 'Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k, Board Confidence bei 40-50%. Weder Series C noch strategischer Exit waren möglich.'
+    },
+    result: {
+      en: 'ARR €6.6M → €10.1M (+53%), ARR per FTE €64.9k → €96.1k (+48%), Rule of 40 18.2% → 29.6% (+11.4pp)',
+      de: 'ARR €6.6M → €10.1M (+53%), ARR pro FTE €64.9k → €96.1k (+48%), Rule of 40 18.2% → 29.6% (+11.4pp)'
+    },
+    investment: '€132k',
+    roi: '8.6x',
+    heroMetrics: [
+      { label: 'ARR', before: '€6.6M', after: '€10.1M', impact: '+53%' },
+      { label: 'ARR per FTE', before: '€64.9k', after: '€96.1k', impact: '+48%' },
+      { label: 'Rule of 40', before: '18.2%', after: '29.6%', impact: '+11.4pp' },
+      { label: 'ROI', before: '€132K', after: '€1.14M', impact: '8.6x' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A B2B SaaS platform for productivity and workflow automation, serving mid-market and enterprise customers across Europe and North America. €6.6M ARR, 102 employees, Series B closed.',
+      de: 'Eine B2B SaaS-Plattform für Produktivität und Workflow-Automatisierung, die Mid-Market- und Enterprise-Kunden in Europa und Nordamerika bedient. €6.6M ARR, 102 Mitarbeiter, Series B abgeschlossen.'
+    },
+    crisisStory: {
+      en: `The company had closed a Series B round and was growing steadily—but the board wanted strategic optionality: either raise a Series C within 18 months or position for a strategic exit.
+
+The problem: The company was growing—but not efficiently. And without exit readiness, neither a Series C nor a strategic exit was possible.
+
+Low Capital Efficiency: Rule of 40 at 18.2%, ARR per FTE at €64.9k—both below investor benchmarks.
+Weak Investor KPIs: No investor-grade dashboard, no scenario planning, no strategic narrative.
+Operational Inefficiency: High operational debt, slow decision-making, unclear accountability.
+No Exit Readiness: Board confidence at 40-50%, no exit strategy, no investor pipeline.
+
+The board's challenge: "We need to be Series C-ready or exit-ready in 18 months. Can you get us there?"`,
+      de: `Das Unternehmen hatte eine Series B-Runde abgeschlossen und wuchs stetig—aber der Board wollte strategische Optionalität: entweder innerhalb von 18 Monaten eine Series C aufnehmen oder sich für einen strategischen Exit positionieren.
+
+Das Problem: Das Unternehmen wuchs—aber nicht effizient. Und ohne Exit Readiness war weder eine Series C noch ein strategischer Exit möglich.
+
+Niedrige Kapitaleffizienz: Rule of 40 bei 18.2%, ARR pro FTE bei €64.9k—beides unter den Investor-Benchmarks.
+Schwache Investor-KPIs: Kein investortaugliches Dashboard, keine Szenarioplanung, keine strategische Narrative.
+Operative Ineffizienz: Hohe operative Schulden, langsame Entscheidungsfindung, unklare Verantwortlichkeiten.
+Keine Exit Readiness: Board Confidence bei 40-50%, keine Exit-Strategie, keine Investor-Pipeline.
+
+Die Board-Herausforderung: "Wir müssen in 18 Monaten Series C-ready oder exit-ready sein. Schaffen Sie das?"`
+    },
+    problemDescription: {
+      en: 'Without exit readiness, the company risked: No Series C (investors wouldn\'t fund a company with weak capital efficiency), no exit (strategic buyers wouldn\'t pay premium multiples), and a 30-40% valuation discount.',
+      de: 'Ohne Exit Readiness riskierte das Unternehmen: Keine Series C (Investoren würden kein Unternehmen mit schwacher Kapitaleffizienz finanzieren), keinen Exit (strategische Käufer würden keine Premium-Multiples zahlen) und einen 30-40% Bewertungsabschlag.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Capital Efficiency', de: 'Kapitaleffizienz' },
+        symptoms: [
+          { en: 'Rule of 40 at 18.2% (benchmark: 40%+)', de: 'Rule of 40 bei 18.2% (Benchmark: 40%+)' },
+          { en: 'ARR per FTE at €64.9k (benchmark: €100k+)', de: 'ARR pro FTE bei €64.9k (Benchmark: €100k+)' },
+          { en: 'Burn Multiple at 2.8x (benchmark: <1.5x)', de: 'Burn Multiple bei 2.8x (Benchmark: <1.5x)' }
+        ]
+      },
+      {
+        area: { en: 'Board Operations', de: 'Board-Operations' },
+        symptoms: [
+          { en: 'Board confidence at 40-50%', de: 'Board Confidence bei 40-50%' },
+          { en: 'Board prep takes 5-7 days', de: 'Board-Vorbereitung dauert 5-7 Tage' },
+          { en: 'No investor-grade KPI dashboard', de: 'Kein investortaugliches KPI-Dashboard' }
+        ]
+      },
+      {
+        area: { en: 'Strategic Positioning', de: 'Strategische Positionierung' },
+        symptoms: [
+          { en: 'No strategic narrative', de: 'Keine strategische Narrative' },
+          { en: 'No investor pipeline', de: 'Keine Investor-Pipeline' },
+          { en: 'No exit readiness', de: 'Keine Exit Readiness' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'ARR', before: '€6.6M', after: '€10.1M (target)', impact: '+53%' },
+      { label: 'ARR per FTE', before: '€64.9k', after: '€96.1k (target)', impact: '+48%' },
+      { label: 'Rule of 40', before: '18.2%', after: '29.6% (target)', impact: '+11.4pp' },
+      { label: 'Board Confidence', before: '40-50%', after: '85-95% (target)', impact: '+45pp' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We launched a comprehensive Exit Readiness Program, targeting investor KPIs, operational efficiency, financial management, GTM strategy, and strategic narrative. The approach was executed in five core workstreams over 17 months.',
+      de: 'Wir starteten ein umfassendes Exit Readiness Programm, das auf Investor-KPIs, operative Effizienz, Finanzmanagement, GTM-Strategie und strategische Narrative abzielte. Der Ansatz wurde in fünf Kern-Workstreams über 17 Monate umgesetzt.'
+    },
+    phases: [
+      {
+        name: { en: 'Investor KPI Stack & Dashboard', de: 'Investor KPI Stack & Dashboard' },
+        timeline: 'Months 1-6',
+        actions: [
+          {
+            name: { en: 'Define Investor KPI Stack', de: 'Investor KPI Stack definieren' },
+            description: {
+              en: 'Identified 12 core investor KPIs (ARR, NRR, CAC, LTV, Rule of 40, ARR per FTE, Burn Multiple, etc.) and aligned KPI definitions with investor benchmarks (SaaS Capital, KeyBanc, OpenView).',
+              de: 'Identifizierten 12 Kern-Investor-KPIs (ARR, NRR, CAC, LTV, Rule of 40, ARR pro FTE, Burn Multiple, etc.) und passten KPI-Definitionen an Investor-Benchmarks an (SaaS Capital, KeyBanc, OpenView).'
+            },
+            deliverables: [
+              { en: 'Investor KPI Stack (12 KPIs)', de: 'Investor KPI Stack (12 KPIs)' },
+              { en: 'KPI definition alignment', de: 'KPI-Definitions-Alignment' },
+              { en: 'Benchmark comparison', de: 'Benchmark-Vergleich' }
+            ],
+            whyItMattered: {
+              en: 'Without standardized KPIs, the board couldn\'t assess progress. Investor-grade KPIs unlock strategic optionality.',
+              de: 'Ohne standardisierte KPIs konnte der Board den Fortschritt nicht bewerten. Investortaugliche KPIs ermöglichen strategische Optionalität.'
+            }
+          },
+          {
+            name: { en: 'Build Real-Time Dashboard', de: 'Echtzeit-Dashboard aufbauen' },
+            description: {
+              en: 'Implemented AI-powered dashboard (auto-updates from CRM, finance, HR systems). Board prep time reduced from 5-7 days to 24-48 hours.',
+              de: 'Implementierten AI-gestütztes Dashboard (automatische Updates aus CRM, Finance, HR-Systemen). Board-Vorbereitungszeit von 5-7 Tagen auf 24-48 Stunden reduziert.'
+            },
+            deliverables: [
+              { en: 'Real-time KPI dashboard', de: 'Echtzeit-KPI-Dashboard' },
+              { en: 'Auto-sync integrations', de: 'Auto-Sync-Integrationen' },
+              { en: 'Board prep automation', de: 'Board-Vorbereitungs-Automatisierung' }
+            ],
+            whyItMattered: {
+              en: 'For the first time, leadership could see real-time performance. Board prep time dropped by 86%.',
+              de: 'Zum ersten Mal konnte die Führung Echtzeit-Performance sehen. Board-Vorbereitungszeit sank um 86%.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Operational Efficiency Reset', de: 'Operative Effizienz Reset' },
+        timeline: 'Months 1-12',
+        actions: [
+          {
+            name: { en: 'Reduce Operational Debt', de: 'Operative Schulden reduzieren' },
+            description: {
+              en: 'Eliminated 40% of recurring meetings (coordination cost -80%), introduced RACI framework (clear accountability), automated 30+ manual workflows (AI-powered automation).',
+              de: 'Eliminierten 40% der wiederkehrenden Meetings (Koordinationskosten -80%), führten RACI-Framework ein (klare Verantwortlichkeiten), automatisierten 30+ manuelle Workflows (AI-gestützte Automatisierung).'
+            },
+            deliverables: [
+              { en: 'Meeting audit and reduction', de: 'Meeting-Audit und -Reduktion' },
+              { en: 'RACI framework', de: 'RACI-Framework' },
+              { en: 'Workflow automation', de: 'Workflow-Automatisierung' }
+            ],
+            whyItMattered: {
+              en: 'Operational debt was killing productivity. Decision velocity improved by 50%.',
+              de: 'Operative Schulden töteten die Produktivität. Entscheidungsgeschwindigkeit verbesserte sich um 50%.'
+            }
+          },
+          {
+            name: { en: 'Improve Team Productivity', de: 'Team-Produktivität verbessern' },
+            description: {
+              en: 'Hired specialists (not generalists) for key roles, introduced OKRs (quarterly goal-setting + alignment), measured ARR per FTE (tracked monthly, target €100k+).',
+              de: 'Stellten Spezialisten (nicht Generalisten) für Schlüsselrollen ein, führten OKRs ein (quartalsweise Zielsetzung + Alignment), maßen ARR pro FTE (monatlich verfolgt, Ziel €100k+).'
+            },
+            deliverables: [
+              { en: 'Specialist hiring plan', de: 'Spezialisten-Einstellungsplan' },
+              { en: 'OKR framework', de: 'OKR-Framework' },
+              { en: 'Productivity tracking', de: 'Produktivitäts-Tracking' }
+            ],
+            whyItMattered: {
+              en: 'ARR per FTE improved from €64.9k to €96.1k (+48%), approaching the €100k+ benchmark.',
+              de: 'ARR pro FTE verbesserte sich von €64.9k auf €96.1k (+48%), näherte sich dem €100k+ Benchmark.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Financial Management & Scenario Planning', de: 'Finanzmanagement & Szenarioplanung' },
+        timeline: 'Months 3-12',
+        actions: [
+          {
+            name: { en: 'Introduce Scenario Planning', de: 'Szenarioplanung einführen' },
+            description: {
+              en: 'Built 3 scenarios (Base, Upside, Downside), modeled cash flow, burn, and runway for each scenario, presented scenarios to board (increased confidence).',
+              de: 'Erstellten 3 Szenarien (Base, Upside, Downside), modellierten Cash Flow, Burn und Runway für jedes Szenario, präsentierten Szenarien dem Board (erhöhtes Vertrauen).'
+            },
+            deliverables: [
+              { en: '3-scenario financial model', de: '3-Szenario-Finanzmodell' },
+              { en: 'Cash flow forecasting', de: 'Cash-Flow-Prognose' },
+              { en: 'Board presentation', de: 'Board-Präsentation' }
+            ],
+            whyItMattered: {
+              en: 'The board could now see the path to profitability under different scenarios. Confidence increased significantly.',
+              de: 'Der Board konnte jetzt den Weg zur Profitabilität unter verschiedenen Szenarien sehen. Das Vertrauen stieg deutlich.'
+            }
+          },
+          {
+            name: { en: 'Improve Financial Discipline', de: 'Finanzdisziplin verbessern' },
+            description: {
+              en: 'Tracked burn multiple monthly (target <1.5x), introduced 13-week cash flow forecasting, reduced burn by 20% (cost optimization). Burn Multiple improved from 2.8x to 1.9x.',
+              de: 'Verfolgten Burn Multiple monatlich (Ziel <1.5x), führten 13-Wochen-Cash-Flow-Prognose ein, reduzierten Burn um 20% (Kostenoptimierung). Burn Multiple verbesserte sich von 2.8x auf 1.9x.'
+            },
+            deliverables: [
+              { en: 'Burn multiple tracking', de: 'Burn-Multiple-Tracking' },
+              { en: '13-week cash forecasting', de: '13-Wochen-Cash-Prognose' },
+              { en: 'Cost optimization plan', de: 'Kostenoptimierungsplan' }
+            ],
+            whyItMattered: {
+              en: 'Rule of 40 improved from 18.2% to 29.6% (+11.4pp). Cash runway extended from 12 to 18 months.',
+              de: 'Rule of 40 verbesserte sich von 18.2% auf 29.6% (+11.4pp). Cash Runway verlängerte sich von 12 auf 18 Monate.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'GTM Strategy Overhaul', de: 'GTM-Strategie-Überarbeitung' },
+        timeline: 'Months 6-17',
+        actions: [
+          {
+            name: { en: 'Develop Three Growth Motions', de: 'Drei Wachstumsmotionen entwickeln' },
+            description: {
+              en: 'Developed new GTM strategy with three distinct growth motions: Direct Sales (Mid-Market, €10k-€50k ACV), Partner Channel (Enterprise, €50k-€200k ACV), and Product-Led Growth (SMB, €2k-€10k ACV).',
+              de: 'Entwickelten neue GTM-Strategie mit drei unterschiedlichen Wachstumsmotionen: Direct Sales (Mid-Market, €10k-€50k ACV), Partner Channel (Enterprise, €50k-€200k ACV) und Product-Led Growth (SMB, €2k-€10k ACV).'
+            },
+            deliverables: [
+              { en: 'Direct Sales motion', de: 'Direct Sales Motion' },
+              { en: 'Partner Channel motion', de: 'Partner Channel Motion' },
+              { en: 'PLG motion', de: 'PLG Motion' }
+            ],
+            whyItMattered: {
+              en: 'Diversified channels reduced risk and enabled ACV expansion from €8.5k to €12.3k (+45%).',
+              de: 'Diversifizierte Kanäle reduzierten das Risiko und ermöglichten ACV-Expansion von €8.5k auf €12.3k (+45%).'
+            }
+          },
+          {
+            name: { en: 'Expand Marketing Engine', de: 'Marketing-Engine ausbauen' },
+            description: {
+              en: 'Built comprehensive marketing: Performance Marketing (Google, LinkedIn), Content Marketing (thought leadership, SEO, inbound), and Sales Enablement (pitch decks, case studies, ROI calculators).',
+              de: 'Bauten umfassendes Marketing auf: Performance Marketing (Google, LinkedIn), Content Marketing (Thought Leadership, SEO, Inbound) und Sales Enablement (Pitch Decks, Case Studies, ROI-Kalkulatoren).'
+            },
+            deliverables: [
+              { en: 'Performance marketing campaigns', de: 'Performance-Marketing-Kampagnen' },
+              { en: 'Content marketing strategy', de: 'Content-Marketing-Strategie' },
+              { en: 'Sales enablement toolkit', de: 'Sales-Enablement-Toolkit' }
+            ],
+            whyItMattered: {
+              en: 'ARR grew from €6.6M to €10.1M (+53%). Customer acquisition increased by 60%.',
+              de: 'ARR wuchs von €6.6M auf €10.1M (+53%). Kundenakquise stieg um 60%.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Strategic Investor Narrative & Roadmap', de: 'Strategische Investor-Narrative & Roadmap' },
+        timeline: 'Months 12-17',
+        actions: [
+          {
+            name: { en: 'Develop Strategic Narrative', de: 'Strategische Narrative entwickeln' },
+            description: {
+              en: 'Defined vision (where we\'re going), identified competitive moats (why we\'ll win), built 3-year roadmap (how we\'ll get there).',
+              de: 'Definierten Vision (wohin wir gehen), identifizierten Wettbewerbsvorteile (warum wir gewinnen), erstellten 3-Jahres-Roadmap (wie wir dorthin gelangen).'
+            },
+            deliverables: [
+              { en: 'Vision & mission statement', de: 'Vision & Mission Statement' },
+              { en: 'Competitive moat analysis', de: 'Wettbewerbsvorteil-Analyse' },
+              { en: '3-year strategic roadmap', de: '3-Jahres-Strategische-Roadmap' }
+            ],
+            whyItMattered: {
+              en: 'For the first time, the company had a clear, compelling story for investors.',
+              de: 'Zum ersten Mal hatte das Unternehmen eine klare, überzeugende Geschichte für Investoren.'
+            }
+          },
+          {
+            name: { en: 'Build Investor Pipeline', de: 'Investor-Pipeline aufbauen' },
+            description: {
+              en: 'Created investor-grade pitch deck (20 slides, data-driven), identified 10 strategic investors (Series C targets), identified 5 strategic buyers (exit targets), initiated warm intro conversations.',
+              de: 'Erstellten investortaugliches Pitch Deck (20 Folien, datengetrieben), identifizierten 10 strategische Investoren (Series C-Ziele), identifizierten 5 strategische Käufer (Exit-Ziele), initiierten Warm-Intro-Gespräche.'
+            },
+            deliverables: [
+              { en: 'Investor pitch deck', de: 'Investor-Pitch-Deck' },
+              { en: '10 Series C targets', de: '10 Series C-Ziele' },
+              { en: '5 strategic buyers', de: '5 strategische Käufer' }
+            ],
+            whyItMattered: {
+              en: 'The company now has strategic optionality: Series C or exit. The investor pipeline is active.',
+              de: 'Das Unternehmen hat jetzt strategische Optionalität: Series C oder Exit. Die Investor-Pipeline ist aktiv.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '17 months',
+    resultMetrics: [
+      { label: 'ARR', before: '€6.6M', after: '€10.1M', impact: '+53%' },
+      { label: 'ARR per FTE', before: '€64.9k', after: '€96.1k', impact: '+48%' },
+      { label: 'Rule of 40', before: '18.2%', after: '29.6%', impact: '+11.4pp' },
+      { label: 'Burn Multiple', before: '2.8x', after: '1.9x', impact: '-32%' },
+      { label: 'Board Confidence', before: '40-50%', after: '85-95%', impact: '+45pp' },
+      { label: 'Investor Pipeline', before: '0', after: '15 targets', impact: '10 Series C + 5 strategic' }
+    ],
+    roiCalculation: {
+      investment: '€132k',
+      returnValue: '€1.14M',
+      roi: '8.6x',
+      breakdown: [
+        { en: 'ARR growth: €6.6M → €10.1M (+€3.5M ARR)', de: 'ARR-Wachstum: €6.6M → €10.1M (+€3.5M ARR)' },
+        { en: 'Valuation uplift: +30-40% (exit readiness premium)', de: 'Bewertungsanstieg: +30-40% (Exit Readiness Premium)' },
+        { en: 'Series C valuation: +€5M-€10M (higher valuation)', de: 'Series C-Bewertung: +€5M-€10M (höhere Bewertung)' },
+        { en: '17-month value: €1.14M impact', de: '17-Monats-Wert: €1.14M Impact' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We went from \'growing but inefficient\' to \'exit-ready\' in 17 months. The transformation wasn\'t just about metrics—it was about building the foundation for strategic optionality. Now we can choose: Series C or exit. That\'s power."',
+      de: '"Wir gingen in 17 Monaten von \'wachsend aber ineffizient\' zu \'exit-ready\'. Die Transformation ging nicht nur um Metriken—es ging darum, die Grundlage für strategische Optionalität zu schaffen. Jetzt können wir wählen: Series C oder Exit. Das ist Macht."'
+    },
+    quoteContext: {
+      en: 'The CEO presented the results to the board. The board unanimously approved the strategic optionality: either raise Series C at premium valuation or pursue strategic exit.',
+      de: 'Der CEO präsentierte die Ergebnisse dem Board. Der Board stimmte einstimmig für die strategische Optionalität: entweder Series C zu Premium-Bewertung aufnehmen oder strategischen Exit verfolgen.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Capital Efficiency is a Valuation Multiplier', de: 'Kapitaleffizienz ist ein Bewertungsmultiplikator' },
+        whatWeLearned: {
+          en: 'Rule of 40 and ARR per FTE are valuation multipliers. Improving these metrics by 10-20% can increase valuation by 30-50%.',
+          de: 'Rule of 40 und ARR pro FTE sind Bewertungsmultiplikatoren. Die Verbesserung dieser Metriken um 10-20% kann die Bewertung um 30-50% steigern.'
+        },
+        keyInsight: {
+          en: 'Investors and strategic buyers pay premium multiples for capital-efficient companies. A company with Rule of 40 at 30% will command 2-3x higher valuation than a company at 15%.',
+          de: 'Investoren und strategische Käufer zahlen Premium-Multiples für kapitaleffiziente Unternehmen. Ein Unternehmen mit Rule of 40 bei 30% erzielt eine 2-3x höhere Bewertung als eines bei 15%.'
+        },
+        whatWedDoDifferently: {
+          en: 'Track capital efficiency metrics from Day 1, not just when preparing for exit.',
+          de: 'Kapitaleffizienz-Metriken von Tag 1 verfolgen, nicht erst bei der Exit-Vorbereitung.'
+        }
+      },
+      {
+        title: { en: 'Exit Readiness Starts 18-24 Months Before Exit', de: 'Exit Readiness beginnt 18-24 Monate vor dem Exit' },
+        whatWeLearned: {
+          en: 'Exit readiness isn\'t something you build in 3-6 months. It takes 18-24 months to transform KPIs, operations, and strategic narrative.',
+          de: 'Exit Readiness ist nichts, was man in 3-6 Monaten aufbaut. Es dauert 18-24 Monate, KPIs, Operations und strategische Narrative zu transformieren.'
+        },
+        keyInsight: {
+          en: 'Strategic buyers and Series C investors conduct deep due diligence. If your KPIs, operations, or narrative aren\'t investor-grade, you\'ll face a 30-40% valuation discount.',
+          de: 'Strategische Käufer und Series C-Investoren führen tiefgreifende Due Diligence durch. Wenn Ihre KPIs, Operations oder Narrative nicht investortauglich sind, droht ein 30-40% Bewertungsabschlag.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start exit readiness work earlier—ideally 24 months before target exit window.',
+          de: 'Exit Readiness-Arbeit früher beginnen—idealerweise 24 Monate vor dem Ziel-Exit-Fenster.'
+        }
+      },
+      {
+        title: { en: 'Investor-Grade KPIs Unlock Strategic Optionality', de: 'Investortaugliche KPIs ermöglichen strategische Optionalität' },
+        whatWeLearned: {
+          en: 'Having 12+ investor-grade KPIs (ARR, NRR, CAC, LTV, Rule of 40, ARR per FTE, etc.) unlocks strategic optionality. You can choose: Series C, strategic exit, or stay independent.',
+          de: 'Das Vorhandensein von 12+ investortauglichen KPIs (ARR, NRR, CAC, LTV, Rule of 40, ARR pro FTE, etc.) ermöglicht strategische Optionalität. Sie können wählen: Series C, strategischer Exit oder unabhängig bleiben.'
+        },
+        keyInsight: {
+          en: 'Without investor-grade KPIs, you have no optionality. You\'re forced to take whatever funding or exit offer comes your way.',
+          de: 'Ohne investortaugliche KPIs haben Sie keine Optionalität. Sie sind gezwungen, jedes Finanzierungs- oder Exit-Angebot anzunehmen, das kommt.'
+        },
+        whatWedDoDifferently: {
+          en: 'Build the KPI dashboard earlier and train the leadership team on investor communication.',
+          de: 'Das KPI-Dashboard früher aufbauen und das Führungsteam in Investor-Kommunikation schulen.'
+        }
+      },
+      {
+        title: { en: 'Operational Efficiency is Exit Insurance', de: 'Operative Effizienz ist Exit-Versicherung' },
+        whatWeLearned: {
+          en: 'Operational debt (slow decision-making, unclear accountability, low productivity) kills exits. Strategic buyers won\'t pay premium multiples for companies with high operational debt.',
+          de: 'Operative Schulden (langsame Entscheidungsfindung, unklare Verantwortlichkeiten, niedrige Produktivität) töten Exits. Strategische Käufer zahlen keine Premium-Multiples für Unternehmen mit hohen operativen Schulden.'
+        },
+        keyInsight: {
+          en: 'Operational efficiency is exit insurance. A company with low operational debt, high decision velocity, and high ARR per FTE will command 2-3x higher valuation.',
+          de: 'Operative Effizienz ist Exit-Versicherung. Ein Unternehmen mit niedrigen operativen Schulden, hoher Entscheidungsgeschwindigkeit und hohem ARR pro FTE erzielt eine 2-3x höhere Bewertung.'
+        },
+        whatWedDoDifferently: {
+          en: 'Tackle operational debt continuously, not just when preparing for exit.',
+          de: 'Operative Schulden kontinuierlich angehen, nicht erst bei der Exit-Vorbereitung.'
+        }
+      },
+      {
+        title: { en: 'The Best Exits are Built, Not Found', de: 'Die besten Exits werden gebaut, nicht gefunden' },
+        whatWeLearned: {
+          en: 'The best exits aren\'t found—they\'re built. You don\'t wait for a strategic buyer to knock on your door. You build exit readiness, open investor pipeline, and create optionality.',
+          de: 'Die besten Exits werden nicht gefunden—sie werden gebaut. Man wartet nicht, bis ein strategischer Käufer anklopft. Man baut Exit Readiness auf, öffnet die Investor-Pipeline und schafft Optionalität.'
+        },
+        keyInsight: {
+          en: 'Most companies wait too long to build exit readiness. By the time they start, it\'s too late—they\'re forced to accept lower valuations or unfavorable terms.',
+          de: 'Die meisten Unternehmen warten zu lange, um Exit Readiness aufzubauen. Wenn sie anfangen, ist es zu spät—sie sind gezwungen, niedrigere Bewertungen oder ungünstige Bedingungen zu akzeptieren.'
+        },
+        whatWedDoDifferently: {
+          en: 'Build exit readiness 18-24 months before target exit. Open investor pipeline early.',
+          de: 'Exit Readiness 18-24 Monate vor dem Ziel-Exit aufbauen. Investor-Pipeline früh öffnen.'
+        }
+      }
+    ],
+    
+    playbooks: ['exit-ma', 'strategic-governance', 'gtm-revenue'],
+    downloadUrl: '/downloads/cases/exit-readiness-achieved.pdf',
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Accelerate: Exit-Readiness', de: 'Accelerate: Exit-Readiness' },
+        url: '/solutions/accelerate/exit-readiness',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Exit & Future-Readiness Program - Board Confidence, Valuation', de: 'Exit- & Zukunfts-Readiness-Programm - Board Confidence, Bewertung' },
+        outcome: { en: 'Board Confidence +60-80pp, Valuation Premium +200-400%, Exit Readiness 0% → 100%', de: 'Board Confidence +60-80pp, Bewertungsprämie +200-400%, Exit Readiness 0% → 100%' },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Investor KPI Stack', de: 'Investor KPI Stack' },
+          { en: 'Board Framework', de: 'Board Framework' },
+          { en: 'Exit Strategy', de: 'Exit-Strategie' },
+          { en: 'Investor Pipeline', de: 'Investor-Pipeline' }
+        ]
+      },
+      {
+        name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
+        url: '/solutions/accelerate/sustainable-growth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Profitable Growth + Capital Efficiency - Rule of 40, Burn Multiple', de: 'Profitables Wachstum + Kapitaleffizienz - Rule of 40, Burn Multiple' },
+        outcome: { en: 'Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%', de: 'Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%' },
+        type: 'alternative',
+        whatYouGet: [
+          { en: 'Financial Framework', de: 'Finanz-Framework' },
+          { en: 'Capital Efficiency Plan', de: 'Kapitaleffizienz-Plan' },
+          { en: 'Growth Engine', de: 'Growth Engine' },
+          { en: 'Operational Excellence', de: 'Operative Exzellenz' }
+        ]
+      },
+      {
+        name: { en: 'Boost: Board Excellence', de: 'Boost: Board Excellence' },
+        url: '/solutions/boost/board-excellence',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'Board Framework Rebuild - Board Confidence, Board Prep Time', de: 'Board Framework Neuaufbau - Board Confidence, Board Prep Time' },
+        outcome: { en: 'Board Confidence +50-100%, Board Prep Time -80-90%, Rule of 40 +20-30pp', de: 'Board Confidence +50-100%, Board Prep Time -80-90%, Rule of 40 +20-30pp' },
+        type: 'related',
+        whatYouGet: [
+          { en: 'KPI Dashboard', de: 'KPI-Dashboard' },
+          { en: 'Board Prep Automation', de: 'Board-Prep-Automatisierung' },
+          { en: 'Scenario Planning', de: 'Szenario-Planung' },
+          { en: 'Board Playbook', de: 'Board-Playbook' }
+        ]
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'strategic-transformation-market-leadership', teaser: { en: 'How a Series B No-Code SaaS platform achieved €7.7M ARR (+114%)', de: 'Wie eine Series B No-Code SaaS-Plattform €7.7M ARR (+114%) erreichte' } },
+      { slug: 'pricing-redesigned-scalable-growth', teaser: { en: 'How a post-IPO TecDAX company achieved €13.6M revenue growth', de: 'Wie ein post-IPO TecDAX-Unternehmen €13.6M Umsatzwachstum erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'exit-ma', teaser: { en: '7-component framework for exit readiness and M&A', de: '7-Komponenten-Framework für Exit Readiness und M&A' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } }
+    ]
   }
 ];
 
