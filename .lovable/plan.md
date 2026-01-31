@@ -1,26 +1,11 @@
-# Case Study Implementation Status
 
-## ✅ Case Study 11: Diagnostic-Led Acquisition Scaled (COMPLETED)
-- **Slug:** `/cases/diagnostic-led-acquisition-scaled`
-- **Company:** Sales & Growth Consulting
-- **Solution Links:** Boost: Growth Engine (primary), Power Up: Growth Momentum, Power Up: Predictable Acquisition
-- **Bidirectional Link:** Power Up: Growth Momentum (ID 12) → Case Study 11
 
----
-
-## ✅ Case Study 10: VC Due Diligence Passed (COMPLETED)
-- **Slug:** `/cases/vc-due-diligence-passed-investment-secured`
-- **Company:** FinTech Startup
-- **Solution Links:** VC Due Diligence Simulation (primary), Boost: Board Excellence, Investor-Readiness Pitch Deck Check
-- **Bidirectional Link:** VC DD Simulation (ID 8) → Case Study 10
-
----
-
-# Archived: Case Study 11 Implementation Notes
+# Implementierungskonzept: Case Study 10 Update
+## Board Readiness Achieved → Series B Secured
 
 ## Übersicht
 
-Erstellung einer neuen Case Study für ein Sales & Growth Consulting Unternehmen mit korrektem Solution Mapping und vollständiger Anonymisierung.
+Aktualisierung der bestehenden Case Study 10 mit neuem Inhalt (B2B SaaS Company statt FinTech Startup) und verbesserten KPIs.
 
 ## 1. Kritische Korrekturen gegenüber Briefing
 
@@ -28,211 +13,176 @@ Erstellung einer neuen Case Study für ein Sales & Growth Consulting Unternehmen
 
 | Briefing (falsch) | Real existierend | ID | Korrekte URL | Preis |
 |------------------|------------------|-----|--------------|-------|
-| Ignite: Growth Engine | **Boost: Growth Engine** | 21 | `/solutions/boost/growth-engine` | €60K-€78K |
-| Boost: Growth Momentum | **Power Up: Growth Momentum** | 12 | `/solutions/power-up/growth-momentum` | €23.6K |
-| Power Up: Marketing Efficiency | **Power Up: Predictable Acquisition** | 11 | `/solutions/power-up/cac-crisis` | €23.6K |
+| Power Up: Board Readiness (€5.9K) | **VC Due Diligence Simulation** | 8 | `/solutions/vc-dd-simulation` | €5.9K |
+| Boost: Exit Readiness | **Boost: Board Excellence** | 26 | `/solutions/boost/board-excellence` | €60K-€78K |
+| Power Up: Investor Readiness | **Investor-Readiness Pitch Deck Check** | 7 | `/solutions/investor-readiness-pitch-deck-check` | €1.9K-€2.5K |
 
 **Begründung:**
-- "Ignite: Growth Engine" existiert nicht - "Boost: Growth Engine" ist die richtige Zuordnung für 90-Tage Growth Engine Builds
-- "Boost: Growth Momentum" existiert nicht - es heißt "Power Up: Growth Momentum" (4-6 Wochen)
-- "Power Up: Marketing Efficiency" existiert nicht - "Power Up: Predictable Acquisition" deckt CAC-Reduktion ab
+- Das Briefing nennt €5.9K + €3.9K = €9.8K als Investment. Power Up: Board Readiness kostet €23.6K - passt nicht
+- Der €5.9K Preis entspricht dem VC DD Simulation Angebot
+- "Boost: Exit Readiness" existiert nicht - es gibt "Boost: Board Excellence" (€60K-€78K) oder "Accelerate: Exit-Readiness" (€153K)
+- Die beschriebene Arbeit (Board Materials, DD Prep, Data Room) passt zu einer Kombination aus VC DD Simulation + Investor-Readiness Check
 
-### Investment-Mapping
+### Identität
 
-Das Briefing nennt €29.9K (Build) + €1.49K/Monat (Run). Dies ist ein Custom-Engagement zwischen Power Up (€23.6K) und Boost (€60-78K). Für die Case Study wird dies als benutzerdefiniertes Diagnostic Growth Engine Engagement dargestellt.
+- **Slug bleibt:** `vc-due-diligence-passed-investment-secured` (bestehende Links bleiben intakt)
+- **ID bleibt:** `vc-due-diligence-fintech-startup` → wird zu `board-readiness-b2b-saas`
+- **Headline neu:** "Board Readiness Achieved → Series B Secured"
 
-### Anonymisierung
+## 2. Änderungen im Detail
 
-| Briefing | Status |
-|----------|--------|
-| Sales & Growth Consulting Company | ✅ Bereits anonym |
-| Diagnostic Tool | ✅ Generisch gehalten |
-| LASR.io, 2p Team (Referenzen) | ❌ Müssen entfernt werden |
+### 2.1 `src/data/cases/caseStudies.ts` - Case Study 10 komplett ersetzen
 
-## 2. Dateien und Änderungen
-
-### 2.1 `src/data/cases/caseStudies.ts`
-
-**Neuer Case Study Eintrag hinzufügen:**
+**Neue Werte:**
 
 ```text
-id: 'diagnostic-led-acquisition-sales-consulting'
-slug: 'diagnostic-led-acquisition-scaled'
-company: 'Sales & Growth Consulting'
-industry: 'B2B Sales Consulting'
-stage: 'Established Consultancy'
-challengeType: 'growth-stalled'
-tags: ['growth-engine', 'lead-generation', 'value-ladder', 'diagnostic', 'ai-powered', 'b2b-consulting']
-gradient: 'from-cyan-500 to-blue-500'
+id: 'board-readiness-b2b-saas'
+slug: 'vc-due-diligence-passed-investment-secured' (bleibt!)
+company: 'B2B SaaS Company'
+industry: 'B2B SaaS'
+stage: 'Series A → Series B'
+challengeType: 'board-pressure'
+tags: ['board-readiness', 'fundraising', 'series-b', 'due-diligence', 'saas']
+gradient: 'from-violet-500 to-purple-500' (bleibt)
 ```
 
-**Hero Section:**
-- Headline: "Growth Engine Activated → Diagnostic-Led Acquisition Scaled"
-- Challenge: Manual lead generation, long sales cycles (3-6 months), no value ladder, founder-dependent growth
-- Result: Leads +1,000-1,500%, Conversion +50-75%, Sales Cycle -60-75%, Revenue +100-150%
-- Investment: €34.4K (custom)
-- ROI: 3.5-5.3x
+**Hero Section (NEU):**
+- Headline: "Board Readiness Achieved → Series B Secured"
+- Challenge: Board materials not investor-grade (6/10), DD Readiness 40%, VCs said "come back when ready"
+- Result: Board Materials 9/10, DD Readiness 95%, 3 Term Sheets, €18M at €72M valuation
+- Investment: €9.8K
+- ROI: 1,224x
 
-**Hero Metrics (4):**
-1. Leads per Quarter: 3-4 → 40-60 (+1,000-1,500%)
-2. Conversion Rate: 20-30% → 35-45% (+50-75%)
-3. Sales Cycle: 3-6 months → 4-8 weeks (-60-75%)
-4. Revenue per Quarter: €80K-€120K → €160K-€240K (+100-150%)
+**Hero Metrics (4 NEU):**
+1. Board Materials Quality: 6/10 → 9/10 (+50%)
+2. Due Diligence Readiness: 40% → 95% (+137%)
+3. Term Sheets: 0 → 3 (+3)
+4. Valuation: €50-60M expected → €72M achieved (+20-44%)
 
-**Phases (4):**
-1. Discovery + Design (Week 1-2): Value ladder blueprint, diagnostic framework
-2. Build (Week 3-10): Landing page, assessment tool, AI engine, PDF generator
-3. Test + Launch (Week 11-12): Beta testing, team training, launch
-4. Run + Optimize (Month 4-7): Hosting, support, optimization
+**Situation (NEU):**
+- Company: Series A raised 18 months ago (€5M), now €8M ARR
+- Problem: Board materials outdated, financial model messy, DD gaps 60%, team not aligned
+- Risk: VCs starting DD in 6-8 weeks, runway 12 months
 
-**Lessons (3):**
-1. Value ladders transform high-ticket consulting
-2. Diagnostics = automatic lead qualification
-3. AI-powered tools scale without manual bottlenecks
+**Broken Areas (4 NEU):**
+1. Board Materials (6/10, not investor-grade)
+2. Financial Model (inconsistent unit economics)
+3. Due Diligence (40% ready, 60% gaps)
+4. Team Alignment (CEO, CFO, Board had different narratives)
 
-**Related Solutions (3):**
+**Phases (3 NEU):**
+1. Board Materials Overhaul (Week 1-2)
+2. Due Diligence Preparation (Week 3-4)
+3. Team Alignment + Rehearsal (Week 5-6)
+
+**Results (NEU):**
+- Timeline: 6 weeks
+- Board Materials: 6/10 → 9/10
+- DD Readiness: 40% → 95%
+- VC Feedback: "Not ready" → "Best-prepared we've seen"
+- Term Sheets: 0 → 3
+- Fundraising Timeline: 12-18 months expected → 8 weeks actual
+- Valuation: €72M (vs. €50-60M expected)
+- Funding Secured: €18M
+
+**Lessons (3 NEU):**
+1. Start early - 12 weeks before fundraise, not 2
+2. Investor-grade standards - internal metrics ≠ investor metrics
+3. Due diligence is competitive advantage - 95% ready = faster close + higher valuation
+
+**Related Solutions (3 - KORRIGIERT):**
 
 | Solution | Typ | URL | Invest |
 |----------|-----|-----|--------|
-| Boost: Growth Engine | primary | `/solutions/boost/growth-engine` | €60K-€78K |
-| Power Up: Growth Momentum | alternative | `/solutions/power-up/growth-momentum` | €23.6K |
-| Power Up: Predictable Acquisition | related | `/solutions/power-up/cac-crisis` | €23.6K |
+| VC Due Diligence Simulation | primary | `/solutions/vc-dd-simulation` | €5.9K |
+| Boost: Board Excellence | alternative | `/solutions/boost/board-excellence` | €60K-€78K |
+| Investor-Readiness Pitch Deck Check | related | `/solutions/investor-readiness-pitch-deck-check` | €1.9K-€2.5K |
 
-**Related Case Studies (2):**
-- `growth-engine-activated-leadership-program-scaled` (Case Study 9)
-- `cac-crisis-turnaround`
+**Related Case Studies:**
+- `exit-readiness-achieved`
+- `growth-engine-activated-leadership-program-scaled`
 
-**Related Playbooks (2):**
-- `gtm-revenue`
-- `growth-engines`
+**Related Playbooks:**
+- `strategic-governance`
+- `exit-ma`
 
-### 2.2 `src/data/solutionTiles.ts`
+### 2.2 `src/data/solutionTiles.ts` - Keine Änderung nötig
 
-**Bidirektionale Links aktualisieren:**
+Die bestehende Verlinkung bleibt korrekt:
+- ID 8 (VC DD Simulation) → `secondaryCtaUrl: '/cases/vc-due-diligence-passed-investment-secured'` ✅
 
-Da Case Study 9 bereits mit Boost: Growth Engine (ID 21) und Power Up: Growth Momentum (ID 12) verlinkt ist, aktualisiere ich nur ID 12 für Diversität:
+## 3. Content-Highlights aus Briefing
 
-| Solution ID | Feld | Aktueller Wert | Neuer Wert |
-|-------------|------|----------------|------------|
-| 12 (Power Up: Growth Momentum) | `secondaryCtaUrl` | `/cases/growth-engine-activated-leadership-program-scaled` | `/cases/diagnostic-led-acquisition-scaled` |
+**Problem Statement:**
+- Board materials: 6/10 quality (not investor-grade)
+- Financial model: Inconsistent unit economics
+- Due diligence: 40% ready (60% gaps)
+- Growth story: Unclear narrative
+- Team alignment: 3 different versions of the story
 
-ID 21 (Boost: Growth Engine) bleibt bei Case Study 9 verlinkt.
-
-## 3. Case Study Struktur (gemäß ClientCaseStudy Interface)
-
+**What We Did (6 Weeks):**
 ```text
-1. IDENTIFIERS
-   ├── id: 'diagnostic-led-acquisition-sales-consulting'
-   ├── slug: 'diagnostic-led-acquisition-scaled'
-   └── gradient: 'from-cyan-500 to-blue-500'
+Week 1-2: BOARD MATERIALS OVERHAUL
+├── Investor-grade board deck (30 slides)
+├── Metrics dashboard (ARR, CAC, LTV, Churn, NRR, Rule of 40)
+├── Financial model (3-year projections)
+├── Competitive positioning
+└── Growth story document
 
-2. HERO SECTION
-   ├── headline (en/de)
-   ├── challenge (en/de) - Manual acquisition, long cycles, no value ladder
-   ├── result (en/de)
-   ├── investment: '€34.4K'
-   ├── roi: '3.5-5.3x'
-   └── heroMetrics: CaseStudyMetric[] (4 items)
+Week 3-4: DUE DILIGENCE PREPARATION
+├── DD checklist (120+ items, 8 dimensions)
+├── Data room setup (structured, VC-ready)
+├── Gap analysis (12 critical gaps + mitigation)
+└── Q&A preparation (50+ questions)
 
-3. SITUATION SECTION
-   ├── companyDescription (en/de) - B2B consulting, €20K-€80K projects
-   ├── crisisStory (en/de) - "High-ticket projects but no systematic growth..."
-   ├── problemDescription (en/de)
-   ├── brokenAreas: BrokenArea[] (3 items)
-   │   ├── Lead Generation (referral-dependent, not scalable)
-   │   ├── Sales Process (long cycles, founder-intensive)
-   │   └── Value Architecture (no entry point, high barrier)
-   └── situationMetrics: CaseStudyMetric[] (4 items)
-
-4. WHAT WE DID SECTION
-   ├── approach (en/de) - "AI-Powered Diagnostic Value Ladder"
-   └── phases: CaseStudyPhase[] (4 phases)
-       ├── Phase 1: Discovery + Design (Week 1-2)
-       ├── Phase 2: Build (Week 3-10)
-       ├── Phase 3: Test + Launch (Week 11-12)
-       └── Phase 4: Run + Optimize (Month 4-7)
-
-5. RESULTS SECTION
-   ├── timeline: '7 months'
-   ├── resultMetrics: CaseStudyMetric[] (6 items)
-   ├── roiCalculation: ROICalculation
-   │   ├── investment: '€34.4K (Build + 3 months Run)'
-   │   ├── returnValue: '€120K-€180K additional revenue'
-   │   └── roi: '3.5-5.3x'
-   ├── ceoQuote (en/de) - aus Briefing übernommen
-   └── quoteContext (en/de)
-
-6. LESSONS SECTION
-   └── lessons: CaseStudyLesson[] (3 items)
-
-7. RELATED CONTENT
-   ├── relatedSolutions: RelatedSolution[] (3 items)
-   ├── relatedCaseStudies: RelatedCaseStudy[] (2 items)
-   └── relatedPlaybooks: RelatedPlaybook[] (2 items)
-
-8. META
-   ├── playbooks: ['gtm-revenue', 'growth-engines']
-   └── confidential: true
+Week 5-6: TEAM ALIGNMENT + REHEARSAL
+├── Team alignment workshop (CEO, CFO, Board)
+├── Narrative alignment (one story, three voices)
+├── Pitch rehearsal (3 rounds)
+└── Final review + launch
 ```
 
-## 4. Content Highlights (aus Briefing, bereinigt)
+**ROI Calculation (aus Briefing):**
+- Investment: €9,800
+- Valuation Premium: €12M-€22M (€72M vs. €50M-€60M expected)
+- ROI: 1,224-2,245x
+- Dilution Saved: 5-10% ownership = €3.6M-€7.2M value
 
-**Problem Areas (BrokenAreas):**
-- Lead Generation: 10-15 leads/year via referrals, manual outreach
-- Sales Process: 3-6 months cycles, founder-intensive, CAC = founder time
-- Value Architecture: Only €20K-€80K projects, no entry point, high barrier
+**CEO Quote (aus Briefing):**
+"This was the best investment we made in our Series B process. We went from 'not ready' to 'best-prepared Series A we've seen' in 6 weeks. The board deck, financial model, and data room were investor-grade—VCs said it was the most professional package they'd seen. We secured 3 term sheets in 8 weeks and closed €18M at a €72M valuation, 20-44% higher than we expected. The ROI was over 1,000x."
 
-**The Diagnostic Value Ladder (Was wir gebaut haben):**
-```text
-Stufe 1: Free Diagnostic (€0)
-├── Interactive Assessment (12-15 questions)
-├── AI-Powered Analysis (instant results)
-└── Personalized Results Page
+## 4. Zu entfernende/ersetzende Inhalte
 
-Stufe 2: PDF Report (€0, Lead Magnet)
-├── AI-Generated PDF (10-15 pages)
-└── Shareable format
+| Alter Inhalt | Neuer Inhalt |
+|--------------|--------------|
+| FinTech Startup | B2B SaaS Company |
+| Pre-Seed II | Series A → Series B |
+| €200K investment request | €18M Series B |
+| LTV/CAC 0.02 | Board Materials 6/10 → 9/10 |
+| 218 active users | €8M ARR |
+| 12 red flags | 12 critical gaps |
+| NO-GO → CONDITIONAL YES | "Not ready" → 3 Term Sheets |
+| €5.9K investment | €9.8K investment |
+| 2 weeks timeline | 6 weeks timeline |
+| 10-50x ROI | 1,224x ROI |
 
-Stufe 3: Diagnostic Workshop (€9,500)
-├── Deep-Dive Session (1-2 days)
-└── Prioritized Action Plan
+## 5. Routing
 
-Stufe 4: Transformation Projects (€20K-€80K)
-├── Full Consulting Engagement
-└── Implementation Support
-```
+Keine Änderung nötig - der Slug bleibt identisch, daher funktionieren alle bestehenden Links weiterhin.
 
-**Result Metrics:**
-- Leads per Quarter: 3-4 → 40-60 (+1,000-1,500%)
-- Conversion Rate: 20-30% → 35-45% (+50-75%)
-- Sales Cycle: 3-6 months → 4-8 weeks (-60-75%)
-- Projects per Quarter: 1-2 → 4-6 (+200-300%)
-- Revenue per Quarter: €80K-€120K → €160K-€240K (+100-150%)
-- CAC: High (founder time) → Low (automated) (-70-80%)
-
-## 5. Zu entfernende Inhalte (Anonymisierung)
-
-Die folgenden Referenzen aus dem Briefing werden NICHT übernommen:
-- "LASR.io" - interne Referenz
-- "2p Team" - interner Projektname
-- Spezifische Tool-Namen
-
-## 6. Routing
-
-Die Route `/cases/diagnostic-led-acquisition-scaled` wird automatisch durch die dynamische Route in `src/pages/CaseDetail.tsx` bedient - keine zusätzliche Route erforderlich.
-
-## 7. Zusammenfassung
+## 6. Zusammenfassung
 
 | Datei | Aktion | Umfang |
 |-------|--------|--------|
-| `src/data/cases/caseStudies.ts` | Neuen Case Study hinzufügen | ~500 Zeilen |
-| `src/data/solutionTiles.ts` | 1 secondaryCtaUrl aktualisieren (ID 12) | 1 Zeile |
+| `src/data/cases/caseStudies.ts` | Case Study 10 komplett ersetzen (Zeilen ~3775-4200) | ~425 Zeilen |
+| `src/data/solutionTiles.ts` | Keine Änderung | 0 Zeilen |
+| `.lovable/plan.md` | Status aktualisieren | ~20 Zeilen |
 
-## 8. Ergebnis
+## 7. Ergebnis
 
-- Neue Case Study unter `/cases/diagnostic-led-acquisition-scaled`
-- Bidirektionaler Link von Power Up: Growth Momentum
-- Boost: Growth Engine bleibt bei Case Study 9 verlinkt (Diversität)
-- Vollständig anonymisiert (generisches "Sales & Growth Consulting")
-- Konsistent mit bestehendem Case Study Format
+- Case Study 10 unter `/cases/vc-due-diligence-passed-investment-secured` aktualisiert
+- Neue Story: B2B SaaS Company sichert €18M Series B bei €72M Bewertung
+- Bessere KPIs: 1,224x ROI (statt 10-50x), €18M raised (statt €75K-€100K)
+- Korrekte Solution-Verlinkung zu VC DD Simulation (primär)
+- Bestehende Links bleiben intakt (Slug unverändert)
 
