@@ -1,239 +1,159 @@
 
-# Implementierungskonzept: Case Study 7 - Partner Channel Transformed
+# Solution Mapping Korrektur: Case Study 7
 
-## Übersicht
+## Problem-Analyse
 
-Diese Case Study erfordert Erweiterungen am bestehenden Datenmodell und der CaseDetail-Komponente, da das Briefing neue Sections (Related Solutions, Related Cases, Related Playbooks) vorsieht, die im aktuellen System nicht existieren.
+Das Briefing referenziert 3 Solutions, die **nicht existieren**:
 
----
-
-## Teil 1: Datenmodell-Erweiterung
-
-### 1.1 Types erweitern (`src/data/cases/types.ts`)
-
-Neue Interfaces hinzufügen:
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  NEUE INTERFACES                                             │
-└─────────────────────────────────────────────────────────────┘
-
-RelatedSolution {
-  name: BilingualText
-  url: string
-  duration: string
-  investment: string
-  focus: BilingualText
-  outcome: BilingualText
-  type: 'primary' | 'alternative' | 'related'
-}
-
-RelatedCaseStudy {
-  slug: string
-  teaser: BilingualText
-}
-
-RelatedPlaybook {
-  slug: string
-  teaser: BilingualText
-}
-```
-
-### 1.2 ClientCaseStudy Interface erweitern
-
-Neue optionale Felder:
-
-```typescript
-// META Section - Erweitert
-relatedSolutions?: RelatedSolution[]
-relatedCaseStudies?: RelatedCaseStudy[]
-relatedPlaybooks?: RelatedPlaybook[]
-```
+| Im Briefing | URL | Status |
+|-------------|-----|--------|
+| Boost: Channel Excellence | `/solutions/boost/channel-excellence` | EXISTIERT NICHT |
+| Power Up: Partner Activation | `/solutions/power-up/partner-activation` | EXISTIERT NICHT |
+| Boost: GTM Transformation | `/solutions/boost/gtm-transformation` | EXISTIERT NICHT |
 
 ---
 
-## Teil 2: Filter-Erweiterung
+## Existierende Solutions (Transformation Tier)
 
-### 2.1 caseFilters.ts aktualisieren
+### Power Up (4-6 Wochen, €23.6K)
+- Predictable Acquisition → `/solutions/power-up/cac-crisis`
+- Growth Momentum → `/solutions/power-up/growth-momentum`
+- Pricing Power → `/solutions/power-up/pricing-power`
+- NRR Engine → `/solutions/power-up/nrr-engine`
+- Scaling Velocity → `/solutions/power-up/scaling-velocity`
+- AI Quick Wins → `/solutions/power-up/ai-quick-wins`
+- Board Readiness → `/solutions/power-up/board-readiness`
+- Portfolio Performance → `/solutions/power-up/portfolio-performance`
+- Custom Sprint → `/solutions/power-up/custom-sprint`
 
-**Challenge Filter - Neuer Eintrag:**
-```typescript
-{ id: 'partner-channel', label: { en: 'Partner Channel', de: 'Partner Channel' } }
-```
-
-**Industry Filter - Neuer Eintrag:**
-```typescript
-{ id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } }
-```
-
-**Stage Filter - Neuer Eintrag:**
-```typescript
-{ id: 'established', label: { en: 'Established', de: 'Etabliert' } }
-```
-
----
-
-## Teil 3: Case Study Daten
-
-### 3.1 Neue Case Study in caseStudies.ts
-
-**Identifikation:**
-```typescript
-{
-  id: 'partner-channel-transformed',
-  slug: 'partner-channel-transformed-scalable-growth',
-  company: 'SME Software Provider',
-  industry: 'B2B Software',
-  stage: 'Established',
-  gradient: 'from-blue-500 to-cyan-500',
-  confidential: true,
-  tags: ['partner', 'channel', 'enablement', 'b2b-software', 'established'],
-  challengeType: 'partner-channel',
-}
-```
-
-**Hero Metrics:**
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  HERO METRICS (4 Cards)                                      │
-└─────────────────────────────────────────────────────────────┘
-
-1. Revenue Growth: €543K → €968K (+45.6%)
-2. SQL Efficiency: 344 → 451 SQLs (+31%, -24% Contacts)
-3. New Customers: +40%
-4. ACV Growth: €4,667 → €6,483 (+39%)
-```
-
-**4 Phasen:**
-1. Fast Diagnostics and Partner Selection (Week 1)
-2. KPI Framework and Execution Setup (Week 2)
-3. Channel Activation and Partner Enablement (Weeks 3-12)
-4. Acceleration and Performance Tracking (Months 3-9)
-
-**6 Key Lessons:**
-1. Partner success is built on structure, not scale
-2. Lead quality beats volume
-3. KPI design shapes behavior
-4. ACV growth proves the strategic value of enablement
-5. Short sprints create lasting change
-6. A modern partner channel is a growth asset
+### Boost (90 Tage, €60K-€78K)
+- Efficient Hypergrowth → `/solutions/boost/efficient-hypergrowth`
+- Growth Engine → `/solutions/boost/growth-engine`
+- Pricing Dominance → `/solutions/boost/pricing-dominance`
+- NRR Machine → `/solutions/boost/nrr-machine`
+- Scaling OS → `/solutions/boost/scaling-os`
+- AI Maturity → `/solutions/boost/ai-maturity`
+- Board Excellence → `/solutions/boost/board-excellence`
+- Portfolio Value → `/solutions/boost/portfolio-value`
 
 ---
 
-## Teil 4: Landing Page Erweiterung
+## Empfohlenes Mapping
 
-### 4.1 CaseDetail.tsx - Neue Section 6: Related Solutions
+Da keine Channel-spezifischen Solutions existieren, basiert das Mapping auf thematischer Passung zur Case Study (Partner als Growth Engine, GTM-Fokus, Sales Enablement):
 
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  SECTION 6: RELATED SOLUTIONS (NEU)                          │
-│  Position: Nach Key Lessons, vor Next Steps                  │
-└─────────────────────────────────────────────────────────────┘
-
-Layout: 3-Column Grid mit Solution Cards
-
-Card-Struktur:
-├── Badge (Primary/Alternative/Related)
-├── Solution Name
-├── Duration + Investment
-├── Focus Description
-├── Outcome Teaser
-└── [Learn More →] Button
-```
-
-### 4.2 CaseDetail.tsx - Section 7: Next Steps (Erweitert)
-
-CTAs anpassen für case-spezifische Solution-Links:
-
-```text
-Primary CTA: "Book Partner Channel Assessment"
-Secondary CTA: "Download Partner Enablement Playbook"
-Tertiary CTA: "View All Case Studies"
-```
-
-### 4.3 CaseDetail.tsx - Cross-Links Section
-
-```text
-┌─────────────────────────────────────────────────────────────┐
-│  RELATED CONTENT (Horizontal Scroll)                         │
-└─────────────────────────────────────────────────────────────┘
-
-Related Case Studies: 6 Cards (CAC Crisis, Growth Stalled, etc.)
-Related Playbooks: 3 Cards (GTM/Revenue, Strategic Governance, AI-Native)
-```
+| Rolle | Empfohlene Solution | Begründung |
+|-------|---------------------|------------|
+| **Primary** | Boost: Growth Engine | Partner Channel = Growth Engine; Fokus auf ARR Growth, Pipeline, Win Rate |
+| **Alternative** | Power Up: Growth Momentum | Schneller 4-6 Wochen Sprint für initiale Partner Activation |
+| **Related** | Boost: Efficient Hypergrowth | GTM-Engine Rebuild; CAC/LTV-Fokus passt zu Partner Efficiency |
 
 ---
 
-## Teil 5: Routing
+## Implementierungsplan
 
-### 5.1 App.tsx - Kein neuer Route erforderlich
+### Teil 1: Case Study Daten aktualisieren
 
-Die Route `/cases/:slug` existiert bereits und rendert CaseDetail.tsx.
-Der neue slug `partner-channel-transformed-scalable-growth` wird automatisch aufgelöst.
-
----
-
-## Teil 6: Abhängigkeiten und Hinweise
-
-### 6.1 Fehlende Solution Pages (aus Briefing)
-
-Die folgenden Solution Pages werden im Briefing referenziert, existieren aber noch nicht:
-
-```text
-⚠️  /solutions/boost/channel-excellence (Primary)
-⚠️  /solutions/power-up/partner-activation (Alternative)
-⚠️  /solutions/boost/gtm-transformation (Related)
-```
-
-**Empfehlung:** Related Solutions Section mit bedingtem Rendering implementieren. Links zeigen nur an, wenn die Ziel-URL existiert.
-
-### 6.2 Datenstruktur für Related Solutions
+**Datei:** `src/data/cases/caseStudies.ts` (Zeilen 884-911)
 
 ```typescript
+// ALT (nicht existierende URLs)
 relatedSolutions: [
   {
     name: { en: 'Boost: Channel Excellence', de: 'Boost: Channel Excellence' },
     url: '/solutions/boost/channel-excellence',
-    duration: '90 Tage',
+    // ...
+  },
+  // ...
+]
+
+// NEU (existierende URLs)
+relatedSolutions: [
+  {
+    name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+    url: '/solutions/boost/growth-engine',
+    duration: '90 Days',
     investment: '€60K-€78K',
-    focus: { en: 'Partner Channel Transformation + Enablement', de: 'Partner Channel Transformation + Enablement' },
-    outcome: { en: 'Partner Revenue +40-60%, Efficiency +50%', de: 'Partner Revenue +40-60%, Efficiency +50%' },
+    focus: { 
+      en: 'ARR Growth, Pipeline, Win Rate - Partner as Growth Engine', 
+      de: 'ARR-Wachstum, Pipeline, Win Rate - Partner als Growth Engine' 
+    },
+    outcome: { 
+      en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', 
+      de: 'ARR-Wachstum +50-100%, Win Rate +30-50%, Pipeline +50-100%' 
+    },
     type: 'primary'
   },
-  // ... weitere Solutions
+  {
+    name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+    url: '/solutions/power-up/growth-momentum',
+    duration: '4-6 Weeks',
+    investment: '€23.6K',
+    focus: { 
+      en: 'Quick Partner Activation Sprint', 
+      de: 'Schneller Partner-Aktivierungs-Sprint' 
+    },
+    outcome: { 
+      en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
+      de: 'ARR-Wachstum +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
+    },
+    type: 'alternative'
+  },
+  {
+    name: { en: 'Boost: Efficient Hypergrowth', de: 'Boost: Effizientes Hypergrowth' },
+    url: '/solutions/boost/efficient-hypergrowth',
+    duration: '90 Days',
+    investment: '€60K-€78K',
+    focus: { 
+      en: 'GTM Engine Rebuild - CAC/LTV Optimization', 
+      de: 'GTM-Engine Neuaufbau - CAC/LTV-Optimierung' 
+    },
+    outcome: { 
+      en: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp', 
+      de: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp' 
+    },
+    type: 'related'
+  }
 ]
 ```
 
----
+### Teil 2: Solution Tiles - Case Study Links hinzufuegen
 
-## Implementierungsreihenfolge
+**Datei:** `src/data/solutionTiles.ts`
 
-```text
-1. Types erweitern (types.ts)
-2. Filter erweitern (caseFilters.ts)
-3. Case Study Daten erstellen (caseStudies.ts)
-4. CaseDetail.tsx erweitern
-   - Section 6: Related Solutions (conditional)
-   - Section 7: Cross-Links
-   - Next Steps CTAs anpassen
-5. Testen auf /cases/partner-channel-transformed-scalable-growth
+Boost: Growth Engine (ID 21, Zeile 839) - secondaryCtaUrl aktualisieren:
+```typescript
+secondaryCtaUrl: '/cases/partner-channel-transformed-scalable-growth'
+```
+
+Power Up: Growth Momentum (ID 12, Zeile 529) - secondaryCtaUrl aktualisieren:
+```typescript
+secondaryCtaUrl: '/cases/partner-channel-transformed-scalable-growth'
 ```
 
 ---
 
-## Technische Details
+## Dateien und Aenderungen
 
-### Geschätzte Dateien
-
-| Datei | Änderung |
+| Datei | Aenderung |
 |-------|----------|
-| `src/data/cases/types.ts` | +25 Zeilen (neue Interfaces) |
-| `src/data/cases/caseFilters.ts` | +3 Filter-Einträge |
-| `src/data/cases/caseStudies.ts` | +220 Zeilen (neue Case Study) |
-| `src/pages/CaseDetail.tsx` | +80 Zeilen (Related Solutions Section) |
+| `src/data/cases/caseStudies.ts` | relatedSolutions Array aktualisieren (3 Eintraege) |
+| `src/data/solutionTiles.ts` | secondaryCtaUrl bei 2 Solutions aktualisieren |
 
-### Bilingualer Content
+---
 
-Alle Texte aus dem Briefing sind bereits bilingual angelegt (EN/DE).
-Die deutschen Übersetzungen werden 1:1 aus dem Briefing übernommen.
+## Alternative: Neue Solutions erstellen
 
+Falls die Channel-spezifischen Solutions aus dem Briefing tatsaechlich angeboten werden sollen, waere der alternative Weg:
+
+1. Neue Solution Tiles erstellen:
+   - Boost: Channel Excellence (ID 28)
+   - Power Up: Partner Activation (ID 29)
+
+2. Neue Landing Pages erstellen:
+   - `src/pages/BoostChannelExcellence.tsx`
+   - `src/pages/PowerUpPartnerActivation.tsx`
+
+3. Routes in App.tsx registrieren
+
+Diese Alternative erfordert jedoch deutlich mehr Aufwand und sollte nur umgesetzt werden, wenn diese Solutions tatsaechlich Teil des Angebots-Portfolios sind.
