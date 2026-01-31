@@ -1,145 +1,151 @@
 
 
-# Implementierungskonzept: Case Study Fixes
+# Implementierungskonzept: NRR Machine Breakthrough - Related Content ergänzen
 
-## Problem 1: Fehlender Scroll-to-Top
+## Ist-Analyse
 
-### Diagnose
-Die `CaseDetail.tsx` Komponente fehlt der Standard `useEffect` Hook zum Scrollen nach oben beim Seitenaufruf. Andere Seiten wie `BoostNRRMachine.tsx` haben:
+Die Case Study `nrr-machine-breakthrough` (Zeilen 349-564) ist die **einzige** Case Study ohne Related Content. Sie endet bei:
 
 ```typescript
-useEffect(() => {
-  window.scrollTo(0, 0);
-}, []);
+playbooks: ['customer-success', 'growth-engines'],
+downloadUrl: '/downloads/cases/nrr-machine-breakthrough.pdf'
 ```
 
-Die `CaseDetail.tsx` hat diesen Hook NICHT, was dazu fuehrt, dass beim Klick auf "Read Case" die Seite in der Mitte angezeigt wird (Browser-Scroll-Restoration-Verhalten).
+Es fehlen:
+- `relatedSolutions` (Verlinkung zu passenden Solutions)
+- `relatedCaseStudies` (Verlinkung zu verwandten Cases)
+- `relatedPlaybooks` (Verlinkung zu relevanten Playbooks)
 
-### Loesung
-Hinzufuegen eines `useEffect` Hooks in `CaseDetail.tsx`:
+---
+
+## Case Study Metriken (für Solution-Mapping)
+
+| Metrik | Vorher | Nachher | Impact |
+|--------|--------|---------|--------|
+| NRR | 105% | 142% | +37pp |
+| Churn | 8% | 3% | -62% |
+| Expansion Revenue | €1.2M | €3.4M | +180% |
+| Investment | €95K | - | - |
+| ROI | 8x | - | - |
+| Dauer | 12 Wochen | - | - |
+
+---
+
+## Korrektes Solution-Mapping
+
+| Rolle | Solution | URL | Begründung |
+|-------|----------|-----|------------|
+| **Primary** | Boost: NRR Machine | `/solutions/boost/nrr-machine` | Exakte Übereinstimmung: 90 Tage, NRR-fokus, €55K-€71.5K |
+| **Alternative** | Power Up: NRR Engine | `/solutions/power-up/nrr-engine` | Kürzerer Sprint (4-6 Wochen), NRR +15-25pp |
+| **Related** | Pricing & Packaging Review | `/solutions/pricing-packaging-review` | Expansion-Pricing als Hebel identifizieren |
+
+---
+
+## Technische Änderung
+
+### Datei: `src/data/cases/caseStudies.ts`
+
+**Position:** Nach Zeile 563 (vor `playbooks: ['customer-success', 'growth-engines']`)
+
+**Einfügen:**
 
 ```typescript
-import React, { useEffect } from 'react';
-// ... other imports
-
-const CaseDetail: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { language } = useLanguage();
-  
-  // Scroll to top when component mounts or slug changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-  
-  // ... rest of component
-}
+relatedSolutions: [
+  {
+    name: { en: 'Boost: NRR Machine', de: 'Boost: NRR Machine' },
+    url: '/solutions/boost/nrr-machine',
+    duration: '90 Days',
+    investment: '€55K-€71.5K',
+    focus: { 
+      en: 'Complete NRR Engine Build - Expansion Signals, CS Playbooks, Usage Analytics', 
+      de: 'Kompletter NRR-Engine Aufbau - Expansion Signale, CS Playbooks, Usage Analytics' 
+    },
+    outcome: { 
+      en: 'NRR +25-40pp, Churn -40-60%, Expansion Revenue +100-200%', 
+      de: 'NRR +25-40pp, Churn -40-60%, Expansion Revenue +100-200%' 
+    },
+    type: 'primary'
+  },
+  {
+    name: { en: 'Power Up: NRR Engine', de: 'Power Up: NRR Engine' },
+    url: '/solutions/power-up/nrr-engine',
+    duration: '4-6 Weeks',
+    investment: '€23.6K',
+    focus: { 
+      en: 'Quick NRR Fix - Expansion Triggers, QBR Redesign, Health Scores', 
+      de: 'Schnelle NRR-Korrektur - Expansion Trigger, QBR-Redesign, Health Scores' 
+    },
+    outcome: { 
+      en: 'NRR +15-25pp, Churn -20-30%, First Expansion Wins in 4 Weeks', 
+      de: 'NRR +15-25pp, Churn -20-30%, Erste Expansion-Wins in 4 Wochen' 
+    },
+    type: 'alternative'
+  },
+  {
+    name: { en: 'Pricing & Packaging Review', de: 'Pricing & Packaging Review' },
+    url: '/solutions/pricing-packaging-review',
+    duration: '2-4 Weeks',
+    investment: '€3.9K-€5.9K',
+    focus: { 
+      en: 'Identify Expansion Pricing Opportunities - Tier Structure, Usage-Based Models', 
+      de: 'Expansion-Pricing-Möglichkeiten identifizieren - Tier-Struktur, Usage-basierte Modelle' 
+    },
+    outcome: { 
+      en: 'Clear expansion pricing strategy, ARPU uplift roadmap', 
+      de: 'Klare Expansion-Pricing-Strategie, ARPU-Uplift-Roadmap' 
+    },
+    type: 'related'
+  }
+],
+relatedCaseStudies: [
+  { 
+    slug: 'cac-crisis-turnaround', 
+    teaser: { 
+      en: 'How a Series B SaaS cut CAC by 58% in 12 weeks', 
+      de: 'Wie ein Series B SaaS den CAC in 12 Wochen um 58% senkte' 
+    } 
+  },
+  { 
+    slug: 'stage-transition-series-b-ready', 
+    teaser: { 
+      en: 'How a MarTech company scaled from €5M to €25M ARR for Series B', 
+      de: 'Wie ein MarTech-Unternehmen von €5M auf €25M ARR für Series B skalierte' 
+    } 
+  }
+],
+relatedPlaybooks: [
+  { 
+    slug: 'customer-success', 
+    teaser: { 
+      en: 'The complete Customer Success playbook for building NRR machines', 
+      de: 'Das komplette Customer Success Playbook für den Aufbau von NRR-Maschinen' 
+    } 
+  },
+  { 
+    slug: 'growth-engines', 
+    teaser: { 
+      en: 'Build scalable growth engines that compound over time', 
+      de: 'Baue skalierbare Growth Engines, die sich über Zeit multiplizieren' 
+    } 
+  }
+],
 ```
 
 ---
 
-## Problem 2: Kachel-Beschreibungen harmonisieren
+## Zusammenfassung
 
-### Analyse: So funktioniert die Kachel-Anzeige
-Die `CaseCard.tsx` Komponente zeigt als Teaser den **ersten Satz** des `challenge`-Feldes:
-
-```typescript
-const challengeTeaser = (language === 'de' ? caseStudy.challenge.de : caseStudy.challenge.en).split('.')[0] + '.';
-```
-
-### Referenz: Partner Channel Transformed (Gut)
-```typescript
-challenge: {
-  en: 'A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months.',
-  de: 'Ein bundesweites Netzwerk von 1.000 Partnern generierte hohe Aktivitaet, aber geringe Ausbeute—9.819 monatliche Kontakte ergaben nur 344 SQLs in 6 Monaten.'
-}
-```
-
-**Warum gut:**
-- Erster Satz ist vollstaendig und selbsterklaerend
-- Enthaelt spezifische Zahlen/Metriken
-- Beschreibt das Problem klar
-- Keine abgehackten Saetze
-
----
-
-## Problem 3: Case Study Konsistenz-Audit
-
-### Alle Case Studies und deren `challenge`-Felder
-
-| # | Slug | Erster Satz Challenge (EN) | Status |
-|---|------|---------------------------|--------|
-| 1 | `cac-crisis-turnaround` | "CAC exploded from €5k to €12k in 6 months." | OK - klar, mit Zahlen |
-| 2 | `nrr-machine-breakthrough` | "NRR stuck at 105% despite product improvements." | OK - spezifisch |
-| 3 | `partner-channel-transformed-scalable-growth` | "A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months." | REFERENZ |
-| 4 | `pricing-redesigned-scalable-growth` | (muss geprueft werden) | PRUEFEN |
-| 5 | `new-market-segment-entry` | (muss geprueft werden) | PRUEFEN |
-| 6 | `strategic-transformation-market-leadership` | "Growth slowing from 150% to 80% YoY, NRR declining below 100%, organizational chaos with 50+ meetings/week." | OK - spezifische Metriken |
-| 7 | `exit-readiness-achieved` | (muss geprueft werden) | PRUEFEN |
-| 8 | `stage-transition-series-b-ready` | "Stuck at €5M ARR, board demanded €25M ARR in 12 months—or no Series B." | OK - dramatisch und klar |
-
-### Detailpruefung erforderlich fuer:
-
-**4. pricing-redesigned-scalable-growth**
-- Zeile ~990-1010 in caseStudies.ts pruefen
-
-**5. new-market-segment-entry**
-- Zeile ~1370-1400 in caseStudies.ts pruefen
-
-**7. exit-readiness-achieved**
-- Zeile ~2200-2250 in caseStudies.ts pruefen
-
----
-
-## Zusammenfassung der Aenderungen
-
-| Datei | Aenderung | Prioritaet |
-|-------|-----------|------------|
-| `src/pages/CaseDetail.tsx` | useEffect scroll-to-top hinzufuegen + useEffect import | KRITISCH |
-| `src/data/cases/caseStudies.ts` | Challenge-Felder der 3 Cases pruefen und ggf. anpassen | MITTEL |
-
----
-
-## Technische Implementation
-
-### Aenderung 1: CaseDetail.tsx (Zeile 1-15)
-
-```typescript
-// VORHER (Zeile 1)
-import React from 'react';
-
-// NACHHER
-import React, { useEffect } from 'react';
-```
-
-```typescript
-// VORHER (Zeile 14-18)
-const CaseDetail: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { language } = useLanguage();
-  
-  const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
-
-// NACHHER
-const CaseDetail: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
-  const { language } = useLanguage();
-  
-  // Scroll to top when component mounts or slug changes
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-  
-  const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
-```
+| Datei | Änderung | Zeilen |
+|-------|----------|--------|
+| `src/data/cases/caseStudies.ts` | relatedSolutions, relatedCaseStudies, relatedPlaybooks vor Zeile 562 einfügen | +45 |
 
 ---
 
 ## Validierung nach Implementation
 
-1. Auf `/cases` gehen
-2. Auf eine beliebige Case Card klicken ("Read Case")
-3. Seite sollte am HERO-Bereich starten (oben)
-4. Zurueck zu `/cases` navigieren
-5. Andere Case Study waehlen
-6. Wieder am Top der Seite starten
+1. `/cases/nrr-machine-breakthrough` öffnen
+2. Scroll zur "Related Solutions" Section
+3. Prüfen ob alle 3 Solution-Karten korrekt angezeigt werden
+4. Links testen (Primary, Alternative, Related)
+5. Related Case Studies und Playbooks prüfen
 
