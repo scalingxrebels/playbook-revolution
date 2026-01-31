@@ -1,5 +1,5 @@
 
-# Plan: Customer Success Playbook v3.0 Synchronisation
+# Plan: Product Playbook v3.0 Synchronisation
 
 ## Analyse-Ergebnis
 
@@ -7,10 +7,10 @@
 
 | Element | Status | Details |
 |---------|--------|---------|
-| Kachel-Title | OK | "Customer Success Playbook" |
+| Kachel-Title | OK | "Product Playbook" |
 | Hero Section | OK | Keine Formeln, praktischer Ton |
 | Summary Section | OK | Keine Formeln, praktischer Ton |
-| Framework Section | OK | 5-Komponenten Framework korrekt (Onboarding Excellence, Health Scoring & Churn Prediction, Retention Loops, Expansion Playbooks, AI-Powered CS Operations) |
+| Framework Section | OK | 5-Komponenten Framework korrekt (PLG Architecture, Shipping Velocity, Feature Quality, Product Analytics, AI-Powered Development) |
 | Case Studies | OK | Keine theta_index Referenzen, Business-Metriken |
 | Solutions Connection | AENDERN | Nur 2 Items, Briefing fordert 4 |
 
@@ -21,8 +21,8 @@
 ### Solutions Connection Section (Zeilen 259-282)
 
 **Aktuell:** 2 Items
-1. Power Up: NRR Engine (From €23.6K, 30 Days)
-2. Boost: NRR Machine (€60K-€78K, 90 Days)
+1. Power Up: Product Velocity Boost (From €23.6K, 30 Days)
+2. Boost: Product Transformation (€60K-€78K, 90 Days)
 
 **Briefing v3.0:** 4 Items
 1. **Comprehensive Assessment** (€2.5K-€10K, 2-3 Days) - NEU
@@ -34,7 +34,7 @@
 
 ## Implementierungsdetails
 
-### Datei: `src/data/playbooks/content/customer-success.ts`
+### Datei: `src/data/playbooks/content/product.ts`
 
 | Zeilen | Aenderung |
 |--------|----------|
@@ -45,30 +45,30 @@
 ```text
 ITEM 1 (NEU): Comprehensive Assessment
 - type: "assessment"
-- name: "CS Assessment"
+- name: "Product Assessment"
 - duration: "2-3 Days"
 - price: "€2.5K-€10K"
-- outcome: "Full CS maturity report + 90-day roadmap"
+- outcome: "Full product maturity report + 90-day roadmap"
 - cta: "Book Assessment"
 - link: "/solutions/assessment"
 - icon: "ClipboardCheck"
 - color: "bg-emerald-500/10 text-emerald-500"
 
 ITEM 2 (AKTUALISIERT): Power Up
-- name: "CS Sprint"
+- name: "Product Sprint"
 - price: "€23.6K-€45.9K" (Range erweitern)
-- color: "bg-pink-500/10 text-pink-500" (neues Format)
+- color: "bg-green-500/10 text-green-500" (neues Format)
 
 ITEM 3 (AKTUALISIERT): Boost
-- name: "CS Excellence"
+- name: "Product Excellence"
 - color: "bg-blue-500/10 text-blue-500" (neues Format)
 
 ITEM 4 (NEU): Accelerate
 - type: "accelerate"
-- name: "AI-Native CS"
+- name: "AI-Native Product"
 - duration: "12 Months"
 - price: "€153K"
-- outcome: "Full CS transformation, AI Maturity Level 3, Churn -60%, NRR +30-50pp"
+- outcome: "Full product transformation, AI Maturity Level 3, 3-5x velocity, PMF acceleration"
 - cta: "Start Accelerate"
 - link: "/solutions/accelerate"
 - icon: "TrendingUp"
@@ -81,7 +81,7 @@ ITEM 4 (NEU): Accelerate
 
 | Aspekt | Details |
 |--------|---------|
-| **Dateien** | 1 (customer-success.ts) |
+| **Dateien** | 1 (product.ts) |
 | **theta_index Stellen** | 0 (bereits entfernt) |
 | **Formel-Stellen** | 0 (bereits entfernt) |
 | **Title-Update** | 0 (bereits korrekt) |
@@ -94,7 +94,7 @@ ITEM 4 (NEU): Accelerate
 
 Die `SolutionConnectionItem` TypeScript-Definition unterstuetzt bereits den `'assessment'` Typ, daher ist keine Typ-Erweiterung noetig.
 
-Die `color` Werte muessen auf das neue Format (z.B. `"bg-pink-500/10 text-pink-500"`) aktualisiert werden, um Konsistenz mit den anderen bereits synchronisierten Playbooks zu gewaehrleisten.
+Die `color` Werte muessen auf das neue Format (z.B. `"bg-green-500/10 text-green-500"`) aktualisiert werden, um Konsistenz mit den anderen bereits synchronisierten Playbooks zu gewaehrleisten.
 
 ---
 
@@ -102,12 +102,12 @@ Die `color` Werte muessen auf das neue Format (z.B. `"bg-pink-500/10 text-pink-5
 
 Growth Engines Sub-Playbooks v3.0 Status:
 - GTM/Revenue Playbook - AUSSTEHEND (noch zu pruefen)
-- Product Playbook - AUSSTEHEND (noch zu pruefen)
-- Customer Success Playbook - AUSSTEHEND (dieser Plan)
+- Product Playbook - AUSSTEHEND (dieser Plan)
+- Customer Success Playbook - FERTIG
 
 ---
 
 ## Naechste Schritte nach Implementierung
 
 1. **Solutions Connection erweitern** (Zeilen 259-282)
-2. **Weitere Growth Engines Playbooks pruefen** (GTM/Revenue, Product)
+2. **GTM/Revenue Playbook pruefen** (letztes Growth Engines Sub-Playbook)
