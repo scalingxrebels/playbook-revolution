@@ -1,35 +1,55 @@
 
-# Implementierungskonzept: Case Study 6 - Pricing Redesigned
+# Implementierungskonzept: Case Study 5 - New Market Segment Entry
 
 ## Problem-Analyse: Solution Mapping Korrektur
 
-Das Briefing referenziert 2 Solutions, die **nicht existieren**:
+Das Briefing referenziert 3 Solutions, die **nicht existieren**:
 
 | Im Briefing | URL | Status |
 |-------------|-----|--------|
-| Boost: Pricing & Packaging Optimized | `/solutions/boost/pricing-packaging-optimized` | EXISTIERT NICHT |
-| Power Up: Pricing Power Unlocked | `/solutions/power-up/pricing-power` | NAME FALSCH, URL KORREKT |
-| Accelerate: Sustainable Growth | `/solutions/accelerate/sustainable-growth` | EXISTIERT |
+| Accelerate: Market Entry | `/solutions/accelerate/market-entry` | EXISTIERT NICHT |
+| Boost: GTM Transformation | `/solutions/boost/gtm-transformation` | EXISTIERT NICHT |
+| Power Up: ICP Clarity | `/solutions/power-up/icp-clarity` | EXISTIERT NICHT |
 
 ---
 
-## Existierende Pricing Solutions (Real)
+## Existierende Solutions (Transformation Tier)
 
-| Solution | URL | ID | Aktueller Case Link |
-|----------|-----|----|--------------------|
-| Power Up: Pricing Power | `/solutions/power-up/pricing-power` | 13 | `/cases/pricing-transformation` (existiert nicht) |
-| Boost: Pricing Dominance | `/solutions/boost/pricing-dominance` | 22 | `/cases/pricing-boost` (existiert nicht) |
-| Accelerate: Sustainable Growth | `/solutions/accelerate/sustainable-growth` | - | - |
+### Accelerate (12 Monate, €153K)
+| Solution | URL | ID | Focus |
+|----------|-----|----|----|
+| Accelerate: Hypergrowth | `/solutions/accelerate/hypergrowth` | 29 | Time to €100M, CAC, ARR Growth |
+| Accelerate: Sustainable Growth | `/solutions/accelerate/sustainable-growth` | 30 | Rule of 40, ARR Growth, Burn Multiple |
+| Accelerate: AI-Native Scaling | `/solutions/accelerate/ai-native-scaling` | 31 | Decision Velocity, ARR/Employee |
+| Accelerate: Exit-Readiness | `/solutions/accelerate/exit-readiness` | 32 | Board Confidence, Valuation |
+
+### Boost (90 Tage, €60K-€78K)
+| Solution | URL | ID |
+|----------|-----|----| 
+| Boost: Efficient Hypergrowth | `/solutions/boost/efficient-hypergrowth` | 20 |
+| Boost: Growth Engine | `/solutions/boost/growth-engine` | 21 |
+
+### Power Up (4-6 Wochen, €23.6K)
+| Solution | URL | ID |
+|----------|-----|----|
+| Power Up: Growth Momentum | `/solutions/power-up/growth-momentum` | 12 |
+| Power Up: Predictable Acquisition | `/solutions/power-up/cac-crisis` | 11 |
 
 ---
 
 ## Korrigiertes Mapping
 
-| Rolle | Briefing (Falsch) | Korrekte Solution | Korrekte URL |
-|-------|-------------------|-------------------|--------------|
-| **Primary** | Boost: Pricing & Packaging Optimized | Boost: Pricing Dominance | `/solutions/boost/pricing-dominance` |
-| **Alternative** | Power Up: Pricing Power Unlocked | Power Up: Pricing Power | `/solutions/power-up/pricing-power` |
-| **Related** | Accelerate: Sustainable Growth | Accelerate: Sustainable Growth | `/solutions/accelerate/sustainable-growth` |
+Case Study 5 handelt von:
+- **10x Revenue Growth** (€1.3M -> €13.72M)
+- **8x Customer Growth** (26 -> 208)
+- **24-Monats-Transformation**
+- **Market Entry + GTM Execution**
+
+| Rolle | Briefing (Falsch) | Korrekte Solution | Korrekte URL | Begründung |
+|-------|-------------------|-------------------|--------------|------------|
+| **Primary** | Accelerate: Market Entry | Accelerate: Hypergrowth | `/solutions/accelerate/hypergrowth` | 10x Growth, 12-Monats-Transformation passt zu "Time to €100M" Focus |
+| **Alternative** | Boost: GTM Transformation | Boost: Growth Engine | `/solutions/boost/growth-engine` | GTM Rebuild, ARR Growth +50-100%, Pipeline +50-100% |
+| **Related** | Power Up: ICP Clarity | Power Up: Growth Momentum | `/solutions/power-up/growth-momentum` | ICP + Growth Momentum für Market Entry Vorbereitung |
 
 ---
 
@@ -39,15 +59,15 @@ Das Briefing referenziert 2 Solutions, die **nicht existieren**:
 
 ```typescript
 {
-  id: 'pricing-redesigned-tecdax',
-  slug: 'pricing-redesigned-scalable-growth',
-  company: 'Post-IPO TecDAX Company',
-  industry: 'Social Network / Job Ads',
-  stage: 'Post-IPO',
-  gradient: 'from-purple-500 to-pink-500',
+  id: 'new-market-segment-b2b-b2c',
+  slug: 'new-market-segment-entry',
+  company: 'B2B/B2C Company',
+  industry: 'Professional Services',
+  stage: 'Growth Stage',
+  gradient: 'from-emerald-500 to-teal-500',
   confidential: true,
-  tags: ['pricing', 'recurring-revenue', 'portfolio', 'post-ipo', 'tecdax'],
-  challengeType: 'pricing-breakdown',
+  tags: ['market-entry', 'gtm', 'growth', 'b2b-b2c', 'professional-services'],
+  challengeType: 'growth-stalled',
 }
 ```
 
@@ -55,40 +75,45 @@ Das Briefing referenziert 2 Solutions, die **nicht existieren**:
 
 | Metrik | Before | After | Impact |
 |--------|--------|-------|--------|
-| Revenue | €31M | €44.6M | +33% (+€13.6M) |
-| EBITDA | 61% Margin | +€5.2M | Margin reinforced |
-| Rule of 40 | 85% | 99% | +14pp |
-| Product Portfolio | 27 Products | 10 Core + 6 Services | -63% complexity |
+| Revenue | €1.3M | €13.72M | +955% (10.5x) |
+| Customers | 26 | 208 | +700% (8x) |
+| Sales Velocity | €5,516/day | €56,000/day | +915% (10x) |
+| EBITDA | -€300K | +€150K | +€450K swing |
 
-### 1.3 Phasen-Struktur (3 Steps)
+### 1.3 Phasen-Struktur (4 Phases)
 
-1. **Strategic Pricing Diagnostics** (Weeks 1-4): WTP Analysis, Competitive Benchmarking
-2. **Product Portfolio Streamlining** (Weeks 5-6): 27→10 Products, Company Slots Innovation
-3. **New Pricing Model & GTM** (Weeks 7-8+): Recurring Revenue, Sales Training
+1. **Market Segment Validation & ICP Alignment** (Months 1-2)
+2. **Market Entry & First Revenue Traction** (Months 3-4)
+3. **Scaling & Competitive Positioning** (Months 5-6)
+4. **Growth Acceleration** (Months 7-24)
 
-### 1.4 Key Lessons (6 Lessons)
+### 1.4 Key Lessons (5 Lessons)
 
-1. Great pricing unlocks growth—even in mature businesses
-2. Don't just change the price—change what you're selling
-3. Complexity kills growth
-4. Recurring revenue isn't just a metric—it's a mindset
-5. Market standards can be reset—if you execute with conviction
-6. A strong starting point is no excuse to stand still
+1. Start with repeatable pain points, not spreadsheets
+2. Focused GTM motion is 10x more effective
+3. Validate fast, scale smart (phased approach)
+4. Sales velocity is the truth (leading indicator)
+5. Ecosystem positioning is leverage, not luxury
 
 ---
 
 ## Teil 2: Filter-Erweiterung
 
-### caseFilters.ts - Neue Einträge
+### caseFilters.ts - Neue Eintraege
+
+**Challenge Filter:**
+```typescript
+{ id: 'market-entry', label: { en: 'Market Entry', de: 'Markteintritt' } }
+```
 
 **Industry Filter:**
 ```typescript
-{ id: 'social-network', label: { en: 'Social Network / Job Ads', de: 'Social Network / Job Ads' } }
+{ id: 'professional-services', label: { en: 'Professional Services', de: 'Professional Services' } }
 ```
 
 **Stage Filter:**
 ```typescript
-{ id: 'post-ipo', label: { en: 'Post-IPO', de: 'Post-IPO' } }
+{ id: 'growth-stage', label: { en: 'Growth Stage', de: 'Wachstumsphase' } }
 ```
 
 ---
@@ -98,47 +123,47 @@ Das Briefing referenziert 2 Solutions, die **nicht existieren**:
 ```typescript
 relatedSolutions: [
   {
-    name: { en: 'Boost: Pricing Dominance', de: 'Boost: Pricing-Dominanz' },
-    url: '/solutions/boost/pricing-dominance',
-    duration: '90 Days',
-    investment: '€60K-€78K',
+    name: { en: 'Accelerate: Hypergrowth', de: 'Accelerate: Hypergrowth' },
+    url: '/solutions/accelerate/hypergrowth',
+    duration: '12 Months',
+    investment: '€153K',
     focus: { 
-      en: 'Pricing Architecture Rebuild - ARPU, Margin, Discounting', 
-      de: 'Pricing-Architektur Neuaufbau - ARPU, Marge, Rabattierung' 
+      en: 'Full Business Transformation - Time to €100M, CAC, ARR Growth', 
+      de: 'Volle Business Transformation - Time to €100M, CAC, ARR Growth' 
     },
     outcome: { 
-      en: 'ARPU +50-100%, Gross Margin +15-20pp, Discounting -30-50%', 
-      de: 'ARPU +50-100%, Bruttomarge +15-20pp, Rabattierung -30-50%' 
+      en: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%', 
+      de: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%' 
     },
     type: 'primary'
   },
   {
-    name: { en: 'Power Up: Pricing Power', de: 'Power Up: Pricing Power' },
-    url: '/solutions/power-up/pricing-power',
-    duration: '4-6 Weeks',
-    investment: '€23.6K',
+    name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+    url: '/solutions/boost/growth-engine',
+    duration: '90 Days',
+    investment: '€60K-€78K',
     focus: { 
-      en: 'Quick Pricing Audit + Value Metric Redesign', 
-      de: 'Schnelles Pricing-Audit + Value Metric Redesign' 
+      en: 'GTM Engine Rebuild - ARR Growth, Win Rate, Pipeline', 
+      de: 'GTM-Engine Neuaufbau - ARR Growth, Win Rate, Pipeline' 
     },
     outcome: { 
-      en: 'Revenue +10-20%, ARPU +15-30%, Discounting -20-40%', 
-      de: 'Revenue +10-20%, ARPU +15-30%, Rabattierung -20-40%' 
+      en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', 
+      de: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%' 
     },
     type: 'alternative'
   },
   {
-    name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
-    url: '/solutions/accelerate/sustainable-growth',
-    duration: '12 Months',
-    investment: '€153K',
+    name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+    url: '/solutions/power-up/growth-momentum',
+    duration: '4-6 Weeks',
+    investment: '€23.6K',
     focus: { 
-      en: 'Long-term Growth Infrastructure - Rule of 40 Focus', 
-      de: 'Langfristige Growth-Infrastruktur - Rule of 40 Fokus' 
+      en: 'Quick Growth Activation - ICP, Positioning, Playbooks', 
+      de: 'Schnelle Growth-Aktivierung - ICP, Positionierung, Playbooks' 
     },
     outcome: { 
-      en: 'Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%', 
-      de: 'Rule of 40 +30-50pp, ARR-Wachstum +100-200%, Burn Multiple -60-80%' 
+      en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
+      de: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
     },
     type: 'related'
   }
@@ -151,22 +176,19 @@ relatedSolutions: [
 
 ### solutionTiles.ts Updates
 
-**Power Up: Pricing Power (ID 13, Zeile ~563):**
+**Accelerate: Hypergrowth (ID 29, Zeile ~1115):**
 ```typescript
 // ALT
-secondaryCtaUrl: '/cases/pricing-transformation'
+secondaryCtaUrl: '/cases/hypergrowth-accelerate'
 
 // NEU
-secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
+secondaryCtaUrl: '/cases/new-market-segment-entry'
 ```
 
-**Boost: Pricing Dominance (ID 22, Zeile ~873):**
+**Boost: Growth Engine (ID 21) - bereits aktualisiert:**
 ```typescript
-// ALT
-secondaryCtaUrl: '/cases/pricing-boost'
-
-// NEU
-secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
+// Aktuell zeigt auf partner-channel-transformed-scalable-growth
+// Keine Aenderung noetig, da Case Study 7 bereits verlinkt
 ```
 
 ---
@@ -178,48 +200,49 @@ secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
 | Case Study | Slug | Teaser |
 |------------|------|--------|
 | CAC Crisis Averted | `cac-crisis-turnaround` | How a Series B SaaS company cut CAC by 58% in 12 weeks |
-| Partner Channel Transformed | `partner-channel-transformed-scalable-growth` | How an SME software provider achieved +45.6% revenue growth with 11 partners |
+| Partner Channel Transformed | `partner-channel-transformed-scalable-growth` | How an SME software provider achieved +45.6% revenue growth |
+| Pricing Redesigned | `pricing-redesigned-scalable-growth` | How a post-IPO TecDAX company achieved €13.6M revenue growth |
 
 ### Related Playbooks
 
 | Playbook | URL |
 |----------|-----|
 | GTM/Revenue Playbook | `/playbooks/growth-engines/gtm-revenue` |
+| Product Playbook | `/playbooks/growth-engines/product` |
 | Strategic Governance | `/playbooks/board-governance/strategic` |
-| AI-Native Scaling | `/playbooks/ai-native-scaling` |
 
 ---
 
 ## Implementierungsreihenfolge
 
 ```text
-1. caseFilters.ts - Neue Filter hinzufügen
-   - Industry: social-network
-   - Stage: post-ipo
+1. caseFilters.ts - Neue Filter hinzufuegen
+   - Challenge: market-entry
+   - Industry: professional-services
+   - Stage: growth-stage
 
-2. caseStudies.ts - Case Study 6 Daten einfügen
-   - Vollständige Datenstruktur (~220 Zeilen)
+2. caseStudies.ts - Case Study 5 Daten einfuegen
+   - Vollstaendige Datenstruktur (~250 Zeilen)
    - Korrigierte relatedSolutions URLs
 
 3. solutionTiles.ts - Bidirektionale Links
-   - ID 13: secondaryCtaUrl aktualisieren
-   - ID 22: secondaryCtaUrl aktualisieren
+   - ID 29 (Accelerate: Hypergrowth): secondaryCtaUrl aktualisieren
 
 4. Testen
-   - /cases/pricing-redesigned-scalable-growth
-   - Filter auf /cases prüfen
-   - Solution Tiles → Case Study Links prüfen
+   - /cases/new-market-segment-entry
+   - Filter auf /cases pruefen
+   - Solution Tiles -> Case Study Links pruefen
 ```
 
 ---
 
-## Dateien und Änderungen
+## Dateien und Aenderungen
 
-| Datei | Änderung | Zeilen |
+| Datei | Aenderung | Zeilen |
 |-------|----------|--------|
-| `src/data/cases/caseFilters.ts` | +2 Filter-Einträge | +4 |
-| `src/data/cases/caseStudies.ts` | +Case Study 6 komplett | +220 |
-| `src/data/solutionTiles.ts` | 2x secondaryCtaUrl | 2 |
+| `src/data/cases/caseFilters.ts` | +3 Filter-Eintraege | +6 |
+| `src/data/cases/caseStudies.ts` | +Case Study 5 komplett | +250 |
+| `src/data/solutionTiles.ts` | 1x secondaryCtaUrl | 1 |
 
 ---
 
@@ -227,7 +250,7 @@ secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
 
 ### Bestehende Komponenten nutzen
 
-Die CaseDetail.tsx unterstützt bereits:
+Die CaseDetail.tsx unterstuetzt bereits:
 - Related Solutions Section (aus Case Study 7 implementiert)
 - Hero Metrics Cards
 - 6-Section Layout (Hero, Situation, Solution, Results, Lessons, Related)
@@ -238,4 +261,4 @@ Keine neuen Routes erforderlich - `/cases/:slug` existiert bereits.
 
 ### Bilingualer Content
 
-Alle Texte aus dem Briefing werden bilingual (EN/DE) angelegt. Die deutschen Übersetzungen basieren auf dem englischen Briefing-Content.
+Alle Texte aus dem Briefing werden bilingual (EN/DE) angelegt.
