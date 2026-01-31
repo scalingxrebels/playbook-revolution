@@ -46,8 +46,8 @@ const Cases: React.FC = () => {
       <Navigation />
       
       <SharedHero
-        overlineEn="Story-First × CEO-Language = Impact"
-        overlineDe="Story-First × CEO-Sprache = Impact"
+        overlineEn="Expertise × Speed = Impact"
+        overlineDe="Expertise × Speed = Impact"
         headlineLine1En="Real Transformations,"
         headlineLine1De="Echte Transformationen,"
         headlineLine2En="Real Results"
