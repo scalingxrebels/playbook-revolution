@@ -7,6 +7,7 @@ export const caseStudies: ClientCaseStudy[] = [
     company: 'Sales Tech Platform',
     industry: 'B2B SaaS',
     stage: 'Series B',
+    stageId: 'growth-stage',
     gradient: 'from-red-500 to-orange-500',
     confidential: true,
     
@@ -356,6 +357,7 @@ Die Zahlen waren brutal: Aktueller CAC €12k (Benchmark: €5k, +140%). Aktuell
     company: 'Analytics Platform',
     industry: 'Data & Analytics',
     stage: 'Series B',
+    stageId: 'growth-stage',
     gradient: 'from-rose-500 to-pink-500',
     confidential: true,
     
@@ -657,6 +659,7 @@ Aber nichts funktionierte. Customer Health Scores waren in Ordnung. Support-Tick
     company: 'SME Software Provider',
     industry: 'B2B Software',
     stage: 'Established',
+    stageId: 'established',
     gradient: 'from-blue-500 to-cyan-500',
     confidential: true,
     
@@ -1080,6 +1083,7 @@ Die Zahlen waren eindeutig: €543K Umsatz und 344 qualifizierte Leads in 6 Mona
     company: 'Post-IPO TecDAX Company',
     industry: 'Social Network / Job Ads',
     stage: 'Post-IPO',
+    stageId: 'post-ipo',
     gradient: 'from-purple-500 to-pink-500',
     confidential: true,
     
@@ -1469,6 +1473,7 @@ Die Rechnung war klar: Ein €31M-Geschäft mit 61% EBITDA—aber Pricing-Komple
     company: 'B2B/B2C Company',
     industry: 'Professional Services',
     stage: 'Growth Stage',
+    stageId: 'growth-stage',
     gradient: 'from-emerald-500 to-teal-500',
     confidential: true,
     
@@ -1900,6 +1905,7 @@ Das Führungsteam stand vor einer klaren Wahl: weiter maßgeschneiderte Brillanz
     company: 'Series B No-Code SaaS Platform',
     industry: 'B2B SaaS',
     stage: 'Series B',
+    stageId: 'growth-stage',
     gradient: 'from-indigo-500 to-purple-500',
     confidential: true,
     
@@ -2348,6 +2354,7 @@ Der Board verlor die Geduld. "Behebe es in 12 Monaten oder wir holen einen neuen
     company: 'Series B SaaS Platform',
     industry: 'B2B SaaS',
     stage: 'Series B',
+    stageId: 'growth-stage',
     gradient: 'from-violet-500 to-indigo-500',
     confidential: true,
     
@@ -2823,6 +2830,7 @@ Die Board-Herausforderung: "Wir müssen in 18 Monaten Series C-ready oder exit-r
     company: 'Marketing Automation Platform',
     industry: 'MarTech',
     stage: 'Series A',
+    stageId: 'growth-stage',
     gradient: 'from-blue-500 to-cyan-500',
     confidential: true,
     
@@ -3342,6 +3350,7 @@ Der CEO wusste, dass sie alles ändern mussten. Aber wo anfangen?`
     company: 'Leadership Development Company',
     industry: 'B2B Leadership Development & Training',
     stage: 'Early-Stage',
+    stageId: 'early-stage',
     gradient: 'from-green-500 to-emerald-500',
     confidential: true,
     
@@ -3817,6 +3826,7 @@ Die Frage war nicht, ob die Programme verkaufen konnten. Es war, ob das Unterneh
     company: 'B2B SaaS Company',
     industry: 'B2B SaaS',
     stage: 'Series A → Series B',
+    stageId: 'growth-stage',
     gradient: 'from-violet-500 to-purple-500',
     confidential: true,
     
@@ -4198,6 +4208,7 @@ Mit VCs, die in 6-8 Wochen formale Due Diligence starten würden und 12 Monaten 
     company: 'Sales & Growth Consulting',
     industry: 'B2B Sales Consulting',
     stage: 'Established Consultancy',
+    stageId: 'established',
     gradient: 'from-cyan-500 to-blue-500',
     confidential: true,
     
@@ -4623,6 +4634,7 @@ Der Gründer war der Engpass. Jeder Lead erforderte Gründer-Zeit. Kein skalierb
     company: 'B2B Technology Leader',
     industry: 'B2B Technology',
     stage: 'Established (€10-12M ARR)',
+    stageId: 'established',
     gradient: 'from-indigo-500 to-purple-600',
     confidential: true,
     
@@ -5046,6 +5058,7 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
     company: 'Leadership Development Company',
     industry: 'B2B Services',
     stage: 'Established',
+    stageId: 'established',
     gradient: 'from-indigo-500 to-purple-600',
     confidential: true,
     
@@ -5429,6 +5442,7 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
     company: 'Leadership Development Company',
     industry: 'B2B Services',
     stage: 'Established',
+    stageId: 'established',
     gradient: 'from-purple-500 to-indigo-600',
     confidential: true,
     

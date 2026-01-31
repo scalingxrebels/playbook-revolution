@@ -5,41 +5,40 @@ export interface CaseFilterOption {
   label: BilingualText;
 }
 
+// Synchronized with Solutions page challenges
 export const challengeFilters: CaseFilterOption[] = [
   { id: 'all', label: { en: 'All Cases', de: 'Alle Cases' } },
   { id: 'cac-crisis', label: { en: 'CAC Crisis', de: 'CAC-Krise' } },
-  { id: 'nrr-stuck', label: { en: 'NRR Stuck', de: 'NRR festgefahren' } },
   { id: 'growth-stalled', label: { en: 'Growth Stalled', de: 'Wachstum stagniert' } },
-  { id: 'ops-chaos', label: { en: 'Ops Chaos', de: 'Ops-Chaos' } },
+  { id: 'pricing-breakdown', label: { en: 'Pricing Breakdown', de: 'Pricing-Problem' } },
+  { id: 'nrr-stuck', label: { en: 'NRR Stuck', de: 'NRR festgefahren' } },
+  { id: 'scaling-chaos', label: { en: 'Scaling Chaos', de: 'Skalierungs-Chaos' } },
+  { id: 'ai-transformation', label: { en: 'AI Transformation', de: 'AI-Transformation' } },
+  { id: 'board-pressure', label: { en: 'Board Pressure', de: 'Board-Druck' } },
   { id: 'exit-prep', label: { en: 'Exit Prep', de: 'Exit-Vorbereitung' } },
   { id: 'partner-channel', label: { en: 'Partner Channel', de: 'Partner Channel' } },
   { id: 'market-entry', label: { en: 'Market Entry', de: 'Markteintritt' } },
-  { id: 'ai-transformation', label: { en: 'AI Transformation', de: 'AI-Transformation' } },
+  { id: 'orientation', label: { en: 'Need Orientation', de: 'Orientierung' } },
 ];
 
+// Cleaned industry filters based on actual case study data
 export const industryFilters: CaseFilterOption[] = [
   { id: 'all', label: { en: 'All Industries', de: 'Alle Branchen' } },
   { id: 'b2b-saas', label: { en: 'B2B SaaS', de: 'B2B SaaS' } },
-  { id: 'fintech', label: { en: 'FinTech', de: 'FinTech' } },
-  { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
-  { id: 'enterprise', label: { en: 'Enterprise', de: 'Enterprise' } },
-  { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
-  { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
+  { id: 'b2b-services', label: { en: 'B2B Services', de: 'B2B Services' } },
   { id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } },
-  { id: 'social-network', label: { en: 'Social Network / Job Ads', de: 'Social Network / Job Ads' } },
+  { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
+  { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
   { id: 'professional-services', label: { en: 'Professional Services', de: 'Professional Services' } },
 ];
 
+// Unified business-phase logic (not funding rounds)
 export const stageFilters: CaseFilterOption[] = [
   { id: 'all', label: { en: 'All Stages', de: 'Alle Phasen' } },
-  { id: 'seed', label: { en: 'Seed', de: 'Seed' } },
-  { id: 'series-a', label: { en: 'Series A', de: 'Series A' } },
-  { id: 'series-b', label: { en: 'Series B', de: 'Series B' } },
-  { id: 'series-c', label: { en: 'Series C', de: 'Series C' } },
-  { id: 'pe-backed', label: { en: 'PE-Backed', de: 'PE-Backed' } },
-  { id: 'established', label: { en: 'Established', de: 'Etabliert' } },
-  { id: 'post-ipo', label: { en: 'Post-IPO', de: 'Post-IPO' } },
+  { id: 'early-stage', label: { en: 'Early Stage', de: 'Frühphase' } },
   { id: 'growth-stage', label: { en: 'Growth Stage', de: 'Wachstumsphase' } },
+  { id: 'established', label: { en: 'Established', de: 'Etabliert' } },
+  { id: 'post-ipo', label: { en: 'Post-IPO / Public', de: 'Post-IPO / Börsennotiert' } },
 ];
 
 export const timelineFilters: CaseFilterOption[] = [

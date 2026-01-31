@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, X, AlertCircle, Briefcase, TrendingUp } from 'lucide-react';
+import { Search, X, Briefcase, TrendingUp, Layers, TrendingDown, DollarSign, Users, Zap, Bot, HelpCircle, Handshake, Globe, LogOut, Filter } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -23,8 +23,25 @@ interface CaseFilterSectionProps {
   hasActiveFilters: boolean;
 }
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  challenge: AlertCircle,
+// Icon mapping for challenges (synchronized with Solutions page)
+const challengeIcons: Record<string, React.ElementType> = {
+  'all': Layers,
+  'cac-crisis': TrendingUp,
+  'growth-stalled': TrendingDown,
+  'pricing-breakdown': DollarSign,
+  'nrr-stuck': Users,
+  'scaling-chaos': Zap,
+  'ai-transformation': Bot,
+  'board-pressure': Briefcase,
+  'exit-prep': LogOut,
+  'partner-channel': Handshake,
+  'market-entry': Globe,
+  'orientation': HelpCircle,
+};
+
+// Icon mapping for filter categories
+const categoryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  challenge: Filter,
   industry: Briefcase,
   stage: TrendingUp,
 };
@@ -39,7 +56,7 @@ const getFilterLabel = (
   return filter ? (language === 'de' ? filter.label.de : filter.label.en) : id;
 };
 
-// Full-width centered filter row (for Challenge)
+// Full-width centered filter row (for Challenge with icons)
 const FilterRowCentered: React.FC<{
   filterId: string;
   label: string;
@@ -48,7 +65,7 @@ const FilterRowCentered: React.FC<{
   onChange: (value: string) => void;
 }> = ({ filterId, label, options, selected, onChange }) => {
   const { language } = useLanguage();
-  const IconComponent = iconMap[filterId] || AlertCircle;
+  const IconComponent = categoryIcons[filterId] || Filter;
   
   return (
     <div className="w-full">
@@ -60,22 +77,27 @@ const FilterRowCentered: React.FC<{
         </span>
       </div>
 
-      {/* Centered Pills */}
+      {/* Centered Pills with Challenge Icons */}
       <div className="flex flex-wrap gap-2 justify-center">
         {options.map((option) => {
           const isActive = selected === option.id;
+          const ChallengeIcon = challengeIcons[option.id] || Layers;
           return (
             <button
               key={option.id}
               onClick={() => onChange(option.id)}
               className={cn(
-                'px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
+                'group flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
                 isActive
                   ? 'bg-primary text-primary-foreground shadow-sm'
                   : 'bg-card border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
               )}
             >
-              {language === 'de' ? option.label.de : option.label.en}
+              <ChallengeIcon className={cn(
+                "w-3.5 h-3.5 flex-shrink-0 transition-transform duration-200",
+                isActive ? "" : "group-hover:scale-110"
+              )} />
+              <span>{language === 'de' ? option.label.de : option.label.en}</span>
             </button>
           );
         })}
@@ -93,7 +115,7 @@ const FilterRowCompact: React.FC<{
   onChange: (value: string) => void;
 }> = ({ filterId, label, options, selected, onChange }) => {
   const { language } = useLanguage();
-  const IconComponent = iconMap[filterId] || AlertCircle;
+  const IconComponent = categoryIcons[filterId] || Filter;
   
   return (
     <div className="space-y-2">
