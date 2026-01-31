@@ -492,7 +492,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/cac-crisis',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/cac-transformation'
+    secondaryCtaUrl: '/cases/cac-crisis-turnaround'
   },
   {
     id: 12,
@@ -802,7 +802,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/efficient-hypergrowth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/hypergrowth-boost'
+    secondaryCtaUrl: '/cases/cac-crisis-turnaround'
   },
   {
     id: 21,
