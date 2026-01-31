@@ -369,7 +369,7 @@ const ExpertSession = () => {
       <Navigation />
 
       {/* SECTION 1: HERO */}
-      <section ref={containerRef as React.RefObject<HTMLElement>} className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20">
+      <section ref={containerRef as React.RefObject<HTMLElement>} className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20">
         {/* Deep Space Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" style={{ transform: `translateY(${offsets[0]}px)` }} />
         {/* Mesh Gradient Overlay */}

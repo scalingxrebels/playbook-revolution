@@ -50,7 +50,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   return (
     <section 
       ref={enableParallax ? containerRef as React.RefObject<HTMLElement> : undefined}
-      className="relative overflow-hidden noise pt-32 pb-16"
+      className={`relative overflow-hidden noise pt-32 pb-16 ${variant === 'dark' ? 'dark-section' : ''}`}
     >
       {/* Background - only for dark variant */}
       {variant === 'dark' && (
