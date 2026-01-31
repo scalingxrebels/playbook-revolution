@@ -30,7 +30,7 @@ const PlaybookHeroSection: React.FC<Props> = ({ data }) => {
   return (
     <section
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
+      className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
     >
       {/* Deep Space Background */}
       <div
