@@ -124,7 +124,7 @@ export interface CaseStudy {
 
 // Solutions Connection (Power Up, Boost, Accelerate)
 export interface SolutionConnectionItem {
-  type: 'power-up' | 'boost' | 'accelerate';
+  type: 'assessment' | 'power-up' | 'boost' | 'accelerate';
   name: BilingualText;
   duration: BilingualText;
   price: BilingualText;
