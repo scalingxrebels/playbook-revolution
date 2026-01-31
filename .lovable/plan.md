@@ -1,102 +1,64 @@
 
-# Implementierungsplan: AI as Multiplier Card + Zurück-Button
+# Implementierungsplan: AI-Native Scaling unter Team im Footer
 
 ## Übersicht
 
-Erweiterung der Glossar-Seite um:
-1. Fünfte Capability-Karte "AI as Multiplier"
-2. Zurück-Button für Navigation
+Die neue Sektion "AI-Native Scaling" mit dem Glossar-Link wird **innerhalb der Team-Spalte** hinzugefügt, direkt unter den Team-Mitgliedern. Das 3-Spalten-Grid bleibt unverändert.
 
 ---
 
 ## Änderungen
 
-### 1. Neue Capability-Karte: "AI as Multiplier"
+### Datei: `src/components/Footer.tsx`
 
-**Position:** Als fünfte Karte nach den 4 Capabilities (full-width, zentriert)
+**1. Glossar aus legalLinks entfernen (Zeile 13):**
+```typescript
+// Vorher
+{ label: language === 'de' ? 'Glossar' : 'Glossary', href: '/glossar' },
 
-| Eigenschaft | Wert |
-|-------------|------|
-| **Icon** | `Sparkles` (lucide-react) |
-| **Name** | AI as Multiplier |
-| **Label DE** | Der Verstärker |
-| **Label EN** | The Force Multiplier |
-| **Beschreibung DE** | AI multipliziert die Wirkung aller 4 Capabilities - nicht additiv, sondern exponentiell |
-| **Beschreibung EN** | AI multiplies the impact of all 4 capabilities - not additive, but exponential |
-| **Farbe** | `cyan-500` (differenziert von den anderen 4) |
+// Entfernen - bleibt nur AGB, Datenschutz, Impressum
+```
 
-**Layout:** Die 4 Capabilities bleiben im 2x2 Grid, der AI-Multiplier erscheint darunter als full-width Karte mit zentriertem Inhalt.
+**2. Neue Sektion in der Team-Spalte (nach Zeile 145):**
 
-### 2. Zurück-Button
+Innerhalb des bestehenden Team-Divs wird eine zweite Überschrift + Link-Liste hinzugefügt:
 
-**Position:** Unter dem Titel, vor der Einleitung
+```typescript
+{/* Team */}
+<div className="py-8 sm:px-8">
+  {/* Team - existierend */}
+  <h4>Team</h4>
+  <ul>...</ul>
 
-**Komponenten:**
-- `Button` mit `variant="ghost"`
-- `ArrowLeft` Icon (lucide-react)
-- `useNavigate` für Navigation (`navigate(-1)`)
-
-**Text:** "Zurück" / "Back" (zweisprachig)
+  {/* NEU: AI-Native Scaling */}
+  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 mt-8">
+    AI-Native Scaling
+  </h4>
+  <ul className="space-y-3">
+    <li>
+      <Link to="/glossar" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+        <span>{language === 'de' ? 'Glossar' : 'Glossary'}</span>
+        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+      </Link>
+    </li>
+  </ul>
+</div>
+```
 
 ---
 
-## Technische Details
-
-### Datei: `src/pages/Glossar.tsx`
-
-**Neue Imports:**
-```typescript
-import { Sparkles, ArrowLeft } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-```
-
-**Capabilities Array erweitern:**
-```typescript
-{
-  icon: Sparkles,
-  name: 'AI as Multiplier',
-  label: language === 'de' ? 'Der Verstärker' : 'The Force Multiplier',
-  description: language === 'de'
-    ? 'AI multipliziert die Wirkung aller 4 Capabilities – nicht additiv, sondern exponentiell'
-    : 'AI multiplies the impact of all 4 capabilities – not additive, but exponential',
-  color: 'text-cyan-500',
-  bgColor: 'bg-cyan-500/10',
-  borderColor: 'border-cyan-500/30',
-  isMultiplier: true,  // Flag für spezielles Layout
-}
-```
-
-**Grid-Layout anpassen:**
-- Erste 4 Karten: 2x2 Grid
-- 5. Karte (Multiplier): Full-width darunter
-
----
-
-## Visuelles Layout
+## Layout-Struktur
 
 ```text
-┌─────────────────────────────────────────────────┐
-│ ← Zurück                                        │
-│                                                 │
-│ Glossar                                         │
-│ [Einleitungstext]                               │
-│                                                 │
-│ Die Lösung: 4 Kern-Capabilities                 │
-│ ┌─────────────┐ ┌─────────────┐                 │
-│ │ Strategy    │ │ Setup       │                 │
-│ └─────────────┘ └─────────────┘                 │
-│ ┌─────────────┐ ┌─────────────┐                 │
-│ │ Execution   │ │ Operational.│                 │
-│ └─────────────┘ └─────────────┘                 │
-│                                                 │
-│ ┌───────────────────────────────────────────┐   │
-│ │     ✨ AI as Multiplier                   │   │
-│ │     AI multipliziert die Wirkung...       │   │
-│ └───────────────────────────────────────────┘   │
-│                                                 │
-│ ⚠️ Kernprinzip...                              │
-└─────────────────────────────────────────────────┘
+┌──────────────┬──────────────────────┬──────────────┐
+│   Sitemap    │        Team          │   Contact    │
+│              │  Michel Lason        │              │
+│   Home       │  Alban Halili        │  Book a Call │
+│   Solutions  │  Florian Metzger     │  Email       │
+│   Playbooks  │                      │  lasr.io     │
+│   ...        │  AI-Native Scaling   │              │
+│              │  → Glossar           │              │
+└──────────────┴──────────────────────┴──────────────┘
 ```
 
 ---
@@ -105,4 +67,4 @@ import { Button } from '@/components/ui/button';
 
 | Aktion | Datei |
 |--------|-------|
-| **Bearbeiten** | `src/pages/Glossar.tsx` |
+| **Bearbeiten** | `src/components/Footer.tsx` |
