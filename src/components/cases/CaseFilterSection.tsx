@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 import { challengeFilters, industryFilters, stageFilters, CaseFilterOption } from '@/data/cases/caseFilters';
+import CaseOnboardingHint from './CaseOnboardingHint';
 
 interface CaseFilterSectionProps {
   searchQuery: string;
@@ -156,6 +157,11 @@ const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
               </button>
             )}
           </div>
+        </div>
+
+        {/* Onboarding Hint */}
+        <div className="mb-6">
+          <CaseOnboardingHint />
         </div>
 
         {/* Filter Rows */}
