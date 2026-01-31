@@ -26,6 +26,10 @@ export const caseStudies: ClientCaseStudy[] = [
       en: 'CAC €12k → €5k (-58%), Win Rate 18% → 40% (+122%), ARR €15M → €28M (+87%)',
       de: 'CAC €12k → €5k (-58%), Win Rate 18% → 40% (+122%), ARR €15M → €28M (+87%)'
     },
+    cardSummary: {
+      en: '12-week sprint turned a CAC crisis into board confidence. Rebuilt sales process, implemented ICP-based targeting, doubled win rate.',
+      de: '12-Wochen-Sprint verwandelte CAC-Krise in Board-Zuversicht. Sales-Prozess neu aufgebaut, ICP-basiertes Targeting, Win Rate verdoppelt.'
+    },
     investment: '€120k',
     roi: '5x',
     heroMetrics: [
@@ -370,6 +374,10 @@ Die Zahlen waren brutal: Aktueller CAC €12k (Benchmark: €5k, +140%). Aktuell
       en: 'NRR 105% → 142%, Churn 8% → 3%, Expansion Revenue +180%',
       de: 'NRR 105% → 142%, Churn 8% → 3%, Expansion Revenue +180%'
     },
+    cardSummary: {
+      en: 'Broke through 18 months of NRR stagnation by building a data-driven expansion engine. CS shifted from support to growth.',
+      de: 'Durchbruch nach 18 Monaten NRR-Stagnation durch datengetriebene Expansion-Engine. CS wechselte von Support zu Growth.'
+    },
     investment: '€95k',
     roi: '8x',
     heroMetrics: [
@@ -667,6 +675,10 @@ Aber nichts funktionierte. Customer Health Scores waren in Ordnung. Support-Tick
     result: {
       en: 'Revenue €543K → €968K (+45.6%), SQLs +31% with -24% contacts, New Customers +40%, ACV +39%',
       de: 'Umsatz €543K → €968K (+45,6%), SQLs +31% bei -24% Kontakte, Neukunden +40%, ACV +39%'
+    },
+    cardSummary: {
+      en: 'Transformed 1,000-partner network from support-focused to growth-focused. Selected top 11 partners, built outcome KPIs, doubled revenue.',
+      de: '1.000-Partner-Netzwerk von Support- auf Growth-Fokus transformiert. Top 11 Partner selektiert, Outcome-KPIs gebaut, Umsatz verdoppelt.'
     },
     investment: '€60K-€78K',
     roi: '5x+',
@@ -1087,6 +1099,10 @@ Die Zahlen waren eindeutig: €543K Umsatz und 344 qualifizierte Leads in 6 Mona
       en: 'Revenue €31M → €44.6M (+33%), EBITDA +€5.2M, Rule of 40: 99%, Portfolio -63% complexity',
       de: 'Revenue €31M → €44.6M (+33%), EBITDA +€5.2M, Rule of 40: 99%, Portfolio -63% Komplexität'
     },
+    cardSummary: {
+      en: 'Restructured 27 fragmented products into 10 scalable bundles with subscription pricing. Unlocked €5.2M additional EBITDA.',
+      de: '27 fragmentierte Produkte zu 10 skalierbaren Bundles mit Abo-Pricing umstrukturiert. €5,2M zusätzliches EBITDA freigeschaltet.'
+    },
     investment: '€60K-€78K',
     roi: '180x',
     heroMetrics: [
@@ -1471,6 +1487,10 @@ Die Rechnung war klar: Ein €31M-Geschäft mit 61% EBITDA—aber Pricing-Komple
     result: {
       en: 'Revenue €1.3M → €13.72M (+955%), Customers 26 → 208 (8x), Sales Velocity €5.5K → €56K/day (10x), EBITDA -€300K → +€150K',
       de: 'Revenue €1.3M → €13.72M (+955%), Kunden 26 → 208 (8x), Sales Velocity €5.5K → €56K/Tag (10x), EBITDA -€300K → +€150K'
+    },
+    cardSummary: {
+      en: 'Scaled bespoke consulting into €13.7M revenue engine. Built repeatable GTM system from €1.3M lighthouse projects with 8x customer growth.',
+      de: 'Maßgeschneiderte Beratung zu €13,7M Revenue Engine skaliert. Aus €1,3M Leuchtturmprojekten ein wiederholbares GTM-System mit 8x Kundenwachstum.'
     },
     investment: '€200K-€600K',
     roi: '10x+',
@@ -1898,6 +1918,10 @@ Das Führungsteam stand vor einer klaren Wahl: weiter maßgeschneiderte Brillanz
     result: {
       en: 'ARR €3.6M → €7.7M (+114%), NRR 96.5% → 114.3% (+17.8pp), Market Position #8 → #3 (Top 3 Category)',
       de: 'ARR €3.6M → €7.7M (+114%), NRR 96.5% → 114.3% (+17.8pp), Marktposition #8 → #3 (Top 3 Kategorie)'
+    },
+    cardSummary: {
+      en: '24-month transformation from organizational chaos to market leader #3. Built AI-native GTM engine with 5 parallel workstreams.',
+      de: '24-Monate-Transformation von Organisations-Chaos zu Marktführer #3. AI-native GTM-Engine mit 5 parallelen Workstreams aufgebaut.'
     },
     investment: '€2.5M',
     roi: '30x',
@@ -2342,6 +2366,10 @@ Der Board verlor die Geduld. "Behebe es in 12 Monaten oder wir holen einen neuen
     result: {
       en: 'ARR €6.6M → €10.1M (+53%), ARR per FTE €64.9k → €96.1k (+48%), Rule of 40 18.2% → 29.6% (+11.4pp)',
       de: 'ARR €6.6M → €10.1M (+53%), ARR pro FTE €64.9k → €96.1k (+48%), Rule of 40 18.2% → 29.6% (+11.4pp)'
+    },
+    cardSummary: {
+      en: 'Built investor-grade exit readiness in 18 months. Capital efficiency, board confidence, and strategic optionality transformed.',
+      de: 'Investortaugliche Exit-Readiness in 18 Monaten aufgebaut. Kapitaleffizienz, Board-Zuversicht und strategische Optionalität transformiert.'
     },
     investment: '€132k',
     roi: '8.6x',
@@ -2813,6 +2841,10 @@ Die Board-Herausforderung: "Wir müssen in 18 Monaten Series C-ready oder exit-r
     result: {
       en: 'ARR €5M → €25M (+400%), raised €30M Series B at €120M valuation',
       de: 'ARR €5M → €25M (+400%), €30M Series B bei €120M Bewertung eingeworben'
+    },
+    cardSummary: {
+      en: '12-month transformation from €5M to €25M ARR. Shifted ICP to mid-market, rebuilt GTM engine, raised €30M Series B.',
+      de: '12-Monate-Transformation von €5M auf €25M ARR. ICP auf Mittelstand verlagert, GTM-Engine neu aufgebaut, €30M Series B raised.'
     },
     investment: '€250k',
     roi: '12x',
@@ -3329,6 +3361,10 @@ Der CEO wusste, dass sie alles ändern mussten. Aber wo anfangen?`
       en: '26 confirmed bookings (€117K revenue), 150+ qualified leads with lead-scoring, multi-channel campaigns live, 100% process clarity',
       de: '26 bestätigte Buchungen (€117K Umsatz), 150+ qualifizierte Leads mit Lead-Scoring, Multi-Channel-Kampagnen live, 100% Prozessklarheit'
     },
+    cardSummary: {
+      en: 'Built AI-native growth engine for leadership development company. From ad-hoc sales to systematic multi-channel acquisition.',
+      de: 'AI-native Growth Engine für Leadership-Development-Unternehmen aufgebaut. Von ad-hoc Sales zu systematischer Multi-Channel-Akquise.'
+    },
     investment: '€60K-€78K',
     roi: '2x',
     heroMetrics: [
@@ -3800,6 +3836,10 @@ Die Frage war nicht, ob die Programme verkaufen konnten. Es war, ob das Unterneh
       en: 'Board Materials 9/10, DD Readiness 95%, 3 Term Sheets, €18M at €72M valuation (+20-44% premium)',
       de: 'Board-Materialien 9/10, DD Readiness 95%, 3 Term Sheets, €18M bei €72M Bewertung (+20-44% Premium)'
     },
+    cardSummary: {
+      en: '4-week turnaround from "come back when ready" to 3 term sheets. Built investor-grade materials and data room from scratch.',
+      de: '4-Wochen-Turnaround von "kommt wieder wenn bereit" zu 3 Term Sheets. Investor-grade Materialien und Data Room von Grund auf gebaut.'
+    },
     investment: '€9.8K',
     roi: '1,224x',
     heroMetrics: [
@@ -4177,13 +4217,17 @@ Mit VCs, die in 6-8 Wochen formale Due Diligence starten würden und 12 Monaten 
       en: 'Leads +1,000-1,500%, Conversion +50-75%, Sales Cycle -60-75%, Revenue +100-150%',
       de: 'Leads +1.000-1.500%, Conversion +50-75%, Sales Cycle -60-75%, Umsatz +100-150%'
     },
+    cardSummary: {
+      en: 'Transformed founder-dependent consulting firm into scalable growth engine with AI-powered diagnostics and systematic value ladder.',
+      de: 'Gründer-abhängige Beratungsfirma in skalierbare Growth Engine transformiert durch AI-gestützte Diagnostik und Value Ladder.'
+    },
     investment: '€34.4K',
     roi: '3.5-5.3x',
     heroMetrics: [
-      { label: 'Leads/Quarter', before: '3-4', after: '40-60', impact: '+1,000-1,500%' },
-      { label: 'Conversion Rate', before: '20-30%', after: '35-45%', impact: '+50-75%' },
-      { label: 'Sales Cycle', before: '3-6 months', after: '4-8 weeks', impact: '-60-75%' },
-      { label: 'Revenue/Quarter', before: '€80K-€120K', after: '€160K-€240K', impact: '+100-150%' }
+      { label: 'Leads/Qtr', before: '3-4', after: '40-60', impact: '10-15x' },
+      { label: 'Conversion', before: '20-30%', after: '35-45%', impact: '+50-75%' },
+      { label: 'Sales Cycle', before: '3-6mo', after: '4-8wk', impact: '-60-75%' },
+      { label: 'Revenue/Qtr', before: '€80-120K', after: '€160-240K', impact: '+100-150%' }
     ],
     
     // SITUATION
@@ -4597,6 +4641,10 @@ Der Gründer war der Engpass. Jeder Lead erforderte Gründer-Zeit. Kein skalierb
     result: {
       en: 'ARR €10-12M → €15-20M (+40-60%), Recurring Revenue 10-20% → 35-45% (+20-25pp), EBITDA 12-15% → 22-28% (+10-15pp)',
       de: 'ARR €10-12M → €15-20M (+40-60%), Recurring Revenue 10-20% → 35-45% (+20-25pp), EBITDA 12-15% → 22-28% (+10-15pp)'
+    },
+    cardSummary: {
+      en: 'Dual transformation: Engineer-driven core + M&A integration. 6-month pilot de-risked €1.6M integration before full commitment.',
+      de: 'Doppel-Transformation: Ingenieur-getriebener Kern + M&A-Integration. 6-Monats-Pilot entriskte €1,6M Integration vor vollem Commitment.'
     },
     investment: '€153K',
     roi: '5-8x',
@@ -5017,6 +5065,10 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
       en: 'Vision 2030 defined, 12 OKRs created, 100% team alignment, SaaS-transition roadmap established',
       de: 'Vision 2030 definiert, 12 OKRs erstellt, 100% Team-Alignment, SaaS-Transition Roadmap etabliert'
     },
+    cardSummary: {
+      en: '2-day strategy workshop created Vision 2030, 12 OKRs, and €10M roadmap. Team went from fragmented to 100% aligned.',
+      de: '2-Tages-Strategie-Workshop schuf Vision 2030, 12 OKRs und €10M Roadmap. Team von fragmentiert zu 100% aligned.'
+    },
     investment: '€3K-€5K',
     roi: '10x+',
     heroMetrics: [
@@ -5395,6 +5447,10 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
     result: {
       en: 'Revenue +56%, ARR +250% (€420K), 11 model customers, Sales Cycle -33%',
       de: 'Umsatz +56%, ARR +250% (€420K), 11 Modell-Kunden, Sales Cycle -33%'
+    },
+    cardSummary: {
+      en: '12-month strategic advisory accelerated SaaS-transition from 10% to 40% ARR. Quarterly OKR reviews drove disciplined execution.',
+      de: '12-monatiges Strategic Advisory beschleunigte SaaS-Transition von 10% auf 40% ARR. Vierteljährliche OKR-Reviews trieben disziplinierte Umsetzung.'
     },
     investment: '€156K-€216K',
     roi: '5-10x',

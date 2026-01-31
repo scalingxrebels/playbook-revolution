@@ -120,6 +120,7 @@ export interface ClientCaseStudy {
   headline: BilingualText;
   challenge: BilingualText;
   result: BilingualText;
+  cardSummary?: BilingualText; // Executive Summary für Kacheln (2 Zeilen)
   investment: string;
   roi: string;
   heroMetrics: CaseStudyMetric[];

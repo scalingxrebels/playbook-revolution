@@ -15,8 +15,10 @@ interface CaseCardProps {
 const CaseCard: React.FC<CaseCardProps> = ({ caseStudy, index }) => {
   const { language } = useLanguage();
   
-  // Use controlled 2-line description from result field
-  const description = language === 'de' ? caseStudy.result.de : caseStudy.result.en;
+  // Use cardSummary if available, otherwise fall back to result
+  const description = caseStudy.cardSummary 
+    ? (language === 'de' ? caseStudy.cardSummary.de : caseStudy.cardSummary.en)
+    : (language === 'de' ? caseStudy.result.de : caseStudy.result.en);
 
   return (
     <Card 
