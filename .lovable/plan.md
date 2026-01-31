@@ -1,45 +1,64 @@
 
-# Outline Button Textfarbe in dark-section Fix
+# Mobile Navigation Lesbarkeit Fix
 
 ## Problem-Analyse
 
-Der `outline` Button-Variant in `button.tsx` hat keine explizite Textfarbe:
-
+### 1. Ghost Button Variant
 ```tsx
-outline: "border-2 border-foreground/20 bg-background hover:border-foreground/40 hover:bg-muted/50",
+// button.tsx - ghost hat keine Standard-Textfarbe
+ghost: "hover:bg-muted/50 hover:text-foreground",
 ```
+Ohne explizite `text-foreground` Klasse erbt das Hamburger-Icon keine lesbare Farbe.
 
-Ohne `text-foreground` Klasse erbt der Button die Textfarbe nicht korrekt von `.dark-section`. Die CSS-Variable `--foreground` ist zwar richtig gesetzt, aber ohne explizite Tailwind-Klasse wird sie nicht angewendet.
+### 2. Mobile Menu Overlay
+```tsx
+// Navigation.tsx - Zeile 131
+<div className="md:hidden fixed inset-0 top-16 bg-white dark:bg-background z-40">
+```
+Problem: `bg-white` ist hardcoded, aber im Dark Mode wird `dark:bg-background` verwendet. Das `text-foreground` auf den Links funktioniert nicht konsistent.
+
+### 3. Fehlende Farb-Isolation
+Die Navigation schwebt über `.dark-section` Hero-Bereichen und kann Farbvariablen erben.
 
 ## Lösung
 
-Die `outline` Variante in `src/components/ui/button.tsx` um `text-foreground` erweitern.
+### Änderung 1: Ghost Button Variant mit expliziter Textfarbe
 
-### Änderung in button.tsx
+| Datei | Zeile | Aktuell | Neu |
+|-------|-------|---------|-----|
+| `src/components/ui/button.tsx` | 15 | `ghost: "hover:bg-muted/50 hover:text-foreground"` | `ghost: "text-foreground hover:bg-muted/50 hover:text-foreground"` |
 
-| Variante | Aktuell | Neu |
-|----------|---------|-----|
-| `outline` | `border-2 border-foreground/20 bg-background hover:border-foreground/40 hover:bg-muted/50` | `border-2 border-foreground/20 bg-background text-foreground hover:border-foreground/40 hover:bg-muted/50` |
+### Änderung 2: Mobile Menu Overlay mit korrekten Hintergrund- und Textfarben
 
-### Code-Änderung
+| Datei | Zeile | Änderung |
+|-------|-------|----------|
+| `src/components/Navigation.tsx` | 131 | `bg-white dark:bg-background` → `bg-background` |
+
+Dies verwendet die CSS-Variable, die im Light Mode `hsl(40 20% 98%)` (warm off-white) ist.
+
+### Änderung 3: Navigation Bar isoliert von dark-section
+
+Die Nav-Bar selbst braucht eine explizite Farbumgebung:
 
 ```tsx
-// Zeile 14 in buttonVariants
-outline: "border-2 border-foreground/20 bg-background text-foreground hover:border-foreground/40 hover:bg-muted/50",
+// Zeile 25 - Nav wrapper
+<nav className="fixed top-0 left-0 right-0 z-50 transition-colors 
+  bg-white/95 dark:bg-background/80 
+  text-foreground  // NEU: Explizite Textfarbe hinzufügen
+  ...">
 ```
 
-## Warum das funktioniert
+Allerdings - da `.dark-section` CSS-Variablen setzt und die Nav ÜBER der Section schwebt (fixed positioning), werden die Variablen nicht vererbt. Das Problem liegt eher bei den Button-Varianten.
 
-Mit `text-foreground` wird explizit `color: hsl(var(--foreground))` angewendet. Da `.dark-section` die Variable `--foreground: 40 20% 95%` (hell) setzt, wird der Text im Hero automatisch hell dargestellt.
-
-## Betroffene Dateien
+## Zusammenfassung der Änderungen
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/ui/button.tsx` | `text-foreground` zur outline-Variante hinzufügen |
+| `src/components/ui/button.tsx` | `text-foreground` zur `ghost` Variante hinzufügen |
+| `src/components/Navigation.tsx` | Mobile Menu Overlay: `bg-white` → `bg-background` ersetzen |
 
-## Ergebnis
+## Erwartetes Ergebnis
 
-- Outline Buttons in allen `.dark-section` Bereichen zeigen hellen Text
-- Konsistente Darstellung auf allen Landing Pages
-- Keine individuellen Fixes in einzelnen Seiten nötig
+- Hamburger-Menu-Icon ist in Light und Dark Mode sichtbar
+- Mobile Navigation Links sind auf allen Seiten lesbar
+- Konsistente Farbdarstellung unabhängig vom aktuellen Theme
