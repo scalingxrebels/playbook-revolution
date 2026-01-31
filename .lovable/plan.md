@@ -1,162 +1,145 @@
 
 
-# Implementierungskonzept: Case Study 1 - CAC Crisis Averted (Update)
+# Implementierungskonzept: Case Study Fixes
 
-## Ist-Analyse
+## Problem 1: Fehlender Scroll-to-Top
 
-Case Study 1 (`cac-crisis-turnaround`) existiert bereits vollstaendig in `caseStudies.ts`. Das Problem: 
-
-1. **Fehlende relatedSolutions** - Die Case Study hat keine Verlinkung zu Solutions
-2. **Falsche bidirektionale Links** - Die Solution Tiles zeigen auf nicht-existierende Case Studies
-
-### Aktuelle fehlerhafte Links in solutionTiles.ts
-
-| Solution | ID | Aktueller Link | Status |
-|----------|-----|----------------|--------|
-| Power Up: Predictable Acquisition | 11 | `/cases/cac-transformation` | EXISTIERT NICHT |
-| Boost: Efficient Hypergrowth | 20 | `/cases/hypergrowth-boost` | EXISTIERT NICHT |
-
----
-
-## Korrektes Solution Mapping
-
-Case Study 1 Metriken:
-- **Investment:** €120K
-- **Dauer:** 12 Wochen
-- **CAC:** €12k → €5k (-58%)
-- **Win Rate:** 18% → 40% (+122%)
-- **LTV/CAC:** 2.5x → 5.2x (+108%)
-- **ROI:** 5x
-
-| Rolle | Solution | URL | ID | Begruendung |
-|-------|----------|-----|----|----|
-| **Primary** | Boost: Efficient Hypergrowth | `/solutions/boost/efficient-hypergrowth` | 20 | Perfekte Uebereinstimmung: 90 Tage, CAC -40-60%, LTV/CAC +100-200%, Investment €60K-€78K |
-| **Alternative** | Power Up: Predictable Acquisition | `/solutions/power-up/cac-crisis` | 11 | Fuer kuerzere Sprints (30 Tage), CAC -20-30% |
-| **Related** | GTM Effectiveness Review | `/solutions/gtm-effectiveness-review` | 3 | Decision Support fuer GTM-Diagnose vor Intervention |
-
----
-
-## Aenderung 1: caseStudies.ts - relatedSolutions hinzufuegen
-
-Die Case Study 1 endet aktuell bei Zeile ~290 mit:
+### Diagnose
+Die `CaseDetail.tsx` Komponente fehlt der Standard `useEffect` Hook zum Scrollen nach oben beim Seitenaufruf. Andere Seiten wie `BoostNRRMachine.tsx` haben:
 
 ```typescript
-playbooks: ['gtm-revenue', 'growth-engines'],
-downloadUrl: '/downloads/cases/cac-crisis-turnaround.pdf'
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
 ```
 
-**Hinzufuegen vor `playbooks`:**
+Die `CaseDetail.tsx` hat diesen Hook NICHT, was dazu fuehrt, dass beim Klick auf "Read Case" die Seite in der Mitte angezeigt wird (Browser-Scroll-Restoration-Verhalten).
+
+### Loesung
+Hinzufuegen eines `useEffect` Hooks in `CaseDetail.tsx`:
 
 ```typescript
-relatedSolutions: [
-  {
-    name: { en: 'Boost: Efficient Hypergrowth', de: 'Boost: Effizientes Hypergrowth' },
-    url: '/solutions/boost/efficient-hypergrowth',
-    duration: '90 Days',
-    investment: '€60K-€78K',
-    focus: { 
-      en: 'Complete GTM Engine Rebuild - CAC, LTV/CAC, Rule of 40', 
-      de: 'Kompletter GTM-Engine Neuaufbau - CAC, LTV/CAC, Rule of 40' 
-    },
-    outcome: { 
-      en: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp', 
-      de: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp' 
-    },
-    type: 'primary'
-  },
-  {
-    name: { en: 'Power Up: Predictable Acquisition', de: 'Power Up: Predictable Acquisition' },
-    url: '/solutions/power-up/cac-crisis',
-    duration: '4-6 Weeks',
-    investment: '€23.6K',
-    focus: { 
-      en: 'Quick CAC Fix - ICP, Positioning, Sales Process', 
-      de: 'Schnelle CAC-Korrektur - ICP, Positionierung, Sales-Prozess' 
-    },
-    outcome: { 
-      en: 'CAC -20-30%, Win Rate +10-15pp, Pipeline Predictability ±10%', 
-      de: 'CAC -20-30%, Win Rate +10-15pp, Pipeline-Vorhersagbarkeit ±10%' 
-    },
-    type: 'alternative'
-  },
-  {
-    name: { en: 'GTM Effectiveness Review', de: 'GTM Effectiveness Review' },
-    url: '/solutions/gtm-effectiveness-review',
-    duration: '2-4 Weeks',
-    investment: '€3.9K-€5.9K',
-    focus: { 
-      en: 'Diagnose GTM Bottlenecks - ICP, Funnel, Sales Process', 
-      de: 'GTM-Engpaesse diagnostizieren - ICP, Funnel, Sales-Prozess' 
-    },
-    outcome: { 
-      en: 'Clear diagnosis of CAC drivers, prioritized action plan', 
-      de: 'Klare Diagnose der CAC-Treiber, priorisierter Aktionsplan' 
-    },
-    type: 'related'
-  }
-],
-relatedCaseStudies: [
-  { slug: 'nrr-machine-breakthrough', teaser: { en: 'How an Analytics Platform broke through NRR 105% to 142%', de: 'Wie eine Analytics-Plattform NRR von 105% auf 142% steigerte' } },
-  { slug: 'stage-transition-series-b-ready', teaser: { en: 'How a Series A MarTech company scaled from €5M to €25M ARR', de: 'Wie ein Series A MarTech-Unternehmen von €5M auf €25M ARR skalierte' } }
-],
-relatedPlaybooks: [
-  { slug: 'gtm-revenue', teaser: { en: 'The complete GTM/Revenue playbook for fixing broken sales processes', de: 'Das komplette GTM/Revenue Playbook fuer defekte Sales-Prozesse' } },
-  { slug: 'growth-engines', teaser: { en: 'Build scalable growth engines that compound over time', de: 'Baue skalierbare Growth Engines, die sich ueber Zeit multiplizieren' } }
-],
+import React, { useEffect } from 'react';
+// ... other imports
+
+const CaseDetail: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const { language } = useLanguage();
+  
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+  
+  // ... rest of component
+}
 ```
 
 ---
 
-## Aenderung 2: solutionTiles.ts - Bidirektionale Links korrigieren
+## Problem 2: Kachel-Beschreibungen harmonisieren
 
-### Power Up: Predictable Acquisition (ID 11, Zeile ~495)
-
-```typescript
-// ALT
-secondaryCtaUrl: '/cases/cac-transformation'
-
-// NEU
-secondaryCtaUrl: '/cases/cac-crisis-turnaround'
-```
-
-### Boost: Efficient Hypergrowth (ID 20, Zeile ~805)
+### Analyse: So funktioniert die Kachel-Anzeige
+Die `CaseCard.tsx` Komponente zeigt als Teaser den **ersten Satz** des `challenge`-Feldes:
 
 ```typescript
-// ALT
-secondaryCtaUrl: '/cases/hypergrowth-boost'
-
-// NEU
-secondaryCtaUrl: '/cases/cac-crisis-turnaround'
+const challengeTeaser = (language === 'de' ? caseStudy.challenge.de : caseStudy.challenge.en).split('.')[0] + '.';
 ```
+
+### Referenz: Partner Channel Transformed (Gut)
+```typescript
+challenge: {
+  en: 'A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months.',
+  de: 'Ein bundesweites Netzwerk von 1.000 Partnern generierte hohe Aktivitaet, aber geringe Ausbeute—9.819 monatliche Kontakte ergaben nur 344 SQLs in 6 Monaten.'
+}
+```
+
+**Warum gut:**
+- Erster Satz ist vollstaendig und selbsterklaerend
+- Enthaelt spezifische Zahlen/Metriken
+- Beschreibt das Problem klar
+- Keine abgehackten Saetze
+
+---
+
+## Problem 3: Case Study Konsistenz-Audit
+
+### Alle Case Studies und deren `challenge`-Felder
+
+| # | Slug | Erster Satz Challenge (EN) | Status |
+|---|------|---------------------------|--------|
+| 1 | `cac-crisis-turnaround` | "CAC exploded from €5k to €12k in 6 months." | OK - klar, mit Zahlen |
+| 2 | `nrr-machine-breakthrough` | "NRR stuck at 105% despite product improvements." | OK - spezifisch |
+| 3 | `partner-channel-transformed-scalable-growth` | "A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months." | REFERENZ |
+| 4 | `pricing-redesigned-scalable-growth` | (muss geprueft werden) | PRUEFEN |
+| 5 | `new-market-segment-entry` | (muss geprueft werden) | PRUEFEN |
+| 6 | `strategic-transformation-market-leadership` | "Growth slowing from 150% to 80% YoY, NRR declining below 100%, organizational chaos with 50+ meetings/week." | OK - spezifische Metriken |
+| 7 | `exit-readiness-achieved` | (muss geprueft werden) | PRUEFEN |
+| 8 | `stage-transition-series-b-ready` | "Stuck at €5M ARR, board demanded €25M ARR in 12 months—or no Series B." | OK - dramatisch und klar |
+
+### Detailpruefung erforderlich fuer:
+
+**4. pricing-redesigned-scalable-growth**
+- Zeile ~990-1010 in caseStudies.ts pruefen
+
+**5. new-market-segment-entry**
+- Zeile ~1370-1400 in caseStudies.ts pruefen
+
+**7. exit-readiness-achieved**
+- Zeile ~2200-2250 in caseStudies.ts pruefen
 
 ---
 
 ## Zusammenfassung der Aenderungen
 
-| Datei | Aenderung | Zeilen |
-|-------|-----------|--------|
-| `src/data/cases/caseStudies.ts` | relatedSolutions, relatedCaseStudies, relatedPlaybooks hinzufuegen | +35 |
-| `src/data/solutionTiles.ts` | secondaryCtaUrl bei ID 11 korrigieren | 1 |
-| `src/data/solutionTiles.ts` | secondaryCtaUrl bei ID 20 korrigieren | 1 |
+| Datei | Aenderung | Prioritaet |
+|-------|-----------|------------|
+| `src/pages/CaseDetail.tsx` | useEffect scroll-to-top hinzufuegen + useEffect import | KRITISCH |
+| `src/data/cases/caseStudies.ts` | Challenge-Felder der 3 Cases pruefen und ggf. anpassen | MITTEL |
 
 ---
 
-## Technische Hinweise
+## Technische Implementation
 
-### Bestehende Komponenten
+### Aenderung 1: CaseDetail.tsx (Zeile 1-15)
 
-- Case Study 1 nutzt bereits die vollstaendige Datenstruktur
-- Die CaseDetail.tsx Komponente unterstuetzt relatedSolutions bereits
-- Keine neuen Routes erforderlich
+```typescript
+// VORHER (Zeile 1)
+import React from 'react';
 
-### Routing
+// NACHHER
+import React, { useEffect } from 'react';
+```
 
-- `/cases/cac-crisis-turnaround` existiert bereits
-- Keine Aenderungen am Router noetig
+```typescript
+// VORHER (Zeile 14-18)
+const CaseDetail: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const { language } = useLanguage();
+  
+  const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
 
-### Validierung nach Implementation
+// NACHHER
+const CaseDetail: React.FC = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const { language } = useLanguage();
+  
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+  
+  const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
+```
 
-1. `/cases/cac-crisis-turnaround` - Pruefen ob Related Solutions Section erscheint
-2. `/solutions` - Power Up: Predictable Acquisition "See case study" Button pruefen
-3. `/solutions` - Boost: Efficient Hypergrowth "See case study" Button pruefen
+---
+
+## Validierung nach Implementation
+
+1. Auf `/cases` gehen
+2. Auf eine beliebige Case Card klicken ("Read Case")
+3. Seite sollte am HERO-Bereich starten (oben)
+4. Zurueck zu `/cases` navigieren
+5. Andere Case Study waehlen
+6. Wieder am Top der Seite starten
 
