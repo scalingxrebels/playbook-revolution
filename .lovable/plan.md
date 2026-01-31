@@ -1,65 +1,43 @@
 
-# Implementierungsplan: AI-Native Scaling unter Team im Footer
+# Implementierungsplan: Alban Halili Credentials hinzufügen
 
 ## Übersicht
 
-Die neue Sektion "AI-Native Scaling" mit dem Glossar-Link wird **innerhalb der Team-Spalte** hinzugefügt, direkt unter den Team-Mitgliedern. Das 3-Spalten-Grid bleibt unverändert.
+Ergänzung von "Certified Google AI Expert" als Credentials bei Alban Halili auf der Expertise-Seite.
 
 ---
 
-## Änderungen
+## Änderung
 
-### Datei: `src/components/Footer.tsx`
+### Datei: `src/components/ResearchHub.tsx`
 
-**1. Glossar aus legalLinks entfernen (Zeile 13):**
+**Zeile 164-174 (teamMembers Array):**
+
 ```typescript
 // Vorher
-{ label: language === 'de' ? 'Glossar' : 'Glossary', href: '/glossar' },
+{
+  name: 'Alban Halili',
+  role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
+  // ...
+}
 
-// Entfernen - bleibt nur AGB, Datenschutz, Impressum
-```
-
-**2. Neue Sektion in der Team-Spalte (nach Zeile 145):**
-
-Innerhalb des bestehenden Team-Divs wird eine zweite Überschrift + Link-Liste hinzugefügt:
-
-```typescript
-{/* Team */}
-<div className="py-8 sm:px-8">
-  {/* Team - existierend */}
-  <h4>Team</h4>
-  <ul>...</ul>
-
-  {/* NEU: AI-Native Scaling */}
-  <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 mt-8">
-    AI-Native Scaling
-  </h4>
-  <ul className="space-y-3">
-    <li>
-      <Link to="/glossar" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-        <span>{language === 'de' ? 'Glossar' : 'Glossary'}</span>
-        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-      </Link>
-    </li>
-  </ul>
-</div>
+// Nachher
+{
+  name: 'Alban Halili',
+  credentials: 'Certified Google AI Expert',  // NEU
+  role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
+  // ...
+}
 ```
 
 ---
 
-## Layout-Struktur
+## Ergebnis
 
-```text
-┌──────────────┬──────────────────────┬──────────────┐
-│   Sitemap    │        Team          │   Contact    │
-│              │  Michel Lason        │              │
-│   Home       │  Alban Halili        │  Book a Call │
-│   Solutions  │  Florian Metzger     │  Email       │
-│   Playbooks  │                      │  lasr.io     │
-│   ...        │  AI-Native Scaling   │              │
-│              │  → Glossar           │              │
-└──────────────┴──────────────────────┴──────────────┘
-```
+Alban Halili wird wie die anderen Team-Mitglieder mit Credentials angezeigt:
+- **Michel Lason** M.A. HSG
+- **Alban Halili** Certified Google AI Expert ← NEU
+- **Florian Metzger** M.Sc. Bocconi, M.Sc. Lisboa
 
 ---
 
@@ -67,4 +45,4 @@ Innerhalb des bestehenden Team-Divs wird eine zweite Überschrift + Link-Liste h
 
 | Aktion | Datei |
 |--------|-------|
-| **Bearbeiten** | `src/components/Footer.tsx` |
+| **Bearbeiten** | `src/components/ResearchHub.tsx` |
