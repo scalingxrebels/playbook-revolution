@@ -2646,6 +2646,521 @@ Die Board-Herausforderung: "Wir müssen in 18 Monaten Series C-ready oder exit-r
       { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
       { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } }
     ]
+  },
+  
+  // ============================================
+  // CASE STUDY 2: STAGE TRANSITION MASTERED
+  // ============================================
+  {
+    id: 'stage-transition-series-a-martech',
+    slug: 'stage-transition-series-b-ready',
+    company: 'Marketing Automation Platform',
+    industry: 'MarTech',
+    stage: 'Series A',
+    gradient: 'from-blue-500 to-cyan-500',
+    confidential: true,
+    
+    tags: ['stage-transition', 'series-a', 'series-b', 'gtm', 'martech', 'fundraising'],
+    challengeType: 'growth-stalled',
+    
+    // HERO
+    headline: {
+      en: 'Stage Transition Mastered → Series B Ready',
+      de: 'Stage Transition gemeistert → Series B Ready'
+    },
+    challenge: {
+      en: 'Stuck at €5M ARR, board demanded €25M ARR in 12 months—or no Series B.',
+      de: 'Bei €5M ARR festgefahren, Board forderte €25M ARR in 12 Monaten—oder keine Series B.'
+    },
+    result: {
+      en: 'ARR €5M → €25M (+400%), raised €30M Series B at €120M valuation',
+      de: 'ARR €5M → €25M (+400%), €30M Series B bei €120M Bewertung eingeworben'
+    },
+    investment: '€250k',
+    roi: '12x',
+    heroMetrics: [
+      { label: 'ARR', before: '€5M', after: '€25M', impact: '+400%' },
+      { label: 'Team', before: '30', after: '100', impact: '+233%' },
+      { label: 'ACV', before: '€10k', after: '€50k', impact: '+400%' },
+      { label: 'Series B', before: '-', after: '€30M', impact: '€120M Valuation' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A marketing automation platform for mid-market companies. €5M ARR, 30 employees, €8M Series A raised 18 months ago. Strong product-market fit with SMB customers, but stuck at €5M ARR.',
+      de: 'Eine Marketing-Automation-Plattform für den Mittelstand. €5M ARR, 30 Mitarbeiter, €8M Series A vor 18 Monaten. Starker Product-Market Fit mit SMB-Kunden, aber bei €5M ARR festgefahren.'
+    },
+    crisisStory: {
+      en: `The CEO had just closed Series A (€8M) and was feeling good. The product was working, customers were happy, churn was manageable. But the board had a different view.
+
+The lead investor opened with: "You have 12 months to reach €25M ARR. If you don't, you won't raise Series B. And if you don't raise Series B, you're dead."
+
+The math was brutal:
+- Current trajectory: €5M → €8M ARR (+60% YoY)
+- Board expectation: €5M → €25M ARR (+400% in 12 months)
+
+The CEO knew they needed to change everything. But where to start?`,
+      de: `Der CEO hatte gerade Series A (€8M) abgeschlossen und fühlte sich gut. Das Produkt funktionierte, Kunden waren zufrieden, Churn war beherrschbar. Aber der Board hatte eine andere Sichtweise.
+
+Der Lead-Investor eröffnete mit: "Ihr habt 12 Monate um €25M ARR zu erreichen. Wenn nicht, gibt es keine Series B. Und ohne Series B seid ihr am Ende."
+
+Die Zahlen waren brutal:
+- Aktuelle Trajectory: €5M → €8M ARR (+60% YoY)
+- Board-Erwartung: €5M → €25M ARR (+400% in 12 Monaten)
+
+Der CEO wusste, dass sie alles ändern mussten. Aber wo anfangen?`
+    },
+    problemDescription: {
+      en: 'The company had achieved product-market fit with SMB customers (€5k-€15k ACV). But to reach €25M ARR, they needed to move upmarket to mid-market customers (€50k-€100k ACV). And that required completely different capabilities.',
+      de: 'Das Unternehmen hatte Product-Market Fit mit SMB-Kunden erreicht (€5k-€15k ACV). Aber um €25M ARR zu erreichen, mussten sie ins Mid-Market-Segment (€50k-€100k ACV) aufsteigen. Und das erforderte völlig andere Capabilities.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Strategy', de: 'Strategie' },
+        symptoms: [
+          { en: 'Still selling to SMBs, not mid-market', de: 'Verkauft noch immer an SMBs, nicht Mittelstand' },
+          { en: 'ICP: SMBs (€5k-€15k ACV)', de: 'ICP: SMBs (€5k-€15k ACV)' },
+          { en: 'Positioning: "Marketing Automation for SMBs" (commodity)', de: 'Positionierung: "Marketing Automation für SMBs" (Commodity)' },
+          { en: 'Competition: HubSpot, Marketo (losing on price)', de: 'Wettbewerb: HubSpot, Marketo (verlieren beim Preis)' }
+        ]
+      },
+      {
+        area: { en: 'Go-to-Market', de: 'Go-to-Market' },
+        symptoms: [
+          { en: 'Founder-led sales, no repeatable process', de: 'Founder-led Sales, kein wiederholbarer Prozess' },
+          { en: 'CEO closing all deals (no sales team)', de: 'CEO schließt alle Deals (kein Vertriebsteam)' },
+          { en: 'No CRM (spreadsheets)', de: 'Kein CRM (Spreadsheets)' },
+          { en: 'No playbooks, no ICP definition', de: 'Keine Playbooks, keine ICP-Definition' }
+        ]
+      },
+      {
+        area: { en: 'Team', de: 'Team' },
+        symptoms: [
+          { en: '30 people, no leadership team', de: '30 Mitarbeiter, kein Leadership Team' },
+          { en: 'No VP Sales, no VP Marketing, no VP CS', de: 'Kein VP Sales, kein VP Marketing, kein VP CS' },
+          { en: 'CEO doing everything (sales, product, fundraising)', de: 'CEO macht alles (Sales, Product, Fundraising)' },
+          { en: 'Team morale low (no direction, no clarity)', de: 'Team-Moral niedrig (keine Richtung, keine Klarheit)' }
+        ]
+      },
+      {
+        area: { en: 'Metrics & Reporting', de: 'Metriken & Reporting' },
+        symptoms: [
+          { en: 'No board-level reporting', de: 'Kein Board-Level Reporting' },
+          { en: 'Manual reporting in Google Sheets', de: 'Manuelles Reporting in Google Sheets' },
+          { en: 'No dashboard, no KPIs', de: 'Kein Dashboard, keine KPIs' },
+          { en: 'Board meetings: 10+ hours of prep', de: 'Board Meetings: 10+ Stunden Vorbereitung' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'ARR', before: '€5M', after: '€25M (target)', impact: 'Need +400%' },
+      { label: 'ACV', before: '€10k', after: '€50k (target)', impact: 'Need +400%' },
+      { label: 'Churn', before: '30%', after: '10% (target)', impact: '3x Benchmark' },
+      { label: 'Win Rate', before: '12%', after: '35% (target)', impact: '1/3 of Benchmark' },
+      { label: 'Sales Cycle', before: '120 days', after: '60 days (target)', impact: '2x Benchmark' },
+      { label: 'CAC', before: '€8k', after: '€3k (target)', impact: '2.7x Benchmark' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We ran a 12-month program to transition from Series A to Series B. Not a quick fix, but a complete rebuild: new ICP, new positioning, new team, new infrastructure.',
+      de: 'Wir führten ein 12-Monats-Programm durch, um von Series A zu Series B zu transformieren. Keine schnelle Lösung, sondern ein kompletter Neuaufbau: neues ICP, neue Positionierung, neues Team, neue Infrastruktur.'
+    },
+    phases: [
+      {
+        name: { en: 'Redefine the Strategy', de: 'Strategie neu definieren' },
+        timeline: 'Month 1-3',
+        actions: [
+          {
+            name: { en: 'Redefine the ICP', de: 'ICP neu definieren' },
+            description: {
+              en: 'We analyzed the top 10% of customers (highest LTV, lowest churn). They were all mid-market companies (100-500 employees, €50k+ ACV), not SMBs.',
+              de: 'Wir analysierten die Top 10% der Kunden (höchster LTV, niedrigster Churn). Es waren alle Mittelständler (100-500 Mitarbeiter, €50k+ ACV), keine SMBs.'
+            },
+            deliverables: [
+              { en: 'New ICP definition: Mid-market (100-500 employees)', de: 'Neue ICP-Definition: Mittelstand (100-500 Mitarbeiter)' },
+              { en: 'Target ACV: €50k-€100k (not €5k-€15k)', de: 'Ziel-ACV: €50k-€100k (nicht €5k-€15k)' },
+              { en: 'Use case focus: Enterprise marketing automation', de: 'Use Case Fokus: Enterprise Marketing Automation' }
+            ],
+            whyItMattered: {
+              en: 'The ICP shift was the foundation for everything else. Without it, hiring, positioning, and pricing would all be wrong.',
+              de: 'Der ICP-Shift war die Grundlage für alles andere. Ohne ihn wären Hiring, Positionierung und Pricing alle falsch.'
+            }
+          },
+          {
+            name: { en: 'Sharpen the Positioning', de: 'Positionierung schärfen' },
+            description: {
+              en: 'The old positioning ("Marketing Automation for SMBs") was a commodity. We needed to differentiate.',
+              de: 'Die alte Positionierung ("Marketing Automation für SMBs") war ein Commodity. Wir mussten uns differenzieren.'
+            },
+            deliverables: [
+              { en: 'New positioning: "AI-Native Marketing Platform for Mid-Market"', de: 'Neue Positionierung: "AI-Native Marketing Platform für Mittelstand"' },
+              { en: 'Competitive differentiation: AI-native (not legacy)', de: 'Wettbewerbsdifferenzierung: AI-native (nicht Legacy)' },
+              { en: 'Price justification: €50k+ ACV (not €10k)', de: 'Preis-Rechtfertigung: €50k+ ACV (nicht €10k)' }
+            ],
+            whyItMattered: {
+              en: 'This positioned them as AI-native (not legacy) and mid-market (not SMB). It justified the higher price (€50k vs. €10k ACV).',
+              de: 'Das positionierte sie als AI-native (nicht Legacy) und Mittelstand (nicht SMB). Es rechtfertigte den höheren Preis (€50k vs. €10k ACV).'
+            }
+          },
+          {
+            name: { en: 'Build the Series B Deck', de: 'Series B Deck erstellen' },
+            description: {
+              en: 'We built a Series B fundraising deck with financial model, unit economics, market sizing, and competitive positioning.',
+              de: 'Wir erstellten ein Series B Fundraising Deck mit Finanzmodell, Unit Economics, Marktgröße und Wettbewerbspositionierung.'
+            },
+            deliverables: [
+              { en: 'Financial model (€5M → €25M ARR path)', de: 'Finanzmodell (€5M → €25M ARR Pfad)' },
+              { en: 'Unit economics (CAC, LTV, payback)', de: 'Unit Economics (CAC, LTV, Payback)' },
+              { en: 'Market sizing (€10B TAM)', de: 'Marktgröße (€10B TAM)' },
+              { en: 'Competitive positioning (AI-native vs. legacy)', de: 'Wettbewerbspositionierung (AI-native vs. Legacy)' }
+            ],
+            whyItMattered: {
+              en: 'The board approved the plan. Now we had to execute.',
+              de: 'Der Board genehmigte den Plan. Jetzt mussten wir liefern.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Build the Infrastructure', de: 'Infrastruktur aufbauen' },
+        timeline: 'Month 4-6',
+        actions: [
+          {
+            name: { en: 'Implement Salesforce', de: 'Salesforce implementieren' },
+            description: {
+              en: 'The company had been using spreadsheets for 2 years. We implemented Salesforce in 2 months (vs. 6 months typical).',
+              de: 'Das Unternehmen hatte 2 Jahre lang Spreadsheets genutzt. Wir implementierten Salesforce in 2 Monaten (statt 6 typischerweise).'
+            },
+            deliverables: [
+              { en: 'Deal pipeline (all deals in Salesforce)', de: 'Deal-Pipeline (alle Deals in Salesforce)' },
+              { en: 'Custom dashboards (CAC, win rate, pipeline)', de: 'Custom Dashboards (CAC, Win Rate, Pipeline)' },
+              { en: 'Automated reporting (no more manual spreadsheets)', de: 'Automatisiertes Reporting (keine manuellen Spreadsheets mehr)' }
+            ],
+            whyItMattered: {
+              en: 'For the first time, leadership could see what was actually happening in the pipeline.',
+              de: 'Zum ersten Mal konnte das Leadership sehen, was wirklich in der Pipeline passierte.'
+            }
+          },
+          {
+            name: { en: 'Build GTM Playbooks', de: 'GTM Playbooks erstellen' },
+            description: {
+              en: 'We interviewed the CEO (the only person closing deals) and documented his process.',
+              de: 'Wir interviewten den CEO (die einzige Person, die Deals abschloss) und dokumentierten seinen Prozess.'
+            },
+            deliverables: [
+              { en: 'ICP definition (who to sell to)', de: 'ICP-Definition (an wen verkaufen)' },
+              { en: 'Positioning (how to differentiate)', de: 'Positionierung (wie differenzieren)' },
+              { en: 'Sales process (discovery → demo → close)', de: 'Vertriebsprozess (Discovery → Demo → Close)' },
+              { en: 'Objection handling (how to handle "too expensive")', de: 'Einwandbehandlung (Umgang mit "zu teuer")' }
+            ],
+            whyItMattered: {
+              en: 'The playbooks made the founder knowledge scalable. Without them, every new hire would reinvent the wheel.',
+              de: 'Die Playbooks machten das Gründerwissen skalierbar. Ohne sie würde jeder neue Mitarbeiter das Rad neu erfinden.'
+            }
+          },
+          {
+            name: { en: 'Hire VP Sales', de: 'VP Sales einstellen' },
+            description: {
+              en: 'The CEO couldn\'t close all deals anymore. We hired a VP Sales (ex-HubSpot, 10+ years experience).',
+              de: 'Der CEO konnte nicht mehr alle Deals selbst abschließen. Wir stellten einen VP Sales ein (ex-HubSpot, 10+ Jahre Erfahrung).'
+            },
+            deliverables: [
+              { en: 'VP Sales hired (ex-HubSpot)', de: 'VP Sales eingestellt (ex-HubSpot)' },
+              { en: 'Onboarding completed', de: 'Onboarding abgeschlossen' },
+              { en: 'First deals closed', de: 'Erste Deals abgeschlossen' }
+            ],
+            whyItMattered: {
+              en: 'The VP Sales would build the sales team (1 → 10 AEs) and implement the playbooks. This was the most critical hire.',
+              de: 'Der VP Sales würde das Vertriebsteam aufbauen (1 → 10 AEs) und die Playbooks implementieren. Das war die wichtigste Einstellung.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Scale the Team', de: 'Team skalieren' },
+        timeline: 'Month 7-9',
+        actions: [
+          {
+            name: { en: 'Hire the Sales Team', de: 'Vertriebsteam einstellen' },
+            description: {
+              en: 'The VP Sales hired 9 AEs in 2 months. We trained them on the playbooks and ramped them up.',
+              de: 'Der VP Sales stellte 9 AEs in 2 Monaten ein. Wir trainierten sie mit den Playbooks und brachten sie auf Touren.'
+            },
+            deliverables: [
+              { en: '10 AEs (€2.5M ARR per AE target)', de: '10 AEs (€2.5M ARR pro AE Ziel)' },
+              { en: '5 SDRs (outbound lead gen)', de: '5 SDRs (Outbound Lead Gen)' },
+              { en: 'Playbook training completed', de: 'Playbook-Training abgeschlossen' }
+            ],
+            whyItMattered: {
+              en: 'The sales team was the engine for €25M ARR. Without 10 AEs, the CEO would be the bottleneck forever.',
+              de: 'Das Vertriebsteam war der Motor für €25M ARR. Ohne 10 AEs wäre der CEO für immer der Engpass.'
+            }
+          },
+          {
+            name: { en: 'Launch Outbound Motion', de: 'Outbound-Motion starten' },
+            description: {
+              en: 'Inbound leads had plateaued at 50/month. We needed 200/month to hit €25M ARR. So we launched outbound.',
+              de: 'Inbound Leads waren bei 50/Monat stagniert. Wir brauchten 200/Monat für €25M ARR. Also starteten wir Outbound.'
+            },
+            deliverables: [
+              { en: 'SDR team (5 SDRs)', de: 'SDR-Team (5 SDRs)' },
+              { en: 'Outbound playbook (Clay.com for lead scoring)', de: 'Outbound Playbook (Clay.com für Lead Scoring)' },
+              { en: 'Email sequences (personalized, AI-powered)', de: 'E-Mail-Sequenzen (personalisiert, AI-powered)' }
+            ],
+            whyItMattered: {
+              en: 'Lead volume increased from 50/month → 150/month (+200%). This fed the 10 AEs with enough pipeline.',
+              de: 'Lead-Volumen stieg von 50/Monat → 150/Monat (+200%). Das versorgte die 10 AEs mit genug Pipeline.'
+            }
+          },
+          {
+            name: { en: 'Implement Customer Success', de: 'Customer Success implementieren' },
+            description: {
+              en: 'Churn was 30% (killing growth). We hired a VP CS and 5 CSMs to reduce churn.',
+              de: 'Churn war 30% (tötete das Wachstum). Wir stellten einen VP CS und 5 CSMs ein, um Churn zu reduzieren.'
+            },
+            deliverables: [
+              { en: 'VP CS + 5 CSMs hired', de: 'VP CS + 5 CSMs eingestellt' },
+              { en: 'CS playbooks (onboarding, health scoring, expansion)', de: 'CS Playbooks (Onboarding, Health Scoring, Expansion)' },
+              { en: 'Health scoring (red/yellow/green)', de: 'Health Scoring (Rot/Gelb/Grün)' },
+              { en: 'Proactive outreach (before customers churn)', de: 'Proaktive Ansprache (bevor Kunden churnen)' }
+            ],
+            whyItMattered: {
+              en: 'Churn dropped from 30% → 15% in 3 months. Without this, even €25M new ARR would mean only €17.5M net ARR.',
+              de: 'Churn sank von 30% → 15% in 3 Monaten. Ohne das würden selbst €25M neues ARR nur €17.5M Netto-ARR bedeuten.'
+            }
+          },
+          {
+            name: { en: 'Optimize Pricing', de: 'Pricing optimieren' },
+            description: {
+              en: 'We rebuilt the pricing to move upmarket.',
+              de: 'Wir haben das Pricing neu aufgebaut, um upmarket zu gehen.'
+            },
+            deliverables: [
+              { en: 'New pricing tiers: €50k (mid-market) + €100k+ (enterprise)', de: 'Neue Pricing-Stufen: €50k (Mittelstand) + €100k+ (Enterprise)' },
+              { en: 'Value-based pricing (not cost-based)', de: 'Wertbasiertes Pricing (nicht kostenbasiert)' },
+              { en: 'Price increase: €10k → €50k ACV (+400%)', de: 'Preiserhöhung: €10k → €50k ACV (+400%)' }
+            ],
+            whyItMattered: {
+              en: 'This 5x increase in ACV was critical to reaching €25M ARR with the same team size.',
+              de: 'Diese 5x Erhöhung des ACV war entscheidend, um €25M ARR mit der gleichen Teamgröße zu erreichen.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Series B Ready', de: 'Series B Ready' },
+        timeline: 'Month 10-12',
+        actions: [
+          {
+            name: { en: 'Build Metrics Dashboard', de: 'Metriken-Dashboard aufbauen' },
+            description: {
+              en: 'We built a Looker dashboard with all board-level metrics.',
+              de: 'Wir bauten ein Looker-Dashboard mit allen Board-Level-Metriken.'
+            },
+            deliverables: [
+              { en: 'ARR, CAC, LTV/CAC, Churn, NRR', de: 'ARR, CAC, LTV/CAC, Churn, NRR' },
+              { en: 'Updated daily (no more manual reporting)', de: 'Täglich aktualisiert (kein manuelles Reporting mehr)' },
+              { en: 'Board-ready format', de: 'Board-ready Format' }
+            ],
+            whyItMattered: {
+              en: 'The board could now see real-time metrics. No more 10+ hours of prep for board meetings.',
+              de: 'Der Board konnte jetzt Echtzeit-Metriken sehen. Keine 10+ Stunden Vorbereitung mehr für Board Meetings.'
+            }
+          },
+          {
+            name: { en: 'Implement Monthly Business Reviews', de: 'Monatliche Business Reviews implementieren' },
+            description: {
+              en: 'The CEO + leadership team started reviewing metrics monthly.',
+              de: 'Der CEO + Leadership Team starteten monatliche Metrik-Reviews.'
+            },
+            deliverables: [
+              { en: 'Monthly review cadence established', de: 'Monatlicher Review-Rhythmus etabliert' },
+              { en: 'Performance tracking vs. plan', de: 'Performance-Tracking vs. Plan' },
+              { en: 'Course correction process', de: 'Kurskorrektur-Prozess' }
+            ],
+            whyItMattered: {
+              en: 'Monthly reviews caught problems early. Before, issues were discovered quarterly (too late to fix).',
+              de: 'Monatliche Reviews erkannten Probleme früh. Vorher wurden Probleme erst quartalsweise entdeckt (zu spät zum Beheben).'
+            }
+          },
+          {
+            name: { en: 'Launch Series B Process', de: 'Series B Prozess starten' },
+            description: {
+              en: 'We reached €25M ARR in Month 12. The CEO launched the Series B fundraising process.',
+              de: 'Wir erreichten €25M ARR in Monat 12. Der CEO startete den Series B Fundraising-Prozess.'
+            },
+            deliverables: [
+              { en: 'Series B deck finalized', de: 'Series B Deck finalisiert' },
+              { en: 'Investor outreach (50+ meetings)', de: 'Investor-Outreach (50+ Meetings)' },
+              { en: 'Term sheet negotiation', de: 'Term Sheet Verhandlung' }
+            ],
+            whyItMattered: {
+              en: 'The company raised €30M at €120M valuation (5x ARR multiple)—one of the best Series B rounds in DACH that year.',
+              de: 'Das Unternehmen sammelte €30M bei €120M Bewertung (5x ARR Multiple)—eine der besten Series B Runden in DACH in dem Jahr.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '12 months',
+    resultMetrics: [
+      { label: 'ARR', before: '€5M', after: '€25M', impact: '+400%' },
+      { label: 'Team', before: '30 people', after: '100 people', impact: '+233%' },
+      { label: 'ACV', before: '€10k', after: '€50k', impact: '+400%' },
+      { label: 'CAC', before: '€8k', after: '€3k', impact: '-63%' },
+      { label: 'Churn', before: '30%', after: '10%', impact: '-67%' },
+      { label: 'Win Rate', before: '12%', after: '35%', impact: '+192%' },
+      { label: 'Sales Cycle', before: '120 days', after: '60 days', impact: '-50%' },
+      { label: 'ARR/Employee', before: '€167k', after: '€250k', impact: '+50%' }
+    ],
+    roiCalculation: {
+      investment: '€250k',
+      returnValue: '€3M',
+      roi: '12x',
+      breakdown: [
+        { en: 'ARR uplift: €20M additional ARR × 15% margin = €3M annual profit', de: 'ARR-Steigerung: €20M zusätzliches ARR × 15% Marge = €3M jährlicher Gewinn' },
+        { en: 'Valuation uplift: €120M (vs. €25M at €5M ARR) = €95M additional value', de: 'Bewertungssteigerung: €120M (vs. €25M bei €5M ARR) = €95M zusätzlicher Wert' },
+        { en: 'Series B raised: €30M at 5x ARR multiple', de: 'Series B eingeworben: €30M bei 5x ARR Multiple' },
+        { en: 'Dilution saved: 25% (vs. 40% if raised at €5M ARR)', de: 'Verwässerung gespart: 25% (vs. 40% wenn bei €5M ARR)' }
+      ]
+    },
+    ceoQuote: {
+      en: 'We went from €5M to €25M ARR in 12 months. The board said it was impossible. But we rebuilt everything—ICP, positioning, team, infrastructure—and raised €30M Series B at €120M valuation. This was the roadmap we needed.',
+      de: 'Wir gingen von €5M auf €25M ARR in 12 Monaten. Der Board sagte, es sei unmöglich. Aber wir haben alles neu aufgebaut—ICP, Positionierung, Team, Infrastruktur—und €30M Series B bei €120M Bewertung eingeworben. Das war die Roadmap, die wir brauchten.'
+    },
+    quoteContext: {
+      en: 'The CEO presented at the next board meeting. The board approved the Series B fundraising process. The company raised €30M at €120M valuation, one of the best Series B rounds in DACH that year.',
+      de: 'Der CEO präsentierte beim nächsten Board Meeting. Der Board genehmigte den Series B Fundraising-Prozess. Das Unternehmen sammelte €30M bei €120M Bewertung, eine der besten Series B Runden in DACH in dem Jahr.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Series A Capabilities Don\'t Work for Series B', de: 'Series A Capabilities funktionieren nicht für Series B' },
+        whatWeLearned: {
+          en: 'The company had strong Series A capabilities: founder-led sales, SMB customers (€10k ACV), 30 people (lean team). But these capabilities don\'t work for Series B: need team-led sales, mid-market customers (€50k ACV), 100 people (need leadership team).',
+          de: 'Das Unternehmen hatte starke Series A Capabilities: Founder-led Sales, SMB-Kunden (€10k ACV), 30 Mitarbeiter (schlankes Team). Aber diese Capabilities funktionieren nicht für Series B: braucht Team-led Sales, Mittelstandskunden (€50k ACV), 100 Mitarbeiter (braucht Leadership Team).'
+        },
+        keyInsight: {
+          en: 'Stage transitions are not about "doing more of the same." They\'re about building completely new capabilities. Series A → B requires different ICP, positioning, team, infrastructure.',
+          de: 'Stage Transitions sind nicht "mehr vom Gleichen." Sie erfordern komplett neue Capabilities. Series A → B braucht anderes ICP, Positionierung, Team, Infrastruktur.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start the transition earlier (at €3M ARR, not €5M ARR). This would give us 18 months instead of 12 months.',
+          de: 'Transition früher starten (bei €3M ARR, nicht €5M ARR). Das würde uns 18 Monate statt 12 geben.'
+        }
+      },
+      {
+        title: { en: 'Hire VP Sales Early (Month 4, Not Month 10)', de: 'VP Sales früh einstellen (Monat 4, nicht Monat 10)' },
+        whatWeLearned: {
+          en: 'Hiring VP Sales in Month 4 (not Month 10) was critical. The VP Sales built the sales team (1 → 10 AEs) and implemented playbooks.',
+          de: 'VP Sales in Monat 4 einzustellen (nicht Monat 10) war entscheidend. Der VP Sales baute das Vertriebsteam auf (1 → 10 AEs) und implementierte Playbooks.'
+        },
+        keyInsight: {
+          en: 'Don\'t wait until you "need" a VP Sales. Hire VP Sales when you\'re ready to scale (€5M ARR, not €10M ARR).',
+          de: 'Nicht warten, bis man einen VP Sales "braucht." VP Sales einstellen, wenn man bereit ist zu skalieren (€5M ARR, nicht €10M ARR).'
+        },
+        whatWedDoDifferently: {
+          en: 'Hire VP Sales in Month 1 (not Month 4). This would have accelerated the sales team build by 3 months.',
+          de: 'VP Sales in Monat 1 einstellen (nicht Monat 4). Das hätte den Vertriebsteam-Aufbau um 3 Monate beschleunigt.'
+        }
+      },
+      {
+        title: { en: 'Moving Upmarket Requires New Positioning', de: 'Upmarket-Bewegung erfordert neue Positionierung' },
+        whatWeLearned: {
+          en: 'Repositioning from "Marketing Automation for SMBs" to "AI-Native Marketing Platform for Mid-Market" was critical. This differentiated from HubSpot/Marketo and justified higher pricing (€50k vs. €10k ACV).',
+          de: 'Die Neupositionierung von "Marketing Automation für SMBs" zu "AI-Native Marketing Platform für Mittelstand" war entscheidend. Das differenzierte von HubSpot/Marketo und rechtfertigte höheres Pricing (€50k vs. €10k ACV).'
+        },
+        keyInsight: {
+          en: 'Moving upmarket is not just about selling to bigger companies. It requires new positioning, new messaging, new sales motion, new pricing.',
+          de: 'Upmarket-Bewegung ist nicht nur an größere Unternehmen zu verkaufen. Es braucht neue Positionierung, neues Messaging, neue Sales Motion, neues Pricing.'
+        },
+        whatWedDoDifferently: {
+          en: 'Test positioning earlier with target customers before committing to the full rebrand.',
+          de: 'Positionierung früher mit Zielkunden testen, bevor man sich zum vollständigen Rebrand verpflichtet.'
+        }
+      },
+      {
+        title: { en: 'Customer Success is Critical for Series B', de: 'Customer Success ist kritisch für Series B' },
+        whatWeLearned: {
+          en: '30% churn killed growth. Even with 10 AEs, we couldn\'t grow fast enough with 30% churn. Hiring VP CS + 5 CSMs reduced churn from 30% → 15%.',
+          de: '30% Churn tötete das Wachstum. Selbst mit 10 AEs konnten wir mit 30% Churn nicht schnell genug wachsen. VP CS + 5 CSMs einzustellen reduzierte Churn von 30% → 15%.'
+        },
+        keyInsight: {
+          en: 'Customer success is not optional for Series B. VCs look at churn, NRR, and customer health. 30% churn = no Series B.',
+          de: 'Customer Success ist nicht optional für Series B. VCs schauen auf Churn, NRR und Customer Health. 30% Churn = keine Series B.'
+        },
+        whatWedDoDifferently: {
+          en: 'Hire VP CS in Month 4 (not Month 9). This would have reduced churn faster and improved NRR earlier.',
+          de: 'VP CS in Monat 4 einstellen (nicht Monat 9). Das hätte Churn schneller reduziert und NRR früher verbessert.'
+        }
+      }
+    ],
+    
+    // META
+    playbooks: ['gtm-revenue', 'strategic-governance', 'operating-systems', 'talent'],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Accelerate: Hypergrowth', de: 'Accelerate: Hypergrowth' },
+        url: '/solutions/accelerate/hypergrowth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Full Business Transformation - ARR Growth +100-200%, Time to €100M', de: 'Volle Business-Transformation - ARR-Wachstum +100-200%, Time to €100M' },
+        outcome: { en: 'Time to €100M -85-91%, CAC -60-80%, ARR Growth +100-200%', de: 'Time to €100M -85-91%, CAC -60-80%, ARR-Wachstum +100-200%' },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'ICP & Positioning Redesign', de: 'ICP- & Positionierungs-Redesign' },
+          { en: 'GTM Playbooks & Infrastructure', de: 'GTM Playbooks & Infrastruktur' },
+          { en: 'Leadership Team Build', de: 'Leadership Team Aufbau' },
+          { en: 'Series B Readiness', de: 'Series B Readiness' }
+        ]
+      },
+      {
+        name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
+        url: '/solutions/accelerate/sustainable-growth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { en: 'Profitable Growth + Series B Readiness', de: 'Profitables Wachstum + Series B Readiness' },
+        outcome: { en: 'Rule of 40 +30-50pp, ARR Growth +100-200%, Burn Multiple -60-80%', de: 'Rule of 40 +30-50pp, ARR-Wachstum +100-200%, Burn Multiple -60-80%' },
+        type: 'alternative',
+        whatYouGet: [
+          { en: 'Financial Framework', de: 'Finanz-Framework' },
+          { en: 'Capital Efficiency Plan', de: 'Kapitaleffizienz-Plan' },
+          { en: 'Growth Engine', de: 'Growth Engine' },
+          { en: 'Operational Excellence', de: 'Operative Exzellenz' }
+        ]
+      },
+      {
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'GTM Engine Rebuild - Win Rate, Pipeline, ARR Growth', de: 'GTM-Engine Neuaufbau - Win Rate, Pipeline, ARR-Wachstum' },
+        outcome: { en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR-Wachstum +50-100%, Win Rate +30-50%, Pipeline +50-100%' },
+        type: 'related',
+        whatYouGet: [
+          { en: 'GTM Playbooks', de: 'GTM Playbooks' },
+          { en: 'Sales Infrastructure', de: 'Vertriebsinfrastruktur' },
+          { en: 'Pipeline Engine', de: 'Pipeline Engine' },
+          { en: 'Team Scaling Blueprint', de: 'Team Scaling Blueprint' }
+        ]
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'strategic-transformation-market-leadership', teaser: { en: 'How a Series B No-Code SaaS platform achieved €7.7M ARR (+114%)', de: 'Wie eine Series B No-Code SaaS-Plattform €7.7M ARR (+114%) erreichte' } },
+      { slug: 'new-market-segment-entry', teaser: { en: 'How a B2B/B2C company achieved €13.72M revenue (+955%)', de: 'Wie ein B2B/B2C-Unternehmen €13.72M Umsatz (+955%) erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
+      { slug: 'operating-systems', teaser: { en: '6-component framework for scaling infrastructure', de: '6-Komponenten-Framework für Scaling-Infrastruktur' } }
+    ]
   }
 ];
 
