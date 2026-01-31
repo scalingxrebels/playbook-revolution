@@ -1,67 +1,32 @@
 
 
-# Korrektur: Pigtie und LifiMax im Client-Ticker wiederherstellen
+# Plan: Case Study 9 "Strategic Transformation → M&A Integration Success" löschen
 
 ## Übersicht
 
-Die Anonymisierung war nur für die Case Study 9 gedacht. **Pigtie** und **LifiMax** müssen in den Client-Tickern wiederhergestellt werden.
+Vollständige Entfernung der Case Study 9 aus dem System.
 
 ## Änderungen
 
-### 1. `src/pages/Cases.tsx` (Zeilen 20-25)
+### 1. `src/data/cases/caseStudies.ts`
 
-**Vorher (aktuell falsch):**
-```typescript
-const clientNames = [
-  'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
-  'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
-  'SBB E-Business', 'Swarovski', 'local.ch', 'BWK Group', 'DBA', 'Burda Media',
-  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'BeQueen', 'BonGusto'
-];
-```
+**Aktion:** Kompletten Case Study 9 Eintrag löschen (~470 Zeilen)
 
-**Nachher (korrigiert):**
-```typescript
-const clientNames = [
-  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
-  'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
-  'SBB E-Business', 'Swarovski', 'local.ch', 'BWK Group', 'DBA', 'Burda Media',
-  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax', 'BeQueen', 'BonGusto'
-];
-```
+- ID: `strategic-transformation-ma-integration`
+- Slug: `strategic-transformation-ma-integration`
 
-### 2. `src/components/homepage/FinalCTAOptimized.tsx` (Zeilen 56-62)
+### 2. `src/data/solutionTiles.ts`
 
-**Vorher (aktuell falsch):**
-```typescript
-const clients = [
-  'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
-  '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
-  'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
-  'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
-  'START', 'Elba', 'Semigator', 'Umantis', 'Sage'
-];
-```
+**Aktion:** Bidirektionale Links entfernen/zurücksetzen
 
-**Nachher (korrigiert):**
-```typescript
-const clients = [
-  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
-  '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
-  'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
-  'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
-  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax'
-];
-```
+| Solution | Zeile | Änderung |
+|----------|-------|----------|
+| Accelerate: Sustainable Growth (ID 30) | ~1149 | `secondaryCtaUrl` zurücksetzen auf vorherigen Wert |
+| Boost: Custom Program (ID 28) | ~1077 | `secondaryCtaUrl` zurücksetzen auf vorherigen Wert |
 
-## Zusammenfassung
+## Ergebnis
 
-| Datei | Änderung |
-|-------|----------|
-| `src/pages/Cases.tsx` | `'Pigtie'` und `'LifiMax'` wieder hinzufügen |
-| `src/components/homepage/FinalCTAOptimized.tsx` | `'Pigtie'` und `'LifiMax'` wieder hinzufügen |
-
-## Was bleibt unverändert
-
-- Case Study 9 in `caseStudies.ts` bleibt anonymisiert (STRAPAG → "the established company", LifiMAX → "the LiFi startup")
+- Case Study 9 wird aus dem Cases Hub entfernt
+- `/cases/strategic-transformation-ma-integration` führt zu 404
+- Keine verwaisten Links zu dieser Case Study
 
