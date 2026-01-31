@@ -1,76 +1,67 @@
 
+# Dark Hero Pattern: Theme-Scope für alle Hero-Sektionen
 
-# Expertise Breadcrumb: Anpassung an Playbooks/Solutions Pattern
+## Das Problem
 
-## Aktuelle Situation
+Im Light Mode passiert folgendes:
+- Der dunkle Hintergrund (`#0A0A0F`) bleibt
+- Aber `text-foreground` wird dunkel (fast schwarz)
+- `text-muted-foreground` wird grau
+- → Schlechter Kontrast, kaum lesbar
 
-**Expertise (3-Ebenen):**
-```
-Home → Expertise → AI Maturity Framework
-```
+## Die Lösung: Scoped Dark Theme
 
-**Playbooks/Solutions (2-Ebenen):**
-```
-Playbooks → Growth Engines
-Solutions → Power Up CAC Crisis
-```
+Wir erstellen eine CSS-Utility-Klasse `.dark-section`, die lokal die Dark-Mode CSS-Variablen erzwingt. So bleibt der Hero immer im "Dark Mode", unabhängig vom globalen Theme.
 
-## Änderung
+### Technischer Ansatz
 
-### Datei: `src/components/research/sections/ResearchHeroSection.tsx`
+**1. Neue CSS-Klasse in `src/index.css`:**
 
-**Aktuell (Zeilen 64-82):**
-```tsx
-<Breadcrumb className="justify-center mb-6 animate-fade-in">
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
-        {data.breadcrumb.home[language]}
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
-        {data.breadcrumb.parent[language]}
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
+```css
+/* Scoped Dark Theme für Hero Sections */
+.dark-section {
+  --background: 240 15% 6%;
+  --foreground: 40 20% 95%;
+  --card: 240 12% 9%;
+  --card-foreground: 40 20% 95%;
+  --muted: 240 10% 16%;
+  --muted-foreground: 40 10% 55%;
+  --border: 240 10% 18%;
+  /* Alle Dark-Mode Variablen hier */
+}
 ```
 
-**Neu (2-Ebenen Pattern):**
-```tsx
-<Breadcrumb className="justify-center mb-6 animate-fade-in">
-  <BreadcrumbList>
-    <BreadcrumbItem>
-      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
-        {data.breadcrumb.parent[language]}
-      </BreadcrumbLink>
-    </BreadcrumbItem>
-    <BreadcrumbSeparator />
-    <BreadcrumbItem>
-      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
-    </BreadcrumbItem>
-  </BreadcrumbList>
-</Breadcrumb>
-```
+**2. Anwendung auf Hero-Komponenten:**
 
-## Ergebnis
+| Komponente | Änderung |
+|------------|----------|
+| `HeroOptimized.tsx` | `className="... dark-section"` |
+| `SharedHero.tsx` | `className="... dark-section"` (bei variant='dark') |
+| `PlaybookHeroSection.tsx` | `className="... dark-section"` |
+| `ResearchHeroSection.tsx` | `className="... dark-section"` |
+| Boost/PowerUp Hero Sections | `className="... dark-section"` |
 
-| Seite | Vorher | Nachher |
-|-------|--------|---------|
-| AMF | Home → Expertise → AI Maturity Framework | Expertise → AI Maturity Framework |
-| ANST | Home → Expertise → AI-Native Scaling Theory | Expertise → AI-Native Scaling Theory |
-| SST | Home → Expertise → Scaling Stack Theory | Expertise → Scaling Stack Theory |
-| Unified | Home → Expertise → Unified Framework | Expertise → Unified Framework |
-
-## Geänderte Dateien
+## Betroffene Dateien
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/research/sections/ResearchHeroSection.tsx` | Home-Link + Separator entfernen |
+| `src/index.css` | Neue `.dark-section` Utility-Klasse |
+| `src/components/homepage/HeroOptimized.tsx` | Klasse hinzufügen |
+| `src/components/shared/SharedHero.tsx` | Klasse hinzufügen |
+| `src/components/playbooks/sections/PlaybookHeroSection.tsx` | Klasse hinzufügen |
+| `src/components/research/sections/ResearchHeroSection.tsx` | Klasse hinzufügen |
+| ~15 weitere Hero-Sektionen in Boost/PowerUp/Solution Pages | Klasse hinzufügen |
 
+## Ergebnis
+
+- **Light Mode**: Hero bleibt dunkel mit korrektem Kontrast (heller Text)
+- **Dark Mode**: Keine Änderung (funktioniert bereits)
+- **Konsistenz**: Alle Heroes folgen dem gleichen Pattern
+- **Wartbarkeit**: Eine CSS-Klasse statt manuelle Farb-Overrides
+
+## Vorteile dieses Ansatzes
+
+1. **CSS-native Lösung** - Keine React-Props oder Konditionale
+2. **Kaskadierend** - Alle Child-Elemente erben automatisch die korrekten Farben
+3. **Erweiterbar** - Andere Sektionen können dieselbe Klasse nutzen
+4. **Performance** - Keine JS-Berechnungen zur Laufzeit
