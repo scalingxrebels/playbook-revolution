@@ -1146,7 +1146,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/sustainable-growth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases'
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership'
   },
   {
     id: 31,
@@ -1248,7 +1248,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/portfolio-transformation',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/new-market-segment-entry'
+    secondaryCtaUrl: '/playbooks/portfolio-transformation'
   },
 
   // ============================================
