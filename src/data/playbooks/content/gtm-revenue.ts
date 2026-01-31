@@ -360,15 +360,26 @@ export const gtmRevenueData: PlaybookPageData = {
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deinen Zeitplan und Budget" }, 
     items: [
       {
+        type: "assessment",
+        name: { en: "GTM Assessment", de: "GTM Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full GTM maturity report + 90-day roadmap", de: "Vollständiger GTM Maturity Report + 90-Tage Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
         name: { en: "Power Up: CAC Crisis Averted", de: "Power Up: CAC Krise abgewendet" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "CAC -40-60%, Win Rate +20-100%", de: "CAC -40-60%, Win Rate +20-100%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/cac-crisis",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
@@ -379,7 +390,18 @@ export const gtmRevenueData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/growth-engine",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "Accelerate: AI-Native GTM", de: "Accelerate: AI-Native GTM" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full GTM transformation, AI Maturity Level 3", de: "Vollständige GTM Transformation, AI Maturity Level 3" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },
