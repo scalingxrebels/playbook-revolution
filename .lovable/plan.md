@@ -1,58 +1,44 @@
 
 
-# Korrektur: Florian Metzger Bild nur auf About-Seite
+# Florian Metzger Bild auf Expertise-Seite anpassen
 
-## Problem
+## Aktuelle Situation
 
-Das Bild `team-florian.png` wurde überschrieben und betrifft nun alle Seiten. Die FM-Detailseite verwendet ein Portrait-Format (3/4), das mit dem neuen quadratischen Bild nicht optimal aussieht.
+**Datei:** `src/components/ResearchHub.tsx` (Zeilen 186-187)
 
-## Lösung
-
-Zwei separate Bilder verwenden:
-- **Quadratisches Bild** für About-Seite: `team-florian-square.png`
-- **Portrait-Bild** für FM-Detailseite: `team-florian.png` (wiederherstellen)
-
-## Änderungen
-
-### 1. Neues Bild umbenennen
-
-Das hochgeladene quadratische Bild unter neuem Namen speichern:
-```
-user-uploads://Flo_Square.png → public/images/team-florian-square.png
+```tsx
+image: '/images/team-florian.png',
+imageStyle: 'scale-150 translate-y-[20%]',
 ```
 
-### 2. Altes Bild wiederherstellen
+Das Portrait-Bild wird mit Scaling und Verschiebung angepasst, um in den Container zu passen.
 
-Das ursprüngliche Portrait-Bild wiederherstellen:
-```
-public/images/team-florian.png → (vorherige Version aus Git/History)
-```
+## Option A: Quadratisches Bild verwenden (empfohlen)
 
-### 3. About.tsx anpassen
-
-**Datei:** `src/pages/About.tsx` (Zeile 98)
+Wie auf der About-Seite das quadratische Bild verwenden und die speziellen Transformationen entfernen:
 
 ```tsx
 // Vorher:
 image: '/images/team-florian.png',
+imageStyle: 'scale-150 translate-y-[20%]',
 
 // Nachher:
 image: '/images/team-florian-square.png',
+imageStyle: '',
 ```
 
-## Ergebnis
+## Option B: Portrait-Bild beibehalten
 
-| Seite | Bild | Format |
-|-------|------|--------|
-| /about | team-florian-square.png | Quadratisch (neu) |
-| /fm | team-florian.png | Portrait 3:4 (original) |
-| /expertise | team-florian.png | Portrait (original) |
+Das aktuelle Setup beibehalten - das Portrait-Bild mit den CSS-Transformationen sollte funktionieren.
 
-## Zusammenfassung
+## Empfehlung
 
-| Datei | Änderung |
-|-------|----------|
-| `public/images/team-florian-square.png` | Neues quadratisches Bild hinzufügen |
-| `public/images/team-florian.png` | Altes Portrait-Bild wiederherstellen |
-| `src/pages/About.tsx` | Zeile 98: Bildpfad auf `-square.png` ändern |
+**Option A** für Konsistenz mit der About-Seite. Das quadratische Bild passt besser in die Team-Karten.
+
+## Änderung
+
+| Datei | Zeile | Änderung |
+|-------|-------|----------|
+| `src/components/ResearchHub.tsx` | 186 | `image: '/images/team-florian-square.png'` |
+| `src/components/ResearchHub.tsx` | 187 | `imageStyle: ''` |
 
