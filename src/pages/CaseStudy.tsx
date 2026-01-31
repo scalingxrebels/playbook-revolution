@@ -7,539 +7,20 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { 
-  Image, Code, Search, Bot, CreditCard, Palette, FileText,
   ArrowLeft, ArrowRight, TrendingUp, Users, Zap, Target, 
   Calendar, User, Sparkles, ExternalLink, CheckCircle2
 } from 'lucide-react';
-
-interface CaseStudy {
-  id: string;
-  name: string;
-  icon: React.ElementType;
-  color: string;
-  founded: string;
-  founder: string;
-  focus: { en: string; de: string };
-  headline: { metric: string; label: { en: string; de: string } };
-  secondaryMetrics: { value: string; label: { en: string; de: string } }[];
-  thetaIndex: { overall: number; c1: number; c2: number; c3: number; c4: number };
-  thetaLabels: {
-    c1: { en: string; de: string };
-    c2: { en: string; de: string };
-    c3: { en: string; de: string };
-    c4: { en: string; de: string };
-  };
-  growthTimeline: { year: string; value: string; label?: string }[];
-  learnings: { en: string[]; de: string[] };
-  highlight: { en: string; de: string };
-  description: { en: string; de: string };
-  keyMetrics: { label: { en: string; de: string }; value: string; icon: React.ElementType }[];
-  strategicInsights: { en: string[]; de: string[] };
-}
-
-const caseStudiesData: CaseStudy[] = [
-  {
-    id: 'midjourney',
-    name: 'Midjourney',
-    icon: Image,
-    color: '#8B5CF6',
-    founded: '2021',
-    founder: 'David Holz',
-    focus: { en: 'AI Image Generation', de: 'KI-Bildgenerierung' },
-    headline: { metric: '$492M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
-    secondaryMetrics: [
-      { value: '21M+', label: { en: 'Discord Members', de: 'Discord Mitglieder' } },
-      { value: '26.8%', label: { en: 'Market Share', de: 'Marktanteil' } },
-      { value: '10x', label: { en: '3 Year Growth', de: '3 Jahre Wachstum' } },
-    ],
-    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.85, c3: 0.85, c4: 0.8 },
-    thetaLabels: {
-      c1: { en: 'Best-in-class image quality', de: 'Beste Bildqualität' },
-      c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
-      c3: { en: 'Efficient infrastructure', de: 'Effiziente Infrastruktur' },
-      c4: { en: 'Bootstrapped initially', de: 'Anfangs bootstrapped' },
-    },
-    growthTimeline: [
-      { year: '2022', value: '$50M' },
-      { year: '2023', value: '$200M', label: '+300%' },
-      { year: '2024', value: '$300M', label: '+50%' },
-      { year: '2025', value: '$492M', label: '+64%' },
-    ],
-    learnings: {
-      en: [
-        'Community-First Approach - Built on Discord instead of traditional channels',
-        'Freemium Model - Free trials, Premium for power users',
-        'Viral Loop - Every generated image is marketing',
-        'Rapid Iteration - Weekly feature updates',
-        'Quality Focus - Best image quality = market leader',
-      ],
-      de: [
-        'Community-First - Aufbau über Discord statt traditionelle Kanäle',
-        'Freemium Modell - Kostenlos testen, Premium für Power User',
-        'Viraler Loop - Jedes generierte Bild ist Marketing',
-        'Schnelle Iteration - Wöchentliche Feature-Updates',
-        'Qualitätsfokus - Beste Bildqualität = Marktführer',
-      ],
-    },
-    highlight: { en: 'Community-First AI Image Generation', de: 'Community-First KI-Bildgenerierung' },
-    description: {
-      en: 'Midjourney revolutionized AI image generation by building a community-first platform on Discord. With 21M+ members and $492M revenue, they prove that viral loops and quality focus drive hypergrowth.',
-      de: 'Midjourney revolutionierte die KI-Bildgenerierung durch den Aufbau einer Community-First-Plattform auf Discord. Mit 21M+ Mitgliedern und $492M Umsatz beweisen sie, dass virale Loops und Qualitätsfokus Hypergrowth antreiben.',
-    },
-    keyMetrics: [
-      { label: { en: 'Annual Revenue', de: 'Jahresumsatz' }, value: '$492M', icon: TrendingUp },
-      { label: { en: 'Discord Members', de: 'Discord Mitglieder' }, value: '21M+', icon: Users },
-      { label: { en: 'Market Share', de: 'Marktanteil' }, value: '26.8%', icon: Target },
-      { label: { en: 'Growth Rate', de: 'Wachstumsrate' }, value: '10x/3y', icon: Zap },
-    ],
-    strategicInsights: {
-      en: [
-        'Discord-native distribution eliminated traditional marketing costs',
-        'Every generated image serves as organic marketing content',
-        'Subscription model provides predictable recurring revenue',
-        'Community feedback loop accelerates product development',
-        'Quality leadership justifies premium pricing',
-      ],
-      de: [
-        'Discord-native Distribution eliminierte traditionelle Marketingkosten',
-        'Jedes generierte Bild dient als organischer Marketinginhalt',
-        'Abo-Modell bietet vorhersehbare wiederkehrende Einnahmen',
-        'Community-Feedback-Loop beschleunigt die Produktentwicklung',
-        'Qualitätsführerschaft rechtfertigt Premium-Preise',
-      ],
-    },
-  },
-  {
-    id: 'cursor',
-    name: 'Cursor',
-    icon: Code,
-    color: '#3B82F6',
-    founded: '2022',
-    founder: 'Anystic Team',
-    focus: { en: 'AI Code Editor', de: 'KI Code Editor' },
-    headline: { metric: '$400M', label: { en: 'Valuation Aug 2024', de: 'Bewertung Aug 2024' } },
-    secondaryMetrics: [
-      { value: '$100M', label: { en: 'ARR 2024', de: 'ARR 2024' } },
-      { value: '60', label: { en: 'Employees', de: 'Mitarbeiter' } },
-      { value: '$1.67M', label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' } },
-    ],
-    thetaIndex: { overall: 0.90, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.85 },
-    thetaLabels: {
-      c1: { en: 'Exceptional developer experience', de: 'Außergewöhnliche Developer Experience' },
-      c2: { en: 'Organic developer adoption', de: 'Organische Developer-Adoption' },
-      c3: { en: 'Scalable infrastructure', de: 'Skalierbare Infrastruktur' },
-      c4: { en: 'Efficient capital deployment', de: 'Effiziente Kapitalnutzung' },
-    },
-    growthTimeline: [
-      { year: '2022', value: '$0', label: 'Founded' },
-      { year: '2024', value: '$400M', label: 'Series B' },
-    ],
-    learnings: {
-      en: [
-        'Developer-First Product - Solve real developer pain points',
-        'AI Integration - Seamless AI assistance in existing workflow',
-        'Capital Efficiency - $100M ARR with 60 employees',
-        'Viral Adoption - Word-of-mouth among developers',
-        'Premium Positioning - High-value justifies premium pricing',
-      ],
-      de: [
-        'Developer-First Produkt - Löst echte Developer Pain Points',
-        'KI-Integration - Nahtlose KI-Assistenz im Workflow',
-        'Kapitaleffizienz - $100M ARR mit 60 Mitarbeitern',
-        'Virale Adoption - Mundpropaganda unter Developern',
-        'Premium-Positionierung - Hoher Wert rechtfertigt Premium-Preis',
-      ],
-    },
-    highlight: { en: 'AI-Native Code Editor', de: 'AI-Nativer Code Editor' },
-    description: {
-      en: 'Cursor built an AI-native code editor achieving $100M ARR with just 60 employees—the most capital-efficient AI company. Their $400M valuation (Aug 2024) showcases the power of developer-first products.',
-      de: 'Cursor baute einen KI-nativen Code-Editor und erreichte $100M ARR mit nur 60 Mitarbeitern—das kapitaleffizienteste KI-Unternehmen. Ihre $400M Bewertung (Aug 2024) zeigt die Kraft von Developer-First-Produkten.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$400M', icon: TrendingUp },
-      { label: { en: 'ARR', de: 'ARR' }, value: '$100M', icon: Zap },
-      { label: { en: 'Employees', de: 'Mitarbeiter' }, value: '60', icon: Users },
-      { label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' }, value: '$1.67M', icon: Target },
-    ],
-    strategicInsights: {
-      en: [
-        'Built on VS Code foundation reduced adoption friction',
-        'AI assistance feels native, not bolted-on',
-        'Developer word-of-mouth drives organic growth',
-        'Premium pricing justified by productivity gains',
-        'Rapid iteration based on developer feedback',
-      ],
-      de: [
-        'Aufbau auf VS Code reduzierte Adoptionsreibung',
-        'KI-Assistenz fühlt sich nativ an, nicht nachträglich hinzugefügt',
-        'Developer-Mundpropaganda treibt organisches Wachstum',
-        'Premium-Preis durch Produktivitätsgewinne gerechtfertigt',
-        'Schnelle Iteration basierend auf Developer-Feedback',
-      ],
-    },
-  },
-  {
-    id: 'perplexity',
-    name: 'Perplexity AI',
-    icon: Search,
-    color: '#14B8A6',
-    founded: '2022',
-    founder: 'Aravind Srinivas',
-    focus: { en: 'AI Search Engine', de: 'KI-Suchmaschine' },
-    headline: { metric: '$9B', label: { en: 'Valuation 2025', de: 'Bewertung 2025' } },
-    secondaryMetrics: [
-      { value: '780M', label: { en: 'Queries/Month', de: 'Anfragen/Monat' } },
-      { value: '18x', label: { en: '2 Year Growth', de: '2 Jahre Wachstum' } },
-      { value: '10M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
-    ],
-    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.85, c3: 0.8, c4: 0.8 },
-    thetaLabels: {
-      c1: { en: 'Superior search quality', de: 'Überlegene Suchqualität' },
-      c2: { en: 'Aggressive growth hacking', de: 'Aggressives Growth Hacking' },
-      c3: { en: 'Scaling infrastructure', de: 'Skalierende Infrastruktur' },
-      c4: { en: 'Well-funded, efficient burn', de: 'Gut finanziert, effizienter Burn' },
-    },
-    growthTimeline: [
-      { year: 'Dec 2022', value: '2.2M', label: 'visits/mo' },
-      { year: 'Dec 2023', value: '45M', label: '20x growth' },
-      { year: 'Mid 2024', value: '230M', label: 'queries/mo' },
-      { year: 'May 2025', value: '780M', label: '3.4x growth' },
-    ],
-    learnings: {
-      en: [
-        'Bold Positioning - Direct competitor to Google',
-        'Growth Hacking - Aggressive user acquisition',
-        'Product Innovation - Better answers than Google',
-        'Viral Mechanics - Share-worthy search results',
-        'Rapid Scaling - 0 to 780M queries/month in 2.5 years',
-      ],
-      de: [
-        'Mutige Positionierung - Direkter Google-Konkurrent',
-        'Growth Hacking - Aggressive Nutzerakquise',
-        'Produktinnovation - Bessere Antworten als Google',
-        'Virale Mechaniken - Teilenswerte Suchergebnisse',
-        'Schnelle Skalierung - 0 auf 780M Anfragen/Monat in 2.5 Jahren',
-      ],
-    },
-    highlight: { en: 'The Google Challenger', de: 'Der Google-Herausforderer' },
-    description: {
-      en: 'Perplexity AI is challenging Google with AI-native search that provides direct answers. Growing from 0 to 780M queries/month in 2.5 years, they prove that bold positioning and product innovation can disrupt giants.',
-      de: 'Perplexity AI fordert Google mit KI-nativer Suche heraus, die direkte Antworten liefert. Von 0 auf 780M Anfragen/Monat in 2.5 Jahren gewachsen, beweisen sie, dass mutige Positionierung und Produktinnovation Giganten stören können.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$9B', icon: TrendingUp },
-      { label: { en: 'Queries/Month', de: 'Anfragen/Monat' }, value: '780M', icon: Search },
-      { label: { en: 'Monthly Users', de: 'Monatliche Nutzer' }, value: '10M+', icon: Users },
-      { label: { en: 'Growth Rate', de: 'Wachstumsrate' }, value: '18x/2y', icon: Zap },
-    ],
-    strategicInsights: {
-      en: [
-        'Direct answers eliminate need to click through results',
-        'Citation system builds trust and credibility',
-        'Subscription model drives predictable revenue',
-        'Mobile-first approach captures on-the-go searches',
-        'Enterprise offering unlocks B2B revenue stream',
-      ],
-      de: [
-        'Direkte Antworten eliminieren Klicks durch Ergebnisse',
-        'Zitationssystem baut Vertrauen und Glaubwürdigkeit auf',
-        'Abo-Modell treibt vorhersehbare Einnahmen',
-        'Mobile-First-Ansatz erfasst Suchen unterwegs',
-        'Enterprise-Angebot erschließt B2B-Einnahmequelle',
-      ],
-    },
-  },
-  {
-    id: 'openai',
-    name: 'OpenAI',
-    icon: Bot,
-    color: '#10B981',
-    founded: '2015',
-    founder: 'Sam Altman, Elon Musk et al.',
-    focus: { en: 'Large Language Models', de: 'Große Sprachmodelle' },
-    headline: { metric: '$80B+', label: { en: 'Valuation 2024', de: 'Bewertung 2024' } },
-    secondaryMetrics: [
-      { value: '200M+', label: { en: 'ChatGPT Users', de: 'ChatGPT Nutzer' } },
-      { value: '$3.4B', label: { en: 'Revenue 2024', de: 'Umsatz 2024' } },
-      { value: '80%+', label: { en: 'Fortune 500 Adoption', de: 'Fortune 500 Adoption' } },
-    ],
-    thetaIndex: { overall: 0.95, c1: 1.0, c2: 0.9, c3: 0.9, c4: 0.9 },
-    thetaLabels: {
-      c1: { en: 'Best-in-class LLMs', de: 'Beste LLMs der Klasse' },
-      c2: { en: 'API + Consumer + Enterprise', de: 'API + Consumer + Enterprise' },
-      c3: { en: 'Massive scale operations', de: 'Massive Skalenoperationen' },
-      c4: { en: 'Efficient growth', de: 'Effizientes Wachstum' },
-    },
-    growthTimeline: [
-      { year: '2023', value: '$80M', label: 'revenue' },
-      { year: '2024', value: '$3.4B', label: '42.5x growth' },
-      { year: '2025', value: '$10B+', label: 'projected' },
-    ],
-    learnings: {
-      en: [
-        'API-First Strategy - Enable developers to build on top',
-        'Consumer + Enterprise - Dual revenue streams',
-        'Continuous Improvement - Regular model updates',
-        'Ecosystem Play - Partnerships with Microsoft, Apple',
-        'Pricing Power - Premium positioning justified by quality',
-      ],
-      de: [
-        'API-First Strategie - Entwickler können darauf aufbauen',
-        'Consumer + Enterprise - Duale Umsatzströme',
-        'Kontinuierliche Verbesserung - Regelmäßige Modell-Updates',
-        'Ökosystem-Spiel - Partnerschaften mit Microsoft, Apple',
-        'Preissetzungsmacht - Premium durch Qualität gerechtfertigt',
-      ],
-    },
-    highlight: { en: '100M Users in 2 Months (Fastest Ever)', de: '100M Nutzer in 2 Monaten (schnellstes je)' },
-    description: {
-      en: 'OpenAI created ChatGPT, the fastest product to reach 100M users in history. With $80B+ valuation and 200M+ users, they defined the AI era and set the benchmark for AI-native companies.',
-      de: 'OpenAI schuf ChatGPT, das schnellste Produkt, das 100M Nutzer in der Geschichte erreichte. Mit $80B+ Bewertung und 200M+ Nutzern definierten sie die KI-Ära und setzten den Maßstab für KI-native Unternehmen.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$80B+', icon: TrendingUp },
-      { label: { en: 'Revenue 2024', de: 'Umsatz 2024' }, value: '$3.4B', icon: Zap },
-      { label: { en: 'ChatGPT Users', de: 'ChatGPT Nutzer' }, value: '200M+', icon: Users },
-      { label: { en: 'Fortune 500', de: 'Fortune 500' }, value: '80%+', icon: Target },
-    ],
-    strategicInsights: {
-      en: [
-        'API platform enables developer ecosystem',
-        'ChatGPT consumer product drives awareness',
-        'Enterprise offering captures high-value customers',
-        'Microsoft partnership provides distribution',
-        'Continuous model improvement maintains leadership',
-      ],
-      de: [
-        'API-Plattform ermöglicht Entwickler-Ökosystem',
-        'ChatGPT-Verbraucherprodukt treibt Awareness',
-        'Enterprise-Angebot erfasst hochwertige Kunden',
-        'Microsoft-Partnerschaft bietet Distribution',
-        'Kontinuierliche Modellverbesserung erhält Führung',
-      ],
-    },
-  },
-  {
-    id: 'stripe',
-    name: 'Stripe',
-    icon: CreditCard,
-    color: '#6366F1',
-    founded: '2010',
-    founder: 'Patrick & John Collison',
-    focus: { en: 'Developer-First Payments', de: 'Developer-First Zahlungen' },
-    headline: { metric: '$95B', label: { en: 'Valuation 2023', de: 'Bewertung 2023' } },
-    secondaryMetrics: [
-      { value: '$14B', label: { en: 'Revenue 2023', de: 'Umsatz 2023' } },
-      { value: '$1T+', label: { en: 'Processed Annually', de: 'Jährlich verarbeitet' } },
-      { value: '80%+', label: { en: 'Startup Adoption', de: 'Startup Adoption' } },
-    ],
-    thetaIndex: { overall: 0.90, c1: 0.9, c2: 0.8, c3: 0.9, c4: 0.9 },
-    thetaLabels: {
-      c1: { en: 'Best developer experience', de: 'Beste Developer Experience' },
-      c2: { en: 'Developer-first, enterprise expansion', de: 'Developer-first, Enterprise-Expansion' },
-      c3: { en: 'Global operations at scale', de: 'Globale Operationen in Skala' },
-      c4: { en: 'Profitable, efficient growth', de: 'Profitabel, effizientes Wachstum' },
-    },
-    growthTimeline: [
-      { year: '2015', value: '$1B', label: 'valuation' },
-      { year: '2020', value: '$36B', label: '36x' },
-      { year: '2023', value: '$95B', label: '95x' },
-    ],
-    learnings: {
-      en: [
-        'Developer Experience - Best-in-class API',
-        'Global Expansion - Support 135+ currencies',
-        'Product Expansion - Billing, Connect, Terminal',
-        'Enterprise Focus - High-value customers',
-        'Long-term Play - Patient capital, profitability focus',
-      ],
-      de: [
-        'Developer Experience - Beste API der Klasse',
-        'Globale Expansion - 135+ Währungen unterstützt',
-        'Produkt-Expansion - Billing, Connect, Terminal',
-        'Enterprise-Fokus - Hochwertige Kunden',
-        'Langfristiges Spiel - Geduldiges Kapital, Profitabilitätsfokus',
-      ],
-    },
-    highlight: { en: 'The Developer-First Payments Pioneer', de: 'Der Developer-First Zahlungs-Pionier' },
-    description: {
-      en: 'Stripe pioneered developer-first payments, processing $1T+ annually. Their 95x valuation from $1B to $95B proves that superior developer experience and patient capital create category-defining companies.',
-      de: 'Stripe war Pionier bei Developer-First-Zahlungen und verarbeitet jährlich $1T+. Ihre 95x Bewertung von $1B auf $95B beweist, dass überlegene Developer Experience und geduldiges Kapital kategoriedefinierende Unternehmen schaffen.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$95B', icon: TrendingUp },
-      { label: { en: 'Revenue 2023', de: 'Umsatz 2023' }, value: '$14B', icon: Zap },
-      { label: { en: 'Processed/Year', de: 'Verarbeitet/Jahr' }, value: '$1T+', icon: CreditCard },
-      { label: { en: 'Startup Adoption', de: 'Startup Adoption' }, value: '80%+', icon: Target },
-    ],
-    strategicInsights: {
-      en: [
-        'Best-in-class API documentation reduces integration friction',
-        'Developer-first adoption leads to enterprise expansion',
-        'Product expansion (Billing, Connect) increases wallet share',
-        'Global infrastructure supports 135+ currencies',
-        'Profitability focus ensures long-term sustainability',
-      ],
-      de: [
-        'Beste API-Dokumentation reduziert Integrationsreibung',
-        'Developer-First-Adoption führt zu Enterprise-Expansion',
-        'Produkt-Expansion (Billing, Connect) erhöht Wallet Share',
-        'Globale Infrastruktur unterstützt 135+ Währungen',
-        'Profitabilitätsfokus sichert langfristige Nachhaltigkeit',
-      ],
-    },
-  },
-  {
-    id: 'figma',
-    name: 'Figma',
-    icon: Palette,
-    color: '#F97316',
-    founded: '2012',
-    founder: 'Dylan Field, Evan Wallace',
-    focus: { en: 'Collaborative Design Platform', de: 'Kollaborative Design-Plattform' },
-    headline: { metric: '$20B', label: { en: 'Valuation 2023', de: 'Bewertung 2023' } },
-    secondaryMetrics: [
-      { value: '$425M', label: { en: 'Revenue 2023', de: 'Umsatz 2023' } },
-      { value: '4M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
-      { value: '90%+', label: { en: 'Design Team Adoption', de: 'Design Team Adoption' } },
-    ],
-    thetaIndex: { overall: 0.87, c1: 0.9, c2: 0.8, c3: 0.8, c4: 0.8 },
-    thetaLabels: {
-      c1: { en: 'Best collaborative design tool', de: 'Bestes kollaboratives Design-Tool' },
-      c2: { en: 'Viral adoption among designers', de: 'Virale Adoption unter Designern' },
-      c3: { en: 'Global operations', de: 'Globale Operationen' },
-      c4: { en: 'Well-funded, growing revenue', de: 'Gut finanziert, wachsender Umsatz' },
-    },
-    growthTimeline: [
-      { year: '2019', value: '$2B', label: 'valuation' },
-      { year: '2021', value: '$10B', label: '5x' },
-      { year: '2023', value: '$20B', label: '10x' },
-    ],
-    learnings: {
-      en: [
-        'Collaborative First - Real-time multiplayer',
-        'Web-Based - No installation required',
-        'Ecosystem Play - Plugins, integrations',
-        'Enterprise Expansion - From startups to Fortune 500',
-        'AI Integration - Generative design features',
-      ],
-      de: [
-        'Collaboration First - Echtzeit-Multiplayer',
-        'Web-basiert - Keine Installation nötig',
-        'Ökosystem-Spiel - Plugins, Integrationen',
-        'Enterprise-Expansion - Von Startups zu Fortune 500',
-        'KI-Integration - Generative Design-Features',
-      ],
-    },
-    highlight: { en: 'The Collaborative Design Leader', de: 'Der Collaborative Design Leader' },
-    description: {
-      en: 'Figma revolutionized design with real-time collaboration in the browser. Their 10x valuation growth and 90%+ design team adoption prove that collaborative-first products dominate markets.',
-      de: 'Figma revolutionierte Design mit Echtzeit-Kollaboration im Browser. Ihr 10x Bewertungswachstum und 90%+ Design-Team-Adoption beweisen, dass Collaboration-First-Produkte Märkte dominieren.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$20B', icon: TrendingUp },
-      { label: { en: 'Revenue 2023', de: 'Umsatz 2023' }, value: '$425M', icon: Zap },
-      { label: { en: 'Monthly Users', de: 'Monatliche Nutzer' }, value: '4M+', icon: Users },
-      { label: { en: 'Team Adoption', de: 'Team Adoption' }, value: '90%+', icon: Target },
-    ],
-    strategicInsights: {
-      en: [
-        'Real-time collaboration eliminates file versioning chaos',
-        'Web-based delivery removes installation friction',
-        'Plugin ecosystem extends product capabilities',
-        'Freemium model drives bottom-up adoption',
-        'AI features keep product at cutting edge',
-      ],
-      de: [
-        'Echtzeit-Kollaboration eliminiert Dateiversionschaos',
-        'Web-basierte Bereitstellung entfernt Installationsreibung',
-        'Plugin-Ökosystem erweitert Produktfähigkeiten',
-        'Freemium-Modell treibt Bottom-Up-Adoption',
-        'KI-Features halten das Produkt auf dem neuesten Stand',
-      ],
-    },
-  },
-  {
-    id: 'notion',
-    name: 'Notion',
-    icon: FileText,
-    color: '#171717',
-    founded: '2016',
-    founder: 'Ivan Zhao',
-    focus: { en: 'All-in-One Workspace', de: 'All-in-One Workspace' },
-    headline: { metric: '$10B', label: { en: 'Valuation 2024', de: 'Bewertung 2024' } },
-    secondaryMetrics: [
-      { value: '30M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
-      { value: '$100M+', label: { en: 'Revenue 2024', de: 'Umsatz 2024' } },
-      { value: '100%+', label: { en: 'YoY Growth', de: 'YoY Wachstum' } },
-    ],
-    thetaIndex: { overall: 0.85, c1: 0.8, c2: 0.9, c3: 0.8, c4: 0.8 },
-    thetaLabels: {
-      c1: { en: 'Flexible, powerful workspace', de: 'Flexibler, leistungsstarker Workspace' },
-      c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
-      c3: { en: 'Distributed team operations', de: 'Verteilte Team-Operationen' },
-      c4: { en: 'Efficient growth, profitability focus', de: 'Effizientes Wachstum, Profitabilitätsfokus' },
-    },
-    growthTimeline: [
-      { year: '2020', value: '$2B', label: 'valuation' },
-      { year: '2021', value: '$10B', label: '5x' },
-      { year: '2024', value: '$10B', label: 'stable' },
-    ],
-    learnings: {
-      en: [
-        'Community-Driven - Users create templates',
-        'Freemium Model - Free tier drives adoption',
-        'Creator Economy - Notion template marketplace',
-        'AI Integration - Notion AI for content generation',
-        'Vertical Expansion - CRM, Wiki, Database',
-      ],
-      de: [
-        'Community-Driven - Nutzer erstellen Templates',
-        'Freemium Modell - Free Tier treibt Adoption',
-        'Creator Economy - Notion Template Marketplace',
-        'KI-Integration - Notion AI für Content-Generierung',
-        'Vertikale Expansion - CRM, Wiki, Database',
-      ],
-    },
-    highlight: { en: 'The Community-Driven Workspace', de: 'Der Community-Driven Workspace' },
-    description: {
-      en: 'Notion built a 30M+ user community workspace through user-generated templates and a freemium model. Their community-first approach proves that empowering users creates sustainable growth.',
-      de: 'Notion baute einen 30M+ Nutzer-Community-Workspace durch nutzergenerierte Templates und ein Freemium-Modell auf. Ihr Community-First-Ansatz beweist, dass Nutzer-Empowerment nachhaltiges Wachstum schafft.',
-    },
-    keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$10B', icon: TrendingUp },
-      { label: { en: 'Revenue 2024', de: 'Umsatz 2024' }, value: '$100M+', icon: Zap },
-      { label: { en: 'Monthly Users', de: 'Monatliche Nutzer' }, value: '30M+', icon: Users },
-      { label: { en: 'YoY Growth', de: 'YoY Wachstum' }, value: '100%+', icon: Target },
-    ],
-    strategicInsights: {
-      en: [
-        'User-generated templates create organic content marketing',
-        'Freemium model drives bottom-up enterprise adoption',
-        'Template marketplace enables creator economy',
-        'AI integration (Notion AI) adds premium value',
-        'Flexibility enables expansion into CRM, Wiki, Database',
-      ],
-      de: [
-        'Nutzergenerierte Templates schaffen organisches Content-Marketing',
-        'Freemium-Modell treibt Bottom-Up-Enterprise-Adoption',
-        'Template-Marketplace ermöglicht Creator Economy',
-        'KI-Integration (Notion AI) fügt Premium-Wert hinzu',
-        'Flexibilität ermöglicht Expansion in CRM, Wiki, Database',
-      ],
-    },
-  },
-];
+import { researchCases, getResearchCaseById } from '@/data/cases';
 
 const CaseStudyPage = () => {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
   const navigate = useNavigate();
   
-  const caseStudy = caseStudiesData.find(cs => cs.id === id);
-  const currentIndex = caseStudiesData.findIndex(cs => cs.id === id);
-  const prevStudy = currentIndex > 0 ? caseStudiesData[currentIndex - 1] : null;
-  const nextStudy = currentIndex < caseStudiesData.length - 1 ? caseStudiesData[currentIndex + 1] : null;
+  const caseStudy = getResearchCaseById(id || '');
+  const currentIndex = researchCases.findIndex(cs => cs.id === id);
+  const prevStudy = currentIndex > 0 ? researchCases[currentIndex - 1] : null;
+  const nextStudy = currentIndex < researchCases.length - 1 ? researchCases[currentIndex + 1] : null;
 
   if (!caseStudy) {
     return (
@@ -548,10 +29,10 @@ const CaseStudyPage = () => {
           <h1 className="text-2xl font-bold mb-4">
             {language === 'en' ? 'Case Study Not Found' : 'Case Study nicht gefunden'}
           </h1>
-          <Link to="/#proof">
+          <Link to="/expertise">
             <Button>
               <ArrowLeft className="mr-2 h-4 w-4" />
-              {language === 'en' ? 'Back to Case Studies' : 'Zurück zu Case Studies'}
+              {language === 'en' ? 'Back to Expertise' : 'Zurück zu Expertise'}
             </Button>
           </Link>
         </div>
@@ -583,8 +64,8 @@ const CaseStudyPage = () => {
           <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
             <Link to="/" className="hover:text-primary transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/#proof" className="hover:text-primary transition-colors">
-              {language === 'en' ? 'Case Studies' : 'Case Studies'}
+            <Link to="/expertise" className="hover:text-primary transition-colors">
+              {language === 'en' ? 'Expertise' : 'Expertise'}
             </Link>
             <span>/</span>
             <span className="text-foreground">{caseStudy.name}</span>
@@ -601,83 +82,141 @@ const CaseStudyPage = () => {
                   <Icon className="w-8 h-8" style={{ color: caseStudy.color }} />
                 </div>
                 <div>
-                  <h1 className="text-4xl font-bold">{caseStudy.name}</h1>
-                  <p className="text-muted-foreground">{caseStudy.focus[language]}</p>
+                  <h1 className="text-4xl md:text-5xl font-display font-bold">{caseStudy.name}</h1>
+                  <p className="text-muted-foreground">{caseStudy.focus[language as 'en' | 'de']}</p>
                 </div>
               </div>
 
-              <Badge 
-                className="mb-6 text-sm px-4 py-1"
-                style={{ backgroundColor: `${caseStudy.color}20`, color: caseStudy.color, border: 'none' }}
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                {caseStudy.highlight[language]}
-              </Badge>
-
-              <p className="text-lg text-muted-foreground mb-8">
-                {caseStudy.description[language]}
-              </p>
-
-              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-8">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <span>{language === 'en' ? 'Founded' : 'Gegründet'}: {caseStudy.founded}</span>
+              <div className="flex flex-wrap gap-4 mb-6">
+                <div className="flex items-center gap-2 text-sm">
+                  <Calendar className="w-4 h-4 text-muted-foreground" />
+                  <span>{language === 'en' ? 'Founded' : 'Gegründet'} {caseStudy.founded}</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <User className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-sm">
+                  <User className="w-4 h-4 text-muted-foreground" />
                   <span>{caseStudy.founder}</span>
                 </div>
+                {caseStudy.dataSource && (
+                  <Badge variant="outline" className="text-xs">
+                    {language === 'en' ? 'Source' : 'Quelle'}: {caseStudy.dataSource}
+                  </Badge>
+                )}
               </div>
 
+              <p className="text-lg text-muted-foreground mb-8">
+                {caseStudy.description[language as 'en' | 'de']}
+              </p>
+
               {/* Headline Metric */}
-              <div 
-                className="p-6 rounded-2xl mb-6"
-                style={{ backgroundColor: `${caseStudy.color}10` }}
-              >
-                <p className="text-sm text-muted-foreground mb-1">{caseStudy.headline.label[language]}</p>
-                <p className="text-5xl font-bold" style={{ color: caseStudy.color }}>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 mb-6">
+                <p className="text-5xl md:text-6xl font-display font-bold text-primary">
                   {caseStudy.headline.metric}
                 </p>
+                <p className="text-muted-foreground">
+                  {caseStudy.headline.label[language as 'en' | 'de']}
+                </p>
+              </div>
+
+              {/* Secondary Metrics */}
+              <div className="grid grid-cols-3 gap-4">
+                {caseStudy.secondaryMetrics.map((metric, idx) => (
+                  <div key={idx} className="text-center p-4 rounded-xl bg-muted/50">
+                    <p className="text-2xl font-bold">{metric.value}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {metric.label[language as 'en' | 'de']}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Right: θ_index Radial */}
-            <div className="bg-card border border-border rounded-2xl p-6">
-              <h3 className="text-xl font-semibold mb-4 text-center">θ_index Breakdown</h3>
-              <ThetaIndexRadial
-                c1={caseStudy.thetaIndex.c1}
-                c2={caseStudy.thetaIndex.c2}
-                c3={caseStudy.thetaIndex.c3}
-                c4={caseStudy.thetaIndex.c4}
-                overall={caseStudy.thetaIndex.overall}
-                color={caseStudy.color}
-              />
+            {/* Right: Theta Index */}
+            <div className="lg:sticky lg:top-24">
+              <Card className="p-6">
+                <CardHeader className="px-0 pt-0">
+                  <CardTitle className="flex items-center gap-2">
+                    <Sparkles className="w-5 h-5 text-primary" />
+                    {language === 'en' ? 'AI-Native Scaling Index' : 'AI-Native Skalierungs-Index'}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="px-0 pb-0">
+                  <ThetaIndexRadial
+                    overall={caseStudy.thetaIndex.overall}
+                    c1={caseStudy.thetaIndex.c1}
+                    c2={caseStudy.thetaIndex.c2}
+                    c3={caseStudy.thetaIndex.c3}
+                    c4={caseStudy.thetaIndex.c4}
+                  />
+                  <div className="mt-6 space-y-3">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">C1: Strategy</span>
+                      <span>{caseStudy.thetaLabels.c1[language as 'en' | 'de']}</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">C2: GTM</span>
+                      <span>{caseStudy.thetaLabels.c2[language as 'en' | 'de']}</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">C3: Execution</span>
+                      <span>{caseStudy.thetaLabels.c3[language as 'en' | 'de']}</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-muted-foreground">C4: Capital</span>
+                      <span>{caseStudy.thetaLabels.c4[language as 'en' | 'de']}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Metrics Grid */}
+      {/* Growth Timeline */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            {language === 'en' ? 'Key Metrics' : 'Schlüsselkennzahlen'}
+          <h2 className="text-2xl font-display font-bold mb-8">
+            {language === 'en' ? 'Growth Timeline' : 'Wachstums-Timeline'}
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {caseStudy.growthTimeline.map((item, idx) => (
+              <div 
+                key={idx}
+                className="relative p-6 rounded-xl bg-background border border-border"
+              >
+                <p className="text-sm text-muted-foreground mb-2">{item.year}</p>
+                <p className="text-3xl font-bold">{item.value}</p>
+                {item.label && (
+                  <Badge variant="secondary" className="mt-2">
+                    {item.label}
+                  </Badge>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Key Metrics */}
+      <section className="py-16">
+        <div className="container mx-auto px-6">
+          <h2 className="text-2xl font-display font-bold mb-8">
+            {language === 'en' ? 'Key Metrics' : 'Schlüssel-Metriken'}
+          </h2>
+          <div className="grid md:grid-cols-4 gap-6">
             {caseStudy.keyMetrics.map((metric, idx) => {
               const MetricIcon = metric.icon;
               return (
-                <Card key={idx} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="pt-6">
-                    <div 
-                      className="w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center"
-                      style={{ backgroundColor: `${caseStudy.color}20` }}
-                    >
-                      <MetricIcon className="w-6 h-6" style={{ color: caseStudy.color }} />
+                <Card key={idx} className="p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <MetricIcon className="w-5 h-5 text-primary" />
                     </div>
-                    <p className="text-3xl font-bold mb-1">{metric.value}</p>
-                    <p className="text-sm text-muted-foreground">{metric.label[language]}</p>
-                  </CardContent>
+                    <span className="text-sm text-muted-foreground">
+                      {metric.label[language as 'en' | 'de']}
+                    </span>
+                  </div>
+                  <p className="text-3xl font-bold">{metric.value}</p>
                 </Card>
               );
             })}
@@ -685,78 +224,33 @@ const CaseStudyPage = () => {
         </div>
       </section>
 
-      {/* Growth Timeline */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <h2 className="text-2xl font-bold mb-8 text-center">
-            {language === 'en' ? 'Growth Timeline' : 'Wachstumsverlauf'}
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-border" />
-              {caseStudy.growthTimeline.map((point, idx) => (
-                <div key={idx} className={`relative flex items-center mb-8 ${idx % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-5/12 ${idx % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <Card className="inline-block">
-                      <CardContent className="py-4 px-6">
-                        <p className="text-sm text-muted-foreground">{point.year}</p>
-                        <p className="text-2xl font-bold" style={{ color: caseStudy.color }}>{point.value}</p>
-                        {point.label && (
-                          <Badge variant="secondary" className="mt-2">{point.label}</Badge>
-                        )}
-                      </CardContent>
-                    </Card>
-                  </div>
-                  <div 
-                    className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 border-background"
-                    style={{ backgroundColor: caseStudy.color }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategic Insights & Learnings */}
+      {/* Learnings */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Strategic Insights */}
+          <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-2xl font-bold mb-6">
-                {language === 'en' ? 'Strategic Insights' : 'Strategische Erkenntnisse'}
-              </h2>
-              <div className="space-y-4">
-                {caseStudy.strategicInsights[language].map((insight, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: caseStudy.color }} />
-                    <p className="text-muted-foreground">{insight}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Key Learnings */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">
+              <h2 className="text-2xl font-display font-bold mb-6">
                 {language === 'en' ? 'Key Learnings' : 'Wichtige Erkenntnisse'}
               </h2>
               <div className="space-y-4">
-                {caseStudy.learnings[language].map((learning, idx) => (
-                  <Card key={idx} className="hover:shadow-md transition-shadow">
-                    <CardContent className="py-4 px-5">
-                      <div className="flex items-center gap-3">
-                        <div 
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
-                          style={{ backgroundColor: caseStudy.color }}
-                        >
-                          {idx + 1}
-                        </div>
-                        <p className="font-medium">{learning}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                {caseStudy.learnings[language as 'en' | 'de'].map((learning, idx) => (
+                  <div key={idx} className="flex gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p>{learning}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h2 className="text-2xl font-display font-bold mb-6">
+                {language === 'en' ? 'Strategic Insights' : 'Strategische Einsichten'}
+              </h2>
+              <div className="space-y-4">
+                {caseStudy.strategicInsights[language as 'en' | 'de'].map((insight, idx) => (
+                  <div key={idx} className="flex gap-3">
+                    <Sparkles className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <p>{insight}</p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -764,69 +258,32 @@ const CaseStudyPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-6">
-          <Card className="border-2" style={{ borderColor: `${caseStudy.color}40` }}>
-            <CardContent className="py-12 text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                {language === 'en' 
-                  ? `Want to scale like ${caseStudy.name}?`
-                  : `Wollen Sie skalieren wie ${caseStudy.name}?`
-                }
-              </h2>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                {language === 'en'
-                  ? 'Book a free consultation to learn how the AI-Native Scaling Framework can help your company achieve similar growth.'
-                  : 'Buchen Sie eine kostenlose Beratung, um zu erfahren, wie das AI-Native Scaling Framework Ihrem Unternehmen zu ähnlichem Wachstum verhelfen kann.'
-                }
-              </p>
-              <Button size="lg" onClick={scrollToBooking}>
-                {language === 'en' ? 'Book Free Consultation' : 'Kostenlose Beratung buchen'}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Navigation Between Case Studies */}
-      <section className="py-12 border-t border-border">
+      {/* Navigation */}
+      <section className="py-12 border-t">
         <div className="container mx-auto px-6">
           <div className="flex justify-between items-center">
             {prevStudy ? (
-              <Link to={`/case-study/${prevStudy.id}`} className="group flex items-center gap-3">
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <div>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'en' ? 'Previous' : 'Vorherige'}
-                  </p>
-                  <p className="font-medium">{prevStudy.name}</p>
-                </div>
+              <Link to={`/case-study/${prevStudy.id}`} className="group">
+                <Button variant="ghost" className="gap-2">
+                  <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+                  {prevStudy.name}
+                </Button>
               </Link>
-            ) : (
-              <div />
-            )}
+            ) : <div />}
             
-            <Link to="/#proof">
-              <Button variant="outline">
-                {language === 'en' ? 'All Case Studies' : 'Alle Case Studies'}
-              </Button>
-            </Link>
+            <Button onClick={scrollToBooking} className="bg-primary text-primary-foreground">
+              {language === 'en' ? 'Apply These Learnings' : 'Diese Erkenntnisse anwenden'}
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
             
             {nextStudy ? (
-              <Link to={`/case-study/${nextStudy.id}`} className="group flex items-center gap-3 text-right">
-                <div>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'en' ? 'Next' : 'Nächste'}
-                  </p>
-                  <p className="font-medium">{nextStudy.name}</p>
-                </div>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <Link to={`/case-study/${nextStudy.id}`} className="group">
+                <Button variant="ghost" className="gap-2">
+                  {nextStudy.name}
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Button>
               </Link>
-            ) : (
-              <div />
-            )}
+            ) : <div />}
           </div>
         </div>
       </section>

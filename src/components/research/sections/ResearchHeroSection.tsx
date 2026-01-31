@@ -64,12 +64,6 @@ const ResearchHeroSection: React.FC<ResearchHeroSectionProps> = ({ data }) => {
         <Breadcrumb className="justify-center mb-6 animate-fade-in">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
-                {data.breadcrumb.home[language]}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
               <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
                 {data.breadcrumb.parent[language]}
               </BreadcrumbLink>

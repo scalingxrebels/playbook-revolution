@@ -191,7 +191,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/gtm-effectiveness-review',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/gtm-review',
+    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -228,7 +228,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/pricing-packaging-review',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/pricing-review',
+    secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -265,7 +265,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/scaling-readiness-assessment',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/scaling-assessment',
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -302,7 +302,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/ai-maturity-assessment',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/ai-assessment',
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -339,7 +339,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/investor-readiness-pitch-deck-check',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/pitch-deck-check',
+    secondaryCtaUrl: '/cases/vc-due-diligence-passed-investment-secured',
     addOnPricing: {
       base: '€1.9K',
       bridge: '€2.5K'
@@ -376,7 +376,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/vc-dd-simulation',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/vc-dd-simulation',
+    secondaryCtaUrl: '/cases/vc-due-diligence-passed-investment-secured',
     addOnPricing: {
       base: '€5.9K',
       bridge: '€9.8K'
@@ -413,7 +413,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/portfolio-assessment',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/portfolio-assessment',
+    secondaryCtaUrl: '/cases/exit-readiness-achieved',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -450,7 +450,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/custom-analysis-report',
     secondaryCtaEn: 'See examples',
     secondaryCtaDe: 'Beispiele ansehen',
-    secondaryCtaUrl: '/cases/custom-analysis',
+    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -492,7 +492,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/cac-crisis',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/cac-transformation'
+    secondaryCtaUrl: '/cases/cac-crisis-turnaround'
   },
   {
     id: 12,
@@ -526,7 +526,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/growth-momentum',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/growth-transformation'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 13,
@@ -560,7 +560,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/pricing-power',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/pricing-transformation'
+    secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
   },
   {
     id: 14,
@@ -594,7 +594,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/nrr-engine',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/nrr-transformation'
+    secondaryCtaUrl: '/cases/nrr-machine-breakthrough'
   },
   {
     id: 15,
@@ -628,7 +628,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/scaling-velocity',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/scaling-transformation'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 16,
@@ -662,7 +662,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/ai-quick-wins',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/ai-transformation'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 17,
@@ -696,7 +696,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/board-readiness',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/board-transformation'
+    secondaryCtaUrl: '/cases/vc-due-diligence-passed-investment-secured'
   },
   {
     id: 18,
@@ -730,7 +730,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/portfolio-performance',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/portfolio-transformation'
+    secondaryCtaUrl: '/cases/exit-readiness-achieved'
   },
   {
     id: 19,
@@ -764,7 +764,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/custom-sprint',
     secondaryCtaEn: 'See past examples',
     secondaryCtaDe: 'Frühere Beispiele ansehen',
-    secondaryCtaUrl: '/cases/custom-transformation'
+    secondaryCtaUrl: '/cases/partner-channel-transformed-scalable-growth'
   },
 
   // ============================================
@@ -802,7 +802,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/efficient-hypergrowth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/hypergrowth-boost'
+    secondaryCtaUrl: '/cases/cac-crisis-turnaround'
   },
   {
     id: 21,
@@ -836,7 +836,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/growth-engine',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/growth-boost'
+    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled'
   },
   {
     id: 22,
@@ -870,7 +870,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/pricing-dominance',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/pricing-boost'
+    secondaryCtaUrl: '/cases/pricing-redesigned-scalable-growth'
   },
   {
     id: 23,
@@ -904,7 +904,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/nrr-machine',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/nrr-boost'
+    secondaryCtaUrl: '/cases/nrr-machine-breakthrough'
   },
   {
     id: 24,
@@ -938,7 +938,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/scaling-os',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/scaling-boost'
+    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration'
   },
   {
     id: 25,
@@ -972,7 +972,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/ai-maturity',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/ai-boost'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 26,
@@ -1006,7 +1006,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/board-excellence',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/board-boost'
+    secondaryCtaUrl: '/cases/exit-readiness-achieved'
   },
   {
     id: 27,
@@ -1040,7 +1040,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/portfolio-value',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/portfolio-boost'
+    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration'
   },
   {
     id: 28,
@@ -1074,7 +1074,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/custom-program',
     secondaryCtaEn: 'See past examples',
     secondaryCtaDe: 'Frühere Beispiele ansehen',
-    secondaryCtaUrl: '/cases/custom-boost'
+    secondaryCtaUrl: '/cases'
   },
 
   // ============================================
@@ -1112,7 +1112,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/hypergrowth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/hypergrowth-accelerate'
+    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled'
   },
   {
     id: 30,
@@ -1146,7 +1146,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/sustainable-growth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/sustainable-accelerate'
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership'
   },
   {
     id: 31,
@@ -1180,7 +1180,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/ai-native-scaling',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/ai-native-accelerate'
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership'
   },
   {
     id: 32,
@@ -1214,7 +1214,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/exit-readiness',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/exit-accelerate'
+    secondaryCtaUrl: '/cases/exit-readiness-achieved'
   },
   {
     id: 33,
@@ -1248,7 +1248,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/portfolio-transformation',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/portfolio-accelerate'
+    secondaryCtaUrl: '/playbooks/portfolio-transformation'
   },
 
   // ============================================
@@ -1283,9 +1283,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über Workshop',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/workshop',
-    secondaryCtaEn: 'See topics',
-    secondaryCtaDe: 'Themen ansehen',
-    secondaryCtaUrl: '/expertise'
+    secondaryCtaEn: 'See case study',
+    secondaryCtaDe: 'Case Study ansehen',
+    secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
   },
 
   // ============================================
@@ -1320,9 +1320,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über Strategic Advisory',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/strategic-advisory',
-    secondaryCtaEn: 'Book call',
-    secondaryCtaDe: 'Call buchen',
-    secondaryCtaUrl: 'https://calendly.com/michel-scalingx/advisory'
+    secondaryCtaEn: 'See case study',
+    secondaryCtaDe: 'Case Study ansehen',
+    secondaryCtaUrl: '/cases/saas-transition-accelerated'
   },
 
 

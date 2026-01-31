@@ -57,7 +57,7 @@ const FinalCTAOptimized: React.FC = () => {
     '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
     'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
     'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
-    'START', 'Elba', 'Semigator', 'Umantis', 'Sage'
+    'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax'
   ];
 
   return (

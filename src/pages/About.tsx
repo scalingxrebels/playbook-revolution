@@ -95,7 +95,7 @@ const teamMembers: TeamMember[] = [
       en: 'Sales cycle –30%, improved lead throughput' 
     },
     expertise: ['RevOps', 'GTM Engineering', 'Marketing Automation'],
-    image: '/images/team-florian.png',
+    image: '/images/team-florian-square.png',
     linkedin: 'https://www.linkedin.com/in/florianmetzger/',
     profileLink: '/fm'
   }
@@ -239,11 +239,7 @@ const About: React.FC = () => {
                       src={member.image} 
                       alt={member.name}
                       className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-                        member.name === 'Florian Metzger' 
-                          ? 'scale-150 translate-y-[20%]' 
-                          : member.name === 'Alban Halili' 
-                            ? 'object-top' 
-                            : ''
+                        member.name === 'Alban Halili' ? 'object-top' : ''
                       }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4 gap-3">
@@ -475,7 +471,7 @@ const About: React.FC = () => {
                   }
                 </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="accent">Live (€149/mo)</Badge>
+                  <Badge variant="accent">Free</Badge>
                   <a 
                     href="https://lasr.io" 
                     target="_blank" 

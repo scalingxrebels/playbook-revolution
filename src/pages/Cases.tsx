@@ -2,130 +2,77 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, TrendingUp, Users, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import SharedHero from '@/components/shared/SharedHero';
+import CaseFilterSection from '@/components/cases/CaseFilterSection';
+import CaseCard from '@/components/cases/CaseCard';
+import CaseCTA from '@/components/cases/CaseCTA';
+import { useCaseFilters } from '@/components/cases/useCaseFilters';
+import { caseStudies } from '@/data/cases';
 
-interface CaseStudy {
-  id: string;
-  company: string;
-  industry: string;
-  challenge: { de: string; en: string };
-  result: { de: string; en: string };
-  metrics: { label: string; value: string }[];
-  gradient: string;
-}
-
-const caseStudies: CaseStudy[] = [
-  {
-    id: 'techscale-ai',
-    company: 'TechScale AI',
-    industry: 'B2B SaaS',
-    challenge: { 
-      de: 'Stagnation bei €15M ARR trotz Product-Market Fit',
-      en: 'Stagnation at €15M ARR despite Product-Market Fit'
-    },
-    result: {
-      de: '3.2x ARR in 18 Monaten durch AI-native GTM',
-      en: '3.2x ARR in 18 months through AI-native GTM'
-    },
-    metrics: [
-      { label: 'ARR Growth', value: '3.2x' },
-      { label: 'Time to Result', value: '18 Mo' },
-      { label: 'Team Size', value: '+12%' }
-    ],
-    gradient: 'from-violet-500 to-purple-600'
-  },
-  {
-    id: 'dataflow-systems',
-    company: 'DataFlow Systems',
-    industry: 'Enterprise Software',
-    challenge: {
-      de: 'Linear wachsende Kosten bei Skalierung',
-      en: 'Linearly growing costs during scaling'
-    },
-    result: {
-      de: '67% Kostenreduktion durch AI Operations',
-      en: '67% cost reduction through AI Operations'
-    },
-    metrics: [
-      { label: 'Cost Reduction', value: '67%' },
-      { label: 'Efficiency', value: '+340%' },
-      { label: 'ROI', value: '12x' }
-    ],
-    gradient: 'from-blue-500 to-cyan-500'
-  },
-  {
-    id: 'scaleup-ventures',
-    company: 'ScaleUp Ventures',
-    industry: 'FinTech',
-    challenge: {
-      de: 'Bottleneck in der Product Development Pipeline',
-      en: 'Bottleneck in the product development pipeline'
-    },
-    result: {
-      de: '5x schnellere Feature Velocity mit AI-augmented Teams',
-      en: '5x faster feature velocity with AI-augmented teams'
-    },
-    metrics: [
-      { label: 'Feature Velocity', value: '5x' },
-      { label: 'Time to Market', value: '-70%' },
-      { label: 'Quality Score', value: '+45%' }
-    ],
-    gradient: 'from-emerald-500 to-teal-500'
-  },
-  {
-    id: 'growth-dynamics',
-    company: 'Growth Dynamics',
-    industry: 'MarTech',
-    challenge: {
-      de: 'Ineffiziente Sales Cycles trotz starkem Produkt',
-      en: 'Inefficient sales cycles despite strong product'
-    },
-    result: {
-      de: 'Sales Cycle von 90 auf 21 Tage reduziert',
-      en: 'Sales cycle reduced from 90 to 21 days'
-    },
-    metrics: [
-      { label: 'Sales Cycle', value: '-77%' },
-      { label: 'Win Rate', value: '+89%' },
-      { label: 'Deal Size', value: '+34%' }
-    ],
-    gradient: 'from-amber-500 to-orange-500'
-  },
-  {
-    id: 'nexgen-analytics',
-    company: 'NexGen Analytics',
-    industry: 'Data & Analytics',
-    challenge: {
-      de: 'Skalierung des Customer Success bei Enterprise Kunden',
-      en: 'Scaling customer success with enterprise clients'
-    },
-    result: {
-      de: 'NRR von 105% auf 142% gesteigert',
-      en: 'NRR increased from 105% to 142%'
-    },
-    metrics: [
-      { label: 'NRR', value: '142%' },
-      { label: 'Churn', value: '-62%' },
-      { label: 'Expansion', value: '+180%' }
-    ],
-    gradient: 'from-rose-500 to-pink-500'
+// Helper: Parse ROI string to number
+const parseRoi = (roi: string): number | null => {
+  // Handle ranges like "3.5-5.3x" → take average
+  if (roi.includes('-') && roi.includes('x')) {
+    const parts = roi.replace('x', '').replace('+', '').split('-');
+    if (parts.length === 2) {
+      const low = parseFloat(parts[0]);
+      const high = parseFloat(parts[1]);
+      if (!isNaN(low) && !isNaN(high)) return (low + high) / 2;
+    }
   }
-];
+  // Handle simple values like "5x", "8.6x", "10x+"
+  const num = parseFloat(roi.replace('x', '').replace('+', '').replace(',', ''));
+  return isNaN(num) ? null : num;
+};
+
+// Calculate median ROI from case studies
+const calculateMedianRoi = (): string => {
+  const roiValues = caseStudies
+    .map(c => parseRoi(c.roi))
+    .filter((v): v is number => v !== null)
+    .sort((a, b) => a - b);
+  
+  if (roiValues.length === 0) return '5x';
+  
+  const mid = Math.floor(roiValues.length / 2);
+  const median = roiValues.length % 2 === 0
+    ? (roiValues[mid - 1] + roiValues[mid]) / 2
+    : roiValues[mid];
+  
+  return `${median % 1 === 0 ? median : median.toFixed(1)}x`;
+};
 
 const casesStats = [
-  { value: '22+', label: { en: 'Transformations', de: 'Transformationen' }, color: 'primary' as const },
-  { value: '8.3x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
-  { value: '€2.1B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'primary' as const },
-  { value: '94%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
+  { value: String(caseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+  { value: calculateMedianRoi(), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
+  { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
+  { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
+];
+
+const clientNames = [
+  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
+  'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
+  'SBB E-Business', 'Swarovski', 'local.ch', 'BWK Group', 'DBA', 'Burda Media',
+  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax', 'BeQueen', 'BonGusto'
 ];
 
 const Cases: React.FC = () => {
   const { language } = useLanguage();
+  const {
+    searchQuery,
+    setSearchQuery,
+    selectedChallenge,
+    setSelectedChallenge,
+    selectedIndustry,
+    setSelectedIndustry,
+    selectedStage,
+    setSelectedStage,
+    filteredCases,
+    totalCount,
+    filteredCount,
+    clearFilters,
+    hasActiveFilters,
+  } = useCaseFilters();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -134,102 +81,95 @@ const Cases: React.FC = () => {
       <SharedHero
         overlineEn="Expertise × Speed = Impact"
         overlineDe="Expertise × Speed = Impact"
-        headlineLine1En="Transformations,"
-        headlineLine1De="Transformationen,"
-        headlineLine2En="not theories"
-        headlineLine2De="nicht Theorien"
-        subheadlineEn="Real results from companies that made the leap from linear to superlinear growth."
-        subheadlineDe="Echte Ergebnisse von Unternehmen, die den Sprung von linearem zu superlinearem Wachstum geschafft haben."
+        headlineLine1En="Real Transformations,"
+        headlineLine1De="Echte Transformationen,"
+        headlineLine2En="Real Results"
+        headlineLine2De="Echte Ergebnisse"
+        subheadlineEn="Every case study tells a story. The board meeting that changed everything. The crisis that became a catalyst. The results that exceeded expectations."
+        subheadlineDe="Jede Case Study erzählt eine Geschichte. Das Board Meeting, das alles veränderte. Die Krise, die zum Katalysator wurde. Die Ergebnisse, die alle Erwartungen übertrafen."
         stats={casesStats}
       />
-      
-      <main className="pt-6 md:pt-8 pb-20">
+
+      {/* Client Ticker - Single Line */}
+      <div className="relative z-10 border-y border-border py-4 bg-background/50">
         <div className="container max-w-7xl mx-auto px-4">
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {caseStudies.map((study) => (
-              <Card 
-                key={study.id}
-                className="group overflow-hidden hover:shadow-lg transition-all duration-300 border-border/50"
-              >
-                {/* Gradient Header */}
-                <div className={`h-2 bg-gradient-to-r ${study.gradient}`} />
-                
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 className="text-xl font-semibold mb-1">{study.company}</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        {study.industry}
-                      </Badge>
-                    </div>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                        {language === 'de' ? 'Challenge' : 'Challenge'}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {study.challenge[language as 'de' | 'en']}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-                        {language === 'de' ? 'Ergebnis' : 'Result'}
-                      </p>
-                      <p className="text-sm font-medium">
-                        {study.result[language as 'de' | 'en']}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-2 mb-6">
-                    {study.metrics.map((metric, idx) => (
-                      <div key={idx} className="text-center p-2 bg-muted/50 rounded-lg">
-                        <p className="text-lg font-bold text-primary">{metric.value}</p>
-                        <p className="text-xs text-muted-foreground">{metric.label}</p>
-                      </div>
+          <div className="flex items-center gap-6">
+            {/* Static Label */}
+            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap flex-shrink-0 relative z-10 bg-background/50 pr-4">
+              {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
+            </span>
+            
+            {/* Scrolling Ticker with Left Fade */}
+            <div className="relative flex-1 overflow-hidden">
+              {/* Left fade mask */}
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background/50 to-transparent z-10 pointer-events-none" />
+              
+              <div className="flex animate-marquee whitespace-nowrap">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-6 px-4">
+                    {clientNames.map((name, idx) => (
+                      <span key={`${i}-${idx}`} className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
+                        <span className="w-1 h-1 rounded-full bg-primary/40" />
+                        {name}
+                      </span>
                     ))}
                   </div>
-
-                  <Link to={`/case-study/${study.id}`}>
-                    <Button variant="ghost" className="w-full group-hover:bg-primary/10">
-                      {language === 'de' ? 'Case Study lesen' : 'Read Case Study'}
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
-                </div>
-              </Card>
-            ))}
-          </div>
-
-          {/* CTA Section */}
-          <div className="mt-20 text-center">
-            <Card className="p-8 md:p-12 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
-                {language === 'de' 
-                  ? 'Bereit für Ihre Transformation?' 
-                  : 'Ready for your transformation?'}
-              </h2>
-              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                {language === 'de'
-                  ? 'Lassen Sie uns analysieren, wie wir Ihr Unternehmen auf superlineares Wachstum vorbereiten können.'
-                  : 'Let us analyze how we can prepare your company for superlinear growth.'}
-              </p>
-              <Button 
-                size="lg" 
-                className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal"
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {language === 'de' ? 'Erstgespräch buchen' : 'Book Initial Call'}
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Filter Section */}
+      <CaseFilterSection
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        selectedChallenge={selectedChallenge}
+        onChallengeChange={setSelectedChallenge}
+        selectedIndustry={selectedIndustry}
+        onIndustryChange={setSelectedIndustry}
+        selectedStage={selectedStage}
+        onStageChange={setSelectedStage}
+        filteredCount={filteredCount}
+        totalCount={totalCount}
+        onClearFilters={clearFilters}
+        hasActiveFilters={hasActiveFilters}
+      />
+      
+      {/* Case Card Grid */}
+      <main className="py-12">
+        <div className="container max-w-7xl mx-auto px-4">
+          {filteredCases.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCases.map((caseStudy, index) => (
+                <CaseCard 
+                  key={caseStudy.id} 
+                  caseStudy={caseStudy} 
+                  index={index} 
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <p className="text-lg text-muted-foreground mb-4">
+                {language === 'de' 
+                  ? 'Keine Cases gefunden, die Ihren Filtern entsprechen.'
+                  : 'No cases found matching your filters.'}
+              </p>
+              <button
+                onClick={clearFilters}
+                className="text-primary hover:underline"
+              >
+                {language === 'de' ? 'Filter zurücksetzen' : 'Clear filters'}
+              </button>
+            </div>
+          )}
+        </div>
       </main>
+
+      {/* CTA Section */}
+      <CaseCTA />
 
       <Footer />
     </div>

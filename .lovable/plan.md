@@ -1,48 +1,76 @@
 
-# Implementierungsplan: Alban Halili Credentials hinzufügen
 
-## Übersicht
+# Expertise Breadcrumb: Anpassung an Playbooks/Solutions Pattern
 
-Ergänzung von "Certified Google AI Expert" als Credentials bei Alban Halili auf der Expertise-Seite.
+## Aktuelle Situation
 
----
+**Expertise (3-Ebenen):**
+```
+Home → Expertise → AI Maturity Framework
+```
+
+**Playbooks/Solutions (2-Ebenen):**
+```
+Playbooks → Growth Engines
+Solutions → Power Up CAC Crisis
+```
 
 ## Änderung
 
-### Datei: `src/components/ResearchHub.tsx`
+### Datei: `src/components/research/sections/ResearchHeroSection.tsx`
 
-**Zeile 164-174 (teamMembers Array):**
-
-```typescript
-// Vorher
-{
-  name: 'Alban Halili',
-  role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
-  // ...
-}
-
-// Nachher
-{
-  name: 'Alban Halili',
-  credentials: 'Certified Google AI Expert',  // NEU
-  role: { en: 'Empirical Analysis', de: 'Empirische Analyse' },
-  // ...
-}
+**Aktuell (Zeilen 64-82):**
+```tsx
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.home[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.parent[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
 ```
 
----
+**Neu (2-Ebenen Pattern):**
+```tsx
+<Breadcrumb className="justify-center mb-6 animate-fade-in">
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/expertise" className="text-muted-foreground hover:text-foreground">
+        {data.breadcrumb.parent[language]}
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <span className="text-foreground font-medium">{data.breadcrumb.current[language]}</span>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>
+```
 
 ## Ergebnis
 
-Alban Halili wird wie die anderen Team-Mitglieder mit Credentials angezeigt:
-- **Michel Lason** M.A. HSG
-- **Alban Halili** Certified Google AI Expert ← NEU
-- **Florian Metzger** M.Sc. Bocconi, M.Sc. Lisboa
+| Seite | Vorher | Nachher |
+|-------|--------|---------|
+| AMF | Home → Expertise → AI Maturity Framework | Expertise → AI Maturity Framework |
+| ANST | Home → Expertise → AI-Native Scaling Theory | Expertise → AI-Native Scaling Theory |
+| SST | Home → Expertise → Scaling Stack Theory | Expertise → Scaling Stack Theory |
+| Unified | Home → Expertise → Unified Framework | Expertise → Unified Framework |
 
----
+## Geänderte Dateien
 
-## Dateien
+| Datei | Änderung |
+|-------|----------|
+| `src/components/research/sections/ResearchHeroSection.tsx` | Home-Link + Separator entfernen |
 
-| Aktion | Datei |
-|--------|-------|
-| **Bearbeiten** | `src/components/ResearchHub.tsx` |
