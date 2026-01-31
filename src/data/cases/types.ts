@@ -109,6 +109,7 @@ export interface ClientCaseStudy {
   company: string;
   industry: string;
   stage: string;
+  stageId: 'early-stage' | 'growth-stage' | 'established' | 'post-ipo'; // normalized for filtering
   gradient: string;
   confidential: true;
   

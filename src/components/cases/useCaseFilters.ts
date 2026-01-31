@@ -96,17 +96,17 @@ export const useCaseFilters = (): UseCaseFiltersReturn => {
         return false;
       }
 
-      // Industry filter
+      // Industry filter - exact match on normalized stageId
       if (selectedIndustry !== 'all') {
-        const industryMatch = caseStudy.industry.toLowerCase().replace(/\s+/g, '-').includes(selectedIndustry) ||
+        const industryNormalized = caseStudy.industry.toLowerCase().replace(/[\s&]+/g, '-');
+        const industryMatch = industryNormalized.includes(selectedIndustry) ||
                               caseStudy.tags.some(tag => tag.toLowerCase().includes(selectedIndustry));
         if (!industryMatch) return false;
       }
 
-      // Stage filter
+      // Stage filter - exact match on normalized stageId
       if (selectedStage !== 'all') {
-        const stageMatch = caseStudy.stage.toLowerCase().replace(/\s+/g, '-').includes(selectedStage);
-        if (!stageMatch) return false;
+        if (caseStudy.stageId !== selectedStage) return false;
       }
 
       return true;
