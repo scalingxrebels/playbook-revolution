@@ -1,52 +1,45 @@
 
 
-# Button-Textfarbe in Dark-Section Fix
+# Button-Harmonisierung: Keynote, Workshop & ExpertSession
 
-## Problem-Analyse
+## Ziel
 
-Der Hero-CTA Button verwendet:
+Die drei "Enablement"-Seiten (Keynote, Workshop, ExpertSession) auf das Premium-Gradient-Button-Pattern umstellen, damit alle Hero-CTAs konsistent sind.
+
+## Änderungen
+
+### Aktuelles Pattern (inkonsistent)
+
 ```tsx
-className="bg-gradient-accent text-accent-foreground..."
+<Button size="lg" className="text-lg px-8">
+  {buttonText}
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Button>
 ```
 
-In der `.dark-section` CSS-Klasse:
-```css
---accent-foreground: 0 0% 5%; /* Fast schwarz - FALSCH! */
+### Neues Pattern (Premium Gradient)
+
+```tsx
+<Button
+  size="xl"
+  className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+>
+  {buttonText}
+  <ArrowRight className="w-5 h-5 ml-2" />
+</Button>
 ```
-
-## Lösung
-
-Die Variable `--accent-foreground` muss in `.dark-section` auf einen hellen Wert gesetzt werden, da Accent-Buttons auf dem dunklen Hero-Hintergrund hellen Text benötigen.
-
-### Änderung in `src/index.css`
-
-**Zeile 147 anpassen:**
-
-| Variable | Aktuell (falsch) | Neu (korrekt) |
-|----------|------------------|---------------|
-| `--accent-foreground` | `0 0% 5%` (schwarz) | `0 0% 100%` (weiß) |
-
-### Code-Änderung
-
-```css
-/* Zeile 146-147 in .dark-section */
---accent: 24 100% 58%;
---accent-foreground: 0 0% 100%;  /* Geändert von 0 0% 5% */
-```
-
-## Warum das passiert ist
-
-Die `.dark-section` wurde als Kopie der `.dark` Variablen erstellt. Im Dark Mode ist `--accent-foreground` dunkel, weil Accent-Elemente normalerweise helle Hintergründe haben. Aber im Hero-Kontext mit Gradient-Buttons brauchen wir hellen Text.
 
 ## Betroffene Dateien
 
 | Datei | Änderung |
 |-------|----------|
-| `src/index.css` | `--accent-foreground` in `.dark-section` auf `0 0% 100%` ändern |
+| `src/pages/Keynote.tsx` | Hero-CTA Button auf Premium-Gradient umstellen |
+| `src/pages/Workshop.tsx` | Hero-CTA Button auf Premium-Gradient umstellen |
+| `src/pages/ExpertSession.tsx` | Hero-CTA Button auf Premium-Gradient umstellen |
 
 ## Ergebnis
 
-- Gradient-Buttons im Hero zeigen weißen Text
-- Alle anderen `.dark-section` Elemente bleiben unverändert
-- Konsistenz mit dem visuellen Design
+- Alle Landing Pages mit dark-section Heroes nutzen identisches Button-Styling
+- Konsistente visuelle Hierarchie über alle Premium-Seiten
+- Verbesserte Conversion durch auffälligere CTAs
 
