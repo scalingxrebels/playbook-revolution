@@ -1,74 +1,74 @@
 import React from 'react';
-import { ArrowRight, Calendar } from 'lucide-react';
-import { Card } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import TwinklingStars from '@/components/TwinklingStars';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Phone, Check } from 'lucide-react';
 
 const CaseCTA: React.FC = () => {
   const { language } = useLanguage();
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="py-24 lg:py-32 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      <TwinklingStars />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
+      <div className="absolute inset-0 noise opacity-30" />
       
-      <div className="container max-w-4xl mx-auto px-4 relative z-10">
-        <Card className="p-8 md:p-12 bg-card/80 backdrop-blur border-primary/20 text-center">
-          <h2 className="font-display text-2xl md:text-3xl font-bold mb-4 text-foreground">
-            {language === 'de' 
-              ? 'Bereit für ähnliche Ergebnisse?' 
-              : 'Want similar results?'}
+      {/* Decorative */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
+      
+      <div className="container max-w-4xl mx-auto px-6 relative z-10">
+        <div className="text-center">
+          {/* Headline */}
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' ? (
+              <>
+                Ähnliche Ergebnisse für
+                <span className="block italic text-gradient">Ihr Unternehmen?</span>
+              </>
+            ) : (
+              <>
+                Similar results for
+                <span className="block italic text-gradient">your company?</span>
+              </>
+            )}
           </h2>
           
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            {language === 'de'
-              ? 'Lassen Sie uns in 30 Minuten analysieren, was Ihr Unternehmen zurückhält und wie wir es beheben können.'
-              : 'Let us analyze in 30 minutes what\'s holding your company back and how we can fix it.'}
+          {/* Subline */}
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
+            {language === 'de' 
+              ? 'Buche einen kostenlosen Inflection Call. Wir identifizieren deinen Engpass in 30 Minuten und empfehlen den richtigen Weg.'
+              : 'Book a free Inflection Call. We\'ll identify your bottleneck in 30 minutes and recommend the right path.'
+            }
           </p>
-
-          {/* What to Expect */}
-          <div className="grid md:grid-cols-3 gap-4 mb-8">
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <span className="text-2xl font-bold text-primary">1</span>
-              <p className="text-sm font-medium mt-1">
-                {language === 'de' ? 'Inflection Call' : 'Inflection Call'}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {language === 'de' ? '30 Min, kostenlos' : '30 min, free'}
-              </p>
-            </div>
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <span className="text-2xl font-bold text-primary">2</span>
-              <p className="text-sm font-medium mt-1">
-                {language === 'de' ? 'Sprint-Vorschlag' : 'Sprint Proposal'}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {language === 'de' ? 'Klarer Plan & ROI' : 'Clear plan & ROI'}
-              </p>
-            </div>
-            <div className="p-4 bg-muted/50 rounded-lg">
-              <span className="text-2xl font-bold text-primary">3</span>
-              <p className="text-sm font-medium mt-1">
-                {language === 'de' ? 'Ergebnisse' : 'Results'}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {language === 'de' ? 'In 12 Wochen' : 'In 12 weeks'}
-              </p>
-            </div>
+          
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <Button 
+              size="xl" 
+              className="shadow-brutal hover-brutal group"
+              onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            >
+              <Phone className="mr-2 w-5 h-5" />
+              {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
           </div>
-
-          <Button 
-            size="lg" 
-            className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal"
-            onClick={() => window.open('https://cal.com/scalingx/inflection-call', '_blank')}
-          >
-            <Calendar className="w-5 h-5 mr-2" />
-            {language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </Card>
+          
+          {/* Trust Signal */}
+          <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-accent" />
+              {language === 'de' ? 'Unverbindlich' : 'No commitment'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-accent" />
+              {language === 'de' ? '30 Minuten' : '30 minutes'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-accent" />
+              {language === 'de' ? 'Konkrete nächste Schritte' : 'Concrete next steps'}
+            </span>
+          </div>
+        </div>
       </div>
     </section>
   );

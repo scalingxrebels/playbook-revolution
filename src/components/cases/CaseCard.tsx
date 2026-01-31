@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Download, TrendingUp } from 'lucide-react';
+import { ArrowRight, TrendingUp } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -15,8 +15,8 @@ interface CaseCardProps {
 const CaseCard: React.FC<CaseCardProps> = ({ caseStudy, index }) => {
   const { language } = useLanguage();
   
-  // Get first sentence of challenge for teaser
-  const challengeTeaser = (language === 'de' ? caseStudy.challenge.de : caseStudy.challenge.en).split('.')[0] + '.';
+  // Use controlled 2-line description from result field
+  const description = language === 'de' ? caseStudy.result.de : caseStudy.result.en;
 
   return (
     <Card 
@@ -42,12 +42,12 @@ const CaseCard: React.FC<CaseCardProps> = ({ caseStudy, index }) => {
           {language === 'de' ? caseStudy.headline.de : caseStudy.headline.en}
         </h3>
 
-        {/* Challenge Teaser (Story-First) */}
+        {/* Controlled 2-Line Description from result field */}
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-          {challengeTeaser}
+          {description}
         </p>
 
-        {/* Key Metrics */}
+        {/* Key Metrics - Short single-line labels */}
         <div className="grid grid-cols-3 gap-2 mb-4">
           {caseStudy.heroMetrics.slice(0, 3).map((metric, idx) => (
             <div 
@@ -55,7 +55,9 @@ const CaseCard: React.FC<CaseCardProps> = ({ caseStudy, index }) => {
               className="text-center p-2 bg-muted/50 rounded-lg"
             >
               <p className="text-lg font-bold text-primary">{metric.impact}</p>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{metric.label}</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wide truncate">
+                {metric.label}
+              </p>
             </div>
           ))}
         </div>
@@ -69,33 +71,18 @@ const CaseCard: React.FC<CaseCardProps> = ({ caseStudy, index }) => {
           </span>
         </div>
 
-        {/* CTAs */}
-        <div className="flex items-center gap-2">
-          <Button 
-            asChild
-            variant="default" 
-            size="sm" 
-            className="flex-1 bg-primary text-primary-foreground"
-          >
-            <Link to={`/cases/${caseStudy.slug}`}>
-              {language === 'de' ? 'Case lesen' : 'Read Case'}
-              <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Button>
-          
-          {caseStudy.downloadUrl && (
-            <Button 
-              variant="outline" 
-              size="sm"
-              asChild
-              className="border-border/50"
-            >
-              <a href={caseStudy.downloadUrl} download>
-                <Download className="w-4 h-4" />
-              </a>
-            </Button>
-          )}
-        </div>
+        {/* Single CTA Button - Full Width */}
+        <Button 
+          asChild
+          variant="default" 
+          size="sm" 
+          className="w-full bg-primary text-primary-foreground"
+        >
+          <Link to={`/cases/${caseStudy.slug}`}>
+            {language === 'de' ? 'Case lesen' : 'Read Case'}
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </Button>
       </div>
     </Card>
   );
