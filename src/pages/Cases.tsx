@@ -57,25 +57,33 @@ const Cases: React.FC = () => {
         stats={casesStats}
       />
 
-      {/* Client Ticker */}
+      {/* Client Ticker - Single Line */}
       <div className="relative z-10 border-y border-border py-4 bg-background/50">
-        <div className="container max-w-7xl mx-auto px-4 mb-2">
-          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
-          </span>
-        </div>
-        <div className="overflow-hidden">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...Array(5)].map((_, i) => (
-              <div key={i} className="flex items-center gap-6 px-4">
-                {clientNames.map((name, idx) => (
-                  <span key={`${i}-${idx}`} className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
-                    <span className="w-1 h-1 rounded-full bg-primary/40" />
-                    {name}
-                  </span>
+        <div className="container max-w-7xl mx-auto px-4">
+          <div className="flex items-center gap-6">
+            {/* Static Label */}
+            <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground whitespace-nowrap flex-shrink-0 relative z-10 bg-background/50 pr-4">
+              {language === 'de' ? 'Mit wem wir gearbeitet haben' : 'Who we have worked with'}
+            </span>
+            
+            {/* Scrolling Ticker with Left Fade */}
+            <div className="relative flex-1 overflow-hidden">
+              {/* Left fade mask */}
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-background/50 to-transparent z-10 pointer-events-none" />
+              
+              <div className="flex animate-marquee whitespace-nowrap">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-6 px-4">
+                    {clientNames.map((name, idx) => (
+                      <span key={`${i}-${idx}`} className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
+                        <span className="w-1 h-1 rounded-full bg-primary/40" />
+                        {name}
+                      </span>
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
