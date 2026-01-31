@@ -33,7 +33,7 @@ const CaseDetail: React.FC = () => {
       <Navigation />
       
       {/* SECTION 1: HERO */}
-      <section className="relative pt-24 pb-16 overflow-hidden">
+      <section className="dark-section relative pt-24 pb-16 overflow-hidden noise">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-background" />
         <TwinklingStars />
         
@@ -55,7 +55,7 @@ const CaseDetail: React.FC = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
+          <h1 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
             {t(caseStudy.headline)}
           </h1>
 
@@ -81,7 +81,7 @@ const CaseDetail: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-6 p-4 bg-muted/30 rounded-xl mb-6">
             <span className="text-sm">
               <span className="text-muted-foreground">{language === 'de' ? 'Investment:' : 'Investment:'}</span>{' '}
-              <span className="font-semibold">{caseStudy.investment}</span>
+              <span className="font-semibold text-foreground">{caseStudy.investment}</span>
             </span>
             <span className="text-sm flex items-center gap-1">
               <TrendingUp className="w-4 h-4 text-emerald-500" />
@@ -90,7 +90,7 @@ const CaseDetail: React.FC = () => {
             </span>
             <span className="text-sm">
               <span className="text-muted-foreground">{language === 'de' ? 'Dauer:' : 'Timeline:'}</span>{' '}
-              <span className="font-semibold">{caseStudy.timeline}</span>
+              <span className="font-semibold text-foreground">{caseStudy.timeline}</span>
             </span>
           </div>
 

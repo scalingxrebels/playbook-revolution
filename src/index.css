@@ -128,6 +128,37 @@
     --sidebar-border: 240 10% 14%;
     --sidebar-ring: 262 83% 65%;
   }
+
+  /* Scoped Dark Theme for Hero Sections - Always dark regardless of theme */
+  .dark-section {
+    --background: 240 15% 6%;
+    --foreground: 40 20% 95%;
+    --card: 240 12% 9%;
+    --card-foreground: 40 20% 95%;
+    --popover: 240 12% 9%;
+    --popover-foreground: 40 20% 95%;
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 10% 14%;
+    --secondary-foreground: 40 15% 90%;
+    --muted: 240 10% 16%;
+    --muted-foreground: 40 10% 55%;
+    --accent: 24 100% 58%;
+    --accent-foreground: 0 0% 100%;
+    --border: 240 10% 18%;
+    --input: 240 10% 14%;
+    --ring: 262 83% 65%;
+    --shadow-brutal: 4px 4px 0px hsl(0 0% 0%);
+    --shadow-brutal-sm: 2px 2px 0px hsl(0 0% 0%);
+    --shadow-glow: 0 0 80px hsl(262 83% 58% / 0.35);
+    --shadow-accent-glow: 0 0 80px hsl(24 100% 60% / 0.4);
+    --shadow-card: 0 4px 24px hsl(0 0% 0% / 0.5);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(262 83% 58% / 0.2) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(340 85% 55% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(24 100% 60% / 0.12) 0px, transparent 50%),
+                     radial-gradient(at 80% 50%, hsl(262 83% 58% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, hsl(220 70% 50% / 0.2) 0px, transparent 50%);
+  }
 }
 
 @layer base {

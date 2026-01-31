@@ -27,8 +27,5 @@ export { exitMaData } from './exit-ma';
 // Ebene 3: Portfolio Sub-Playbook
 export { portfolioExcellenceData } from './portfolio-excellence';
 
-// Ebene 3: Strategic Capabilities Sub-Playbook
-export { strategicCapabilitiesDeepDiveData } from './strategic-capabilities-deep-dive';
-
 // Type re-exports
 export type { PlaybookPageData, PlaybookMeta } from '../types';

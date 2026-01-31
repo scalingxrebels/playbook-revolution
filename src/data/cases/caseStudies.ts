@@ -5082,8 +5082,8 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
       en: '2-day strategy workshop created Vision 2030, 12 OKRs, and €10M roadmap. Team went from fragmented to 100% aligned.',
       de: '2-Tages-Strategie-Workshop schuf Vision 2030, 12 OKRs und €10M Roadmap. Team von fragmentiert zu 100% aligned.'
     },
-    investment: '€3K-€5K',
-    roi: '10x+',
+    investment: '€12.9K',
+    roi: '11.6x',
     heroMetrics: [
       { label: 'Clarity', before: '0%', after: '100%', impact: 'Achieved' },
       { label: 'Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' },
@@ -5274,9 +5274,9 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
       { label: 'Team Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' }
     ],
     roiCalculation: {
-      investment: '€3K-€5K',
-      returnValue: '€30K-€50K',
-      roi: '10x+',
+      investment: '€12.9K',
+      returnValue: '€150K',
+      roi: '11.6x',
       breakdown: [
         { en: 'Strategic clarity: Avoided 3-6 months of internal discussions', de: 'Strategische Klarheit: 3-6 Monate interne Diskussionen vermieden' },
         { en: 'Team alignment: Execution velocity +50% (estimated)', de: 'Team-Alignment: Execution Velocity +50% (geschätzt)' },
@@ -5466,8 +5466,8 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
       en: '12-month strategic advisory accelerated SaaS-transition from 10% to 40% ARR. Quarterly OKR reviews drove disciplined execution.',
       de: '12-monatiges Strategic Advisory beschleunigte SaaS-Transition von 10% auf 40% ARR. Vierteljährliche OKR-Reviews trieben disziplinierte Umsetzung.'
     },
-    investment: '€156K-€216K',
-    roi: '5-10x',
+    investment: '€132K',
+    roi: '6-8x',
     heroMetrics: [
       { label: 'Revenue', before: '€1.8M', after: '€2.8M', impact: '+56%' },
       { label: 'ARR', before: '€120K', after: '€420K', impact: '+250%' },
@@ -5778,9 +5778,9 @@ Der Board war unterstützend aber fordernd: "Zeigt uns jeden Quartal Fortschritt
       { label: 'SQLs/Month', before: '8', after: '14', impact: '+75%' }
     ],
     roiCalculation: {
-      investment: '€156K-€216K',
+      investment: '€132K',
       returnValue: '€780K-€1.1M',
-      roi: '5-10x',
+      roi: '6-8x',
       breakdown: [
         { en: 'ARR growth: €270K-€340K additional ARR (€420K - €80K-150K baseline)', de: 'ARR-Wachstum: €270K-€340K zusätzliches ARR (€420K - €80K-150K Baseline)' },
         { en: 'New product: €280K ARR (new revenue stream)', de: 'Neues Produkt: €280K ARR (neuer Umsatzstrom)' },

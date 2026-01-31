@@ -21,7 +21,7 @@ const HeroOptimized: React.FC = () => {
   return (
     <section 
       ref={containerRef as React.RefObject<HTMLElement>}
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
+      className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
     >
       {/* Deep Space Background */}
       <div 

@@ -318,9 +318,8 @@ const Keynote = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-
       {/* SECTION 1: HERO */}
-      <section ref={containerRef as React.RefObject<HTMLElement>} className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20">
+      <section ref={containerRef as React.RefObject<HTMLElement>} className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20">
         {/* Deep Space Background */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" style={{ transform: `translateY(${offsets[0]}px)` }} />
         {/* Mesh Gradient Overlay */}
@@ -388,10 +387,10 @@ const Keynote = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Button size="lg" className="text-lg px-8" asChild>
+            <Button size="xl" className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400" asChild>
               <a href="https://calendly.com/michel-scalingx/keynote" target="_blank" rel="noopener noreferrer">
                 {isEnglish ? 'Book Keynote (€4.9K)' : 'Keynote buchen (€4.9K)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8" asChild>
