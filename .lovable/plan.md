@@ -1,13 +1,15 @@
 
-# Fix: ROI Calculation für "Vision 2030 Strategy Workshop" Case Study
+# Fix: ROI Calculation für "SaaS-Transition Accelerated" Case Study
 
 ## Problem
-Die Case Study "Vision 2030 Defined → 3-Year Roadmap Created" zeigt falsche Investment-Daten:
-- **Aktuell**: Investment €3K-€5K, Return €30K-€50K, ROI 10x+
-- **Korrekt**: Investment €12.9K, Return €150K
+Die Case Study "SaaS-Transition Accelerated → €10M Roadmap Executed" zeigt falsches Investment:
+- **Aktuell**: Investment €156K-€216K
+- **Korrekt**: Investment €132K
 
-## Berechneter ROI
-€150,000 / €12,900 = **11.6x** (gerundet)
+## ROI-Berechnung
+Der Return bleibt unverändert: €780K-€1.1M
+
+Neuer ROI: €780K-€1.1M / €132K = **6-8x**
 
 ## Änderungen
 
@@ -15,15 +17,16 @@ Die Case Study "Vision 2030 Defined → 3-Year Roadmap Created" zeigt falsche In
 
 | Zeile | Feld | Aktuell | Neu |
 |-------|------|---------|-----|
-| 5085 | `investment` | `'€3K-€5K'` | `'€12.9K'` |
-| 5086 | `roi` | `'10x+'` | `'11.6x'` |
-| 5277 | `roiCalculation.investment` | `'€3K-€5K'` | `'€12.9K'` |
-| 5278 | `roiCalculation.returnValue` | `'€30K-€50K'` | `'€150K'` |
-| 5279 | `roiCalculation.roi` | `'10x+'` | `'11.6x'` |
+| 5469 | `investment` | `'€156K-€216K'` | `'€132K'` |
+| 5470 | `roi` | `'5-10x'` | `'6-8x'` |
+| 5781 | `roiCalculation.investment` | `'€156K-€216K'` | `'€132K'` |
+| 5783 | `roiCalculation.roi` | `'5-10x'` | `'6-8x'` |
 
 ## Betroffene Ansichten
 - **Case Card** auf `/cases` Übersicht (zeigt `investment` und `roi`)
-- **Case Detail Page** `/cases/vision-2030-strategy-workshop` (zeigt `roiCalculation`)
+- **Case Detail Page** `/cases/saas-transition-accelerated` (zeigt `roiCalculation`)
 
 ## Keine weiteren Änderungen nötig
-Die `cardSummary` enthält keine Investment-Werte und bleibt unverändert.
+- `returnValue` bleibt unverändert: `'€780K-€1.1M'`
+- `cardSummary` enthält keine Investment-Werte
+- `breakdown` Array bleibt unverändert
