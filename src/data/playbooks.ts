@@ -547,8 +547,8 @@ export const playbooks: Playbook[] = [
     id: 'operating-systems',
     slug: 'operating-systems',
     title: {
-      en: 'AI-Native Operating Systems Playbook',
-      de: 'AI-Native Operating Systems Playbook',
+      en: 'Operating Systems Playbook',
+      de: 'Operating Systems Playbook',
     },
     description: {
       en: 'How to transform infrastructure and processes with AI-native operating systems. Learn the complete framework (Operations, Finance, Talent, Data/Tech) used by AI-native companies to achieve 2-5x efficiency gains, reduce operational costs by 30-50%, and scale without linear headcount growth. Includes 4 detailed sub-playbooks, implementation guides, and real-world case studies from Series A-C companies.',

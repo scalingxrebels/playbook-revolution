@@ -8,14 +8,14 @@ export const operatingSystemsData: PlaybookPageData = {
   hero: {
     breadcrumb: { en: "Playbooks", de: "Playbooks" },
     badge: { en: "Operating Systems · Domain Playbook", de: "Operating Systems · Domain Playbook" },
-    title: "AI-Native Operating Systems Playbook",
+    title: "Operating Systems Playbook",
     subtitle: { 
       en: "How to transform infrastructure and processes with AI-native operating systems", 
       de: "Wie du Infrastruktur und Prozesse mit AI-native Operating Systems transformierst" 
     },
     description: { 
-      en: "Traditional operating systems are broken. Companies rely on manual processes, fragmented systems, and reactive operations. The result? High operational costs (30-50% of revenue), low efficiency (1-2x), and linear scaling (Revenue ≈ People). They can't scale without proportional headcount growth.\n\nAI-native companies use a different playbook. They leverage the Operating Systems Framework (Operations × Finance × Talent × Data/Tech × AI) to achieve 2-5x efficiency gains, reduce operational costs by 30-50%, and scale without linear headcount growth. They scale superlinearly: Revenue >>> People.\n\nThis playbook gives you the complete framework used by AI-native companies to build world-class operating systems. Learn from 4 detailed sub-playbooks, implementation guides, and real-world case studies.", 
-      de: "Traditionelle Operating Systems sind kaputt. Unternehmen verlassen sich auf manuelle Prozesse, fragmentierte Systeme und reaktive Operations. Das Ergebnis? Hohe Betriebskosten (30-50% des Umsatzes), niedrige Effizienz (1-2x) und lineares Scaling (Revenue ≈ People). Sie können nicht skalieren ohne proportionales Headcount-Wachstum.\n\nAI-native Unternehmen nutzen ein anderes Playbook. Sie nutzen das Operating Systems Framework (Operations × Finance × Talent × Data/Tech × AI), um 2-5x Effizienzsteigerungen zu erzielen, Betriebskosten um 30-50% zu senken und ohne lineares Headcount-Wachstum zu skalieren. Sie skalieren superlinear: Revenue >>> People.\n\nDieses Playbook gibt dir das komplette Framework, das AI-native Unternehmen nutzen, um erstklassige Operating Systems aufzubauen. Lerne von 4 detaillierten Sub-Playbooks, Implementierungsguides und echten Case Studies." 
+      en: "Most companies struggle with scaling because they focus on growth tactics instead of building scalable operating systems. They hire more people, add more tools, and create more processes—but don't build the infrastructure that enables efficient scaling.\n\nThis playbook teaches you the complete framework used by AI-native companies to achieve 2-5x efficiency gains, reduce operational costs by 30-50%, and scale without linear headcount growth.\n\nYou'll learn how to build AI-native Operations systems, AI-powered Finance systems, scale Talent systems with AI, transform Data/Tech infrastructure, and measure progress with Operations Maturity Levels. Includes 4 detailed sub-playbooks (Operations, Finance, Talent, Data/Tech), implementation guides, and real-world case studies from Series A-C companies.", 
+      de: "Die meisten Unternehmen kämpfen mit der Skalierung, weil sie sich auf Wachstumstaktiken konzentrieren anstatt skalierbare Operating Systems aufzubauen. Sie stellen mehr Leute ein, fügen mehr Tools hinzu und erstellen mehr Prozesse – aber bauen nicht die Infrastruktur, die effiziente Skalierung ermöglicht.\n\nDieses Playbook lehrt dir das komplette Framework, das AI-native Unternehmen nutzen, um 2-5x Effizienzsteigerungen zu erzielen, Betriebskosten um 30-50% zu senken und ohne lineares Headcount-Wachstum zu skalieren.\n\nDu lernst, wie du AI-native Operations Systeme aufbaust, AI-powered Finance Systeme erstellst, Talent Systeme mit AI skalierst, Data/Tech Infrastruktur transformierst und Fortschritt mit Operations Maturity Levels misst. Inklusive 4 detaillierter Sub-Playbooks (Operations, Finance, Talent, Data/Tech), Implementierungsguides und echten Case Studies von Series A-C Unternehmen." 
     },
     trustBadges: [
       { en: "~3,000 Words", de: "~3.000 Wörter" },
@@ -38,15 +38,15 @@ export const operatingSystemsData: PlaybookPageData = {
     whyItMatters: { 
       title: { en: "Why It Matters", de: "Warum es wichtig ist" }, 
       text: { 
-        en: "Operating Systems are MULTIPLICATIVE (not additive). Weakness in any system creates a bottleneck that limits overall efficiency and scaling velocity.", 
-        de: "Operating Systems sind MULTIPLIKATIV (nicht additiv). Schwäche in einem System schafft einen Engpass, der die gesamte Effizienz und Skalierungsgeschwindigkeit begrenzt." 
+        en: "Operations, Finance, Talent, and Data/Tech must work together as one integrated system. A weak system becomes a bottleneck for the entire operating infrastructure.", 
+        de: "Operations, Finance, Talent und Data/Tech müssen als ein integriertes System zusammenarbeiten. Ein schwaches System wird zum Engpass für die gesamte Operating-Infrastruktur." 
       } 
     },
     solution: { 
       title: { en: "The Solution", de: "Die Lösung" }, 
       text: { 
-        en: "The Operating Systems Framework (Ops × Finance × Talent × Data/Tech × AI) enables 2-5x efficiency gains and scaling without linear headcount growth.", 
-        de: "Das Operating Systems Framework (Ops × Finance × Talent × Data/Tech × AI) ermöglicht 2-5x Effizienzsteigerungen und Skalierung ohne lineares Headcount-Wachstum." 
+        en: "The Operating Systems Framework: Build all 4 systems (Operations, Finance, Talent, Data/Tech) systematically with AI integration at each level.", 
+        de: "Das Operating Systems Framework: Baue alle 4 Systeme (Operations, Finance, Talent, Data/Tech) systematisch mit AI-Integration auf jeder Ebene." 
       } 
     }
   },
@@ -72,9 +72,9 @@ export const operatingSystemsData: PlaybookPageData = {
   framework: { 
     title: { en: "The Operating Systems Framework", de: "Das Operating Systems Framework" }, 
     subtitle: { 
-      en: "How AI-native companies build operating systems that scale superlinearly: Efficiency = Operations × Finance × Talent × Data/Tech × AI", 
-      de: "Wie AI-native Unternehmen Operating Systems aufbauen, die superlinear skalieren: Effizienz = Operations × Finance × Talent × Data/Tech × AI" 
-    }, 
+      en: "A systematic approach to transform Operations, Finance, Talent, and Data/Tech", 
+      de: "Ein systematischer Ansatz zur Transformation von Operations, Finance, Talent und Data/Tech" 
+    },
     items: [
       {
         id: "operations",
@@ -229,7 +229,7 @@ export const operatingSystemsData: PlaybookPageData = {
       {
         company: { en: "Series A SaaS Company", de: "Series A SaaS Unternehmen" },
         problem: { en: "High operational costs (40% of revenue), manual processes (80%), need to scale 3x without proportional headcount growth", de: "Hohe Betriebskosten (40% des Umsatzes), manuelle Prozesse (80%), muss 3x skalieren ohne proportionales Headcount-Wachstum" },
-        solution: { en: "Full Operating Systems transformation: Operations (process standardization, automation), Finance (unit economics, FP&A), Talent (hiring machine, onboarding), Data/Tech (infrastructure, AI platform). θ_index 0.35 → 0.78.", de: "Komplette Operating Systems Transformation: Operations (Prozess-Standardisierung, Automatisierung), Finance (Unit Economics, FP&A), Talent (Hiring Machine, Onboarding), Data/Tech (Infrastruktur, AI Platform). θ_index 0.35 → 0.78." },
+        solution: { en: "Full Operating Systems transformation: Operations (process standardization, automation), Finance (unit economics, FP&A), Talent (hiring machine, onboarding), Data/Tech (infrastructure, AI platform). AI Maturity: Level 1 → Level 2.", de: "Komplette Operating Systems Transformation: Operations (Prozess-Standardisierung, Automatisierung), Finance (Unit Economics, FP&A), Talent (Hiring Machine, Onboarding), Data/Tech (Infrastruktur, AI Platform). AI Maturity: Level 1 → Level 2." },
         results: [
           { metric: { en: "Operational Costs", de: "Betriebskosten" }, before: "40%", after: "22%", change: "-45%" },
           { metric: { en: "Process Automation", de: "Prozess-Automatisierung" }, before: "20%", after: "85%", change: "+325%" },
@@ -241,7 +241,7 @@ export const operatingSystemsData: PlaybookPageData = {
       {
         company: { en: "Series B SaaS Company", de: "Series B SaaS Unternehmen" },
         problem: { en: "Need to improve capital efficiency (Rule of 40: 25%) for Series C fundraise, high operational costs and low forecasting accuracy", de: "Muss Kapitaleffizienz verbessern (Rule of 40: 25%) für Series C Fundraise, hohe Betriebskosten und niedrige Forecast-Genauigkeit" },
-        solution: { en: "Focus on Finance and Operations systems with AI integration. Implemented FP&A systems, financial forecasting, unit economics optimization, operational excellence. θ_index 0.42 → 0.85.", de: "Fokus auf Finance und Operations Systeme mit AI-Integration. Implementiert FP&A Systeme, Financial Forecasting, Unit Economics Optimierung, Operational Excellence. θ_index 0.42 → 0.85." },
+        solution: { en: "Focus on Finance and Operations systems with AI integration. Implemented FP&A systems, financial forecasting, unit economics optimization, operational excellence. AI Maturity: Level 1 → Level 3.", de: "Fokus auf Finance und Operations Systeme mit AI-Integration. Implementiert FP&A Systeme, Financial Forecasting, Unit Economics Optimierung, Operational Excellence. AI Maturity: Level 1 → Level 3." },
         results: [
           { metric: { en: "Rule of 40", de: "Rule of 40" }, before: "25%", after: "45%", change: "+20pp" },
           { metric: { en: "Burn Multiple", de: "Burn Multiple" }, before: "2.5x", after: "0.8x", change: "-68%" },
@@ -253,7 +253,7 @@ export const operatingSystemsData: PlaybookPageData = {
       {
         company: { en: "Series C Company", de: "Series C Unternehmen" },
         problem: { en: "Need to reach €100M ARR without proportional headcount growth for IPO readiness, currently at €40M ARR with 200 people", de: "Muss €100M ARR erreichen ohne proportionales Headcount-Wachstum für IPO-Readiness, aktuell bei €40M ARR mit 200 Mitarbeitern" },
-        solution: { en: "Full AI-native transformation across all 4 Operating Systems. Focus on automation, AI integration, and efficiency optimization. θ_index 0.55 → 0.92.", de: "Komplette AI-native Transformation über alle 4 Operating Systems. Fokus auf Automatisierung, AI-Integration und Effizienz-Optimierung. θ_index 0.55 → 0.92." },
+        solution: { en: "Full AI-native transformation across all 4 Operating Systems. Focus on automation, AI integration, and efficiency optimization. AI Maturity: Level 1 → Level 3.", de: "Komplette AI-native Transformation über alle 4 Operating Systems. Fokus auf Automatisierung, AI-Integration und Effizienz-Optimierung. AI Maturity: Level 1 → Level 3." },
         results: [
           { metric: { en: "ARR", de: "ARR" }, before: "€40M", after: "€100M", change: "+150%" },
           { metric: { en: "Headcount", de: "Headcount" }, before: "200", after: "200", change: "0%" },
@@ -265,15 +265,26 @@ export const operatingSystemsData: PlaybookPageData = {
     ] 
   },
   solutionsConnection: { 
-    title: { en: "Ready to Execute?", de: "Bereit zur Umsetzung?" }, 
+    title: { en: "How We Can Help", de: "Wie wir helfen können" }, 
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deine Timeline und Budget" }, 
     items: [
       {
         type: 'power-up',
+        name: { en: "Comprehensive Assessment", de: "Umfassendes Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full operating systems assessment (Ops, Finance, Talent, Data/Tech), maturity scoring, bottleneck identification, 90-day roadmap", de: "Vollständiges Operating Systems Assessment (Ops, Finance, Talent, Data/Tech), Maturity Scoring, Engpass-Identifikation, 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "green"
+      },
+      {
+        type: 'power-up',
         name: { en: "Scaling Velocity", de: "Scaling Velocity" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
-        outcome: { en: "Operating Systems assessment, bottleneck identification, 12-24 month roadmap, quick wins for all 4 systems", de: "Operating Systems Assessment, Engpass-Identifikation, 12-24 Monate Roadmap, Quick Wins für alle 4 Systeme" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
+        outcome: { en: "Fix one operating system in 30 days: focused sprint, one system improvement, quick wins, measurable results", de: "Fixiere ein Operating System in 30 Tagen: fokussierter Sprint, eine System-Verbesserung, Quick Wins, messbare Ergebnisse" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
@@ -284,11 +295,22 @@ export const operatingSystemsData: PlaybookPageData = {
         name: { en: "Scaling OS", de: "Scaling OS" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
-        outcome: { en: "Full Operating Systems transformation: -30-50% operational costs, +2-5x efficiency, scaling without linear headcount growth", de: "Komplette Operating Systems Transformation: -30-50% Betriebskosten, +2-5x Effizienz, Skalierung ohne lineares Headcount-Wachstum" },
+        outcome: { en: "Transform 2-3 operating systems in 90 days: full transformation, AI integration, systematic improvement, measurable ROI", de: "Transformiere 2-3 Operating Systems in 90 Tagen: volle Transformation, AI-Integration, systematische Verbesserung, messbarer ROI" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
         color: "blue"
+      },
+      {
+        type: 'accelerate',
+        name: { en: "Full Transformation", de: "Volle Transformation" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full AI-native transformation, all 4 operating systems, AI Maturity Level 3, 2-5x scaling efficiency, market leadership", de: "Volle AI-native Transformation, alle 4 Operating Systems, AI Maturity Level 3, 2-5x Skalierungs-Effizienz, Marktführerschaft" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "purple"
       }
     ] 
   },
