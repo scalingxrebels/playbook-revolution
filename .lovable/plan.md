@@ -1,6 +1,5 @@
 
-
-# Plan: Operational Governance Playbook v3.0 Synchronisation
+# Plan: Strategic Governance Playbook v3.0 Synchronisation
 
 ## Analyse-Ergebnis
 
@@ -8,54 +7,38 @@
 
 | Element | Status | Details |
 |---------|--------|---------|
-| Kachel-Title | OK | "Operational Governance Playbook" |
+| Kachel-Title | OK | "Strategic Governance Playbook" |
 | Hero Section | OK | Keine Formeln, praktischer Ton |
 | Summary Section | OK | Keine Formeln, praktischer Ton |
-| Framework Section | HINWEIS | Komponenten-Namen unterscheiden sich (siehe unten) |
+| Framework Section | OK | 5-Komponenten Framework korrekt (Board Intelligence, Strategic Planning, Risk Management, Investor Relations, AI-Powered Governance) |
 | Case Studies | OK | Keine theta_index Referenzen, Business-Metriken |
 | Solutions Connection | AENDERN | Nur 2 Items, Briefing fordert 4 |
 
 ---
 
-## Kritische Aenderung: Solutions Connection
+## Einzige Aenderung erforderlich
 
-### Aktuell (Zeilen 298-321): 2 Items
-1. Power Up: Board Readiness (23.6K, 30 Days)
-2. Boost: Board Excellence (60K-78K, 90 Days)
+### Solutions Connection Section (Zeilen 341-364)
 
-### Briefing v3.0: 4 Items
-1. **Comprehensive Assessment** (2.5K-10K, 2-3 Days) - NEU
-2. Power Up (23.6K-45.9K, 30 Days) - Preis-Range aktualisieren
-3. Boost (60K-78K, 90 Days)
-4. **Accelerate** (153K, 12 Months) - NEU
+**Aktuell:** 2 Items
+1. Power Up: Board Readiness (From €23.6K, 30 Days)
+2. Boost: Board Excellence (€60K-€78K, 90 Days)
 
----
-
-## Hinweis: Framework-Komponenten Diskrepanz
-
-Die aktuellen Framework-Komponenten unterscheiden sich teilweise vom Briefing:
-
-| Position | Aktuell | Briefing v3.0 |
-|----------|---------|---------------|
-| Komponente 1 | Data Governance & Quality | Data Governance & Quality |
-| Komponente 2 | Legal & Compliance Management | Legal & Compliance |
-| Komponente 3 | **AI Governance & Ethics** | **Audit & Controls** |
-| Komponente 4 | **Operational Risk Management** | **Reporting & Transparency** |
-| Komponente 5 | AI-Powered Operational Governance | AI-Powered Operational Governance |
-
-**Empfehlung:** Die aktuellen Komponenten (AI Governance & Ethics, Operational Risk Management) sind inhaltlich valide und bereits umfassend implementiert. Das Briefing schlaegt alternative Schwerpunkte vor (Audit & Controls, Reporting & Transparency). 
-
-**Fuer diese Synchronisation:** Nur die Solutions Connection aktualisieren (konsistent mit allen anderen Playbooks). Eine komplette Komponenten-Umstrukturierung wuerde umfangreiche Content-Aenderungen erfordern.
+**Briefing v3.0:** 4 Items
+1. **Comprehensive Assessment** (€2.5K-€10K, 2-3 Days) - NEU
+2. Power Up (€23.6K-€45.9K, 30 Days) - Preis-Range aktualisieren
+3. Boost (€60K-€78K, 90 Days)
+4. **Accelerate** (€153K, 12 Months) - NEU
 
 ---
 
 ## Implementierungsdetails
 
-### Datei: `src/data/playbooks/content/operational-governance.ts`
+### Datei: `src/data/playbooks/content/strategic-governance.ts`
 
 | Zeilen | Aenderung |
 |--------|----------|
-| 298-321 | `solutionsConnection.items` Array von 2 auf 4 Items erweitern |
+| 341-364 | `solutionsConnection.items` Array von 2 auf 4 Items erweitern |
 
 ### Neue Items:
 
@@ -64,27 +47,32 @@ ITEM 1 (NEU): Comprehensive Assessment
 - type: "assessment"
 - name: "Governance Assessment"
 - duration: "2-3 Days"
-- price: "2.5K-10K"
+- price: "€2.5K-€10K"
 - outcome: "Full governance maturity report + 90-day roadmap"
 - cta: "Book Assessment"
 - link: "/solutions/assessment"
 - icon: "ClipboardCheck"
-- color: "green"
+- color: "bg-emerald-500/10 text-emerald-500"
 
 ITEM 2 (AKTUALISIERT): Power Up
-- name: "Governance Sprint" (statt "Board Readiness")
-- price: "23.6K-45.9K" (Range erweitern)
+- name: "Board Readiness Sprint" (leicht angepasst)
+- price: "€23.6K-€45.9K" (Range erweitern)
+- color: "bg-amber-500/10 text-amber-500" (aktuelles Format)
+
+ITEM 3 (AKTUALISIERT): Boost
+- name: "Board Excellence"
+- color: "bg-blue-500/10 text-blue-500" (aktuelles Format)
 
 ITEM 4 (NEU): Accelerate
 - type: "accelerate"
 - name: "Accelerate: AI-Native Governance"
 - duration: "12 Months"
-- price: "153K"
-- outcome: "Full governance transformation, AI Maturity Level 3, Compliance Costs -60%"
+- price: "€153K"
+- outcome: "Full governance transformation, AI Maturity Level 3, Board Prep Time -80%"
 - cta: "Start Accelerate"
 - link: "/solutions/accelerate"
 - icon: "TrendingUp"
-- color: "violet"
+- color: "bg-violet-500/10 text-violet-500"
 ```
 
 ---
@@ -93,12 +81,11 @@ ITEM 4 (NEU): Accelerate
 
 | Aspekt | Details |
 |--------|---------|
-| **Dateien** | 1 (operational-governance.ts) |
+| **Dateien** | 1 (strategic-governance.ts) |
 | **theta_index Stellen** | 0 (bereits entfernt) |
 | **Formel-Stellen** | 0 (bereits entfernt) |
 | **Title-Update** | 0 (bereits korrekt) |
 | **Solutions-Update** | +2 neue Items, 1 Preis-Update |
-| **Framework-Update** | Nicht in diesem Scope (optional spaeter) |
 | **Kritikalitaet** | Niedrig (nur Solutions erweitern) |
 
 ---
@@ -107,11 +94,20 @@ ITEM 4 (NEU): Accelerate
 
 Die `SolutionConnectionItem` TypeScript-Definition unterstuetzt bereits den `'assessment'` Typ (wurde beim GTM/Revenue Playbook hinzugefuegt), daher ist keine Typ-Erweiterung noetig.
 
+Zusaetzlich muessen die `color` Werte auf das neue Format (z.B. `"bg-amber-500/10 text-amber-500"`) statt des alten Formats (`"orange"`, `"amber"`) aktualisiert werden, um Konsistenz mit den anderen bereits synchronisierten Playbooks zu gewaehrleisten.
+
+---
+
+## Status: Board & Governance Playbooks
+
+Nach dieser Synchronisation sind alle 3 Board & Governance Sub-Playbooks auf v3.0:
+- Exit & M&A Playbook - FERTIG
+- Operational Governance Playbook - FERTIG
+- Strategic Governance Playbook - AUSSTEHEND (dieser Plan)
+
 ---
 
 ## Naechste Schritte nach Implementierung
 
-1. **Solutions Connection erweitern** (Zeilen 298-321)
-2. **Optional:** Framework-Komponenten-Diskussion fuer zukuenftiges Update
-3. **Finale Validation:** Alle 17 Playbooks auf v3.0 Konsistenz pruefen
-
+1. **Solutions Connection erweitern** (Zeilen 341-364)
+2. **Finale Validation:** Alle Board & Governance Playbooks auf v3.0 Konsistenz pruefen
