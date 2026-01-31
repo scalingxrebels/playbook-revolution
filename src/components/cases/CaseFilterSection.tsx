@@ -2,6 +2,7 @@ import React from 'react';
 import { Search, X, AlertCircle, Briefcase, TrendingUp } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
 import { challengeFilters, industryFilters, stageFilters, CaseFilterOption } from '@/data/cases/caseFilters';
@@ -26,6 +27,16 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   challenge: AlertCircle,
   industry: Briefcase,
   stage: TrendingUp,
+};
+
+// Helper to get filter label
+const getFilterLabel = (
+  filters: CaseFilterOption[], 
+  id: string, 
+  language: 'en' | 'de'
+): string => {
+  const filter = filters.find(f => f.id === id);
+  return filter ? (language === 'de' ? filter.label.de : filter.label.en) : id;
 };
 
 // Full-width centered filter row (for Challenge)
@@ -118,6 +129,21 @@ const FilterRowCompact: React.FC<{
   );
 };
 
+// Active Filter Badge Component
+const ActiveFilterBadge: React.FC<{
+  label: string;
+  onRemove: () => void;
+}> = ({ label, onRemove }) => (
+  <Badge 
+    variant="secondary" 
+    className="flex items-center gap-1.5 px-3 py-1 cursor-pointer hover:bg-destructive/10 transition-colors"
+    onClick={onRemove}
+  >
+    {label}
+    <X className="w-3 h-3" />
+  </Badge>
+);
+
 const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
   searchQuery,
   onSearchChange,
@@ -133,6 +159,38 @@ const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
   hasActiveFilters,
 }) => {
   const { language } = useLanguage();
+
+  // Collect active filters for display
+  const activeFilters: { type: string; label: string; onRemove: () => void }[] = [];
+  
+  if (searchQuery) {
+    activeFilters.push({
+      type: 'search',
+      label: `"${searchQuery}"`,
+      onRemove: () => onSearchChange('')
+    });
+  }
+  if (selectedChallenge !== 'all') {
+    activeFilters.push({
+      type: 'challenge',
+      label: getFilterLabel(challengeFilters, selectedChallenge, language),
+      onRemove: () => onChallengeChange('all')
+    });
+  }
+  if (selectedIndustry !== 'all') {
+    activeFilters.push({
+      type: 'industry',
+      label: getFilterLabel(industryFilters, selectedIndustry, language),
+      onRemove: () => onIndustryChange('all')
+    });
+  }
+  if (selectedStage !== 'all') {
+    activeFilters.push({
+      type: 'stage',
+      label: getFilterLabel(stageFilters, selectedStage, language),
+      onRemove: () => onStageChange('all')
+    });
+  }
 
   return (
     <section className="bg-muted/30 border-y border-border py-6 md:py-8">
@@ -194,26 +252,39 @@ const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
           </div>
         </div>
 
-        {/* Results count + Clear (centered) */}
-        <div className="text-center mt-6 pt-4 border-t border-border/50">
-          <p className="text-sm text-muted-foreground">
+        {/* Active Filters Display + Results Count */}
+        <div className="mt-6 pt-4 border-t border-border/50">
+          {/* Active Filters with Remove Buttons */}
+          {activeFilters.length > 0 && (
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
+              <span className="text-xs text-muted-foreground mr-2">
+                {language === 'de' ? 'Aktive Filter:' : 'Active filters:'}
+              </span>
+              {activeFilters.map((filter, idx) => (
+                <ActiveFilterBadge 
+                  key={`${filter.type}-${idx}`}
+                  label={filter.label}
+                  onRemove={filter.onRemove}
+                />
+              ))}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onClearFilters}
+                className="text-xs text-muted-foreground hover:text-destructive ml-2"
+              >
+                {language === 'de' ? 'Alle löschen' : 'Clear all'}
+              </Button>
+            </div>
+          )}
+
+          {/* Results count (centered) */}
+          <p className="text-sm text-muted-foreground text-center">
             {language === 'de' 
               ? `${filteredCount} von ${totalCount} Cases`
               : `Showing ${filteredCount} of ${totalCount} cases`
             }
           </p>
-          
-          {hasActiveFilters && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClearFilters}
-              className="mt-2 text-muted-foreground hover:text-foreground"
-            >
-              <X className="w-4 h-4 mr-1" />
-              {language === 'de' ? 'Filter zurücksetzen' : 'Clear filters'}
-            </Button>
-          )}
         </div>
       </div>
     </section>
