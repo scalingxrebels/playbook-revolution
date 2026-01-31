@@ -10,12 +10,12 @@ export const portfolioExcellenceData: PlaybookPageData = {
     badge: { en: "Portfolio Excellence · Portfolio", de: "Portfolio Excellence · Portfolio" },
     title: "Portfolio Excellence Playbook",
     subtitle: { 
-      en: "How to transform portfolio performance with AI-native operations", 
-      de: "Wie du Portfolio-Performance mit AI-native Operations transformierst" 
+      en: "How to transform portfolio companies systematically and achieve 3-5x value increase", 
+      de: "Wie du Portfolio-Unternehmen systematisch transformierst und 3-5x Wertsteigerung erreichst" 
     },
     description: { 
-      en: "Traditional portfolio management is reactive. VCs/PEs manage portfolios manually, portfolio companies operate independently, and value creation is ad-hoc. The result? 70% of portfolio companies underperform, portfolio valuation is 30-50% below potential, and LP returns suffer.\n\nAI-native VCs/PEs use a different playbook. They leverage the 5-component framework to increase portfolio valuation by 200-400%, achieve 3-5x faster growth, and deliver top-quartile LP returns. They transform portfolios systematically, not reactively.\n\nThis playbook gives you the exact framework used by top-quartile VCs/PEs to build world-class portfolio operations.", 
-      de: "Traditionelles Portfolio-Management ist reaktiv. VCs/PEs verwalten Portfolios manuell, Portfolio-Unternehmen arbeiten unabhängig, und Wertschöpfung erfolgt ad-hoc. Das Ergebnis? 70% der Portfolio-Unternehmen underperformen, Portfolio-Bewertungen liegen 30-50% unter dem Potenzial, und LP-Returns leiden.\n\nAI-native VCs/PEs nutzen ein anderes Playbook. Sie nutzen das 5-Komponenten-Framework, um Portfolio-Bewertungen um 200-400% zu steigern, 3-5x schnelleres Wachstum zu erzielen, und Top-Quartil LP-Returns zu liefern.\n\nDieses Playbook gibt dir das exakte Framework, das Top-Quartil VCs/PEs nutzen, um erstklassige Portfolio-Operations aufzubauen." 
+      en: "Most VC/PE firms struggle with portfolio transformation because they lack a systematic framework. They invest in companies one at a time but don't have a standardized approach to assess, prioritize, and transform the entire portfolio.\n\nThis playbook teaches you the 5-component framework used by top-tier VCs/PEs to transform 10-30 portfolio companies systematically, improve portfolio IRR from 15% to 40%+, and achieve faster exits.\n\nYou'll learn how to assess portfolio maturity across all companies, prioritize which companies to transform first, create a standardized transformation playbook, execute transformations at scale (3-5 companies simultaneously), and measure progress with Portfolio Maturity Levels.", 
+      de: "Die meisten VC/PE-Firmen kämpfen mit Portfolio-Transformation, weil ihnen ein systematisches Framework fehlt. Sie investieren in Unternehmen einzeln, haben aber keinen standardisierten Ansatz, um das gesamte Portfolio zu bewerten, priorisieren und transformieren.\n\nDieses Playbook lehrt dich das 5-Komponenten-Framework, das Top-Tier VCs/PEs nutzen, um 10-30 Portfolio-Unternehmen systematisch zu transformieren, Portfolio-IRR von 15% auf 40%+ zu verbessern und schnellere Exits zu erzielen.\n\nDu lernst, wie du Portfolio-Maturity über alle Unternehmen bewertest, priorisierst welche Unternehmen zuerst transformiert werden, ein standardisiertes Transformations-Playbook erstellst, Transformationen skaliert ausführst (3-5 Unternehmen gleichzeitig) und Fortschritt mit Portfolio Maturity Levels misst." 
     },
     trustBadges: [
       { en: "~3,000 Words", de: "~3.000 Wörter" },
@@ -30,8 +30,8 @@ export const portfolioExcellenceData: PlaybookPageData = {
     problem: { 
       title: { en: "The Problem", de: "Das Problem" }, 
       text: { 
-        en: "70% of portfolio companies underperform. Portfolio valuation is 30-50% below potential. Value creation is ad-hoc and reactive. Portfolio operations are manual and inefficient.", 
-        de: "70% der Portfolio-Unternehmen underperformen. Portfolio-Bewertungen liegen 30-50% unter dem Potenzial. Wertschöpfung ist ad-hoc und reaktiv. Portfolio-Operations sind manuell und ineffizient." 
+        en: "70% of portfolio companies underperform. Portfolio valuation is 30-50% below potential. Value creation is ad-hoc and reactive. No systematic approach to assess, prioritize, and transform.", 
+        de: "70% der Portfolio-Unternehmen underperformen. Portfolio-Bewertungen liegen 30-50% unter dem Potenzial. Wertschöpfung ist ad-hoc und reaktiv. Kein systematischer Ansatz zum Bewerten, Priorisieren und Transformieren." 
       } 
     },
     whyItMatters: { 
@@ -44,22 +44,22 @@ export const portfolioExcellenceData: PlaybookPageData = {
     solution: { 
       title: { en: "The Solution", de: "Die Lösung" }, 
       text: { 
-        en: "The 5-component framework: Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, and AI-Powered Portfolio Excellence.", 
-        de: "Das 5-Komponenten-Framework: Portfolio Assessment & Scoring, Portfolio Transformation & Value Creation, Portfolio Operations & Synergies, Portfolio Intelligence & Reporting, und AI-Powered Portfolio Excellence." 
+        en: "The 5-component framework: Portfolio Assessment, Company Prioritization, Transformation Playbook, Coordinated Execution, and Progress Measurement.", 
+        de: "Das 5-Komponenten-Framework: Portfolio Assessment, Company Prioritization, Transformation Playbook, Coordinated Execution und Progress Measurement." 
       } 
     }
   },
   problem: {
-    title: { en: "Why Traditional Portfolio Management is Broken", de: "Warum traditionelles Portfolio-Management nicht funktioniert" },
+    title: { en: "Why Most VC/PE Firms Struggle with Portfolio Excellence", de: "Warum die meisten VC/PE-Firmen mit Portfolio Excellence kämpfen" },
     subtitle: { 
-      en: "The gap between traditional and AI-native portfolio management is widening", 
-      de: "Die Kluft zwischen traditionellem und AI-native Portfolio-Management wird größer" 
+      en: "The gap between traditional and systematic portfolio management is widening", 
+      de: "Die Kluft zwischen traditionellem und systematischem Portfolio-Management wird größer" 
     },
     bullets: [
-      { text: { en: "Portfolio Performance: 70% of companies underperform (vs. 30% for AI-native)", de: "Portfolio-Performance: 70% der Unternehmen underperformen (vs. 30% bei AI-native)" }, icon: "TrendingDown" },
-      { text: { en: "Portfolio Valuation: 30-50% below potential (vs. 0-10% for AI-native)", de: "Portfolio-Bewertung: 30-50% unter Potenzial (vs. 0-10% bei AI-native)" }, icon: "DollarSign" },
-      { text: { en: "Value Creation: Ad-hoc, reactive approach (vs. systematic for AI-native)", de: "Wertschöpfung: Ad-hoc, reaktiver Ansatz (vs. systematisch bei AI-native)" }, icon: "RefreshCw" },
-      { text: { en: "Portfolio Operations: Manual, inefficient (vs. AI-powered for AI-native)", de: "Portfolio-Operations: Manuell, ineffizient (vs. AI-gestützt bei AI-native)" }, icon: "Settings" }
+      { text: { en: "No Systematic Framework: Ad-hoc investments, no coordination, reactive problem-solving", de: "Kein systematisches Framework: Ad-hoc Investments, keine Koordination, reaktives Problem-Solving" }, icon: "AlertCircle" },
+      { text: { en: "Poor Prioritization: Don't know which companies to transform first, diluted resources", de: "Schlechte Priorisierung: Wissen nicht welche Unternehmen zuerst transformieren, verwässerte Ressourcen" }, icon: "Target" },
+      { text: { en: "No Progress Measurement: Quarterly board meetings, no real-time data, no visibility", de: "Keine Fortschrittsmessung: Quartalsweise Board-Meetings, keine Echtzeit-Daten, keine Sichtbarkeit" }, icon: "BarChart3" },
+      { text: { en: "Manual Operations: Portfolio operations don't scale, team overwhelmed", de: "Manuelle Operations: Portfolio-Operations skalieren nicht, Team überlastet" }, icon: "Settings" }
     ],
     metrics: [
       { label: { en: "Companies Underperforming", de: "Unternehmen mit Underperformance" }, value: "70%", trend: "down" },
@@ -69,10 +69,10 @@ export const portfolioExcellenceData: PlaybookPageData = {
     ]
   },
   framework: {
-    title: { en: "The 5-Component Framework", de: "Das 5-Komponenten-Framework" },
+    title: { en: "The Portfolio Excellence Framework", de: "Das Portfolio Excellence Framework" },
     subtitle: { 
-      en: "How AI-native VCs/PEs build portfolio excellence that delivers top-quartile returns", 
-      de: "Wie AI-native VCs/PEs Portfolio-Exzellenz aufbauen, die Top-Quartil Returns liefert" 
+      en: "A 5-component framework to transform portfolio companies systematically", 
+      de: "Ein 5-Komponenten-Framework zur systematischen Transformation von Portfolio-Unternehmen" 
     },
     items: [
       {
@@ -80,114 +80,109 @@ export const portfolioExcellenceData: PlaybookPageData = {
         icon: "ClipboardCheck",
         color: "text-cyan-500",
         bgColor: "bg-cyan-500/10",
-        title: { en: "Portfolio Assessment & Scoring (θ_INDEX)", de: "Portfolio Assessment & Scoring (θ_INDEX)" },
-        subtitle: { en: "Systematic portfolio assessment using θ_index framework", de: "Systematisches Portfolio-Assessment mit θ_index Framework" },
+        title: { en: "Portfolio Assessment", de: "Portfolio Assessment" },
+        subtitle: { en: "2-4 Weeks", de: "2-4 Wochen" },
         description: { 
-          en: "Score all portfolio companies using the θ_index framework (4 Capabilities × 8 Dimensions × 3 AI Maturity Levels). You can't improve what you don't measure.", 
-          de: "Alle Portfolio-Unternehmen mit dem θ_index Framework scoren (4 Capabilities × 8 Dimensionen × 3 AI Maturity Levels). Was du nicht misst, kannst du nicht verbessern." 
+          en: "Assess maturity across all portfolio companies using 4 capabilities (Strategy, Setup, Execution, Operationalization). Create portfolio maturity map and identify bottlenecks.", 
+          de: "Bewerte Maturity über alle Portfolio-Unternehmen mit 4 Capabilities (Strategy, Setup, Execution, Operationalization). Erstelle Portfolio Maturity Map und identifiziere Bottlenecks." 
         },
         metrics: [
           { label: { en: "Portfolio Visibility", de: "Portfolio-Sichtbarkeit" }, value: "+100%" },
-          { label: { en: "Assessment Time", de: "Assessment-Zeit" }, value: "-90%" }
+          { label: { en: "Assessment Time", de: "Assessment-Zeit" }, value: "2-4 Weeks" }
         ],
         actions: [
-          { en: "θ_index Framework (4 Capabilities × 8 Dimensions × 3 AI Maturity Levels)", de: "θ_index Framework (4 Capabilities × 8 Dimensionen × 3 AI Maturity Levels)" },
-          { en: "Portfolio Scoring (Score all portfolio companies, identify gaps)", de: "Portfolio Scoring (Alle Portfolio-Unternehmen scoren, Gaps identifizieren)" },
-          { en: "Portfolio Benchmarking (Compare to best-in-class, identify opportunities)", de: "Portfolio Benchmarking (Mit Best-in-Class vergleichen, Opportunities identifizieren)" },
-          { en: "Portfolio Prioritization (Prioritize by potential, focus resources)", de: "Portfolio-Priorisierung (Nach Potenzial priorisieren, Ressourcen fokussieren)" },
-          { en: "AI-Powered Portfolio Assessment (Auto-Scoring via LASR.io, 12 min/company)", de: "AI-Powered Portfolio Assessment (Auto-Scoring via LASR.io, 12 Min/Unternehmen)" }
+          { en: "Define assessment framework (4 capabilities)", de: "Assessment-Framework definieren (4 Capabilities)" },
+          { en: "Assess each company (Strategy, Setup, Execution, Operationalization)", de: "Jedes Unternehmen bewerten (Strategy, Setup, Execution, Operationalization)" },
+          { en: "Create portfolio maturity map", de: "Portfolio Maturity Map erstellen" },
+          { en: "Identify bottlenecks and opportunities", de: "Bottlenecks und Opportunities identifizieren" }
         ]
       },
       {
-        id: "portfolio-transformation",
-        icon: "TrendingUp",
+        id: "company-prioritization",
+        icon: "Target",
         color: "text-green-500",
         bgColor: "bg-green-500/10",
-        title: { en: "Portfolio Transformation & Value Creation", de: "Portfolio Transformation & Value Creation" },
-        subtitle: { en: "Systematic portfolio transformation to maximize value creation", de: "Systematische Portfolio-Transformation zur Maximierung der Wertschöpfung" },
+        title: { en: "Company Prioritization", de: "Company Prioritization" },
+        subtitle: { en: "1-2 Weeks", de: "1-2 Wochen" },
         description: { 
-          en: "Transform portfolios systematically with value creation plans, playbooks, and execution tracking. Ad-hoc value creation leaves 30-50% on the table.", 
-          de: "Portfolios systematisch transformieren mit Value Creation Plans, Playbooks und Execution Tracking. Ad-hoc Wertschöpfung lässt 30-50% liegen." 
+          en: "Prioritize which companies to transform first. Score by potential impact, readiness, and strategic importance. Focus on Top 10-15 companies.", 
+          de: "Priorisiere welche Unternehmen zuerst transformiert werden. Score nach potenziellem Impact, Readiness und strategischer Wichtigkeit. Fokus auf Top 10-15 Unternehmen." 
         },
         metrics: [
-          { label: { en: "Portfolio Valuation", de: "Portfolio-Bewertung" }, value: "+200-400%" },
-          { label: { en: "Growth Rate", de: "Wachstumsrate" }, value: "+3-5x" }
+          { label: { en: "Focus", de: "Fokus" }, value: "Top 10-15" },
+          { label: { en: "Value Coverage", de: "Wertabdeckung" }, value: "70-80%" }
         ],
         actions: [
-          { en: "Portfolio Strategy (Vision, transformation roadmap, resource allocation)", de: "Portfolio-Strategie (Vision, Transformations-Roadmap, Ressourcenallokation)" },
-          { en: "Value Creation Plans (Company-specific plans, KPIs, milestones)", de: "Value Creation Plans (Unternehmens-spezifische Pläne, KPIs, Meilensteine)" },
-          { en: "Portfolio Playbooks (8 Playbooks: GTM, Product, Ops, Finance, Talent, CS, Data, Governance)", de: "Portfolio Playbooks (8 Playbooks: GTM, Product, Ops, Finance, Talent, CS, Data, Governance)" },
-          { en: "Portfolio Execution (Execute transformation, track progress, adjust plans)", de: "Portfolio-Execution (Transformation ausführen, Fortschritt tracken, Pläne anpassen)" },
-          { en: "AI-Powered Portfolio Transformation (Predictive Value Creation, Smart Recommendations)", de: "AI-Powered Portfolio Transformation (Predictive Value Creation, Smart Recommendations)" }
+          { en: "Define prioritization criteria (impact, readiness, strategic importance)", de: "Priorisierungskriterien definieren (Impact, Readiness, strategische Wichtigkeit)" },
+          { en: "Score each company", de: "Jedes Unternehmen scoren" },
+          { en: "Create prioritization matrix (Impact × Readiness)", de: "Priorisierungsmatrix erstellen (Impact × Readiness)" },
+          { en: "Select Top 10-15 companies for transformation", de: "Top 10-15 Unternehmen für Transformation auswählen" }
         ]
       },
       {
-        id: "portfolio-operations",
-        icon: "Network",
+        id: "transformation-playbook",
+        icon: "BookOpen",
         color: "text-blue-500",
         bgColor: "bg-blue-500/10",
-        title: { en: "Portfolio Operations & Synergies", de: "Portfolio Operations & Synergies" },
-        subtitle: { en: "Systematic portfolio operations to maximize synergies", de: "Systematische Portfolio-Operations zur Maximierung von Synergien" },
+        title: { en: "Transformation Playbook", de: "Transformation Playbook" },
+        subtitle: { en: "2-4 Weeks", de: "2-4 Wochen" },
         description: { 
-          en: "Build portfolio operations that unlock cross-portfolio synergies. Portfolio companies operating independently miss critical synergy opportunities.", 
-          de: "Portfolio-Operations aufbauen, die Cross-Portfolio Synergien erschließen. Unabhängig operierende Portfolio-Unternehmen verpassen kritische Synergien." 
+          en: "Create standardized transformation playbook. Define process, milestones, deliverables, and resources. Reusable across all portfolio companies.", 
+          de: "Standardisiertes Transformations-Playbook erstellen. Prozess, Meilensteine, Deliverables und Ressourcen definieren. Wiederverwendbar über alle Portfolio-Unternehmen." 
         },
         metrics: [
-          { label: { en: "Portfolio Synergies", de: "Portfolio-Synergien" }, value: "+50-100%" },
-          { label: { en: "Portfolio Efficiency", de: "Portfolio-Effizienz" }, value: "+30-50%" }
+          { label: { en: "Playbook Length", de: "Playbook-Länge" }, value: "50-100 Pages" },
+          { label: { en: "Standardization", de: "Standardisierung" }, value: "High" }
         ],
         actions: [
-          { en: "Portfolio Operations (Shared services, best practices, cross-portfolio collaboration)", de: "Portfolio-Operations (Shared Services, Best Practices, Cross-Portfolio Collaboration)" },
-          { en: "Portfolio Synergies (Cross-sell, co-marketing, product integration, resource sharing)", de: "Portfolio-Synergien (Cross-Sell, Co-Marketing, Produktintegration, Resource Sharing)" },
-          { en: "Portfolio Community (Events, peer learning, expert sessions, network effects)", de: "Portfolio-Community (Events, Peer Learning, Expert Sessions, Network Effects)" },
-          { en: "Portfolio Support (Operational support, strategic advice, crisis management)", de: "Portfolio-Support (Operational Support, strategische Beratung, Krisenmanagement)" },
-          { en: "AI-Powered Portfolio Operations (Smart Synergy Detection, Auto-Collaboration)", de: "AI-Powered Portfolio Operations (Smart Synergy Detection, Auto-Collaboration)" }
+          { en: "Define transformation process (step-by-step)", de: "Transformations-Prozess definieren (Schritt für Schritt)" },
+          { en: "Create playbook template", de: "Playbook-Template erstellen" },
+          { en: "Define milestones and deliverables (30/60/90 days)", de: "Meilensteine und Deliverables definieren (30/60/90 Tage)" },
+          { en: "Allocate resources (team, budget, timeline)", de: "Ressourcen zuweisen (Team, Budget, Timeline)" }
         ]
       },
       {
-        id: "portfolio-intelligence",
-        icon: "BarChart3",
+        id: "coordinated-execution",
+        icon: "Zap",
         color: "text-violet-500",
         bgColor: "bg-violet-500/10",
-        title: { en: "Portfolio Intelligence & Reporting", de: "Portfolio Intelligence & Reporting" },
-        subtitle: { en: "Real-time portfolio intelligence and automated reporting", de: "Echtzeit Portfolio-Intelligence und automatisiertes Reporting" },
+        title: { en: "Coordinated Execution", de: "Coordinated Execution" },
+        subtitle: { en: "90 Days per Company", de: "90 Tage pro Unternehmen" },
         description: { 
-          en: "Build real-time portfolio dashboards and automated reporting. Manual portfolio reporting delivers outdated insights.", 
-          de: "Echtzeit Portfolio-Dashboards und automatisiertes Reporting aufbauen. Manuelles Portfolio-Reporting liefert veraltete Insights." 
+          en: "Transform 3-5 companies simultaneously using standardized playbook. Share resources across companies. Coordinate execution for maximum efficiency.", 
+          de: "3-5 Unternehmen gleichzeitig transformieren mit standardisiertem Playbook. Ressourcen über Unternehmen teilen. Execution für maximale Effizienz koordinieren." 
         },
         metrics: [
-          { label: { en: "Portfolio Visibility", de: "Portfolio-Sichtbarkeit" }, value: "+100%" },
-          { label: { en: "Reporting Time", de: "Reporting-Zeit" }, value: "-80%" }
+          { label: { en: "Parallel Transformations", de: "Parallele Transformationen" }, value: "3-5" },
+          { label: { en: "Success Rate", de: "Erfolgsrate" }, value: "70-80%" }
         ],
         actions: [
-          { en: "Portfolio Dashboard (Real-time metrics, KPIs, alerts)", de: "Portfolio Dashboard (Echtzeit-Metriken, KPIs, Alerts)" },
-          { en: "Portfolio Reporting (Automated LP reports, board reports, company reports)", de: "Portfolio-Reporting (Automatisierte LP-Reports, Board-Reports, Company-Reports)" },
-          { en: "Portfolio Analytics (Trends, benchmarking, cohort analysis, predictive analytics)", de: "Portfolio-Analytics (Trends, Benchmarking, Kohorten-Analyse, Predictive Analytics)" },
-          { en: "Portfolio Alerts (Risk alerts, opportunity alerts, performance alerts)", de: "Portfolio-Alerts (Risiko-Alerts, Opportunity-Alerts, Performance-Alerts)" },
-          { en: "AI-Powered Portfolio Intelligence (Predictive Insights, Smart Recommendations)", de: "AI-Powered Portfolio Intelligence (Predictive Insights, Smart Recommendations)" }
+          { en: "Select first cohort (3-5 companies)", de: "Erste Kohorte auswählen (3-5 Unternehmen)" },
+          { en: "Kick-off transformation (Week 1)", de: "Transformation Kick-off (Woche 1)" },
+          { en: "Execute 90-day transformation (Week 2-13)", de: "90-Tage-Transformation ausführen (Woche 2-13)" },
+          { en: "Review results and iterate (Week 14)", de: "Ergebnisse reviewen und iterieren (Woche 14)" }
         ]
       },
       {
-        id: "ai-portfolio-excellence",
-        icon: "Sparkles",
+        id: "progress-measurement",
+        icon: "TrendingUp",
         color: "text-pink-500",
         bgColor: "bg-pink-500/10",
-        title: { en: "AI-Powered Portfolio Excellence", de: "AI-Powered Portfolio Excellence" },
-        subtitle: { en: "AI that continuously optimizes portfolio operations", de: "KI, die Portfolio-Operations kontinuierlich optimiert" },
+        title: { en: "Progress Measurement", de: "Progress Measurement" },
+        subtitle: { en: "Ongoing", de: "Fortlaufend" },
         description: { 
-          en: "Deploy AI across all portfolio operations for continuous optimization. Manual portfolio management falls behind competitors using AI.", 
-          de: "KI über alle Portfolio-Operations für kontinuierliche Optimierung einsetzen. Manuelles Portfolio-Management fällt hinter Wettbewerber zurück, die KI nutzen." 
+          en: "Track portfolio transformation progress with monthly company assessments, quarterly portfolio reviews, and annual strategy updates.", 
+          de: "Portfolio-Transformations-Fortschritt tracken mit monatlichen Company Assessments, quartalsweisen Portfolio Reviews und jährlichen Strategie-Updates." 
         },
         metrics: [
-          { label: { en: "Portfolio Efficiency", de: "Portfolio-Effizienz" }, value: "+300%" },
-          { label: { en: "Portfolio Valuation", de: "Portfolio-Bewertung" }, value: "+50-100%" }
+          { label: { en: "Assessment Frequency", de: "Assessment-Frequenz" }, value: "Monthly" },
+          { label: { en: "Dashboard", de: "Dashboard" }, value: "Real-time" }
         ],
         actions: [
-          { en: "AI Portfolio Assessment (Auto-Scoring, Predictive Analytics, Risk Detection)", de: "AI Portfolio Assessment (Auto-Scoring, Predictive Analytics, Risk Detection)" },
-          { en: "AI Portfolio Transformation (Predictive Value Creation, Smart Recommendations)", de: "AI Portfolio Transformation (Predictive Value Creation, Smart Recommendations)" },
-          { en: "AI Portfolio Operations (Smart Synergy Detection, Auto-Collaboration)", de: "AI Portfolio Operations (Smart Synergy Detection, Auto-Collaboration)" },
-          { en: "AI Portfolio Intelligence (Predictive Insights, Smart Alerts, Auto-Reports)", de: "AI Portfolio Intelligence (Predictive Insights, Smart Alerts, Auto-Reports)" },
-          { en: "AI Portfolio Excellence (Portfolio Optimization, Continuous Improvement)", de: "AI Portfolio Excellence (Portfolio-Optimierung, Continuous Improvement)" }
+          { en: "Monthly: Assess each company (Portfolio Maturity, AI Maturity)", de: "Monatlich: Jedes Unternehmen bewerten (Portfolio Maturity, AI Maturity)" },
+          { en: "Quarterly: Review portfolio performance (IRR, ARR, Valuations)", de: "Quartalsweise: Portfolio-Performance reviewen (IRR, ARR, Valuations)" },
+          { en: "Annually: Update portfolio strategy (priorities, roadmap)", de: "Jährlich: Portfolio-Strategie updaten (Prioritäten, Roadmap)" },
+          { en: "Ongoing: Continuous improvement (playbook, processes)", de: "Fortlaufend: Continuous Improvement (Playbook, Prozesse)" }
         ]
       }
     ]
@@ -198,9 +193,9 @@ export const portfolioExcellenceData: PlaybookPageData = {
       {
         category: { en: "Assessment", de: "Assessment" },
         items: [
-          { do: { en: "Score all portfolio companies with θ_index within first 30 days", de: "Alle Portfolio-Unternehmen mit θ_index innerhalb der ersten 30 Tage scoren" }, dont: { en: "Wait for quarterly reviews to assess companies", de: "Auf quartalsweise Reviews warten, um Unternehmen zu bewerten" } },
+          { do: { en: "Score all portfolio companies with Portfolio Maturity within first 30 days", de: "Alle Portfolio-Unternehmen mit Portfolio Maturity innerhalb der ersten 30 Tage scoren" }, dont: { en: "Wait for quarterly reviews to assess companies", de: "Auf quartalsweise Reviews warten, um Unternehmen zu bewerten" } },
           { do: { en: "Benchmark against best-in-class to identify gaps", de: "Mit Best-in-Class benchmarken, um Gaps zu identifizieren" }, dont: { en: "Compare only within your portfolio", de: "Nur innerhalb des eigenen Portfolios vergleichen" } },
-          { do: { en: "Prioritize by potential (high potential + low score = high priority)", de: "Nach Potenzial priorisieren (hohes Potenzial + niedriger Score = hohe Priorität)" }, dont: { en: "Spread resources evenly across all companies", de: "Ressourcen gleichmäßig über alle Unternehmen verteilen" } }
+          { do: { en: "Prioritize by potential (high potential + low maturity = high priority)", de: "Nach Potenzial priorisieren (hohes Potenzial + niedrige Maturity = hohe Priorität)" }, dont: { en: "Spread resources evenly across all companies", de: "Ressourcen gleichmäßig über alle Unternehmen verteilen" } }
         ]
       },
       {
@@ -212,11 +207,11 @@ export const portfolioExcellenceData: PlaybookPageData = {
         ]
       },
       {
-        category: { en: "Operations", de: "Operations" },
+        category: { en: "Execution", de: "Execution" },
         items: [
-          { do: { en: "Identify cross-portfolio synergies proactively", de: "Cross-Portfolio Synergien proaktiv identifizieren" }, dont: { en: "Wait for companies to discover synergies on their own", de: "Warten, bis Unternehmen Synergien selbst entdecken" } },
-          { do: { en: "Host quarterly portfolio events for peer learning", de: "Quartalsweise Portfolio-Events für Peer Learning veranstalten" }, dont: { en: "Keep portfolio companies siloed", de: "Portfolio-Unternehmen isoliert halten" } },
-          { do: { en: "Consolidate vendors for better terms", de: "Vendors konsolidieren für bessere Konditionen" }, dont: { en: "Let each company negotiate independently", de: "Jedes Unternehmen unabhängig verhandeln lassen" } }
+          { do: { en: "Transform 3-5 companies simultaneously for shared learnings", de: "3-5 Unternehmen gleichzeitig transformieren für geteilte Learnings" }, dont: { en: "Transform companies one at a time", de: "Unternehmen einzeln transformieren" } },
+          { do: { en: "Use standardized playbook for consistency and speed", de: "Standardisiertes Playbook für Konsistenz und Geschwindigkeit nutzen" }, dont: { en: "Create custom approaches for each company", de: "Individuelle Ansätze für jedes Unternehmen erstellen" } },
+          { do: { en: "Share resources across cohort companies", de: "Ressourcen über Kohorten-Unternehmen teilen" }, dont: { en: "Assign dedicated resources per company", de: "Dedizierte Ressourcen pro Unternehmen zuweisen" } }
         ]
       }
     ]
@@ -230,49 +225,49 @@ export const portfolioExcellenceData: PlaybookPageData = {
     phases: [
       {
         phase: 1,
-        title: { en: "Assessment", de: "Assessment" },
-        timeline: { en: "Week 1-2", de: "Woche 1-2" },
+        title: { en: "Assessment & Prioritization", de: "Assessment & Priorisierung" },
+        timeline: { en: "Week 1-4", de: "Woche 1-4" },
         focus: { 
-          en: "Assess all portfolio companies, score with θ_index, prioritize", 
-          de: "Alle Portfolio-Unternehmen bewerten, mit θ_index scoren, priorisieren" 
+          en: "Assess all portfolio companies, score with Portfolio Maturity, prioritize Top 10-15", 
+          de: "Alle Portfolio-Unternehmen bewerten, mit Portfolio Maturity scoren, Top 10-15 priorisieren" 
         },
         deliverables: [
-          { en: "Portfolio Assessment (θ_index scores for all companies)", de: "Portfolio Assessment (θ_index Scores für alle Unternehmen)" },
+          { en: "Portfolio Assessment (Maturity scores for all companies)", de: "Portfolio Assessment (Maturity Scores für alle Unternehmen)" },
           { en: "Portfolio Benchmarking (Compare to best-in-class)", de: "Portfolio Benchmarking (Mit Best-in-Class vergleichen)" },
-          { en: "Portfolio Prioritization (High potential + low score = high priority)", de: "Portfolio-Priorisierung (Hohes Potenzial + niedriger Score = hohe Priorität)" },
-          { en: "Portfolio Strategy Deck (Vision, transformation roadmap)", de: "Portfolio Strategy Deck (Vision, Transformations-Roadmap)" }
+          { en: "Prioritization Matrix (Impact × Readiness)", de: "Priorisierungsmatrix (Impact × Readiness)" },
+          { en: "Top 10-15 Companies List (Focus for transformation)", de: "Top 10-15 Unternehmen-Liste (Fokus für Transformation)" }
         ],
         gradient: "from-cyan-500 to-blue-500"
       },
       {
         phase: 2,
-        title: { en: "Planning", de: "Planung" },
-        timeline: { en: "Week 3-4", de: "Woche 3-4" },
+        title: { en: "Playbook & Planning", de: "Playbook & Planung" },
+        timeline: { en: "Week 5-8", de: "Woche 5-8" },
         focus: { 
-          en: "Create value creation plans, portfolio playbooks, operations plan", 
-          de: "Value Creation Plans, Portfolio Playbooks, Operations Plan erstellen" 
+          en: "Create transformation playbook, define process, allocate resources", 
+          de: "Transformations-Playbook erstellen, Prozess definieren, Ressourcen zuweisen" 
         },
         deliverables: [
-          { en: "Value Creation Plans (Per company, 3-5 initiatives, KPIs)", de: "Value Creation Plans (Pro Unternehmen, 3-5 Initiativen, KPIs)" },
-          { en: "Portfolio Playbooks (8 playbooks for key domains)", de: "Portfolio Playbooks (8 Playbooks für Kernbereiche)" },
-          { en: "Portfolio Operations Plan (Shared services, synergies)", de: "Portfolio Operations Plan (Shared Services, Synergien)" },
-          { en: "Portfolio Dashboard (Real-time metrics, KPIs)", de: "Portfolio Dashboard (Echtzeit-Metriken, KPIs)" }
+          { en: "Transformation Playbook (50-100 pages)", de: "Transformations-Playbook (50-100 Seiten)" },
+          { en: "Milestone Framework (30/60/90 days)", de: "Meilenstein-Framework (30/60/90 Tage)" },
+          { en: "Resource Allocation Plan (Team, budget, timeline)", de: "Ressourcen-Allokationsplan (Team, Budget, Timeline)" },
+          { en: "First Cohort Selection (3-5 companies)", de: "Erste Kohorten-Auswahl (3-5 Unternehmen)" }
         ],
         gradient: "from-purple-500 to-violet-500"
       },
       {
         phase: 3,
-        title: { en: "Execution", de: "Execution" },
-        timeline: { en: "Week 5-8", de: "Woche 5-8" },
+        title: { en: "Execution & Measurement", de: "Execution & Messung" },
+        timeline: { en: "Week 9-12+", de: "Woche 9-12+" },
         focus: { 
-          en: "Execute transformations, track progress, optimize portfolio operations", 
-          de: "Transformationen ausführen, Fortschritt tracken, Portfolio-Operations optimieren" 
+          en: "Execute first cohort transformation, track progress, iterate", 
+          de: "Erste Kohorten-Transformation ausführen, Fortschritt tracken, iterieren" 
         },
         deliverables: [
-          { en: "Portfolio Transformations (Execute value creation plans)", de: "Portfolio-Transformationen (Value Creation Plans ausführen)" },
-          { en: "Portfolio Operations (Shared services, synergies, events)", de: "Portfolio-Operations (Shared Services, Synergien, Events)" },
-          { en: "Portfolio Tracking (Monthly progress reviews)", de: "Portfolio-Tracking (Monatliche Progress Reviews)" },
-          { en: "Portfolio Optimization Playbook (Lessons learned)", de: "Portfolio Optimization Playbook (Lessons Learned)" }
+          { en: "First Cohort Transformation (3-5 companies, 90 days)", de: "Erste Kohorten-Transformation (3-5 Unternehmen, 90 Tage)" },
+          { en: "Portfolio Dashboard (Real-time metrics)", de: "Portfolio Dashboard (Echtzeit-Metriken)" },
+          { en: "Monthly Progress Reports (Per company)", de: "Monatliche Fortschrittsberichte (Pro Unternehmen)" },
+          { en: "Lessons Learned & Playbook Updates", de: "Lessons Learned & Playbook-Updates" }
         ],
         gradient: "from-pink-500 to-rose-500"
       }
@@ -286,109 +281,123 @@ export const portfolioExcellenceData: PlaybookPageData = {
     },
     cases: [
       {
-        company: { en: "Series A-B VC (Portfolio Valuation +250%)", de: "Series A-B VC (Portfolio-Bewertung +250%)" },
+        company: { en: "Series B/C VC Firm - Portfolio Quick Fix", de: "Series B/C VC Firma - Portfolio Quick Fix" },
         problem: { 
-          en: "Portfolio of 15 Series A-B SaaS companies underperforming, with 70% below expectations and significant LP pressure.", 
-          de: "Portfolio von 15 Series A-B SaaS Unternehmen underperformt, 70% unter Erwartungen und erheblicher LP-Druck." 
+          en: "Portfolio of 15 Series B/C SaaS companies with low portfolio maturity, no systematic approach, and IRR of only 18%.", 
+          de: "Portfolio von 15 Series B/C SaaS Unternehmen mit niedriger Portfolio Maturity, keinem systematischen Ansatz und IRR von nur 18%." 
         },
         solution: { 
-          en: "Deployed all 5 components: Portfolio Assessment, Transformation, Operations, Intelligence, and AI Portfolio Excellence.", 
-          de: "Alle 5 Komponenten eingesetzt: Portfolio Assessment, Transformation, Operations, Intelligence und AI Portfolio Excellence." 
+          en: "Deployed Portfolio Excellence Framework for Top 5 companies over 6 months: Assessment, Prioritization, Playbook, Execution, Measurement.", 
+          de: "Portfolio Excellence Framework für Top 5 Unternehmen über 6 Monate eingesetzt: Assessment, Priorisierung, Playbook, Execution, Measurement." 
         },
         results: [
-          { metric: { en: "Portfolio Valuation", de: "Portfolio-Bewertung" }, before: "€200M", after: "€700M", change: "+250%" },
-          { metric: { en: "θ_index Score", de: "θ_index Score" }, before: "0.35", after: "0.72", change: "+106%" },
-          { metric: { en: "Portfolio IRR", de: "Portfolio IRR" }, before: "15%", after: "32%", change: "+113%" },
-          { metric: { en: "Companies at Risk", de: "At-Risk Unternehmen" }, before: "70%", after: "20%", change: "-71%" }
+          { metric: { en: "Portfolio Maturity", de: "Portfolio Maturity" }, before: "Low", after: "Medium", change: "+2 Levels" },
+          { metric: { en: "AI Maturity", de: "AI Maturity" }, before: "Level 1", after: "Level 2", change: "+1 Level" },
+          { metric: { en: "Portfolio IRR", de: "Portfolio IRR" }, before: "18%", after: "28%", change: "+56%" },
+          { metric: { en: "Portfolio Value", de: "Portfolio-Wert" }, before: "€200M", after: "€250M", change: "+25%" }
         ],
-        timeline: { en: "18 months | Portfolio Assessment + Transformation", de: "18 Monate | Portfolio Assessment + Transformation" }
+        timeline: { en: "6 months | Portfolio Quick Fix (€50K-€150K)", de: "6 Monate | Portfolio Quick Fix (€50K-€150K)" }
       },
       {
-        company: { en: "Series B-C PE (Portfolio IRR 35%)", de: "Series B-C PE (Portfolio IRR 35%)" },
+        company: { en: "Series A-C VC Firm - Portfolio Transformation", de: "Series A-C VC Firma - Portfolio Transformation" },
         problem: { 
-          en: "Portfolio of 10 Series B-C SaaS companies needed to increase IRR from 18% to 30%+ for LP commitments.", 
-          de: "Portfolio von 10 Series B-C SaaS Unternehmen musste IRR von 18% auf 30%+ steigern für LP-Commitments." 
+          en: "Portfolio of 25 Series A-C companies with low AI maturity, no portfolio-wide strategy, and IRR of 15%.", 
+          de: "Portfolio von 25 Series A-C Unternehmen mit niedriger AI Maturity, keiner portfolio-weiten Strategie und IRR von 15%." 
         },
         solution: { 
-          en: "Aggressive value creation plans with AI Portfolio Intelligence for predictive insights and optimization.", 
-          de: "Aggressive Value Creation Plans mit AI Portfolio Intelligence für Predictive Insights und Optimierung." 
+          en: "Full Portfolio Excellence Framework for Top 15 companies over 18 months: 3 cohorts of 5 companies each.", 
+          de: "Volles Portfolio Excellence Framework für Top 15 Unternehmen über 18 Monate: 3 Kohorten mit je 5 Unternehmen." 
         },
         results: [
-          { metric: { en: "Portfolio IRR", de: "Portfolio IRR" }, before: "18%", after: "35%", change: "+94%" },
-          { metric: { en: "Portfolio Valuation", de: "Portfolio-Bewertung" }, before: "€500M", after: "€1.5B", change: "+200%" },
-          { metric: { en: "Rule of 40", de: "Rule of 40" }, before: "28", after: "62", change: "+121%" },
-          { metric: { en: "θ_index Score", de: "θ_index Score" }, before: "0.42", after: "0.81", change: "+93%" }
+          { metric: { en: "Portfolio Maturity", de: "Portfolio Maturity" }, before: "Low", after: "High", change: "+3 Levels" },
+          { metric: { en: "AI Maturity", de: "AI Maturity" }, before: "Level 1", after: "Level 2-3", change: "+1-2 Levels" },
+          { metric: { en: "Portfolio IRR", de: "Portfolio IRR" }, before: "15%", after: "35%", change: "+133%" },
+          { metric: { en: "Portfolio Value", de: "Portfolio-Wert" }, before: "€500M", after: "€700M", change: "+40%" }
         ],
-        timeline: { en: "24 months | Portfolio Transformation + AI Intelligence", de: "24 Monate | Portfolio Transformation + AI Intelligence" }
+        timeline: { en: "18 months | Portfolio Transformation (€200K-€500K)", de: "18 Monate | Portfolio Transformation (€200K-€500K)" }
       },
       {
-        company: { en: "Multi-Stage VC (4-Hour Reporting)", de: "Multi-Stage VC (4-Stunden Reporting)" },
+        company: { en: "Multi-Stage PE Firm - AI-Native Portfolio", de: "Multi-Stage PE Firma - AI-Native Portfolio" },
         problem: { 
-          en: "Portfolio of 30 Series A-D companies needed to scale operations 3x without proportionally increasing team size.", 
-          de: "Portfolio von 30 Series A-D Unternehmen musste Operations 3x skalieren ohne proportionale Team-Vergrößerung." 
+          en: "Portfolio of 30 companies with no AI integration, slow transformation, and IRR of 20%.", 
+          de: "Portfolio von 30 Unternehmen ohne AI-Integration, langsamer Transformation und IRR von 20%." 
         },
         solution: { 
-          en: "AI-powered portfolio intelligence with LASR.io for automated assessment and reporting across all companies.", 
-          de: "AI-gestützte Portfolio Intelligence mit LASR.io für automatisiertes Assessment und Reporting über alle Unternehmen." 
+          en: "Full AI-Native transformation for all 30 companies over 24 months: 6 cohorts of 5 companies each.", 
+          de: "Volle AI-Native Transformation für alle 30 Unternehmen über 24 Monate: 6 Kohorten mit je 5 Unternehmen." 
         },
         results: [
-          { metric: { en: "Portfolio Size", de: "Portfolio-Größe" }, before: "30", after: "45", change: "+50%" },
-          { metric: { en: "Team Size", de: "Team-Größe" }, before: "8", after: "10", change: "+25%" },
-          { metric: { en: "Reporting Time", de: "Reporting-Zeit" }, before: "40h/Q", after: "4h/Q", change: "-90%" },
-          { metric: { en: "Portfolio Efficiency", de: "Portfolio-Effizienz" }, before: "Base", after: "+400%", change: "+400%" }
+          { metric: { en: "Portfolio Maturity", de: "Portfolio Maturity" }, before: "Low", after: "High", change: "+3 Levels" },
+          { metric: { en: "AI Maturity", de: "AI Maturity" }, before: "Level 1", after: "Level 3", change: "+2 Levels" },
+          { metric: { en: "Portfolio IRR", de: "Portfolio IRR" }, before: "20%", after: "45%", change: "+125%" },
+          { metric: { en: "Portfolio Value", de: "Portfolio-Wert" }, before: "€1B", after: "€1.5B", change: "+50%" }
         ],
-        timeline: { en: "24 months | Portfolio Transformation + LASR.io", de: "24 Monate | Portfolio Transformation + LASR.io" }
+        timeline: { en: "24 months | AI-Native Portfolio (€350K-€720K)", de: "24 Monate | AI-Native Portfolio (€350K-€720K)" }
       }
     ]
   },
   solutionsConnection: {
-    title: { en: "Ready to Execute? Here's How We Can Help", de: "Bereit zur Umsetzung? So können wir helfen" },
+    title: { en: "How We Can Help", de: "Wie wir helfen können" },
     subtitle: { 
       en: "Choose the right engagement model for your portfolio size and timeline", 
       de: "Wähle das richtige Engagement-Modell für deine Portfolio-Größe und Timeline" 
     },
     items: [
       {
-        type: "boost",
+        type: "power-up",
         name: { en: "Portfolio Assessment", de: "Portfolio Assessment" },
-        duration: { en: "4-6 Weeks", de: "4-6 Wochen" },
-        price: { en: "€50K-€150K", de: "€50K-€150K" },
+        duration: { en: "2-4 Weeks", de: "2-4 Wochen" },
+        price: { en: "€10K-€25K", de: "€10K-€25K" },
         outcome: { 
-          en: "θ_index scoring for all companies, benchmarking, prioritization, and portfolio strategy deck.", 
-          de: "θ_index Scoring für alle Unternehmen, Benchmarking, Priorisierung und Portfolio Strategy Deck." 
+          en: "Full portfolio assessment across all companies. Portfolio maturity scoring, bottleneck identification, transformation roadmap.", 
+          de: "Volles Portfolio Assessment über alle Unternehmen. Portfolio Maturity Scoring, Bottleneck-Identifikation, Transformations-Roadmap." 
         },
-        cta: { en: "Start Assessment", de: "Assessment starten" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
         link: "/solutions/portfolio-assessment",
         icon: "ClipboardCheck",
         color: "cyan"
       },
       {
-        type: "accelerate",
-        name: { en: "Portfolio Transformation", de: "Portfolio Transformation" },
-        duration: { en: "12-24 Months", de: "12-24 Monate" },
-        price: { en: "€360K-€720K", de: "€360K-€720K" },
+        type: "boost",
+        name: { en: "Portfolio Quick Fix", de: "Portfolio Quick Fix" },
+        duration: { en: "6 Months", de: "6 Monate" },
+        price: { en: "€50K-€150K", de: "€50K-€150K" },
         outcome: { 
-          en: "Full portfolio transformation with all 5 components, value creation plans, playbooks, and AI integration.", 
-          de: "Volle Portfolio-Transformation mit allen 5 Komponenten, Value Creation Plans, Playbooks und AI-Integration." 
+          en: "Transform Top 5 portfolio companies in 6 months. Focused transformation, standardized playbook, measurable results.", 
+          de: "Top 5 Portfolio-Unternehmen in 6 Monaten transformieren. Fokussierte Transformation, standardisiertes Playbook, messbare Ergebnisse." 
         },
-        cta: { en: "Start Transformation", de: "Transformation starten" },
-        link: "/solutions/accelerate/portfolio-transformation",
-        icon: "TrendingUp",
+        cta: { en: "Start Quick Fix", de: "Quick Fix starten" },
+        link: "/solutions/boost/portfolio-value",
+        icon: "Zap",
         color: "green"
       },
       {
-        type: "boost",
-        name: { en: "Portfolio Excellence", de: "Portfolio Excellence" },
-        duration: { en: "Annual", de: "Jährlich" },
-        price: { en: "€50K-€200K/year", de: "€50K-€200K/Jahr" },
+        type: "accelerate",
+        name: { en: "Portfolio Transformation", de: "Portfolio Transformation" },
+        duration: { en: "12-18 Months", de: "12-18 Monate" },
+        price: { en: "€200K-€500K", de: "€200K-€500K" },
         outcome: { 
-          en: "Ongoing portfolio support with LASR.io access, real-time dashboard, and AI portfolio intelligence.", 
-          de: "Laufender Portfolio-Support mit LASR.io Zugang, Echtzeit-Dashboard und AI Portfolio Intelligence." 
+          en: "Transform Top 10-15 portfolio companies. Full transformation with all 5 components, AI integration, systematic improvement.", 
+          de: "Top 10-15 Portfolio-Unternehmen transformieren. Volle Transformation mit allen 5 Komponenten, AI-Integration, systematische Verbesserung." 
         },
-        cta: { en: "Start Excellence", de: "Excellence starten" },
-        link: "/solutions/boost/portfolio-value",
-        icon: "Sparkles",
+        cta: { en: "Start Transformation", de: "Transformation starten" },
+        link: "/solutions/accelerate/portfolio-transformation",
+        icon: "Rocket",
         color: "purple"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Portfolio", de: "AI-Native Portfolio" },
+        duration: { en: "24 Months", de: "24 Monate" },
+        price: { en: "€350K-€720K", de: "€350K-€720K" },
+        outcome: { 
+          en: "Full AI-native transformation for all portfolio companies. 24-month program, all companies reach AI Maturity Level 3.", 
+          de: "Volle AI-native Transformation für alle Portfolio-Unternehmen. 24-Monats-Programm, alle Unternehmen erreichen AI Maturity Level 3." 
+        },
+        cta: { en: "Start AI-Native", de: "AI-Native starten" },
+        link: "/solutions/accelerate/ai-native-scaling",
+        icon: "TrendingUp",
+        color: "pink"
       }
     ]
   },
@@ -405,7 +414,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
     personas: [
       {
         icon: "TrendingUp",
-        role: { en: "VCs", de: "VCs" },
+        role: { en: "VC Partners", de: "VC-Partner" },
         pain: { en: "Portfolio companies underperforming against benchmarks", de: "Portfolio-Unternehmen underperformen gegen Benchmarks" },
         outcome: { en: "Top-quartile LP returns with systematic portfolio excellence", de: "Top-Quartil LP-Returns mit systematischer Portfolio-Exzellenz" },
         color: "green"
@@ -414,35 +423,35 @@ export const portfolioExcellenceData: PlaybookPageData = {
         icon: "Briefcase",
         role: { en: "PE Partners", de: "PE-Partner" },
         pain: { en: "Need to increase IRR for LP commitments", de: "Müssen IRR für LP-Commitments steigern" },
-        outcome: { en: "Portfolio valuation +200-400% with value creation plans", de: "Portfolio-Bewertung +200-400% mit Value Creation Plans" },
+        outcome: { en: "Portfolio IRR +100-150% with systematic transformation", de: "Portfolio IRR +100-150% mit systematischer Transformation" },
         color: "purple"
       },
       {
         icon: "Users",
-        role: { en: "Board Members", de: "Board-Mitglieder" },
-        pain: { en: "Lack visibility into portfolio company performance", de: "Fehlende Sichtbarkeit in Portfolio-Unternehmen Performance" },
-        outcome: { en: "Real-time portfolio dashboard and automated reporting", de: "Echtzeit Portfolio-Dashboard und automatisiertes Reporting" },
+        role: { en: "Operating Partners", de: "Operating Partners" },
+        pain: { en: "No standardized approach to portfolio transformation", de: "Kein standardisierter Ansatz für Portfolio-Transformation" },
+        outcome: { en: "Reusable playbook for consistent results across companies", de: "Wiederverwendbares Playbook für konsistente Ergebnisse über Unternehmen" },
         color: "blue"
       },
       {
         icon: "Settings",
-        role: { en: "Portfolio Teams", de: "Portfolio-Teams" },
+        role: { en: "Portfolio Managers", de: "Portfolio-Manager" },
         pain: { en: "Manual portfolio operations don't scale", de: "Manuelle Portfolio-Operations skalieren nicht" },
-        outcome: { en: "AI-powered operations handling 3x portfolio with 1.25x team", de: "AI-gestützte Operations für 3x Portfolio mit 1.25x Team" },
+        outcome: { en: "3-5x portfolio with 1.25x team using standardized processes", de: "3-5x Portfolio mit 1.25x Team durch standardisierte Prozesse" },
         color: "violet"
       }
     ]
   },
   finalCta: {
-    headline: { en: "Get Started Today", de: "Starte heute" },
+    headline: { en: "Ready to Transform Your Portfolio?", de: "Bereit dein Portfolio zu transformieren?" },
     subline: { 
-      en: "Download the playbook or book a call to discuss your portfolio strategy", 
-      de: "Lade das Playbook herunter oder buche einen Call, um deine Portfolio-Strategie zu besprechen" 
+      en: "Start with a Portfolio Assessment to identify your portfolio-wide bottlenecks and create a transformation roadmap", 
+      de: "Starte mit einem Portfolio Assessment, um deine portfolio-weiten Bottlenecks zu identifizieren und eine Transformations-Roadmap zu erstellen" 
     },
     trustSignals: [
-      { en: "50-page playbook with templates", de: "50-seitiges Playbook mit Templates" },
-      { en: "3 real-world case studies", de: "3 echte Case Studies" },
-      { en: "90-day implementation roadmap", de: "90-Tage-Implementierungs-Roadmap" }
+      { en: "Full portfolio assessment (all companies)", de: "Volles Portfolio Assessment (alle Unternehmen)" },
+      { en: "Portfolio maturity scoring", de: "Portfolio Maturity Scoring" },
+      { en: "12-24 month transformation roadmap", de: "12-24 Monats-Transformations-Roadmap" }
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#"
