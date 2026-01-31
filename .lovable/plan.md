@@ -1,32 +1,55 @@
 
-# Fix: ROI Calculation für "SaaS-Transition Accelerated" Case Study
+# Systematische Lösung: Deep Space Hero Kontrast-Problem
 
-## Problem
-Die Case Study "SaaS-Transition Accelerated → €10M Roadmap Executed" zeigt falsches Investment:
-- **Aktuell**: Investment €156K-€216K
-- **Korrekt**: Investment €132K
+## Problem-Diagnose
 
-## ROI-Berechnung
-Der Return bleibt unverändert: €780K-€1.1M
+Das Screenshot zeigt, dass im Light Mode der Text auf dunklen "Deep Space" Hero-Sektionen fast unsichtbar ist. 
 
-Neuer ROI: €780K-€1.1M / €132K = **6-8x**
+**Ursache:** Die CSS-Klasse `.dark-section` (definiert in `index.css` Zeilen 133-161) überschreibt die Theme-Variablen korrekt auf dunkle Werte. **Aber diese Klasse fehlt auf einigen Seiten.**
 
-## Änderungen
+### Aktuelle Situation
 
-### Datei: `src/data/cases/caseStudies.ts`
+| Seite | Hat `dark-section` | Status |
+|-------|-------------------|--------|
+| Workshop.tsx | Ja (Zeile 345) | OK |
+| Keynote.tsx | Ja (Zeile 322) | OK |
+| **CaseDetail.tsx** | **NEIN** (Zeile 36) | **PROBLEM** |
+| Boost*.tsx Pages | Ja | OK |
+| PowerUp*.tsx Pages | Ja | OK |
+| Accelerate*.tsx Pages | Ja | OK |
 
-| Zeile | Feld | Aktuell | Neu |
-|-------|------|---------|-----|
-| 5469 | `investment` | `'€156K-€216K'` | `'€132K'` |
-| 5470 | `roi` | `'5-10x'` | `'6-8x'` |
-| 5781 | `roiCalculation.investment` | `'€156K-€216K'` | `'€132K'` |
-| 5783 | `roiCalculation.roi` | `'5-10x'` | `'6-8x'` |
+## Lösung
 
-## Betroffene Ansichten
-- **Case Card** auf `/cases` Übersicht (zeigt `investment` und `roi`)
-- **Case Detail Page** `/cases/saas-transition-accelerated` (zeigt `roiCalculation`)
+**Einzeilige Änderung** in `CaseDetail.tsx`:
 
-## Keine weiteren Änderungen nötig
-- `returnValue` bleibt unverändert: `'€780K-€1.1M'`
-- `cardSummary` enthält keine Investment-Werte
-- `breakdown` Array bleibt unverändert
+### Datei: `src/pages/CaseDetail.tsx`
+
+**Zeile 36 - Aktuell:**
+```tsx
+<section className="relative pt-24 pb-16 overflow-hidden">
+```
+
+**Zeile 36 - Neu:**
+```tsx
+<section className="dark-section relative pt-24 pb-16 overflow-hidden noise">
+```
+
+## Technische Details
+
+Die `.dark-section` Klasse in `index.css` überschreibt automatisch alle relevanten CSS-Variablen:
+
+| Variable | Light Mode (ohne dark-section) | Mit dark-section |
+|----------|-------------------------------|------------------|
+| `--foreground` | `240 10% 8%` (dunkel) | `40 20% 95%` (hell) |
+| `--muted-foreground` | `240 5% 45%` (dunkel) | `40 10% 55%` (hell) |
+| `--background` | `40 20% 98%` (hell) | `240 15% 6%` (dunkel) |
+| `--card` | `0 0% 100%` (weiß) | `240 12% 9%` (dunkel) |
+| `--border` | `40 15% 82%` (hell) | `240 10% 18%` (dunkel) |
+
+## Erwartetes Ergebnis
+
+Nach der Änderung werden alle Texte, Badges, Cards und Links im Hero-Bereich der Case Detail Seiten korrekt angezeigt - sowohl im Light als auch im Dark Mode.
+
+## Präventive Maßnahme (Optional)
+
+Für zukünftige Konsistenz könnte ein `SharedCaseHero` Component erstellt werden, der den `dark-section` Standard garantiert - ähnlich wie `SharedHero.tsx` es bereits für andere Seiten tut.
