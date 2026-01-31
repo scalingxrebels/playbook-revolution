@@ -327,10 +327,21 @@ export const exitMaData: PlaybookPageData = {
     }, 
     items: [
       {
+        type: "assessment",
+        name: { en: "Exit Assessment", de: "Exit Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full exit readiness report + 90-day roadmap", de: "Vollständiger Exit-Readiness-Report + 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "green",
+      },
+      {
         type: "power-up",
-        name: { en: "Board Readiness", de: "Board Readiness" },
+        name: { en: "Exit Readiness Sprint", de: "Exit Readiness Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Exit Valuation +50-100%, Due Diligence Time -40-60%", de: "Exit-Bewertung +50-100%, Due Diligence Zeit -40-60%" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/board-readiness",
@@ -339,7 +350,7 @@ export const exitMaData: PlaybookPageData = {
       },
       {
         type: "boost",
-        name: { en: "Board Excellence", de: "Board Excellence" },
+        name: { en: "Exit Excellence", de: "Exit Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Exit Valuation +200-400%, Due Diligence Time -60-80%", de: "Exit-Bewertung +200-400%, Due Diligence Zeit -60-80%" },
@@ -348,7 +359,18 @@ export const exitMaData: PlaybookPageData = {
         icon: "Rocket",
         color: "orange",
       },
-    ] 
+      {
+        type: "accelerate",
+        name: { en: "Accelerate: AI-Native Exit", de: "Accelerate: AI-Native Exit" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full exit transformation, AI Maturity Level 3, Exit Valuation +200-400%", de: "Vollständige Exit-Transformation, AI Maturity Level 3, Exit-Bewertung +200-400%" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "violet",
+      },
+    ]
   },
   whoThisIsFor: { 
     title: { en: "Who Should Use This Playbook?", de: "Für wen ist dieses Playbook?" }, 
