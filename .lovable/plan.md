@@ -1,104 +1,169 @@
 
-# Plan: Maxxeed Solution Tile aktualisieren
+# Plan: Strategic Capabilities Playbook v3.0 Synchronisation
 
-## Übersicht
+## Analyse der Inkonsistenzen
 
-Die Maxxeed-Kachel (ID 43) in `src/data/solutionTiles.ts` muss mit dem neuen Briefing-Content aktualisiert werden.
+### Kritische Probleme (ENTFERNEN laut Briefing v3.0)
 
----
-
-## Aktuelle vs. Neue Inhalte
-
-### Headline
-| Aktuell | Neu |
-|---------|-----|
-| Maxxeed Digital Showrooms | **Maxxeed – Digital Buyer Experience** |
-
-### Problem
-| Aktuell | Neu |
-|---------|-----|
-| "Your sales team relies on email and PowerPoint—unpersonal, inefficient. 78% of buyers demand better experiences, but get boring presentations. 30% win rate." | **"B2B Sales is a 'black box.' Sales teams are unable to provide customer-specific value and are absent when 90% of internal buying decisions happen. Only a 30% win rate as 78% of buyers demand better experiences."** |
-
-### Solution
-| Aktuell | Neu |
-|---------|-----|
-| "Maxxeed automates creation of hyper-personalized Digital Showrooms in 30 seconds. AI transforms meeting notes into stunning showrooms you can share with your prospects." | **"Maxxeed digitizes the entire Buyer Value Cycle. It automates personalized insights and creates a collaborative workspace that empowers your champion to sell internally. Map the buying center and stay present even when you're not in the room."** |
-
-### Deliverables
-| Aktuell | Neu |
-|---------|-----|
-| Automatic showroom creation (30s) | **Instant Buyer Value Cycle Creation (30s)** |
-| Buyer value cycle (stakeholder maps) | **Stakeholder Alignment & Guidance** |
-| Deal health score & analytics | **Deal Health Intelligence & Analytics** |
-
-### Impact
-| Aktuell | Neu |
-|---------|-----|
-| "+31% close rate, +24% deal size, 98% email open rate. €50M ARR: +€12M ARR." | **"+31% close rate, +24% deal size, +56% faster team onboarding. €50M ARR company: +€12M ARR/year."** |
+| Aktuell | Briefing v3.0 | Status |
+|---------|---------------|--------|
+| C₁, C₂, C₃, C₄ | Strategy, Setup, Execution, Operationalization | ÄNDERN |
+| θ_index | AI Maturity Level (Level 1-3) | ÄNDERN |
+| C_min | "Capability Bottleneck" / "lowest maturity capability" | ÄNDERN |
+| Formeln (S = E × ...) | ENTFERNEN | ÄNDERN |
+| EXPERTISE-Tone | PLAYBOOKS-Tone (praktisch/hilfreich) | ÄNDERN |
 
 ---
 
-## Zu ändernde Datei
+## Betroffene Dateien
 
-**`src/data/solutionTiles.ts`** (Zeilen 1538-1575)
+### 1. Kachel: `src/data/playbooks.ts` (Zeilen 581-613)
 
-```typescript
-{
-  id: 43,
-  slug: 'maxxeed',
-  solutionType: 'tools',
-  challenges: ['cac-crisis', 'growth-stalled'],
-  price: '€135/User/Mo',
-  priceTag: 'paid',
-  headlineEn: 'Maxxeed – Digital Buyer Experience',
-  headlineDe: 'Maxxeed – Digital Buyer Experience',
-  problemEn: "B2B Sales is a 'black box.' Sales teams are unable to provide customer-specific value and are absent when 90% of internal buying decisions happen. Only a 30% win rate as 78% of buyers demand better experiences.",
-  problemDe: "B2B-Vertrieb ist eine 'Black Box'. Sales-Teams können keinen kundenspezifischen Mehrwert bieten und sind abwesend, wenn 90% der internen Kaufentscheidungen getroffen werden. Nur 30% Win Rate, da 78% der Käufer bessere Experiences fordern.",
-  solutionEn: 'Maxxeed digitizes the entire Buyer Value Cycle. It automates personalized insights and creates a collaborative workspace that empowers your champion to sell internally. Map the buying center and stay present even when you're not in the room.',
-  solutionDe: 'Maxxeed digitalisiert den gesamten Buyer Value Cycle. Es automatisiert personalisierte Insights und schafft einen kollaborativen Workspace, der deinen Champion befähigt, intern zu verkaufen. Mappe das Buying Center und bleibe präsent, auch wenn du nicht im Raum bist.',
-  deliverablesEn: [
-    'Instant Buyer Value Cycle Creation (30s)',
-    'Stakeholder Alignment & Guidance',
-    'Deal Health Intelligence & Analytics'
-  ],
-  deliverablesDe: [
-    'Instant Buyer Value Cycle Erstellung (30s)',
-    'Stakeholder Alignment & Guidance',
-    'Deal Health Intelligence & Analytics'
-  ],
-  impactEn: '+31% close rate, +24% deal size, +56% faster team onboarding. €50M ARR company: +€12M ARR/year.',
-  impactDe: '+31% Close Rate, +24% Deal Size, +56% schnelleres Team-Onboarding. €50M ARR Unternehmen: +€12M ARR/Jahr.',
-  primaryCtaEn: 'More about Buyer Excitement',
-  primaryCtaDe: 'Mehr über Buyer Excitement',
-  primaryCtaAction: 'learn-more',
-  primaryCtaUrl: '/tools/maxxeed',
-  secondaryCtaEn: 'Visit Maxxeed',
-  secondaryCtaDe: 'Maxxeed besuchen',
-  secondaryCtaUrl: 'https://www.maxxeed.com/de/',
-  partnerBadge: {
-    labelEn: 'Black Belt Partner',
-    labelDe: 'Black Belt Partner',
-    color: 'gold'
-  }
-}
+**Aktuelle Description:**
+```
+"...used by AI-native companies to improve θ_index from 0.35 to 0.75+..."
 ```
 
+**Briefing v3.0 Teaser:**
+```
+How to improve the 4 core capabilities that drive AI-native scaling.
+
+Learn the practical framework (Strategy, Setup, Execution, Operationalization) 
+used by AI-native companies to reach AI-Native Maturity (Level 3) and achieve 
+3-5x faster scaling.
+
+Includes implementation guides, capability assessment tools, and real-world 
+case studies from Series A-C companies.
+```
+
+**Outcomes (aktuell vs. neu):**
+| Aktuell | Briefing v3.0 |
+|---------|---------------|
+| θ_index improvement from 0.35 to 0.75+ | Reach AI-Native Maturity (Level 3) |
+| Capability bottleneck (C_min) identification | Capability bottleneck identification |
+| 90-day implementation roadmap | 90-day implementation roadmap |
+
 ---
 
-## Änderungsübersicht
+### 2. Landing Page: `src/data/playbooks/content/strategic-capabilities.ts`
 
-| Feld | Änderung |
-|------|----------|
-| `headlineEn/De` | "Digital Showrooms" → "Digital Buyer Experience" |
-| `problemEn/De` | Neuer "Black Box" Fokus + 90% interne Entscheidungen |
-| `solutionEn/De` | Buyer Value Cycle Digitalisierung + Champion-Enablement |
-| `deliverablesEn/De` | Aktualisierte Feature-Namen |
-| `impactEn/De` | +56% Team Onboarding hinzugefügt, "€50M ARR company" |
+#### Section-by-Section Änderungen:
+
+**HERO (Zeilen 8-29):**
+- Badge: "Strategic Capabilities · Domain Playbook" → "Strategic Capabilities · Standalone Playbook"
+- Description: Entferne C_min, θ_index, Formeln
+- Trust Badges: "θ_index Framework" → "4 Capabilities Framework" oder "AI Maturity Levels"
+
+**SUMMARY (Zeilen 30-51):**
+| Feld | Aktuell | Briefing v3.0 |
+|------|---------|---------------|
+| Problem | "C_min < 0.5, θ_index 0.35" | "Low capability maturity, no AI integration" |
+| Why It Matters | "S = E × (C₁^1.5...)" Formel | "Capabilities are multiplicative" (keine Formel) |
+| Solution | "θ_index 0.75+" | "AI-Native Maturity (Level 3)" |
+
+**PROBLEM SECTION (Zeilen 53-70):**
+- Ersetze alle C_min, θ_index Referenzen
+- Neue 3 Pain Points aus Briefing:
+  1. Low Capability Maturity
+  2. Capability Bottlenecks
+  3. No AI Maturity Roadmap
+
+**FRAMEWORK SECTION (Zeilen 72-189):**
+- Aktuell: 5 Components mit C₁-C₄ Referenzen
+- Neu: 5 Components ohne technische Variablen
+  1. Capability Assessment
+  2. Bottleneck Identification
+  3. Improvement Roadmap
+  4. AI Integration Plan
+  5. Progress Measurement
+
+**BEST PRACTICES (Zeilen 191-215):**
+- Entferne "θ_index Framework Deep Dive"
+- Entferne C₁-C₄ Referenzen
+- Neu: "4 Capabilities Overview" mit praktischen Definitionen
+
+**ROADMAP (Zeilen 217-263):**
+- Entferne θ_index, C_min Referenzen
+- Fokus auf praktische Deliverables
+
+**CASE STUDIES (Zeilen 265-326):**
+- Ersetze θ_index Werte durch AI Maturity Levels
+- Ersetze C₂ durch "Setup capability"
+- Anonymisierte Cases beibehalten, aber Metriken anpassen
+
+**SOLUTIONS CONNECTION (Zeilen 328-363):**
+- Entferne θ_index Referenzen
+- "Capability Assessment" statt "θ_index assessment"
+
+**WHO THIS IS FOR (Zeilen 365-404):**
+- Entferne θ_index Referenzen
+- Fokus auf "AI-Native Maturity (Level 3)"
+
+**FINAL CTA (Zeilen 406-420):**
+- Trust Signals: "θ_index Framework (4×8 Matrix)" → "4 Capabilities × AI Maturity Levels"
 
 ---
 
-## Technische Details
+## Zusammenfassung der Änderungen
 
-- **Datei**: `src/data/solutionTiles.ts`
-- **Zeilen**: 1545-1562
-- **Beibehaltene Felder**: `id`, `slug`, `solutionType`, `challenges`, `price`, `priceTag`, `primaryCta*`, `secondaryCta*`, `partnerBadge`
+### Datei 1: `src/data/playbooks.ts`
+| Zeilen | Änderung |
+|--------|----------|
+| 587-589 | Description ohne θ_index |
+| 591-603 | Outcomes ohne θ_index, C_min |
+| 605 | Case Studies ohne θ_index |
+| 608-610 | Impact/Bottleneck/Role Tags prüfen |
+
+### Datei 2: `src/data/playbooks/content/strategic-capabilities.ts`
+| Section | Änderungen |
+|---------|------------|
+| Hero | Badge, Description, Trust Badges |
+| Summary | Problem/Why/Solution Cards |
+| Problem | 3 Pain Points + Metrics |
+| Framework | 5 Components ohne C₁-C₄ |
+| Best Practices | Ohne θ_index Deep Dive |
+| Roadmap | Ohne θ_index, C_min |
+| Case Studies | AI Maturity statt θ_index |
+| Solutions | Capability Assessment statt θ_index |
+| Personas | Ohne θ_index |
+| Final CTA | Trust Signals anpassen |
+
+---
+
+## Terminologie-Mapping (durchgängig anwenden)
+
+| Alt (ENTFERNEN) | Neu (VERWENDEN) |
+|-----------------|-----------------|
+| C₁ | Strategy |
+| C₂ | Setup |
+| C₃ | Execution |
+| C₄ | Operationalization |
+| θ_index | AI Maturity Level |
+| θ_index 0.35 | Level 1 (AI-Powered) |
+| θ_index 0.55 | Level 2 (AI-Enhanced) |
+| θ_index 0.75+ | Level 3 (AI-Native) |
+| C_min | Bottleneck capability / lowest maturity |
+| C_min < 0.5 | Low capability maturity |
+| C_min > 0.7 | High capability maturity |
+
+---
+
+## Geschätzter Umfang
+
+| Aspekt | Details |
+|--------|---------|
+| **Dateien** | 2 (playbooks.ts, strategic-capabilities.ts) |
+| **Zeilen** | ~500+ Zeilen Änderungen |
+| **Kritikalität** | Hoch (Tone-Shift + Terminologie) |
+| **Priorität** | Kachel zuerst, dann Landing Page |
+
+---
+
+## Nächste Schritte
+
+1. **Kachel aktualisieren** (`playbooks.ts`, Zeilen 581-613)
+2. **Hero Section** (`strategic-capabilities.ts`, Zeilen 8-29)
+3. **Summary Section** (Zeilen 30-51)
+4. **Problem Section** (Zeilen 53-70)
+5. **Framework Section** (Zeilen 72-189) - größte Änderung
+6. **Remaining Sections** (Best Practices, Roadmap, Case Studies, etc.)
