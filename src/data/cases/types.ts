@@ -56,7 +56,101 @@ export interface ResearchCase {
   dataSource?: string;
 }
 
-// Client Case (Anonymized) - for /cases
+// ============================================
+// NEW: Full Case Study Types (Story-First)
+// ============================================
+
+export interface CaseStudyMetric {
+  label: string;
+  before: string;
+  after: string;
+  impact: string;
+}
+
+export interface CaseStudyAction {
+  name: BilingualText;
+  description: BilingualText;
+  deliverables: BilingualText[];
+  whyItMattered: BilingualText;
+}
+
+export interface CaseStudyPhase {
+  name: BilingualText;
+  timeline: string;
+  actions: CaseStudyAction[];
+}
+
+export interface CaseStudyLesson {
+  title: BilingualText;
+  whatWeLearned: BilingualText;
+  keyInsight: BilingualText;
+  whatWedDoDifferently: BilingualText;
+}
+
+export interface BrokenArea {
+  area: BilingualText;
+  symptoms: BilingualText[];
+}
+
+export interface ROICalculation {
+  investment: string;
+  returnValue: string;
+  roi: string;
+  breakdown: BilingualText[];
+}
+
+// Full Client Case Study with Story-First Structure
+export interface ClientCaseStudy {
+  // Identifiers
+  id: string;
+  slug: string;
+  
+  // Basic Info
+  company: string;
+  industry: string;
+  stage: string;
+  gradient: string;
+  confidential: true;
+  
+  // Filter Tags
+  tags: string[];
+  challengeType: string; // for filtering: 'cac-crisis' | 'nrr-stuck' | 'growth-stalled' | 'ops-chaos' | 'exit-prep'
+  
+  // HERO Section
+  headline: BilingualText;
+  challenge: BilingualText;
+  result: BilingualText;
+  investment: string;
+  roi: string;
+  heroMetrics: CaseStudyMetric[];
+  
+  // SITUATION Section
+  companyDescription: BilingualText;
+  crisisStory: BilingualText;
+  problemDescription: BilingualText;
+  brokenAreas: BrokenArea[];
+  situationMetrics: CaseStudyMetric[];
+  
+  // WHAT WE DID Section
+  approach: BilingualText;
+  phases: CaseStudyPhase[];
+  
+  // RESULTS Section
+  timeline: string;
+  resultMetrics: CaseStudyMetric[];
+  roiCalculation: ROICalculation;
+  ceoQuote: BilingualText;
+  quoteContext: BilingualText;
+  
+  // KEY LESSONS Section
+  lessons: CaseStudyLesson[];
+  
+  // META
+  playbooks: string[];
+  downloadUrl?: string;
+}
+
+// Legacy ClientCase (simplified for backward compatibility)
 export interface ClientCase {
   id: string;
   company: string;
