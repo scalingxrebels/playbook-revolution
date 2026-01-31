@@ -33,7 +33,7 @@ const CaseDetail: React.FC = () => {
       <Navigation />
       
       {/* SECTION 1: HERO */}
-      <section className="relative pt-24 pb-16 overflow-hidden">
+      <section className="dark-section relative pt-24 pb-16 overflow-hidden noise">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-background" />
         <TwinklingStars />
         
