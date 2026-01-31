@@ -1,91 +1,103 @@
 
-# Implementierungsplan: Glossar mit AI-Native Scaling Zusammenfassung erweitern
+# Implementierungsplan: AI as Multiplier Card + Zurück-Button
 
 ## Übersicht
 
-Erweiterung der Glossar-Seite um eine Zusammenfassung der Grundidee aus dem AI-Native Scaling Playbook.
+Erweiterung der Glossar-Seite um:
+1. Fünfte Capability-Karte "AI as Multiplier"
+2. Zurück-Button für Navigation
 
 ---
 
-## Zu ergänzende Inhalte
+## Änderungen
 
-### Die Grundidee (DE/EN)
+### 1. Neue Capability-Karte: "AI as Multiplier"
 
-**Das Problem:**
-- Traditionelles Skalieren = Linear (Revenue ≈ People)
-- 8-12 Jahre bis €100M ARR
-- 60-80% der Unternehmen stagnieren bei €10-30M ARR
+**Position:** Als fünfte Karte nach den 4 Capabilities (full-width, zentriert)
 
-**Die Lösung - 4 Kern-Capabilities:**
+| Eigenschaft | Wert |
+|-------------|------|
+| **Icon** | `Sparkles` (lucide-react) |
+| **Name** | AI as Multiplier |
+| **Label DE** | Der Verstärker |
+| **Label EN** | The Force Multiplier |
+| **Beschreibung DE** | AI multipliziert die Wirkung aller 4 Capabilities - nicht additiv, sondern exponentiell |
+| **Beschreibung EN** | AI multiplies the impact of all 4 capabilities - not additive, but exponential |
+| **Farbe** | `cyan-500` (differenziert von den anderen 4) |
 
-| Capability | Bedeutung | Beschreibung |
-|------------|-----------|--------------|
-| **Strategy** | Wo spielen, Wie gewinnen | Klares ICP, differenzierte Positionierung, AI-native Strategie |
-| **Setup** | Fundament bauen | Org-Struktur, AI-gestützte Systeme, automatisierte Prozesse |
-| **Execution** | Ergebnisse liefern | GTM, Product, Customer Success - alles AI-gestützt |
-| **Operationalization** | Skalieren | AI-Dashboards, automatisierte Playbooks, AI-gesteuerte Automation |
+**Layout:** Die 4 Capabilities bleiben im 2x2 Grid, der AI-Multiplier erscheint darunter als full-width Karte mit zentriertem Inhalt.
 
-**Das Kernprinzip:**
-> "Ist eine Capability schwach, begrenzt sie dein gesamtes Skalierungspotenzial—egal wie stark die anderen sind."
+### 2. Zurück-Button
 
-**Das Ergebnis:**
-- 10-30x schnellere Skalierung
-- 8-18 Monate bis €100M ARR (statt 8-12 Jahre)
-- 2-5x ARR/Mitarbeiter
+**Position:** Unter dem Titel, vor der Einleitung
+
+**Komponenten:**
+- `Button` mit `variant="ghost"`
+- `ArrowLeft` Icon (lucide-react)
+- `useNavigate` für Navigation (`navigate(-1)`)
+
+**Text:** "Zurück" / "Back" (zweisprachig)
 
 ---
 
-## Technische Änderungen
+## Technische Details
 
 ### Datei: `src/pages/Glossar.tsx`
 
-**Neue Sektion vor der Glossar-Tabelle hinzufügen:**
-
-```text
-1. Neuer Abschnitt "Die Grundidee: AI-Native Scaling"
-2. Card-basiertes Layout für die 4 Capabilities
-3. Highlight-Box für das Kernprinzip (Bottleneck-Logik)
-4. Metriken-Badges für die Ergebnisse
-5. Zweisprachig (DE/EN) via LanguageContext
+**Neue Imports:**
+```typescript
+import { Sparkles, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 ```
 
-**Struktur der neuen Sektion:**
-
-```text
-┌─────────────────────────────────────────────────┐
-│ Die Grundidee: AI-Native Scaling                │
-│ ─────────────────────────────────────────────── │
-│ [Einleitungstext zum Problem/Lösung]            │
-│                                                 │
-│ ┌─────────────┐ ┌─────────────┐                │
-│ │ Strategy    │ │ Setup       │                │
-│ │ Wo spielen  │ │ Fundament   │                │
-│ └─────────────┘ └─────────────┘                │
-│ ┌─────────────┐ ┌─────────────┐                │
-│ │ Execution   │ │ Operational.│                │
-│ │ Liefern     │ │ Skalieren   │                │
-│ └─────────────┘ └─────────────┘                │
-│                                                 │
-│ ⚠️ Kernprinzip: Schwächste Capability begrenzt │
-│    das gesamte Skalierungspotenzial            │
-│                                                 │
-│ 📊 10-30x | 8-18 Mo. | 2-5x ARR/MA             │
-└─────────────────────────────────────────────────┘
+**Capabilities Array erweitern:**
+```typescript
+{
+  icon: Sparkles,
+  name: 'AI as Multiplier',
+  label: language === 'de' ? 'Der Verstärker' : 'The Force Multiplier',
+  description: language === 'de'
+    ? 'AI multipliziert die Wirkung aller 4 Capabilities – nicht additiv, sondern exponentiell'
+    : 'AI multiplies the impact of all 4 capabilities – not additive, but exponential',
+  color: 'text-cyan-500',
+  bgColor: 'bg-cyan-500/10',
+  borderColor: 'border-cyan-500/30',
+  isMultiplier: true,  // Flag für spezielles Layout
+}
 ```
+
+**Grid-Layout anpassen:**
+- Erste 4 Karten: 2x2 Grid
+- 5. Karte (Multiplier): Full-width darunter
 
 ---
 
-## Design-Details
+## Visuelles Layout
 
-- Verwendet bestehende Card-Komponenten
-- Farbcodierung für die 4 Capabilities:
-  - Strategy: `purple-500`
-  - Setup: `blue-500`
-  - Execution: `green-500`
-  - Operationalization: `amber-500`
-- Alert-Box für das Kernprinzip
-- Badge-Komponenten für Metriken
-- Responsive: 2x2 Grid auf Desktop, Stack auf Mobile
+```text
+┌─────────────────────────────────────────────────┐
+│ ← Zurück                                        │
+│                                                 │
+│ Glossar                                         │
+│ [Einleitungstext]                               │
+│                                                 │
+│ Die Lösung: 4 Kern-Capabilities                 │
+│ ┌─────────────┐ ┌─────────────┐                 │
+│ │ Strategy    │ │ Setup       │                 │
+│ └─────────────┘ └─────────────┘                 │
+│ ┌─────────────┐ ┌─────────────┐                 │
+│ │ Execution   │ │ Operational.│                 │
+│ └─────────────┘ └─────────────┘                 │
+│                                                 │
+│ ┌───────────────────────────────────────────┐   │
+│ │     ✨ AI as Multiplier                   │   │
+│ │     AI multipliziert die Wirkung...       │   │
+│ └───────────────────────────────────────────┘   │
+│                                                 │
+│ ⚠️ Kernprinzip...                              │
+└─────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -94,4 +106,3 @@ Erweiterung der Glossar-Seite um eine Zusammenfassung der Grundidee aus dem AI-N
 | Aktion | Datei |
 |--------|-------|
 | **Bearbeiten** | `src/pages/Glossar.tsx` |
-
