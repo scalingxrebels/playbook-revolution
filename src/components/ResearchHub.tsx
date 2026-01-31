@@ -183,8 +183,8 @@ const teamMembers = [
       en: 'Growth-Hacker and GTM-Architect for SaaS & B2C with Co-Founder-Mindset.', 
       de: 'Growth-Hacker und GTM-Architekt für SaaS & B2C mit Co-Founder-Mindset.' 
     },
-    image: '/images/team-florian.png',
-    imageStyle: 'scale-150 translate-y-[20%]',
+    image: '/images/team-florian-square.png',
+    imageStyle: '',
     linkedIn: 'https://linkedin.com/in/florian-metzger',
     link: '/fm'
   }
