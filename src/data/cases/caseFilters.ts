@@ -24,6 +24,7 @@ export const industryFilters: CaseFilterOption[] = [
   { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
   { id: 'enterprise', label: { en: 'Enterprise', de: 'Enterprise' } },
   { id: 'analytics', label: { en: 'Data & Analytics', de: 'Daten & Analytics' } },
+  { id: 'martech', label: { en: 'MarTech', de: 'MarTech' } },
   { id: 'b2b-software', label: { en: 'B2B Software', de: 'B2B Software' } },
   { id: 'social-network', label: { en: 'Social Network / Job Ads', de: 'Social Network / Job Ads' } },
   { id: 'professional-services', label: { en: 'Professional Services', de: 'Professional Services' } },
