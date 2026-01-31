@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 // ============================================
 // CURVE TYPE DEFINITIONS
@@ -17,7 +18,8 @@ interface CurveType {
   weight: number;
 }
 
-const CURVE_TYPES: Record<string, CurveType> = {
+// Dark Mode Colors (existing)
+const DARK_CURVE_TYPES: Record<string, CurveType> = {
   slowBurn: {
     name: 'Slow Burn',
     k: 6,
@@ -51,6 +53,46 @@ const CURVE_TYPES: Record<string, CurveType> = {
       start: '#8B5CF6', // Violet
       mid: '#F59E0B',   // Orange
       end: '#FFFFFF'    // White
+    },
+    weight: 0.6
+  }
+};
+
+// Light Mode Colors (higher contrast, deeper saturation)
+const LIGHT_CURVE_TYPES: Record<string, CurveType> = {
+  slowBurn: {
+    name: 'Slow Burn',
+    k: 6,
+    x0: 0.3,
+    growthRate: 4,
+    color: {
+      start: '#7C3AED', // Deeper Violet
+      mid: '#DB2777',   // Deeper Pink
+      end: '#EA580C'    // Deeper Orange
+    },
+    weight: 0.2
+  },
+  fastMover: {
+    name: 'Fast Mover',
+    k: 10,
+    x0: 0.2,
+    growthRate: 2.5,
+    color: {
+      start: '#2563EB', // Deeper Blue
+      mid: '#7C3AED',   // Deeper Violet
+      end: '#DB2777'    // Deeper Pink
+    },
+    weight: 0.2
+  },
+  balanced: {
+    name: 'Balanced',
+    k: 8,
+    x0: 0.25,
+    growthRate: 3,
+    color: {
+      start: '#7C3AED', // Deeper Violet
+      mid: '#EA580C',   // Deeper Orange
+      end: '#1E293B'    // Dark slate (instead of white)
     },
     weight: 0.6
   }
@@ -91,18 +133,18 @@ function lerpColor(color1: string, color2: string, t: number): string {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function selectCurveType(): CurveType {
+function selectCurveType(curveTypes: Record<string, CurveType>): CurveType {
   const rand = Math.random();
   let cumulative = 0;
   
-  for (const type of Object.values(CURVE_TYPES)) {
+  for (const type of Object.values(curveTypes)) {
     cumulative += type.weight;
     if (rand < cumulative) {
       return type;
     }
   }
   
-  return CURVE_TYPES.balanced;
+  return curveTypes.balanced;
 }
 
 // ============================================
@@ -114,19 +156,13 @@ function growthTrajectory(x: number, curveType: CurveType): number {
   const k = curveType.k;
   const x0 = curveType.x0;
   
-  // Calculate the y-value at inflection point (x=0.5) for continuity
   const yAtInflection = L / (1 + Math.exp(-k * (0.5 - x0)));
   
   if (x < 0.5) {
-    // PHASE 1-2: Initial Growth + Plateau (Sigmoid)
     return L / (1 + Math.exp(-k * (x - x0)));
   } else {
-    // PHASE 3-4: Hypergrowth (after spark/intervention)
-    // Start exactly where the sigmoid left off (no jump!)
-    const t = (x - 0.5) / 0.5; // 0 to 1 over second half
+    const t = (x - 0.5) / 0.5;
     const growthRate = curveType.growthRate;
-    
-    // Smooth exponential growth from inflection point to top
     const remaining = 1 - yAtInflection;
     return yAtInflection + remaining * 
            (Math.exp(growthRate * t) - 1) / 
@@ -153,6 +189,7 @@ const GrowthTrails: React.FC = () => {
   const trailsRef = useRef<GrowthTrail[]>([]);
   const nextIdRef = useRef(0);
   const lastSpawnRef = useRef(0);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -161,12 +198,17 @@ const GrowthTrails: React.FC = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Check for reduced motion preference
+    const isDark = resolvedTheme === 'dark';
+    const CURVE_TYPES = isDark ? DARK_CURVE_TYPES : LIGHT_CURVE_TYPES;
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) return;
 
     let width = 0;
     let height = 0;
+
+    // Clear existing trails on theme change
+    trailsRef.current = [];
+    nextIdRef.current = 0;
 
     const resizeCanvas = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -188,10 +230,9 @@ const GrowthTrails: React.FC = () => {
     const drawStarburst = (
       x: number, 
       y: number, 
-      progress: number, // 0-1 animation progress
+      progress: number,
       color: string
     ) => {
-      // Smaller on mobile
       const isMobile = width < 768;
       const rays = isMobile ? 8 : 10;
       const maxSize = isMobile ? 8 : 14;
@@ -200,18 +241,14 @@ const GrowthTrails: React.FC = () => {
       const particleMaxDistance = isMobile ? 15 : 25;
       const particleBaseSize = isMobile ? 1.2 : 2;
       
-      // Animation phases
       let scale: number, opacity: number;
       if (progress < 0.2) {
-        // Scale up
         scale = progress / 0.2;
         opacity = 1;
       } else if (progress < 0.4) {
-        // Hold
         scale = 1;
         opacity = 1;
       } else {
-        // Fade out
         scale = 1;
         opacity = 1 - ((progress - 0.4) / 0.6);
       }
@@ -222,11 +259,11 @@ const GrowthTrails: React.FC = () => {
       ctx.save();
       ctx.globalAlpha = opacity;
 
-      // Glow effect
+      // Spark color based on theme
+      const sparkColor = isDark ? '#F59E0B' : '#EA580C';
       ctx.shadowBlur = glowSize * scale;
-      ctx.shadowColor = '#F59E0B';
+      ctx.shadowColor = sparkColor;
 
-      // Draw starburst shape
       ctx.beginPath();
       for (let i = 0; i < rays * 2; i++) {
         const radius = i % 2 === 0 ? outerRadius : innerRadius;
@@ -242,16 +279,14 @@ const GrowthTrails: React.FC = () => {
       }
       ctx.closePath();
 
-      // Gradient fill
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, outerRadius);
-      gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-      gradient.addColorStop(0.3, 'rgba(245, 158, 11, 1)');
+      gradient.addColorStop(0, isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.9)');
+      gradient.addColorStop(0.3, sparkColor);
       gradient.addColorStop(1, color);
 
       ctx.fillStyle = gradient;
       ctx.fill();
 
-      // Particle burst
       if (progress > 0.1 && progress < 0.7) {
         const particleProgress = (progress - 0.1) / 0.6;
         const particleCount = isMobile ? 3 : 5;
@@ -265,7 +300,7 @@ const GrowthTrails: React.FC = () => {
           const particleSize = particleBaseSize * (1 - particleProgress * 0.5);
 
           ctx.globalAlpha = particleOpacity;
-          ctx.fillStyle = '#F59E0B';
+          ctx.fillStyle = sparkColor;
           ctx.beginPath();
           ctx.arc(particleX, particleY, particleSize, 0, Math.PI * 2);
           ctx.fill();
@@ -282,20 +317,20 @@ const GrowthTrails: React.FC = () => {
     const spawnTrail = (timestamp: number) => {
       const trail: GrowthTrail = {
         id: nextIdRef.current++,
-        type: selectCurveType(),
-        startY: 0.3 + Math.random() * 0.4, // 30-70% height
+        type: selectCurveType(CURVE_TYPES),
+        startY: 0.3 + Math.random() * 0.4,
         progress: 0,
-        duration: 7000 + Math.random() * 2000, // 7-9s
+        duration: 7000 + Math.random() * 2000,
         startTime: timestamp,
         sparkTriggered: false,
         sparkData: null,
-        opacity: 0.3 + Math.random() * 0.3, // 0.3-0.6 (subtle)
+        // Light mode: slightly higher opacity for visibility
+        opacity: isDark ? (0.3 + Math.random() * 0.3) : (0.4 + Math.random() * 0.35),
         isAccelerated: false,
       };
       trailsRef.current.push(trail);
     };
 
-    // Initial trails - fewer on mobile
     const now = performance.now();
     const isMobileInit = window.innerWidth < 768;
     const initialCount = isMobileInit ? 2 : 3;
@@ -313,7 +348,6 @@ const GrowthTrails: React.FC = () => {
     const animate = (timestamp: number) => {
       ctx.clearRect(0, 0, width, height);
 
-      // Spawn new trajectories - less frequent (every 4-6s instead of 2-3.5s)
       const isMobile = width < 768;
       const spawnInterval = isMobile ? 5000 + Math.random() * 2000 : 4000 + Math.random() * 2000;
       const maxTrails = isMobile ? 3 : 4;
@@ -325,18 +359,14 @@ const GrowthTrails: React.FC = () => {
         lastSpawnRef.current = timestamp;
       }
 
-      // Update and draw trails
       trailsRef.current = trailsRef.current.filter((trail) => {
         const elapsed = timestamp - trail.startTime;
         const duration = trail.isAccelerated ? trail.duration * 0.5 : trail.duration;
         trail.progress = Math.min(elapsed / duration, 1);
 
-        // Trigger spark at 60% - at the SECOND inflection point (before hypergrowth rise)
-        // Not at 50% which is the END of the plateau (first inflection)
         const sparkTriggerPoint = 0.6;
         if (trail.progress >= sparkTriggerPoint && !trail.sparkTriggered) {
           trail.sparkTriggered = true;
-          // Calculate spark position at the trigger point
           const x = sparkTriggerPoint;
           const y = growthTrajectory(x, trail.type);
           trail.sparkData = {
@@ -346,14 +376,12 @@ const GrowthTrails: React.FC = () => {
           };
         }
 
-        // Calculate fade opacity
         const fadeStart = 0.75;
         let currentOpacity = trail.opacity;
         if (trail.progress > fadeStart) {
           currentOpacity = trail.opacity * (1 - (trail.progress - fadeStart) / (1 - fadeStart));
         }
 
-        // Remove if faded or complete
         if (currentOpacity <= 0.01 || trail.progress >= 1) {
           return false;
         }
@@ -362,7 +390,7 @@ const GrowthTrails: React.FC = () => {
         // DRAW TRAJECTORY WITH GRADIENT
         // ============================================
 
-        const trailLength = 0.25; // 25% chemtrail
+        const trailLength = 0.25;
         const segments = 80;
 
         ctx.lineCap = 'round';
@@ -375,7 +403,6 @@ const GrowthTrails: React.FC = () => {
           if (t < 0) continue;
           if (t > trail.progress) continue;
 
-          // Calculate position on curve
           const curveY = growthTrajectory(t, trail.type);
           const x = t;
           const y = (1 - curveY) * 0.6 + trail.startY * 0.4;
@@ -383,7 +410,6 @@ const GrowthTrails: React.FC = () => {
           const screenX = x * width;
           const screenY = y * height;
 
-          // Segment opacity (chemtrail fade)
           const trailFade = 1 - (i / segments);
           const segmentOpacity = currentOpacity * trailFade;
 
@@ -393,23 +419,21 @@ const GrowthTrails: React.FC = () => {
             continue;
           }
 
-          // Get gradient color for this position
           const color = getGradientColor(t, trail.type);
 
-          // Draw segment
           ctx.beginPath();
           ctx.moveTo(prevX, prevY);
           ctx.lineTo(screenX, screenY);
           ctx.strokeStyle = color;
           ctx.globalAlpha = segmentOpacity;
-          ctx.lineWidth = 2 * trailFade + 0.5; // 0.5-2.5px
+          // Slightly thicker lines in light mode for visibility
+          ctx.lineWidth = isDark ? (2 * trailFade + 0.5) : (2.5 * trailFade + 0.75);
           ctx.stroke();
 
           prevX = screenX;
           prevY = screenY;
         }
 
-        // Reset alpha
         ctx.globalAlpha = 1;
 
         // ============================================
@@ -418,7 +442,7 @@ const GrowthTrails: React.FC = () => {
 
         if (trail.sparkData) {
           const sparkElapsed = timestamp - trail.sparkData.startTime;
-          const sparkDuration = 600; // 600ms
+          const sparkDuration = 600;
           const sparkProgress = Math.min(sparkElapsed / sparkDuration, 1);
 
           if (sparkProgress < 1) {
@@ -441,7 +465,7 @@ const GrowthTrails: React.FC = () => {
     animationId = requestAnimationFrame(animate);
 
     // ============================================
-    // CLICK INTERACTION (Optional)
+    // CLICK INTERACTION
     // ============================================
 
     const handleClick = (e: MouseEvent) => {
@@ -449,11 +473,9 @@ const GrowthTrails: React.FC = () => {
       const clickX = e.clientX - rect.left;
       const clickY = e.clientY - rect.top;
 
-      // Check if click is near any trajectory
       trailsRef.current.forEach((trail) => {
         if (trail.isAccelerated || trail.progress >= 0.5) return;
 
-        // Simple hit detection
         const t = clickX / width;
         if (t > trail.progress) return;
 
@@ -462,7 +484,6 @@ const GrowthTrails: React.FC = () => {
         const distance = Math.abs(clickY - expectedY);
 
         if (distance < 30) {
-          // Accelerate this trajectory
           trail.isAccelerated = true;
           trail.sparkTriggered = true;
           trail.sparkData = {
@@ -476,7 +497,6 @@ const GrowthTrails: React.FC = () => {
 
     canvas.addEventListener('click', handleClick);
 
-    // Hover cursor
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
       const mouseX = e.clientX - rect.left;
@@ -509,7 +529,7 @@ const GrowthTrails: React.FC = () => {
       canvas.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [resolvedTheme]);
 
   return (
     <canvas
