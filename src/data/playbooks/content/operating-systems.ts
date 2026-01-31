@@ -308,7 +308,7 @@ export const operatingSystemsData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full AI-native transformation, all 4 operating systems, AI Maturity Level 3, 2-5x scaling efficiency, market leadership", de: "Volle AI-native Transformation, alle 4 Operating Systems, AI Maturity Level 3, 2-5x Skalierungs-Effizienz, Marktführerschaft" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/ai-native-scaling",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }

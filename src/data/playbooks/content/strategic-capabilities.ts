@@ -384,7 +384,7 @@ export const strategicCapabilitiesData: PlaybookPageData = {
           de: "Volle Capability-Transformation, alle 4 Capabilities × AI Maturity Level 3, 3-5x Skalierungsgeschwindigkeit"
         },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/ai-native-scaling",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }
