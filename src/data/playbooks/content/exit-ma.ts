@@ -328,14 +328,14 @@ export const exitMaData: PlaybookPageData = {
     items: [
       {
         type: "assessment",
-        name: { en: "Exit Assessment", de: "Exit Assessment" },
+        name: { en: "VC Due Diligence Simulation", de: "VC Due Diligence Simulation" },
         duration: { en: "2-3 Days", de: "2-3 Tage" },
-        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
-        outcome: { en: "Full exit readiness report + 90-day roadmap", de: "Vollständiger Exit-Readiness-Report + 90-Tage-Roadmap" },
+        price: { en: "€5.9K", de: "€5.9K" },
+        outcome: { en: "Full exit readiness assessment, due diligence simulation, 90-day roadmap", de: "Vollständiges Exit-Readiness-Assessment, Due Diligence Simulation, 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/vc-dd-simulation",
         icon: "ClipboardCheck",
-        color: "green",
+        color: "bg-emerald-500/10 text-emerald-500",
       },
       {
         type: "power-up",
@@ -346,7 +346,7 @@ export const exitMaData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/board-readiness",
         icon: "Zap",
-        color: "amber",
+        color: "bg-orange-500/10 text-orange-500",
       },
       {
         type: "boost",
@@ -357,7 +357,7 @@ export const exitMaData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/board-excellence",
         icon: "Rocket",
-        color: "orange",
+        color: "bg-blue-500/10 text-blue-500",
       },
       {
         type: "accelerate",
@@ -368,7 +368,7 @@ export const exitMaData: PlaybookPageData = {
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
         link: "/solutions/accelerate",
         icon: "TrendingUp",
-        color: "violet",
+        color: "bg-violet-500/10 text-violet-500",
       },
     ]
   },

@@ -300,15 +300,15 @@ export const growthEnginesData: PlaybookPageData = {
     }, 
     items: [
       {
-        type: 'power-up',
-        name: { en: "Comprehensive Assessment", de: "Comprehensive Assessment" },
-        duration: { en: "2-3 Days", de: "2-3 Tage" },
-        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        type: 'assessment',
+        name: { en: "GTM Effectiveness Review", de: "GTM Effectiveness Review" },
+        duration: { en: "3-5 Days", de: "3-5 Tage" },
+        price: { en: "€3.9K-€5.9K", de: "€3.9K-€5.9K" },
         outcome: { en: "Full growth engine assessment (GTM, Product, CS), maturity scoring, bottleneck identification, 90-day roadmap", de: "Volle Growth Engine Bewertung (GTM, Product, CS), Maturity Scoring, Bottleneck-Identifikation, 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/gtm-effectiveness-review",
         icon: "ClipboardCheck",
-        color: "emerald"
+        color: "bg-emerald-500/10 text-emerald-500"
       },
       {
         type: 'power-up',
@@ -319,7 +319,7 @@ export const growthEnginesData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/growth-momentum",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: 'boost',
@@ -330,7 +330,7 @@ export const growthEnginesData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/growth-engine",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: 'accelerate',
@@ -341,7 +341,7 @@ export const growthEnginesData: PlaybookPageData = {
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
         link: "/solutions/accelerate",
         icon: "TrendingUp",
-        color: "violet"
+        color: "bg-violet-500/10 text-violet-500"
       },
     ]
   },

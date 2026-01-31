@@ -269,15 +269,15 @@ export const operatingSystemsData: PlaybookPageData = {
     subtitle: { en: "Choose the right engagement model for your timeline and budget", de: "Wähle das richtige Engagement-Modell für deine Timeline und Budget" }, 
     items: [
       {
-        type: 'power-up',
-        name: { en: "Comprehensive Assessment", de: "Umfassendes Assessment" },
-        duration: { en: "2-3 Days", de: "2-3 Tage" },
-        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        type: 'assessment',
+        name: { en: "Scaling Readiness Assessment", de: "Scaling Readiness Assessment" },
+        duration: { en: "3-5 Days", de: "3-5 Tage" },
+        price: { en: "€3.9K-€5.9K", de: "€3.9K-€5.9K" },
         outcome: { en: "Full operating systems assessment (Ops, Finance, Talent, Data/Tech), maturity scoring, bottleneck identification, 90-day roadmap", de: "Vollständiges Operating Systems Assessment (Ops, Finance, Talent, Data/Tech), Maturity Scoring, Engpass-Identifikation, 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/scaling-readiness-assessment",
         icon: "ClipboardCheck",
-        color: "green"
+        color: "bg-emerald-500/10 text-emerald-500"
       },
       {
         type: 'power-up',
@@ -288,7 +288,7 @@ export const operatingSystemsData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: 'boost',
@@ -299,7 +299,7 @@ export const operatingSystemsData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: 'accelerate',
@@ -310,9 +310,9 @@ export const operatingSystemsData: PlaybookPageData = {
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
         link: "/solutions/accelerate",
         icon: "TrendingUp",
-        color: "purple"
+        color: "bg-violet-500/10 text-violet-500"
       }
-    ] 
+    ]
   },
   whoThisIsFor: { 
     title: { en: "Who Should Use This Playbook?", de: "Wer sollte dieses Playbook nutzen?" }, 

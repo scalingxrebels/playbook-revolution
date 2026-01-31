@@ -325,7 +325,7 @@ export const portfolioTransformationData: PlaybookPageData = {
     }, 
     items: [
       {
-        type: "power-up",
+        type: "assessment",
         name: { en: "Portfolio Assessment", de: "Portfolio Assessment" },
         duration: { en: "2-4 Weeks", de: "2-4 Wochen" },
         price: { en: "€10K-€25K", de: "€10K-€25K" },
@@ -333,7 +333,7 @@ export const portfolioTransformationData: PlaybookPageData = {
         cta: { en: "Book Assessment", de: "Assessment buchen" },
         link: "/solutions/portfolio-assessment",
         icon: "ClipboardCheck",
-        color: "blue"
+        color: "bg-emerald-500/10 text-emerald-500"
       },
       {
         type: "power-up",
@@ -344,7 +344,7 @@ export const portfolioTransformationData: PlaybookPageData = {
         cta: { en: "Start Quick Fix", de: "Quick Fix starten" },
         link: "/solutions/portfolio-quick-fix",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
@@ -355,7 +355,7 @@ export const portfolioTransformationData: PlaybookPageData = {
         cta: { en: "Start Transformation", de: "Transformation starten" },
         link: "/solutions/boost/portfolio-transformation",
         icon: "Rocket",
-        color: "purple"
+        color: "bg-blue-500/10 text-blue-500"
       },
       {
         type: "accelerate",
@@ -366,9 +366,9 @@ export const portfolioTransformationData: PlaybookPageData = {
         cta: { en: "Start AI-Native", de: "AI-Native starten" },
         link: "/solutions/accelerate/portfolio-ai-native",
         icon: "TrendingUp",
-        color: "violet"
+        color: "bg-violet-500/10 text-violet-500"
       },
-    ] 
+    ]
   },
   whoThisIsFor: { 
     title: { en: "Who Should Use This Playbook?", de: "Für wen ist dieses Playbook?" }, 

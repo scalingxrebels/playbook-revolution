@@ -333,10 +333,24 @@ export const strategicCapabilitiesData: PlaybookPageData = {
     }, 
     items: [
       {
+        type: "assessment",
+        name: { en: "Scaling Readiness Assessment", de: "Scaling Readiness Assessment" },
+        duration: { en: "3-5 Days", de: "3-5 Tage" },
+        price: { en: "€3.9K-€5.9K", de: "€3.9K-€5.9K" },
+        outcome: { 
+          en: "Full capability assessment (Strategy, Setup, Execution, Operationalization), bottleneck identification, 90-day roadmap",
+          de: "Volles Capability Assessment (Strategy, Setup, Execution, Operationalization), Bottleneck-Identifikation, 90-Tage-Roadmap"
+        },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/scaling-readiness-assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Scaling Velocity Sprint", de: "Scaling Velocity Sprint" },
+        name: { en: "Capability Sprint", de: "Capability Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "€23.6K", de: "€23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { 
           en: "Full capability assessment, bottleneck identification, and 90-day improvement roadmap. Perfect for understanding your capability bottleneck and creating a clear action plan.",
           de: "Volles Capability Assessment, Bottleneck-Identifikation und 90-Tage-Improvement-Roadmap. Perfekt um deinen Capability-Bottleneck zu verstehen und einen klaren Aktionsplan zu erstellen."
@@ -344,11 +358,11 @@ export const strategicCapabilitiesData: PlaybookPageData = {
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "amber"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
-        name: { en: "Scaling OS", de: "Scaling OS" },
+        name: { en: "Capability Excellence", de: "Capability Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { 
@@ -358,7 +372,21 @@ export const strategicCapabilitiesData: PlaybookPageData = {
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Capabilities", de: "AI-Native Capabilities" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { 
+          en: "Full capability transformation, all 4 capabilities × AI Maturity Level 3, 3-5x scaling velocity",
+          de: "Volle Capability-Transformation, alle 4 Capabilities × AI Maturity Level 3, 3-5x Skalierungsgeschwindigkeit"
+        },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ]
   },
