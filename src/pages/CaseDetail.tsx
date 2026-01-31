@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Download, Calendar, TrendingUp, Quote, Lightbulb, CheckCircle2, ExternalLink, Clock, Target } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -14,6 +14,11 @@ import { getCaseStudyBySlug, ClientCaseStudy, RelatedSolution } from '@/data/cas
 const CaseDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { language } = useLanguage();
+  
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
   
   const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
   
