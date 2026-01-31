@@ -46,13 +46,13 @@ const caseStudiesData: CaseStudy[] = [
     founded: '2021',
     founder: 'David Holz',
     focus: { en: 'AI Image Generation', de: 'KI-Bildgenerierung' },
-    headline: { metric: '$500M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
+    headline: { metric: '$492M', label: { en: 'Revenue 2025', de: 'Umsatz 2025' } },
     secondaryMetrics: [
       { value: '21M+', label: { en: 'Discord Members', de: 'Discord Mitglieder' } },
       { value: '26.8%', label: { en: 'Market Share', de: 'Marktanteil' } },
       { value: '10x', label: { en: '3 Year Growth', de: '3 Jahre Wachstum' } },
     ],
-    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.8, c3: 0.8, c4: 0.7 },
+    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.85, c3: 0.85, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Best-in-class image quality', de: 'Beste Bildqualität' },
       c2: { en: 'Community-driven growth', de: 'Community-getriebenes Wachstum' },
@@ -63,7 +63,7 @@ const caseStudiesData: CaseStudy[] = [
       { year: '2022', value: '$50M' },
       { year: '2023', value: '$200M', label: '+300%' },
       { year: '2024', value: '$300M', label: '+50%' },
-      { year: '2025', value: '$500M', label: '+66.7%' },
+      { year: '2025', value: '$492M', label: '+64%' },
     ],
     learnings: {
       en: [
@@ -83,11 +83,11 @@ const caseStudiesData: CaseStudy[] = [
     },
     highlight: { en: 'Community-First AI Image Generation', de: 'Community-First KI-Bildgenerierung' },
     description: {
-      en: 'Midjourney revolutionized AI image generation by building a community-first platform on Discord. With 21M+ members and $500M revenue, they prove that viral loops and quality focus drive hypergrowth.',
-      de: 'Midjourney revolutionierte die KI-Bildgenerierung durch den Aufbau einer Community-First-Plattform auf Discord. Mit 21M+ Mitgliedern und $500M Umsatz beweisen sie, dass virale Loops und Qualitätsfokus Hypergrowth antreiben.',
+      en: 'Midjourney revolutionized AI image generation by building a community-first platform on Discord. With 21M+ members and $492M revenue, they prove that viral loops and quality focus drive hypergrowth.',
+      de: 'Midjourney revolutionierte die KI-Bildgenerierung durch den Aufbau einer Community-First-Plattform auf Discord. Mit 21M+ Mitgliedern und $492M Umsatz beweisen sie, dass virale Loops und Qualitätsfokus Hypergrowth antreiben.',
     },
     keyMetrics: [
-      { label: { en: 'Annual Revenue', de: 'Jahresumsatz' }, value: '$500M', icon: TrendingUp },
+      { label: { en: 'Annual Revenue', de: 'Jahresumsatz' }, value: '$492M', icon: TrendingUp },
       { label: { en: 'Discord Members', de: 'Discord Mitglieder' }, value: '21M+', icon: Users },
       { label: { en: 'Market Share', de: 'Marktanteil' }, value: '26.8%', icon: Target },
       { label: { en: 'Growth Rate', de: 'Wachstumsrate' }, value: '10x/3y', icon: Zap },
@@ -117,13 +117,13 @@ const caseStudiesData: CaseStudy[] = [
     founded: '2022',
     founder: 'Anystic Team',
     focus: { en: 'AI Code Editor', de: 'KI Code Editor' },
-    headline: { metric: '$29.3B', label: { en: 'Valuation Nov 2025', de: 'Bewertung Nov 2025' } },
+    headline: { metric: '$400M', label: { en: 'Valuation Aug 2024', de: 'Bewertung Aug 2024' } },
     secondaryMetrics: [
-      { value: '$1B+', label: { en: 'ARR in 6 months', de: 'ARR in 6 Monaten' } },
-      { value: '2M+', label: { en: 'Monthly Active Users', de: 'Monatl. aktive Nutzer' } },
-      { value: '85%+', label: { en: 'Retention Rate', de: 'Retention Rate' } },
+      { value: '$100M', label: { en: 'ARR 2024', de: 'ARR 2024' } },
+      { value: '60', label: { en: 'Employees', de: 'Mitarbeiter' } },
+      { value: '$1.67M', label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' } },
     ],
-    thetaIndex: { overall: 0.92, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.9 },
+    thetaIndex: { overall: 0.90, c1: 0.9, c2: 0.9, c3: 0.9, c4: 0.85 },
     thetaLabels: {
       c1: { en: 'Exceptional developer experience', de: 'Außergewöhnliche Developer Experience' },
       c2: { en: 'Organic developer adoption', de: 'Organische Developer-Adoption' },
@@ -131,37 +131,35 @@ const caseStudiesData: CaseStudy[] = [
       c4: { en: 'Efficient capital deployment', de: 'Effiziente Kapitalnutzung' },
     },
     growthTimeline: [
-      { year: '2023', value: '$100M', label: 'Series A' },
-      { year: '2024 Q1', value: '$600M', label: 'Series B' },
-      { year: '2025 May', value: '$9.9B', label: 'Series C' },
-      { year: '2025 Nov', value: '$29.3B', label: 'Series D' },
+      { year: '2022', value: '$0', label: 'Founded' },
+      { year: '2024', value: '$400M', label: 'Series B' },
     ],
     learnings: {
       en: [
         'Developer-First Product - Solve real developer pain points',
         'AI Integration - Seamless AI assistance in existing workflow',
-        'Rapid Monetization - $1B ARR in <6 months',
+        'Capital Efficiency - $100M ARR with 60 employees',
         'Viral Adoption - Word-of-mouth among developers',
         'Premium Positioning - High-value justifies premium pricing',
       ],
       de: [
         'Developer-First Produkt - Löst echte Developer Pain Points',
         'KI-Integration - Nahtlose KI-Assistenz im Workflow',
-        'Schnelle Monetarisierung - $1B ARR in <6 Monaten',
+        'Kapitaleffizienz - $100M ARR mit 60 Mitarbeitern',
         'Virale Adoption - Mundpropaganda unter Developern',
         'Premium-Positionierung - Hoher Wert rechtfertigt Premium-Preis',
       ],
     },
-    highlight: { en: 'Fastest $1B ARR Ever', de: 'Schnellstes $1B ARR aller Zeiten' },
+    highlight: { en: 'AI-Native Code Editor', de: 'AI-Nativer Code Editor' },
     description: {
-      en: 'Cursor achieved the fastest $1B ARR in history by building an AI-native code editor that developers love. Their 293x valuation growth in 2.5 years showcases the power of developer-first products.',
-      de: 'Cursor erreichte das schnellste $1B ARR der Geschichte durch einen KI-nativen Code-Editor, den Entwickler lieben. Ihr 293x Bewertungswachstum in 2.5 Jahren zeigt die Kraft von Developer-First-Produkten.',
+      en: 'Cursor built an AI-native code editor achieving $100M ARR with just 60 employees—the most capital-efficient AI company. Their $400M valuation (Aug 2024) showcases the power of developer-first products.',
+      de: 'Cursor baute einen KI-nativen Code-Editor und erreichte $100M ARR mit nur 60 Mitarbeitern—das kapitaleffizienteste KI-Unternehmen. Ihre $400M Bewertung (Aug 2024) zeigt die Kraft von Developer-First-Produkten.',
     },
     keyMetrics: [
-      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$29.3B', icon: TrendingUp },
-      { label: { en: 'ARR', de: 'ARR' }, value: '$1B+', icon: Zap },
-      { label: { en: 'MAU', de: 'MAU' }, value: '2M+', icon: Users },
-      { label: { en: 'Retention', de: 'Retention' }, value: '85%+', icon: Target },
+      { label: { en: 'Valuation', de: 'Bewertung' }, value: '$400M', icon: TrendingUp },
+      { label: { en: 'ARR', de: 'ARR' }, value: '$100M', icon: Zap },
+      { label: { en: 'Employees', de: 'Mitarbeiter' }, value: '60', icon: Users },
+      { label: { en: 'ARR/Employee', de: 'ARR/Mitarbeiter' }, value: '$1.67M', icon: Target },
     ],
     strategicInsights: {
       en: [
@@ -194,7 +192,7 @@ const caseStudiesData: CaseStudy[] = [
       { value: '18x', label: { en: '2 Year Growth', de: '2 Jahre Wachstum' } },
       { value: '10M+', label: { en: 'Monthly Users', de: 'Monatliche Nutzer' } },
     ],
-    thetaIndex: { overall: 0.88, c1: 0.9, c2: 0.9, c3: 0.8, c4: 0.8 },
+    thetaIndex: { overall: 0.85, c1: 0.9, c2: 0.85, c3: 0.8, c4: 0.8 },
     thetaLabels: {
       c1: { en: 'Superior search quality', de: 'Überlegene Suchqualität' },
       c2: { en: 'Aggressive growth hacking', de: 'Aggressives Growth Hacking' },
