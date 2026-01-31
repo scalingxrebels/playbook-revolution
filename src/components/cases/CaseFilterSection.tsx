@@ -1,9 +1,9 @@
 import React from 'react';
-import { Search, X } from 'lucide-react';
+import { Search, X, AlertCircle, Briefcase, TrendingUp } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { cn } from '@/lib/utils';
 import { challengeFilters, industryFilters, stageFilters, CaseFilterOption } from '@/data/cases/caseFilters';
 
 interface CaseFilterSectionProps {
@@ -21,33 +21,97 @@ interface CaseFilterSectionProps {
   hasActiveFilters: boolean;
 }
 
-const FilterRow: React.FC<{
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  challenge: AlertCircle,
+  industry: Briefcase,
+  stage: TrendingUp,
+};
+
+// Full-width centered filter row (for Challenge)
+const FilterRowCentered: React.FC<{
+  filterId: string;
   label: string;
   options: CaseFilterOption[];
   selected: string;
   onChange: (value: string) => void;
-}> = ({ label, options, selected, onChange }) => {
+}> = ({ filterId, label, options, selected, onChange }) => {
   const { language } = useLanguage();
+  const IconComponent = iconMap[filterId] || AlertCircle;
   
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider min-w-[80px]">
-        {label}:
-      </span>
-      <div className="flex flex-wrap gap-1.5">
-        {options.map((option) => (
-          <button
-            key={option.id}
-            onClick={() => onChange(option.id)}
-            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-              selected === option.id
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground'
-            }`}
-          >
-            {language === 'de' ? option.label.de : option.label.en}
-          </button>
-        ))}
+    <div className="w-full">
+      {/* Centered Label with Icon */}
+      <div className="flex items-center justify-center gap-2 mb-3">
+        <IconComponent className="w-4 h-4 text-muted-foreground" />
+        <span className="text-sm font-medium text-muted-foreground">
+          {label}
+        </span>
+      </div>
+
+      {/* Centered Pills */}
+      <div className="flex flex-wrap gap-2 justify-center">
+        {options.map((option) => {
+          const isActive = selected === option.id;
+          return (
+            <button
+              key={option.id}
+              onClick={() => onChange(option.id)}
+              className={cn(
+                'px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
+                isActive
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-card border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
+              )}
+            >
+              {language === 'de' ? option.label.de : option.label.en}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+// Compact centered filter row (for Industry/Stage in 2-column grid)
+const FilterRowCompact: React.FC<{
+  filterId: string;
+  label: string;
+  options: CaseFilterOption[];
+  selected: string;
+  onChange: (value: string) => void;
+}> = ({ filterId, label, options, selected, onChange }) => {
+  const { language } = useLanguage();
+  const IconComponent = iconMap[filterId] || AlertCircle;
+  
+  return (
+    <div className="space-y-2">
+      {/* Compact Centered Label */}
+      <div className="flex items-center justify-center gap-1.5">
+        <IconComponent className="w-3.5 h-3.5 text-muted-foreground" />
+        <span className="text-xs font-medium text-muted-foreground">
+          {label}
+        </span>
+      </div>
+
+      {/* Compact Centered Pills */}
+      <div className="flex flex-wrap gap-1.5 justify-center">
+        {options.map((option) => {
+          const isActive = selected === option.id;
+          return (
+            <button
+              key={option.id}
+              onClick={() => onChange(option.id)}
+              className={cn(
+                'px-2 py-1 text-xs rounded-full transition-all duration-200 border',
+                isActive
+                  ? 'bg-primary text-primary-foreground shadow-sm'
+                  : 'bg-card border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
+              )}
+            >
+              {language === 'de' ? option.label.de : option.label.en}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -70,7 +134,7 @@ const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
   const { language } = useLanguage();
 
   return (
-    <section className="bg-muted/30 border-y border-border py-6">
+    <section className="bg-muted/30 border-y border-border py-6 md:py-8">
       <div className="container max-w-7xl mx-auto px-4">
         {/* Search */}
         <div className="flex justify-center mb-6">
@@ -95,49 +159,50 @@ const CaseFilterSection: React.FC<CaseFilterSectionProps> = ({
         </div>
 
         {/* Filter Rows */}
-        <div className="space-y-3">
-          <FilterRow
+        <div className="space-y-6">
+          {/* Full Width: Challenge */}
+          <FilterRowCentered
+            filterId="challenge"
             label={language === 'de' ? 'Challenge' : 'Challenge'}
             options={challengeFilters}
             selected={selectedChallenge}
             onChange={onChallengeChange}
           />
-          <FilterRow
-            label={language === 'de' ? 'Branche' : 'Industry'}
-            options={industryFilters}
-            selected={selectedIndustry}
-            onChange={onIndustryChange}
-          />
-          <FilterRow
-            label={language === 'de' ? 'Phase' : 'Stage'}
-            options={stageFilters}
-            selected={selectedStage}
-            onChange={onStageChange}
-          />
+
+          {/* 2-Column Grid: Industry + Stage */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border/50">
+            <FilterRowCompact
+              filterId="industry"
+              label={language === 'de' ? 'Branche' : 'Industry'}
+              options={industryFilters}
+              selected={selectedIndustry}
+              onChange={onIndustryChange}
+            />
+            <FilterRowCompact
+              filterId="stage"
+              label={language === 'de' ? 'Phase' : 'Stage'}
+              options={stageFilters}
+              selected={selectedStage}
+              onChange={onStageChange}
+            />
+          </div>
         </div>
 
-        {/* Results count + Clear */}
-        <div className="flex items-center justify-between mt-6 pt-4 border-t border-border/50">
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-muted-foreground">
-              {language === 'de' 
-                ? `${filteredCount} von ${totalCount} Cases`
-                : `Showing ${filteredCount} of ${totalCount} cases`
-              }
-            </span>
-            {hasActiveFilters && (
-              <Badge variant="secondary" className="text-xs">
-                {language === 'de' ? 'Gefiltert' : 'Filtered'}
-              </Badge>
-            )}
-          </div>
+        {/* Results count + Clear (centered) */}
+        <div className="text-center mt-6 pt-4 border-t border-border/50">
+          <p className="text-sm text-muted-foreground">
+            {language === 'de' 
+              ? `${filteredCount} von ${totalCount} Cases`
+              : `Showing ${filteredCount} of ${totalCount} cases`
+            }
+          </p>
           
           {hasActiveFilters && (
             <Button
               variant="ghost"
               size="sm"
               onClick={onClearFilters}
-              className="text-muted-foreground hover:text-foreground"
+              className="mt-2 text-muted-foreground hover:text-foreground"
             >
               <X className="w-4 h-4 mr-1" />
               {language === 'de' ? 'Filter zurücksetzen' : 'Clear filters'}
