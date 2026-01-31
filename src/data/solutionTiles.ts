@@ -1112,7 +1112,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/hypergrowth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/hypergrowth-accelerate'
+    secondaryCtaUrl: '/cases/new-market-segment-entry'
   },
   {
     id: 30,
