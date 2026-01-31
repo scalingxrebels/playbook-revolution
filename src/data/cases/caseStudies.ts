@@ -5082,8 +5082,8 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
       en: '2-day strategy workshop created Vision 2030, 12 OKRs, and €10M roadmap. Team went from fragmented to 100% aligned.',
       de: '2-Tages-Strategie-Workshop schuf Vision 2030, 12 OKRs und €10M Roadmap. Team von fragmentiert zu 100% aligned.'
     },
-    investment: '€3K-€5K',
-    roi: '10x+',
+    investment: '€12.9K',
+    roi: '11.6x',
     heroMetrics: [
       { label: 'Clarity', before: '0%', after: '100%', impact: 'Achieved' },
       { label: 'Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' },
@@ -5274,9 +5274,9 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
       { label: 'Team Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' }
     ],
     roiCalculation: {
-      investment: '€3K-€5K',
-      returnValue: '€30K-€50K',
-      roi: '10x+',
+      investment: '€12.9K',
+      returnValue: '€150K',
+      roi: '11.6x',
       breakdown: [
         { en: 'Strategic clarity: Avoided 3-6 months of internal discussions', de: 'Strategische Klarheit: 3-6 Monate interne Diskussionen vermieden' },
         { en: 'Team alignment: Execution velocity +50% (estimated)', de: 'Team-Alignment: Execution Velocity +50% (geschätzt)' },
