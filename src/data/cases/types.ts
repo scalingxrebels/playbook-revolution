@@ -148,6 +148,36 @@ export interface ClientCaseStudy {
   // META
   playbooks: string[];
   downloadUrl?: string;
+  
+  // RELATED CONTENT (optional)
+  relatedSolutions?: RelatedSolution[];
+  relatedCaseStudies?: RelatedCaseStudy[];
+  relatedPlaybooks?: RelatedPlaybook[];
+}
+
+// ============================================
+// Related Content Types
+// ============================================
+
+export interface RelatedSolution {
+  name: BilingualText;
+  url: string;
+  duration: string;
+  investment: string;
+  focus: BilingualText;
+  outcome: BilingualText;
+  type: 'primary' | 'alternative' | 'related';
+  whatYouGet?: BilingualText[];
+}
+
+export interface RelatedCaseStudy {
+  slug: string;
+  teaser: BilingualText;
+}
+
+export interface RelatedPlaybook {
+  slug: string;
+  teaser: BilingualText;
 }
 
 // Legacy ClientCase (simplified for backward compatibility)

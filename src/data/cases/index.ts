@@ -2,6 +2,7 @@
 
 // Types
 export * from './types';
+export type { RelatedSolution, RelatedCaseStudy, RelatedPlaybook } from './types';
 
 // Research Cases (Real AI-Native Companies)
 export { researchCases, getResearchCaseById, homepageFeaturedCases } from './research';

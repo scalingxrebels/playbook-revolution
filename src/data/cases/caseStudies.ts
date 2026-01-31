@@ -504,6 +504,421 @@ Aber nichts funktionierte. Customer Health Scores waren in Ordnung. Support-Tick
     
     playbooks: ['customer-success', 'growth-engines'],
     downloadUrl: '/downloads/cases/nrr-machine-breakthrough.pdf'
+  },
+  {
+    id: 'partner-channel-transformed',
+    slug: 'partner-channel-transformed-scalable-growth',
+    company: 'SME Software Provider',
+    industry: 'B2B Software',
+    stage: 'Established',
+    gradient: 'from-blue-500 to-cyan-500',
+    confidential: true,
+    
+    tags: ['partner', 'channel', 'enablement', 'b2b-software', 'established'],
+    challengeType: 'partner-channel',
+    
+    // HERO
+    headline: {
+      en: 'Partner Channel Transformed → Scalable Growth Accelerated',
+      de: 'Partner Channel transformiert → Skalierbares Wachstum beschleunigt'
+    },
+    challenge: {
+      en: 'A nationwide network of 1,000 partners generated high activity but low yield—9,819 monthly contacts produced just 344 SQLs over 6 months.',
+      de: 'Ein bundesweites Netzwerk von 1.000 Partnern generierte hohe Aktivität, aber geringe Ausbeute—9.819 monatliche Kontakte ergaben nur 344 SQLs in 6 Monaten.'
+    },
+    result: {
+      en: 'Revenue €543K → €968K (+45.6%), SQLs +31% with -24% contacts, New Customers +40%, ACV +39%',
+      de: 'Umsatz €543K → €968K (+45,6%), SQLs +31% bei -24% Kontakte, Neukunden +40%, ACV +39%'
+    },
+    investment: '€60K-€78K',
+    roi: '5x+',
+    heroMetrics: [
+      { label: 'Revenue Growth', before: '€543K', after: '€968K', impact: '+45.6%' },
+      { label: 'SQL Efficiency', before: '344 SQLs', after: '451 SQLs', impact: '+31%' },
+      { label: 'New Customers', before: 'Baseline', after: '+40%', impact: '+40%' },
+      { label: 'ACV Growth', before: '€4,667', after: '€6,483', impact: '+39%' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A leading software provider for SMEs, offering a broad portfolio including ERP, CRM, HR, DMS, eCommerce, and payment solutions. They operated a nationwide network of over 1,000 certified partners delivering implementation, customization, training, and support services.',
+      de: 'Ein führender Software-Anbieter für KMU mit einem breiten Portfolio aus ERP, CRM, HR, DMS, eCommerce und Payment-Lösungen. Sie betrieben ein bundesweites Netzwerk von über 1.000 zertifizierten Partnern für Implementierung, Anpassung, Schulung und Support.'
+    },
+    crisisStory: {
+      en: `The existing partner model was largely reactive—centered around updates and technical support for existing customers. There was little emphasis on pipeline generation, new customer acquisition, or strategic partner enablement.
+
+The partner channel had scale—but it lacked structure, efficiency, and growth momentum. Key challenges included:
+
+• High sales activity, but low yield: 9,819 monthly contacts generated just 344 SQLs over 6 months
+• Commercial focus was on renewals and upgrades, not new customers
+• No defined KPI framework for partners tied to outcomes or conversion
+• Market potential remained untapped due to lack of targeting and proactive sales
+
+The math was clear: €543K in revenue and 344 qualified leads over 6 months required nearly 10,000 monthly contacts—a model driven by high effort, low conversion, and limited focus on new customer acquisition.`,
+      de: `Das bestehende Partnermodell war weitgehend reaktiv—fokussiert auf Updates und technischen Support für Bestandskunden. Es gab wenig Fokus auf Pipeline-Generierung, Neukundengewinnung oder strategisches Partner-Enablement.
+
+Der Partner-Channel hatte Skalierung—aber es fehlte an Struktur, Effizienz und Wachstumsdynamik. Die wichtigsten Herausforderungen waren:
+
+• Hohe Vertriebsaktivität, aber geringe Ausbeute: 9.819 monatliche Kontakte ergaben nur 344 SQLs in 6 Monaten
+• Kommerzieller Fokus lag auf Renewals und Upgrades, nicht auf Neukunden
+• Kein definiertes KPI-Framework für Partner mit Ergebnis- oder Conversion-Bezug
+• Marktpotenzial blieb ungenutzt durch fehlendes Targeting und proaktiven Vertrieb
+
+Die Zahlen waren eindeutig: €543K Umsatz und 344 qualifizierte Leads in 6 Monaten erforderten fast 10.000 monatliche Kontakte—ein Modell geprägt von hohem Aufwand, geringer Conversion und limitiertem Fokus auf Neukundengewinnung.`
+    },
+    problemDescription: {
+      en: 'The partner channel generated revenue, but the model was fundamentally inefficient. Too much effort, too little yield, and no clear path to scale new customer acquisition through the channel.',
+      de: 'Der Partner-Channel generierte Umsatz, aber das Modell war grundlegend ineffizient. Zu viel Aufwand, zu wenig Ergebnis, und kein klarer Weg zur Skalierung der Neukundengewinnung über den Channel.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Partner Focus', de: 'Partner-Fokus' },
+        symptoms: [
+          { en: 'Partners focused on support and renewals, not acquisition', de: 'Partner fokussierten auf Support und Renewals, nicht auf Akquise' },
+          { en: 'No structured approach to pipeline generation', de: 'Kein strukturierter Ansatz zur Pipeline-Generierung' },
+          { en: 'High activity without outcome accountability', de: 'Hohe Aktivität ohne Ergebnisverantwortung' }
+        ]
+      },
+      {
+        area: { en: 'Performance Measurement', de: 'Performance-Messung' },
+        symptoms: [
+          { en: 'KPIs tracked activity volume, not outcomes', de: 'KPIs maßen Aktivitätsvolumen, nicht Ergebnisse' },
+          { en: 'No visibility into lead quality or conversion', de: 'Keine Sichtbarkeit in Lead-Qualität oder Conversion' },
+          { en: 'Partners not incentivized for new customer wins', de: 'Partner nicht für Neukundengewinne incentiviert' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Partners', before: '1,000', after: '11 selected', impact: 'Focused' },
+      { label: 'Monthly Contacts', before: '9,819', after: 'Reduced', impact: '-24%' },
+      { label: 'SQLs (6 months)', before: '344', after: '451', impact: '+31%' },
+      { label: 'Revenue (6 months)', before: '€543K', after: '€968K', impact: '+45.6%' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We ran a 9-week execution sprint followed by 6 months of enablement and monitoring. The approach: select the right partners, design outcome-focused KPIs, activate with hands-on enablement, and scale what works.',
+      de: 'Wir führten einen 9-Wochen-Execution-Sprint durch, gefolgt von 6 Monaten Enablement und Monitoring. Der Ansatz: Die richtigen Partner auswählen, ergebnisorientierte KPIs designen, mit praxisnahem Enablement aktivieren und skalieren, was funktioniert.'
+    },
+    phases: [
+      {
+        name: { en: 'Fast Diagnostics & Partner Selection', de: 'Schnelle Diagnostik & Partner-Auswahl' },
+        timeline: 'Week 1',
+        actions: [
+          {
+            name: { en: 'Commercial Performance Assessment', de: 'Commercial Performance Assessment' },
+            description: {
+              en: 'Assessed the commercial performance of the full partner base (1,000 partners). Analyzed revenue contribution, customer acquisition, and growth potential.',
+              de: 'Bewerteten die kommerzielle Performance des gesamten Partner-Netzwerks (1.000 Partner). Analysierten Umsatzbeitrag, Kundengewinnung und Wachstumspotenzial.'
+            },
+            deliverables: [
+              { en: 'Partner performance scorecard', de: 'Partner Performance Scorecard' },
+              { en: 'Revenue contribution analysis', de: 'Umsatzbeitragsanalyse' },
+              { en: 'Growth potential ranking', de: 'Wachstumspotenzial-Ranking' }
+            ],
+            whyItMattered: {
+              en: 'Not all partners are equal. We needed to identify the top performers with the highest potential for growth.',
+              de: 'Nicht alle Partner sind gleich. Wir mussten die Top-Performer mit dem höchsten Wachstumspotenzial identifizieren.'
+            }
+          },
+          {
+            name: { en: 'Partner Selection & Alignment', de: 'Partner-Auswahl & Alignment' },
+            description: {
+              en: 'Selected the top 11 partners based on potential, commitment, and segment coverage. Conducted alignment sessions to ensure readiness for a new growth model.',
+              de: 'Wählten die Top 11 Partner basierend auf Potenzial, Commitment und Segmentabdeckung aus. Führten Alignment-Sessions durch, um Bereitschaft für ein neues Wachstumsmodell sicherzustellen.'
+            },
+            deliverables: [
+              { en: 'Top 11 partner selection', de: 'Top 11 Partner-Auswahl' },
+              { en: 'Partner commitment agreements', de: 'Partner-Commitment-Vereinbarungen' },
+              { en: 'Alignment session documentation', de: 'Alignment-Session-Dokumentation' }
+            ],
+            whyItMattered: {
+              en: 'Partner success requires mutual commitment. We needed partners ready to invest in a new way of working.',
+              de: 'Partner-Erfolg erfordert gegenseitiges Commitment. Wir brauchten Partner, die bereit waren, in eine neue Arbeitsweise zu investieren.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'KPI Framework & Execution Setup', de: 'KPI Framework & Execution Setup' },
+        timeline: 'Week 2',
+        actions: [
+          {
+            name: { en: 'New KPI Logic Design', de: 'Neues KPI-Logik-Design' },
+            description: {
+              en: 'Designed a new KPI framework focused on outcomes, not activity. Defined metrics for SQLs, conversion rates, revenue contribution, and lead quality.',
+              de: 'Designten ein neues KPI-Framework mit Fokus auf Ergebnisse, nicht Aktivität. Definierten Metriken für SQLs, Conversion-Raten, Umsatzbeitrag und Lead-Qualität.'
+            },
+            deliverables: [
+              { en: 'Outcome-based KPI framework', de: 'Ergebnisorientiertes KPI-Framework' },
+              { en: 'SQL and conversion metrics', de: 'SQL- und Conversion-Metriken' },
+              { en: 'Lead quality scoring model', de: 'Lead-Qualitäts-Scoring-Modell' }
+            ],
+            whyItMattered: {
+              en: 'What you measure is what you get. We needed KPIs that drove the right behavior.',
+              de: 'Was man misst, bekommt man. Wir brauchten KPIs, die das richtige Verhalten fördern.'
+            }
+          },
+          {
+            name: { en: 'Reporting Rhythm Setup', de: 'Reporting-Rhythmus-Setup' },
+            description: {
+              en: 'Introduced a lightweight reporting rhythm for visibility and accountability. Weekly pipeline reviews, monthly performance reviews.',
+              de: 'Führten einen leichtgewichtigen Reporting-Rhythmus für Sichtbarkeit und Verantwortlichkeit ein. Wöchentliche Pipeline-Reviews, monatliche Performance-Reviews.'
+            },
+            deliverables: [
+              { en: 'Weekly review cadence', de: 'Wöchentliche Review-Kadenz' },
+              { en: 'Performance dashboard', de: 'Performance Dashboard' },
+              { en: 'Partner enablement plan', de: 'Partner-Enablement-Plan' }
+            ],
+            whyItMattered: {
+              en: 'Regular check-ins kept everyone accountable and allowed for rapid iteration.',
+              de: 'Regelmäßige Check-ins hielten alle verantwortlich und ermöglichten schnelle Iteration.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Channel Activation & Partner Enablement', de: 'Channel-Aktivierung & Partner-Enablement' },
+        timeline: 'Weeks 3-12',
+        actions: [
+          {
+            name: { en: 'Targeting Strategies & Enablement', de: 'Targeting-Strategien & Enablement' },
+            description: {
+              en: 'Co-developed targeting strategies with partners. Delivered hands-on sales enablement workshops covering messaging, qualification, and engagement.',
+              de: 'Entwickelten gemeinsam Targeting-Strategien mit Partnern. Lieferten praxisnahe Sales-Enablement-Workshops zu Messaging, Qualifizierung und Engagement.'
+            },
+            deliverables: [
+              { en: 'Target segment definitions', de: 'Zielsegment-Definitionen' },
+              { en: 'Sales enablement workshops', de: 'Sales-Enablement-Workshops' },
+              { en: 'Messaging and qualification guides', de: 'Messaging- und Qualifizierungs-Guides' }
+            ],
+            whyItMattered: {
+              en: 'Partners needed practical tools and skills to execute the new model.',
+              de: 'Partner brauchten praktische Tools und Skills, um das neue Modell umzusetzen.'
+            }
+          },
+          {
+            name: { en: 'Structured Pipeline Reviews', de: 'Strukturierte Pipeline-Reviews' },
+            description: {
+              en: 'Implemented structured pipeline reviews to identify high-leverage activities. Reduced low-value outreach while improving qualification and engagement.',
+              de: 'Implementierten strukturierte Pipeline-Reviews zur Identifikation von High-Leverage-Aktivitäten. Reduzierten Low-Value-Outreach bei gleichzeitiger Verbesserung von Qualifizierung und Engagement.'
+            },
+            deliverables: [
+              { en: 'Pipeline review process', de: 'Pipeline-Review-Prozess' },
+              { en: 'Activity optimization', de: 'Aktivitäts-Optimierung' },
+              { en: 'Feedback loops', de: 'Feedback-Loops' }
+            ],
+            whyItMattered: {
+              en: 'Consistent coaching and feedback embedded the new behaviors.',
+              de: 'Kontinuierliches Coaching und Feedback verankerten die neuen Verhaltensweisen.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Acceleration & Performance Tracking', de: 'Beschleunigung & Performance-Tracking' },
+        timeline: 'Months 3-9',
+        actions: [
+          {
+            name: { en: 'Performance Monitoring & Scaling', de: 'Performance-Monitoring & Skalierung' },
+            description: {
+              en: 'Monitored partner performance through the new KPI system. Identified high-leverage activities and scaled best practices across partner teams.',
+              de: 'Monitoren Partner-Performance durch das neue KPI-System. Identifizierten High-Leverage-Aktivitäten und skalierten Best Practices über Partner-Teams.'
+            },
+            deliverables: [
+              { en: 'Performance tracking system', de: 'Performance-Tracking-System' },
+              { en: 'Best practice documentation', de: 'Best-Practice-Dokumentation' },
+              { en: 'Scaling playbook', de: 'Skalierungs-Playbook' }
+            ],
+            whyItMattered: {
+              en: 'Sustained performance requires ongoing support and optimization.',
+              de: 'Nachhaltige Performance erfordert kontinuierliche Unterstützung und Optimierung.'
+            }
+          },
+          {
+            name: { en: 'Replicable Playbook Development', de: 'Replizierbares Playbook-Entwicklung' },
+            description: {
+              en: 'Documented the partner playbook for rollout across the national partner network (1,000 partners). Prepared the model for broader adoption.',
+              de: 'Dokumentierten das Partner-Playbook für den Rollout über das nationale Partner-Netzwerk (1.000 Partner). Bereiteten das Modell für breitere Adoption vor.'
+            },
+            deliverables: [
+              { en: 'Partner playbook documentation', de: 'Partner-Playbook-Dokumentation' },
+              { en: 'Rollout plan for 1,000 partners', de: 'Rollout-Plan für 1.000 Partner' },
+              { en: 'Success metrics framework', de: 'Erfolgsmetriken-Framework' }
+            ],
+            whyItMattered: {
+              en: 'The goal was not just to fix 11 partners, but to create a model that could transform the entire channel.',
+              de: 'Das Ziel war nicht nur, 11 Partner zu optimieren, sondern ein Modell zu schaffen, das den gesamten Channel transformieren kann.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '24 months',
+    resultMetrics: [
+      { label: 'Revenue (6 months)', before: '€543K', after: '€968K', impact: '+45.6%' },
+      { label: 'SQLs', before: '344', after: '451', impact: '+31%' },
+      { label: 'Contacts/Month', before: '9,819', after: '7,469', impact: '-24%' },
+      { label: 'ACV', before: '€4,667', after: '€6,483', impact: '+39%' }
+    ],
+    roiCalculation: {
+      investment: '€60K-€78K',
+      returnValue: '€425K+',
+      roi: '5x+',
+      breakdown: [
+        { en: 'Revenue growth: +€425K (€543K → €968K in 6 months)', de: 'Umsatzwachstum: +€425K (€543K → €968K in 6 Monaten)' },
+        { en: 'Efficiency gain: 31% more SQLs with 24% fewer contacts', de: 'Effizienzgewinn: 31% mehr SQLs bei 24% weniger Kontakten' },
+        { en: 'ACV growth: +€1,816 per customer (+39%)', de: 'ACV-Wachstum: +€1.816 pro Kunde (+39%)' },
+        { en: 'Scalable model: Ready for 1,000 partner rollout', de: 'Skalierbares Modell: Bereit für 1.000 Partner-Rollout' }
+      ]
+    },
+    ceoQuote: {
+      en: '"We transformed our partner channel from a support extension into a true growth engine. With just 11 partners, we achieved more than we ever had with 1,000. The efficiency gains alone justified the investment—but the scalable playbook is what will transform our business."',
+      de: '"Wir haben unseren Partner-Channel von einer Support-Erweiterung in einen echten Growth Engine transformiert. Mit nur 11 Partnern haben wir mehr erreicht als jemals mit 1.000. Die Effizienzgewinne allein haben das Investment gerechtfertigt—aber das skalierbare Playbook wird unser Geschäft transformieren."'
+    },
+    quoteContext: {
+      en: 'The company is now rolling out the partner playbook across their national network of 1,000 partners.',
+      de: 'Das Unternehmen rollt jetzt das Partner-Playbook über ihr nationales Netzwerk von 1.000 Partnern aus.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Partner success is built on structure—not scale', de: 'Partner-Erfolg basiert auf Struktur—nicht Skalierung' },
+        whatWeLearned: {
+          en: 'With just 11 partners, we outperformed a network of 1,000 by focusing on quality, execution, and alignment.',
+          de: 'Mit nur 11 Partnern übertrafen wir ein Netzwerk von 1.000, indem wir auf Qualität, Execution und Alignment fokussierten.'
+        },
+        keyInsight: {
+          en: 'Scale without structure is just noise. Focus beats volume.',
+          de: 'Skalierung ohne Struktur ist nur Lärm. Fokus schlägt Volumen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start with partner selection earlier. Identify high-potential partners before investing in enablement.',
+          de: 'Früher mit Partner-Auswahl beginnen. High-Potential-Partner identifizieren, bevor in Enablement investiert wird.'
+        }
+      },
+      {
+        title: { en: 'Lead quality beats volume', de: 'Lead-Qualität schlägt Volumen' },
+        whatWeLearned: {
+          en: 'A 24% reduction in outreach led to 31% more SQLs—efficiency comes from precision, not pressure.',
+          de: 'Eine 24% Reduktion der Outreach führte zu 31% mehr SQLs—Effizienz kommt von Präzision, nicht Druck.'
+        },
+        keyInsight: {
+          en: 'Quality over quantity wins every time. Better targeting creates better results with less effort.',
+          de: 'Qualität über Quantität gewinnt immer. Besseres Targeting erzeugt bessere Ergebnisse mit weniger Aufwand.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. This principle was validated from week one.',
+          de: 'Nichts. Dieses Prinzip wurde ab Woche eins validiert.'
+        }
+      },
+      {
+        title: { en: 'KPI design shapes behavior', de: 'KPI-Design formt Verhalten' },
+        whatWeLearned: {
+          en: 'Moving from activity-based tracking to outcome-based KPIs changed how partners thought, sold, and delivered.',
+          de: 'Der Wechsel von aktivitätsbasiertem Tracking zu ergebnisorientierten KPIs veränderte, wie Partner dachten, verkauften und lieferten.'
+        },
+        keyInsight: {
+          en: 'What you measure is what you get. Design KPIs that drive the right behavior.',
+          de: 'Was man misst, bekommt man. KPIs designen, die das richtige Verhalten fördern.'
+        },
+        whatWedDoDifferently: {
+          en: 'Introduce outcome-based KPIs from the start of any partner program.',
+          de: 'Ergebnisorientierte KPIs von Beginn jedes Partner-Programms einführen.'
+        }
+      },
+      {
+        title: { en: 'ACV growth proves the strategic value of enablement', de: 'ACV-Wachstum beweist den strategischen Wert von Enablement' },
+        whatWeLearned: {
+          en: 'Higher average contract values reflected not just more deals, but better deals—a sign of improved qualification, messaging, and confidence.',
+          de: 'Höhere durchschnittliche Vertragswerte spiegelten nicht nur mehr Deals wider, sondern bessere Deals—ein Zeichen für verbesserte Qualifizierung, Messaging und Zuversicht.'
+        },
+        keyInsight: {
+          en: 'Enablement pays off in deal quality, not just deal volume.',
+          de: 'Enablement zahlt sich in Deal-Qualität aus, nicht nur in Deal-Volumen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Track ACV as a primary success metric from day one.',
+          de: 'ACV von Tag eins als primäre Erfolgsmetrik tracken.'
+        }
+      },
+      {
+        title: { en: 'Short sprints create lasting change', de: 'Kurze Sprints schaffen dauerhafte Veränderung' },
+        whatWeLearned: {
+          en: 'In just 9 weeks, a new partner model was not only designed—it was live, performing, and already scaling.',
+          de: 'In nur 9 Wochen war ein neues Partnermodell nicht nur designed—es war live, performte und skalierte bereits.'
+        },
+        keyInsight: {
+          en: 'Speed matters. Constraints force focus and accelerate learning.',
+          de: 'Geschwindigkeit zählt. Einschränkungen erzwingen Fokus und beschleunigen Lernen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. 9 weeks was the right timeline for design and initial activation.',
+          de: 'Nichts. 9 Wochen waren der richtige Zeitrahmen für Design und initiale Aktivierung.'
+        }
+      },
+      {
+        title: { en: 'A modern partner channel is a growth asset—not just a support extension', de: 'Ein moderner Partner-Channel ist ein Growth Asset—nicht nur eine Support-Erweiterung' },
+        whatWeLearned: {
+          en: 'When enabled with the right strategy and tools, partners can become a true lever for acquisition, revenue, and brand reach.',
+          de: 'Wenn mit der richtigen Strategie und den richtigen Tools enabled, können Partner ein echter Hebel für Akquise, Umsatz und Markenreichweite werden.'
+        },
+        keyInsight: {
+          en: 'Partners are growth engines, not just support teams. Treat them accordingly.',
+          de: 'Partner sind Growth Engines, nicht nur Support-Teams. Behandle sie entsprechend.'
+        },
+        whatWedDoDifferently: {
+          en: 'Position partner channel transformation as a strategic growth initiative from the start.',
+          de: 'Partner-Channel-Transformation von Anfang an als strategische Growth-Initiative positionieren.'
+        }
+      }
+    ],
+    
+    playbooks: ['gtm-revenue', 'strategic-governance'],
+    downloadUrl: '/downloads/cases/partner-channel-transformed.pdf',
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Boost: Channel Excellence', de: 'Boost: Channel Excellence' },
+        url: '/solutions/boost/channel-excellence',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'Partner Channel Transformation + Enablement', de: 'Partner Channel Transformation + Enablement' },
+        outcome: { en: 'Partner Revenue +40-60%, Efficiency +50%', de: 'Partner Revenue +40-60%, Effizienz +50%' },
+        type: 'primary'
+      },
+      {
+        name: { en: 'Power Up: Partner Activation', de: 'Power Up: Partner Activation' },
+        url: '/solutions/power-up/partner-activation',
+        duration: '30 Days',
+        investment: '€23.6K',
+        focus: { en: 'Quick Partner Enablement Sprint', de: 'Schneller Partner-Enablement-Sprint' },
+        outcome: { en: 'Partner Clarity, Quick Wins, Implementation Roadmap', de: 'Partner-Klarheit, Quick Wins, Implementierungs-Roadmap' },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'Boost: GTM Transformation', de: 'Boost: GTM Transformation' },
+        url: '/solutions/boost/gtm-transformation',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { en: 'Repeatable GTM Motion + Playbooks', de: 'Wiederholbare GTM Motion + Playbooks' },
+        outcome: { en: 'Sales Velocity +50-100%, Win Rate +30-50%', de: 'Sales Velocity +50-100%, Win Rate +30-50%' },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC in 12 Wochen um 58% senkte' } },
+      { slug: 'nrr-machine-breakthrough', teaser: { en: 'How an Analytics Platform broke through NRR 105% to 142%', de: 'Wie eine Analytics-Plattform NRR von 105% auf 142% steigerte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: '7-lever framework for AI-native revenue engines', de: '7-Hebel-Framework für AI-native Revenue Engines' } },
+      { slug: 'strategic-governance', teaser: { en: '5-component framework for board confidence', de: '5-Komponenten-Framework für Board-Zuversicht' } },
+      { slug: 'ai-native-scaling', teaser: { en: 'The complete framework for AI-native execution', de: 'Das komplette Framework für AI-native Execution' } }
+    ]
   }
 ];
 
