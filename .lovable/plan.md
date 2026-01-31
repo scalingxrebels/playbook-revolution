@@ -1,91 +1,186 @@
 
-# Implementierungsplan: Notion Farbkorrektur + Konsistenzprüfung
 
-## Problem
+# Hybrides Case Study System - Implementierungsplan
 
-In der `CaseStudyComparisonTable` (Compare all companies) hat Notion die Farbe `#171717` (fast schwarz). Im Dark Mode ist diese Farbe auf dunklem Hintergrund unsichtbar - sowohl der farbige Punkt als auch der θ_index Wert.
+## Konzept
 
-## Analyse der bestehenden Farbkonzepte
+| Bereich | Zweck | Datentyp |
+|---------|-------|----------|
+| **Expertise Hub** | Wissenschaftliche Validierung der Frameworks | Echte AI-Native Unternehmen (7) |
+| **Cases Hub** | Vertrauliche Kundenprojekte präsentieren | Anonymisierte ScalingX-Projekte |
+| **Homepage** | Social Proof durch bekannte Namen | Echte AI-Native Unternehmen (3) |
 
-| Komponente | Notion Farbe | Dark Mode Lösung |
-|------------|--------------|------------------|
-| `ScalingXCaseStudies.tsx` | `#171717` | `darkColor: '#E5E5E5'` |
-| `GrowthTimelineVisualization.tsx` | `#171717` | `darkColor: '#E5E5E5'` |
-| `CaseStudy.tsx` | `#171717` | Keine (Problem!) |
-| `CaseStudyComparisonTable.tsx` | `#171717` | Keine (Problem!) |
+---
 
-## Lösung
+## Architektur-Übersicht
 
-### Datei: `src/components/CaseStudyComparisonTable.tsx`
-
-**1. Theme-Context importieren:**
-```typescript
-import { useTheme } from '@/contexts/ThemeContext';
+```text
+┌─────────────────────────────────────────────────────────────────┐
+│                        CASE STUDY SYSTEM                         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                   │
+│  ┌─────────────────────┐     ┌─────────────────────┐            │
+│  │   RESEARCH CASES    │     │   CLIENT CASES      │            │
+│  │   (Echte Companies) │     │   (Anonymisiert)    │            │
+│  └──────────┬──────────┘     └──────────┬──────────┘            │
+│             │                           │                        │
+│             ▼                           ▼                        │
+│  ┌─────────────────────┐     ┌─────────────────────┐            │
+│  │ src/data/cases/     │     │ src/data/cases/     │            │
+│  │   research.ts       │     │   clients.ts        │            │
+│  │                     │     │                     │            │
+│  │ - Midjourney        │     │ - B2B SaaS €15M    │            │
+│  │ - Cursor            │     │ - Enterprise SW    │            │
+│  │ - Perplexity        │     │ - FinTech Scale    │            │
+│  │ - OpenAI            │     │ - MarTech Growth   │            │
+│  │ - Stripe            │     │ - Analytics NRR    │            │
+│  │ - Figma             │     │                     │            │
+│  │ - Notion            │     │                     │            │
+│  └──────────┬──────────┘     └──────────┬──────────┘            │
+│             │                           │                        │
+│             ▼                           ▼                        │
+│  ┌─────────────────────┐     ┌─────────────────────┐            │
+│  │ /expertise          │     │ /cases              │            │
+│  │ /case-study/:id     │     │ Modal oder Inline   │            │
+│  │ (Detail Pages)      │     │ (kein Deep Link)    │            │
+│  └─────────────────────┘     └─────────────────────┘            │
+│                                                                   │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-**2. CompanyData Interface erweitern:**
+---
+
+## Dateien und Änderungen
+
+### Neue Dateien erstellen
+
+| Datei | Beschreibung |
+|-------|--------------|
+| `src/data/cases/types.ts` | Gemeinsame TypeScript Interfaces |
+| `src/data/cases/research.ts` | 7 echte AI-Native Unternehmen (aus CaseStudy.tsx extrahiert) |
+| `src/data/cases/clients.ts` | 5+ anonymisierte Kundenprojekte |
+| `src/data/cases/index.ts` | Export und Utility-Funktionen |
+
+### Zu bearbeitende Dateien
+
+| Datei | Änderung |
+|-------|----------|
+| `src/pages/Cases.tsx` | Daten aus `clients.ts` importieren, Modal statt Link |
+| `src/pages/CaseStudy.tsx` | Daten aus `research.ts` importieren |
+| `src/components/ResearchHub.tsx` | Optional: Research Cases referenzieren |
+
+---
+
+## Datenmodell
+
+### Research Case (Echte Unternehmen)
+
 ```typescript
-interface CompanyData {
-  // ...existing properties
-  darkColor?: string;  // Optional für Theme-Awareness
+interface ResearchCase {
+  id: string;                    // 'midjourney', 'cursor', etc.
+  name: string;
+  icon: React.ElementType;
+  color: string;
+  darkColor?: string;
+  founded: string;
+  founder: string;
+  focus: BilingualText;
+  headline: { metric: string; label: BilingualText };
+  secondaryMetrics: MetricItem[];
+  thetaIndex: ThetaScores;
+  growthTimeline: TimelineItem[];
+  learnings: BilingualList;
+  keyMetrics: MetricItem[];
+  strategicInsights: BilingualList;
+  dataSource: string;            // 'ANST v4.5.3', 'AMF v4.1', etc.
 }
 ```
 
-**3. Notion Eintrag aktualisieren:**
+### Client Case (Anonymisiert)
+
 ```typescript
-{ 
-  name: 'Notion', 
-  // ...andere Properties
-  color: '#171717', 
-  darkColor: '#E5E5E5',  // NEU
-  // ...
+interface ClientCase {
+  id: string;                    // 'b2b-saas-gtm', etc.
+  industry: string;              // 'B2B SaaS', 'FinTech', etc.
+  stage: string;                 // 'Series A', 'Series B', etc.
+  challenge: BilingualText;
+  solution: BilingualText;
+  result: BilingualText;
+  metrics: MetricItem[];
+  playbooks: string[];           // Verlinkte Playbooks
+  timeline: string;              // '18 Monate', '12 Wochen', etc.
+  gradient: string;
+  confidential: true;            // Flag für anonymisierte Cases
 }
 ```
 
-**4. Theme-Hook in Komponente verwenden:**
-```typescript
-const CaseStudyComparisonTable = () => {
-  const { theme } = useTheme();
-  // ...
-  
-  // Helper-Funktion für korrekte Farbe
-  const getCompanyColor = (company: CompanyData) => {
-    return theme === 'dark' && company.darkColor 
-      ? company.darkColor 
-      : company.color;
-  };
-```
+---
 
-**5. Farbe dynamisch anwenden (Zeile 111-114 und 127-131):**
-```typescript
-// Farbiger Punkt
-<div 
-  className="w-2 h-2 rounded-full" 
-  style={{ backgroundColor: getCompanyColor(company) }}
-/>
+## UI-Verhalten
 
-// θ_index Wert
-<span 
-  className="font-bold"
-  style={{ color: getCompanyColor(company) }}
->
-  {company.thetaIndex}
-</span>
-```
+### Cases Landing Page (`/cases`)
+
+| Element | Aktuell | Neu |
+|---------|---------|-----|
+| Card-Klick | Link zu `/case-study/:id` (broken) | Modal mit Details |
+| CTA-Button | "Case Study lesen" | "Details ansehen" |
+| Datenquelle | Inline in Komponente | Import aus `clients.ts` |
+
+### Modal-Inhalt für Client Cases
+
+- Challenge-Beschreibung (erweitert)
+- Lösung mit Playbook-Referenzen
+- Metriken-Grid (Before/After)
+- "Ähnliches Projekt besprechen" CTA
+- Keine Verlinkung zu externen Detail-Pages
+
+---
+
+## Implementierungsschritte
+
+### Phase 1: Datenstruktur
+
+1. `src/data/cases/types.ts` erstellen mit Interfaces
+2. `src/data/cases/research.ts` mit 7 echten Companies aus CaseStudy.tsx extrahieren
+3. `src/data/cases/clients.ts` mit 5 anonymisierten Cases erstellen
+4. `src/data/cases/index.ts` als Barrel-Export
+
+### Phase 2: Cases Hub Refactoring
+
+5. `src/pages/Cases.tsx` refactoren:
+   - Import von `clientCases` aus Datendatei
+   - Button-Link durch Modal-Trigger ersetzen
+   - Modal-Komponente für Case-Details hinzufügen
+
+### Phase 3: CaseStudy Refactoring
+
+6. `src/pages/CaseStudy.tsx` refactoren:
+   - Import von `researchCases` aus Datendatei
+   - Bestehende Logik beibehalten
+
+### Phase 4: Konsistenz prüfen
+
+7. Expertise-Komponenten überprüfen (ScalingXCaseStudies, CaseStudyComparisonTable)
+8. Homepage ProofOptimized überprüfen
 
 ---
 
 ## Ergebnis
 
-| Modus | Notion Farbe |
-|-------|--------------|
-| Light Mode | `#171717` (schwarz) - gut lesbar auf hellem Hintergrund |
-| Dark Mode | `#E5E5E5` (hellgrau) - gut lesbar auf dunklem Hintergrund |
+| Route | Inhalt | Interaktion |
+|-------|--------|-------------|
+| `/` (Homepage) | Midjourney, Cursor, Perplexity | Statistiken |
+| `/cases` | 5+ anonymisierte Kundenprojekte | Modal mit Details |
+| `/expertise` | 7 echte AI-Native Companies | Grid + Modals + Table |
+| `/case-study/:id` | Detail-Pages für Research Cases | Deep-Links funktionieren |
 
 ---
 
-## Dateien
+## Vorteile des hybriden Systems
 
-| Aktion | Datei |
-|--------|-------|
-| **Bearbeiten** | `src/components/CaseStudyComparisonTable.tsx` |
+1. **Vertraulichkeit**: Echte Kundenprojekte bleiben anonym
+2. **Wissenschaftliche Integrität**: Research Cases mit Quellenangaben
+3. **SEO**: Echte Firmennamen für `/case-study/` Detail-Pages
+4. **Konsistenz**: Klare Trennung der Datenquellen
+5. **Wartbarkeit**: Zentrale Datendateien statt Inline-Daten
+
