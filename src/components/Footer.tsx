@@ -10,7 +10,6 @@ const Footer: React.FC = () => {
     { label: language === 'de' ? 'AGB' : 'Terms', href: '/agb' },
     { label: language === 'de' ? 'Datenschutz' : 'Privacy Policy', href: '/datenschutz' },
     { label: 'Impressum', href: '/impressum' },
-    { label: language === 'de' ? 'Glossar' : 'Glossary', href: '/glossar' },
   ];
 
   const sitemapLinks = [
@@ -142,6 +141,19 @@ const Footer: React.FC = () => {
                     <span className="text-muted-foreground ml-2 text-xs">/ {member.role}</span>
                   </li>
                 ))}
+              </ul>
+
+              {/* AI-Native Scaling */}
+              <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-4 mt-8">
+                AI-Native Scaling
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/glossar" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                    <span>{language === 'de' ? 'Glossar' : 'Glossary'}</span>
+                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </Link>
+                </li>
               </ul>
             </div>
 
