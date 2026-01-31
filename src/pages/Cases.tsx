@@ -39,7 +39,7 @@ const calculateMedianRoi = (): string => {
     ? (roiValues[mid - 1] + roiValues[mid]) / 2
     : roiValues[mid];
   
-  return `${Math.round(median)}x`;
+  return `${median % 1 === 0 ? median : median.toFixed(1)}x`;
 };
 
 const casesStats = [
