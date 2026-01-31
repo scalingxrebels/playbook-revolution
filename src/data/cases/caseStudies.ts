@@ -4205,6 +4205,426 @@ Die Mathematik war brutal: Kein VC würde bei der vorgeschlagenen €1-2M Bewert
     ]
   },
 
+  // ============================================
+  // CASE STUDY 11: Diagnostic-Led Acquisition Scaled
+  // ============================================
+  {
+    id: 'diagnostic-led-acquisition-sales-consulting',
+    slug: 'diagnostic-led-acquisition-scaled',
+    company: 'Sales & Growth Consulting',
+    industry: 'B2B Sales Consulting',
+    stage: 'Established Consultancy',
+    gradient: 'from-cyan-500 to-blue-500',
+    confidential: true,
+    
+    tags: ['growth-engine', 'lead-generation', 'value-ladder', 'diagnostic', 'ai-powered', 'b2b-consulting'],
+    challengeType: 'growth-stalled',
+    
+    // HERO
+    headline: {
+      en: 'Growth Engine Activated → Diagnostic-Led Acquisition Scaled',
+      de: 'Growth Engine aktiviert → Diagnostic-Led Acquisition skaliert'
+    },
+    challenge: {
+      en: 'Manual lead generation, long sales cycles (3-6 months), no value ladder, founder-dependent growth. Revenue capped by founder bandwidth.',
+      de: 'Manuelle Lead-Generierung, lange Sales-Zyklen (3-6 Monate), keine Value Ladder, Gründer-abhängiges Wachstum. Umsatz durch Gründer-Bandwidth begrenzt.'
+    },
+    result: {
+      en: 'Leads +1,000-1,500%, Conversion +50-75%, Sales Cycle -60-75%, Revenue +100-150%',
+      de: 'Leads +1.000-1.500%, Conversion +50-75%, Sales Cycle -60-75%, Umsatz +100-150%'
+    },
+    investment: '€34.4K',
+    roi: '3.5-5.3x',
+    heroMetrics: [
+      { label: 'Leads/Quarter', before: '3-4', after: '40-60', impact: '+1,000-1,500%' },
+      { label: 'Conversion Rate', before: '20-30%', after: '35-45%', impact: '+50-75%' },
+      { label: 'Sales Cycle', before: '3-6 months', after: '4-8 weeks', impact: '-60-75%' },
+      { label: 'Revenue/Quarter', before: '€80K-€120K', after: '€160K-€240K', impact: '+100-150%' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A B2B sales and growth consulting firm specializing in high-ticket transformation projects (€20K-€80K). 2-5 consultants, DACH market, strong expertise but founder-dependent acquisition.',
+      de: 'Eine B2B Sales- und Growth-Beratung spezialisiert auf High-Ticket-Transformationsprojekte (€20K-€80K). 2-5 Berater, DACH-Markt, starke Expertise aber Gründer-abhängige Akquise.'
+    },
+    crisisStory: {
+      en: `The founder had built a successful consulting practice over several years. High-ticket projects (€20K-€80K), satisfied clients, strong expertise in sales transformation.
+
+But growth was hitting a ceiling:
+
+"Every new client takes 3-6 months to close. I spend half my time on sales calls that go nowhere. We're leaving money on the table because we can only handle 3-4 qualified leads per quarter."
+
+The math was brutal: 10-15 leads per year (not per quarter). 20-30% conversion rate. 1-2 projects per quarter. Revenue capped at €80K-€120K per quarter.
+
+The founder was the bottleneck. Every lead required founder time. No scalable entry point. No systematic way to demonstrate expertise at scale.`,
+      de: `Der Gründer hatte über mehrere Jahre eine erfolgreiche Beratungspraxis aufgebaut. High-Ticket-Projekte (€20K-€80K), zufriedene Kunden, starke Expertise in Sales-Transformation.
+
+Aber das Wachstum stieß an eine Grenze:
+
+"Jeder neue Kunde braucht 3-6 Monate zum Abschluss. Ich verbringe die Hälfte meiner Zeit mit Sales-Calls, die nirgendwohin führen. Wir lassen Geld auf dem Tisch, weil wir nur 3-4 qualifizierte Leads pro Quartal bearbeiten können."
+
+Die Zahlen waren brutal: 10-15 Leads pro Jahr (nicht pro Quartal). 20-30% Conversion Rate. 1-2 Projekte pro Quartal. Umsatz gedeckelt bei €80K-€120K pro Quartal.
+
+Der Gründer war der Engpass. Jeder Lead erforderte Gründer-Zeit. Kein skalierbarer Einstiegspunkt. Keine systematische Möglichkeit, Expertise im großen Maßstab zu demonstrieren.`
+    },
+    problemDescription: {
+      en: 'A successful consulting firm with strong expertise but broken acquisition: manual lead generation, long sales cycles, no value ladder, and founder-dependent growth capping revenue at €80K-€120K per quarter.',
+      de: 'Eine erfolgreiche Beratungsfirma mit starker Expertise aber kaputte Akquise: manuelle Lead-Generierung, lange Sales-Zyklen, keine Value Ladder, und Gründer-abhängiges Wachstum, das den Umsatz bei €80K-€120K pro Quartal deckelt.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Lead Generation', de: 'Lead-Generierung' },
+        symptoms: [
+          { en: '10-15 leads per year via referrals only', de: '10-15 Leads pro Jahr nur über Empfehlungen' },
+          { en: 'No systematic way to attract new prospects', de: 'Keine systematische Möglichkeit, neue Prospects anzuziehen' },
+          { en: 'Manual outreach consuming founder time', de: 'Manuelle Outreach verbraucht Gründer-Zeit' }
+        ]
+      },
+      {
+        area: { en: 'Sales Process', de: 'Sales-Prozess' },
+        symptoms: [
+          { en: '3-6 month sales cycles (founder-intensive)', de: '3-6 Monate Sales-Zyklen (Gründer-intensiv)' },
+          { en: 'High CAC = founder time + manual effort', de: 'Hoher CAC = Gründer-Zeit + manueller Aufwand' },
+          { en: 'No way to demonstrate expertise before engagement', de: 'Keine Möglichkeit, Expertise vor Engagement zu demonstrieren' }
+        ]
+      },
+      {
+        area: { en: 'Value Architecture', de: 'Value-Architektur' },
+        symptoms: [
+          { en: 'Only high-ticket projects (€20K-€80K)', de: 'Nur High-Ticket-Projekte (€20K-€80K)' },
+          { en: 'No low-friction entry point for prospects', de: 'Kein niedrigschwelliger Einstiegspunkt für Prospects' },
+          { en: 'High barrier to entry = limited lead flow', de: 'Hohe Einstiegshürde = begrenzter Lead-Flow' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Leads/Year', before: '10-15', after: '160-240 (target)', impact: '-90%' },
+      { label: 'Sales Cycle', before: '3-6 months', after: '4-8 weeks (target)', impact: '+200%' },
+      { label: 'Conversion Rate', before: '20-30%', after: '35-45% (target)', impact: '-50%' },
+      { label: 'Revenue/Quarter', before: '€80K-€120K', after: '€160K-€240K (target)', impact: '-50%' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We built an AI-Powered Diagnostic Value Ladder over 4 months: a systematic lead generation engine with instant value delivery, automatic lead qualification, and clear upsell path from €0 to €80K.',
+      de: 'Wir bauten eine AI-Powered Diagnostic Value Ladder über 4 Monate: eine systematische Lead-Generierungs-Engine mit sofortiger Wertlieferung, automatischer Lead-Qualifizierung und klarem Upsell-Pfad von €0 bis €80K.'
+    },
+    phases: [
+      {
+        name: { en: 'Discovery + Design', de: 'Discovery + Design' },
+        timeline: 'Week 1-2',
+        actions: [
+          {
+            name: { en: 'Value Ladder Blueprint', de: 'Value Ladder Blueprint' },
+            description: {
+              en: 'We mapped the customer journey from awareness to €80K project and designed a 4-step value ladder: Free Diagnostic (€0) → PDF Report (€0) → Workshop (€9.5K) → Transformation (€20K-€80K).',
+              de: 'Wir mappten die Customer Journey von Awareness bis €80K-Projekt und designten eine 4-stufige Value Ladder: Free Diagnostic (€0) → PDF Report (€0) → Workshop (€9,5K) → Transformation (€20K-€80K).'
+            },
+            deliverables: [
+              { en: 'Customer journey map', de: 'Customer Journey Map' },
+              { en: 'Value ladder architecture', de: 'Value Ladder-Architektur' },
+              { en: 'Conversion funnel design', de: 'Conversion Funnel-Design' }
+            ],
+            whyItMattered: {
+              en: 'Without a clear value ladder, prospects had only one option: commit €20K-€80K immediately. The free diagnostic created a low-friction entry point.',
+              de: 'Ohne klare Value Ladder hatten Prospects nur eine Option: sofort €20K-€80K committen. Das Free Diagnostic schuf einen niedrigschwelligen Einstiegspunkt.'
+            }
+          },
+          {
+            name: { en: 'Diagnostic Framework', de: 'Diagnostic Framework' },
+            description: {
+              en: 'We designed the diagnostic assessment: 12-15 questions across key dimensions, scoring methodology, and recommendation logic that positions the firm as experts.',
+              de: 'Wir designten das Diagnostic Assessment: 12-15 Fragen über Key Dimensions, Scoring-Methodik und Empfehlungslogik, die die Firma als Experten positioniert.'
+            },
+            deliverables: [
+              { en: 'Question framework (12-15 questions)', de: 'Fragen-Framework (12-15 Fragen)' },
+              { en: 'Scoring methodology', de: 'Scoring-Methodik' },
+              { en: 'Recommendation logic', de: 'Empfehlungslogik' }
+            ],
+            whyItMattered: {
+              en: 'The diagnostic framework is the core of the value ladder. It must deliver genuine insight while positioning the natural next step.',
+              de: 'Das Diagnostic Framework ist der Kern der Value Ladder. Es muss echte Insights liefern, während es den natürlichen nächsten Schritt positioniert.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Build', de: 'Build' },
+        timeline: 'Week 3-10',
+        actions: [
+          {
+            name: { en: 'Landing Page + Assessment Tool', de: 'Landing Page + Assessment Tool' },
+            description: {
+              en: 'We built the subdomain landing page, interactive assessment tool (12-15 questions), and personalized results page with clear next-step CTAs.',
+              de: 'Wir bauten die Subdomain Landing Page, interaktives Assessment Tool (12-15 Fragen) und personalisierte Ergebnisseite mit klaren Next-Step-CTAs.'
+            },
+            deliverables: [
+              { en: 'Professional landing page (subdomain)', de: 'Professionelle Landing Page (Subdomain)' },
+              { en: 'Interactive assessment tool', de: 'Interaktives Assessment Tool' },
+              { en: 'Dynamic results page', de: 'Dynamische Ergebnisseite' }
+            ],
+            whyItMattered: {
+              en: 'The landing page is the first impression. The assessment tool must be engaging, mobile-friendly, and deliver value instantly.',
+              de: 'Die Landing Page ist der erste Eindruck. Das Assessment Tool muss ansprechend, mobile-friendly und sofort wertvoll sein.'
+            }
+          },
+          {
+            name: { en: 'AI-Powered Analysis Engine', de: 'AI-Powered Analysis Engine' },
+            description: {
+              en: 'We developed AI agents for instant analysis and personalized recommendations. Prompt engineering trained on the specific use case for accurate, valuable output.',
+              de: 'Wir entwickelten AI Agents für sofortige Analyse und personalisierte Empfehlungen. Prompt Engineering trainiert auf den spezifischen Use Case für präzisen, wertvollen Output.'
+            },
+            deliverables: [
+              { en: 'AI analysis agents', de: 'AI-Analyse-Agents' },
+              { en: 'Personalized recommendation engine', de: 'Personalisierte Empfehlungs-Engine' },
+              { en: 'Real-time processing', de: 'Real-Time Processing' }
+            ],
+            whyItMattered: {
+              en: 'AI-powered analysis delivers the "wow moment" that positions the firm as experts—before any human conversation.',
+              de: 'AI-powered Analysis liefert den "Wow-Moment", der die Firma als Experten positioniert—vor jeglichem menschlichen Gespräch.'
+            }
+          },
+          {
+            name: { en: 'PDF Report Generator', de: 'PDF Report Generator' },
+            description: {
+              en: 'We built an automated PDF generator producing professional 10-15 page reports with detailed analysis, branded layout, and shareable format.',
+              de: 'Wir bauten einen automatisierten PDF Generator, der professionelle 10-15-seitige Reports mit detaillierter Analyse, gebrandetem Layout und teilbarem Format produziert.'
+            },
+            deliverables: [
+              { en: 'Automated PDF generation', de: 'Automatisierte PDF-Generierung' },
+              { en: 'Professional branded layout', de: 'Professionelles gebrandetes Layout' },
+              { en: 'Shareable format (Board, Team)', de: 'Teilbares Format (Board, Team)' }
+            ],
+            whyItMattered: {
+              en: 'The PDF report is the lead magnet. It must be valuable enough to share with colleagues and decision-makers.',
+              de: 'Der PDF Report ist der Lead Magnet. Er muss wertvoll genug sein, um mit Kollegen und Entscheidern geteilt zu werden.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Test + Launch', de: 'Test + Launch' },
+        timeline: 'Week 11-12',
+        actions: [
+          {
+            name: { en: 'Beta Testing', de: 'Beta Testing' },
+            description: {
+              en: 'We ran beta tests with 10-15 users, gathered feedback, fixed bugs, and optimized the user experience before full launch.',
+              de: 'Wir führten Beta-Tests mit 10-15 Nutzern durch, sammelten Feedback, behobenen Bugs und optimierten die User Experience vor dem vollständigen Launch.'
+            },
+            deliverables: [
+              { en: 'Beta test with 10-15 users', de: 'Beta-Test mit 10-15 Nutzern' },
+              { en: 'Feedback integration', de: 'Feedback-Integration' },
+              { en: 'Bug fixes + optimization', de: 'Bug Fixes + Optimierung' }
+            ],
+            whyItMattered: {
+              en: 'Real user feedback reveals issues that internal testing misses. Beta testing ensures a smooth launch.',
+              de: 'Echtes Nutzer-Feedback enthüllt Issues, die internes Testing verpasst. Beta Testing sichert einen reibungslosen Launch.'
+            }
+          },
+          {
+            name: { en: 'Team Training + Launch', de: 'Team Training + Launch' },
+            description: {
+              en: 'We trained the team on the dashboard, follow-up processes, and launched with soft-launch → full launch strategy.',
+              de: 'Wir trainierten das Team am Dashboard, Follow-up-Prozessen und launchten mit Soft-Launch → Full Launch-Strategie.'
+            },
+            deliverables: [
+              { en: 'Team training completed', de: 'Team-Training abgeschlossen' },
+              { en: 'Follow-up playbook', de: 'Follow-up Playbook' },
+              { en: 'Full launch executed', de: 'Full Launch durchgeführt' }
+            ],
+            whyItMattered: {
+              en: 'The best tool is useless without team adoption. Training ensures the team can maximize the system\'s value.',
+              de: 'Das beste Tool ist nutzlos ohne Team-Adoption. Training stellt sicher, dass das Team den Wert des Systems maximieren kann.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Run + Optimize', de: 'Run + Optimize' },
+        timeline: 'Month 4-7',
+        actions: [
+          {
+            name: { en: 'Operations + Support', de: 'Operations + Support' },
+            description: {
+              en: 'We provided ongoing hosting, technical support, performance monitoring, and optimization during the run phase (€1,490/month).',
+              de: 'Wir stellten laufendes Hosting, technischen Support, Performance-Monitoring und Optimierung während der Run-Phase bereit (€1.490/Monat).'
+            },
+            deliverables: [
+              { en: 'Stable hosting + operations', de: 'Stabiles Hosting + Operations' },
+              { en: 'Technical support', de: 'Technischer Support' },
+              { en: 'Monthly performance reports', de: 'Monatliche Performance-Reports' }
+            ],
+            whyItMattered: {
+              en: 'A growth engine needs ongoing maintenance. Operations support ensures the system runs reliably.',
+              de: 'Eine Growth Engine braucht laufende Wartung. Operations Support stellt sicher, dass das System zuverlässig läuft.'
+            }
+          },
+          {
+            name: { en: 'Optimization', de: 'Optimierung' },
+            description: {
+              en: 'We continuously optimized conversion rates, engagement metrics, and user experience based on real data.',
+              de: 'Wir optimierten kontinuierlich Conversion Rates, Engagement-Metriken und User Experience basierend auf echten Daten.'
+            },
+            deliverables: [
+              { en: 'A/B tests executed', de: 'A/B-Tests durchgeführt' },
+              { en: 'Copy + UX optimizations', de: 'Copy + UX-Optimierungen' },
+              { en: 'Conversion improvements', de: 'Conversion-Verbesserungen' }
+            ],
+            whyItMattered: {
+              en: 'Growth engines improve with data. Continuous optimization compounds results over time.',
+              de: 'Growth Engines verbessern sich mit Daten. Kontinuierliche Optimierung kompoundiert Ergebnisse über Zeit.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '7 months',
+    resultMetrics: [
+      { label: 'Leads/Quarter', before: '3-4', after: '40-60', impact: '+1,000-1,500%' },
+      { label: 'Conversion Rate', before: '20-30%', after: '35-45%', impact: '+50-75%' },
+      { label: 'Sales Cycle', before: '3-6 months', after: '4-8 weeks', impact: '-60-75%' },
+      { label: 'Projects/Quarter', before: '1-2', after: '4-6', impact: '+200-300%' },
+      { label: 'Revenue/Quarter', before: '€80K-€120K', after: '€160K-€240K', impact: '+100-150%' },
+      { label: 'CAC', before: 'High (founder time)', after: 'Low (automated)', impact: '-70-80%' }
+    ],
+    roiCalculation: {
+      investment: '€34.4K (Build + 3 months Run)',
+      returnValue: '€120K-€180K additional revenue',
+      roi: '3.5-5.3x',
+      breakdown: [
+        { en: 'Build: €29,900 (one-time)', de: 'Build: €29.900 (einmalig)' },
+        { en: 'Run: €1,490/month × 3 = €4,470', de: 'Run: €1.490/Monat × 3 = €4.470' },
+        { en: 'Additional projects: 6-9 (vs. 3-4 baseline)', de: 'Zusätzliche Projekte: 6-9 (vs. 3-4 Baseline)' },
+        { en: 'Additional revenue: €120K-€180K (3 months)', de: 'Zusätzlicher Umsatz: €120K-€180K (3 Monate)' }
+      ]
+    },
+    ceoQuote: {
+      en: '"This diagnostic tool transformed how we acquire clients. Before, we were chasing referrals and spending months on sales cycles. Now, prospects come to us, get instant value from the diagnostic, and we\'re closing projects in 4-8 weeks instead of 3-6 months. The AI-powered analysis is a game-changer—it positions us as experts before we even talk to them. Revenue doubled in 3 months. Best investment we\'ve made."',
+      de: '"Dieses Diagnostic Tool hat verändert, wie wir Kunden akquirieren. Vorher jagten wir Empfehlungen hinterher und verbrachten Monate mit Sales-Zyklen. Jetzt kommen Prospects zu uns, erhalten sofortigen Wert vom Diagnostic, und wir schließen Projekte in 4-8 Wochen statt 3-6 Monaten ab. Die AI-powered Analyse ist ein Game-Changer—sie positioniert uns als Experten, bevor wir überhaupt mit ihnen sprechen. Der Umsatz verdoppelte sich in 3 Monaten. Beste Investition, die wir getätigt haben."'
+    },
+    quoteContext: {
+      en: 'This quote was shared 3 months post-launch, after the firm had closed 6 new projects directly attributed to the diagnostic tool.',
+      de: 'Dieses Zitat wurde 3 Monate nach Launch geteilt, nachdem die Firma 6 neue Projekte abgeschlossen hatte, die direkt auf das Diagnostic Tool zurückzuführen waren.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Value ladders transform high-ticket consulting', de: 'Value Ladders transformieren High-Ticket Consulting' },
+        whatWeLearned: {
+          en: 'The firm only sold €20K-€80K projects with no entry point. Adding a free diagnostic (€0) → workshop (€9.5K) path created 10x more qualified conversations.',
+          de: 'Die Firma verkaufte nur €20K-€80K-Projekte ohne Einstiegspunkt. Eine Free Diagnostic (€0) → Workshop (€9,5K)-Stufe zu ergänzen schuf 10x mehr qualifizierte Gespräche.'
+        },
+        keyInsight: {
+          en: 'High-ticket buyers need to experience value before committing €20K-€80K. A free diagnostic gives them that experience at zero risk.',
+          de: 'High-Ticket-Käufer müssen Wert erleben, bevor sie €20K-€80K committen. Ein Free Diagnostic gibt ihnen diese Erfahrung bei null Risiko.'
+        },
+        whatWedDoDifferently: {
+          en: 'Launch with 2 steps first (€0 → €20K), then add the €9.5K tier after validating the funnel.',
+          de: 'Zuerst mit 2 Stufen launchen (€0 → €20K), dann die €9,5K-Stufe hinzufügen nach Validierung des Funnels.'
+        }
+      },
+      {
+        title: { en: 'Diagnostics = automatic lead qualification', de: 'Diagnostics = automatische Lead-Qualifizierung' },
+        whatWeLearned: {
+          en: 'Before: the founder spent hours qualifying each lead manually. After: the diagnostic qualifies leads automatically based on their responses and scores.',
+          de: 'Vorher: Der Gründer verbrachte Stunden damit, jeden Lead manuell zu qualifizieren. Nachher: Das Diagnostic qualifiziert Leads automatisch basierend auf Antworten und Scores.'
+        },
+        keyInsight: {
+          en: 'The diagnostic not only generates leads—it qualifies them. High scorers get the workshop pitch, low scorers get nurture content.',
+          de: 'Das Diagnostic generiert nicht nur Leads—es qualifiziert sie. High Scorer bekommen den Workshop-Pitch, Low Scorer bekommen Nurture Content.'
+        },
+        whatWedDoDifferently: {
+          en: 'Build more sophisticated scoring from day one to enable better segmentation.',
+          de: 'Von Tag 1 an ein ausgefeilteres Scoring aufbauen, um bessere Segmentierung zu ermöglichen.'
+        }
+      },
+      {
+        title: { en: 'AI-powered tools scale without manual bottlenecks', de: 'AI-powered Tools skalieren ohne manuelle Engpässe' },
+        whatWeLearned: {
+          en: 'The AI analysis engine delivers personalized insights 24/7 without founder involvement. This broke the "founder = bottleneck" constraint.',
+          de: 'Die AI-Analyse-Engine liefert personalisierte Insights 24/7 ohne Gründer-Beteiligung. Das brach die "Gründer = Engpass"-Einschränkung.'
+        },
+        keyInsight: {
+          en: 'AI doesn\'t just automate—it scales expertise. The founder\'s knowledge is now available to 40-60 prospects per quarter, not 3-4.',
+          de: 'AI automatisiert nicht nur—es skaliert Expertise. Das Wissen des Gründers ist jetzt 40-60 Prospects pro Quartal zugänglich, nicht 3-4.'
+        },
+        whatWedDoDifferently: {
+          en: 'Include a marketing playbook in the engagement to accelerate initial traffic.',
+          de: 'Ein Marketing-Playbook ins Engagement einbauen, um initialen Traffic zu beschleunigen.'
+        }
+      }
+    ],
+    
+    // META
+    playbooks: ['gtm-revenue', 'growth-engines'],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
+        duration: '90 Days',
+        investment: '€60K-€78K',
+        focus: { 
+          en: 'Complete Growth Engine Build - Value Ladder, Diagnostic Tools, AI Automation', 
+          de: 'Kompletter Growth Engine Build - Value Ladder, Diagnostic Tools, AI-Automatisierung' 
+        },
+        outcome: { 
+          en: 'Leads +500-1,000%, Sales Cycle -50-70%, CAC -60-80%', 
+          de: 'Leads +500-1.000%, Sales Cycle -50-70%, CAC -60-80%' 
+        },
+        type: 'primary',
+        whatYouGet: [
+          { en: 'Value ladder architecture + build', de: 'Value Ladder-Architektur + Build' },
+          { en: 'AI-powered diagnostic tools', de: 'AI-powered Diagnostic Tools' },
+          { en: 'Full funnel implementation', de: 'Full Funnel-Implementierung' }
+        ]
+      },
+      {
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { 
+          en: 'Reignite Growth - Diagnose Stall Drivers, Test New Levers, Build Momentum', 
+          de: 'Wachstum neu entfachen - Stall-Treiber diagnostizieren, neue Hebel testen, Momentum aufbauen' 
+        },
+        outcome: { 
+          en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
+          de: 'ARR-Wachstum +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
+        },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'Power Up: Predictable Acquisition', de: 'Power Up: Predictable Acquisition' },
+        url: '/solutions/power-up/cac-crisis',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { 
+          en: 'Fix CAC - ICP Definition, Funnel Optimization, Sales Process', 
+          de: 'CAC fixen - ICP-Definition, Funnel-Optimierung, Sales-Prozess' 
+        },
+        outcome: { 
+          en: 'CAC -30-50%, Win Rate +20-40%, Sales Cycle -30-50%', 
+          de: 'CAC -30-50%, Win Rate +20-40%, Sales Cycle -30-50%' 
+        },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'growth-engine-activated-leadership-program-scaled', teaser: { en: 'How a leadership development company achieved 26 bookings (€117K revenue) with a growth engine', de: 'Wie ein Leadership-Entwicklungsunternehmen 26 Buchungen (€117K Umsatz) mit einer Growth Engine erzielte' } },
+      { slug: 'cac-crisis-turnaround', teaser: { en: 'How a Series B SaaS company cut CAC by 58% in 12 weeks', de: 'Wie ein Series B SaaS-Unternehmen CAC um 58% in 12 Wochen senkte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'gtm-revenue', teaser: { en: 'Complete GTM + Revenue playbook for predictable acquisition', de: 'Komplettes GTM + Revenue Playbook für vorhersagbare Akquise' } },
+      { slug: 'growth-engines', teaser: { en: 'Build systematic growth engines that scale without founder bottlenecks', de: 'Systematische Growth Engines bauen, die ohne Gründer-Engpässe skalieren' } }
+    ]
+  },
+
 ];
 
 // Helper functions
