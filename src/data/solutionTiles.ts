@@ -1074,7 +1074,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/custom-program',
     secondaryCtaEn: 'See past examples',
     secondaryCtaDe: 'Frühere Beispiele ansehen',
-    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration'
+    secondaryCtaUrl: '/cases'
   },
 
   // ============================================
@@ -1146,7 +1146,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/sustainable-growth',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration'
+    secondaryCtaUrl: '/cases'
   },
   {
     id: 31,
