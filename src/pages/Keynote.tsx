@@ -387,10 +387,10 @@ const Keynote = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Button size="lg" className="text-lg px-8" asChild>
+            <Button size="xl" className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400" asChild>
               <a href="https://calendly.com/michel-scalingx/keynote" target="_blank" rel="noopener noreferrer">
                 {isEnglish ? 'Book Keynote (€4.9K)' : 'Keynote buchen (€4.9K)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
+                <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8" asChild>
