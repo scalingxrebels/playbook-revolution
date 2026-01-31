@@ -282,26 +282,48 @@ export const financeData: PlaybookPageData = {
     }, 
     items: [
       {
+        type: "assessment",
+        name: { en: "Finance Assessment", de: "Finance Assessment" },
+        duration: { en: "2-3 Days", de: "2-3 Tage" },
+        price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
+        outcome: { en: "Full finance maturity report + 90-day roadmap", de: "Vollständiger Finance-Maturity-Report + 90-Tage-Roadmap" },
+        cta: { en: "Book Assessment", de: "Assessment buchen" },
+        link: "/solutions/assessment",
+        icon: "ClipboardCheck",
+        color: "bg-emerald-500/10 text-emerald-500"
+      },
+      {
         type: "power-up",
-        name: { en: "Power Up: Scaling Velocity", de: "Power Up: Scaling Velocity" },
+        name: { en: "Finance Sprint", de: "Finance Sprint" },
         duration: { en: "30 Days", de: "30 Tage" },
-        price: { en: "From €23.6K", de: "Ab €23.6K" },
+        price: { en: "€23.6K-€45.9K", de: "€23.6K-€45.9K" },
         outcome: { en: "Rule of 40 +15-25pp, Forecast Accuracy +20-30pp", de: "Rule of 40 +15-25pp, Forecast-Genauigkeit +20-30pp" },
         cta: { en: "Start Power Up", de: "Power Up starten" },
         link: "/solutions/power-up/scaling-velocity",
         icon: "Zap",
-        color: "orange"
+        color: "bg-orange-500/10 text-orange-500"
       },
       {
         type: "boost",
-        name: { en: "Boost: Scaling OS", de: "Boost: Scaling OS" },
+        name: { en: "Finance Excellence", de: "Finance Excellence" },
         duration: { en: "90 Days", de: "90 Tage" },
         price: { en: "€60K-€78K", de: "€60K-€78K" },
         outcome: { en: "Rule of 40 +20-40pp, Forecast Accuracy +30-50pp", de: "Rule of 40 +20-40pp, Forecast-Genauigkeit +30-50pp" },
         cta: { en: "Start Boost", de: "Boost starten" },
         link: "/solutions/boost/scaling-os",
         icon: "Rocket",
-        color: "blue"
+        color: "bg-blue-500/10 text-blue-500"
+      },
+      {
+        type: "accelerate",
+        name: { en: "AI-Native Finance", de: "AI-Native Finance" },
+        duration: { en: "12 Months", de: "12 Monate" },
+        price: { en: "€153K", de: "€153K" },
+        outcome: { en: "Full finance transformation, AI Maturity Level 3, Rule of 40 +15-30pp, Burn -40%", de: "Vollständige Finance-Transformation, AI Maturity Level 3, Rule of 40 +15-30pp, Burn -40%" },
+        cta: { en: "Start Accelerate", de: "Accelerate starten" },
+        link: "/solutions/accelerate",
+        icon: "TrendingUp",
+        color: "bg-violet-500/10 text-violet-500"
       }
     ] 
   },
