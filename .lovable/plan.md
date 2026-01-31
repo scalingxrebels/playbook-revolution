@@ -1,107 +1,108 @@
 
-# Cases Filter Section - Design-Konsistenz-Fixes
+# Onboarding-Tipp für Cases Hub
 
-## Ziel
-Die CaseFilterSection soll visuell konsistent mit Solutions und Playbooks sein.
+## Aufgabe
+Erstelle eine `CaseOnboardingHint.tsx` Komponente analog zu den bestehenden Hints für Solutions und Playbooks.
 
-## Identifizierte Inkonsistenzen
+## Bestehendes Pattern (aus FilterOnboardingHint.tsx)
 
-### 1. Section Padding
-- **Ist**: `py-6`
-- **Soll**: `py-6 md:py-8` (wie Solutions/Playbooks)
-
-### 2. Results Count Layout
-- **Ist**: Links/Rechts verteilt mit `justify-between`
-- **Soll**: Zentriert (wie Solutions/Playbooks)
-
-### 3. Filter Button Border Radius
-- **Ist**: `rounded-md`
-- **Soll**: `rounded-full` (wie Solutions/Playbooks)
-
-### 4. Inactive Button Styling
-- **Ist**: `bg-muted/50 text-muted-foreground`
-- **Soll**: `bg-card border border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50`
-
-### 5. Filter Label Layout
-- **Ist**: Links-ausgerichtete Labels mit `min-w-[80px]` und `:`
-- **Soll**: Zentrierte Labels mit Icon (wie ChallengeTabNavigation)
-
-## Implementierungsplan
-
-### Zu bearbeitende Datei
-`src/components/cases/CaseFilterSection.tsx`
-
-### Änderungen
-
-1. **Section Padding anpassen**
-```tsx
-// Zeile 73
-<section className="bg-muted/30 border-y border-border py-6 md:py-8">
+```typescript
+// Struktur:
+- useState für isDismissed (mit localStorage)
+- useState für isAnimatingOut (fade-out Animation)
+- handleDismiss Funktion mit 200ms Delay
+- Lightbulb Icon + Text + X-Button
+- localStorage Key für Persistenz
 ```
 
-2. **FilterRow Komponente umstrukturieren** - Von horizontalem zu zentriertem Layout:
-```tsx
-const FilterRow = ({ label, icon, options, selected, onChange }) => {
-  const Icon = iconMap[label]; // AlertCircle, Briefcase, etc.
-  
-  return (
-    <div className="w-full">
-      {/* Centered Label with Icon */}
-      <div className="flex items-center justify-center gap-2 mb-3">
-        <Icon className="w-4 h-4 text-muted-foreground" />
-        <span className="text-sm font-medium text-muted-foreground">
-          {label}
-        </span>
-      </div>
+## Neue Komponente
 
-      {/* Centered Pills */}
-      <div className="flex flex-wrap gap-2 justify-center">
-        {options.map((option) => (
-          <button
-            className={cn(
-              'px-3 py-1.5 text-sm rounded-full transition-all duration-200 border',
-              selected === option.id
-                ? 'bg-primary text-primary-foreground shadow-sm'
-                : 'bg-card border-border text-muted-foreground hover:bg-muted hover:text-foreground hover:border-primary/50'
-            )}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
+### Datei
+`src/components/cases/CaseOnboardingHint.tsx`
+
+### Inhalt
+
+```typescript
+import React, { useState } from 'react';
+import { Lightbulb, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { cn } from '@/lib/utils';
+
+const CaseOnboardingHint: React.FC = () => {
+  const { language } = useLanguage();
+  const [isDismissed, setIsDismissed] = useState(() => {
+    return localStorage.getItem('cases-filter-hint-dismissed') === 'true';
+  });
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+
+  const handleDismiss = () => {
+    setIsAnimatingOut(true);
+    setTimeout(() => {
+      localStorage.setItem('cases-filter-hint-dismissed', 'true');
+      setIsDismissed(true);
+    }, 200);
+  };
+
+  if (isDismissed) return null;
+
+  const text = {
+    de: {
+      label: 'Tipp:',
+      message: 'Filtere nach Challenge, Branche oder Phase – oder kombiniere alle drei für präzise Ergebnisse.',
+    },
+    en: {
+      label: 'Tip:',
+      message: 'Filter by Challenge, Industry or Stage – or combine all three for precise results.',
+    },
+  };
+
+  const t = text[language];
+
+  return (
+    <div
+      className={cn(
+        'flex items-start gap-3 px-4 py-3 rounded-lg bg-primary/5 border border-primary/20 max-w-xl mx-auto transition-all duration-200',
+        isAnimatingOut && 'opacity-0 scale-95'
+      )}
+    >
+      <Lightbulb className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+      <p className="text-sm text-foreground/80 flex-1">
+        <span className="font-semibold text-foreground">{t.label}</span>{' '}
+        {t.message}
+      </p>
+      <button
+        onClick={handleDismiss}
+        className="text-muted-foreground hover:text-foreground transition-colors shrink-0 p-0.5 rounded hover:bg-muted/50"
+        aria-label={language === 'de' ? 'Hinweis schließen' : 'Dismiss hint'}
+      >
+        <X className="w-4 h-4" />
+      </button>
     </div>
   );
 };
+
+export default CaseOnboardingHint;
 ```
 
-3. **Filter Layout ändern** - Ähnlich wie Playbooks mit voller Breite für Challenge und 2-Spalten für Industry/Stage:
+## Integration in CaseFilterSection.tsx
+
+Einfügen nach dem Search-Block und vor den Filter Rows:
+
 ```tsx
-<div className="space-y-6">
-  {/* Full Width: Challenge */}
-  <FilterRow label="Challenge" icon="AlertCircle" ... />
-  
-  {/* 2-Column Grid: Industry + Stage */}
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-border/50">
-    <FilterRowCompact label="Industry" ... />
-    <FilterRowCompact label="Stage" ... />
-  </div>
+// Import hinzufügen
+import CaseOnboardingHint from './CaseOnboardingHint';
+
+// Nach Zeile 159 (nach Search-Block) einfügen:
+<div className="mb-6">
+  <CaseOnboardingHint />
 </div>
 ```
 
-4. **Results Count zentrieren**:
-```tsx
-<div className="text-center mt-6">
-  <p className="text-sm text-muted-foreground">
-    {`Showing ${filteredCount} of ${totalCount} cases`}
-  </p>
-</div>
-```
-
-5. **Clear Filters Button** als separates Element unter dem Grid (wie Solutions mit Active Filter Display)
+## LocalStorage Key
+`cases-filter-hint-dismissed` (konsistent mit `solutions-filter-hint-dismissed` und `playbook-filter-hint-dismissed`)
 
 ## Ergebnis
-Nach der Implementierung wird die Cases-Seite das gleiche visuelle Pattern wie Solutions und Playbooks haben:
-- Zentrierte Filter-Labels mit Icons
-- Rounded-full Buttons
-- Konsistentes Hover-Verhalten
-- Responsive 2-Spalten-Layout für sekundäre Filter
+- Identisches Design wie Solutions und Playbooks
+- Bilingualer Text (DE/EN)
+- Persistente Dismissal via localStorage
+- Fade-out Animation beim Schließen
