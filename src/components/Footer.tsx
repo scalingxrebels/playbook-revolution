@@ -10,6 +10,7 @@ const Footer: React.FC = () => {
     { label: language === 'de' ? 'AGB' : 'Terms', href: '/agb' },
     { label: language === 'de' ? 'Datenschutz' : 'Privacy Policy', href: '/datenschutz' },
     { label: 'Impressum', href: '/impressum' },
+    { label: language === 'de' ? 'Glossar' : 'Glossary', href: '/glossar' },
   ];
 
   const sitemapLinks = [
