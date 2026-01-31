@@ -191,7 +191,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/gtm-effectiveness-review',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/growth-stalled-to-velocity-regained',
+    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -265,7 +265,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/scaling-readiness-assessment',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/scaling-chaos-to-operating-system',
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -628,7 +628,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/scaling-velocity',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/growth-stalled-to-velocity-regained'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 16,
@@ -938,7 +938,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/boost/scaling-os',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/scaling-chaos-to-operating-system'
+    secondaryCtaUrl: '/cases/strategic-transformation-ma-integration'
   },
   {
     id: 25,
