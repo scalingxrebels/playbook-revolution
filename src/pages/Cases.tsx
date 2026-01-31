@@ -9,11 +9,44 @@ import CaseCTA from '@/components/cases/CaseCTA';
 import { useCaseFilters } from '@/components/cases/useCaseFilters';
 import { caseStudies } from '@/data/cases';
 
+// Helper: Parse ROI string to number
+const parseRoi = (roi: string): number | null => {
+  // Handle ranges like "3.5-5.3x" → take average
+  if (roi.includes('-') && roi.includes('x')) {
+    const parts = roi.replace('x', '').replace('+', '').split('-');
+    if (parts.length === 2) {
+      const low = parseFloat(parts[0]);
+      const high = parseFloat(parts[1]);
+      if (!isNaN(low) && !isNaN(high)) return (low + high) / 2;
+    }
+  }
+  // Handle simple values like "5x", "8.6x", "10x+"
+  const num = parseFloat(roi.replace('x', '').replace('+', '').replace(',', ''));
+  return isNaN(num) ? null : num;
+};
+
+// Calculate median ROI from case studies
+const calculateMedianRoi = (): string => {
+  const roiValues = caseStudies
+    .map(c => parseRoi(c.roi))
+    .filter((v): v is number => v !== null)
+    .sort((a, b) => a - b);
+  
+  if (roiValues.length === 0) return '5x';
+  
+  const mid = Math.floor(roiValues.length / 2);
+  const median = roiValues.length % 2 === 0
+    ? (roiValues[mid - 1] + roiValues[mid]) / 2
+    : roiValues[mid];
+  
+  return `${Math.round(median)}x`;
+};
+
 const casesStats = [
-  { value: `${caseStudies.length}+`, label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
-  { value: '5x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
-  { value: '€2.1B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'primary' as const },
-  { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
+  { value: String(caseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+  { value: calculateMedianRoi(), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
+  { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
+  { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
 ];
 
 const clientNames = [
