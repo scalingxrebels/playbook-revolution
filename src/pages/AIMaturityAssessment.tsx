@@ -37,12 +37,12 @@ const AIMaturityAssessment = () => {
     // Hero
     heroHeadline: isGerman ? 'Expert AI Assessment—In 3-5 Tagen' : 'Expert AI Assessment—In 3-5 Days',
     heroSubheadline: isGerman 
-      ? 'Erhalte eine Experten-Analyse deiner AI-Reife in 3-5 Tagen. Typische Ergebnisse: AI Clarity +90%, θ_index Roadmap +50-150%, Efficiency Roadmap +30-80%—mit Board-Ready Report.'
-      : 'Get expert analysis of your AI maturity in 3-5 days. Typical outcomes: AI Clarity +90%, θ_index Roadmap +50-150%, Efficiency Roadmap +30-80%—with board-ready report.',
+      ? 'Erhalte eine Experten-Analyse deiner AI-Reife in 3-5 Tagen. Typische Ergebnisse: AI Clarity +90%, AI Maturity Roadmap +50-150%, Efficiency Roadmap +30-80%—mit Board-Ready Report.'
+      : 'Get expert analysis of your AI maturity in 3-5 days. Typical outcomes: AI Clarity +90%, AI Maturity Roadmap +50-150%, Efficiency Roadmap +30-80%—with board-ready report.',
     
     heroStats: [
       { label: 'AI Clarity', value: '+90%', sublabel: isGerman ? '(Typischer Bereich)' : '(Typical range)' },
-      { label: 'θ_index Roadmap', value: '+50-150%', sublabel: isGerman ? '(Typischer Bereich)' : '(Typical range)' },
+      { label: 'AI Maturity Roadmap', value: '+50-150%', sublabel: isGerman ? '(Typischer Bereich)' : '(Typical range)' },
       { label: 'Efficiency Roadmap', value: '+30-80%', sublabel: isGerman ? '(Typischer Bereich)' : '(Typical range)' }
     ],
     
@@ -58,13 +58,13 @@ const AIMaturityAssessment = () => {
     // Problem Section
     problemHeadline: isGerman ? 'Du nutzt AI—aber wirst nicht AI-Native' : "You're Using AI—But Not Becoming AI-Native",
     problemIntro: isGerman
-      ? 'Dein θ_index ist 0.3 (Level 1: AI-Powered). Du nutzt AI-Tools (ChatGPT, Copilot), aber AI ist nicht in deiner DNA. Deine Wettbewerber sind bei θ_index 0.7-0.8 (Level 2-3: AI-Enabled/AI-Native). Und das Schlimmste—du weißt nicht, welchen AI-Hebel du zuerst ziehen sollst.'
-      : "Your θ_index is 0.3 (Level 1: AI-Powered). You're using AI tools (ChatGPT, Copilot), but AI isn't in your DNA. Your competitors are at θ_index 0.7-0.8 (Level 2-3: AI-Enabled/AI-Native). And worst of all—you don't know which AI lever to pull first.",
+      ? 'Dein AI Maturity Score ist 30% (Level 1: AI-Powered). Du nutzt AI-Tools (ChatGPT, Copilot), aber AI ist nicht in deiner DNA. Deine Wettbewerber sind bei 70-80% (Level 2-3: AI-Enabled/AI-Native). Und das Schlimmste—du weißt nicht, welchen AI-Hebel du zuerst ziehen sollst.'
+      : "Your AI Maturity Score is 30% (Level 1: AI-Powered). You're using AI tools (ChatGPT, Copilot), but AI isn't in your DNA. Your competitors are at 70-80% (Level 2-3: AI-Enabled/AI-Native). And worst of all—you don't know which AI lever to pull first.",
     
     symptoms: [
       { 
-        title: isGerman ? 'Niedriger θ_index' : 'Low θ_index',
-        description: isGerman ? '0.2-0.4 (Level 1: AI-Powered, Benchmark: 0.7-0.8 für AI-Native)' : '0.2-0.4 (Level 1: AI-Powered, benchmark: 0.7-0.8 for AI-Native)',
+        title: isGerman ? 'Niedriger AI Maturity Score' : 'Low AI Maturity Score',
+        description: isGerman ? '20-40% (Level 1: AI-Powered, Benchmark: 70-80% für AI-Native)' : '20-40% (Level 1: AI-Powered, benchmark: 70-80% for AI-Native)',
         icon: Brain
       },
       { 
@@ -171,13 +171,13 @@ const AIMaturityAssessment = () => {
       ? 'Wir analysieren deine AI-Reife über 8 Dimensionen mit dem AI Maturity Framework (AMF).'
       : 'We analyze your AI maturity across 8 dimensions using the AI Maturity Framework (AMF).',
     day12Output: isGerman
-      ? 'Output: AI Maturity Report (20-30 Seiten, Board-ready) + θ_index Score (0-1)'
-      : 'Output: AI Maturity Report (20-30 pages, board-ready) + θ_index Score (0-1)',
+      ? 'Output: AI Maturity Report (20-30 Seiten, Board-ready) + AI Maturity Score (0-100%)'
+      : 'Output: AI Maturity Report (20-30 pages, board-ready) + AI Maturity Score (0-100%)',
     
     day35Title: isGerman ? 'TAG 3-5: 90-TAGE AI TRANSFORMATION ROADMAP (OPTIONAL +€2K)' : 'DAY 3-5: 90-DAY AI TRANSFORMATION ROADMAP (OPTIONAL +€2K)',
     day35Items: isGerman
-      ? ['Priority Matrix: Welche AI-Hebel zuerst fixen (Impact × Effort)', '90-Tage Action Plan: Schritt-für-Schritt zur θ_index-Steigerung', 'Quick Wins: Was in den ersten 30 Tagen fixen', 'Long-Term Strategy: Was in 90 Tagen fixen']
-      : ['Priority Matrix: Which AI levers to fix first (impact × effort)', '90-Day Action Plan: Step-by-step plan to increase θ_index (week-by-week)', 'Quick Wins: What to fix in first 30 days (AI tools, AI workflows, AI training)', 'Long-Term Strategy: What to fix in 90 days (AI strategy, AI infrastructure, AI culture)'],
+      ? ['Priority Matrix: Welche AI-Hebel zuerst fixen (Impact × Effort)', '90-Tage Action Plan: Schritt-für-Schritt zur AI Maturity-Steigerung', 'Quick Wins: Was in den ersten 30 Tagen fixen', 'Long-Term Strategy: Was in 90 Tagen fixen']
+      : ['Priority Matrix: Which AI levers to fix first (impact × effort)', '90-Day Action Plan: Step-by-step plan to increase AI Maturity (week-by-week)', 'Quick Wins: What to fix in first 30 days (AI tools, AI workflows, AI training)', 'Long-Term Strategy: What to fix in 90 days (AI strategy, AI infrastructure, AI culture)'],
     day35Output: isGerman
       ? 'Output: 90-Tage AI Transformation Roadmap (10-15 Seiten, umsetzbar)'
       : 'Output: 90-Day AI Transformation Roadmap (10-15 pages, actionable)',
@@ -188,7 +188,7 @@ const AIMaturityAssessment = () => {
       isGerman ? '8 Dimensionen (Strategy, Infrastructure, Capabilities, Use Cases, Operations, Decision-Making, CX, Innovation)' : '8 dimensions (strategy, infrastructure, capabilities, use cases, operations, decision-making, CX, innovation)',
       isGerman ? 'Board-Ready Report (20-30 Seiten, Investor-Grade Qualität)' : 'Board-ready report (20-30 pages, investor-grade quality)',
       isGerman ? 'Schnelle Lieferung (3-5 Tage, nicht 2-4 Wochen)' : 'Fast turnaround (3-5 days, not 2-4 weeks)',
-      isGerman ? 'θ_index Score (0-1 Skala, Benchmark gegen AI-Native Leader)' : 'θ_index score (0-1 scale, benchmark against AI-Native leaders)'
+      isGerman ? 'AI Maturity Score (0-100% Skala, Benchmark gegen AI-Native Leader)' : 'AI Maturity Score (0-100% scale, benchmark against AI-Native leaders)'
     ],
     
     // Outcome Section
@@ -206,10 +206,10 @@ const AIMaturityAssessment = () => {
         impact: isGerman ? 'Von "AI-Chaos" zu "AI-Clarity"' : 'From "AI chaos" to "AI clarity"'
       },
       {
-        title: 'θ_index Roadmap +50-150%',
-        whatItMeans: isGerman ? 'Deine θ_index Roadmap zeigt 50-150% Steigerungspotenzial.' : 'Your θ_index roadmap shows 50-150% potential increase.',
-        before: isGerman ? 'θ_index = 0.3 (Level 1: AI-Powered, kein klarer Pfad zu AI-Native)' : 'θ_index = 0.3 (Level 1: AI-Powered, no clear path to AI-Native)',
-        after: isGerman ? 'θ_index Roadmap = 0.45-0.75 (klarer 50-150% Steigerungspfad zu Level 2-3)' : 'θ_index Roadmap = 0.45-0.75 (clear 50-150% increase path to Level 2-3)',
+        title: 'AI Maturity Roadmap +50-150%',
+        whatItMeans: isGerman ? 'Deine AI Maturity Roadmap zeigt 50-150% Steigerungspotenzial.' : 'Your AI Maturity roadmap shows 50-150% potential increase.',
+        before: isGerman ? 'AI Maturity Score = 30% (Level 1: AI-Powered, kein klarer Pfad zu AI-Native)' : 'AI Maturity Score = 30% (Level 1: AI-Powered, no clear path to AI-Native)',
+        after: isGerman ? 'AI Maturity Roadmap = 45-75% (klarer 50-150% Steigerungspfad zu Level 2-3)' : 'AI Maturity Roadmap = 45-75% (clear 50-150% increase path to Level 2-3)',
         impact: isGerman ? 'Von "AI-Powered" zu "AI-Native Roadmap"' : 'From "AI-Powered" to "AI-Native roadmap"'
       },
       {
@@ -225,8 +225,8 @@ const AIMaturityAssessment = () => {
     realExample: {
       company: isGerman ? 'Series A SaaS, €12M ARR, 80 Mitarbeiter' : 'Series A SaaS, €12M ARR, 80 employees',
       challenge: isGerman 
-        ? 'θ_index 0.35, 12 AI-Tools (ungenutzt), €120K AI-Ausgaben (kein ROI), Wettbewerber 2x schneller'
-        : 'θ_index 0.35, 12 AI tools (unused), €120K AI spend (no ROI), Competitors 2x faster',
+        ? 'AI Maturity Score 35%, 12 AI-Tools (ungenutzt), €120K AI-Ausgaben (kein ROI), Wettbewerber 2x schneller'
+        : 'AI Maturity Score 35%, 12 AI tools (unused), €120K AI spend (no ROI), Competitors 2x faster',
       problems: isGerman
         ? 'Keine AI-Strategie, kaputte AI-Infrastruktur, niedrige AI-Adoption (20%), keine AI-Integration'
         : 'No AI strategy, broken AI infrastructure, low AI adoption (20%), no AI integration',
@@ -235,7 +235,7 @@ const AIMaturityAssessment = () => {
         : 'AI Maturity Assessment (3-5 days, 8 dimensions analyzed)',
       outcomes: [
         isGerman ? 'AI Clarity +95% (niedrig → hoch)' : 'AI Clarity +95% (low → high)',
-        isGerman ? 'θ_index Roadmap +114% (0.35 → 0.75 Ziel)' : 'θ_index Roadmap +114% (0.35 → 0.75 target)',
+        isGerman ? 'AI Maturity Roadmap +114% (35% → 75% Ziel)' : 'AI Maturity Roadmap +114% (35% → 75% target)',
         isGerman ? 'Efficiency Roadmap +60% (Baseline → +60% Ziel)' : 'Efficiency Roadmap +60% (baseline → +60% target)',
         isGerman ? 'AI ROI Roadmap +300% (€120K Ausgaben → €480K Wert Ziel)' : 'AI ROI Roadmap +300% (€120K spend → €480K value target)'
       ]
@@ -250,11 +250,11 @@ const AIMaturityAssessment = () => {
     processDay12: {
       title: isGerman ? 'TAG 1-2: DATENSAMMLUNG & AI MATURITY ANALYSE' : 'DAY 1-2: DATA COLLECTION & AI MATURITY ANALYSIS',
       whatWeDo: isGerman
-        ? ['Daten anfordern (AI-Tools, AI-Ausgaben, AI Use Cases, etc.)', '8 AI-Dimensionen analysieren', 'θ_index Score berechnen (0-1 Skala)', 'AI Maturity Report erstellen (20-30 Seiten)']
-        : ['Request data (AI tools, AI spend, AI use cases, etc.)', 'Analyze 8 AI dimensions (strategy, infrastructure, capabilities, use cases, operations, decision-making, CX, innovation)', 'Calculate θ_index score (0-1 scale)', 'Create AI Maturity Report (20-30 pages)'],
+        ? ['Daten anfordern (AI-Tools, AI-Ausgaben, AI Use Cases, etc.)', '8 AI-Dimensionen analysieren', 'AI Maturity Score berechnen (0-100% Skala)', 'AI Maturity Report erstellen (20-30 Seiten)']
+        : ['Request data (AI tools, AI spend, AI use cases, etc.)', 'Analyze 8 AI dimensions (strategy, infrastructure, capabilities, use cases, operations, decision-making, CX, innovation)', 'Calculate AI Maturity Score (0-100% scale)', 'Create AI Maturity Report (20-30 pages)'],
       whatYouGet: isGerman
-        ? ['AI Maturity Report (20-30 Seiten, Board-ready)', 'θ_index Score (0-1 Skala, Benchmark gegen AI-Native Leader)', 'AI Gap Analyse (8 Dimensionen, was kaputt ist und warum)', 'Priority Matrix (welche AI-Hebel zuerst fixen)', 'Experten-Empfehlungen (5-10 Schlüsselaktionen)']
-        : ['AI Maturity Report (20-30 pages, board-ready)', 'θ_index Score (0-1 scale, benchmark against AI-Native leaders)', 'AI Gap Analysis (8 dimensions, what\'s broken and why)', 'Priority Matrix (which AI levers to fix first)', 'Expert Recommendations (5-10 key actions)'],
+        ? ['AI Maturity Report (20-30 Seiten, Board-ready)', 'AI Maturity Score (0-100% Skala, Benchmark gegen AI-Native Leader)', 'AI Gap Analyse (8 Dimensionen, was kaputt ist und warum)', 'Priority Matrix (welche AI-Hebel zuerst fixen)', 'Experten-Empfehlungen (5-10 Schlüsselaktionen)']
+        : ['AI Maturity Report (20-30 pages, board-ready)', 'AI Maturity Score (0-100% scale, benchmark against AI-Native leaders)', 'AI Gap Analysis (8 dimensions, what\'s broken and why)', 'Priority Matrix (which AI levers to fix first)', 'Expert Recommendations (5-10 key actions)'],
       timeCommitment: isGerman ? '2-4 Stunden (Daten teilen, Q&A)' : '2-4 hours (data sharing, Q&A)'
     },
     

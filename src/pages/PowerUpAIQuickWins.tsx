@@ -60,7 +60,7 @@ const HeroSection: React.FC = () => {
   };
 
   const heroStats = [
-    { value: '+0.2-0.3', label: { en: 'AI Maturity', de: 'AI Maturity' }, sublabel: { en: 'θ_index', de: 'θ_index' } },
+    { value: '+20-30%', label: { en: 'AI Maturity', de: 'AI Maturity' }, sublabel: { en: 'AI Maturity Score', de: 'AI Maturity Score' } },
     { value: '3-5', label: { en: 'AI Use Cases', de: 'AI Use Cases' }, sublabel: { en: 'Live in prod', de: 'Live in Prod' } },
     { value: '+30-50%', label: { en: 'Speed Boost', de: 'Speed Boost' }, sublabel: { en: 'Operations', de: 'Operations' } },
   ];
@@ -136,8 +136,8 @@ const HeroSection: React.FC = () => {
         {/* Subheadline */}
         <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de'
-            ? 'Hol dir deine ersten AI-Erfolge in 4-6 Wochen. Typische Ergebnisse: θ_index +0.2-0.3, 3-5 AI Use Cases implementiert, Operations Speed +30-50% – mit ergebnisbasierter Risikoteilung.'
-            : 'Get your first AI wins in 4-6 weeks. Typical outcomes: θ_index +0.2-0.3, 3-5 AI Use Cases Implemented, Operations Speed +30-50%—with outcome-based risk sharing.'}
+            ? 'Hol dir deine ersten AI-Erfolge in 4-6 Wochen. Typische Ergebnisse: AI Maturity +20-30%, 3-5 AI Use Cases implementiert, Operations Speed +30-50% – mit ergebnisbasierter Risikoteilung.'
+            : 'Get your first AI wins in 4-6 weeks. Typical outcomes: AI Maturity +20-30%, 3-5 AI Use Cases Implemented, Operations Speed +30-50%—with outcome-based risk sharing.'}
         </p>
 
         {/* Hero Stats */}
@@ -207,7 +207,7 @@ const ProblemSection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const symptoms = [
-    { en: 'Low AI maturity: θ_index 0.3 (benchmark: 0.7+), far behind competitors', de: 'Niedrige AI Maturity: θ_index 0.3 (Benchmark: 0.7+), weit hinter Wettbewerbern' },
+    { en: 'Low AI maturity: AI Maturity Score 30% (benchmark: 70%+), far behind competitors', de: 'Niedrige AI Maturity: AI Maturity Score 30% (Benchmark: 70%+), weit hinter Wettbewerbern' },
     { en: 'No AI use cases: 0 implemented (benchmark: 10+), still fully manual', de: 'Keine AI Use Cases: 0 implementiert (Benchmark: 10+), noch voll manuell' },
     { en: 'No AI tools: 0 deployed (benchmark: 5+), no AI in operations', de: 'Keine AI Tools: 0 deployed (Benchmark: 5+), keine AI in Operations' },
     { en: 'Competitor gap: 3-5x slower than AI-native competitors', de: 'Wettbewerber-Lücke: 3-5x langsamer als AI-native Wettbewerber' },
@@ -244,8 +244,8 @@ const ProblemSection: React.FC = () => {
         <div className="max-w-3xl mx-auto mb-12 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
             {language === 'de'
-              ? 'Deine AI Maturity liegt bei 0.3 (Benchmark: 0.7+). Deine Wettbewerber bewegen sich 3-5x schneller mit AI-powered Operations. Dein Team hat keine AI-Strategie (keine Use Cases, keine Tools, keine Roadmap). Und das Schlimmste – das Board fragt: "Wann werden wir AI-native?"'
-              : 'Your AI maturity is at 0.3 (benchmark: 0.7+). Your competitors are moving 3-5x faster with AI-powered operations. Your team has no AI strategy (no use cases, no tools, no roadmap). And worst of all—the board is asking: "When will we be AI-native?"'}
+              ? 'Dein AI Maturity Score liegt bei 30% (Benchmark: 70%+). Deine Wettbewerber bewegen sich 3-5x schneller mit AI-powered Operations. Dein Team hat keine AI-Strategie (keine Use Cases, keine Tools, keine Roadmap). Und das Schlimmste – das Board fragt: "Wann werden wir AI-native?"'
+              : 'Your AI Maturity Score is at 30% (benchmark: 70%+). Your competitors are moving 3-5x faster with AI-powered operations. Your team has no AI strategy (no use cases, no tools, no roadmap). And worst of all—the board is asking: "When will we be AI-native?"'}
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mt-4">
             {language === 'de'
@@ -320,7 +320,7 @@ const SolutionSection: React.FC = () => {
       timeline: { en: 'Week 1-2', de: 'Woche 1-2' },
       icon: Search,
       items: [
-        { en: 'AI Maturity Assessment: Where are you today? (θ_index baseline, 0-1 scale)', de: 'AI Maturity Assessment: Wo stehst du heute? (θ_index Baseline, 0-1 Skala)' },
+        { en: 'AI Maturity Assessment: Where are you today? (AI Maturity baseline, 0-100% scale)', de: 'AI Maturity Assessment: Wo stehst du heute? (AI Maturity Baseline, 0-100% Skala)' },
         { en: 'Operations Analysis: What\'s manual that could be AI-powered? (workflows, processes)', de: 'Operations Analyse: Was ist manuell, das AI-powered sein könnte? (Workflows, Prozesse)' },
         { en: 'Quick Win Identification: Which AI use cases deliver fastest ROI? (3-5 candidates)', de: 'Quick Win Identifikation: Welche AI Use Cases liefern schnellsten ROI? (3-5 Kandidaten)' },
         { en: 'Tool Selection: Which AI tools fit your stack? (no-code, low-code, custom)', de: 'Tool-Auswahl: Welche AI Tools passen zu deinem Stack? (No-Code, Low-Code, Custom)' },
@@ -349,7 +349,7 @@ const SolutionSection: React.FC = () => {
       timeline: { en: 'Week 4-6', de: 'Woche 4-6' },
       icon: CheckCircle,
       items: [
-        { en: 'Metrics Tracking: θ_index improvement, speed gains, efficiency gains', de: 'Metriken-Tracking: θ_index Verbesserung, Speed Gains, Efficiency Gains' },
+        { en: 'Metrics Tracking: AI Maturity improvement, speed gains, efficiency gains', de: 'Metriken-Tracking: AI Maturity Verbesserung, Speed Gains, Efficiency Gains' },
         { en: 'Team Training: Team trained on AI tools and workflows', de: 'Team-Training: Team auf AI Tools und Workflows geschult' },
         { en: 'AI Roadmap: Next 5-10 use cases prioritized (for next 6-12 months)', de: 'AI Roadmap: Nächste 5-10 Use Cases priorisiert (für die nächsten 6-12 Monate)' },
       ],
