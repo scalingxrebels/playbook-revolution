@@ -376,7 +376,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/vc-dd-simulation',
     secondaryCtaEn: 'See sample',
     secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/vc-dd-simulation',
+    secondaryCtaUrl: '/cases/vc-due-diligence-passed-investment-secured',
     addOnPricing: {
       base: '€5.9K',
       bridge: '€9.8K'
