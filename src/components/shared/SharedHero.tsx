@@ -2,7 +2,6 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TwinklingStars from '@/components/TwinklingStars';
 import { useParallaxLayers } from '@/hooks/useParallax';
-import { useTheme } from 'next-themes';
 
 interface StatItem {
   value: string;
@@ -42,9 +41,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
 }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
-  const { resolvedTheme } = useTheme();
 
-  const isDark = resolvedTheme === 'dark';
   const overline = language === 'de' ? overlineDe : overlineEn;
   const headlineLine1 = language === 'de' ? headlineLine1De : headlineLine1En;
   const headlineLine2 = language === 'de' ? headlineLine2De : headlineLine2En;
@@ -55,39 +52,20 @@ const SharedHero: React.FC<SharedHeroProps> = ({
       ref={enableParallax ? containerRef as React.RefObject<HTMLElement> : undefined}
       className="relative overflow-hidden noise pt-32 pb-16"
     >
-      {/* Background - Theme Aware */}
+      {/* Background - only for dark variant */}
       {variant === 'dark' && (
         <>
-          {isDark ? (
-            <>
-              {/* Dark Mode: Deep Space Background */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]"
-                style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
-              />
-              <div 
-                className="absolute inset-0 bg-mesh opacity-60"
-                style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
-              />
-            </>
-          ) : (
-            <>
-              {/* Light Mode: Warm Cream Gradient */}
-              <div 
-                className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--hero-bg-start))] via-[hsl(var(--hero-bg-mid))] to-[hsl(var(--hero-bg-end))]"
-                style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
-              />
-              <div 
-                className="absolute inset-0"
-                style={{
-                  ...(enableParallax ? { transform: `translateY(${offsets[0]}px)` } : {}),
-                  backgroundImage: 'var(--gradient-mesh-hero)'
-                }}
-              />
-            </>
-          )}
+          {/* Layer 1: Deep Space Background (slowest) */}
+          <div 
+            className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+          />
+          <div 
+            className="absolute inset-0 bg-mesh opacity-60"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+          />
           
-          {/* Stars/Orbs Layer */}
+          {/* Layer 2: Stars (medium speed) */}
           <div 
             className="absolute inset-0"
             style={enableParallax ? { transform: `translateY(${offsets[1]}px)` } : undefined}
@@ -95,11 +73,9 @@ const SharedHero: React.FC<SharedHeroProps> = ({
             <TwinklingStars />
           </div>
           
-          {/* Grid Pattern */}
+          {/* Layer 3: Grid Pattern (fastest) */}
           <div 
-            className={`absolute inset-0 bg-grid-pattern bg-grid-lg ${
-              isDark ? 'opacity-20' : 'opacity-10'
-            }`}
+            className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
             style={enableParallax ? { transform: `translateY(${offsets[2]}px)` } : undefined}
           />
         </>

@@ -53,15 +53,6 @@
                      radial-gradient(at 80% 50%, hsl(262 83% 58% / 0.1) 0px, transparent 50%),
                      radial-gradient(at 0% 100%, hsl(220 70% 50% / 0.15) 0px, transparent 50%);
     
-    /* Light Mode Hero Background */
-    --hero-bg-start: 40 50% 99%;
-    --hero-bg-mid: 35 60% 97%;
-    --hero-bg-end: 28 70% 93%;
-    --gradient-mesh-hero: radial-gradient(at 40% 20%, hsl(262 83% 75% / 0.12) 0px, transparent 50%),
-                          radial-gradient(at 80% 0%, hsl(24 100% 75% / 0.1) 0px, transparent 50%),
-                          radial-gradient(at 0% 50%, hsl(340 85% 80% / 0.08) 0px, transparent 50%),
-                          radial-gradient(at 80% 50%, hsl(262 83% 70% / 0.08) 0px, transparent 50%);
-    
     /* SHADOWS */
     --shadow-brutal: 4px 4px 0px hsl(240 10% 8%);
     --shadow-brutal-sm: 2px 2px 0px hsl(240 10% 8%);
