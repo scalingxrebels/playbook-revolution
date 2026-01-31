@@ -3340,38 +3340,38 @@ Der CEO wusste, dass sie alles ändern mussten. Aber wo anfangen?`
     
     // SITUATION
     companyDescription: {
-      en: 'A leading wireless engineering company (STRAPAG), technologically excellent in 5G/6G, IoT, and RF-Engineering with CHF 12M ARR. However, engineer-driven without a scalable business-side—no systematic GTM, no AI-integration, and ad-hoc sales processes. Facing strategic decision to integrate LifiMAX, a deep-tech startup with groundbreaking Visible Light Communication (LiFi) technology.',
-      de: 'Ein führendes Wireless-Engineering-Unternehmen (STRAPAG), technologisch exzellent in 5G/6G, IoT und RF-Engineering mit CHF 12M ARR. Jedoch ingenieur-getrieben ohne skalierbare Business-Seite—kein systematisches GTM, keine AI-Integration und Ad-hoc-Vertriebsprozesse. Vor der strategischen Entscheidung, LifiMAX zu integrieren, ein Deep-Tech-Startup mit bahnbrechender Visible Light Communication (LiFi) Technologie.'
+      en: 'A leading wireless engineering company, technologically excellent in 5G/6G, IoT, and RF-Engineering with CHF 12M ARR. However, engineer-driven without a scalable business-side—no systematic GTM, no AI-integration, and ad-hoc sales processes. Facing strategic decision to integrate a deep-tech LiFi startup with groundbreaking Visible Light Communication technology.',
+      de: 'Ein führendes Wireless-Engineering-Unternehmen, technologisch exzellent in 5G/6G, IoT und RF-Engineering mit CHF 12M ARR. Jedoch ingenieur-getrieben ohne skalierbare Business-Seite—kein systematisches GTM, keine AI-Integration und Ad-hoc-Vertriebsprozesse. Vor der strategischen Entscheidung, ein Deep-Tech-LiFi-Startup mit bahnbrechender Visible Light Communication Technologie zu integrieren.'
     },
     crisisStory: {
-      en: `The company stood at a strategic crossroads: Should they integrate LifiMAX, a deep-tech startup with groundbreaking Visible Light Communication (VLC/LiFi) technology, or focus purely on their core wireless business?
+      en: `The company stood at a strategic crossroads: Should they integrate the LiFi startup, a deep-tech venture with groundbreaking Visible Light Communication (VLC/LiFi) technology, or focus purely on their core wireless business?
 
-STRAPAG was technologically excellent but engineer-driven without scalable business-side. LifiMAX brought groundbreaking innovation—data transmission via light with unique advantages (security, interference-free, bandwidth)—but lacked market penetration and clear strategic positioning.
+The established company was technologically excellent but engineer-driven without scalable business-side. The LiFi startup brought groundbreaking innovation—data transmission via light with unique advantages (security, interference-free, bandwidth)—but lacked market penetration and clear strategic positioning.
 
 The board faced a triple challenge:
-❌ STRAPAG: Engineer-mindset, no GTM system, no AI-integration
-❌ LifiMAX: Unclear future (shut down/sold/integrated?), no systematic commercialization
+❌ The established company: Engineer-mindset, no GTM system, no AI-integration
+❌ The LiFi startup: Unclear future (shut down/sold/integrated?), no systematic commercialization
 ❌ INTEGRATION: Dual transformation required, culture clash risk, leadership overload
 
 The math was brutal: Full integration risk CHF 1.6M-1.8M without validation. The board needed a structured framework to make the right strategic decision.`,
-      de: `Das Unternehmen stand an einem strategischen Scheideweg: Sollten sie LifiMAX integrieren, ein Deep-Tech-Startup mit bahnbrechender Visible Light Communication (VLC/LiFi) Technologie, oder sich rein auf das Kerngeschäft Wireless konzentrieren?
+      de: `Das Unternehmen stand an einem strategischen Scheideweg: Sollten sie das LiFi-Startup integrieren, ein Deep-Tech-Venture mit bahnbrechender Visible Light Communication (VLC/LiFi) Technologie, oder sich rein auf das Kerngeschäft Wireless konzentrieren?
 
-STRAPAG war technologisch exzellent, aber ingenieur-getrieben ohne skalierbare Business-Seite. LifiMAX brachte bahnbrechende Innovation—Datenübertragung via Licht mit einzigartigen Vorteilen (Sicherheit, störungsfrei, Bandbreite)—aber fehlte Marktdurchdringung und klare strategische Positionierung.
+Das etablierte Unternehmen war technologisch exzellent, aber ingenieur-getrieben ohne skalierbare Business-Seite. Das LiFi-Startup brachte bahnbrechende Innovation—Datenübertragung via Licht mit einzigartigen Vorteilen (Sicherheit, störungsfrei, Bandbreite)—aber fehlte Marktdurchdringung und klare strategische Positionierung.
 
 Der Board stand vor einer dreifachen Herausforderung:
-❌ STRAPAG: Ingenieur-Mindset, kein GTM-System, keine AI-Integration
-❌ LifiMAX: Unklare Zukunft (stillgelegt/verkauft/integriert?), keine systematische Kommerzialisierung
+❌ Das etablierte Unternehmen: Ingenieur-Mindset, kein GTM-System, keine AI-Integration
+❌ Das LiFi-Startup: Unklare Zukunft (stillgelegt/verkauft/integriert?), keine systematische Kommerzialisierung
 ❌ INTEGRATION: Dual-Transformation erforderlich, Kulturkonflikt-Risiko, Leadership-Überlastung
 
 Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validierung. Der Board brauchte ein strukturiertes Framework für die richtige strategische Entscheidung.`
     },
     problemDescription: {
-      en: 'The company faced a strategic decision: integrate LifiMAX (high potential, high risk) or focus on core wireless business (lower risk, lower upside). Without a structured framework, the board was paralyzed.',
-      de: 'Das Unternehmen stand vor einer strategischen Entscheidung: LifiMAX integrieren (hohes Potenzial, hohes Risiko) oder auf Kerngeschäft Wireless konzentrieren (weniger Risiko, weniger Upside). Ohne strukturiertes Framework war der Board paralysiert.'
+      en: 'The company faced a strategic decision: integrate the LiFi startup (high potential, high risk) or focus on core wireless business (lower risk, lower upside). Without a structured framework, the board was paralyzed.',
+      de: 'Das Unternehmen stand vor einer strategischen Entscheidung: das LiFi-Startup integrieren (hohes Potenzial, hohes Risiko) oder auf Kerngeschäft Wireless konzentrieren (weniger Risiko, weniger Upside). Ohne strukturiertes Framework war der Board paralysiert.'
     },
     brokenAreas: [
       {
-        area: { en: 'STRAPAG Business-Side', de: 'STRAPAG Business-Seite' },
+        area: { en: 'Company Business-Side', de: 'Unternehmens-Business-Seite' },
         symptoms: [
           { en: 'Engineer-mindset without scalable GTM', de: 'Ingenieur-Mindset ohne skalierbares GTM' },
           { en: 'No AI-integration, ad-hoc sales processes', de: 'Keine AI-Integration, Ad-hoc-Vertriebsprozesse' },
@@ -3379,7 +3379,7 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
         ]
       },
       {
-        area: { en: 'LifiMAX Market Readiness', de: 'LifiMAX Marktreife' },
+        area: { en: 'LiFi Startup Market Readiness', de: 'LiFi-Startup Marktreife' },
         symptoms: [
           { en: 'Groundbreaking technology but no GTM', de: 'Bahnbrechende Technologie aber kein GTM' },
           { en: 'Unclear strategic positioning', de: 'Unklare strategische Positionierung' },
@@ -3396,7 +3396,7 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
       }
     ],
     situationMetrics: [
-      { label: 'STRAPAG ARR', before: 'CHF 12M', after: 'CHF 16-18M (target)', impact: '+33-50%' },
+      { label: 'Company ARR', before: 'CHF 12M', after: 'CHF 16-18M (target)', impact: '+33-50%' },
       { label: 'Recurring Revenue', before: '10-20%', after: '30-40% (target)', impact: '+20pp' },
       { label: 'EBITDA Margin', before: '10-15%', after: '20-25% (target)', impact: '+10pp' },
       { label: 'Integration Risk', before: 'CHF 1.6-1.8M', after: 'CHF 200-300K (pilot)', impact: '-85%' }
@@ -3413,10 +3413,10 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
         timeline: 'Months 1-2',
         actions: [
           {
-            name: { en: 'Option 1: STRAPAG Pure (No LiFi Integration)', de: 'Option 1: STRAPAG Pure (Keine LiFi-Integration)' },
+            name: { en: 'Option 1: Standalone (No LiFi Integration)', de: 'Option 1: Standalone (Keine LiFi-Integration)' },
             description: {
-              en: 'Focus on transforming STRAPAG into AI-native wireless engineering leader without LiFi. LifiMAX would be shut down or sold.',
-              de: 'Fokus auf Transformation von STRAPAG in AI-native Wireless Engineering Leader ohne LiFi. LifiMAX würde stillgelegt oder verkauft.'
+              en: 'Focus on transforming the company into AI-native wireless engineering leader without LiFi. The LiFi startup would be shut down or sold.',
+              de: 'Fokus auf Transformation des Unternehmens in AI-native Wireless Engineering Leader ohne LiFi. Das LiFi-Startup würde stillgelegt oder verkauft.'
             },
             deliverables: [
               { en: 'Pro/Con analysis', de: 'Pro/Contra-Analyse' },
@@ -3431,8 +3431,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'Option 2: Strategic Partnership (Separate Entities)', de: 'Option 2: Strategische Partnerschaft (Separate Entitäten)' },
             description: {
-              en: 'STRAPAG + LifiMAX as strategic partners with separate companies but coordinated go-to-market.',
-              de: 'STRAPAG + LifiMAX als strategische Partner mit separaten Unternehmen aber koordiniertem Go-to-Market.'
+              en: 'The company + the LiFi startup as strategic partners with separate companies but coordinated go-to-market.',
+              de: 'Das Unternehmen + das LiFi-Startup als strategische Partner mit separaten Unternehmen aber koordiniertem Go-to-Market.'
             },
             deliverables: [
               { en: 'Partnership model design', de: 'Partnerschaftsmodell-Design' },
@@ -3447,8 +3447,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'Option 3: Full Integration (Recommended)', de: 'Option 3: Vollständige Integration (Empfohlen)' },
             description: {
-              en: 'Unified Wireless + LiFi champion with LifiMAX fully integrated as business unit. Maximum synergies and market leadership.',
-              de: 'Unified Wireless + LiFi Champion mit LifiMAX vollständig integriert als Business Unit. Maximale Synergien und Marktführerschaft.'
+              en: 'Unified Wireless + LiFi champion with the LiFi startup fully integrated as business unit. Maximum synergies and market leadership.',
+              de: 'Unified Wireless + LiFi Champion mit dem LiFi-Startup vollständig integriert als Business Unit. Maximale Synergien und Marktführerschaft.'
             },
             deliverables: [
               { en: 'Integration roadmap', de: 'Integrations-Roadmap' },
@@ -3485,8 +3485,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'Cross-Selling Test', de: 'Cross-Selling-Test' },
             description: {
-              en: 'STRAPAG sells LiFi to existing wireless customers. Test: Can STRAPAG sales team sell LiFi? Target: CHF 200K-500K cross-selling revenue.',
-              de: 'STRAPAG verkauft LiFi an bestehende Wireless-Kunden. Test: Kann STRAPAG-Vertriebsteam LiFi verkaufen? Ziel: CHF 200K-500K Cross-Selling-Umsatz.'
+              en: 'The company sells LiFi to existing wireless customers. Test: Can the sales team sell LiFi? Target: CHF 200K-500K cross-selling revenue.',
+              de: 'Das Unternehmen verkauft LiFi an bestehende Wireless-Kunden. Test: Kann das Vertriebsteam LiFi verkaufen? Ziel: CHF 200K-500K Cross-Selling-Umsatz.'
             },
             deliverables: [
               { en: 'Cross-selling playbook', de: 'Cross-Selling-Playbook' },
@@ -3523,8 +3523,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'Organizational Integration', de: 'Organisatorische Integration' },
             description: {
-              en: 'Unified leadership (Chief Growth & Technology Officer), shared services (one business-side for both), unified brand (STRAPAG 3.0 = Wireless + LiFi Champion).',
-              de: 'Einheitliche Führung (Chief Growth & Technology Officer), Shared Services (eine Business-Seite für beide), einheitliche Marke (STRAPAG 3.0 = Wireless + LiFi Champion).'
+              en: 'Unified leadership (Chief Growth & Technology Officer), shared services (one business-side for both), unified brand (Company 3.0 = Wireless + LiFi Champion).',
+              de: 'Einheitliche Führung (Chief Growth & Technology Officer), Shared Services (eine Business-Seite für beide), einheitliche Marke (Unternehmen 3.0 = Wireless + LiFi Champion).'
             },
             deliverables: [
               { en: 'Organizational structure finalized', de: 'Organisationsstruktur finalisiert' },
@@ -3539,8 +3539,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'GTM Transformation', de: 'GTM-Transformation' },
             description: {
-              en: 'Designed scalable GTM system for STRAPAG + LifiMAX: sales enablement, marketing strategy, unified positioning.',
-              de: 'Entwarf skalierbares GTM-System für STRAPAG + LifiMAX: Sales Enablement, Marketingstrategie, einheitliche Positionierung.'
+              en: 'Designed scalable GTM system for the company + LiFi startup: sales enablement, marketing strategy, unified positioning.',
+              de: 'Entwarf skalierbares GTM-System für das Unternehmen + LiFi-Startup: Sales Enablement, Marketingstrategie, einheitliche Positionierung.'
             },
             deliverables: [
               { en: 'GTM playbooks', de: 'GTM-Playbooks' },
@@ -3577,8 +3577,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
           {
             name: { en: 'Cross-Selling Acceleration', de: 'Cross-Selling-Beschleunigung' },
             description: {
-              en: 'STRAPAG sells LiFi to existing wireless customers at scale. Target: CHF 1-2M cross-selling revenue (Year 1), CHF 5-8M (Year 3).',
-              de: 'STRAPAG verkauft LiFi an bestehende Wireless-Kunden im großen Maßstab. Ziel: CHF 1-2M Cross-Selling-Umsatz (Jahr 1), CHF 5-8M (Jahr 3).'
+              en: 'The company sells LiFi to existing wireless customers at scale. Target: CHF 1-2M cross-selling revenue (Year 1), CHF 5-8M (Year 3).',
+              de: 'Das Unternehmen verkauft LiFi an bestehende Wireless-Kunden im großen Maßstab. Ziel: CHF 1-2M Cross-Selling-Umsatz (Jahr 1), CHF 5-8M (Jahr 3).'
             },
             deliverables: [
               { en: 'Cross-selling revenue CHF 1-2M', de: 'Cross-Selling-Umsatz CHF 1-2M' },
@@ -3661,8 +3661,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
       {
         title: { en: 'Strategic clarity beats premature integration', de: 'Strategische Klarheit schlägt vorzeitige Integration' },
         whatWeLearned: {
-          en: 'Taking 2 months to analyze three strategic options (STRAPAG Pure, Strategic Partnership, Full Integration) created clarity and board alignment before committing resources.',
-          de: 'Sich 2 Monate Zeit zu nehmen, um drei strategische Optionen zu analysieren (STRAPAG Pure, Strategische Partnerschaft, Vollständige Integration), schuf Klarheit und Board-Alignment, bevor Ressourcen gebunden wurden.'
+          en: 'Taking 2 months to analyze three strategic options (Standalone, Strategic Partnership, Full Integration) created clarity and board alignment before committing resources.',
+          de: 'Sich 2 Monate Zeit zu nehmen, um drei strategische Optionen zu analysieren (Standalone, Strategische Partnerschaft, Vollständige Integration), schuf Klarheit und Board-Alignment, bevor Ressourcen gebunden wurden.'
         },
         keyInsight: {
           en: 'Strategic decisions require structured frameworks, not gut feelings. The three-option analysis prevented both analysis paralysis and premature commitment.',
@@ -3691,8 +3691,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
       {
         title: { en: 'External support is critical for dual transformation', de: 'Externe Unterstützung ist kritisch für Dual-Transformation' },
         whatWeLearned: {
-          en: 'Transforming STRAPAG (business-side) while integrating LifiMAX (deep-tech) required external expertise. Internal teams lack bandwidth and objectivity for dual transformation.',
-          de: 'STRAPAG zu transformieren (Business-Seite) während LifiMAX integriert wird (Deep-Tech), erforderte externe Expertise. Interne Teams haben keine Bandbreite und Objektivität für Dual-Transformation.'
+          en: 'Transforming the company (business-side) while integrating the LiFi startup (deep-tech) required external expertise. Internal teams lack bandwidth and objectivity for dual transformation.',
+          de: 'Das Unternehmen zu transformieren (Business-Seite) während das LiFi-Startup integriert wird (Deep-Tech), erforderte externe Expertise. Interne Teams haben keine Bandbreite und Objektivität für Dual-Transformation.'
         },
         keyInsight: {
           en: 'Dual transformation is not 2x complexity—it is exponentially harder. External support provides bandwidth, expertise, and objectivity that internal teams cannot.',
@@ -3706,8 +3706,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
       {
         title: { en: 'Synergies require structured enablement', de: 'Synergien erfordern strukturiertes Enablement' },
         whatWeLearned: {
-          en: 'Cross-selling (STRAPAG sells LiFi) required 6-12 months enablement—sales training, messaging, customer education. Synergies do not happen automatically.',
-          de: 'Cross-Selling (STRAPAG verkauft LiFi) erforderte 6-12 Monate Enablement—Vertriebstraining, Messaging, Kundenschulung. Synergien passieren nicht automatisch.'
+          en: 'Cross-selling (the company sells LiFi) required 6-12 months enablement—sales training, messaging, customer education. Synergies do not happen automatically.',
+          de: 'Cross-Selling (das Unternehmen verkauft LiFi) erforderte 6-12 Monate Enablement—Vertriebstraining, Messaging, Kundenschulung. Synergien passieren nicht automatisch.'
         },
         keyInsight: {
           en: 'Synergy projections without enablement plans are fantasies. Budget for sales enablement, customer education, and market development.',
@@ -3736,8 +3736,8 @@ Die Mathematik war brutal: Volles Integrationsrisiko CHF 1.6M-1.8M ohne Validier
       {
         title: { en: 'Culture integration is as important as business integration', de: 'Kulturintegration ist genauso wichtig wie Geschäftsintegration' },
         whatWeLearned: {
-          en: 'Merging Engineer-DNA (STRAPAG) with Startup-DNA (LifiMAX) required change management, workshops, and quick wins. Culture integration cannot be ignored.',
-          de: 'Die Verschmelzung von Ingenieur-DNA (STRAPAG) mit Startup-DNA (LifiMAX) erforderte Change Management, Workshops und Quick Wins. Kulturintegration kann nicht ignoriert werden.'
+          en: 'Merging Engineer-DNA (established company) with Startup-DNA (LiFi startup) required change management, workshops, and quick wins. Culture integration cannot be ignored.',
+          de: 'Die Verschmelzung von Ingenieur-DNA (etabliertes Unternehmen) mit Startup-DNA (LiFi-Startup) erforderte Change Management, Workshops und Quick Wins. Kulturintegration kann nicht ignoriert werden.'
         },
         keyInsight: {
           en: 'Culture eats strategy for breakfast. Without deliberate culture integration, the merged organization would have failed.',

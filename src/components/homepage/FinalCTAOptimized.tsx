@@ -53,7 +53,7 @@ const FinalCTAOptimized: React.FC = () => {
   ];
 
   const clients = [
-    'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
+    'the beautiful unleashed truth', 'KODE®', 'FILADOS', 
     '2p Team', 'Microsoft', 'XING e-Recruiting', 'Lexware', 
     'Haufe Group', 'smapOne', 'SBB E-Business', 'Swarovski', 
     'local.ch', 'BWK Group', 'DBA', 'Burda Media', 
