@@ -1180,7 +1180,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/accelerate/ai-native-scaling',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/ai-native-accelerate'
+    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership'
   },
   {
     id: 32,

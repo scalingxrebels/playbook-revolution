@@ -14,6 +14,7 @@ export const challengeFilters: CaseFilterOption[] = [
   { id: 'exit-prep', label: { en: 'Exit Prep', de: 'Exit-Vorbereitung' } },
   { id: 'partner-channel', label: { en: 'Partner Channel', de: 'Partner Channel' } },
   { id: 'market-entry', label: { en: 'Market Entry', de: 'Markteintritt' } },
+  { id: 'ai-transformation', label: { en: 'AI Transformation', de: 'AI-Transformation' } },
 ];
 
 export const industryFilters: CaseFilterOption[] = [
