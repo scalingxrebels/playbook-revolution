@@ -883,30 +883,30 @@ Die Zahlen waren eindeutig: €543K Umsatz und 344 qualifizierte Leads in 6 Mona
     // RELATED CONTENT
     relatedSolutions: [
       {
-        name: { en: 'Boost: Channel Excellence', de: 'Boost: Channel Excellence' },
-        url: '/solutions/boost/channel-excellence',
+        name: { en: 'Boost: Growth Engine', de: 'Boost: Growth Engine' },
+        url: '/solutions/boost/growth-engine',
         duration: '90 Days',
         investment: '€60K-€78K',
-        focus: { en: 'Partner Channel Transformation + Enablement', de: 'Partner Channel Transformation + Enablement' },
-        outcome: { en: 'Partner Revenue +40-60%, Efficiency +50%', de: 'Partner Revenue +40-60%, Effizienz +50%' },
+        focus: { en: 'ARR Growth, Pipeline, Win Rate - Partner as Growth Engine', de: 'ARR-Wachstum, Pipeline, Win Rate - Partner als Growth Engine' },
+        outcome: { en: 'ARR Growth +50-100%, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR-Wachstum +50-100%, Win Rate +30-50%, Pipeline +50-100%' },
         type: 'primary'
       },
       {
-        name: { en: 'Power Up: Partner Activation', de: 'Power Up: Partner Activation' },
-        url: '/solutions/power-up/partner-activation',
-        duration: '30 Days',
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
         investment: '€23.6K',
-        focus: { en: 'Quick Partner Enablement Sprint', de: 'Schneller Partner-Enablement-Sprint' },
-        outcome: { en: 'Partner Clarity, Quick Wins, Implementation Roadmap', de: 'Partner-Klarheit, Quick Wins, Implementierungs-Roadmap' },
+        focus: { en: 'Quick Partner Activation Sprint', de: 'Schneller Partner-Aktivierungs-Sprint' },
+        outcome: { en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', de: 'ARR-Wachstum +30-60pp, Win Rate +30-50%, Pipeline +50-100%' },
         type: 'alternative'
       },
       {
-        name: { en: 'Boost: GTM Transformation', de: 'Boost: GTM Transformation' },
-        url: '/solutions/boost/gtm-transformation',
+        name: { en: 'Boost: Efficient Hypergrowth', de: 'Boost: Effizientes Hypergrowth' },
+        url: '/solutions/boost/efficient-hypergrowth',
         duration: '90 Days',
         investment: '€60K-€78K',
-        focus: { en: 'Repeatable GTM Motion + Playbooks', de: 'Wiederholbare GTM Motion + Playbooks' },
-        outcome: { en: 'Sales Velocity +50-100%, Win Rate +30-50%', de: 'Sales Velocity +50-100%, Win Rate +30-50%' },
+        focus: { en: 'GTM Engine Rebuild - CAC/LTV Optimization', de: 'GTM-Engine Neuaufbau - CAC/LTV-Optimierung' },
+        outcome: { en: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp', de: 'CAC -40-60%, LTV/CAC +100-200%, Rule of 40 +20-40pp' },
         type: 'related'
       }
     ],
