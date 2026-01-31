@@ -1322,7 +1322,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/strategic-advisory',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
+    secondaryCtaUrl: '/cases/saas-transition-accelerated'
   },
 
 

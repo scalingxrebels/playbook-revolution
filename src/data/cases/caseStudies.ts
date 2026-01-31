@@ -5355,7 +5355,553 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
       }
     ],
     relatedCaseStudies: [
+      { slug: 'saas-transition-accelerated', teaser: { en: 'The next step: How we executed the €10M roadmap in 12 months', de: 'Der nächste Schritt: Wie wir die €10M Roadmap in 12 Monaten umsetzten' } },
       { slug: 'strategic-transformation-market-leadership', teaser: { en: 'How a Series B SaaS company achieved €7.7M ARR and NRR: 114.3%', de: 'Wie ein Series B SaaS-Unternehmen €7,7M ARR und NRR: 114,3% erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'strategic-capabilities', teaser: { en: 'Build strategic clarity and execution excellence', de: 'Strategische Klarheit und Execution Excellence aufbauen' } },
+      { slug: 'operating-systems', teaser: { en: 'Build scalable operating systems for growth', de: 'Skalierbare Operating Systems für Wachstum aufbauen' } }
+    ],
+    
+    // META
+    playbooks: ['strategic-capabilities', 'operating-systems'],
+    downloadUrl: undefined
+  },
+
+  // ============================================
+  // CASE STUDY: STRATEGIC ADVISORY - SAAS TRANSITION
+  // ============================================
+  {
+    id: 'strategic-advisory-saas-transition',
+    slug: 'saas-transition-accelerated',
+    company: 'Leadership Development Company',
+    industry: 'B2B Services',
+    stage: 'Established',
+    gradient: 'from-purple-500 to-indigo-600',
+    confidential: true,
+    
+    tags: ['saas-transition', 'strategic-advisory', 'customer-development', 'okrs', 'b2b-services'],
+    challengeType: 'growth-stalled',
+    
+    // HERO
+    headline: {
+      en: 'SaaS-Transition Accelerated → €10M Roadmap Executed',
+      de: 'SaaS-Transition beschleunigt → €10M Roadmap umgesetzt'
+    },
+    challenge: {
+      en: 'Vision 2030 defined but execution uncertain—needed ongoing strategic support to accelerate SaaS-transition and develop customers systematically.',
+      de: 'Vision 2030 definiert aber Umsetzung unsicher—brauchte laufende strategische Unterstützung zur Beschleunigung der SaaS-Transition und systematischen Kundenentwicklung.'
+    },
+    result: {
+      en: 'Revenue +56%, ARR +250% (€420K), 11 model customers, Sales Cycle -33%',
+      de: 'Umsatz +56%, ARR +250% (€420K), 11 Modell-Kunden, Sales Cycle -33%'
+    },
+    investment: '€156K-€216K',
+    roi: '5-10x',
+    heroMetrics: [
+      { label: 'Revenue', before: '€1.8M', after: '€2.8M', impact: '+56%' },
+      { label: 'ARR', before: '€120K', after: '€420K', impact: '+250%' },
+      { label: 'Customers', before: '1', after: '11', impact: '+10' },
+      { label: 'Sales Cycle', before: '9 Mo', after: '6 Mo', impact: '-33%' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A leadership development company with €1.7-1.8M revenue, 4-8 employees, and strong customer relationships (NPS: 83). First SaaS revenue (€80K-150K ARR) achieved after a strategy workshop, but execution support needed to accelerate the €10M roadmap.',
+      de: 'Ein Leadership-Development-Unternehmen mit €1,7-1,8M Umsatz, 4-8 Mitarbeitern und starken Kundenbeziehungen (NPS: 83). Erste SaaS-Umsätze (€80K-150K ARR) nach einem Strategie-Workshop erzielt, aber Execution Support benötigt um die €10M Roadmap zu beschleunigen.'
+    },
+    crisisStory: {
+      en: `After a successful 2-day Strategy Workshop, the company had achieved strategic clarity:
+
+✓ Vision 2030 defined: €10M revenue, SaaS-first business model, market leader
+✓ 3-Year Roadmap created: 35-40% CAGR (2024-2030)
+✓ 12 OKRs defined: Q1-Q4 2025
+✓ Team aligned: 100% alignment on Vision 2030
+
+But execution was the next challenge. The CEO knew they needed ongoing strategic support:
+
+"We have the strategy. Now we need to execute. How do we accelerate the SaaS-transition from 10% to 40% ARR in 12 months? How do we replicate our enterprise customer model at scale? How do we reduce our 9-month sales cycle?"
+
+The board was supportive but demanding: "Show us progress every quarter. We need to see the €10M roadmap is credible."`,
+      de: `Nach einem erfolgreichen 2-Tage-Strategie-Workshop hatte das Unternehmen strategische Klarheit erreicht:
+
+✓ Vision 2030 definiert: €10M Umsatz, SaaS-first Geschäftsmodell, Marktführer
+✓ 3-Jahres-Roadmap erstellt: 35-40% CAGR (2024-2030)
+✓ 12 OKRs definiert: Q1-Q4 2025
+✓ Team ausgerichtet: 100% Alignment auf Vision 2030
+
+Aber die Umsetzung war die nächste Herausforderung. Der CEO wusste, dass sie laufende strategische Unterstützung brauchten:
+
+"Wir haben die Strategie. Jetzt müssen wir umsetzen. Wie beschleunigen wir die SaaS-Transition von 10% auf 40% ARR in 12 Monaten? Wie replizieren wir unser Enterprise-Kundenmodell im großen Maßstab? Wie reduzieren wir unseren 9-monatigen Sales Cycle?"
+
+Der Board war unterstützend aber fordernd: "Zeigt uns jeden Quartal Fortschritte. Wir müssen sehen, dass die €10M Roadmap glaubwürdig ist."`
+    },
+    problemDescription: {
+      en: 'Strategic clarity achieved, but execution uncertain. SaaS-transition at 10-20% ARR, only 1 model customer, and 9-month sales cycles. Needed ongoing strategic support to accelerate the €10M roadmap.',
+      de: 'Strategische Klarheit erreicht, aber Umsetzung unsicher. SaaS-Transition bei 10-20% ARR, nur 1 Modell-Kunde, und 9-monatige Sales Cycles. Brauchte laufende strategische Unterstützung um die €10M Roadmap zu beschleunigen.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'SaaS-Transition Execution', de: 'SaaS-Transition Umsetzung' },
+        symptoms: [
+          { en: '10-20% ARR (€80K-150K)—target: 30-40% ARR (€300K-500K) in 12 months', de: '10-20% ARR (€80K-150K)—Ziel: 30-40% ARR (€300K-500K) in 12 Monaten' },
+          { en: 'SaaS-NPS +25—needs improvement to Academy-level (+50)', de: 'SaaS-NPS +25—braucht Verbesserung auf Academy-Level (+50)' },
+          { en: 'No standardized 2-year contracts—renewal risk', de: 'Keine standardisierten 2-Jahres-Verträge—Verlängerungsrisiko' }
+        ]
+      },
+      {
+        area: { en: 'Customer Development', de: 'Kundenentwicklung' },
+        symptoms: [
+          { en: 'Only 1 enterprise model customer—need to replicate at 5-7 customers', de: 'Nur 1 Enterprise-Modell-Kunde—muss bei 5-7 Kunden repliziert werden' },
+          { en: 'No systematic account strategies for Top 10 customers', de: 'Keine systematischen Account-Strategien für Top 10 Kunden' },
+          { en: 'Cross-selling potential (€200K-500K) not realized', de: 'Cross-Selling-Potenzial (€200K-500K) nicht realisiert' }
+        ]
+      },
+      {
+        area: { en: 'Sales Velocity', de: 'Sales Velocity' },
+        symptoms: [
+          { en: 'Sales cycle 6-12 months (average 9 months)—too long for scalability', de: 'Sales Cycle 6-12 Monate (Durchschnitt 9 Monate)—zu lang für Skalierbarkeit' },
+          { en: 'No sales velocity tracking (SQL, Deal Size, Conversion, Cycle)', de: 'Kein Sales Velocity Tracking (SQL, Deal Size, Conversion, Cycle)' },
+          { en: 'Marketing funnel not optimized—only 8 SQLs/month', de: 'Marketing-Funnel nicht optimiert—nur 8 SQLs/Monat' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Revenue', before: '€1.7-1.8M', after: '€2.5-3M (target)', impact: '+40-70%' },
+      { label: 'ARR', before: '€80K-150K (10-20%)', after: '€420K (40-50%)', impact: '+200-300%' },
+      { label: 'Model Customers', before: '1', after: '5-7 (target)', impact: '+4-6' },
+      { label: 'Sales Cycle', before: '9 months', after: '6 months (target)', impact: '-33%' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We designed a 12-month Strategic Advisory engagement with monthly strategy sessions, quarterly OKR reviews, and ad-hoc strategic support. Focus on three pillars: SaaS-Transition Acceleration, Customer Development, and Sales Velocity Optimization.',
+      de: 'Wir gestalteten ein 12-monatiges Strategic Advisory Engagement mit monatlichen Strategie-Sessions, vierteljährlichen OKR-Reviews und Ad-hoc strategischer Unterstützung. Fokus auf drei Säulen: SaaS-Transition Beschleunigung, Kundenentwicklung und Sales Velocity Optimierung.'
+    },
+    phases: [
+      {
+        name: { en: 'Q1: Foundation', de: 'Q1: Foundation' },
+        timeline: 'Jan-Mar 2025',
+        actions: [
+          {
+            name: { en: 'OKR 1: Cloud-ARR €100K → €120K achieved', de: 'OKR 1: Cloud-ARR €100K → €120K erreicht' },
+            description: {
+              en: 'Focused on 3 core SaaS products, standardized 2-year contracts, and improved SaaS-NPS from +25 to +30.',
+              de: 'Fokus auf 3 Kern-SaaS-Produkte, standardisierte 2-Jahres-Verträge und verbesserte SaaS-NPS von +25 auf +30.'
+            },
+            deliverables: [
+              { en: 'Cloud-ARR €120K (+20% overachievement)', de: 'Cloud-ARR €120K (+20% Übererfüllung)' },
+              { en: '2-year contracts: 80% of new contracts', de: '2-Jahres-Verträge: 80% der neuen Verträge' },
+              { en: 'SaaS-NPS: +30 (target: +25)', de: 'SaaS-NPS: +30 (Ziel: +25)' }
+            ],
+            whyItMattered: {
+              en: 'Established the foundation for SaaS-Transition. Proved customers are willing to commit to longer contracts.',
+              de: 'Fundament für SaaS-Transition etabliert. Bewies, dass Kunden bereit sind, sich auf längere Verträge einzulassen.'
+            }
+          },
+          {
+            name: { en: 'OKR 2: Customer Showcase completed', de: 'OKR 2: Kunden-Showcase fertiggestellt' },
+            description: {
+              en: 'Created presentation, website case study, and sales one-pager for the enterprise customer model. Trained sales team on the model pitch.',
+              de: 'Erstellte Präsentation, Website Case Study und Sales One-Pager für das Enterprise-Kundenmodell. Trainierte Sales-Team auf den Modell-Pitch.'
+            },
+            deliverables: [
+              { en: 'Case showcase: 20-slide presentation', de: 'Case Showcase: 20-Folien-Präsentation' },
+              { en: 'Sales team: 100% trained on model pitch', de: 'Sales-Team: 100% auf Modell-Pitch trainiert' },
+              { en: 'First pitches: 3 in Q1 (2 qualified)', de: 'Erste Pitches: 3 in Q1 (2 qualifiziert)' }
+            ],
+            whyItMattered: {
+              en: 'Created scalable sales materials. Enabled the team to replicate the successful customer model.',
+              de: 'Erstellte skalierbare Vertriebsmaterialien. Ermöglichte dem Team, das erfolgreiche Kundenmodell zu replizieren.'
+            }
+          },
+          {
+            name: { en: 'OKR 3: Sales Velocity Tracking established', de: 'OKR 3: Sales Velocity Tracking etabliert' },
+            description: {
+              en: 'Set up CRM dashboard with 4 metrics (SQL, Deal Size, Conversion, Sales Cycle). Established weekly reviews.',
+              de: 'CRM-Dashboard mit 4 Metriken eingerichtet (SQL, Deal Size, Conversion, Sales Cycle). Wöchentliche Reviews etabliert.'
+            },
+            deliverables: [
+              { en: 'CRM dashboard live', de: 'CRM-Dashboard live' },
+              { en: 'Weekly reviews: 100% adoption', de: 'Wöchentliche Reviews: 100% Adoption' },
+              { en: 'Baseline: SQL 8/mo, €50K deals, 30% conversion, 9 mo cycle', de: 'Baseline: SQL 8/Mo, €50K Deals, 30% Conversion, 9 Mo Cycle' }
+            ],
+            whyItMattered: {
+              en: 'Created visibility into sales performance. Team now optimizes for velocity, not just volume.',
+              de: 'Schuf Transparenz in die Vertriebsleistung. Team optimiert jetzt auf Velocity, nicht nur Volumen.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Q2: Acceleration', de: 'Q2: Beschleunigung' },
+        timeline: 'Apr-Jun 2025',
+        actions: [
+          {
+            name: { en: 'OKR 4: Cloud-ARR €180K (+50% vs target)', de: 'OKR 4: Cloud-ARR €180K (+50% vs Ziel)' },
+            description: {
+              en: 'Launched new product line, upsold existing customers, and improved renewal rate from 80% to 92%.',
+              de: 'Neue Produktlinie gelauncht, bestehende Kunden upgeupsellt und Renewal Rate von 80% auf 92% verbessert.'
+            },
+            deliverables: [
+              { en: 'Cloud-ARR €180K (+20% overachievement)', de: 'Cloud-ARR €180K (+20% Übererfüllung)' },
+              { en: 'New product line: 5 customers (€50K ARR)', de: 'Neue Produktlinie: 5 Kunden (€50K ARR)' },
+              { en: 'Renewal rate: 92% (target: 90%)', de: 'Renewal Rate: 92% (Ziel: 90%)' }
+            ],
+            whyItMattered: {
+              en: 'New product line became a growth driver. Proved cross-selling works with existing customers.',
+              de: 'Neue Produktlinie wurde zum Wachstumstreiber. Bewies, dass Cross-Selling mit bestehenden Kunden funktioniert.'
+            }
+          },
+          {
+            name: { en: 'OKR 5: 3 model customers (+50% vs target)', de: 'OKR 5: 3 Modell-Kunden (+50% vs Ziel)' },
+            description: {
+              en: 'Identified 10 qualified opportunities, developed account plans for Top 10, and refined the model pitch.',
+              de: 'Identifizierte 10 qualifizierte Opportunities, entwickelte Account-Pläne für Top 10, und verfeinerte den Modell-Pitch.'
+            },
+            deliverables: [
+              { en: '3 model customers won (target: 2)', de: '3 Modell-Kunden gewonnen (Ziel: 2)' },
+              { en: 'Pipeline: 8 qualified opportunities', de: 'Pipeline: 8 qualifizierte Opportunities' },
+              { en: 'Average deal size: €80K', de: 'Durchschnittliche Deal-Größe: €80K' }
+            ],
+            whyItMattered: {
+              en: 'Proved the enterprise model is replicable. Deal size increased from €50K to €80K.',
+              de: 'Bewies, dass das Enterprise-Modell replizierbar ist. Deal-Größe stieg von €50K auf €80K.'
+            }
+          },
+          {
+            name: { en: 'OKR 6: Sales Cycle 7 months (-22%)', de: 'OKR 6: Sales Cycle 7 Monate (-22%)' },
+            description: {
+              en: 'Focused on SQL quality over quantity, trained sales on objection handling, and optimized lead nurturing.',
+              de: 'Fokus auf SQL-Qualität statt Quantität, Sales auf Einwandbehandlung trainiert und Lead Nurturing optimiert.'
+            },
+            deliverables: [
+              { en: 'Sales cycle: 7 months (target: 7.2 mo)', de: 'Sales Cycle: 7 Monate (Ziel: 7,2 Mo)' },
+              { en: 'Conversion rate: 30% → 35%', de: 'Conversion Rate: 30% → 35%' },
+              { en: 'Deal size: €50K → €60K', de: 'Deal-Größe: €50K → €60K' }
+            ],
+            whyItMattered: {
+              en: 'Quality over quantity works. Better leads convert faster and at higher values.',
+              de: 'Qualität über Quantität funktioniert. Bessere Leads konvertieren schneller und zu höheren Werten.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Q3: Scaling', de: 'Q3: Skalierung' },
+        timeline: 'Jul-Sep 2025',
+        actions: [
+          {
+            name: { en: 'OKR 7: Cloud-ARR €280K (+12% vs target)', de: 'OKR 7: Cloud-ARR €280K (+12% vs Ziel)' },
+            description: {
+              en: 'Scaled new product line (5 → 18 customers), leveraged strategic partnership for cross-selling, and maintained 92% renewal rate.',
+              de: 'Neue Produktlinie skaliert (5 → 18 Kunden), strategische Partnerschaft für Cross-Selling genutzt und 92% Renewal Rate gehalten.'
+            },
+            deliverables: [
+              { en: 'Cloud-ARR €280K (+12% overachievement)', de: 'Cloud-ARR €280K (+12% Übererfüllung)' },
+              { en: 'New product line: 18 customers (€120K ARR)', de: 'Neue Produktlinie: 18 Kunden (€120K ARR)' },
+              { en: 'Strategic partnership: 3 joint customers (€60K ARR)', de: 'Strategische Partnerschaft: 3 gemeinsame Kunden (€60K ARR)' }
+            ],
+            whyItMattered: {
+              en: 'New product line is scaling. Partnership opened new customer segments.',
+              de: 'Neue Produktlinie skaliert. Partnerschaft eröffnete neue Kundensegmente.'
+            }
+          },
+          {
+            name: { en: 'OKR 8: 6 model customers (Total: 9)', de: 'OKR 8: 6 Modell-Kunden (Total: 9)' },
+            description: {
+              en: 'Expanded to Top 50 customers, developed account plans, and hired 1 additional sales specialist.',
+              de: 'Auf Top 50 Kunden erweitert, Account-Pläne entwickelt und 1 zusätzlichen Sales-Spezialisten eingestellt.'
+            },
+            deliverables: [
+              { en: '6 model customers won (target: 5)', de: '6 Modell-Kunden gewonnen (Ziel: 5)' },
+              { en: 'Pipeline: 15 qualified opportunities', de: 'Pipeline: 15 qualifizierte Opportunities' },
+              { en: 'Sales team: +1 specialist hired', de: 'Sales-Team: +1 Spezialist eingestellt' }
+            ],
+            whyItMattered: {
+              en: 'Model is replicable at scale. Team growth enables further scaling.',
+              de: 'Modell ist im großen Maßstab replizierbar. Team-Wachstum ermöglicht weitere Skalierung.'
+            }
+          },
+          {
+            name: { en: 'OKR 9: SQLs 14/month (+75%)', de: 'OKR 9: SQLs 14/Monat (+75%)' },
+            description: {
+              en: 'Optimized marketing funnel (website, LinkedIn, webinars), improved MQL→SQL conversion, and created content marketing.',
+              de: 'Marketing-Funnel optimiert (Website, LinkedIn, Webinare), MQL→SQL Conversion verbessert und Content Marketing erstellt.'
+            },
+            deliverables: [
+              { en: 'SQLs: 14/month (target: 12/mo, +75% vs baseline)', de: 'SQLs: 14/Monat (Ziel: 12/Mo, +75% vs Baseline)' },
+              { en: 'MQL→SQL conversion: 20% → 30%', de: 'MQL→SQL Conversion: 20% → 30%' },
+              { en: 'Content: 1 case study, 5 blog posts, 2 webinars (300+ attendees)', de: 'Content: 1 Case Study, 5 Blog Posts, 2 Webinare (300+ Teilnehmer)' }
+            ],
+            whyItMattered: {
+              en: 'Marketing funnel optimization works. Content marketing builds credibility.',
+              de: 'Marketing-Funnel-Optimierung funktioniert. Content Marketing baut Glaubwürdigkeit auf.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Q4: Momentum', de: 'Q4: Momentum' },
+        timeline: 'Oct-Dec 2025',
+        actions: [
+          {
+            name: { en: 'OKR 10: Cloud-ARR €420K (+50% vs Q3)', de: 'OKR 10: Cloud-ARR €420K (+50% vs Q3)' },
+            description: {
+              en: 'Maintained momentum across all products, achieved 94% renewal rate, and defined 2026 OKRs (€700K ARR target).',
+              de: 'Momentum über alle Produkte gehalten, 94% Renewal Rate erreicht und 2026 OKRs definiert (€700K ARR Ziel).'
+            },
+            deliverables: [
+              { en: 'Cloud-ARR €420K (+200-300% vs baseline)', de: 'Cloud-ARR €420K (+200-300% vs Baseline)' },
+              { en: 'Renewal rate: 94% (target: 92%)', de: 'Renewal Rate: 94% (Ziel: 92%)' },
+              { en: '2026 OKRs defined: €700K ARR target', de: '2026 OKRs definiert: €700K ARR Ziel' }
+            ],
+            whyItMattered: {
+              en: 'SaaS-Transition accelerated from 10-20% to 40-50% ARR in 12 months. 2026 targets are ambitious but achievable.',
+              de: 'SaaS-Transition von 10-20% auf 40-50% ARR in 12 Monaten beschleunigt. 2026 Ziele sind ambitioniert aber erreichbar.'
+            }
+          },
+          {
+            name: { en: 'OKR 11: 11 model customers', de: 'OKR 11: 11 Modell-Kunden' },
+            description: {
+              en: 'Maintained pipeline momentum (20 qualified opportunities), trained 2nd sales specialist, and refined account plans.',
+              de: 'Pipeline-Momentum gehalten (20 qualifizierte Opportunities), 2. Sales-Spezialisten trainiert und Account-Pläne verfeinert.'
+            },
+            deliverables: [
+              { en: '11 model customers (target: 10)', de: '11 Modell-Kunden (Ziel: 10)' },
+              { en: 'Pipeline: 20 qualified opportunities', de: 'Pipeline: 20 qualifizierte Opportunities' },
+              { en: 'Sales team: 2nd specialist trained', de: 'Sales-Team: 2. Spezialist trainiert' }
+            ],
+            whyItMattered: {
+              en: 'Enterprise model replicated at scale: 1 → 11 customers in 12 months.',
+              de: 'Enterprise-Modell im großen Maßstab repliziert: 1 → 11 Kunden in 12 Monaten.'
+            }
+          },
+          {
+            name: { en: 'OKR 12: New Product €280K ARR', de: 'OKR 12: Neues Produkt €280K ARR' },
+            description: {
+              en: 'Scaled new product line to 35 customers, achieved 80% cross-selling from existing customers, and deepened strategic partnership.',
+              de: 'Neue Produktlinie auf 35 Kunden skaliert, 80% Cross-Selling von bestehenden Kunden erreicht und strategische Partnerschaft vertieft.'
+            },
+            deliverables: [
+              { en: 'New product: €280K ARR (35 customers)', de: 'Neues Produkt: €280K ARR (35 Kunden)' },
+              { en: 'Cross-selling: 80% from existing customers', de: 'Cross-Selling: 80% von bestehenden Kunden' },
+              { en: 'Strategic partnership: 8 joint customers (€150K ARR)', de: 'Strategische Partnerschaft: 8 gemeinsame Kunden (€150K ARR)' }
+            ],
+            whyItMattered: {
+              en: 'New product became a major growth driver. Partnership proves scalable.',
+              de: 'Neues Produkt wurde zum Hauptwachstumstreiber. Partnerschaft erweist sich als skalierbar.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '12 months',
+    resultMetrics: [
+      { label: 'Revenue', before: '€1.7-1.8M', after: '€2.5-3M', impact: '+40-70%' },
+      { label: 'ARR', before: '€80K-150K (10-20%)', after: '€420K (40-50%)', impact: '+200-300%' },
+      { label: 'Model Customers', before: '1', after: '11', impact: '+10' },
+      { label: 'Sales Cycle', before: '9 months', after: '6 months', impact: '-33%' },
+      { label: 'New Product ARR', before: '€0', after: '€280K', impact: 'New' },
+      { label: 'SQLs/Month', before: '8', after: '14', impact: '+75%' }
+    ],
+    roiCalculation: {
+      investment: '€156K-€216K',
+      returnValue: '€780K-€1.1M',
+      roi: '5-10x',
+      breakdown: [
+        { en: 'ARR growth: €270K-€340K additional ARR (€420K - €80K-150K baseline)', de: 'ARR-Wachstum: €270K-€340K zusätzliches ARR (€420K - €80K-150K Baseline)' },
+        { en: 'New product: €280K ARR (new revenue stream)', de: 'Neues Produkt: €280K ARR (neuer Umsatzstrom)' },
+        { en: 'Customer development: 10 additional model customers × €80K = €800K potential', de: 'Kundenentwicklung: 10 zusätzliche Modell-Kunden × €80K = €800K Potenzial' },
+        { en: 'Sales efficiency: 33% faster sales cycles = more deals per rep', de: 'Sales Efficiency: 33% schnellere Sales Cycles = mehr Deals pro Rep' }
+      ]
+    },
+    ceoQuote: {
+      en: '"12 months of Strategic Advisory transformed our execution. We accelerated SaaS-Transition from 10% to 40% ARR, replicated our enterprise model to 11 customers, and the €10M roadmap is now credible. This was not just advice—it was ongoing execution support."',
+      de: '"12 Monate Strategic Advisory haben unsere Umsetzung transformiert. Wir haben die SaaS-Transition von 10% auf 40% ARR beschleunigt, unser Enterprise-Modell auf 11 Kunden repliziert, und die €10M Roadmap ist jetzt glaubwürdig. Das war nicht nur Beratung—es war laufende Execution Support."'
+    },
+    quoteContext: {
+      en: 'The CEO presented the 2025 results to the board. The board approved the 2026 targets (€700K ARR, 15 model customers) and the continued Strategic Advisory engagement.',
+      de: 'Der CEO präsentierte die 2025-Ergebnisse dem Board. Der Board genehmigte die 2026-Ziele (€700K ARR, 15 Modell-Kunden) und das fortgesetzte Strategic Advisory Engagement.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Strategic Advisory accelerates execution', de: 'Strategic Advisory beschleunigt die Umsetzung' },
+        whatWeLearned: {
+          en: 'Monthly strategy sessions (1 day/month) + quarterly OKR reviews + ad-hoc support create execution velocity. Strategic Advisory is not just advice—it\'s ongoing execution support.',
+          de: 'Monatliche Strategie-Sessions (1 Tag/Monat) + vierteljährliche OKR-Reviews + Ad-hoc Support schaffen Execution Velocity. Strategic Advisory ist nicht nur Beratung—es ist laufende Execution Support.'
+        },
+        keyInsight: {
+          en: 'Strategy without ongoing support remains theory. Monthly accountability creates momentum.',
+          de: 'Strategie ohne laufende Unterstützung bleibt Theorie. Monatliche Accountability schafft Momentum.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start Strategic Advisory immediately after the Strategy Workshop. Don\'t wait.',
+          de: 'Strategic Advisory sofort nach dem Strategie-Workshop starten. Nicht warten.'
+        }
+      },
+      {
+        title: { en: 'SaaS-Transition can be accelerated', de: 'SaaS-Transition kann beschleunigt werden' },
+        whatWeLearned: {
+          en: 'SaaS-Transition from 10-20% ARR to 70-80% ARR typically takes 5-6 years. But with Strategic Advisory, the first 12 months achieved 40-50% ARR (vs. 20-30% without support).',
+          de: 'SaaS-Transition von 10-20% ARR auf 70-80% ARR dauert typischerweise 5-6 Jahre. Aber mit Strategic Advisory erreichten die ersten 12 Monate 40-50% ARR (vs. 20-30% ohne Support).'
+        },
+        keyInsight: {
+          en: 'Focused execution beats scattered efforts. Quarterly OKRs create concentration.',
+          de: 'Fokussierte Umsetzung schlägt verstreute Bemühungen. Quartals-OKRs schaffen Konzentration.'
+        },
+        whatWedDoDifferently: {
+          en: 'Set more aggressive ARR targets from Q1. We underestimated the team\'s execution capability.',
+          de: 'Aggressivere ARR-Ziele ab Q1 setzen. Wir haben die Execution-Fähigkeit des Teams unterschätzt.'
+        }
+      },
+      {
+        title: { en: 'Customer model is replicable at scale', de: 'Kundenmodell ist im großen Maßstab replizierbar' },
+        whatWeLearned: {
+          en: 'The enterprise customer model was replicated from 1 to 11 customers in 12 months. Systematic account development beats random prospecting.',
+          de: 'Das Enterprise-Kundenmodell wurde in 12 Monaten von 1 auf 11 Kunden repliziert. Systematische Account-Entwicklung schlägt zufällige Akquise.'
+        },
+        keyInsight: {
+          en: 'Replicate what works. Your best customers show the path to more like them.',
+          de: 'Repliziere was funktioniert. Deine besten Kunden zeigen den Weg zu mehr wie ihnen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Hire the model specialist earlier (Q1, not Q3). Earlier team growth would have accelerated results.',
+          de: 'Den Modell-Spezialisten früher einstellen (Q1, nicht Q3). Früheres Team-Wachstum hätte Ergebnisse beschleunigt.'
+        }
+      },
+      {
+        title: { en: 'Sales Velocity optimization drives growth', de: 'Sales Velocity Optimierung treibt Wachstum' },
+        whatWeLearned: {
+          en: 'Tracking Sales Velocity (SQL, Deal Size, Conversion, Sales Cycle) and optimizing for velocity (not volume) reduced sales cycle by 33% and increased SQLs by 75%.',
+          de: 'Das Tracking von Sales Velocity (SQL, Deal Size, Conversion, Sales Cycle) und Optimierung auf Velocity (nicht Volumen) reduzierte den Sales Cycle um 33% und erhöhte SQLs um 75%.'
+        },
+        keyInsight: {
+          en: 'Quality over quantity works. Better leads convert faster at higher values.',
+          de: 'Qualität über Quantität funktioniert. Bessere Leads konvertieren schneller zu höheren Werten.'
+        },
+        whatWedDoDifferently: {
+          en: 'Establish Sales Velocity tracking on Day 1. Visibility creates optimization opportunities.',
+          de: 'Sales Velocity Tracking am Tag 1 etablieren. Sichtbarkeit schafft Optimierungsmöglichkeiten.'
+        }
+      },
+      {
+        title: { en: 'Product Innovation drives Cross-Selling', de: 'Produktinnovation treibt Cross-Selling' },
+        whatWeLearned: {
+          en: 'Launching a new product line and scaling to €280K ARR in 9 months (35 customers) created a new growth driver. 80% came from cross-selling to existing customers.',
+          de: 'Die Einführung einer neuen Produktlinie und Skalierung auf €280K ARR in 9 Monaten (35 Kunden) schuf einen neuen Wachstumstreiber. 80% kamen aus Cross-Selling an bestehende Kunden.'
+        },
+        keyInsight: {
+          en: 'Existing customers are the best buyers. Cross-selling is faster than new acquisition.',
+          de: 'Bestehende Kunden sind die besten Käufer. Cross-Selling ist schneller als Neukundengewinnung.'
+        },
+        whatWedDoDifferently: {
+          en: 'Launch the new product line earlier (Q1, not Q2). Earlier launch would have meant more ARR.',
+          de: 'Die neue Produktlinie früher launchen (Q1, nicht Q2). Früherer Launch hätte mehr ARR bedeutet.'
+        }
+      },
+      {
+        title: { en: 'Team Growth enables scaling', de: 'Team-Wachstum ermöglicht Skalierung' },
+        whatWeLearned: {
+          en: 'Hiring 2 additional sales specialists enabled scaling from 1 to 11 model customers. Team growth is a prerequisite for revenue scaling.',
+          de: 'Die Einstellung von 2 zusätzlichen Sales-Spezialisten ermöglichte die Skalierung von 1 auf 11 Modell-Kunden. Team-Wachstum ist Voraussetzung für Umsatzskalierung.'
+        },
+        keyInsight: {
+          en: 'Hire ahead of demand. Waiting too long creates bottlenecks.',
+          de: 'Vorausschauend einstellen. Zu langes Warten schafft Engpässe.'
+        },
+        whatWedDoDifferently: {
+          en: 'Hire specialists in Q1, not Q3. Earlier hiring would have accelerated Q2-Q3 results.',
+          de: 'Spezialisten in Q1 einstellen, nicht Q3. Frühere Einstellung hätte Q2-Q3 Ergebnisse beschleunigt.'
+        }
+      },
+      {
+        title: { en: '€10M roadmap is now credible', de: '€10M Roadmap ist jetzt glaubwürdig' },
+        whatWeLearned: {
+          en: 'After 12 months of Strategic Advisory, the €10M roadmap (2024: €1.7M → 2025: €2.8M → 2030: €10M) is now credible and achievable. Execution confidence is the foundation for growth.',
+          de: 'Nach 12 Monaten Strategic Advisory ist die €10M Roadmap (2024: €1,7M → 2025: €2,8M → 2030: €10M) jetzt glaubwürdig und erreichbar. Execution Confidence ist das Fundament für Wachstum.'
+        },
+        keyInsight: {
+          en: 'Strategy becomes credible through execution. Quarterly results build confidence.',
+          de: 'Strategie wird durch Umsetzung glaubwürdig. Quartalsergebnisse bauen Vertrauen auf.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. The 12-month timeline was right for proving the roadmap.',
+          de: 'Nichts. Der 12-Monats-Zeitrahmen war richtig um die Roadmap zu beweisen.'
+        }
+      }
+    ],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Strategic Advisory', de: 'Strategic Advisory' },
+        url: '/solutions/strategic-advisory',
+        duration: '12+ months',
+        investment: '€3.9K-€11K/Mo',
+        focus: { 
+          en: 'Ongoing Strategic Guidance, OKR Reviews, Board Prep', 
+          de: 'Laufende strategische Begleitung, OKR Reviews, Board Prep' 
+        },
+        outcome: { 
+          en: 'Revenue +40-70%, ARR +200-300%, Sales Cycle -33%', 
+          de: 'Umsatz +40-70%, ARR +200-300%, Sales Cycle -33%' 
+        },
+        type: 'primary'
+      },
+      {
+        name: { en: 'Workshop', de: 'Workshop' },
+        url: '/solutions/workshop',
+        duration: '1-2 Days',
+        investment: '€9.6K-€12.9K',
+        focus: { 
+          en: 'Foundation: Vision 2030, Strategy, OKRs', 
+          de: 'Foundation: Vision 2030, Strategie, OKRs' 
+        },
+        outcome: { 
+          en: 'Strategic Clarity, Team Alignment, Actionable Roadmap', 
+          de: 'Strategische Klarheit, Team-Alignment, Actionable Roadmap' 
+        },
+        type: 'related'
+      },
+      {
+        name: { en: 'Accelerate: Sustainable Growth', de: 'Accelerate: Nachhaltiges Wachstum' },
+        url: '/solutions/accelerate/sustainable-growth',
+        duration: '12 Months',
+        investment: '€153K',
+        focus: { 
+          en: 'Comprehensive Transformation (GTM, Operations, AI)', 
+          de: 'Umfassende Transformation (GTM, Operations, AI)' 
+        },
+        outcome: { 
+          en: 'Revenue +50-100%, Rule of 40 +20-40pp', 
+          de: 'Umsatz +50-100%, Rule of 40 +20-40pp' 
+        },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { 
+          en: '90-Day Execution Sprints', 
+          de: '90-Tage Execution Sprints' 
+        },
+        outcome: { 
+          en: 'ARR Growth +30-60pp, Win Rate +30-50%', 
+          de: 'ARR Growth +30-60pp, Win Rate +30-50%' 
+        },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'vision-2030-strategy-workshop', teaser: { en: 'The foundation: How we defined Vision 2030 in 2 days', de: 'Das Fundament: Wie wir Vision 2030 in 2 Tagen definierten' } },
+      { slug: 'strategic-transformation-market-leadership', teaser: { en: 'Similar journey: Series B SaaS achieved €7.7M ARR', de: 'Ähnliche Reise: Series B SaaS erreichte €7,7M ARR' } }
     ],
     relatedPlaybooks: [
       { slug: 'strategic-capabilities', teaser: { en: 'Build strategic clarity and execution excellence', de: 'Strategische Klarheit und Execution Excellence aufbauen' } },
