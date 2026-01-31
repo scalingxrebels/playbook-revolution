@@ -475,7 +475,7 @@ const About: React.FC = () => {
                   }
                 </p>
                 <div className="flex items-center justify-between">
-                  <Badge variant="accent">Live (€149/mo)</Badge>
+                  <Badge variant="accent">Free</Badge>
                   <a 
                     href="https://lasr.io" 
                     target="_blank" 
