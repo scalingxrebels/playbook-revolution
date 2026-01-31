@@ -139,7 +139,7 @@ export const playbookIndex: PlaybookMeta[] = [
     role: ['ceo'],
     ebene: 2,
     parent: 1,
-    children: [18],
+    children: [],
   },
 
   // ============================================================================
@@ -302,7 +302,7 @@ export const playbookIndex: PlaybookMeta[] = [
   // ============================================================================
   {
     id: 14,
-    slug: 'board-governance/strategic-governance',
+    slug: 'board-governance/strategic',
     title: {
       en: 'Strategic Governance Playbook',
       de: 'Strategic Governance Playbook',
@@ -323,7 +323,7 @@ export const playbookIndex: PlaybookMeta[] = [
   },
   {
     id: 15,
-    slug: 'board-governance/operational-governance',
+    slug: 'board-governance/operational',
     title: {
       en: 'Operational Governance Playbook',
       de: 'Operational Governance Playbook',
@@ -369,7 +369,7 @@ export const playbookIndex: PlaybookMeta[] = [
   // ============================================================================
   {
     id: 17,
-    slug: 'portfolio/portfolio-excellence',
+    slug: 'portfolio/excellence',
     title: {
       en: 'Portfolio Excellence Playbook',
       de: 'Portfolio Excellence Playbook',
@@ -389,30 +389,6 @@ export const playbookIndex: PlaybookMeta[] = [
     children: [],
   },
 
-  // ============================================================================
-  // EBENE 3: SUB-PLAYBOOKS - STRATEGIC CAPABILITIES (1/18)
-  // ============================================================================
-  {
-    id: 18,
-    slug: 'strategic-capabilities/deep-dive',
-    title: {
-      en: 'Strategic Capabilities Deep Dive',
-      de: 'Strategic Capabilities Deep Dive',
-    },
-    description: {
-      en: 'Master each of the 4 capabilities (C₁-C₄) in depth. Detailed frameworks, assessment tools, and implementation guides.',
-      de: 'Meistere jede der 4 Capabilities (C₁-C₄) im Detail. Detaillierte Frameworks, Assessment-Tools und Implementierungsguides.',
-    },
-    icon: 'Target',
-    color: 'red',
-    gradient: 'from-red-500 to-orange-500',
-    area: ['strategic-capabilities'],
-    bottleneck: ['strategy', 'setup', 'execution-focus', 'operationalization'],
-    role: ['ceo'],
-    ebene: 3,
-    parent: 6,
-    children: [],
-  },
 ];
 
 // Helper functions
