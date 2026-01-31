@@ -346,7 +346,7 @@ export const strategicGovernanceData: PlaybookPageData = {
         price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
         outcome: { en: "Full governance maturity report + 90-day roadmap", de: "Vollständiger Governance-Reifebericht + 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/investor-readiness-pitch-deck-check",
         icon: "ClipboardCheck",
         color: "bg-emerald-500/10 text-emerald-500"
       },
@@ -379,7 +379,7 @@ export const strategicGovernanceData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full governance transformation, AI Maturity Level 3, Board Prep Time -80%", de: "Vollständige Governance-Transformation, KI-Reifegrad Level 3, Board-Vorbereitungszeit -80%" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/exit-readiness",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }

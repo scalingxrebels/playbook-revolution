@@ -313,7 +313,7 @@ export const dataTechData: PlaybookPageData = {
         price: { en: "€2.5K-€10K", de: "€2.5K-€10K" },
         outcome: { en: "Full data/tech maturity report + 90-day roadmap", de: "Vollständiger Data/Tech-Maturity-Report + 90-Tage-Roadmap" },
         cta: { en: "Book Assessment", de: "Assessment buchen" },
-        link: "/solutions/assessment",
+        link: "/solutions/ai-maturity-assessment",
         icon: "ClipboardCheck",
         color: "bg-emerald-500/10 text-emerald-500"
       },
@@ -346,7 +346,7 @@ export const dataTechData: PlaybookPageData = {
         price: { en: "€153K", de: "€153K" },
         outcome: { en: "Full data/tech transformation, AI Maturity Level 3, Data Quality +80%, Tech Debt -60%", de: "Vollständige Data/Tech-Transformation, AI Maturity Level 3, Datenqualität +80%, Tech Debt -60%" },
         cta: { en: "Start Accelerate", de: "Accelerate starten" },
-        link: "/solutions/accelerate",
+        link: "/solutions/accelerate/ai-native-scaling",
         icon: "TrendingUp",
         color: "bg-violet-500/10 text-violet-500"
       }
