@@ -128,7 +128,7 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Menu - Full Screen Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 bg-background z-40 animate-fade-in">
+          <div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7] dark:bg-[#0F0F14]">
             <div className="container px-4 py-8">
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => {
@@ -137,12 +137,12 @@ const Navigation: React.FC = () => {
                       <Link
                         key={item.key}
                         to={item.href}
-                        className="flex items-center justify-between px-4 py-4 text-2xl font-display italic text-foreground hover:bg-muted/50 transition-colors border-b border-border"
+                        className="flex items-center justify-between px-4 py-4 text-2xl font-display italic text-[#1A1A1A] dark:text-[#F5F5F0] hover:bg-black/5 dark:hover:bg-white/10 transition-colors border-b border-[#E5E5E0] dark:border-[#2A2A35]"
                         onClick={() => setMobileMenuOpen(false)}
                         style={{ animationDelay: `${index * 0.05}s` }}
                       >
                         <span>{item.label}</span>
-                        <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
+                        <ArrowUpRight className="w-5 h-5 text-[#666666] dark:text-[#888888]" />
                       </Link>
                     );
                   }
@@ -151,12 +151,12 @@ const Navigation: React.FC = () => {
                     <a
                       key={item.key}
                       href={item.href}
-                      className="flex items-center justify-between px-4 py-4 text-2xl font-display italic text-foreground hover:bg-muted/50 transition-colors border-b border-border"
+                      className="flex items-center justify-between px-4 py-4 text-2xl font-display italic text-[#1A1A1A] dark:text-[#F5F5F0] hover:bg-black/5 dark:hover:bg-white/10 transition-colors border-b border-[#E5E5E0] dark:border-[#2A2A35]"
                       onClick={() => setMobileMenuOpen(false)}
                       style={{ animationDelay: `${index * 0.05}s` }}
                     >
                       <span>{item.label}</span>
-                      <ArrowUpRight className="w-5 h-5 text-muted-foreground" />
+                      <ArrowUpRight className="w-5 h-5 text-[#666666] dark:text-[#888888]" />
                     </a>
                   );
                 })}
@@ -166,7 +166,7 @@ const Navigation: React.FC = () => {
               <div className="mt-8">
                 <Button
                   size="lg"
-                  className="w-full bg-foreground text-background font-semibold shadow-brutal hover-brutal"
+                  className="w-full bg-[#1A1A1A] dark:bg-[#F5F5F0] text-[#FAFAF9] dark:text-[#0F0F14] font-semibold shadow-brutal hover-brutal"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
