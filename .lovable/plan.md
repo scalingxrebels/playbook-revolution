@@ -1,92 +1,52 @@
 
-# Light Mode Navigation: Ultra-Modern Redesign
 
-## Aktuelle Situation
+# Button-Textfarbe in Dark-Section Fix
 
-Die Navigation nutzt `bg-background/80` mit `backdrop-blur-xl`. Im Light Mode entsteht ein leicht "milchiger" Look, der vor dem dunklen Hero-Hintergrund nicht optimal wirkt.
+## Problem-Analyse
 
-## Design-Empfehlungen (Weltbester Design-Experte)
-
-### Option A: "Apple Glass" (Empfehlung)
-
-Inspiriert von Apple's Navigation - reinweiss mit subtiler Schatten-Linie:
-
-```text
-┌─────────────────────────────────────────────────────────┐
-│  Logo    Home  Solutions  Playbooks  ...   [Book Call]  │
-├─────────────────────────────────────────────────────────┤
-│  ░░░░░░░░░░░░░░░░░░ subtle shadow ░░░░░░░░░░░░░░░░░░░░  │
-└─────────────────────────────────────────────────────────┘
+Der Hero-CTA Button verwendet:
+```tsx
+className="bg-gradient-accent text-accent-foreground..."
 ```
 
-- **Light Mode**: `bg-white/95` + `shadow-sm` + `backdrop-blur-md`
-- **Dark Mode**: Bleibt wie jetzt (`bg-background/80`)
-- Subtiler Gradient-Akzent am unteren Rand (optional)
+In der `.dark-section` CSS-Klasse:
+```css
+--accent-foreground: 0 0% 5%; /* Fast schwarz - FALSCH! */
+```
 
-### Option B: "Notion Minimal"
+## Lösung
 
-Noch cleaner - fast unsichtbar bis man scrollt:
+Die Variable `--accent-foreground` muss in `.dark-section` auf einen hellen Wert gesetzt werden, da Accent-Buttons auf dem dunklen Hero-Hintergrund hellen Text benötigen.
 
-- Komplett transparent am Start
-- Wird weiss nach 50px Scroll
-- Scroll-Triggered Animation
+### Änderung in `src/index.css`
 
-### Option C: "Linear Gradient Border"
+**Zeile 147 anpassen:**
 
-Modern mit Akzent:
+| Variable | Aktuell (falsch) | Neu (korrekt) |
+|----------|------------------|---------------|
+| `--accent-foreground` | `0 0% 5%` (schwarz) | `0 0% 100%` (weiß) |
 
-- Weisser Hintergrund
-- 1px Gradient-Border am unteren Rand (Primary-Farben)
-- Hover-States mit Gradient-Underlines
-
-## Empfohlene Umsetzung: Option A "Apple Glass"
-
-### Änderungen
-
-| Element | Light Mode (Neu) | Dark Mode (unverändert) |
-|---------|------------------|-------------------------|
-| Background | `bg-white/95` | `bg-background/80` |
-| Border | `shadow-sm` statt `border-b` | `border-b border-border` |
-| Blur | `backdrop-blur-md` | `backdrop-blur-xl` |
-| Text | `text-neutral-600` → `text-neutral-900` hover | `text-muted-foreground` |
-
-### CSS-Strategie
-
-Neue Light-Mode spezifische Styles in `index.css`:
+### Code-Änderung
 
 ```css
-/* Navigation Light Mode Enhancement */
-nav.light-nav {
-  @apply bg-white/95 shadow-sm;
-}
-
-.dark nav.light-nav {
-  @apply bg-background/80 border-b border-border shadow-none;
-}
+/* Zeile 146-147 in .dark-section */
+--accent: 24 100% 58%;
+--accent-foreground: 0 0% 100%;  /* Geändert von 0 0% 5% */
 ```
 
-### Alternative: Theme-aware Klassen direkt in der Komponente
+## Warum das passiert ist
 
-```tsx
-<nav className={cn(
-  "fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-colors",
-  // Light Mode: Clean white with shadow
-  "bg-white/95 shadow-sm",
-  // Dark Mode: Current style
-  "dark:bg-background/80 dark:backdrop-blur-xl dark:border-b dark:border-border dark:shadow-none"
-)}>
-```
+Die `.dark-section` wurde als Kopie der `.dark` Variablen erstellt. Im Dark Mode ist `--accent-foreground` dunkel, weil Accent-Elemente normalerweise helle Hintergründe haben. Aber im Hero-Kontext mit Gradient-Buttons brauchen wir hellen Text.
 
 ## Betroffene Dateien
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/Navigation.tsx` | Theme-aware Klassen für Light/Dark |
-| `src/index.css` | Optional: Utility-Klassen für Navigation |
+| `src/index.css` | `--accent-foreground` in `.dark-section` auf `0 0% 100%` ändern |
 
 ## Ergebnis
 
-- **Light Mode**: Sauberer, moderner Apple-Style mit weissem Hintergrund
-- **Dark Mode**: Keine Änderung (funktioniert bereits)
-- **Übergang**: Smooth via CSS-Transitions
-- **Mobile**: Identische Behandlung für Mobile Menu
+- Gradient-Buttons im Hero zeigen weißen Text
+- Alle anderen `.dark-section` Elemente bleiben unverändert
+- Konsistenz mit dem visuellen Design
+
