@@ -1,186 +1,70 @@
 
+# Client Ticker für Cases-Seite
 
-# Hybrides Case Study System - Implementierungsplan
+## Übersicht
+Ein nahtloser Endlos-Ticker mit Kundennamen unter dem Hero der `/cases`-Seite, basierend auf dem bestehenden Marquee-Pattern aus `HeroSection.tsx`.
 
-## Konzept
-
-| Bereich | Zweck | Datentyp |
-|---------|-------|----------|
-| **Expertise Hub** | Wissenschaftliche Validierung der Frameworks | Echte AI-Native Unternehmen (7) |
-| **Cases Hub** | Vertrauliche Kundenprojekte präsentieren | Anonymisierte ScalingX-Projekte |
-| **Homepage** | Social Proof durch bekannte Namen | Echte AI-Native Unternehmen (3) |
-
----
-
-## Architektur-Übersicht
+## Design-Konzept
 
 ```text
 ┌─────────────────────────────────────────────────────────────────┐
-│                        CASE STUDY SYSTEM                         │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                   │
-│  ┌─────────────────────┐     ┌─────────────────────┐            │
-│  │   RESEARCH CASES    │     │   CLIENT CASES      │            │
-│  │   (Echte Companies) │     │   (Anonymisiert)    │            │
-│  └──────────┬──────────┘     └──────────┬──────────┘            │
-│             │                           │                        │
-│             ▼                           ▼                        │
-│  ┌─────────────────────┐     ┌─────────────────────┐            │
-│  │ src/data/cases/     │     │ src/data/cases/     │            │
-│  │   research.ts       │     │   clients.ts        │            │
-│  │                     │     │                     │            │
-│  │ - Midjourney        │     │ - B2B SaaS €15M    │            │
-│  │ - Cursor            │     │ - Enterprise SW    │            │
-│  │ - Perplexity        │     │ - FinTech Scale    │            │
-│  │ - OpenAI            │     │ - MarTech Growth   │            │
-│  │ - Stripe            │     │ - Analytics NRR    │            │
-│  │ - Figma             │     │                     │            │
-│  │ - Notion            │     │                     │            │
-│  └──────────┬──────────┘     └──────────┬──────────┘            │
-│             │                           │                        │
-│             ▼                           ▼                        │
-│  ┌─────────────────────┐     ┌─────────────────────┐            │
-│  │ /expertise          │     │ /cases              │            │
-│  │ /case-study/:id     │     │ Modal oder Inline   │            │
-│  │ (Detail Pages)      │     │ (kein Deep Link)    │            │
-│  └─────────────────────┘     └─────────────────────┘            │
-│                                                                   │
+│                         SHARED HERO                              │
+│         "Transformations, not theories"                          │
+│                        Stats Grid                                │
+└─────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│  "Who we have worked with"                                       │
+│  ──────────────────────────────────────────────────────────────  │
+│  • Pigtie • Microsoft • XING • Lexware • Haufe Group • ...  →→→  │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
----
+## Technische Details
 
-## Dateien und Änderungen
+### Zu bearbeitende Datei
+`src/pages/Cases.tsx`
 
-### Neue Dateien erstellen
+### Kundenliste (24 Namen × 5 Wiederholungen = 120 Einträge)
+Pigtie, the beautiful unleashed truth, KODE®, FILADOS, 2p Team, Microsoft Surface, XING e-Recruiting, Lexware, Haufe Group, smapOne, SBB E-Business, Swarovski, local.ch, BWK Group, DBA, Burda Media, START, Elba, Semigator, Umantis, Sage, LifiMax, BeQueen, BonGusto
 
-| Datei | Beschreibung |
-|-------|--------------|
-| `src/data/cases/types.ts` | Gemeinsame TypeScript Interfaces |
-| `src/data/cases/research.ts` | 7 echte AI-Native Unternehmen (aus CaseStudy.tsx extrahiert) |
-| `src/data/cases/clients.ts` | 5+ anonymisierte Kundenprojekte |
-| `src/data/cases/index.ts` | Export und Utility-Funktionen |
+### Implementierung
 
-### Zu bearbeitende Dateien
+1. **Ticker-Section** direkt nach `<SharedHero />` einfügen
+2. **Styling** übernommen von `HeroSection.tsx`:
+   - `animate-marquee` CSS-Klasse (bereits in `index.css`)
+   - Border oben/unten für visuelle Trennung
+   - `text-muted-foreground/50` für subtile Darstellung
+   - Dot-Separator zwischen Namen
 
-| Datei | Änderung |
-|-------|----------|
-| `src/pages/Cases.tsx` | Daten aus `clients.ts` importieren, Modal statt Link |
-| `src/pages/CaseStudy.tsx` | Daten aus `research.ts` importieren |
-| `src/components/ResearchHub.tsx` | Optional: Research Cases referenzieren |
+### Code-Struktur
 
----
-
-## Datenmodell
-
-### Research Case (Echte Unternehmen)
-
-```typescript
-interface ResearchCase {
-  id: string;                    // 'midjourney', 'cursor', etc.
-  name: string;
-  icon: React.ElementType;
-  color: string;
-  darkColor?: string;
-  founded: string;
-  founder: string;
-  focus: BilingualText;
-  headline: { metric: string; label: BilingualText };
-  secondaryMetrics: MetricItem[];
-  thetaIndex: ThetaScores;
-  growthTimeline: TimelineItem[];
-  learnings: BilingualList;
-  keyMetrics: MetricItem[];
-  strategicInsights: BilingualList;
-  dataSource: string;            // 'ANST v4.5.3', 'AMF v4.1', etc.
-}
+```tsx
+{/* Client Ticker */}
+<div className="relative z-10 border-y border-border py-4 bg-background/50">
+  <div className="container max-w-7xl mx-auto px-4 mb-2">
+    <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+      Who we have worked with
+    </span>
+  </div>
+  <div className="overflow-hidden">
+    <div className="flex animate-marquee whitespace-nowrap">
+      {[...Array(5)].map((_, i) => (
+        <div key={i} className="flex items-center gap-6 px-4">
+          {clientNames.map((name) => (
+            <span className="text-sm font-medium text-muted-foreground/60 flex items-center gap-6">
+              <span className="w-1 h-1 rounded-full bg-primary/40" />
+              {name}
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 ```
 
-### Client Case (Anonymisiert)
-
-```typescript
-interface ClientCase {
-  id: string;                    // 'b2b-saas-gtm', etc.
-  industry: string;              // 'B2B SaaS', 'FinTech', etc.
-  stage: string;                 // 'Series A', 'Series B', etc.
-  challenge: BilingualText;
-  solution: BilingualText;
-  result: BilingualText;
-  metrics: MetricItem[];
-  playbooks: string[];           // Verlinkte Playbooks
-  timeline: string;              // '18 Monate', '12 Wochen', etc.
-  gradient: string;
-  confidential: true;            // Flag für anonymisierte Cases
-}
-```
-
----
-
-## UI-Verhalten
-
-### Cases Landing Page (`/cases`)
-
-| Element | Aktuell | Neu |
-|---------|---------|-----|
-| Card-Klick | Link zu `/case-study/:id` (broken) | Modal mit Details |
-| CTA-Button | "Case Study lesen" | "Details ansehen" |
-| Datenquelle | Inline in Komponente | Import aus `clients.ts` |
-
-### Modal-Inhalt für Client Cases
-
-- Challenge-Beschreibung (erweitert)
-- Lösung mit Playbook-Referenzen
-- Metriken-Grid (Before/After)
-- "Ähnliches Projekt besprechen" CTA
-- Keine Verlinkung zu externen Detail-Pages
-
----
-
-## Implementierungsschritte
-
-### Phase 1: Datenstruktur
-
-1. `src/data/cases/types.ts` erstellen mit Interfaces
-2. `src/data/cases/research.ts` mit 7 echten Companies aus CaseStudy.tsx extrahieren
-3. `src/data/cases/clients.ts` mit 5 anonymisierten Cases erstellen
-4. `src/data/cases/index.ts` als Barrel-Export
-
-### Phase 2: Cases Hub Refactoring
-
-5. `src/pages/Cases.tsx` refactoren:
-   - Import von `clientCases` aus Datendatei
-   - Button-Link durch Modal-Trigger ersetzen
-   - Modal-Komponente für Case-Details hinzufügen
-
-### Phase 3: CaseStudy Refactoring
-
-6. `src/pages/CaseStudy.tsx` refactoren:
-   - Import von `researchCases` aus Datendatei
-   - Bestehende Logik beibehalten
-
-### Phase 4: Konsistenz prüfen
-
-7. Expertise-Komponenten überprüfen (ScalingXCaseStudies, CaseStudyComparisonTable)
-8. Homepage ProofOptimized überprüfen
-
----
-
-## Ergebnis
-
-| Route | Inhalt | Interaktion |
-|-------|--------|-------------|
-| `/` (Homepage) | Midjourney, Cursor, Perplexity | Statistiken |
-| `/cases` | 5+ anonymisierte Kundenprojekte | Modal mit Details |
-| `/expertise` | 7 echte AI-Native Companies | Grid + Modals + Table |
-| `/case-study/:id` | Detail-Pages für Research Cases | Deep-Links funktionieren |
-
----
-
-## Vorteile des hybriden Systems
-
-1. **Vertraulichkeit**: Echte Kundenprojekte bleiben anonym
-2. **Wissenschaftliche Integrität**: Research Cases mit Quellenangaben
-3. **SEO**: Echte Firmennamen für `/case-study/` Detail-Pages
-4. **Konsistenz**: Klare Trennung der Datenquellen
-5. **Wartbarkeit**: Zentrale Datendateien statt Inline-Daten
-
+## Visuelles Ergebnis
+- Subtiler, professioneller Look
+- Nahtlose Endlos-Animation (30s Zyklus)
+- Konsistent mit bestehendem Deep-Space Design
+- Mobile-responsive durch `whitespace-nowrap` und `overflow-hidden`
