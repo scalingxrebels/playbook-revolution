@@ -1283,9 +1283,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über Workshop',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/workshop',
-    secondaryCtaEn: 'See topics',
-    secondaryCtaDe: 'Themen ansehen',
-    secondaryCtaUrl: '/expertise'
+    secondaryCtaEn: 'See case study',
+    secondaryCtaDe: 'Case Study ansehen',
+    secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
   },
 
   // ============================================
@@ -1320,9 +1320,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über Strategic Advisory',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/strategic-advisory',
-    secondaryCtaEn: 'Book call',
-    secondaryCtaDe: 'Call buchen',
-    secondaryCtaUrl: 'https://calendly.com/michel-scalingx/advisory'
+    secondaryCtaEn: 'See case study',
+    secondaryCtaDe: 'Case Study ansehen',
+    secondaryCtaUrl: '/cases/vision-2030-strategy-workshop'
   },
 
 

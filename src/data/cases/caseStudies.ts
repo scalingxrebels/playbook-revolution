@@ -4988,6 +4988,385 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
     ]
   },
 
+  // ============================================
+  // STRATEGY WORKSHOP CASE STUDY
+  // Leadership Development Company - Vision 2030
+  // ============================================
+  {
+    id: 'strategy-workshop-vision-2030',
+    slug: 'vision-2030-strategy-workshop',
+    company: 'Leadership Development Company',
+    industry: 'B2B Services',
+    stage: 'Established',
+    gradient: 'from-indigo-500 to-purple-600',
+    confidential: true,
+    
+    tags: ['strategy', 'vision', 'saas-transition', 'roadmap', 'okrs', 'b2b-services'],
+    challengeType: 'orientation',
+    
+    // HERO
+    headline: {
+      en: 'Vision 2030 Defined → 3-Year Roadmap Created',
+      de: 'Vision 2030 definiert → 3-Jahres-Roadmap erstellt'
+    },
+    challenge: {
+      en: 'No clear Vision 2030, fragmented strategy, team misaligned on growth priorities—needed strategic clarity for SaaS-transition.',
+      de: 'Keine klare Vision 2030, fragmentierte Strategie, Team nicht abgestimmt auf Wachstumsprioritäten—brauchte strategische Klarheit für SaaS-Transition.'
+    },
+    result: {
+      en: 'Vision 2030 defined, 12 OKRs created, 100% team alignment, SaaS-transition roadmap established',
+      de: 'Vision 2030 definiert, 12 OKRs erstellt, 100% Team-Alignment, SaaS-Transition Roadmap etabliert'
+    },
+    investment: '€3K-€5K',
+    roi: '10x+',
+    heroMetrics: [
+      { label: 'Clarity', before: '0%', after: '100%', impact: 'Achieved' },
+      { label: 'Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' },
+      { label: 'OKRs', before: '0', after: '12', impact: 'Q1-Q4' },
+      { label: 'Roadmap', before: 'None', after: '3-Year', impact: '€10M' }
+    ],
+    
+    // SITUATION
+    companyDescription: {
+      en: 'A leadership development company with €1.7-1.8M revenue, 4-8 employees, and strong customer relationships (NPS: 83). First SaaS revenue (€80K-150K ARR) achieved, but lacking strategic clarity for scaling.',
+      de: 'Ein Leadership-Development-Unternehmen mit €1,7-1,8M Umsatz, 4-8 Mitarbeitern und starken Kundenbeziehungen (NPS: 83). Erste SaaS-Umsätze (€80K-150K ARR) erzielt, aber ohne strategische Klarheit für Skalierung.'
+    },
+    crisisStory: {
+      en: `After a successful year with strong Academy growth and first SaaS revenue, the leadership team faced a strategic crossroads:
+
+"What does success look like in 2030? €10M revenue? Market leadership? SaaS-first?"
+
+The team had multiple strategic options but no clear direction. Each team member had a different understanding of priorities. OKRs for the new year weren't defined. Sales cycles were 6-12 months—too long for scalability.
+
+The CEO realized: Without strategic clarity, we're executing on multiple fronts without focus.`,
+      de: `Nach einem erfolgreichen Jahr mit starkem Academy-Wachstum und ersten SaaS-Umsätzen stand das Führungsteam an einem strategischen Scheideweg:
+
+"Wie sieht Erfolg 2030 aus? €10M Umsatz? Marktführerschaft? SaaS-first?"
+
+Das Team hatte mehrere strategische Optionen, aber keine klare Richtung. Jedes Teammitglied hatte ein anderes Verständnis der Prioritäten. OKRs für das neue Jahr waren nicht definiert. Sales Cycles waren 6-12 Monate—zu lang für Skalierbarkeit.
+
+Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten aus, ohne Fokus.`
+    },
+    problemDescription: {
+      en: 'The company had multiple strategic options (SaaS-first, Academy-first, Balanced) but no clear direction. Team alignment was fragmented, OKRs weren\'t defined, and sales cycles were too long.',
+      de: 'Das Unternehmen hatte mehrere strategische Optionen (SaaS-first, Academy-first, Balanced), aber keine klare Richtung. Team-Alignment war fragmentiert, OKRs waren nicht definiert, und Sales Cycles waren zu lang.'
+    },
+    brokenAreas: [
+      {
+        area: { en: 'Strategic Clarity', de: 'Strategische Klarheit' },
+        symptoms: [
+          { en: 'No Vision 2030 defined (revenue target, market position, business model)', de: 'Keine Vision 2030 definiert (Umsatzziel, Marktposition, Geschäftsmodell)' },
+          { en: 'Multiple strategic options but no clear direction', de: 'Mehrere strategische Optionen aber keine klare Richtung' },
+          { en: 'SaaS-transition path unclear despite first ARR achieved', de: 'SaaS-Transition-Pfad unklar trotz erstem ARR' }
+        ]
+      },
+      {
+        area: { en: 'Team Alignment', de: 'Team-Alignment' },
+        symptoms: [
+          { en: 'Each team member had different understanding of priorities', de: 'Jedes Teammitglied hatte anderes Verständnis der Prioritäten' },
+          { en: 'No OKRs defined for 2025', de: 'Keine OKRs für 2025 definiert' },
+          { en: 'Execution uncertainty on strategic priorities', de: 'Unsicherheit bei Umsetzung strategischer Prioritäten' }
+        ]
+      },
+      {
+        area: { en: 'Growth Engine', de: 'Growth Engine' },
+        symptoms: [
+          { en: 'Sales cycles 6-12 months (too long for scalability)', de: 'Sales Cycles 6-12 Monate (zu lang für Skalierbarkeit)' },
+          { en: 'Marketing & Sales not systematized', de: 'Marketing & Sales nicht systematisiert' },
+          { en: 'Customer development strategy missing', de: 'Kundenentwicklungsstrategie fehlte' }
+        ]
+      }
+    ],
+    situationMetrics: [
+      { label: 'Vision 2030', before: 'Not defined', after: 'Defined', impact: '€10M target' },
+      { label: 'OKRs', before: '0', after: '12', impact: 'Q1-Q4 2025' },
+      { label: 'Team Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' },
+      { label: 'Sales Cycle', before: '6-12 months', after: 'Target: 4-8', impact: 'Roadmap set' }
+    ],
+    
+    // WHAT WE DID
+    approach: {
+      en: 'We designed a 2-day Strategy Workshop with the leadership team. Structured approach: Day 1 focused on foundation (Performance, Learnings, Vision 2030), Day 2 on execution (Strategy Options, Priorities, OKRs). External facilitation brought objectivity and structure.',
+      de: 'Wir konzipierten einen 2-tägigen Strategy Workshop mit dem Führungsteam. Strukturierter Ansatz: Tag 1 fokussierte auf Foundation (Performance, Learnings, Vision 2030), Tag 2 auf Execution (Strategy Options, Priorities, OKRs). Externe Facilitation brachte Objektivität und Struktur.'
+    },
+    phases: [
+      {
+        name: { en: 'Day 1: Foundation & Vision 2030', de: 'Tag 1: Foundation & Vision 2030' },
+        timeline: 'Day 1 (8h)',
+        actions: [
+          {
+            name: { en: 'Performance 2024 & Assets Analysis', de: 'Performance 2024 & Assets Analyse' },
+            description: {
+              en: 'Assessed current performance (€1.7-1.8M revenue, €80K-150K SaaS ARR, NPS 83) and identified ideal assets (proprietary methodology, Academy excellence, strategic partnerships).',
+              de: 'Bewerteten aktuelle Performance (€1,7-1,8M Umsatz, €80K-150K SaaS ARR, NPS 83) und identifizierten ideale Assets (proprietäre Methodik, Academy Excellence, strategische Partnerschaften).'
+            },
+            deliverables: [
+              { en: 'Performance scorecard 2024', de: 'Performance-Scorecard 2024' },
+              { en: 'Asset inventory (strengths)', de: 'Asset-Inventar (Stärken)' },
+              { en: 'Areas needing improvement', de: 'Verbesserungsbereiche' }
+            ],
+            whyItMattered: {
+              en: 'Understanding the current state is essential before defining the future state. Assets inform strategy.',
+              de: 'Das Verständnis des aktuellen Zustands ist essentiell, bevor der zukünftige Zustand definiert wird. Assets informieren die Strategie.'
+            }
+          },
+          {
+            name: { en: 'Learnings 2024 Extraction', de: 'Learnings 2024 Extraktion' },
+            description: {
+              en: 'Extracted 24 key learnings across 4 categories (Revenue, Value Creation, Organization, Customers). Patterns emerged: SaaS-transition priority, sales cycle optimization, customer development focus.',
+              de: 'Extrahierten 24 Key Learnings über 4 Kategorien (Umsatz, Wertschöpfung, Organisation, Kunden). Muster entstanden: SaaS-Transition Priorität, Sales Cycle Optimierung, Kundenentwicklungs-Fokus.'
+            },
+            deliverables: [
+              { en: '24 key learnings documented', de: '24 Key Learnings dokumentiert' },
+              { en: 'Pattern analysis across categories', de: 'Musteranalyse über Kategorien' },
+              { en: 'Strategic implications identified', de: 'Strategische Implikationen identifiziert' }
+            ],
+            whyItMattered: {
+              en: 'Learnings from 2024 form the foundation for Strategy 2025. What worked? What didn\'t?',
+              de: 'Learnings aus 2024 bilden die Grundlage für Strategy 2025. Was funktionierte? Was nicht?'
+            }
+          },
+          {
+            name: { en: 'Vision 2030 Definition', de: 'Vision 2030 Definition' },
+            description: {
+              en: 'Defined Vision 2030: €10M revenue target, SaaS-first business model (70-80% ARR), market leadership in proprietary methodology. Path: 35-40% CAGR (2024-2030).',
+              de: 'Definierten Vision 2030: €10M Umsatzziel, SaaS-first Geschäftsmodell (70-80% ARR), Marktführerschaft in proprietärer Methodik. Pfad: 35-40% CAGR (2024-2030).'
+            },
+            deliverables: [
+              { en: 'Vision 2030 statement', de: 'Vision 2030 Statement' },
+              { en: 'Revenue trajectory (€1.7M → €10M)', de: 'Umsatz-Trajektorie (€1,7M → €10M)' },
+              { en: 'Business model shift roadmap', de: 'Geschäftsmodell-Shift Roadmap' }
+            ],
+            whyItMattered: {
+              en: 'Vision 2030 is the North Star. Without it, strategy fragments and team alignment is impossible.',
+              de: 'Vision 2030 ist der Nordstern. Ohne ihn fragmentiert die Strategie und Team-Alignment ist unmöglich.'
+            }
+          }
+        ]
+      },
+      {
+        name: { en: 'Day 2: Strategy 2025 & Roadmap', de: 'Tag 2: Strategy 2025 & Roadmap' },
+        timeline: 'Day 2 (8h)',
+        actions: [
+          {
+            name: { en: 'Growth Strategy Options Evaluation', de: 'Growth Strategy Options Bewertung' },
+            description: {
+              en: 'Evaluated 3 strategic options: (1) SaaS-First, (2) Academy-First, (3) Balanced. Recommendation: SaaS-First WITH Academy Excellence—balancing scalability with differentiation.',
+              de: 'Bewerteten 3 strategische Optionen: (1) SaaS-First, (2) Academy-First, (3) Balanced. Empfehlung: SaaS-First MIT Academy Excellence—Balance zwischen Skalierbarkeit und Differenzierung.'
+            },
+            deliverables: [
+              { en: '3 strategic options with pros/cons', de: '3 strategische Optionen mit Vor-/Nachteilen' },
+              { en: 'Team decision on strategic direction', de: 'Team-Entscheidung zur strategischen Richtung' },
+              { en: 'Rationale documentation', de: 'Begründungsdokumentation' }
+            ],
+            whyItMattered: {
+              en: 'Structured evaluation of options creates confidence in the chosen strategy. Team buy-in is critical.',
+              de: 'Strukturierte Bewertung von Optionen schafft Vertrauen in die gewählte Strategie. Team-Buy-in ist kritisch.'
+            }
+          },
+          {
+            name: { en: 'Strategy 2025 Priorities Definition', de: 'Strategy 2025 Prioritäten Definition' },
+            description: {
+              en: 'Defined 5 strategic priorities: (1) SaaS-Transition acceleration, (2) Enterprise customer model replication, (3) Sales cycle optimization, (4) Marketing & Sales systematization, (5) Product innovation.',
+              de: 'Definierten 5 strategische Prioritäten: (1) SaaS-Transition Beschleunigung, (2) Enterprise-Kundenmodell Replikation, (3) Sales Cycle Optimierung, (4) Marketing & Sales Systematisierung, (5) Produktinnovation.'
+            },
+            deliverables: [
+              { en: '5 strategic priorities for 2025', de: '5 strategische Prioritäten für 2025' },
+              { en: '15 initiatives across priorities', de: '15 Initiativen über Prioritäten' },
+              { en: 'Target metrics per priority', de: 'Zielmetriken pro Priorität' }
+            ],
+            whyItMattered: {
+              en: 'Clear priorities eliminate distraction. The team knows exactly what to focus on.',
+              de: 'Klare Prioritäten eliminieren Ablenkung. Das Team weiß genau, worauf es sich fokussieren soll.'
+            }
+          },
+          {
+            name: { en: 'OKRs 2025 (Q1-Q4) Creation', de: 'OKRs 2025 (Q1-Q4) Erstellung' },
+            description: {
+              en: 'Created 12 OKRs across 4 quarters: Q1 (baseline setup), Q2 (growth acceleration), Q3 (optimization), Q4 (target achievement). Each OKR has measurable key results.',
+              de: 'Erstellten 12 OKRs über 4 Quartale: Q1 (Baseline Setup), Q2 (Growth Acceleration), Q3 (Optimierung), Q4 (Zielerreichung). Jedes OKR hat messbare Key Results.'
+            },
+            deliverables: [
+              { en: '12 OKRs (3 per quarter)', de: '12 OKRs (3 pro Quartal)' },
+              { en: 'Quarterly targets and milestones', de: 'Quartalsziele und Meilensteine' },
+              { en: 'OKR tracking framework', de: 'OKR-Tracking-Framework' }
+            ],
+            whyItMattered: {
+              en: 'OKRs translate strategy into execution. Without them, strategy remains abstract.',
+              de: 'OKRs übersetzen Strategie in Umsetzung. Ohne sie bleibt Strategie abstrakt.'
+            }
+          }
+        ]
+      }
+    ],
+    
+    // RESULTS
+    timeline: '2 days workshop + 2 weeks follow-up',
+    resultMetrics: [
+      { label: 'Vision 2030', before: 'Not defined', after: '€10M, SaaS-first', impact: 'Defined' },
+      { label: 'Strategic Priorities', before: 'Multiple, unclear', after: '5 priorities', impact: 'Focused' },
+      { label: 'OKRs', before: '0 for 2025', after: '12 (Q1-Q4)', impact: 'Actionable' },
+      { label: 'Team Alignment', before: 'Fragmented', after: '100%', impact: 'Unified' }
+    ],
+    roiCalculation: {
+      investment: '€3K-€5K',
+      returnValue: '€30K-€50K',
+      roi: '10x+',
+      breakdown: [
+        { en: 'Strategic clarity: Avoided 3-6 months of internal discussions', de: 'Strategische Klarheit: 3-6 Monate interne Diskussionen vermieden' },
+        { en: 'Team alignment: Execution velocity +50% (estimated)', de: 'Team-Alignment: Execution Velocity +50% (geschätzt)' },
+        { en: 'Focused priorities: Resources concentrated on high-impact initiatives', de: 'Fokussierte Prioritäten: Ressourcen auf High-Impact Initiativen konzentriert' }
+      ]
+    },
+    ceoQuote: {
+      en: '"In 2 days, we achieved what would have taken us 6 months of internal discussions. Vision 2030 is clear, the team is aligned, and we have a concrete roadmap. This workshop was the catalyst we needed."',
+      de: '"In 2 Tagen haben wir erreicht, wofür wir 6 Monate interne Diskussionen gebraucht hätten. Vision 2030 ist klar, das Team ist aligned, und wir haben eine konkrete Roadmap. Dieser Workshop war der Katalysator, den wir brauchten."'
+    },
+    quoteContext: {
+      en: 'The CEO presented the Vision 2030 and Strategy 2025 to the team. All team members committed to the OKRs and the execution roadmap.',
+      de: 'Der CEO präsentierte Vision 2030 und Strategy 2025 dem Team. Alle Teammitglieder verpflichteten sich zu den OKRs und der Execution Roadmap.'
+    },
+    
+    // KEY LESSONS
+    lessons: [
+      {
+        title: { en: 'Strategic clarity requires structured facilitation', de: 'Strategische Klarheit erfordert strukturierte Moderation' },
+        whatWeLearned: {
+          en: 'A 2-day workshop with external facilitation creates clarity faster than months of internal discussions. Structure and objectivity are essential.',
+          de: 'Ein 2-Tage-Workshop mit externer Moderation schafft schneller Klarheit als Monate interner Diskussionen. Struktur und Objektivität sind essentiell.'
+        },
+        keyInsight: {
+          en: 'External facilitation brings objectivity. Internal discussions often go in circles.',
+          de: 'Externe Moderation bringt Objektivität. Interne Diskussionen drehen sich oft im Kreis.'
+        },
+        whatWedDoDifferently: {
+          en: 'Nothing. 2 days was the right timeline for this scope.',
+          de: 'Nichts. 2 Tage war der richtige Zeitrahmen für diesen Scope.'
+        }
+      },
+      {
+        title: { en: 'Vision 2030 is the North Star', de: 'Vision 2030 ist der Nordstern' },
+        whatWeLearned: {
+          en: 'Defining Vision 2030 (€10M, SaaS-first, market leader) creates a North Star that aligns the team and guides all strategic decisions.',
+          de: 'Die Definition von Vision 2030 (€10M, SaaS-first, Marktführer) schafft einen Nordstern, der das Team ausrichtet und alle strategischen Entscheidungen leitet.'
+        },
+        keyInsight: {
+          en: 'Without Vision 2030, strategy fragments. The North Star keeps everyone aligned.',
+          de: 'Ohne Vision 2030 fragmentiert die Strategie. Der Nordstern hält alle ausgerichtet.'
+        },
+        whatWedDoDifferently: {
+          en: 'Start with Vision 2030 earlier in the company lifecycle.',
+          de: 'Vision 2030 früher im Unternehmenslebenszyklus starten.'
+        }
+      },
+      {
+        title: { en: 'OKRs translate strategy into execution', de: 'OKRs übersetzen Strategie in Umsetzung' },
+        whatWeLearned: {
+          en: 'Defining 12 OKRs (Q1-Q4) translates strategy into execution. Each quarter has clear targets and milestones.',
+          de: 'Die Definition von 12 OKRs (Q1-Q4) übersetzt Strategie in Umsetzung. Jedes Quartal hat klare Ziele und Meilensteine.'
+        },
+        keyInsight: {
+          en: 'Strategy without OKRs remains abstract. OKRs create accountability.',
+          de: 'Strategie ohne OKRs bleibt abstrakt. OKRs schaffen Verantwortlichkeit.'
+        },
+        whatWedDoDifferently: {
+          en: 'Add monthly OKR reviews from the start.',
+          de: 'Monatliche OKR-Reviews von Anfang an hinzufügen.'
+        }
+      },
+      {
+        title: { en: 'SaaS-transition is a multi-year journey', de: 'SaaS-Transition ist eine mehrjährige Reise' },
+        whatWeLearned: {
+          en: 'Transitioning from 10-20% ARR to 70-80% ARR takes 5-6 years. It requires patient capital, strategic focus, and systematic execution.',
+          de: 'Der Übergang von 10-20% ARR zu 70-80% ARR dauert 5-6 Jahre. Er erfordert geduldiges Kapital, strategischen Fokus und systematische Umsetzung.'
+        },
+        keyInsight: {
+          en: 'Quick wins fund the transition. Don\'t expect overnight transformation.',
+          de: 'Quick Wins finanzieren die Transition. Erwarte keine Transformation über Nacht.'
+        },
+        whatWedDoDifferently: {
+          en: 'Set realistic timeline expectations from the start.',
+          de: 'Realistische Zeitleisten-Erwartungen von Anfang an setzen.'
+        }
+      },
+      {
+        title: { en: 'Customer development beats new customer acquisition', de: 'Kundenentwicklung schlägt Neukundengewinnung' },
+        whatWeLearned: {
+          en: 'Developing existing customers (replicating successful models) is faster and more profitable than acquiring new customers.',
+          de: 'Die Entwicklung bestehender Kunden (Replikation erfolgreicher Modelle) ist schneller und profitabler als Neukundengewinnung.'
+        },
+        keyInsight: {
+          en: 'Replicate what works. Your best customers show the path to more like them.',
+          de: 'Repliziere was funktioniert. Deine besten Kunden zeigen den Weg zu mehr wie ihnen.'
+        },
+        whatWedDoDifferently: {
+          en: 'Prioritize customer development as #1 growth lever.',
+          de: 'Kundenentwicklung als #1 Wachstumshebel priorisieren.'
+        }
+      }
+    ],
+    
+    // RELATED CONTENT
+    relatedSolutions: [
+      {
+        name: { en: 'Workshop', de: 'Workshop' },
+        url: '/solutions/workshop',
+        duration: '1-2 Days',
+        investment: '€9.6K-€12.9K',
+        focus: { 
+          en: 'Team Alignment, Strategic Clarity, Execution Frameworks', 
+          de: 'Team Alignment, Strategische Klarheit, Execution Frameworks' 
+        },
+        outcome: { 
+          en: 'Team Alignment +80%, Playbook, Execution Ready Day 1', 
+          de: 'Team Alignment +80%, Playbook, Execution Ready Tag 1' 
+        },
+        type: 'primary'
+      },
+      {
+        name: { en: 'Strategic Advisory', de: 'Strategic Advisory' },
+        url: '/solutions/strategic-advisory',
+        duration: '12+ months',
+        investment: '€3.9K-€11K/Mo',
+        focus: { 
+          en: 'Ongoing Strategic Guidance, OKR Reviews, Board Prep', 
+          de: 'Laufende strategische Begleitung, OKR Reviews, Board Prep' 
+        },
+        outcome: { 
+          en: 'Decision Velocity +50-100%, Strategic Clarity +80%', 
+          de: 'Decision Velocity +50-100%, Strategische Klarheit +80%' 
+        },
+        type: 'alternative'
+      },
+      {
+        name: { en: 'Power Up: Growth Momentum', de: 'Power Up: Growth Momentum' },
+        url: '/solutions/power-up/growth-momentum',
+        duration: '4-6 Weeks',
+        investment: '€23.6K',
+        focus: { 
+          en: '90-Day Execution Sprint after Workshop', 
+          de: '90-Tage Execution Sprint nach Workshop' 
+        },
+        outcome: { 
+          en: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%', 
+          de: 'ARR Growth +30-60pp, Win Rate +30-50%, Pipeline +50-100%' 
+        },
+        type: 'related'
+      }
+    ],
+    relatedCaseStudies: [
+      { slug: 'strategic-transformation-market-leadership', teaser: { en: 'How a Series B SaaS company achieved €7.7M ARR and NRR: 114.3%', de: 'Wie ein Series B SaaS-Unternehmen €7,7M ARR und NRR: 114,3% erreichte' } }
+    ],
+    relatedPlaybooks: [
+      { slug: 'strategic-capabilities', teaser: { en: 'Build strategic clarity and execution excellence', de: 'Strategische Klarheit und Execution Excellence aufbauen' } },
+      { slug: 'operating-systems', teaser: { en: 'Build scalable operating systems for growth', de: 'Skalierbare Operating Systems für Wachstum aufbauen' } }
+    ],
+    
+    // META
+    playbooks: ['strategic-capabilities', 'operating-systems'],
+    downloadUrl: undefined
+  },
+
 ];
 
 // Helper functions
