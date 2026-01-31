@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
 import { ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,6 +22,7 @@ interface CompanyData {
   growth: string;
   thetaIndex: number;
   color: string;
+  darkColor?: string;
   dataSource: string;
 }
 
@@ -31,15 +33,20 @@ const companies: CompanyData[] = [
   { name: 'Midjourney', founded: '2021', valuation: 'N/A', valuationNum: 0, revenue: '$492M', revenueNum: 492, growth: '10x/3y', thetaIndex: 0.88, color: '#8B5CF6', dataSource: 'ANST v4.5.3' },
   { name: 'Figma', founded: '2012', valuation: '$20B', valuationNum: 20, revenue: '$425M', revenueNum: 425, growth: '20x/11y', thetaIndex: 0.87, color: '#F97316', dataSource: 'Public data' },
   { name: 'Perplexity', founded: '2022', valuation: '$9B', valuationNum: 9, revenue: '$200M+', revenueNum: 200, growth: '18x/2y', thetaIndex: 0.85, color: '#14B8A6', dataSource: 'AMF v4.1' },
-  { name: 'Notion', founded: '2016', valuation: '$10B', valuationNum: 10, revenue: '$100M+', revenueNum: 100, growth: '10x/8y', thetaIndex: 0.85, color: '#171717', dataSource: 'Public data' },
+  { name: 'Notion', founded: '2016', valuation: '$10B', valuationNum: 10, revenue: '$100M+', revenueNum: 100, growth: '10x/8y', thetaIndex: 0.85, color: '#171717', darkColor: '#E5E5E5', dataSource: 'Public data' },
 ];
 
 type SortKey = 'name' | 'founded' | 'valuationNum' | 'revenueNum' | 'thetaIndex';
 
 const CaseStudyComparisonTable = () => {
   const { language } = useLanguage();
+  const { theme } = useTheme();
   const [sortKey, setSortKey] = useState<SortKey>('thetaIndex');
   const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc');
+
+  // Helper to get theme-aware color
+  const getCompanyColor = (company: CompanyData) => 
+    (theme === 'dark' && company.darkColor) ? company.darkColor : company.color;
 
   const handleSort = (key: SortKey) => {
     if (sortKey === key) {
@@ -110,7 +117,7 @@ const CaseStudyComparisonTable = () => {
                 <div className="flex items-center gap-2">
                   <div 
                     className="w-2 h-2 rounded-full" 
-                    style={{ backgroundColor: company.color }}
+                    style={{ backgroundColor: getCompanyColor(company) }}
                   />
                   {company.name}
                 </div>
@@ -126,7 +133,7 @@ const CaseStudyComparisonTable = () => {
               <TableCell>
                 <span 
                   className="font-bold"
-                  style={{ color: company.color }}
+                  style={{ color: getCompanyColor(company) }}
                 >
                   {company.thetaIndex}
                 </span>
