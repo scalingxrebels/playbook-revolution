@@ -1,7 +1,22 @@
+# Case Study Implementation Status
 
+## ✅ Case Study 11: Diagnostic-Led Acquisition Scaled (COMPLETED)
+- **Slug:** `/cases/diagnostic-led-acquisition-scaled`
+- **Company:** Sales & Growth Consulting
+- **Solution Links:** Boost: Growth Engine (primary), Power Up: Growth Momentum, Power Up: Predictable Acquisition
+- **Bidirectional Link:** Power Up: Growth Momentum (ID 12) → Case Study 11
 
-# Implementierungskonzept: Case Study 11
-## Growth Engine Activated → Diagnostic-Led Acquisition Scaled
+---
+
+## ✅ Case Study 10: VC Due Diligence Passed (COMPLETED)
+- **Slug:** `/cases/vc-due-diligence-passed-investment-secured`
+- **Company:** FinTech Startup
+- **Solution Links:** VC Due Diligence Simulation (primary), Boost: Board Excellence, Investor-Readiness Pitch Deck Check
+- **Bidirectional Link:** VC DD Simulation (ID 8) → Case Study 10
+
+---
+
+# Archived: Case Study 11 Implementation Notes
 
 ## Übersicht
 

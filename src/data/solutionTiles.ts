@@ -526,7 +526,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/power-up/growth-momentum',
     secondaryCtaEn: 'See case study',
     secondaryCtaDe: 'Case Study ansehen',
-    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled'
+    secondaryCtaUrl: '/cases/diagnostic-led-acquisition-scaled'
   },
   {
     id: 13,
