@@ -164,18 +164,18 @@ const FinalCTAOptimized: React.FC = () => {
                   </span>
                 ))}
               </div>
-              
-              {/* Book a Call Button */}
-              <div className="mt-6 text-center">
-                <Button 
-                  size="lg"
-                  className="bg-gradient-accent text-accent-foreground shadow-accent-glow"
-                  onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
-                >
-                  <Phone className="mr-2 w-4 h-4" />
-                  {language === 'de' ? 'Jetzt Call buchen' : 'Book a Call'}
-                </Button>
-              </div>
+            </div>
+
+            {/* Book a Call Button - Outside the tile */}
+            <div className="mt-6 text-center">
+              <Button 
+                size="lg"
+                className="bg-gradient-accent text-accent-foreground shadow-accent-glow"
+                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+              >
+                <Phone className="mr-2 w-4 h-4" />
+                {language === 'de' ? 'Jetzt Call buchen' : 'Book a Call'}
+              </Button>
             </div>
           </div>
 
