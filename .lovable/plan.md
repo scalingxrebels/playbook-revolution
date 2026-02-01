@@ -1,12 +1,14 @@
 
 
-# Fix: Mobile Navigation mit 80% Opazität
+# Fix: Mobile Navigation Opacity (Inline Styles)
 
-## Ziel
+## Problem-Analyse
 
-- Mobile Hamburger-Menü mit **80% Hintergrund-Opazität** + Backdrop-Blur für Glaseffekt
-- Desktop Navigation bleibt **unverändert** (beide Modes)
-- Text im Mobile-Menü bleibt **100% opak** für Lesbarkeit
+Die Tailwind-Klasse `bg-[#FAF9F7]/80` wird nicht korrekt interpretiert. Die Opazitäts-Modifikation (`/80`) funktioniert nicht zuverlässig mit arbiträren Hex-Werten in manchen Build-Konfigurationen.
+
+## Lösung
+
+Wir verwenden inline styles mit RGBA-Werten, um die 80% Opazität garantiert anzuwenden.
 
 ## Änderungen
 
@@ -15,25 +17,33 @@
 **Zeile 131 - Mobile Overlay Container:**
 
 ```tsx
-// Aktuell:
-<div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7] dark:bg-[#0F0F14]">
-
-// Neu - 80% Opazität mit Backdrop-Blur:
+// Aktuell (funktioniert nicht):
 <div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7]/80 dark:bg-[#0F0F14]/80 backdrop-blur-xl">
+
+// Neu - mit inline styles:
+<div 
+  className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in backdrop-blur-xl"
+  style={{ 
+    backgroundColor: theme === 'dark' ? 'rgba(15, 15, 20, 0.8)' : 'rgba(250, 249, 247, 0.8)'
+  }}
+>
 ```
 
 ## Was passiert
 
 | Element | Änderung |
 |---------|----------|
-| Mobile Overlay | `bg-[#FAF9F7]/80` (Light) / `bg-[#0F0F14]/80` (Dark) + `backdrop-blur-xl` |
+| Mobile Overlay | Inline `style` mit RGBA-Werten für 80% Opazität |
+| `backdrop-blur-xl` | Bleibt als Tailwind-Klasse (funktioniert) |
 | Desktop Navigation | Keine Änderung |
-| Mobile Texte | Bleiben 100% opak (keine Änderung nötig) |
 
-## Visueller Effekt
+## Technische Details
 
-- **Light Mode:** Heller, semi-transparenter Hintergrund mit Blur → Hero-Elemente schimmern subtil durch
-- **Dark Mode:** Dunkler, semi-transparenter Hintergrund mit Blur → Ähnlich wie Desktop-Navigation
+- **Light Mode:** `rgba(250, 249, 247, 0.8)` = `#FAF9F7` mit 80% Opazität
+- **Dark Mode:** `rgba(15, 15, 20, 0.8)` = `#0F0F14` mit 80% Opazität
+- Der `theme` Wert kommt aus dem bestehenden `useTheme()` Hook (bereits importiert)
 
-Das `backdrop-blur-xl` sorgt für einen eleganten Glaseffekt, der die Lesbarkeit trotz Transparenz gewährleistet.
+## Erwartetes Ergebnis
+
+Das Mobile-Menü wird mit 80% Opazität und Backdrop-Blur angezeigt, sodass der Hero-Bereich subtil durchschimmert, während die Navigation-Links gut lesbar bleiben.
 
