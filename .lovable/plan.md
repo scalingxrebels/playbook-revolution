@@ -1,138 +1,39 @@
 
-# Implementierungsplan: Broken Links Fix
 
-## Übersicht
+# Fix: Mobile Navigation mit 80% Opazität
 
-Dieser Plan behebt alle identifizierten broken Links und Routing-Inkonsistenzen in der gesamten Website.
+## Ziel
 
----
+- Mobile Hamburger-Menü mit **80% Hintergrund-Opazität** + Backdrop-Blur für Glaseffekt
+- Desktop Navigation bleibt **unverändert** (beide Modes)
+- Text im Mobile-Menü bleibt **100% opak** für Lesbarkeit
 
-## Phase 1: Playbook-Slug Synchronisation
+## Änderungen
 
-### Problem
-Die Slugs in `src/data/playbooks/index.ts` stimmen nicht mit den Routen in `App.tsx` überein.
+### Datei: `src/components/Navigation.tsx`
 
-### Änderungen in `src/data/playbooks/index.ts`
-
-| Playbook | Aktueller Slug | Korrekter Slug |
-|----------|----------------|----------------|
-| Strategic Governance | `board-governance/strategic-governance` | `board-governance/strategic` |
-| Operational Governance | `board-governance/operational-governance` | `board-governance/operational` |
-| Portfolio Excellence | `portfolio/portfolio-excellence` | `portfolio/excellence` |
-
-### Betroffene Dateien
-- `src/data/playbooks/index.ts` (Zeilen mit falschen Slugs)
-- Möglicherweise die einzelnen Content-Dateien in `src/data/playbooks/content/`
-
----
-
-## Phase 2: Fehlende Route hinzufügen oder entfernen
-
-### Problem
-Der Slug `strategic-capabilities/deep-dive` existiert in den Daten, aber keine Route in `App.tsx`.
-
-### Optionen
-
-**Option A: Route hinzufügen** (empfohlen wenn Content geplant)
-```tsx
-// In App.tsx
-const PlaybookStrategicCapabilitiesDeepDive = lazy(() => import("./pages/PlaybookStrategicCapabilitiesDeepDive"));
-
-<Route path="/playbooks/strategic-capabilities/deep-dive" element={<PlaybookStrategicCapabilitiesDeepDive />} />
-```
-
-**Option B: Daten-Eintrag entfernen** (empfohlen wenn kein Content geplant)
-- Entferne `strategic-capabilities/deep-dive` aus `src/data/playbooks/index.ts`
-- Entferne `strategicCapabilitiesDeepDiveData` Export aus `src/data/playbooks/content/index.ts`
-- Lösche `src/data/playbooks/content/strategic-capabilities-deep-dive.ts`
-
-### Empfehlung
-Option B, da die Datei nur Platzhalter enthält und laut Memory "Strategic Capabilities is a unique Level 2 meta-playbook that does not have child playbooks".
-
----
-
-## Phase 3: Legacy Case Study Routing
-
-### Problem
-`ScalingXCaseStudies.tsx` verwendet `/case-study/:id` statt `/cases/:slug`.
-
-### Änderung in `src/components/ScalingXCaseStudies.tsx`
+**Zeile 131 - Mobile Overlay Container:**
 
 ```tsx
-// Aktuell (ca. Zeile mit Link)
-<Link to={`/case-study/${case.id}`}>
+// Aktuell:
+<div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7] dark:bg-[#0F0F14]">
 
-// Neu
-<Link to={`/cases/${case.slug}`}>
+// Neu - 80% Opazität mit Backdrop-Blur:
+<div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7]/80 dark:bg-[#0F0F14]/80 backdrop-blur-xl">
 ```
 
-### Zusätzliche Prüfung
-- Verifizieren dass die Case Study Daten in `research.ts` auch `slug` Felder haben
-- Falls nicht: Migration zu `caseStudies.ts` oder Hinzufügen von `slug` Feldern
+## Was passiert
 
----
+| Element | Änderung |
+|---------|----------|
+| Mobile Overlay | `bg-[#FAF9F7]/80` (Light) / `bg-[#0F0F14]/80` (Dark) + `backdrop-blur-xl` |
+| Desktop Navigation | Keine Änderung |
+| Mobile Texte | Bleiben 100% opak (keine Änderung nötig) |
 
-## Phase 4: relatedPlaybooks Format-Korrektur
+## Visueller Effekt
 
-### Problem
-Die `relatedPlaybooks` Arrays in `caseStudies.ts` verwenden falsche Slug-Formate.
+- **Light Mode:** Heller, semi-transparenter Hintergrund mit Blur → Hero-Elemente schimmern subtil durch
+- **Dark Mode:** Dunkler, semi-transparenter Hintergrund mit Blur → Ähnlich wie Desktop-Navigation
 
-### Beispiel-Korrekturen
+Das `backdrop-blur-xl` sorgt für einen eleganten Glaseffekt, der die Lesbarkeit trotz Transparenz gewährleistet.
 
-| Aktuell | Korrekt |
-|---------|---------|
-| `exit-ma` | `board-governance/exit-ma` |
-| `gtm-revenue` | `growth-engines/gtm-revenue` |
-| `operations` | `operating-systems/operations` |
-| `finance` | `operating-systems/finance` |
-| `product` | `growth-engines/product` |
-| `customer-success` | `growth-engines/customer-success` |
-| `talent` | `operating-systems/talent` |
-| `data-tech` | `operating-systems/data-tech` |
-
-### Betroffene Case Studies
-Alle Einträge in `src/data/cases/caseStudies.ts` mit `relatedPlaybooks` Arrays.
-
----
-
-## Phase 5: Komponenten-Audit
-
-### Zu prüfende Komponenten
-
-| Komponente | Prüfung |
-|------------|---------|
-| `SolutionPlaybookLink.tsx` | Verwendet `playbookDisplayNames` Map - muss mit korrekten Slugs übereinstimmen |
-| `PlaybookCard.tsx` | Link-Generierung prüfen |
-| `CaseCard.tsx` | relatedPlaybooks Rendering prüfen |
-
----
-
-## Zusammenfassung der Änderungen
-
-| Datei | Änderungstyp |
-|-------|--------------|
-| `src/data/playbooks/index.ts` | Slug-Korrekturen (3 Einträge) |
-| `src/data/playbooks/content/index.ts` | Export entfernen |
-| `src/data/playbooks/content/strategic-capabilities-deep-dive.ts` | Datei löschen |
-| `src/components/ScalingXCaseStudies.tsx` | Link-Pfad aktualisieren |
-| `src/data/cases/caseStudies.ts` | relatedPlaybooks Slugs korrigieren |
-| `src/components/SolutionPlaybookLink.tsx` | playbookDisplayNames Map aktualisieren |
-
----
-
-## Technische Notizen
-
-### Reihenfolge wichtig
-1. Erst Daten korrigieren (Phase 1, 2, 4)
-2. Dann Komponenten anpassen (Phase 3, 5)
-3. Zuletzt End-to-End testen
-
-### Keine Breaking Changes
-- Alle Routen in `App.tsx` bleiben unverändert
-- Nur die Daten werden an die bestehenden Routen angepasst
-
-### Test-Strategie
-Nach Implementation:
-- Alle Playbook-Links im Hub testen
-- Case Detail Seiten → Related Playbooks Links testen
-- ScalingX Case Studies Section testen
