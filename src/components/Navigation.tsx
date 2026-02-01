@@ -128,7 +128,7 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Menu - Full Screen Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7] dark:bg-[#0F0F14]">
+          <div className="md:hidden fixed inset-0 top-16 z-50 bg-[#FAF9F7] dark:bg-[#0F0F14]" style={{ opacity: 1 }}>
             <div className="container px-4 py-8">
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => {
