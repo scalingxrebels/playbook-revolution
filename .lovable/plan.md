@@ -1,60 +1,73 @@
 
 
-# Plan: Button außerhalb der Clients-Kachel verschieben
+# Plan: "Book a Call" Button Konsistent mit Final CTAs
 
-## Problem
-Der Button wurde innerhalb der "Who We've Worked With" Kachel eingefügt (Zeile 168-178). Er soll aber **unterhalb** der Kachel stehen.
+## Aktueller Status
+
+Der aktuelle Button in `FinalCTAOptimized.tsx`:
+```typescript
+<Button 
+  size="lg"  // ← zu klein
+  className="bg-gradient-accent text-accent-foreground shadow-accent-glow"
+>
+  <Phone className="mr-2 w-4 h-4" />
+  {language === 'de' ? 'Jetzt Call buchen' : 'Book a Call'}
+</Button>
+```
+
+## Referenz: Playbook Final CTA Button (das Pattern)
+
+```typescript
+<Button 
+  size="xl" 
+  className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+>
+  {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book Free Call'}
+  <ArrowRight className="w-5 h-5 ml-2" />
+</Button>
+```
 
 ## Änderung
 
 **Datei:** `src/components/homepage/FinalCTAOptimized.tsx`
 
-### Aktuelle Struktur (falsch):
-```
-Clients Section (div mit border)
-├── Label: "Who We've Worked With"
-├── Client Chips
-└── Book a Call Button  ← FALSCH: innerhalb der Kachel
-```
+### Was sich ändert:
 
-### Gewünschte Struktur:
-```
-Clients Section (div mit border)
-├── Label: "Who We've Worked With"
-└── Client Chips
+| Attribut | Aktuell | Neu |
+|----------|---------|-----|
+| `size` | `lg` | `xl` |
+| `className` | Basic gradient | Full premium pattern |
+| Icon | Phone only | Phone + ArrowRight |
+| Text | Kurz | Vollständig wie bei Playbooks |
+| Styling | Minimal | `font-bold uppercase tracking-wide` |
 
-Book a Call Button  ← RICHTIG: außerhalb, darunter
-```
-
-### Technische Umsetzung:
-
-1. **Zeile 167-178 entfernen** (Button aus der Clients-Kachel)
-2. **Nach Zeile 179** (nach dem schließenden `</div>` der Clients Section) den Button einfügen:
+### Neuer Code (Zeile 170-181):
 
 ```typescript
-{/* Clients Section */}
-<div className="mt-6 p-6 rounded-xl bg-muted/30 border-2 border-border">
-  <p className="...">Who We've Worked With</p>
-  <div className="flex flex-wrap ...">
-    {clients.map(...)}
-  </div>
-</div>  {/* ← Clients Section ENDE */}
-
-{/* Book a Call Button - NEU: AUSSERHALB der Kachel */}
+{/* Book a Call Button - Outside the tile */}
 <div className="mt-6 text-center">
   <Button 
-    size="lg"
-    className="bg-gradient-accent text-accent-foreground shadow-accent-glow"
+    size="xl"
+    className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 group"
     onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
   >
-    <Phone className="mr-2 w-4 h-4" />
-    {language === 'de' ? 'Jetzt Call buchen' : 'Book a Call'}
+    <Phone className="mr-2 w-5 h-5" />
+    {language === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
+    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
   </Button>
 </div>
 ```
 
+### Import hinzufügen:
+
+```typescript
+import { ArrowRight } from 'lucide-react';  // Bereits vorhanden? Prüfen
+```
+
 ## Ergebnis
-- Button steht als eigenständiges Element unter der Clients-Kachel
-- Mehr Sichtbarkeit durch Separation
-- Klarere visuelle Hierarchie
+
+- Konsistent mit Playbook/Research Final CTA Buttons
+- Premium-Styling: Bold, Uppercase, Tracking
+- Hover-Effekte: opacity + shadow-glow + ArrowRight-Animation
+- Größere Präsenz durch `size="xl"` und `px-10 py-7`
 
