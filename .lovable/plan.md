@@ -1,92 +1,102 @@
 
-# Plan: Datenschutzerklärung/Privacy Policy Update
+# Plan: AGB/Terms Update nach neuem Briefing
 
 ## Überblick
 
-Die Datenschutzseite wird vollständig überarbeitet gemäß dem neuen Briefing. Das Design orientiert sich am Glossar-Layout mit strukturierten Cards, Icons und Badges. Die Seite wird zweisprachig (DE/EN) implementiert.
+Die AGB-Seite wird vollständig überarbeitet gemäß dem detaillierten Briefing. Das Design orientiert sich am Glossar-Layout mit strukturierten Cards, Tables, Icons und Badges. Die Seite wird zweisprachig (DE/EN) implementiert.
 
 ## Aktueller Status vs. Briefing
 
 | Aspekt | Aktuell | Neu (Briefing) |
 |--------|---------|----------------|
-| Sektionen | ~14 | ~35 |
-| Design | Prose-Layout | Card-basiert (Glossar-Stil) |
-| Sprache | Nur Deutsch | DE + EN |
+| Sektionen | 11 (§1-§11) | 10 (§1-§10) strukturiert |
+| Design | Prose-Layout, border-left | Card-basiert (Glossar-Stil) |
+| Preistabellen | Keine | 6 Service-Kategorien mit Preisen |
+| Zahlungspläne | Keine | Detaillierte Payment Schedules |
+| Laufzeiten | Einfach | Tabelle mit allen Produkten |
+| Icons | Nur ArrowLeft | 15+ Lucide-Icons |
 | Container | max-w-4xl | max-w-5xl |
-| Icons | Keine | Lucide-Icons |
-| Drittanbieter | Keine | 15+ Services dokumentiert |
+| Outcome-Garantie | Nicht erwähnt | Detailliert dokumentiert |
 
-## Neue Sektionen (aus Briefing)
+## Neue Struktur (aus Briefing)
 
 ```text
 Struktur nach Update:
-├── Header mit Back-Button + Badges
-├── Preamble / Einführung
-├── Controller (Verantwortlicher)
-├── Data Protection Contact (Ansprechpartner)
-├── Types of Data Processed (erweitert)
-├── Categories of Data Subjects (erweitert)
-├── Purposes of Processing (erweitert)
-├── Legal Basis (mit DSGVO-Artikeln)
-├── Security Measures (mit Liste)
+├── Header mit Back-Button + Badges (v1.0, BGB-konform)
+├── Inhaltsverzeichnis (Clickable)
 │
-├── TECHNICAL INFRASTRUCTURE
-│   ├── Hosting (Lovable/Vercel)
-│   ├── Forms (Fillout.com)
-│   └── Booking System (Microsoft 365)
+├── § 1 GELTUNGSBEREICH & VERTRAGSSCHLUSS
+│   ├── 1.1 Geltungsbereich (mit Firmendetails)
+│   ├── 1.2 Ausschluss abweichender Bedingungen
+│   ├── 1.3 Vertragsschluss
+│   └── 1.4 Vertragssprache
 │
-├── COMMUNICATION & MARKETING
-│   ├── Newsletter (ActiveCampaign)
-│   └── Email Communication
+├── § 2 LEISTUNGEN & LEISTUNGSUMFANG
+│   ├── 2.1 Leistungskategorien (Cards)
+│   │   ├── Transformation Programs (Power Up, Boost, Accelerate)
+│   │   ├── Decision Support
+│   │   ├── AI Tools & Training
+│   │   ├── Bespoke Services
+│   │   ├── Retainer Advisory
+│   │   └── Portfolio Solutions
+│   ├── 2.2 Leistungsbeschreibung
+│   └── 2.3 Leistungsänderungen
 │
-├── ANALYTICS & TRACKING
-│   ├── Google Analytics 4
-│   ├── Hotjar
-│   ├── Google Ads Conversion
-│   └── LinkedIn Insight Tag / Facebook Pixel
+├── § 3 MITWIRKUNGSPFLICHTEN DES KUNDEN
+│   ├── 3.1 Allgemeine Mitwirkungspflichten
+│   ├── 3.2 Spezifische Mitwirkungspflichten (Tabelle)
+│   └── 3.3 Folgen fehlender Mitwirkung
 │
-├── COOKIES
-│   ├── Cookie-Kategorien
-│   ├── Consent Management
-│   └── Browser-Einstellungen
+├── § 4 VERGÜTUNG & ZAHLUNGSBEDINGUNGEN
+│   ├── 4.1 Vergütung
+│   ├── 4.2 Zahlungsbedingungen (6 Tabellen)
+│   ├── 4.3 Zahlungsfrist & Verzug
+│   ├── 4.4 Aufrechnung & Zurückbehaltung
+│   └── 4.5 Reisekosten & Auslagen
 │
-├── BUSINESS TOOLS
-│   ├── CRM (Attio)
-│   ├── Cloud Storage (Microsoft 365)
-│   └── AI Tools (interne Nutzung)
+├── § 5 VERTRAGSLAUFZEIT & KÜNDIGUNG
+│   ├── 5.1 Vertragslaufzeit (Tabelle)
+│   ├── 5.2 Ordentliche Kündigung
+│   ├── 5.3 Außerordentliche Kündigung
+│   └── 5.4 Folgen der Kündigung
 │
-├── ACCOUNTING
-│   ├── Tax Advisor (Ziegler & Heidorn)
-│   ├── DATEV
-│   └── Finom (Business Account)
+├── § 6 GEISTIGES EIGENTUM & NUTZUNGSRECHTE
+│   ├── 6.1 Geistiges Eigentum von ScalingX (Liste)
+│   ├── 6.2 Nutzungsrechte des Kunden
+│   ├── 6.3 Nutzungsrechte von ScalingX
+│   └── 6.4 Kundendaten
 │
-├── Social Media
-├── Contractual Services
-├── Contact Requests
-├── Application Process
-├── Log Files
-├── Third Country Transfers
-├── Retention Periods (mit Tabelle)
+├── § 7 VERTRAULICHKEIT & DATENSCHUTZ
+│   ├── 7.1 Vertraulichkeit
+│   ├── 7.2 Datenschutz
+│   └── 7.3 Subunternehmer
 │
-├── RIGHTS (8 Rechte)
-│   ├── Access (Art. 15)
-│   ├── Rectification (Art. 16)
-│   ├── Erasure (Art. 17)
-│   ├── Restriction (Art. 18)
-│   ├── Data Portability (Art. 20)
-│   ├── Withdraw Consent (Art. 7)
-│   ├── Object (Art. 21)
-│   └── Complaint (Art. 77)
+├── § 8 HAFTUNG & GEWÄHRLEISTUNG
+│   ├── 8.1 Haftung
+│   ├── 8.2 Gewährleistung
+│   ├── 8.3 Outcome-Garantie (Card)
+│   └── 8.4 Verjährung
 │
-├── Exercising Rights (Kontakt)
-├── Changes to Privacy Policy
-├── Final Contact
+├── § 9 HÖHERE GEWALT
+│   ├── 9.1 Definition
+│   └── 9.2 Folgen
+│
+├── § 10 SCHLUSSBESTIMMUNGEN
+│   ├── 10.1 Änderungen & Ergänzungen
+│   ├── 10.2 Salvatorische Klausel
+│   ├── 10.3 Anwendbares Recht
+│   ├── 10.4 Gerichtsstand
+│   ├── 10.5 Streitbeilegung
+│   ├── 10.6 Übertragung
+│   └── 10.7 Vertragssprache
+│
+├── Kontakt-Sektion (Card)
 └── Compliance Footer (Badges)
 ```
 
 ## Design-Pattern (Glossar-Vorlage)
 
-**Datei:** `src/pages/Datenschutz.tsx`
+**Datei:** `src/pages/AGB.tsx`
 
 ### Imports
 
@@ -104,17 +114,16 @@ import {
   TableHeader, TableRow
 } from '@/components/ui/table';
 import { 
-  ArrowLeft, Building2, User, Database, Users, Target,
-  Scale, Shield, Server, FileText, Calendar, Mail,
-  BarChart3, Cookie, Briefcase, Cloud, Bot, Calculator,
-  Share2, FileCheck, UserPlus, HardDrive, Globe, Clock,
-  CheckCircle, Lock, Phone, ExternalLink, AlertTriangle
+  ArrowLeft, Building2, FileText, Users, CreditCard, Clock, 
+  Lightbulb, Lock, Shield, AlertTriangle, Scale, Phone, Mail,
+  Rocket, Target, Zap, BarChart3, BookOpen, Bot, Briefcase,
+  Calendar, CheckCircle, ExternalLink
 } from 'lucide-react';
 ```
 
 ### Struktur-Elemente
 
-1. **Header mit Back-Button:**
+1. **Header mit Back-Button und Badges:**
 ```typescript
 <Button variant="ghost" onClick={() => navigate(-1)} className="mb-6 -ml-2">
   <ArrowLeft className="h-4 w-4 mr-2" />
@@ -122,150 +131,229 @@ import {
 </Button>
 
 <div className="flex flex-wrap items-center gap-3 mb-4">
-  <Badge variant="outline">GDPR</Badge>
-  <Badge variant="outline">BDSG</Badge>
+  <Badge variant="outline">BGB §§ 305-310</Badge>
+  <Badge variant="outline">B2B</Badge>
   <Badge variant="gradient">v1.0</Badge>
 </div>
 
 <h1 className="font-display text-4xl md:text-5xl italic mb-4">
-  {language === 'de' ? 'Datenschutzerklärung' : 'Privacy Policy'}
+  {language === 'de' ? 'Allgemeine Geschäftsbedingungen' : 'Terms and Conditions'}
 </h1>
 ```
 
-2. **Card-basierte Sektionen:**
+2. **Inhaltsverzeichnis (Clickable):**
 ```typescript
-<Card className="mb-6">
+<Card className="mb-8">
   <CardHeader className="pb-3">
-    <CardTitle className="flex items-center gap-3 text-xl">
-      <Building2 className="h-5 w-5 text-primary" />
-      {language === 'de' ? 'Verantwortlicher' : 'Controller'}
+    <CardTitle className="flex items-center gap-3 text-lg">
+      <FileText className="h-5 w-5 text-primary" />
+      {language === 'de' ? 'Inhaltsverzeichnis' : 'Table of Contents'}
     </CardTitle>
   </CardHeader>
   <CardContent>
-    {/* Content */}
+    <ol className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+      {sections.map((section, index) => (
+        <li key={index}>
+          <a href={`#section-${index + 1}`} className="hover:text-primary">
+            § {index + 1} {section.title}
+          </a>
+        </li>
+      ))}
+    </ol>
   </CardContent>
 </Card>
 ```
 
-3. **Drittanbieter-Tabellen:**
+3. **Leistungskategorien (Card-Grid):**
+```typescript
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  {/* Transformation Programs */}
+  <Card className="border-purple-500/30 bg-purple-500/5">
+    <CardHeader className="pb-2">
+      <CardTitle className="flex items-center gap-2 text-base">
+        <Rocket className="h-4 w-4 text-purple-500" />
+        Transformation Programs
+      </CardTitle>
+    </CardHeader>
+    <CardContent className="text-sm space-y-2">
+      <div><strong>Power Up:</strong> €23.600 (30 Tage)</div>
+      <div><strong>Boost:</strong> €60K-€78K (90 Tage)</div>
+      <div><strong>Accelerate:</strong> €153K (12 Monate)</div>
+    </CardContent>
+  </Card>
+  {/* ... weitere Cards ... */}
+</div>
+```
+
+4. **Zahlungspläne (Tabellen):**
 ```typescript
 <Table>
   <TableHeader>
     <TableRow className="bg-muted/50">
-      <TableHead>Service</TableHead>
-      <TableHead>{language === 'de' ? 'Anbieter' : 'Provider'}</TableHead>
-      <TableHead>{language === 'de' ? 'Zweck' : 'Purpose'}</TableHead>
-      <TableHead>{language === 'de' ? 'Rechtsgrundlage' : 'Legal Basis'}</TableHead>
+      <TableHead>Produkt</TableHead>
+      <TableHead>{language === 'de' ? 'Bei Vertragsschluss' : 'At Contract'}</TableHead>
+      <TableHead>{language === 'de' ? 'Milestone 1' : 'Milestone 1'}</TableHead>
+      <TableHead>{language === 'de' ? 'Milestone 2' : 'Milestone 2'}</TableHead>
+      <TableHead>{language === 'de' ? 'Abschluss' : 'Completion'}</TableHead>
     </TableRow>
   </TableHeader>
   <TableBody>
-    {/* Rows for each service */}
+    <TableRow>
+      <TableCell className="font-medium">Power Up (€23.600)</TableCell>
+      <TableCell>50% (€11.800)</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>-</TableCell>
+      <TableCell>50% (€11.800)</TableCell>
+    </TableRow>
+    {/* ... weitere Rows ... */}
   </TableBody>
 </Table>
 ```
 
-4. **Rechte-Sektion (nummerierte Cards):**
+5. **Outcome-Garantie (Highlight Card):**
 ```typescript
-{rights.map((right, index) => (
-  <Card key={right.article} className="border-l-4 border-l-primary">
-    <CardContent className="pt-4">
-      <div className="flex items-start gap-3">
-        <span className="font-bold text-primary">{index + 1}.</span>
-        <div>
-          <h4 className="font-semibold">{right.title}</h4>
-          <p className="text-sm text-muted-foreground">
-            {right.article} - {right.description}
-          </p>
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-))}
+<Card className="border-green-500/30 bg-green-500/5 mb-6">
+  <CardHeader className="pb-2">
+    <CardTitle className="flex items-center gap-2 text-lg text-green-700">
+      <CheckCircle className="h-5 w-5 text-green-500" />
+      {language === 'de' ? 'Outcome-Garantie' : 'Outcome Guarantee'}
+    </CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-sm mb-4">
+      {language === 'de' 
+        ? 'Bei Transformation Programs gilt: 2 von 3 Outcomes oder 50% Refund'
+        : 'For Transformation Programs: 2 of 3 outcomes or 50% refund'}
+    </p>
+    <Table>
+      {/* Garantie-Details */}
+    </Table>
+  </CardContent>
+</Card>
 ```
 
-5. **Compliance Footer:**
+6. **Compliance Footer:**
 ```typescript
 <div className="mt-16 text-center border-t border-border pt-8">
+  <p className="text-sm text-muted-foreground mb-4">
+    {language === 'de' ? 'Stand: 1. Februar 2026 | Version 1.0' : 'As of: February 1, 2026 | Version 1.0'}
+  </p>
   <p className="text-sm text-muted-foreground mb-4">
     © 2026 ScalingX Hypergrowth GmbH. {language === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}
   </p>
   <div className="flex flex-wrap justify-center gap-2">
-    <Badge variant="outline">GDPR-compliant</Badge>
-    <Badge variant="outline">BDSG-compliant</Badge>
-    <Badge variant="outline">TMG-compliant</Badge>
-    <Badge variant="outline">TTDSG-compliant</Badge>
+    <Badge variant="outline">BGB-konform</Badge>
+    <Badge variant="outline">AGB-Kontrolle</Badge>
+    <Badge variant="outline">DSGVO-konform</Badge>
   </div>
 </div>
 ```
 
 ## Inhalt pro Hauptsektion
 
-### Controller (Verantwortlicher)
-- ScalingX Hypergrowth GmbH
-- Michel Lason (Geschäftsführer)
-- Markgrafendamm 4, 10245 Berlin
-- HRB 271376 B, USt-IdNr: DE452811403
-- info@scalingx.io, +49 172 735 58 91
+### § 1 Geltungsbereich & Vertragsschluss
+- Firmendetails: ScalingX Hypergrowth GmbH, HRB 271376 B
+- Adresse: Markgrafendamm 4, 10245 Berlin
+- Geschäftsführer: Michel Lason
+- Kontakt: info@scalingx.io, +49 172 735 58 91
+- Vertragssprache: Deutsch (maßgeblich)
 
-### Drittanbieter-Services (Tabelle)
+### § 2 Leistungen (6 Kategorien mit Preisen)
 
-| Service | Provider | Purpose | Legal Basis |
-|---------|----------|---------|-------------|
-| Hosting | Lovable/Vercel | Website Hosting | Art. 6(1)(f) |
-| Forms | Fillout.com | Contact Forms | Art. 6(1)(b) |
-| Newsletter | ActiveCampaign | Email Marketing | Art. 6(1)(a) |
-| Analytics | Google Analytics 4 | Usage Analysis | Art. 6(1)(a) |
-| Heatmaps | Hotjar | UX Optimization | Art. 6(1)(a) |
-| Ads | Google Ads | Conversion Tracking | Art. 6(1)(a) |
-| Remarketing | LinkedIn/Facebook | Targeting | Art. 6(1)(a) |
-| CRM | Attio | Customer Management | Art. 6(1)(b) |
-| Cloud | Microsoft 365 | Storage | Art. 6(1)(b) |
-| Accounting | DATEV/Finom | Finance | Art. 6(1)(c) |
+| Kategorie | Produkte | Preisspanne |
+|-----------|----------|-------------|
+| Transformation Programs | Power Up, Boost, Accelerate | €23.600 - €153.000 |
+| Decision Support | Inflection Call, Expert Sessions, Reports | €0 - €5.900 |
+| AI Tools & Training | Copilots, Playbooks, Workshops | €99/mo - €12.900 |
+| Bespoke Services | Strategy, Transformation | €8.000 - Custom |
+| Retainer Advisory | Fractional COO, Board Advisory | €2.000 - €11.000/mo |
+| Portfolio Solutions | Assessment, Transformation | €50.000 - €720.000 |
 
-### Aufbewahrungsfristen (Tabelle)
+### § 3 Mitwirkungspflichten (Stundentabelle)
 
-| Datenart | Frist | Grundlage |
-|----------|-------|-----------|
-| Kundendaten | 10 Jahre | § 147 AO |
-| Bewerberdaten | 6 Monate | § 26 BDSG |
-| Newsletter | Bis Abmeldung | Art. 7(3) |
-| Log Files | 7 Tage | Art. 6(1)(f) |
-| Analytics | 14 Monate | GA4 Standard |
+| Programm | Wöchentliche Mitwirkung |
+|----------|------------------------|
+| Power Up | 10-20 Stunden/Woche |
+| Boost | 15-25 Stunden/Woche |
+| Accelerate | 20-30 Stunden/Woche |
 
-### Betroffenenrechte (8 Rechte)
+### § 4 Zahlungsbedingungen (6 Schedules)
 
-1. Auskunftsrecht (Art. 15 DSGVO)
-2. Berichtigungsrecht (Art. 16 DSGVO)
-3. Löschungsrecht (Art. 17 DSGVO)
-4. Einschränkungsrecht (Art. 18 DSGVO)
-5. Datenübertragbarkeit (Art. 20 DSGVO)
-6. Widerrufsrecht (Art. 7 Abs. 3 DSGVO)
-7. Widerspruchsrecht (Art. 21 DSGVO)
-8. Beschwerderecht (Art. 77 DSGVO)
+**Transformation Programs:**
+- Power Up: 50% / 50%
+- Boost: 40% / 30% / 30%
+- Accelerate: 25% / 25% / 25% / 25%
 
-### Aufsichtsbehörde
+**Weitere:**
+- Expert Sessions: 100% im Voraus
+- Workshops: 50% bei Buchung, 50% 7 Tage vorher
+- Retainer: Monatlich im Voraus
 
-Berliner Beauftragte für Datenschutz und Informationsfreiheit
-Friedrichstraße 219, 10969 Berlin
-mailbox@datenschutz-berlin.de
+### § 5 Vertragslaufzeiten (Tabelle)
+
+| Produkt | Laufzeit | Kündigungsfrist |
+|---------|----------|-----------------|
+| Power Up | 30 Tage (fest) | - |
+| Boost | 90 Tage (fest) | - |
+| Accelerate | 12 Monate (fest) | - |
+| AI Copilots | Monatlich | 30 Tage |
+| Fractional COO | Min. 3 Monate | 30 Tage |
+| Board Advisory | Min. 12 Monate | 60 Tage |
+
+### § 6 Geistiges Eigentum
+
+**Geschützte IP von ScalingX:**
+- AI-Native Scaling Framework (v4.5.3)
+- AI Maturity Framework (AMF v4.5.1)
+- AI-Native Scaling Theory (ANST v4.5.3)
+- Scaling Stack Theory (SST v4.5.1)
+- θ_index Scoring Methodology
+- Alle Playbooks, Templates, Tools
+
+**Kundenrechte:**
+- Nicht-exklusiv, nicht übertragbar, zeitlich unbegrenzt
+- Nur für interne Zwecke
+- Weitergabe an Investoren/Board erlaubt
+
+### § 8 Outcome-Garantie
+
+| Programm | Garantie | Bei Nichterreichung |
+|----------|----------|---------------------|
+| Power Up | 2 von 3 Outcomes | 50% Refund |
+| Boost | 2 von 3 Outcomes | 50% Refund |
+| Accelerate | 2 von 3 Metrics | 50% Refund |
+
+**Voraussetzungen:**
+- Volle Mitwirkung des Kunden
+- Messung nach vereinbarter Methodik
+- Geltendmachung innerhalb 30 Tagen
+
+### § 10 Schlussbestimmungen
+- Gerichtsstand: Berlin
+- Anwendbares Recht: Deutsches Recht, CISG ausgeschlossen
+- EU-Streitschlichtung: ec.europa.eu/consumers/odr
+- Keine Teilnahme an Verbraucherschlichtung
 
 ## Technische Umsetzung
 
-**Datei:** `src/pages/Datenschutz.tsx`
+**Datei:** `src/pages/AGB.tsx`
 
-- Kompletter Rewrite mit ~800-1000 Zeilen
+- Kompletter Rewrite mit ~900-1100 Zeilen
 - Bilingual (DE/EN) mit `useLanguage` Hook
 - Container: `max-w-5xl` (wie Glossar)
-- Card-Komponenten für alle Sektionen
-- Tables für Drittanbieter und Fristen
+- ~8 Tabellen für Preise, Zahlungspläne, Laufzeiten
+- ~6 Service-Kategorie Cards
 - Icons für visuelle Hierarchie
-- Links zu externen Datenschutzrichtlinien
+- Anchor-Links für Inhaltsverzeichnis
+- ID-Attribute für Scroll-Navigation
 
 ## Ergebnis
 
-- Vollständige DSGVO-konforme Datenschutzerklärung
-- Alle 15+ Drittanbieter dokumentiert
-- Konsistentes Design mit Glossar/Impressum
+- Vollständige, BGB-konforme AGB nach deutschem Recht
+- Alle 6 Service-Kategorien mit Preisen dokumentiert
+- Detaillierte Zahlungspläne für jedes Produkt
+- Outcome-Garantie klar definiert
+- Konsistentes Design mit Glossar/Impressum/Datenschutz
 - Zweisprachig (DE/EN)
-- Professionelle Darstellung mit Cards und Icons
+- Professionelle Darstellung mit Cards, Tables und Icons
 - Compliance-Badges im Footer
