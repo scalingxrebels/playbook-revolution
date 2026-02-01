@@ -1,73 +1,141 @@
 
+# Plan: Impressum-Update nach neuem Briefing
 
-# Plan: "Book a Call" Button Konsistent mit Final CTAs
+## Überblick
+Das Impressum wird vollständig überarbeitet und um alle neuen rechtlichen Abschnitte aus dem Briefing ergänzt. Das Design orientiert sich am Glossar-Layout mit Cards und strukturierten Sektionen.
 
-## Aktueller Status
+## Änderungen
 
-Der aktuelle Button in `FinalCTAOptimized.tsx`:
-```typescript
-<Button 
-  size="lg"  // ← zu klein
-  className="bg-gradient-accent text-accent-foreground shadow-accent-glow"
->
-  <Phone className="mr-2 w-4 h-4" />
-  {language === 'de' ? 'Jetzt Call buchen' : 'Book a Call'}
-</Button>
+### 1. Aktualisierte Inhalte
+| Aktuell | Neu |
+|---------|-----|
+| USt-IdNr.: in Arbeit | USt-IdNr.: DE452811403 |
+
+### 2. Neue Sektionen (aus Briefing)
+
+```text
+Struktur nach Update:
+├── Angaben gemäß § 5 TMG (existiert)
+├── Vertreten durch (existiert)
+├── Kontakt (existiert)
+├── Registereintrag (existiert)
+├── USt-IdNr. (aktualisiert)
+├── Verantwortlich für Inhalt (existiert)
+├── EU-Streitschlichtung (existiert)
+├── Verbraucherstreitbeilegung (NEU)
+├── Haftung für Inhalte (existiert)
+├── Haftung für Links (existiert)
+├── Urheberrecht (existiert)
+├── Bildnachweise (NEU)
+├── Datenschutz (NEU)
+├── Kontakt für rechtliche Anfragen (NEU)
+├── Erreichbarkeit (NEU)
+├── Sprachen (NEU)
+├── Rechtliche Hinweise (NEU)
+│   ├── Anwendbares Recht
+│   ├── Gerichtsstand
+│   └── Salvatorische Klausel
+├── Stand der Informationen (NEU)
+├── Weitere Informationen (NEU)
+├── Schnellkontakt (NEU)
+├── Wichtige Hinweise (NEU)
+│   ├── Keine Rechtsberatung
+│   ├── Keine Anlageberatung
+│   └── Aktualität
+├── Sicherheit (NEU)
+└── Copyright Footer (NEU)
 ```
 
-## Referenz: Playbook Final CTA Button (das Pattern)
+### 3. Design-Anpassungen (inspiriert vom Glossar)
 
+**Datei:** `src/pages/Impressum.tsx`
+
+- **Back-Button:** Navigation zurück (wie im Glossar)
+- **Sektionen:** Strukturierte Cards statt prose-divs
+- **Icons:** Lucide-Icons für visuelle Hierarchie
+- **Badges:** Für Status/Compliance-Hinweise
+- **Container:** `max-w-5xl` wie Glossar (statt `max-w-4xl`)
+
+### 4. Technische Änderungen
+
+**Imports hinzufügen:**
 ```typescript
-<Button 
-  size="xl" 
-  className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
->
-  {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book Free Call'}
-  <ArrowRight className="w-5 h-5 ml-2" />
-</Button>
+import { ArrowLeft, Building2, Phone, Mail, Globe, Scale, 
+         FileText, Link2, Copyright, Shield, Clock, Languages,
+         AlertTriangle, Gavel, Info, Users, Linkedin } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 ```
 
-## Änderung
+**Neue Struktur:**
+- Header mit Back-Button und Titel
+- Cards für jeden Hauptabschnitt
+- Unterabschnitte innerhalb der Cards
+- Footer mit Copyright und Compliance-Badges
 
-**Datei:** `src/components/homepage/FinalCTAOptimized.tsx`
+### 5. Inhalt pro Sektion
 
-### Was sich ändert:
+**Verbraucherstreitbeilegung (NEU):**
+> "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
 
-| Attribut | Aktuell | Neu |
-|----------|---------|-----|
-| `size` | `lg` | `xl` |
-| `className` | Basic gradient | Full premium pattern |
-| Icon | Phone only | Phone + ArrowRight |
-| Text | Kurz | Vollständig wie bei Playbooks |
-| Styling | Minimal | `font-bold uppercase tracking-wide` |
+**Bildnachweise (NEU):**
+- Eigentum ScalingX
+- Lizenziert
+- Mit Quellenangaben
 
-### Neuer Code (Zeile 170-181):
+**Erreichbarkeit (NEU):**
+- Mo-Fr: 09:00-18:00 Uhr (MEZ/MESZ)
+- Hinweis auf Bearbeitung am nächsten Werktag
 
+**Sprachen (NEU):**
+- Primär: Deutsch
+- Englisch als Service
+- Deutsche Version maßgeblich
+
+**Rechtliche Hinweise (NEU):**
+- Deutsches Recht, UN-Kaufrecht ausgeschlossen
+- Gerichtsstand: Berlin
+- Salvatorische Klausel
+
+**Weitere Informationen (NEU):**
+- Unternehmensgegenstand: AI-Native Execution Consulting
+- Gründungsjahr: 2025
+- Gesellschaftsform: GmbH
+
+**Schnellkontakt (NEU):**
+- info@scalingx.io (Allgemein)
+- team@scalingx.io (Vertrieb)
+- LinkedIn-Link
+- Telefon
+
+**Wichtige Hinweise (NEU):**
+- Keine Rechtsberatung
+- Keine Anlageberatung
+- Aktualitätshinweis
+
+**Sicherheit (NEU):**
+- Technische/organisatorische Maßnahmen
+
+### 6. Footer-Element
 ```typescript
-{/* Book a Call Button - Outside the tile */}
-<div className="mt-6 text-center">
-  <Button 
-    size="xl"
-    className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 group"
-    onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
-  >
-    <Phone className="mr-2 w-5 h-5" />
-    {language === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
-    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-  </Button>
+<div className="mt-16 text-center border-t pt-8">
+  <p className="text-sm text-muted-foreground">
+    © 2026 ScalingX Hypergrowth GmbH. Alle Rechte vorbehalten.
+  </p>
+  <div className="flex flex-wrap justify-center gap-2 mt-4">
+    <Badge variant="outline">TMG-konform</Badge>
+    <Badge variant="outline">DSGVO-konform</Badge>
+    <Badge variant="outline">RStV-konform</Badge>
+  </div>
 </div>
 ```
 
-### Import hinzufügen:
-
-```typescript
-import { ArrowRight } from 'lucide-react';  // Bereits vorhanden? Prüfen
-```
-
 ## Ergebnis
-
-- Konsistent mit Playbook/Research Final CTA Buttons
-- Premium-Styling: Bold, Uppercase, Tracking
-- Hover-Effekte: opacity + shadow-glow + ArrowRight-Animation
-- Größere Präsenz durch `size="xl"` und `px-10 py-7`
-
+- Vollständiges, rechtssicheres Impressum nach deutschem Recht
+- Konsistentes Design mit dem Rest der Website (Glossar-Stil)
+- Alle neuen Sektionen aus dem Briefing integriert
+- Korrekte USt-IdNr.: DE452811403
+- Professionelle Darstellung mit Cards und Icons
