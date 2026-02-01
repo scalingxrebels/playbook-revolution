@@ -323,6 +323,44 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
     ]
   },
 
+  businessDimensions: {
+    headline: {
+      en: 'The 8 Business Dimensions',
+      de: 'Die 8 Business-Dimensionen'
+    },
+    subheadline: {
+      en: '4 capabilities × 8 dimensions = 32 capability areas to diagnose',
+      de: '4 Capabilities × 8 Dimensionen = 32 Capability-Bereiche zur Diagnose'
+    },
+    intro: [
+      { 
+        en: 'The 4 capabilities (C₁-C₄) are the HOW of scaling. The 8 dimensions are the WHERE. Together, they create 32 capability areas—your complete diagnostic map.',
+        de: 'Die 4 Capabilities (C₁-C₄) sind das WIE des Skalierens. Die 8 Dimensionen sind das WO. Zusammen ergeben sie 32 Capability-Bereiche—deine vollständige Diagnose-Map.'
+      },
+      {
+        en: 'The SST formula uses this 4×8 matrix to find your #1 bottleneck. The META formula uses it to predict your timeline.',
+        de: 'Die SST-Formel nutzt diese 4×8 Matrix, um deinen #1 Engpass zu finden. Die META-Formel nutzt sie, um deine Timeline zu prognostizieren.'
+      }
+    ],
+    dimensions: [
+      { id: 'D₁', name: { en: 'GTM/Revenue', de: 'GTM/Revenue' }, icon: 'ShoppingCart', description: { en: 'Sales, Marketing, Pricing', de: 'Sales, Marketing, Pricing' }, metric: { en: 'CAC, LTV/CAC', de: 'CAC, LTV/CAC' } },
+      { id: 'D₂', name: { en: 'Product', de: 'Product' }, icon: 'Package', description: { en: 'Development, Roadmap, Quality', de: 'Entwicklung, Roadmap, Qualität' }, metric: { en: 'PMF, Retention', de: 'PMF, Retention' } },
+      { id: 'D₃', name: { en: 'Customer Success', de: 'Customer Success' }, icon: 'HeartHandshake', description: { en: 'Onboarding, Retention, Expansion', de: 'Onboarding, Retention, Expansion' }, metric: { en: 'NRR, Churn', de: 'NRR, Churn' } },
+      { id: 'D₄', name: { en: 'Operations', de: 'Operations' }, icon: 'Cog', description: { en: 'Processes, Workflows, Efficiency', de: 'Prozesse, Workflows, Effizienz' }, metric: { en: 'Efficiency', de: 'Effizienz' } },
+      { id: 'D₅', name: { en: 'Finance', de: 'Finance' }, icon: 'Landmark', description: { en: 'Planning, Forecasting, Unit Economics', de: 'Planung, Forecasting, Unit Economics' }, metric: { en: 'Unit Economics', de: 'Unit Economics' } },
+      { id: 'D₆', name: { en: 'Talent', de: 'Talent' }, icon: 'UserCog', description: { en: 'Hiring, Development, Retention', de: 'Hiring, Entwicklung, Retention' }, metric: { en: 'Team Quality', de: 'Team-Qualität' } },
+      { id: 'D₇', name: { en: 'Data/Tech', de: 'Data/Tech' }, icon: 'Server', description: { en: 'Infrastructure, Data, Security', de: 'Infrastruktur, Daten, Security' }, metric: { en: 'AI Maturity', de: 'AI Maturity' } },
+      { id: 'D₈', name: { en: 'Governance', de: 'Governance' }, icon: 'Scale', description: { en: 'Board, Legal, Compliance', de: 'Board, Legal, Compliance' }, metric: { en: 'Board Confidence', de: 'Board Confidence' } }
+    ],
+    callout: {
+      title: { en: 'The Complete Diagnostic Map', de: 'Die vollständige Diagnose-Map' },
+      content: {
+        en: '4 Capabilities (Strategy, Setup, Execution, Operationalization) × 8 Dimensions = 32 Capability Areas. Your #1 bottleneck is hiding in one of these 32 cells. The unified framework finds it.',
+        de: '4 Capabilities (Strategy, Setup, Execution, Operationalization) × 8 Dimensionen = 32 Capability-Bereiche. Dein #1 Engpass versteckt sich in einer dieser 32 Zellen. Das unified Framework findet ihn.'
+      }
+    }
+  },
+
   unifiedCaseStudy: {
     headline: {
       en: 'Case Study: Midjourney',

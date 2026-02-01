@@ -6,6 +6,7 @@ import {
   ResearchCapabilitiesSection,
   ResearchEvidenceSection,
   ResearchFormulaSection,
+  ResearchBusinessDimensionsSection,
   ResearchCaseStudiesSection,
   ResearchImplicationsSection,
   ResearchDownloadSection,
@@ -24,6 +25,7 @@ const ANSTLandingPage: React.FC<ANSTLandingPageProps> = ({ data }) => {
       <ResearchCapabilitiesSection data={data.solution} />
       <ResearchEvidenceSection data={data.evidence} />
       <ResearchFormulaSection data={data.formula} />
+      {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />
