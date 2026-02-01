@@ -283,15 +283,20 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
 
   formula: {
     headline: {
-      en: 'The Formula (Illustrative)',
-      de: 'Die Formel (Illustrativ)'
+      en: 'The Complete Scaling Formula',
+      de: 'Die vollständige Scaling-Formel'
     },
     subheadline: {
-      en: 'How the 4 capabilities and AI multiplier work together',
-      de: 'Wie die 4 Capabilities und der AI-Multiplikator zusammenwirken'
+      en: 'How market, enablers, capabilities, and AI work together',
+      de: 'Wie Markt, Enablers, Capabilities und AI zusammenwirken'
     },
-    formulaDisplay: 'S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index',
+    formulaDisplay: 'S = M × E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ',
     components: [
+      {
+        symbol: 'M',
+        name: { en: 'Market Factor', de: 'Marktfaktor' },
+        description: { en: 'TAM × Growth Rate × Competition. Same company scales differently in different markets.', de: 'TAM × Wachstumsrate × Wettbewerb. Dasselbe Unternehmen skaliert unterschiedlich in verschiedenen Märkten.' }
+      },
       {
         symbol: 'E',
         name: { en: 'Enablers', de: 'Enablers' },
@@ -318,14 +323,14 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
         description: { en: 'Learning, optimization, automated scaling.', de: 'Learning, Optimierung, automatisiertes Skalieren.' }
       },
       {
-        symbol: 'θ_index',
+        symbol: 'θ',
         name: { en: 'AI Multiplier', de: 'AI Multiplikator' },
         description: { en: 'AI Maturity (0-1). The differentiator—higher AI maturity = faster scaling.', de: 'AI Maturity (0-1). Der Differentiator—höhere AI Maturity = schnelleres Skalieren.' }
       }
     ],
     explanation: {
-      en: 'This formula is illustrative, not prescriptive. It shows how the pieces fit together. Strategy and Execution have exponents (1.5) because small improvements in these areas have outsized impact. The AI multiplier (θ_index) acts on all capabilities—it\'s the differentiator.',
-      de: 'Diese Formel ist illustrativ, nicht präskriptiv. Sie zeigt, wie die Teile zusammenpassen. Strategy und Execution haben Exponenten (1,5), weil kleine Verbesserungen in diesen Bereichen überproportionale Wirkung haben. Der AI-Multiplikator (θ_index) wirkt auf alle Capabilities—er ist der Differentiator.'
+      en: 'This formula shows how market conditions (M), enablers (E), capabilities (C₁-C₄), and AI maturity (θ) work together. Strategy and Execution have exponents (1.5) because small improvements have outsized impact. The Scaling Stack focuses on C₁-C₄ because they\'re directly controllable in 8-12 weeks.',
+      de: 'Diese Formel zeigt, wie Marktbedingungen (M), Enablers (E), Capabilities (C₁-C₄) und AI-Reife (θ) zusammenwirken. Strategy und Execution haben Exponenten (1,5), weil kleine Verbesserungen überproportionale Wirkung haben. Der Scaling Stack fokussiert auf C₁-C₄, weil sie in 8-12 Wochen direkt kontrollierbar sind.'
     },
     exponentInsight: {
       title: { en: 'Why Exponents Matter', de: 'Warum Exponenten wichtig sind' },
@@ -336,6 +341,27 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
       example: {
         en: 'Example: Improving Strategy from 0.6 → 0.8 (+33%) increases scaling velocity by +54% (not +33%).',
         de: 'Beispiel: Strategy von 0,6 → 0,8 verbessern (+33%) erhöht Skalierungsgeschwindigkeit um +54% (nicht +33%).'
+      }
+    },
+    whyFocusOnCapabilities: {
+      headline: { en: 'Why We Focus on Capabilities (C₁-C₄)', de: 'Warum wir uns auf Capabilities (C₁-C₄) fokussieren' },
+      reasons: [
+        {
+          title: { en: 'Market (M) is constant within your segment', de: 'Markt (M) ist konstant in deinem Segment' },
+          content: { en: 'Changing M requires 12-24 months. C₁-C₄ can be improved in 8-12 weeks.', de: 'M zu ändern erfordert 12-24 Monate. C₁-C₄ können in 8-12 Wochen verbessert werden.' }
+        },
+        {
+          title: { en: 'Enablers (E) are an outcome of C₁-C₄', de: 'Enablers (E) sind ein Ergebnis von C₁-C₄' },
+          content: { en: 'Better capabilities → better metrics → more capital and talent.', de: 'Bessere Capabilities → bessere Metriken → mehr Kapital und Talent.' }
+        },
+        {
+          title: { en: 'Capabilities (C₁-C₄) are directly controllable', de: 'Capabilities (C₁-C₄) sind direkt kontrollierbar' },
+          content: { en: 'Highest ROI (2-5x) in 8-12 weeks because of the bottleneck principle.', de: 'Höchster ROI (2-5x) in 8-12 Wochen durch das Engpass-Prinzip.' }
+        }
+      ],
+      causalChain: {
+        en: 'C₁-C₄ (Capabilities) → E (Enablers) → S (Scaling Success)',
+        de: 'C₁-C₄ (Capabilities) → E (Enablers) → S (Skalierungserfolg)'
       }
     }
   },

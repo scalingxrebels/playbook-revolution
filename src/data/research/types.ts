@@ -268,6 +268,14 @@ export interface FormulaSectionData {
     content: BilingualText;
     example: BilingualText;
   };
+  whyFocusOnCapabilities?: {
+    headline: BilingualText;
+    reasons: Array<{
+      title: BilingualText;
+      content: BilingualText;
+    }>;
+    causalChain: BilingualText;
+  };
 }
 
 // Evidence Section (n=22 Companies)

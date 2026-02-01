@@ -130,18 +130,19 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
         name: { en: 'ANST', de: 'ANST' },
         fullName: { en: 'AI-Native Scaling Theory', de: 'AI-Native Scaling Theory' },
         question: { en: 'WHY scale faster?', de: 'WARUM schneller skalieren?' },
-        input: { en: 'E × C × θ', de: 'E × C × θ' },
+        input: { en: 'M × E × C × θ', de: 'M × E × C × θ' },
         inputDetails: [
+          { en: 'Market Factor (TAM, growth, competition)', de: 'Marktfaktor (TAM, Wachstum, Wettbewerb)' },
           { en: 'Enablers (Capital, Talent, Culture)', de: 'Enablers (Kapital, Talent, Kultur)' },
           { en: 'Capabilities (C₁, C₂, C₃, C₄)', de: 'Capabilities (C₁, C₂, C₃, C₄)' },
-          { en: 'AI Maturity (θ_index)', de: 'AI-Reife (θ_index)' }
+          { en: 'AI Maturity (θ)', de: 'AI-Reife (θ)' }
         ],
         output: { en: 'Scaling Velocity (S)', de: 'Skalierungsgeschwindigkeit (S)' },
         outputDetails: [
-          { en: 'Superlinear vs. Linear', de: 'Superlinear vs. Linear' },
-          { en: 'Revenue growth > Headcount', de: 'Umsatzwachstum > Mitarbeiterwachstum' }
+          { en: 'S = M × E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ', de: 'S = M × E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ' },
+          { en: 'Superlinear vs. Linear', de: 'Superlinear vs. Linear' }
         ],
-        validation: { en: 'n=22, r=0.89', de: 'n=22, r=0.89' },
+        validation: { en: 'n=22, R²=0.76', de: 'n=22, R²=0.76' },
         href: '/expertise/anst',
         color: 'blue'
       },
