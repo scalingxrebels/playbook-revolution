@@ -28,3 +28,6 @@ export { default as ResearchFourFormulasSection } from './ResearchFourFormulasSe
 export { default as ResearchFrameworkFlowSection } from './ResearchFrameworkFlowSection';
 export { default as ResearchPracticalApplicationSection } from './ResearchPracticalApplicationSection';
 export { default as ResearchUnifiedCaseStudySection } from './ResearchUnifiedCaseStudySection';
+
+// Shared Section Components
+export { default as ResearchBusinessDimensionsSection } from './ResearchBusinessDimensionsSection';

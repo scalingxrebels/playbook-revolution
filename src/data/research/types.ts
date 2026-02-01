@@ -298,6 +298,40 @@ export interface EvidenceSectionData {
   }>;
 }
 
+// ============================================
+// BUSINESS DIMENSIONS Types (D₁-D₈)
+// ============================================
+
+export interface BusinessDimension {
+  id: string; // D₁, D₂, etc.
+  name: BilingualText;
+  icon: string; // Lucide icon name
+  description: BilingualText;
+  metric: BilingualText;
+  exampleBottleneck?: BilingualText; // Only for SST
+}
+
+export interface BusinessDimensionsSectionData {
+  headline: BilingualText;
+  subheadline: BilingualText;
+  intro: BilingualText[];
+  dimensions: BusinessDimension[];
+  matrixExample?: {
+    capability: string;
+    dimension: string;
+    questions: BilingualText[];
+    implication: BilingualText;
+  };
+  callout: {
+    title: BilingualText;
+    content: BilingualText;
+  };
+  crossLink?: {
+    text: BilingualText;
+    href: string;
+  };
+}
+
 // Complete ANST Page Data
 export interface ANSTPageData {
   hero: AMFHeroData;
@@ -305,6 +339,7 @@ export interface ANSTPageData {
   solution: SolutionSectionData;
   evidence: EvidenceSectionData;
   formula: FormulaSectionData;
+  businessDimensions?: BusinessDimensionsSectionData;
   caseStudies: CaseStudiesData;
   implications: ImplicationsData;
   download: DownloadData;
@@ -424,6 +459,7 @@ export interface SSTPageData {
   capabilities: SSTCapabilitiesData;
   evidence: SSTEvidenceData;
   bottleneckPrinciple: SSTBottleneckPrincipleData;
+  businessDimensions?: BusinessDimensionsSectionData;
   caseStudies: SSTCaseStudiesData;
   implications: ImplicationsData;
   download: DownloadData;
@@ -551,6 +587,7 @@ export interface UnifiedFrameworkPageData {
   fourFormulas: FourFormulasData;
   frameworkFlow: FrameworkFlowData;
   practicalApplication: PracticalApplicationData;
+  businessDimensions?: BusinessDimensionsSectionData;
   unifiedCaseStudy: UnifiedCaseStudyData;
   implications: ImplicationsData;
   download: DownloadData;

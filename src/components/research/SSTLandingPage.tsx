@@ -6,6 +6,7 @@ import {
   ResearchSSTCapabilitiesSection,
   ResearchSSTEvidenceSection,
   ResearchBottleneckPrincipleSection,
+  ResearchBusinessDimensionsSection,
   ResearchBottleneckCaseStudiesSection,
   ResearchImplicationsSection,
   ResearchDownloadSection,
@@ -24,6 +25,7 @@ const SSTLandingPage: React.FC<SSTLandingPageProps> = ({ data }) => {
       <ResearchSSTCapabilitiesSection data={data.capabilities} />
       <ResearchSSTEvidenceSection data={data.evidence} />
       <ResearchBottleneckPrincipleSection data={data.bottleneckPrinciple} />
+      {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchBottleneckCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />

@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   ResearchHeroSection,
+  ResearchBusinessDimensionsSection,
   ResearchImplicationsSection,
   ResearchDownloadSection,
   ResearchFinalCTASection
@@ -24,6 +25,7 @@ const UnifiedFrameworkLandingPage: React.FC<UnifiedFrameworkLandingPageProps> = 
       <ResearchFourFormulasSection data={data.fourFormulas} />
       <ResearchFrameworkFlowSection data={data.frameworkFlow} />
       <ResearchPracticalApplicationSection data={data.practicalApplication} />
+      {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchUnifiedCaseStudySection data={data.unifiedCaseStudy} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />
