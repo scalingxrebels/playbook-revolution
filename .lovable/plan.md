@@ -1,79 +1,158 @@
 
+
+# Robots.txt Update: Balancierte AI-Strategie
+
 ## Ziel
-Das mobile Hamburger-Menü soll zuverlässig wie ein “Glass Overlay” wirken:
-- Hintergrund sichtbar **mit ~80% Deckkraft** (nicht “quasi transparent”)
-- Text/Icons bleiben **100%** lesbar
-- Desktop-Navigation bleibt **exakt unverändert** (Light + Dark)
+- **Suchmaschinen-Crawling erlauben** (SEO)
+- **AI-Search/Browsing erlauben** (Bei LLM-Antworten erscheinen)
+- **AI-Training blockieren** (Keine Nutzung für Modell-Training)
+- **Pure Scraper blockieren** (Firecrawl, Manus)
 
-## Was wir bereits wissen
-- Der Inline-Style mit `backgroundColor: rgba(..., 0.8)` ist im DOM vorhanden, aber der visuelle Effekt ist trotzdem zu transparent.
-- Das spricht dafür, dass **der Hintergrund-Farbauftrag auf dem Overlay-Container nicht zuverlässig “greift”** (z.B. durch CSS `background: ... !important`, Shorthand-Overrides, oder Interaktion mit Backdrop-Filter/Stacking).
+## Strategie
 
-## Lösung (robust): Zwei-Layer-Overlay statt nur backgroundColor am Container
-Wir trennen:
-1) **Backdrop-Blur Layer** (auf dem Container)  
-2) **Farb-Layer** als eigenes absolut positioniertes Kind-Element (damit die Farbe garantiert sichtbar ist, selbst wenn der Container-Hintergrund überschrieben wird)
+| Kategorie | Bots | Aktion | Grund |
+|-----------|------|--------|-------|
+| Search Engines | Googlebot, Bingbot | ✅ Erlaubt | SEO |
+| Social Media | Twitter, LinkedIn, Slack | ✅ Erlaubt | Link-Previews |
+| AI Search/Browsing | ChatGPT-User, PerplexityBot, ClaudeBot | ✅ Erlaubt | In LLM-Ergebnissen erscheinen |
+| AI Training | GPTBot, Google-Extended, CCBot | ❌ Blockiert | Kein Modell-Training |
+| Pure Scraper | Firecrawl, Manus | ❌ Blockiert | Keine Daten-Extraktion |
 
-### Warum das funktioniert
-- Selbst wenn irgendeine Regel den Container-Hintergrund “kaputt macht”, bleibt der **separate Farb-Layer** als echtes Element sichtbar.
-- Backdrop-Blur bleibt auf dem Container aktiv.
-- Text/Links bleiben in einem **relativen Content-Layer** oben drüber.
+## Änderungen
 
-## Konkrete Änderungen
+### Datei: `public/robots.txt`
 
-### Datei: `src/components/Navigation.tsx`
-#### 1) Mobile Overlay Container anpassen
-Aktuell (vereinfacht):
-```tsx
-<div
-  className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in backdrop-blur-xl"
-  style={{ backgroundColor: theme === 'dark' ? 'rgba(15, 15, 20, 0.8)' : 'rgba(250, 249, 247, 0.8)' }}
->
-  <div className="container ...">...</div>
-</div>
+```text
+# =============================================
+# Search Engines - ALLOWED (SEO)
+# =============================================
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# =============================================
+# Social Media - ALLOWED (Link Previews)
+# =============================================
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# =============================================
+# AI Search & Browsing - ALLOWED
+# (Damit die Website in LLM-Antworten erscheint)
+# =============================================
+
+# OpenAI ChatGPT Browsing (nicht Training!)
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity (Search + Zitate)
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Claude (Search/Browsing)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# =============================================
+# AI Training - BLOCKED
+# (Kein Training von Modellen mit unseren Inhalten)
+# =============================================
+
+# OpenAI Training Bot
+User-agent: GPTBot
+Disallow: /
+
+# Google AI Training (Gemini etc.)
+User-agent: Google-Extended
+Disallow: /
+
+# Common Crawl (Dataset für AI Training)
+User-agent: CCBot
+Disallow: /
+
+# Cohere AI Training
+User-agent: cohere-ai
+Disallow: /
+
+# ByteDance/TikTok AI
+User-agent: Bytespider
+Disallow: /
+
+# Meta AI Training
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+# Apple AI Training
+User-agent: Applebot-Extended
+Disallow: /
+
+# =============================================
+# Pure Scrapers - BLOCKED
+# (Keine Daten-Extraktion Tools)
+# =============================================
+
+# Firecrawl
+User-agent: Firecrawl
+Disallow: /
+
+User-agent: firecrawl
+Disallow: /
+
+# Manus AI
+User-agent: Manus
+Disallow: /
+
+User-agent: ManusBot
+Disallow: /
+
+# Other Scrapers
+User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
+Disallow: /
+
+# =============================================
+# Default - Allow (für unbekannte Crawler)
+# =============================================
+User-agent: *
+Allow: /
 ```
 
-Neu:
-- Container bekommt zusätzlich `relative` (für absolute Kinder) und optional `isolate` (saubere Layer-Komposition).
-- Der Hintergrund kommt in ein Kind-`div` als Layer.
-- Inhalt-Container wird `relative z-10`, damit er sicher über dem Hintergrund-Layer liegt.
+## Ergebnis
 
-Beispielstruktur:
-```tsx
-<div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in backdrop-blur-xl relative isolate">
-  <div
-    className="absolute inset-0"
-    style={{
-      backgroundColor: theme === 'dark'
-        ? 'rgba(0, 0, 0, 0.8)'
-        : 'rgba(250, 249, 247, 0.8)',
-    }}
-  />
-  <div className="container px-4 py-8 relative z-10">
-    ...
-  </div>
-</div>
-```
+| Dienst | Bot | Status | Effekt |
+|--------|-----|--------|--------|
+| Google Search | Googlebot | ✅ | SEO funktioniert |
+| ChatGPT Browsing | ChatGPT-User | ✅ | Website wird zitiert |
+| ChatGPT Training | GPTBot | ❌ | Kein Training |
+| Perplexity | PerplexityBot | ✅ | Website wird zitiert |
+| Claude | ClaudeBot | ✅ | Website wird zitiert |
+| Firecrawl | Firecrawl | ❌ | Kein Scraping |
+| Manus | ManusBot | ❌ | Kein Scraping |
 
-#### 2) Dark-Mode-Farbwert minimal anpassen (optional, aber empfehlenswert)
-Aktuell Dark: `rgba(15, 15, 20, 0.8)` liegt sehr nah am typischen “Noir”-Hero – dadurch wirkt 80% optisch wie “kaum vorhanden”.
-Empfehlung: `rgba(0, 0, 0, 0.8)` (immer noch 80% Opazität, aber visuell klarer als Overlay erkennbar).
+## Hinweise
 
-Light bleibt bei `rgba(250, 249, 247, 0.8)`.
+1. **Anthropic-Bots**: Da Anthropic aktuell keinen separaten Training-Bot hat, erlauben wir alle Claude-Bots. Falls sich das ändert, können wir anpassen.
 
-## Abgrenzung: Desktop bleibt unangetastet
-Alle Änderungen passieren ausschließlich im Block:
-- `{mobileMenuOpen && (...)}`
-- mit `md:hidden`
-Damit bleibt die Desktop-Navigation so wie sie ist.
+2. **Perplexity**: Verwendet denselben Bot für Search und eventuelles Training. Da der Hauptnutzen (Zitate in Antworten) wichtiger ist, erlauben wir ihn.
 
-## Test-Checkliste (nach Umsetzung)
-1) Mobile Menü öffnen auf `/` (Hero dunkel) → Overlay muss sichtbar abdunkeln/aufhellen, Text bleibt klar.
-2) Mobile Menü auf hellen Sections → Overlay bleibt konsistent.
-3) Theme Toggle (Light/Dark) → Overlay wechselt korrekt.
-4) iOS Safari optional mitprüfen (nur als Bonus, auch wenn du aktuell Chrome/Edge nutzt).
+3. **robots.txt Limitation**: Dies ist ein "Gentlemen's Agreement" - seriöse Anbieter halten sich daran, aber es ist keine technische Sperre.
 
-## Wenn es danach immer noch “zu transparent” wirkt
-Dann ist es kein technischer Bug mehr, sondern reine Wahrnehmung/Design auf dunklem Hero. Dann können wir entweder:
-- Opazität auf 0.85–0.9 erhöhen (nur für Dark Mode), oder
-- zusätzlich einen leichten Shadow/Border am Overlay ergänzen (wirkt “solider” ohne Opazität stark zu erhöhen).
