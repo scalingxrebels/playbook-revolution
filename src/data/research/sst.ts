@@ -270,6 +270,49 @@ export const sstPageData: SSTPageData = {
       },
     },
   },
+
+  businessDimensions: {
+    headline: {
+      en: 'The 8 Business Dimensions: Where to Apply the 4 Capabilities',
+      de: 'Die 8 Business-Dimensionen: Wo du die 4 Capabilities anwendest'
+    },
+    subheadline: {
+      en: 'The Scaling Stack diagnoses 4 capabilities × 8 dimensions = 32 capability areas. Your #1 bottleneck is hiding in one of them.',
+      de: 'Der Scaling Stack diagnostiziert 4 Capabilities × 8 Dimensionen = 32 Capability-Bereiche. Dein #1 Engpass versteckt sich in einem davon.'
+    },
+    intro: [
+      { 
+        en: 'You now understand the 4 capabilities (Strategy, Setup, Execution, Operationalization). But where do you apply them? The Scaling Stack uses 8 business dimensions to create a comprehensive diagnostic framework.',
+        de: 'Du verstehst jetzt die 4 Capabilities (Strategy, Setup, Execution, Operationalization). Aber wo wendest du sie an? Der Scaling Stack nutzt 8 Business-Dimensionen für ein umfassendes Diagnose-Framework.'
+      },
+      {
+        en: 'Think of it like a chessboard: 4 Capabilities (rows) × 8 Dimensions (columns) = 32 Capability Areas (cells). Your #1 bottleneck is the cell with the lowest score.',
+        de: 'Denk es dir wie ein Schachbrett: 4 Capabilities (Reihen) × 8 Dimensionen (Spalten) = 32 Capability-Bereiche (Zellen). Dein #1 Engpass ist die Zelle mit dem niedrigsten Score.'
+      },
+      {
+        en: 'The 8 dimensions are MECE (Mutually Exclusive, Collectively Exhaustive)—covering every aspect of your business without overlap.',
+        de: 'Die 8 Dimensionen sind MECE (Mutually Exclusive, Collectively Exhaustive)—sie decken jeden Aspekt deines Business ab, ohne Überlappung.'
+      }
+    ],
+    dimensions: [
+      { id: 'D₁', name: { en: 'GTM/Revenue', de: 'GTM/Revenue' }, icon: 'ShoppingCart', description: { en: 'Sales, Marketing, Pricing, CAC', de: 'Sales, Marketing, Pricing, CAC' }, metric: { en: 'CAC, LTV/CAC, Growth Rate', de: 'CAC, LTV/CAC, Growth Rate' }, exampleBottleneck: { en: '"We don\'t have repeatable sales playbooks" (C₂ × D₁)', de: '"Wir haben keine wiederholbaren Sales Playbooks" (C₂ × D₁)' } },
+      { id: 'D₂', name: { en: 'Product', de: 'Product' }, icon: 'Package', description: { en: 'Development, Roadmap, Quality', de: 'Entwicklung, Roadmap, Qualität' }, metric: { en: 'PMF, Retention', de: 'PMF, Retention' }, exampleBottleneck: { en: '"We can\'t ship fast enough" (C₃ × D₂)', de: '"Wir können nicht schnell genug shippen" (C₃ × D₂)' } },
+      { id: 'D₃', name: { en: 'Customer Success', de: 'Customer Success' }, icon: 'HeartHandshake', description: { en: 'Onboarding, Retention, Expansion', de: 'Onboarding, Retention, Expansion' }, metric: { en: 'NRR, Churn, Expansion', de: 'NRR, Churn, Expansion' }, exampleBottleneck: { en: '"Our onboarding takes 6 weeks" (C₄ × D₃)', de: '"Unser Onboarding dauert 6 Wochen" (C₄ × D₃)' } },
+      { id: 'D₄', name: { en: 'Operations', de: 'Operations' }, icon: 'Cog', description: { en: 'Processes, Workflows, Efficiency', de: 'Prozesse, Workflows, Effizienz' }, metric: { en: 'Efficiency, Coordination Cost', de: 'Effizienz, Koordinationskosten' }, exampleBottleneck: { en: '"Every project is ad-hoc" (C₄ × D₄)', de: '"Jedes Projekt ist ad-hoc" (C₄ × D₄)' } },
+      { id: 'D₅', name: { en: 'Finance', de: 'Finance' }, icon: 'Landmark', description: { en: 'Planning, Forecasting, Unit Economics', de: 'Planung, Forecasting, Unit Economics' }, metric: { en: 'Unit Economics, Burn Rate', de: 'Unit Economics, Burn Rate' }, exampleBottleneck: { en: '"We don\'t know our unit economics" (C₂ × D₅)', de: '"Wir kennen unsere Unit Economics nicht" (C₂ × D₅)' } },
+      { id: 'D₆', name: { en: 'Talent', de: 'Talent' }, icon: 'UserCog', description: { en: 'Hiring, Development, Retention', de: 'Hiring, Entwicklung, Retention' }, metric: { en: 'Team Quality, Turnover', de: 'Team-Qualität, Turnover' }, exampleBottleneck: { en: '"We can\'t hire fast enough" (C₂ × D₆)', de: '"Wir können nicht schnell genug einstellen" (C₂ × D₆)' } },
+      { id: 'D₇', name: { en: 'Data/Tech', de: 'Data/Tech' }, icon: 'Server', description: { en: 'Infrastructure, Data, Security', de: 'Infrastruktur, Daten, Security' }, metric: { en: 'AI Maturity, Tech Debt', de: 'AI Maturity, Tech Debt' }, exampleBottleneck: { en: '"Our data is in 10 different tools" (C₄ × D₇)', de: '"Unsere Daten sind in 10 verschiedenen Tools" (C₄ × D₇)' } },
+      { id: 'D₈', name: { en: 'Governance', de: 'Governance' }, icon: 'Scale', description: { en: 'Board, Legal, Compliance', de: 'Board, Legal, Compliance' }, metric: { en: 'Board Confidence, Investor Readiness', de: 'Board Confidence, Investor Readiness' }, exampleBottleneck: { en: '"Board wants better reporting" (C₄ × D₈)', de: '"Board will besseres Reporting" (C₄ × D₈)' } }
+    ],
+    callout: {
+      title: { en: 'Why This Matters', de: 'Warum das wichtig ist' },
+      content: {
+        en: 'Without the 8 dimensions, you\'d only diagnose 4 capabilities (C₁-C₄). With the 8 dimensions, you diagnose 32 capability areas (4 × 8 = 32). This is why SST finds bottlenecks that other frameworks miss.',
+        de: 'Ohne die 8 Dimensionen würdest du nur 4 Capabilities (C₁-C₄) diagnostizieren. Mit den 8 Dimensionen diagnostizierst du 32 Capability-Bereiche (4 × 8 = 32). Deshalb findet SST Engpässe, die andere Frameworks übersehen.'
+      }
+    }
+  },
+
   caseStudies: {
     headline: { en: 'Bottlenecks in Action', de: 'Bottlenecks in Aktion' },
     subheadline: {

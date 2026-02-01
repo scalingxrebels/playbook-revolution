@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Target, Zap, Users } from 'lucide-react';
+import { Target, Zap, Users, Phone, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
 
@@ -163,6 +164,19 @@ const FinalCTAOptimized: React.FC = () => {
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Book a Call Button - Outside the tile */}
+            <div className="mt-6 text-center">
+              <Button 
+                size="xl"
+                className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 group"
+                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+              >
+                <Phone className="mr-2 w-5 h-5" />
+                {language === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
           </div>
 

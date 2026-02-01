@@ -283,15 +283,20 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
 
   formula: {
     headline: {
-      en: 'The Formula (Illustrative)',
-      de: 'Die Formel (Illustrativ)'
+      en: 'The Complete Scaling Formula',
+      de: 'Die vollständige Scaling-Formel'
     },
     subheadline: {
-      en: 'How the 4 capabilities and AI multiplier work together',
-      de: 'Wie die 4 Capabilities und der AI-Multiplikator zusammenwirken'
+      en: 'How market, enablers, capabilities, and AI work together',
+      de: 'Wie Markt, Enablers, Capabilities und AI zusammenwirken'
     },
-    formulaDisplay: 'S = E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ_index',
+    formulaDisplay: 'S = M × E × (C₁^1.5 × C₂ × C₃^1.5 × C₄) × θ',
     components: [
+      {
+        symbol: 'M',
+        name: { en: 'Market Factor', de: 'Marktfaktor' },
+        description: { en: 'TAM × Growth Rate × Competition. Same company scales differently in different markets.', de: 'TAM × Wachstumsrate × Wettbewerb. Dasselbe Unternehmen skaliert unterschiedlich in verschiedenen Märkten.' }
+      },
       {
         symbol: 'E',
         name: { en: 'Enablers', de: 'Enablers' },
@@ -318,14 +323,14 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
         description: { en: 'Learning, optimization, automated scaling.', de: 'Learning, Optimierung, automatisiertes Skalieren.' }
       },
       {
-        symbol: 'θ_index',
+        symbol: 'θ',
         name: { en: 'AI Multiplier', de: 'AI Multiplikator' },
         description: { en: 'AI Maturity (0-1). The differentiator—higher AI maturity = faster scaling.', de: 'AI Maturity (0-1). Der Differentiator—höhere AI Maturity = schnelleres Skalieren.' }
       }
     ],
     explanation: {
-      en: 'This formula is illustrative, not prescriptive. It shows how the pieces fit together. Strategy and Execution have exponents (1.5) because small improvements in these areas have outsized impact. The AI multiplier (θ_index) acts on all capabilities—it\'s the differentiator.',
-      de: 'Diese Formel ist illustrativ, nicht präskriptiv. Sie zeigt, wie die Teile zusammenpassen. Strategy und Execution haben Exponenten (1,5), weil kleine Verbesserungen in diesen Bereichen überproportionale Wirkung haben. Der AI-Multiplikator (θ_index) wirkt auf alle Capabilities—er ist der Differentiator.'
+      en: 'This formula shows how market conditions (M), enablers (E), capabilities (C₁-C₄), and AI maturity (θ) work together. Strategy and Execution have exponents (1.5) because small improvements have outsized impact. The Scaling Stack focuses on C₁-C₄ because they\'re directly controllable in 8-12 weeks.',
+      de: 'Diese Formel zeigt, wie Marktbedingungen (M), Enablers (E), Capabilities (C₁-C₄) und AI-Reife (θ) zusammenwirken. Strategy und Execution haben Exponenten (1,5), weil kleine Verbesserungen überproportionale Wirkung haben. Der Scaling Stack fokussiert auf C₁-C₄, weil sie in 8-12 Wochen direkt kontrollierbar sind.'
     },
     exponentInsight: {
       title: { en: 'Why Exponents Matter', de: 'Warum Exponenten wichtig sind' },
@@ -337,6 +342,83 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
         en: 'Example: Improving Strategy from 0.6 → 0.8 (+33%) increases scaling velocity by +54% (not +33%).',
         de: 'Beispiel: Strategy von 0,6 → 0,8 verbessern (+33%) erhöht Skalierungsgeschwindigkeit um +54% (nicht +33%).'
       }
+    },
+    whyFocusOnCapabilities: {
+      headline: { en: 'Why We Focus on Capabilities (C₁-C₄)', de: 'Warum wir uns auf Capabilities (C₁-C₄) fokussieren' },
+      reasons: [
+        {
+          title: { en: 'Market (M) is constant within your segment', de: 'Markt (M) ist konstant in deinem Segment' },
+          content: { en: 'Changing M requires 12-24 months. C₁-C₄ can be improved in 8-12 weeks.', de: 'M zu ändern erfordert 12-24 Monate. C₁-C₄ können in 8-12 Wochen verbessert werden.' }
+        },
+        {
+          title: { en: 'Enablers (E) are an outcome of C₁-C₄', de: 'Enablers (E) sind ein Ergebnis von C₁-C₄' },
+          content: { en: 'Better capabilities → better metrics → more capital and talent.', de: 'Bessere Capabilities → bessere Metriken → mehr Kapital und Talent.' }
+        },
+        {
+          title: { en: 'Capabilities (C₁-C₄) are directly controllable', de: 'Capabilities (C₁-C₄) sind direkt kontrollierbar' },
+          content: { en: 'Highest ROI (2-5x) in 8-12 weeks because of the bottleneck principle.', de: 'Höchster ROI (2-5x) in 8-12 Wochen durch das Engpass-Prinzip.' }
+        }
+      ],
+      causalChain: {
+        en: 'C₁-C₄ (Capabilities) → E (Enablers) → S (Scaling Success)',
+        de: 'C₁-C₄ (Capabilities) → E (Enablers) → S (Skalierungserfolg)'
+      }
+    }
+  },
+
+  businessDimensions: {
+    headline: {
+      en: 'The 8 Business Dimensions: Where to Apply the Framework',
+      de: 'Die 8 Business-Dimensionen: Wo du das Framework anwendest'
+    },
+    subheadline: {
+      en: 'The 4 capabilities apply across 8 business dimensions. This creates 32 capability areas—and your #1 bottleneck is hiding in one of them.',
+      de: 'Die 4 Capabilities gelten für 8 Business-Dimensionen. Das ergibt 32 Capability-Bereiche—und dein #1 Engpass versteckt sich in einem davon.'
+    },
+    intro: [
+      { 
+        en: 'You now understand the 4 capabilities (Strategy, Setup, Execution, Operationalization). But where do you apply them? The answer: Across 8 business dimensions.',
+        de: 'Du verstehst jetzt die 4 Capabilities (Strategy, Setup, Execution, Operationalization). Aber wo wendest du sie an? Die Antwort: Über 8 Business-Dimensionen.'
+      },
+      {
+        en: 'Think of it like a matrix: 4 Capabilities (HOW you scale) × 8 Dimensions (WHERE you apply them) = 32 Capability Areas. Your #1 bottleneck is hiding in one of these 32 areas.',
+        de: 'Denk es dir wie eine Matrix: 4 Capabilities (WIE du skalierst) × 8 Dimensionen (WO du sie anwendest) = 32 Capability-Bereiche. Dein #1 Engpass versteckt sich in einem dieser 32 Bereiche.'
+      },
+      {
+        en: 'The 8 dimensions are MECE (Mutually Exclusive, Collectively Exhaustive)—covering every aspect of your business without overlap.',
+        de: 'Die 8 Dimensionen sind MECE (Mutually Exclusive, Collectively Exhaustive)—sie decken jeden Aspekt deines Business ab, ohne Überlappung.'
+      }
+    ],
+    dimensions: [
+      { id: 'D₁', name: { en: 'GTM/Revenue', de: 'GTM/Revenue' }, icon: 'ShoppingCart', description: { en: 'Sales, Marketing, Pricing, Customer Acquisition', de: 'Sales, Marketing, Pricing, Kundenakquise' }, metric: { en: 'CAC, LTV/CAC, Growth Rate', de: 'CAC, LTV/CAC, Growth Rate' } },
+      { id: 'D₂', name: { en: 'Product', de: 'Product' }, icon: 'Package', description: { en: 'Product Development, Roadmap, Quality, Innovation', de: 'Produktentwicklung, Roadmap, Qualität, Innovation' }, metric: { en: 'PMF, Retention', de: 'PMF, Retention' } },
+      { id: 'D₃', name: { en: 'Customer Success', de: 'Customer Success' }, icon: 'HeartHandshake', description: { en: 'Onboarding, Retention, Expansion, Support', de: 'Onboarding, Retention, Expansion, Support' }, metric: { en: 'NRR, Churn, Expansion', de: 'NRR, Churn, Expansion' } },
+      { id: 'D₄', name: { en: 'Operations', de: 'Operations' }, icon: 'Cog', description: { en: 'Processes, Workflows, Efficiency, Delivery', de: 'Prozesse, Workflows, Effizienz, Delivery' }, metric: { en: 'Efficiency, Coordination Cost', de: 'Effizienz, Koordinationskosten' } },
+      { id: 'D₅', name: { en: 'Finance', de: 'Finance' }, icon: 'Landmark', description: { en: 'Planning, Forecasting, Unit Economics, Reporting', de: 'Planung, Forecasting, Unit Economics, Reporting' }, metric: { en: 'Unit Economics, Burn Rate', de: 'Unit Economics, Burn Rate' } },
+      { id: 'D₆', name: { en: 'Talent', de: 'Talent' }, icon: 'UserCog', description: { en: 'Hiring, Development, Retention, Culture', de: 'Hiring, Entwicklung, Retention, Kultur' }, metric: { en: 'Team Quality, Turnover', de: 'Team-Qualität, Turnover' } },
+      { id: 'D₇', name: { en: 'Data/Tech', de: 'Data/Tech' }, icon: 'Server', description: { en: 'Infrastructure, Data, Security, AI Integration', de: 'Infrastruktur, Daten, Security, AI-Integration' }, metric: { en: 'AI Maturity, Tech Debt', de: 'AI Maturity, Tech Debt' } },
+      { id: 'D₈', name: { en: 'Governance', de: 'Governance' }, icon: 'Scale', description: { en: 'Board, Legal, Compliance, Risk Management', de: 'Board, Legal, Compliance, Risikomanagement' }, metric: { en: 'Board Confidence, Investor Readiness', de: 'Board Confidence, Investor Readiness' } }
+    ],
+    matrixExample: {
+      capability: 'C₂ (Setup)',
+      dimension: 'D₁ (GTM/Revenue)',
+      questions: [
+        { en: 'Do you have clear ICP definition?', de: 'Hast du eine klare ICP-Definition?' },
+        { en: 'Do you have repeatable sales playbooks?', de: 'Hast du wiederholbare Sales Playbooks?' },
+        { en: 'Do you have predictable lead generation?', de: 'Hast du vorhersagbare Lead-Generierung?' }
+      ],
+      implication: { en: 'If the answer is "No" → This is a bottleneck.', de: 'Wenn die Antwort "Nein" ist → Das ist ein Engpass.' }
+    },
+    callout: {
+      title: { en: 'Why This Matters', de: 'Warum das wichtig ist' },
+      content: {
+        en: 'Most companies focus on 1-2 dimensions (e.g., "We need better sales" or "We need better product"). But your #1 bottleneck might be hiding in a different dimension. The 8-dimensional framework ensures you diagnose ALL 32 capability areas—not just the obvious ones.',
+        de: 'Die meisten Unternehmen fokussieren auf 1-2 Dimensionen (z.B. "Wir brauchen besseren Sales" oder "Wir brauchen besseres Produkt"). Aber dein #1 Engpass könnte sich in einer anderen Dimension verstecken. Das 8-dimensionale Framework stellt sicher, dass du ALLE 32 Capability-Bereiche diagnostizierst—nicht nur die offensichtlichen.'
+      }
+    },
+    crossLink: {
+      text: { en: 'Want to see how this works in practice? Read about the Scaling Stack Theory (SST).', de: 'Willst du sehen, wie das in der Praxis funktioniert? Lies über die Scaling Stack Theory (SST).' },
+      href: '/expertise/sst'
     }
   },
 

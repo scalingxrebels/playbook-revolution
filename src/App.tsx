@@ -7,6 +7,7 @@ import { lazy, Suspense } from "react";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 // Lazy load pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -108,6 +109,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 <Route path="/" element={<Index />} />
