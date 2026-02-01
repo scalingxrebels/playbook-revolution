@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-colors bg-white/20 shadow-sm backdrop-blur-md dark:bg-black/20 dark:backdrop-blur-xl dark:border-b dark:border-border dark:shadow-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-colors bg-white/95 shadow-sm backdrop-blur-md dark:bg-background/80 dark:backdrop-blur-xl dark:border-b dark:border-border dark:shadow-none">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -128,7 +128,7 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Menu - Full Screen Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden fixed inset-0 top-16 z-50 bg-[#FAF9F7] dark:bg-[#0F0F14]" style={{ opacity: 1 }}>
+          <div className="md:hidden fixed inset-0 top-16 z-40 animate-fade-in bg-[#FAF9F7] dark:bg-[#0F0F14]">
             <div className="container px-4 py-8">
               <div className="flex flex-col gap-2">
                 {navItems.map((item, index) => {
