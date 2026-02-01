@@ -22,7 +22,7 @@ const Navigation: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-colors bg-white/95 shadow-sm backdrop-blur-md dark:bg-background/80 dark:backdrop-blur-xl dark:border-b dark:border-border dark:shadow-none">
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-colors bg-white/20 shadow-sm backdrop-blur-md dark:bg-black/20 dark:backdrop-blur-xl dark:border-b dark:border-border dark:shadow-none">
       <div className="container max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
