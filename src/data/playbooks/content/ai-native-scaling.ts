@@ -23,7 +23,7 @@ export const aiNativeScalingData: PlaybookPageData = {
       { en: "2-5x ARR/Employee", de: "2-5x ARR/Mitarbeiter" }
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
-    downloadUrl: "#",
+    downloadUrl: "/downloads/ai-native-scaling-playbook.pdf",
     gradient: "from-purple-500 to-violet-500"
   },
   summary: {
