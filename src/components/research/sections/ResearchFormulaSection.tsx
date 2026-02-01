@@ -10,12 +10,14 @@ interface ResearchFormulaSectionProps {
 }
 
 const componentColors: Record<string, string> = {
-  'E': 'text-muted-foreground',
+  'M': 'text-blue-400',
+  'E': 'text-green-400',
   'C₁': 'text-violet-500',
   'C₂': 'text-blue-500',
   'C₃': 'text-emerald-500',
   'C₄': 'text-amber-500',
   'θ_index': 'text-primary',
+  'θ': 'text-primary',
 };
 
 const ResearchFormulaSection: React.FC<ResearchFormulaSectionProps> = ({ data }) => {
@@ -53,24 +55,26 @@ const ResearchFormulaSection: React.FC<ResearchFormulaSectionProps> = ({ data })
         <div className="relative mb-12">
           <div className="p-8 md:p-12 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <div className="text-center">
-              <div className="font-mono text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-wide">
+              <div className="font-mono text-xl md:text-3xl lg:text-4xl font-bold text-white tracking-wide">
                 <span className="text-muted-foreground">S</span>
                 <span className="text-white/50 mx-2">=</span>
-                <span className="text-muted-foreground">E</span>
+                <span className="text-blue-400">M</span>
+                <span className="text-white/50 mx-2">×</span>
+                <span className="text-green-400">E</span>
                 <span className="text-white/50 mx-2">×</span>
                 <span className="text-white/50">(</span>
                 <span className="text-violet-400">C₁</span>
-                <sup className="text-violet-400/70 text-lg">1.5</sup>
+                <sup className="text-violet-400/70 text-sm">1.5</sup>
                 <span className="text-white/50 mx-1">×</span>
-                <span className="text-blue-400">C₂</span>
+                <span className="text-blue-500">C₂</span>
                 <span className="text-white/50 mx-1">×</span>
                 <span className="text-emerald-400">C₃</span>
-                <sup className="text-emerald-400/70 text-lg">1.5</sup>
+                <sup className="text-emerald-400/70 text-sm">1.5</sup>
                 <span className="text-white/50 mx-1">×</span>
                 <span className="text-amber-400">C₄</span>
                 <span className="text-white/50">)</span>
                 <span className="text-white/50 mx-2">×</span>
-                <span className="text-primary">θ<sub className="text-xs">index</sub></span>
+                <span className="text-primary">θ</span>
               </div>
             </div>
           </div>
@@ -113,7 +117,7 @@ const ResearchFormulaSection: React.FC<ResearchFormulaSectionProps> = ({ data })
         </div>
 
         {/* Exponent Insight Callout */}
-        <div className="p-6 rounded-xl bg-violet-500/10 border border-violet-500/30">
+        <div className="p-6 rounded-xl bg-violet-500/10 border border-violet-500/30 mb-8">
           <div className="flex items-start gap-3">
             <Lightbulb className="w-6 h-6 text-violet-400 flex-shrink-0 mt-0.5" />
             <div>
@@ -129,6 +133,33 @@ const ResearchFormulaSection: React.FC<ResearchFormulaSectionProps> = ({ data })
             </div>
           </div>
         </div>
+
+        {/* Why We Focus on C₁-C₄ */}
+        {data.whyFocusOnCapabilities && (
+          <div className="p-6 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+            <h4 className="font-semibold text-lg mb-4 text-emerald-300">
+              {data.whyFocusOnCapabilities.headline[language]}
+            </h4>
+            <div className="space-y-4 mb-4">
+              {data.whyFocusOnCapabilities.reasons.map((reason, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-emerald-400 text-sm font-bold">{idx + 1}</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-white/90">{reason.title[language]}</p>
+                    <p className="text-sm text-white/60">{reason.content[language]}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="p-3 rounded-lg bg-white/5 border border-white/10">
+              <p className="text-sm font-mono text-emerald-300 text-center">
+                {data.whyFocusOnCapabilities.causalChain[language]}
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
