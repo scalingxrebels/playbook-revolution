@@ -4987,7 +4987,7 @@ Der Board forderte Klarheit: "Was ist der strategische Weg nach vorne—und wie 
     
     // META
     playbooks: ['exit-ma', 'operating-systems', 'strategic-governance'],
-    downloadUrl: undefined,
+    downloadUrl: '/downloads/cases/strategic-transformation-ma-integration.pdf',
     
     // RELATED SOLUTIONS (CORRECTED - using real existing solutions)
     relatedSolutions: [
@@ -5430,7 +5430,7 @@ Der CEO erkannte: Ohne strategische Klarheit führen wir auf mehreren Fronten au
     
     // META
     playbooks: ['strategic-capabilities', 'operating-systems'],
-    downloadUrl: undefined
+    downloadUrl: '/downloads/cases/vision-2030-strategy-workshop.pdf'
   },
 
   // ============================================
@@ -5980,7 +5980,7 @@ Der Board war unterstützend aber fordernd: "Zeigt uns jeden Quartal Fortschritt
     
     // META
     playbooks: ['strategic-capabilities', 'operating-systems'],
-    downloadUrl: undefined
+    downloadUrl: '/downloads/cases/saas-transition-accelerated.pdf'
   },
 
 ];

@@ -108,5 +108,8 @@ public/
 
 1. **Du:** Benenne die 14 PDFs lokal um (gemäß Mapping-Tabelle)
 2. **Du:** Lade die umbenannten PDFs in den `public/downloads/cases/` Ordner hoch
-3. **Ich:** Aktualisiere `caseStudies.ts` mit den korrekten `downloadUrl`-Pfaden
+3. ✅ **Erledigt:** `caseStudies.ts` mit den korrekten `downloadUrl`-Pfaden aktualisiert
+   - `strategic-transformation-ma-integration` → `/downloads/cases/strategic-transformation-ma-integration.pdf`
+   - `vision-2030-strategy-workshop` → `/downloads/cases/vision-2030-strategy-workshop.pdf`
+   - `saas-transition-accelerated` → `/downloads/cases/saas-transition-accelerated.pdf`
 4. **Test:** Download-Funktion auf einer Case Study Detail-Seite verifizieren
