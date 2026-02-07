@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      download_leads: {
+        Row: {
+          asset_id: string
+          asset_type: string | null
+          company: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string | null
+          page_url: string | null
+          referrer: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          asset_id: string
+          asset_type?: string | null
+          company?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name?: string | null
+          page_url?: string | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          asset_id?: string
+          asset_type?: string | null
+          company?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string | null
+          page_url?: string | null
+          referrer?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
       playbook_leads: {
         Row: {
           company: string | null

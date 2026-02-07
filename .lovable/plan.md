@@ -1,359 +1,275 @@
 
-# Plan: AGB/Terms Update nach neuem Briefing
+# Plan: Download Registry & Forms System
 
-## Überblick
+## Zusammenfassung
+Implementierung eines zentralisierten Download-Registrys mit 45 Assets und 3 standardisierten Formularen mit vollständigem UTM-Tracking.
 
-Die AGB-Seite wird vollständig überarbeitet gemäß dem detaillierten Briefing. Das Design orientiert sich am Glossar-Layout mit strukturierten Cards, Tables, Icons und Badges. Die Seite wird zweisprachig (DE/EN) implementiert.
+---
 
-## Aktueller Status vs. Briefing
+## 1. Download Registry - Vollständige Bestandsaufnahme
 
-| Aspekt | Aktuell | Neu (Briefing) |
-|--------|---------|----------------|
-| Sektionen | 11 (§1-§11) | 10 (§1-§10) strukturiert |
-| Design | Prose-Layout, border-left | Card-basiert (Glossar-Stil) |
-| Preistabellen | Keine | 6 Service-Kategorien mit Preisen |
-| Zahlungspläne | Keine | Detaillierte Payment Schedules |
-| Laufzeiten | Einfach | Tabelle mit allen Produkten |
-| Icons | Nur ArrowLeft | 15+ Lucide-Icons |
-| Container | max-w-4xl | max-w-5xl |
-| Outcome-Garantie | Nicht erwähnt | Detailliert dokumentiert |
+### 1.1 Playbooks (18 Dateien)
 
-## Neue Struktur (aus Briefing)
+| Nr | Playbook | Slug | Dateiname | Status |
+|----|----------|------|-----------|--------|
+| 1 | AI-Native Scaling (Master) | ai-native-scaling | `ai-native-scaling-playbook.pdf` | Existiert |
+| 2 | Growth Engines | growth-engines | `growth-engines-playbook.pdf` | Fehlt |
+| 3 | Operating Systems | operating-systems | `operating-systems-playbook.pdf` | Fehlt |
+| 4 | Board & Governance | board-governance | `board-governance-playbook.pdf` | Fehlt |
+| 5 | Portfolio Transformation | portfolio-transformation | `portfolio-transformation-playbook.pdf` | Fehlt |
+| 6 | Strategic Capabilities | strategic-capabilities | `strategic-capabilities-playbook.pdf` | Fehlt |
+| 7 | GTM & Revenue | gtm-revenue | `gtm-revenue-playbook.pdf` | Fehlt |
+| 8 | Product | product | `product-playbook.pdf` | Fehlt |
+| 9 | Customer Success | customer-success | `customer-success-playbook.pdf` | Fehlt |
+| 10 | Operations | operations | `operations-playbook.pdf` | Fehlt |
+| 11 | Finance | finance | `finance-playbook.pdf` | Fehlt |
+| 12 | Talent | talent | `talent-playbook.pdf` | Fehlt |
+| 13 | Data & Tech | data-tech | `data-tech-playbook.pdf` | Fehlt |
+| 14 | Strategic Governance | strategic-governance | `strategic-governance-playbook.pdf` | Fehlt |
+| 15 | Operational Governance | operational-governance | `operational-governance-playbook.pdf` | Fehlt |
+| 16 | Exit & M&A | exit-ma | `exit-ma-playbook.pdf` | Fehlt |
+| 17 | Portfolio Excellence | portfolio-excellence | `portfolio-excellence-playbook.pdf` | Fehlt |
+
+**Zielordner:** `public/downloads/playbooks/`
+
+---
+
+### 1.2 Case Studies (14 Dateien)
+
+| Nr | Case Study | Slug | Dateiname |
+|----|------------|------|-----------|
+| 1 | CAC Crisis Turnaround | cac-crisis-turnaround | `cac-crisis-turnaround.pdf` |
+| 2 | NRR Machine Breakthrough | nrr-machine-breakthrough | `nrr-machine-breakthrough.pdf` |
+| 3 | Partner Channel Transformed | partner-channel-transformed | `partner-channel-transformed.pdf` |
+| 4 | Pricing Redesigned | pricing-redesigned | `pricing-redesigned.pdf` |
+| 5 | Strategic Transformation Market Leadership | strategic-transformation-market-leadership | `strategic-transformation-market-leadership.pdf` |
+| 6 | Stage Transition Series B Ready | stage-transition-series-b-ready | `stage-transition-series-b-ready.pdf` |
+| 7 | Exit Readiness Achieved | exit-readiness-achieved | `exit-readiness-achieved.pdf` |
+| 8 | Vision 2030 Strategy Workshop | vision-2030-strategy-workshop | `vision-2030-strategy-workshop.pdf` |
+| 9 | SaaS Transition Accelerated | saas-transition-accelerated | `saas-transition-accelerated.pdf` |
+| 10 | Strategic Transformation M&A Integration | strategic-transformation-ma-integration | `strategic-transformation-ma-integration.pdf` |
+| 11 | Diagnostic-Led Acquisition Scaled | diagnostic-led-acquisition-scaled | `diagnostic-led-acquisition-scaled.pdf` |
+| 12 | Board Readiness Series B Secured | board-readiness-series-b-secured | `board-readiness-series-b-secured.pdf` |
+| 13 | Leadership Program Scaled | leadership-program-scaled | `leadership-program-scaled.pdf` |
+| 14 | New Market Segment Entry | new-market-segment-entry | `new-market-segment-entry.pdf` |
+
+**Zielordner:** `public/downloads/cases/`
+
+---
+
+### 1.3 Expertise/Research (4 Dateien)
+
+| Nr | Framework | Slug | Dateiname |
+|----|-----------|------|-----------|
+| 1 | AI Maturity Framework | amf | `amf-executive-summary.pdf` |
+| 2 | AI-Native Scaling Theory | anst | `anst-executive-summary.pdf` |
+| 3 | Scaling Stack Theory | sst | `sst-executive-summary.pdf` |
+| 4 | Unified Framework | unified | `architecture-v4.5.1.pdf` |
+
+**Zielordner:** `public/downloads/research/`
+
+---
+
+### 1.4 Decision Support Samples (8 Dateien)
+
+| Nr | Solution | Slug | Dateiname |
+|----|----------|------|-----------|
+| 1 | GTM Effectiveness Review | gtm-effectiveness | `gtm-effectiveness-sample.pdf` |
+| 2 | Pricing & Packaging Review | pricing-packaging | `pricing-packaging-sample.pdf` |
+| 3 | Scaling Readiness Assessment | scaling-readiness | `scaling-readiness-sample.pdf` |
+| 4 | AI Maturity Assessment | ai-maturity | `ai-maturity-sample.pdf` |
+| 5 | Investor-Readiness Pitch Deck Check | pitch-deck-check | `pitch-deck-check-sample.pdf` |
+| 6 | VC Due Diligence Simulation | vc-dd-simulation | `vc-dd-simulation-sample.pdf` |
+| 7 | Portfolio Assessment | portfolio-assessment | `portfolio-assessment-sample.pdf` |
+| 8 | Custom Analysis & Report | custom-analysis | `custom-analysis-sample.pdf` |
+
+**Zielordner:** `public/downloads/samples/`
+
+---
+
+### 1.5 Buch (1 Datei)
+
+| Nr | Asset | Dateiname | Status |
+|----|-------|-----------|--------|
+| 1 | Fix Growth Sample (29 Seiten) | `fix-growth-sample.pdf` | Existiert |
+
+**Zielordner:** `public/downloads/` (bereits vorhanden)
+
+---
+
+## 2. Ordnerstruktur nach Implementierung
 
 ```text
-Struktur nach Update:
-├── Header mit Back-Button + Badges (v1.0, BGB-konform)
-├── Inhaltsverzeichnis (Clickable)
-│
-├── § 1 GELTUNGSBEREICH & VERTRAGSSCHLUSS
-│   ├── 1.1 Geltungsbereich (mit Firmendetails)
-│   ├── 1.2 Ausschluss abweichender Bedingungen
-│   ├── 1.3 Vertragsschluss
-│   └── 1.4 Vertragssprache
-│
-├── § 2 LEISTUNGEN & LEISTUNGSUMFANG
-│   ├── 2.1 Leistungskategorien (Cards)
-│   │   ├── Transformation Programs (Power Up, Boost, Accelerate)
-│   │   ├── Decision Support
-│   │   ├── AI Tools & Training
-│   │   ├── Bespoke Services
-│   │   ├── Retainer Advisory
-│   │   └── Portfolio Solutions
-│   ├── 2.2 Leistungsbeschreibung
-│   └── 2.3 Leistungsänderungen
-│
-├── § 3 MITWIRKUNGSPFLICHTEN DES KUNDEN
-│   ├── 3.1 Allgemeine Mitwirkungspflichten
-│   ├── 3.2 Spezifische Mitwirkungspflichten (Tabelle)
-│   └── 3.3 Folgen fehlender Mitwirkung
-│
-├── § 4 VERGÜTUNG & ZAHLUNGSBEDINGUNGEN
-│   ├── 4.1 Vergütung
-│   ├── 4.2 Zahlungsbedingungen (6 Tabellen)
-│   ├── 4.3 Zahlungsfrist & Verzug
-│   ├── 4.4 Aufrechnung & Zurückbehaltung
-│   └── 4.5 Reisekosten & Auslagen
-│
-├── § 5 VERTRAGSLAUFZEIT & KÜNDIGUNG
-│   ├── 5.1 Vertragslaufzeit (Tabelle)
-│   ├── 5.2 Ordentliche Kündigung
-│   ├── 5.3 Außerordentliche Kündigung
-│   └── 5.4 Folgen der Kündigung
-│
-├── § 6 GEISTIGES EIGENTUM & NUTZUNGSRECHTE
-│   ├── 6.1 Geistiges Eigentum von ScalingX (Liste)
-│   ├── 6.2 Nutzungsrechte des Kunden
-│   ├── 6.3 Nutzungsrechte von ScalingX
-│   └── 6.4 Kundendaten
-│
-├── § 7 VERTRAULICHKEIT & DATENSCHUTZ
-│   ├── 7.1 Vertraulichkeit
-│   ├── 7.2 Datenschutz
-│   └── 7.3 Subunternehmer
-│
-├── § 8 HAFTUNG & GEWÄHRLEISTUNG
-│   ├── 8.1 Haftung
-│   ├── 8.2 Gewährleistung
-│   ├── 8.3 Outcome-Garantie (Card)
-│   └── 8.4 Verjährung
-│
-├── § 9 HÖHERE GEWALT
-│   ├── 9.1 Definition
-│   └── 9.2 Folgen
-│
-├── § 10 SCHLUSSBESTIMMUNGEN
-│   ├── 10.1 Änderungen & Ergänzungen
-│   ├── 10.2 Salvatorische Klausel
-│   ├── 10.3 Anwendbares Recht
-│   ├── 10.4 Gerichtsstand
-│   ├── 10.5 Streitbeilegung
-│   ├── 10.6 Übertragung
-│   └── 10.7 Vertragssprache
-│
-├── Kontakt-Sektion (Card)
-└── Compliance Footer (Badges)
+public/downloads/
+├── ai-native-scaling-playbook.pdf    (existiert)
+├── fix-growth-sample.pdf             (existiert)
+├── playbooks/                        (NEU - 17 PDFs)
+│   ├── growth-engines-playbook.pdf
+│   ├── operating-systems-playbook.pdf
+│   ├── board-governance-playbook.pdf
+│   ├── portfolio-transformation-playbook.pdf
+│   ├── strategic-capabilities-playbook.pdf
+│   ├── gtm-revenue-playbook.pdf
+│   ├── product-playbook.pdf
+│   ├── customer-success-playbook.pdf
+│   ├── operations-playbook.pdf
+│   ├── finance-playbook.pdf
+│   ├── talent-playbook.pdf
+│   ├── data-tech-playbook.pdf
+│   ├── strategic-governance-playbook.pdf
+│   ├── operational-governance-playbook.pdf
+│   ├── exit-ma-playbook.pdf
+│   └── portfolio-excellence-playbook.pdf
+├── cases/                            (NEU - 14 PDFs)
+│   └── [14 Case Study PDFs]
+├── research/                         (NEU - 4 PDFs)
+│   ├── amf-executive-summary.pdf
+│   ├── anst-executive-summary.pdf
+│   ├── sst-executive-summary.pdf
+│   └── architecture-v4.5.1.pdf
+└── samples/                          (NEU - 8 PDFs)
+    ├── gtm-effectiveness-sample.pdf
+    ├── pricing-packaging-sample.pdf
+    ├── scaling-readiness-sample.pdf
+    ├── ai-maturity-sample.pdf
+    ├── pitch-deck-check-sample.pdf
+    ├── vc-dd-simulation-sample.pdf
+    ├── portfolio-assessment-sample.pdf
+    └── custom-analysis-sample.pdf
 ```
 
-## Design-Pattern (Glossar-Vorlage)
+---
 
-**Datei:** `src/pages/AGB.tsx`
+## 3. Forms System mit UTM-Tracking
 
-### Imports
+### 3.1 Formular-Typen
+
+| Nr | Formular | Zweck | Fillout-ID |
+|----|----------|-------|------------|
+| 1 | Inflection Call | Kostenlose 30-Min. Beratung | `inflection-call` |
+| 2 | Expert Session | Bezahlte 45-90 Min. Session | `expert-session` |
+| 3 | Download Form | Asset-Download mit Lead-Capture | `download` |
+
+### 3.2 URL-Parameter Schema
+
+Alle Formulare erhalten folgende Parameter:
+
+| Parameter | Beschreibung | Beispiel |
+|-----------|--------------|----------|
+| `asset_id` | Eindeutige Asset-ID | `playbook-gtm-revenue`, `case-cac-crisis` |
+| `utm_source` | Traffic-Quelle | `linkedin`, `google`, `direct` |
+| `utm_medium` | Marketing-Medium | `cpc`, `email`, `organic` |
+| `utm_campaign` | Kampagnen-Name | `q1-2026-playbook-launch` |
+| `utm_content` | Content-Variante | `hero-cta`, `footer-cta` |
+| `utm_term` | Keywords | `scaling`, `ai-native` |
+
+### 3.3 Asset-ID Namenskonvention
+
+```text
+Format: {type}-{slug}
+
+Beispiele:
+- playbook-ai-native-scaling
+- playbook-gtm-revenue
+- case-cac-crisis-turnaround
+- research-amf
+- sample-gtm-effectiveness
+- book-fix-growth
+```
+
+---
+
+## 4. Technische Implementierung
+
+### 4.1 Download Registry Data File
+
+Neue Datei: `src/data/downloadRegistry.ts`
 
 ```typescript
-import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-  Table, TableBody, TableCell, TableHead, 
-  TableHeader, TableRow
-} from '@/components/ui/table';
-import { 
-  ArrowLeft, Building2, FileText, Users, CreditCard, Clock, 
-  Lightbulb, Lock, Shield, AlertTriangle, Scale, Phone, Mail,
-  Rocket, Target, Zap, BarChart3, BookOpen, Bot, Briefcase,
-  Calendar, CheckCircle, ExternalLink
-} from 'lucide-react';
+export interface DownloadAsset {
+  id: string;           // z.B. "playbook-gtm-revenue"
+  type: 'playbook' | 'case' | 'research' | 'sample' | 'book';
+  slug: string;
+  titleEn: string;
+  titleDe: string;
+  fileName: string;
+  filePath: string;
+  requiresEmail: boolean;
+  isAvailable: boolean;
+}
+
+export const downloadRegistry: DownloadAsset[] = [
+  // 18 Playbooks
+  // 14 Case Studies  
+  // 4 Research Documents
+  // 8 Decision Support Samples
+  // 1 Book
+];
 ```
 
-### Struktur-Elemente
+### 4.2 UTM-Aware Form Component
 
-1. **Header mit Back-Button und Badges:**
-```typescript
-<Button variant="ghost" onClick={() => navigate(-1)} className="mb-6 -ml-2">
-  <ArrowLeft className="h-4 w-4 mr-2" />
-  {language === 'de' ? 'Zurück' : 'Back'}
-</Button>
+Neue Komponente: `src/components/forms/UTMAwareForm.tsx`
 
-<div className="flex flex-wrap items-center gap-3 mb-4">
-  <Badge variant="outline">BGB §§ 305-310</Badge>
-  <Badge variant="outline">B2B</Badge>
-  <Badge variant="gradient">v1.0</Badge>
-</div>
+- Liest UTM-Parameter aus URL
+- Übergibt Parameter an Fillout-Embed
+- Speichert in Datenbank mit Asset-ID
 
-<h1 className="font-display text-4xl md:text-5xl italic mb-4">
-  {language === 'de' ? 'Allgemeine Geschäftsbedingungen' : 'Terms and Conditions'}
-</h1>
+### 4.3 Datenbank-Schema Erweiterung
+
+Neue Tabelle: `download_leads`
+
+```sql
+CREATE TABLE download_leads (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  email TEXT NOT NULL,
+  name TEXT,
+  company TEXT,
+  asset_id TEXT NOT NULL,
+  utm_source TEXT,
+  utm_medium TEXT,
+  utm_campaign TEXT,
+  utm_content TEXT,
+  utm_term TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
 ```
 
-2. **Inhaltsverzeichnis (Clickable):**
-```typescript
-<Card className="mb-8">
-  <CardHeader className="pb-3">
-    <CardTitle className="flex items-center gap-3 text-lg">
-      <FileText className="h-5 w-5 text-primary" />
-      {language === 'de' ? 'Inhaltsverzeichnis' : 'Table of Contents'}
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <ol className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-      {sections.map((section, index) => (
-        <li key={index}>
-          <a href={`#section-${index + 1}`} className="hover:text-primary">
-            § {index + 1} {section.title}
-          </a>
-        </li>
-      ))}
-    </ol>
-  </CardContent>
-</Card>
-```
+---
 
-3. **Leistungskategorien (Card-Grid):**
-```typescript
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  {/* Transformation Programs */}
-  <Card className="border-purple-500/30 bg-purple-500/5">
-    <CardHeader className="pb-2">
-      <CardTitle className="flex items-center gap-2 text-base">
-        <Rocket className="h-4 w-4 text-purple-500" />
-        Transformation Programs
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="text-sm space-y-2">
-      <div><strong>Power Up:</strong> €23.600 (30 Tage)</div>
-      <div><strong>Boost:</strong> €60K-€78K (90 Tage)</div>
-      <div><strong>Accelerate:</strong> €153K (12 Monate)</div>
-    </CardContent>
-  </Card>
-  {/* ... weitere Cards ... */}
-</div>
-```
+## 5. Umsetzungsschritte
 
-4. **Zahlungspläne (Tabellen):**
-```typescript
-<Table>
-  <TableHeader>
-    <TableRow className="bg-muted/50">
-      <TableHead>Produkt</TableHead>
-      <TableHead>{language === 'de' ? 'Bei Vertragsschluss' : 'At Contract'}</TableHead>
-      <TableHead>{language === 'de' ? 'Milestone 1' : 'Milestone 1'}</TableHead>
-      <TableHead>{language === 'de' ? 'Milestone 2' : 'Milestone 2'}</TableHead>
-      <TableHead>{language === 'de' ? 'Abschluss' : 'Completion'}</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">Power Up (€23.600)</TableCell>
-      <TableCell>50% (€11.800)</TableCell>
-      <TableCell>-</TableCell>
-      <TableCell>-</TableCell>
-      <TableCell>50% (€11.800)</TableCell>
-    </TableRow>
-    {/* ... weitere Rows ... */}
-  </TableBody>
-</Table>
-```
+### Phase 1: PDF-Upload (durch dich)
+1. Benenne alle PDFs nach dem Schema um
+2. Lade in die entsprechenden Ordner hoch:
+   - 17 Playbooks → `public/downloads/playbooks/`
+   - 14 Case Studies → `public/downloads/cases/`
+   - 4 Research → `public/downloads/research/`
+   - 8 Samples → `public/downloads/samples/`
 
-5. **Outcome-Garantie (Highlight Card):**
-```typescript
-<Card className="border-green-500/30 bg-green-500/5 mb-6">
-  <CardHeader className="pb-2">
-    <CardTitle className="flex items-center gap-2 text-lg text-green-700">
-      <CheckCircle className="h-5 w-5 text-green-500" />
-      {language === 'de' ? 'Outcome-Garantie' : 'Outcome Guarantee'}
-    </CardTitle>
-  </CardHeader>
-  <CardContent>
-    <p className="text-sm mb-4">
-      {language === 'de' 
-        ? 'Bei Transformation Programs gilt: 2 von 3 Outcomes oder 50% Refund'
-        : 'For Transformation Programs: 2 of 3 outcomes or 50% refund'}
-    </p>
-    <Table>
-      {/* Garantie-Details */}
-    </Table>
-  </CardContent>
-</Card>
-```
+### Phase 2: Code-Implementierung (durch mich)
+1. Erstelle `src/data/downloadRegistry.ts`
+2. Aktualisiere alle `downloadUrl` Pfade in:
+   - 18 Playbook-Dateien
+   - `caseStudies.ts`
+   - Research-Dateien (amf.ts, anst.ts, sst.ts, unified-framework.ts)
+   - `solutionTiles.ts` (Sample-Links)
+3. Erstelle UTM-aware Form-Komponenten
+4. Erstelle Datenbank-Migration für `download_leads`
 
-6. **Compliance Footer:**
-```typescript
-<div className="mt-16 text-center border-t border-border pt-8">
-  <p className="text-sm text-muted-foreground mb-4">
-    {language === 'de' ? 'Stand: 1. Februar 2026 | Version 1.0' : 'As of: February 1, 2026 | Version 1.0'}
-  </p>
-  <p className="text-sm text-muted-foreground mb-4">
-    © 2026 ScalingX Hypergrowth GmbH. {language === 'de' ? 'Alle Rechte vorbehalten.' : 'All rights reserved.'}
-  </p>
-  <div className="flex flex-wrap justify-center gap-2">
-    <Badge variant="outline">BGB-konform</Badge>
-    <Badge variant="outline">AGB-Kontrolle</Badge>
-    <Badge variant="outline">DSGVO-konform</Badge>
-  </div>
-</div>
-```
+### Phase 3: Fillout-Integration
+1. Konfiguriere 3 Fillout-Formulare mit Parameter-Durchreichung
+2. Implementiere `data-fillout-inherit-parameters` auf allen Embeds
 
-## Inhalt pro Hauptsektion
+---
 
-### § 1 Geltungsbereich & Vertragsschluss
-- Firmendetails: ScalingX Hypergrowth GmbH, HRB 271376 B
-- Adresse: Markgrafendamm 4, 10245 Berlin
-- Geschäftsführer: Michel Lason
-- Kontakt: info@scalingx.io, +49 172 735 58 91
-- Vertragssprache: Deutsch (maßgeblich)
+## 6. Gesamtübersicht: 45 Assets
 
-### § 2 Leistungen (6 Kategorien mit Preisen)
-
-| Kategorie | Produkte | Preisspanne |
-|-----------|----------|-------------|
-| Transformation Programs | Power Up, Boost, Accelerate | €23.600 - €153.000 |
-| Decision Support | Inflection Call, Expert Sessions, Reports | €0 - €5.900 |
-| AI Tools & Training | Copilots, Playbooks, Workshops | €99/mo - €12.900 |
-| Bespoke Services | Strategy, Transformation | €8.000 - Custom |
-| Retainer Advisory | Fractional COO, Board Advisory | €2.000 - €11.000/mo |
-| Portfolio Solutions | Assessment, Transformation | €50.000 - €720.000 |
-
-### § 3 Mitwirkungspflichten (Stundentabelle)
-
-| Programm | Wöchentliche Mitwirkung |
-|----------|------------------------|
-| Power Up | 10-20 Stunden/Woche |
-| Boost | 15-25 Stunden/Woche |
-| Accelerate | 20-30 Stunden/Woche |
-
-### § 4 Zahlungsbedingungen (6 Schedules)
-
-**Transformation Programs:**
-- Power Up: 50% / 50%
-- Boost: 40% / 30% / 30%
-- Accelerate: 25% / 25% / 25% / 25%
-
-**Weitere:**
-- Expert Sessions: 100% im Voraus
-- Workshops: 50% bei Buchung, 50% 7 Tage vorher
-- Retainer: Monatlich im Voraus
-
-### § 5 Vertragslaufzeiten (Tabelle)
-
-| Produkt | Laufzeit | Kündigungsfrist |
-|---------|----------|-----------------|
-| Power Up | 30 Tage (fest) | - |
-| Boost | 90 Tage (fest) | - |
-| Accelerate | 12 Monate (fest) | - |
-| AI Copilots | Monatlich | 30 Tage |
-| Fractional COO | Min. 3 Monate | 30 Tage |
-| Board Advisory | Min. 12 Monate | 60 Tage |
-
-### § 6 Geistiges Eigentum
-
-**Geschützte IP von ScalingX:**
-- AI-Native Scaling Framework (v4.5.3)
-- AI Maturity Framework (AMF v4.5.1)
-- AI-Native Scaling Theory (ANST v4.5.3)
-- Scaling Stack Theory (SST v4.5.1)
-- θ_index Scoring Methodology
-- Alle Playbooks, Templates, Tools
-
-**Kundenrechte:**
-- Nicht-exklusiv, nicht übertragbar, zeitlich unbegrenzt
-- Nur für interne Zwecke
-- Weitergabe an Investoren/Board erlaubt
-
-### § 8 Outcome-Garantie
-
-| Programm | Garantie | Bei Nichterreichung |
-|----------|----------|---------------------|
-| Power Up | 2 von 3 Outcomes | 50% Refund |
-| Boost | 2 von 3 Outcomes | 50% Refund |
-| Accelerate | 2 von 3 Metrics | 50% Refund |
-
-**Voraussetzungen:**
-- Volle Mitwirkung des Kunden
-- Messung nach vereinbarter Methodik
-- Geltendmachung innerhalb 30 Tagen
-
-### § 10 Schlussbestimmungen
-- Gerichtsstand: Berlin
-- Anwendbares Recht: Deutsches Recht, CISG ausgeschlossen
-- EU-Streitschlichtung: ec.europa.eu/consumers/odr
-- Keine Teilnahme an Verbraucherschlichtung
-
-## Technische Umsetzung
-
-**Datei:** `src/pages/AGB.tsx`
-
-- Kompletter Rewrite mit ~900-1100 Zeilen
-- Bilingual (DE/EN) mit `useLanguage` Hook
-- Container: `max-w-5xl` (wie Glossar)
-- ~8 Tabellen für Preise, Zahlungspläne, Laufzeiten
-- ~6 Service-Kategorie Cards
-- Icons für visuelle Hierarchie
-- Anchor-Links für Inhaltsverzeichnis
-- ID-Attribute für Scroll-Navigation
-
-## Ergebnis
-
-- Vollständige, BGB-konforme AGB nach deutschem Recht
-- Alle 6 Service-Kategorien mit Preisen dokumentiert
-- Detaillierte Zahlungspläne für jedes Produkt
-- Outcome-Garantie klar definiert
-- Konsistentes Design mit Glossar/Impressum/Datenschutz
-- Zweisprachig (DE/EN)
-- Professionelle Darstellung mit Cards, Tables und Icons
-- Compliance-Badges im Footer
+| Kategorie | Anzahl | Ordner |
+|-----------|--------|--------|
+| Playbooks | 18 | `/downloads/playbooks/` + 1 root |
+| Case Studies | 14 | `/downloads/cases/` |
+| Research | 4 | `/downloads/research/` |
+| Samples | 8 | `/downloads/samples/` |
+| Buch | 1 | `/downloads/` (root) |
+| **Gesamt** | **45** | |
