@@ -1,126 +1,46 @@
 
-# Plan: Zentrales Fillout Download-System (Verbessert)
 
-## Zusammenfassung
+# Plan: Fillout via direkten iframe statt data-attributes
 
-Migration aller Downloads zu einem zentralen Fillout-Formular im Modal mit automatischem PDF-Download nach Form-Submit. Enthält Debug-Logging, Error Handling, und UTM-Persistenz via sessionStorage.
+## Problem
 
----
-
-## Teil 1: Dateien bereinigen
-
-### 1.1 PDF verschieben
-Das falsche `strategic-governance-playbook.pdf` im `/cases/` Ordner muss entfernt werden (ist bereits korrekt in `/playbooks/`).
-
-| Aktion | Datei |
-|--------|-------|
-| Löschen | `public/downloads/cases/strategic-governance-playbook.pdf` |
-
-**Hinweis:** Die Datei ist bereits korrekt in `/downloads/playbooks/strategic-governance-playbook.pdf` vorhanden.
-
----
-
-## Teil 2: Registry aktualisieren
-
-### `src/data/downloadRegistry.ts`
-
-**17 Playbooks → `isAvailable: true`:**
-
-| ID | Zeile | Änderung |
-|----|-------|----------|
-| playbook-growth-engines | 55 | `isAvailable: true` |
-| playbook-operating-systems | 67 | `isAvailable: true` |
-| playbook-board-governance | 79 | `isAvailable: true` |
-| playbook-portfolio-transformation | 91 | `isAvailable: true` |
-| playbook-strategic-capabilities | 103 | `isAvailable: true` |
-| playbook-gtm-revenue | 116 | `isAvailable: true` |
-| playbook-product | 128 | `isAvailable: true` |
-| playbook-customer-success | 140 | `isAvailable: true` |
-| playbook-operations | 154 | `isAvailable: true` |
-| playbook-finance | 165 | `isAvailable: true` |
-| playbook-talent | 177 | `isAvailable: true` |
-| playbook-data-tech | 189 | `isAvailable: true` |
-| playbook-strategic-governance | 202 | `isAvailable: true` |
-| playbook-operational-governance | 214 | `isAvailable: true` |
-| playbook-exit-ma | 226 | `isAvailable: true` |
-| playbook-portfolio-excellence | 239 | `isAvailable: true` |
-
-**14 Cases → `isAvailable: true`:**
-
-| ID | Zeile | Änderung |
-|----|-------|----------|
-| case-cac-crisis-turnaround | 258 | `isAvailable: true` |
-| case-nrr-machine-breakthrough | 269 | `isAvailable: true` |
-| case-partner-channel-transformed | 280 | `isAvailable: true` |
-| case-pricing-redesigned | 291 | `isAvailable: true` |
-| case-strategic-transformation-market-leadership | 302 | `isAvailable: true` |
-| case-stage-transition-series-b-ready | 313 | `isAvailable: true` |
-| case-exit-readiness-achieved | 324 | `isAvailable: true` |
-| case-vision-2030-strategy-workshop | 335 | `isAvailable: true` |
-| case-saas-transition-accelerated | 346 | `isAvailable: true` |
-| case-strategic-transformation-ma-integration | 357 | `isAvailable: true` |
-| case-diagnostic-led-acquisition-scaled | 368 | `isAvailable: true` |
-| case-board-readiness-series-b-secured | 379 | `isAvailable: true` |
-| case-leadership-program-scaled | 390 | `isAvailable: true` |
-| case-new-market-segment-entry | 401 | `isAvailable: true` |
-
----
-
-## Teil 3: UTM-Persistenz Hook
-
-### Neue Datei: `src/hooks/usePersistentUTMParams.ts`
-
-```typescript
-import { useEffect, useMemo } from 'react';
-import { useUTMParams, type UTMParams } from './useUTMParams';
-
-const STORAGE_KEY = 'scalingx_utm_params';
-
-/**
- * Hook to persist UTM parameters across internal navigation
- * 
- * Problem: When user navigates from /?utm_source=linkedin to /playbooks,
- * the UTM parameters are lost from the URL.
- * 
- * Solution: Store UTM params in sessionStorage on first visit,
- * then merge with any new URL params on subsequent pages.
- */
-export function usePersistentUTMParams(): UTMParams {
-  const urlParams = useUTMParams();
-  
-  // Store UTM params when they appear in URL
-  useEffect(() => {
-    const hasUrlParams = Object.values(urlParams).some(v => v);
-    if (hasUrlParams) {
-      console.log('💾 Storing UTM params:', urlParams);
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(urlParams));
-    }
-  }, [urlParams]);
-  
-  // Combine stored params with URL params (URL takes priority)
-  return useMemo(() => {
-    try {
-      const stored = sessionStorage.getItem(STORAGE_KEY);
-      const storedParams: UTMParams = stored ? JSON.parse(stored) : {};
-      const merged = { ...storedParams, ...urlParams };
-      
-      if (Object.keys(merged).length > 0) {
-        console.log('📊 UTM params (merged):', merged);
-      }
-      
-      return merged;
-    } catch {
-      return urlParams;
-    }
-  }, [urlParams]);
-}
+Die aktuelle Implementierung nutzt Fillout's JavaScript SDK mit data-attributes:
+```html
+<div
+  data-fillout-id="fzeJtLouULus"
+  data-fillout-embed-type="standard"
+  data-fillout-parameters="..."
+/>
 ```
 
+**Problem**: Das SDK muss `initializeEmbeds()` aufrufen, was Race Conditions verursacht und das Formular nicht korrekt rendert.
+
 ---
 
-## Teil 4: Fillout Download Modal (mit Debug-Logging & Error Handling)
+## Lösung: Direkter iframe
 
-### Neue Datei: `src/components/forms/FilloutDownloadModal.tsx`
+Statt dem SDK vertrauen wir auf einen simplen iframe mit der vollständigen URL:
+
+```html
+<iframe 
+  src="https://scalingx.fillout.com/download?Asset_ID=playbook-ai-native-scaling&utm_source=linkedin&..."
+  style="width: 100%; height: 500px; border: none;"
+/>
+```
+
+**Vorteile:**
+- Kein SDK-Loading nötig
+- Keine `initializeEmbeds()` Race Conditions
+- Formular lädt sofort
+- Parameter werden direkt in URL übergeben
+
+---
+
+## Code-Änderungen
+
+### `src/components/forms/FilloutDownloadModal.tsx`
+
+**Komplett vereinfachte Implementierung:**
 
 ```typescript
 import React, { useEffect, useState, useCallback } from 'react';
@@ -141,7 +61,7 @@ interface FilloutDownloadModalProps {
   onClose: () => void;
 }
 
-const FILLOUT_FORM_ID = 'fzeJtLouULus';
+const FILLOUT_BASE_URL = 'https://scalingx.fillout.com/download';
 
 const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   asset,
@@ -154,8 +74,8 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Build parameters for Fillout
-  const buildParams = useCallback(() => {
+  // Build full iframe URL with all parameters
+  const buildIframeUrl = useCallback(() => {
     if (!asset) return '';
     const params = new URLSearchParams();
     
@@ -170,12 +90,12 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     params.set('Asset_ID', asset.id);
     params.set('download_type', asset.type);
     
-    const paramString = params.toString();
-    console.log('📝 Fillout parameters:', paramString);
-    return paramString;
+    const url = `${FILLOUT_BASE_URL}?${params.toString()}`;
+    console.log('🔗 Fillout iframe URL:', url);
+    return url;
   }, [asset, utmParams]);
 
-  // Trigger automatic PDF download with error handling
+  // Trigger automatic PDF download
   const handleDownload = useCallback(() => {
     if (!asset) return;
     
@@ -192,7 +112,6 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
       console.log('✅ Download triggered successfully');
       setSubmitted(true);
       
-      // Close modal after 2 seconds
       setTimeout(() => {
         onClose();
       }, 2000);
@@ -204,28 +123,22 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     }
   }, [asset, onClose, language]);
 
-  // Listen for Fillout submission (with debug logging)
+  // Listen for Fillout submission via postMessage
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // 🐛 DEBUG: Log all messages from Fillout
       if (event.origin.includes('fillout.com')) {
-        console.log('📨 Fillout message:', {
-          origin: event.origin,
-          data: event.data,
-          type: typeof event.data,
-        });
-      }
-      
-      // Check for form submission
-      // Note: Testing different possible event formats
-      const isSubmitted = 
-        event.data?.type === 'fillout-form-submitted' ||
-        event.data?.type === 'form-submitted' ||
-        event.data === 'fillout-form-submitted';
-      
-      if (event.origin.includes('fillout.com') && isSubmitted) {
-        console.log('🎉 Form submitted! Triggering download...');
-        handleDownload();
+        console.log('📨 Fillout message:', event.data);
+        
+        // Check for form submission
+        const isSubmitted = 
+          event.data?.type === 'fillout-form-submitted' ||
+          event.data?.type === 'form-submitted' ||
+          event.data === 'fillout-form-submitted';
+        
+        if (isSubmitted) {
+          console.log('🎉 Form submitted! Triggering download...');
+          handleDownload();
+        }
       }
     };
 
@@ -234,56 +147,12 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
       window.addEventListener('message', handleMessage);
     }
 
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
+    return () => window.removeEventListener('message', handleMessage);
   }, [isOpen, handleDownload]);
-
-  // Load Fillout script and initialize
-  useEffect(() => {
-    if (!isOpen || !asset) return;
-    
-    setLoading(true);
-    setSubmitted(false);
-    setError(null);
-    
-    const initFillout = () => {
-      if ((window as any).Fillout) {
-        console.log('🚀 Initializing Fillout embeds...');
-        (window as any).Fillout.initializeEmbeds();
-        setLoading(false);
-      }
-    };
-    
-    const script = document.querySelector('script[src*="fillout.com/embed"]');
-    
-    if (!script) {
-      console.log('📜 Loading Fillout script...');
-      const newScript = document.createElement('script');
-      newScript.src = 'https://server.fillout.com/embed/v1/';
-      newScript.async = true;
-      newScript.onload = () => {
-        console.log('✅ Fillout script loaded');
-        initFillout();
-      };
-      newScript.onerror = () => {
-        console.error('❌ Failed to load Fillout script');
-        setError(language === 'en' 
-          ? 'Failed to load form. Please refresh the page.' 
-          : 'Formular konnte nicht geladen werden. Bitte Seite neu laden.');
-        setLoading(false);
-      };
-      document.body.appendChild(newScript);
-    } else {
-      // Script already loaded, reinitialize after short delay
-      setTimeout(initFillout, 100);
-    }
-  }, [isOpen, asset, language]);
 
   // Reset state when modal closes
   useEffect(() => {
     if (!isOpen) {
-      // Delay reset to allow close animation
       const timer = setTimeout(() => {
         setSubmitted(false);
         setLoading(true);
@@ -299,13 +168,11 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-hidden">
         {error ? (
-          // Error State
           <div className="flex flex-col items-center justify-center py-12 space-y-4">
             <AlertCircle className="w-16 h-16 text-destructive" />
             <h3 className="text-xl font-bold text-center">{error}</h3>
           </div>
         ) : !submitted ? (
-          // Form State
           <>
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
@@ -321,25 +188,25 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
                 </div>
               )}
               
-              <div
-                data-fillout-id={FILLOUT_FORM_ID}
-                data-fillout-embed-type="standard"
-                data-fillout-dynamic-resize
-                data-fillout-inherit-parameters
-                data-fillout-parameters={buildParams()}
+              {/* NEUER IFRAME statt data-attributes */}
+              <iframe
+                src={buildIframeUrl()}
+                onLoad={() => {
+                  console.log('✅ Fillout iframe loaded');
+                  setLoading(false);
+                }}
                 style={{ 
                   width: '100%', 
-                  minHeight: '500px',
-                  maxHeight: '70vh',
-                  overflowY: 'auto',
+                  height: '500px',
+                  border: 'none',
                   opacity: loading ? 0 : 1,
                   transition: 'opacity 0.3s ease'
                 }}
+                title="Download Form"
               />
             </div>
           </>
         ) : (
-          // Success State
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
             <CheckCircle2 className="w-20 h-20 text-green-500 animate-in zoom-in duration-300" />
             <h3 className="text-2xl font-bold">
@@ -362,236 +229,71 @@ export default FilloutDownloadModal;
 
 ---
 
-## Teil 5: Download Button Komponente
+## Hauptunterschiede
 
-### Neue Datei: `src/components/forms/DownloadButton.tsx`
+| Vorher (data-attributes) | Nachher (iframe) |
+|--------------------------|------------------|
+| Fillout SDK laden | Kein SDK nötig |
+| `initializeEmbeds()` aufrufen | Nicht nötig |
+| Race conditions mit `window.Fillout` | Keine Race conditions |
+| Manuelle Loading-State-Steuerung | `onLoad` Event vom iframe |
+| `data-fillout-parameters` | URL Query-Parameter |
+
+---
+
+## Gelöschter Code
+
+Diese Zeilen werden entfernt:
 
 ```typescript
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Download } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import FilloutDownloadModal from './FilloutDownloadModal';
-import { getAssetById, type DownloadAsset } from '@/data/downloadRegistry';
+// ENTFERNT: Fillout script loading (Zeilen 117-156)
+const initFillout = () => {...}
+const script = document.querySelector('script[src*="fillout.com/embed"]');
+if (!script) {...}
 
-interface DownloadButtonProps {
-  assetId: string;
-  variant?: 'default' | 'outline' | 'secondary' | 'ghost';
-  size?: 'default' | 'sm' | 'lg' | 'xl';
-  className?: string;
-  children?: React.ReactNode;
-}
-
-export const DownloadButton: React.FC<DownloadButtonProps> = ({
-  assetId,
-  variant = 'outline',
-  size = 'lg',
-  className = '',
-  children,
-}) => {
-  const { language } = useLanguage();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const asset = getAssetById(assetId);
-
-  if (!asset) {
-    console.warn(`DownloadButton: Asset "${assetId}" not found`);
-    return null;
-  }
-
-  if (!asset.isAvailable) {
-    console.warn(`DownloadButton: Asset "${assetId}" is not available`);
-    return null;
-  }
-
-  const defaultLabel = language === 'en' ? 'Download' : 'Herunterladen';
-
-  return (
-    <>
-      <Button
-        variant={variant}
-        size={size}
-        className={className}
-        onClick={() => {
-          console.log('🖱️ Download button clicked:', assetId);
-          setIsModalOpen(true);
-        }}
-      >
-        <Download className="w-4 h-4 mr-2" />
-        {children || defaultLabel}
-      </Button>
-
-      <FilloutDownloadModal
-        asset={asset}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
-    </>
-  );
-};
-
-export default DownloadButton;
+// ENTFERNT: data-attribute div (Zeilen 199-213)
+<div
+  data-fillout-id={FILLOUT_FORM_ID}
+  data-fillout-embed-type="standard"
+  ...
+/>
 ```
 
 ---
 
-## Teil 6: Exporte aktualisieren
-
-### `src/components/forms/index.ts`
+## Neuer Code
 
 ```typescript
-// Forms - UTM-aware lead capture and download components
+// NEU: Einfache URL-Generierung
+const FILLOUT_BASE_URL = 'https://scalingx.fillout.com/download';
 
-export { default as DownloadLeadForm } from './DownloadLeadForm';
-export { default as DownloadModal } from './DownloadModal';
-export { default as FilloutEmbed } from './FilloutEmbed';
-export { default as FilloutDownloadModal } from './FilloutDownloadModal';  // NEU
-export { DownloadButton } from './DownloadButton';  // NEU
+const buildIframeUrl = useCallback(() => {
+  const params = new URLSearchParams();
+  // ... alle Parameter
+  return `${FILLOUT_BASE_URL}?${params.toString()}`;
+}, [asset, utmParams]);
+
+// NEU: Direkter iframe mit onLoad
+<iframe
+  src={buildIframeUrl()}
+  onLoad={() => setLoading(false)}
+  style={{ width: '100%', height: '500px', border: 'none' }}
+/>
 ```
 
 ---
 
-## Teil 7: Types erweitern
+## Erwartetes Ergebnis
 
-### `src/data/playbooks/types.ts`
-
-Neues optionales Feld für Hero-Section:
-
-```typescript
-export interface PlaybookHeroData {
-  breadcrumb: BilingualText;
-  badge: BilingualText;
-  title: string;
-  subtitle: BilingualText;
-  description: BilingualText;
-  trustBadges: BilingualText[];
-  bookingUrl: string;
-  downloadUrl: string;
-  assetId?: string;  // ← NEU: Optional Asset-ID für Download-Button
-  gradient: string;
-}
-```
-
----
-
-## Teil 8: PlaybookHeroSection anpassen
-
-### `src/components/playbooks/sections/PlaybookHeroSection.tsx`
-
-Import hinzufügen und Download-Button bedingt rendern (Zeilen 122-132):
-
-```typescript
-// Neuer Import am Anfang der Datei:
-import { DownloadButton } from '@/components/forms/DownloadButton';
-
-// In der JSX (ersetze Zeilen 122-132):
-{data.assetId ? (
-  <DownloadButton
-    assetId={data.assetId}
-    variant="outline"
-    size="lg"
-    className="border-2"
-  >
-    {language === 'de' ? 'Playbook laden' : 'Download Playbook'}
-  </DownloadButton>
-) : (
-  <Button
-    variant="outline"
-    size="lg"
-    className="border-2"
-    asChild
-  >
-    <a href={data.downloadUrl} target="_blank" rel="noopener noreferrer">
-      <Download className="w-4 h-4 mr-2" />
-      {language === 'de' ? 'Playbook laden' : 'Download Playbook'}
-    </a>
-  </Button>
-)}
-```
-
----
-
-## Teil 9: Playbook-Daten erweitern
-
-### 17 Playbook Content-Dateien
-
-`assetId` zu jedem hero-Objekt hinzufügen:
-
-| Datei | Zeile (hero-Block) | assetId |
-|-------|-------------------|---------|
-| `ai-native-scaling.ts` | ~8 | `playbook-ai-native-scaling` |
-| `growth-engines.ts` | hero | `playbook-growth-engines` |
-| `operating-systems.ts` | hero | `playbook-operating-systems` |
-| `board-governance.ts` | hero | `playbook-board-governance` |
-| `portfolio-transformation.ts` | hero | `playbook-portfolio-transformation` |
-| `strategic-capabilities.ts` | hero | `playbook-strategic-capabilities` |
-| `gtm-revenue.ts` | hero | `playbook-gtm-revenue` |
-| `product.ts` | hero | `playbook-product` |
-| `customer-success.ts` | hero | `playbook-customer-success` |
-| `operations.ts` | hero | `playbook-operations` |
-| `finance.ts` | hero | `playbook-finance` |
-| `talent.ts` | hero | `playbook-talent` |
-| `data-tech.ts` | hero | `playbook-data-tech` |
-| `strategic-governance.ts` | hero | `playbook-strategic-governance` |
-| `operational-governance.ts` | hero | `playbook-operational-governance` |
-| `exit-ma.ts` | hero | `playbook-exit-ma` |
-| `portfolio-excellence.ts` | hero | `playbook-portfolio-excellence` |
-
----
-
-## Datenfluss
-
-```text
-User klickt "Download Playbook"
-         │
-         ▼
-┌─────────────────────────┐
-│   DownloadButton        │ ← console.log('🖱️ Download button clicked')
-│   (auf jeder Seite)     │
-└───────────┬─────────────┘
-            │
-            ▼
-┌─────────────────────────┐
-│  FilloutDownloadModal   │ ← console.log('📝 Fillout parameters:', ...)
-│  - UTM aus sessionStorage│   console.log('👂 Listening for messages...')
-│  - Asset_ID aus Registry │
-└───────────┬─────────────┘
-            │
-            ▼
-┌─────────────────────────┐
-│   Fillout Form          │ ← console.log('🚀 Initializing Fillout...')
-│   (ID: fzeJtLouULus)    │
-└───────────┬─────────────┘
-            │ postMessage
-            ▼
-┌─────────────────────────┐
-│   handleMessage         │ ← console.log('📨 Fillout message:', ...)
-│   - Check event type    │   console.log('🎉 Form submitted!')
-└───────────┬─────────────┘
-            │
-            ▼
-┌─────────────────────────┐
-│   handleDownload        │ ← console.log('⬇️ Starting download:', ...)
-│   - Try/catch           │   console.log('✅ Download triggered')
-│   - Success state       │
-│   - Modal schließt (2s) │
-└─────────────────────────┘
-```
-
----
-
-## Test-Szenarien
-
-Nach Implementierung mit Console offen testen:
-
-| Test | Aktion | Erwartete Console-Logs |
-|------|--------|------------------------|
-| 1 | Öffne `/?utm_source=linkedin` | `💾 Storing UTM params: {utm_source: 'linkedin'}` |
-| 2 | Navigiere zu `/playbooks/ai-native-scaling` | `📊 UTM params (merged): {utm_source: 'linkedin'}` |
-| 3 | Klick "Download Playbook" | `🖱️ Download button clicked: playbook-ai-native-scaling` |
-| 4 | Modal öffnet | `📝 Fillout parameters: utm_source=linkedin&Asset_ID=...` |
-| 5 | Fillout lädt | `🚀 Initializing Fillout embeds...` |
-| 6 | Form ausfüllen & Submit | `📨 Fillout message: {...}` |
-| 7 | Download startet | `⬇️ Starting download: ai-native-scaling-playbook.pdf` |
+Nach dieser Änderung:
+1. Modal öffnet sich
+2. Iframe lädt `https://scalingx.fillout.com/download?Asset_ID=playbook-operating-systems&...`
+3. Fillout Form erscheint sofort (kein unendlicher Spinner)
+4. User füllt aus und submitted
+5. postMessage wird empfangen
+6. PDF Download startet automatisch
+7. Success-Meldung erscheint
+8. Modal schließt nach 2 Sekunden
 
 ---
 
@@ -599,29 +301,10 @@ Nach Implementierung mit Console offen testen:
 
 | Metrik | Wert |
 |--------|------|
-| Dateien löschen | 1 (`cases/strategic-governance-playbook.pdf`) |
-| Registry Updates | 31 Assets → `isAvailable: true` |
-| Neue Hooks | 1 (`usePersistentUTMParams.ts`) |
-| Neue Komponenten | 2 (`FilloutDownloadModal.tsx`, `DownloadButton.tsx`) |
-| Geänderte Komponenten | 1 (`PlaybookHeroSection.tsx`) |
-| Geänderte Data-Dateien | 17 (alle Playbook-Content) + 1 Types |
-| Fillout Form ID | `fzeJtLouULus` |
-| Parameter an Fillout | 7 (5x UTM + Asset_ID + download_type) |
-| Debug-Logging | ✅ Umfangreich |
-| Error Handling | ✅ Try/Catch + Error State |
-| Modal Höhe | `minHeight: 500px`, `maxHeight: 70vh` |
+| Geänderte Dateien | 1 (`FilloutDownloadModal.tsx`) |
+| Gelöschte Zeilen | ~40 (SDK Loading-Logik) |
+| Neue Zeilen | ~15 (iframe + URL Builder) |
+| Loading via | iframe `onLoad` Event |
+| Parameter via | URL Query String |
+| SDK benötigt | Nein |
 
----
-
-## Implementierungs-Reihenfolge
-
-1. **Datei löschen**: `public/downloads/cases/strategic-governance-playbook.pdf`
-2. **Registry aktualisieren**: 31 Assets auf `isAvailable: true`
-3. **Hook erstellen**: `usePersistentUTMParams.ts`
-4. **Modal erstellen**: `FilloutDownloadModal.tsx` (mit Debug-Logging)
-5. **Button erstellen**: `DownloadButton.tsx`
-6. **Exporte aktualisieren**: `forms/index.ts`
-7. **Types erweitern**: `playbooks/types.ts`
-8. **Hero-Section anpassen**: `PlaybookHeroSection.tsx`
-9. **Playbook-Daten erweitern**: 17 Content-Dateien mit `assetId`
-10. **Testen**: Mit Console offen alle Szenarien durchspielen
