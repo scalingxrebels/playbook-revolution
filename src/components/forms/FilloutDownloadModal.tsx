@@ -37,7 +37,7 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     // Asset parameters
     params.set('Asset_ID', asset.id);
     params.set('Asset_Name', language === 'en' ? asset.titleEn : asset.titleDe);
-    params.set('Download_URL', `https://scalingx.com${asset.filePath}`);
+    params.set('Download_URL', `${window.location.origin}${asset.filePath}`);
     params.set('Asset_Type', asset.type);
     
     // UTM parameters
