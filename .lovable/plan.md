@@ -1,184 +1,194 @@
 
-# Vollständige Fillout-Formular-Integration mit UTM + Source Tracking
+# Plan: Fillout-Pattern auf alle verbleibenden Seiten anwenden
 
-## Übersicht der Formulare
+## Übersicht
 
-| Formular | URL-Slug | Verwendung |
-|----------|----------|------------|
-| **Inflection Call** | `inflection-call` | Hauptformular für "Book a Call", Playbook-CTAs, etc. |
-| **Expert Session** | `expert-session` | Expert Session Seite |
-| **Inquiry** | `inquiry` | Homepage eingebettet (Form ID: bE8Mpbmb4mus) |
-| **ML Sync** | `ml-sync` | Michel 30-Min Call |
-| **ML Deep Dive** | `ml-deep-dive` | Michel 60-Min Call |
-| **AH Sync** | `ah-sync` | Alban 30-Min Call |
-| **AH Deep Dive** | `ah-deep-dive` | Alban 60-Min Call |
-| **FM Sync** | `fm-sync` | Florian 30-Min Call |
-| **FM Deep Dive** | `fm-deep-dive` | Florian 60-Min Call |
+Basierend auf der Analyse müssen noch **28 Stellen** in **21 Dateien** aktualisiert werden, um das einheitliche Fillout-Pattern mit UTM + Source Tracking zu verwenden.
 
 ---
 
-## Aktuelle Probleme
+## Aktuelle Situation
 
-### 1. Team-Seiten verwenden alte Formular-URLs
+### Bereits migriert (FilloutBookingModal)
+- `ML.tsx`, `AH.tsx`, `FM.tsx` → Team-Seiten ✅
+- `PlaybookHeroSection.tsx` → Playbook Hero ✅
+- `PlaybookFinalCTASection.tsx` → Playbook CTA ✅
 
-| Seite | Aktuell | Soll |
-|-------|---------|------|
-| ML.tsx | `fillout.com/t/fvUsJguCaVus` | `fillout.com/ml-sync` + UTM |
-| ML.tsx | `fillout.com/t/wMcijwFXM1us` | `fillout.com/ml-deep-dive` + UTM |
-| AH.tsx | `fillout.com/t/ah-30min` | `fillout.com/ah-sync` + UTM |
-| AH.tsx | `fillout.com/t/ah-60min` | `fillout.com/ah-deep-dive` + UTM |
-| FM.tsx | `fillout.com/t/fm-30min` | `fillout.com/fm-sync` + UTM |
-| FM.tsx | `fillout.com/t/fm-60min` | `fillout.com/fm-deep-dive` + UTM |
+### Noch mit Calendly-Links (müssen migriert werden)
 
-### 2. Homepage Inquiry-Formular fehlt Source-Parameter
+| Datei | Anzahl CTAs | Form-Typ(en) | Source |
+|-------|-------------|--------------|--------|
+| `ExpertSession.tsx` | 6 | `expert-session`, `inflection-call` | `expert-session` |
+| `Keynote.tsx` | 4 | `inflection-call` | `keynote` |
+| `Workshop.tsx` | 4 | `inflection-call` | `workshop` |
+| `StrategicAdvisory.tsx` | 2 | `inflection-call`, `expert-session` | `strategic-advisory` |
+| `VCDueDiligenceSimulation.tsx` | 1 | `inflection-call` | `vc-dd-simulation` |
+| `CustomAnalysisReport.tsx` | 1 | `inflection-call` | `custom-analysis` |
+| `BoostBoardExcellence.tsx` | 2 | `inflection-call` | `solutions` |
+| `CaseCTA.tsx` | 1 | `inflection-call` | `case_study` |
+| `PlaybookLibrary.tsx` | 1 | `inflection-call` | `playbooks` |
+| `PortfolioAssessment.tsx` | 4 | `inflection-call` | `portfolio-assessment` |
 
-- Aktuell: Nur `data-fillout-inherit-parameters`
-- Problem: Kein expliziter `source`-Parameter
+### Accelerate-Seiten (4 Seiten)
+- `AccelerateHypergrowth.tsx`
+- `AccelerateSustainableGrowth.tsx`
+- `AccelerateExitReadiness.tsx`
+- `AcceleratePortfolioTransformation.tsx`
+- `AccelerateAINativeScaling.tsx`
 
-### 3. Playbook "Book a Call" Buttons öffnen externe Links
+### Assessment/Review-Seiten (5 Seiten)
+- `ScalingReadinessAssessment.tsx`
+- `AIMaturityAssessment.tsx`
+- `GTMEffectivenessReview.tsx`
+- `PricingPackagingReview.tsx`
+- `InvestorReadinessPitchDeckCheck.tsx`
 
-- Aktuell: `<a href={data.bookingUrl} target="_blank">`
-- Problem: Kein Popup-Modal, keine UTM/Source-Parameter
+### PowerUp-Seiten mit `data-fillout-id` (bereits teilweise aktualisiert, aber noch mit alten Embeds)
+- `PowerUpPricingPower.tsx`
+- `PowerUpNRREngine.tsx`
+- `PowerUpPortfolioPerformance.tsx`
+- `PowerUpBoardReadiness.tsx`
+- `PowerUpScalingVelocity.tsx`
+- `PowerUpGrowthMomentum.tsx`
+- `PowerUpCACCrisis.tsx`
+- `PowerUpCustomSprint.tsx`
 
 ---
 
-## Implementierungsplan
+## Implementierung
 
-### Phase 1: Neue Modal-Komponente für Booking-Formulare
+### Phase 1: Core CTA-Komponenten (6 Dateien)
 
-**Neue Datei: `src/components/forms/FilloutBookingModal.tsx`**
+#### 1. `src/components/cases/CaseCTA.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- Button: `onClick={() => setIsBookingModalOpen(true)}`
+- Modal: `formSlug="inflection-call"`, `source="case_study"`
 
-- Wiederverwendbares Modal für alle Booking-Formulare
-- Parameter: `formSlug`, `source`, `isOpen`, `onClose`
-- Breite: 900px (wie gewünscht)
-- Automatische UTM-Parameter aus sessionStorage
-- iframe mit dynamisch generierter URL
+#### 2. `src/components/PlaybookLibrary.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- Button (Zeile 232): `onClick={() => setIsBookingModalOpen(true)}`
+- Modal: `formSlug="inflection-call"`, `source="playbooks"`
 
-```text
-┌─────────────────────────────────────────────────────────────────┐
-│  Fillout Booking Modal (900px)                              [X] │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌───────────────────────────────────────────────────────────┐  │
-│  │                                                           │  │
-│  │              Fillout iFrame                               │  │
-│  │                                                           │  │
-│  │  URL: scalingx.fillout.com/{formSlug}                     │  │
-│  │       ?utm_source=...                                     │  │
-│  │       &utm_medium=...                                     │  │
-│  │       &utm_campaign=...                                   │  │
-│  │       &utm_content=...                                    │  │
-│  │       &utm_term=...                                       │  │
-│  │       &source={source}                                    │  │
-│  │                                                           │  │
-│  └───────────────────────────────────────────────────────────┘  │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
+### Phase 2: Product-Seiten (6 Dateien)
+
+#### 3. `src/pages/ExpertSession.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- States: `isExpertSessionModalOpen`, `isInflectionCallModalOpen`
+- 5× Expert Session Buttons → `formSlug="expert-session"`, `source="expert-session"`
+- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="expert-session"`
+
+#### 4. `src/pages/Keynote.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- 3× Keynote Buttons → extern lassen (spezifisches Calendly)
+- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="keynote"`
+
+#### 5. `src/pages/Workshop.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- 3× Workshop Buttons → extern lassen (spezifisches Calendly)
+- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="workshop"`
+
+#### 6. `src/pages/StrategicAdvisory.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- States: `isInflectionModalOpen`, `isExpertSessionModalOpen`
+- Inflection Call → `formSlug="inflection-call"`, `source="strategic-advisory"`
+- Expert Session → `formSlug="expert-session"`, `source="strategic-advisory"`
+
+#### 7. `src/pages/VCDueDiligenceSimulation.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- Inflection Call → `formSlug="inflection-call"`, `source="vc-dd-simulation"`
+
+#### 8. `src/pages/CustomAnalysisReport.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- Inflection Call → `formSlug="inflection-call"`, `source="custom-analysis"`
+
+### Phase 3: Boost-Seiten (1 Datei)
+
+#### 9. `src/pages/BoostBoardExcellence.tsx`
+- Import: `FilloutBookingModal`, `useState`
+- State: `isBookingModalOpen`
+- 2× Inflection Call → `formSlug="inflection-call"`, `source="solutions"`
+
+### Phase 4: PowerUp-Seiten Inquiry Embeds (8 Dateien)
+
+Die PowerUp-Seiten verwenden noch das alte `data-fillout-id` Pattern. Umstellung auf `FilloutEmbed` mit explizitem `source`-Parameter:
+
+| Datei | Form-ID | Source |
+|-------|---------|--------|
+| `PowerUpPricingPower.tsx` | `bE8Mpbmb4mus` | `solutions` |
+| `PowerUpNRREngine.tsx` | `bE8Mpbmb4mus` | `solutions` |
+| `PowerUpScalingVelocity.tsx` | `bE8Mpbmb4mus` | `solutions` |
+| `PowerUpGrowthMomentum.tsx` | `bE8Mpbmb4mus` | `solutions` |
+| `PowerUpCACCrisis.tsx` | `bE8Mpbmb4mus` | `solutions` |
+| `PowerUpPortfolioPerformance.tsx` | `wX5LjCi8eQus` | `solutions` |
+| `PowerUpBoardReadiness.tsx` | `wX5LjCi8eQus` | `solutions` |
+| `PowerUpCustomSprint.tsx` | `wX5LjCi8eQus` | `solutions` |
+
+Diese verwenden bereits iframes, also nur Parameter-Logik hinzufügen.
+
+### Phase 5: Assessment/Accelerate-Seiten (10+ Dateien)
+
+Jede Seite mit Calendly-Links prüfen und auf `FilloutBookingModal` umstellen:
+- `PortfolioAssessment.tsx` → `source="portfolio-assessment"`
+- `ScalingReadinessAssessment.tsx` → `source="scaling-assessment"`
+- `AIMaturityAssessment.tsx` → `source="ai-assessment"`
+- `AccelerateHypergrowth.tsx` → `source="accelerate"`
+- etc.
+
+---
+
+## Technische Details
+
+### Import-Block für alle Dateien
+```typescript
+import { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 ```
 
-### Phase 2: Team-Seiten aktualisieren
+### Button-Pattern
+```typescript
+// Alt (Calendly)
+onClick={() => window.open('https://calendly.com/...', '_blank')}
 
-**Dateien: ML.tsx, AH.tsx, FM.tsx**
-
-Änderungen:
-1. Import von `FilloutBookingModal`
-2. Neue Formular-Slugs verwenden
-3. Popup-Dialog durch `FilloutBookingModal` ersetzen
-4. Source-Parameter: `team-ml`, `team-ah`, `team-fm`
-
-| Datei | 30-Min Slug | 60-Min Slug | Source |
-|-------|-------------|-------------|--------|
-| ML.tsx | `ml-sync` | `ml-deep-dive` | `team-ml` |
-| AH.tsx | `ah-sync` | `ah-deep-dive` | `team-ah` |
-| FM.tsx | `fm-sync` | `fm-deep-dive` | `team-fm` |
-
-### Phase 3: Homepage Inquiry-Formular erweitern
-
-**Datei: `src/components/homepage/FinalCTAOptimized.tsx`**
-
-Änderungen:
-1. Import der UTM-Persistenz-Hook
-2. Form-URL mit dynamischen Parametern generieren
-3. Statt `data-fillout-inherit-parameters` explizite URL bauen
-
-```
-URL-Aufbau:
-https://scalingx.fillout.com/inquiry
-  ?utm_source={aus sessionStorage}
-  &utm_medium={aus sessionStorage}
-  &utm_campaign={aus sessionStorage}
-  &utm_content={aus sessionStorage}
-  &utm_term={aus sessionStorage}
-  &source=website
+// Neu (FilloutBookingModal)
+onClick={() => setIsBookingModalOpen(true)}
 ```
 
-### Phase 4: Playbook Hero/CTA Buttons umstellen
-
-**Dateien:**
-- `src/components/playbooks/sections/PlaybookHeroSection.tsx`
-- `src/components/playbooks/sections/PlaybookFinalCTASection.tsx`
-
-Änderungen:
-1. "Book a Call" Button öffnet `FilloutBookingModal` statt externem Link
-2. Formular: `inflection-call`
-3. Source: `playbook`
-
-### Phase 5: Expert Session Seite
-
-**Datei: `src/pages/ExpertSession.tsx`**
-
-Prüfen, ob Booking-Buttons vorhanden sind und diese auf `FilloutBookingModal` umstellen mit:
-- Formular: `expert-session`
-- Source: `expert-session`
-
-### Phase 6: Boost/PowerUp Seiten
-
-**16 Dateien** (bereits analysiert):
-- BoostGrowthEngine.tsx
-- BoostScalingOS.tsx
-- BoostNRRMachine.tsx
-- BoostPricingDominance.tsx
-- BoostEfficientHypergrowth.tsx
-- PowerUpAIQuickWins.tsx
-- PowerUpNRREngine.tsx
-- PowerUpGrowthMomentum.tsx
-- PowerUpPricingPower.tsx
-- PowerUpScalingVelocity.tsx
-- PowerUpCACCrisis.tsx
-- PowerUpBoardReadiness.tsx
-- PowerUpCustomSprint.tsx
-- PowerUpPortfolioPerformance.tsx
-- Maxxeed.tsx
-
-Diese verwenden bereits eingebettete Formulare mit `data-fillout-inherit-parameters`. Umstellung auf FilloutEmbed-Komponente mit explizitem `source`-Parameter.
+### Modal-Pattern
+```tsx
+<FilloutBookingModal
+  formSlug="inflection-call"
+  source="case_study"
+  isOpen={isBookingModalOpen}
+  onClose={() => setIsBookingModalOpen(false)}
+  title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+/>
+```
 
 ---
 
-## Zusammenfassung der Änderungen
+## Source-Werte Übersicht
 
-| Datei | Änderung |
-|-------|----------|
-| **NEU** `FilloutBookingModal.tsx` | Neue Modal-Komponente für Booking-Formulare |
-| `FilloutEmbed.tsx` | `source` Prop hinzufügen |
-| `ML.tsx` | Neue Formular-Slugs + UTM/Source via Modal |
-| `AH.tsx` | Neue Formular-Slugs + UTM/Source via Modal |
-| `FM.tsx` | Neue Formular-Slugs + UTM/Source via Modal |
-| `FinalCTAOptimized.tsx` | Explizite UTM/Source Parameter |
-| `PlaybookHeroSection.tsx` | Modal statt externer Link |
-| `PlaybookFinalCTASection.tsx` | Modal statt externer Link |
-| 16× Boost/PowerUp Seiten | FilloutEmbed mit `source` |
-
----
-
-## Source-Werte Zuordnung
-
-| Seite/Kontext | source-Wert |
-|---------------|-------------|
+| Kontext | source-Wert |
+|---------|-------------|
 | Homepage | `website` |
-| Playbook Landing Pages | `playbook` |
+| Playbooks Hub | `playbooks` |
+| Playbook Landing Page | `playbook` |
 | Solutions Hub | `solutions` |
 | Case Study Seiten | `case_study` |
 | Expert Session | `expert-session` |
+| Keynote | `keynote` |
+| Workshop | `workshop` |
+| Strategic Advisory | `strategic-advisory` |
+| VC DD Simulation | `vc-dd-simulation` |
+| Custom Analysis | `custom-analysis` |
+| Portfolio Assessment | `portfolio-assessment` |
+| Accelerate-Seiten | `accelerate` |
 | Team ML | `team-ml` |
 | Team AH | `team-ah` |
 | Team FM | `team-fm` |
@@ -186,19 +196,22 @@ Diese verwenden bereits eingebettete Formulare mit `data-fillout-inherit-paramet
 
 ---
 
-## Resultat nach Implementierung
+## Zusammenfassung der Änderungen
 
-Alle Formulare übergeben konsistent:
+| Phase | Dateien | Beschreibung |
+|-------|---------|--------------|
+| 1 | 2 | Core CTA-Komponenten (CaseCTA, PlaybookLibrary) |
+| 2 | 6 | Product-Seiten (ExpertSession, Keynote, Workshop, etc.) |
+| 3 | 1 | Boost-Seiten (BoostBoardExcellence) |
+| 4 | 8 | PowerUp Inquiry Embeds (Source-Parameter) |
+| 5 | ~10 | Assessment/Accelerate-Seiten |
+| **Total** | **~27** | Vollständige UTM + Source Integration |
 
-```
-?utm_source={value}
-&utm_medium={value}
-&utm_campaign={value}
-&utm_content={value}
-&utm_term={value}
-&source={context}
-```
+---
 
-Dies ermöglicht vollständiges Tracking:
-- Woher kam der Lead? (UTM)
-- Von welcher Seite kam er? (source)
+## Ergebnis
+
+Nach der Implementierung werden alle Booking-CTAs konsistent:
+- Öffnen ein 900px Fillout Modal (statt externem Tab)
+- Übergeben automatisch UTM-Parameter aus sessionStorage
+- Tracken den `source`-Wert für Analytics
