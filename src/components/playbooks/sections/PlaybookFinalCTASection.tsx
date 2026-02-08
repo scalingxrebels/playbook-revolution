@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -6,17 +6,25 @@ import { ArrowRight, Download, CheckCircle2, Sparkles } from 'lucide-react';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import TwinklingStars from '@/components/TwinklingStars';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById } from '@/data/downloadRegistry';
 import type { FinalCTAData, BilingualText } from '@/data/playbooks/types';
 
 interface Props {
   data: FinalCTAData;
+  playbookSlug?: string;
 }
 
-const PlaybookFinalCTASection: React.FC<Props> = ({ data }) => {
+const PlaybookFinalCTASection: React.FC<Props> = ({ data, playbookSlug }) => {
   const { language } = useLanguage();
   const t = (text: BilingualText) => text[language];
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.15, 0.25] });
   const { ref: contentRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+  // Asset-ID aus Playbook-Slug
+  const assetId = playbookSlug ? `playbook-${playbookSlug}` : null;
+  const downloadAsset = assetId ? getAssetById(assetId) : null;
 
   return (
     <section 
@@ -103,12 +111,10 @@ const PlaybookFinalCTASection: React.FC<Props> = ({ data }) => {
             size="lg" 
             variant="outline" 
             className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
-            asChild
+            onClick={() => setIsDownloadModalOpen(true)}
           >
-            <a href={data.downloadUrl} target="_blank" rel="noopener noreferrer">
-              <Download className="w-4 h-4 mr-2" />
-              {language === 'de' ? 'Playbook herunterladen' : 'Download Playbook'}
-            </a>
+            <Download className="w-4 h-4 mr-2" />
+            {language === 'de' ? 'Playbook herunterladen' : 'Download Playbook'}
           </Button>
         </div>
 
@@ -126,6 +132,13 @@ const PlaybookFinalCTASection: React.FC<Props> = ({ data }) => {
           ))}
         </div>
       </div>
+
+      {/* Download Modal */}
+      <FilloutDownloadModal
+        asset={downloadAsset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
     </section>
   );
 };
