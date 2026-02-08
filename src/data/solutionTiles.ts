@@ -189,9 +189,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über GTM Review',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/gtm-effectiveness-review',
-    secondaryCtaEn: 'See sample',
-    secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/growth-engine-activated-leadership-program-scaled',
+    secondaryCtaEn: 'View GTM Playbook',
+    secondaryCtaDe: 'GTM Playbook ansehen',
+    secondaryCtaUrl: '/playbooks/growth-engines/gtm-revenue',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -300,9 +300,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über AI Assessment',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/ai-maturity-assessment',
-    secondaryCtaEn: 'See sample',
-    secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/strategic-transformation-market-leadership',
+    secondaryCtaEn: 'View AI-Native Playbook',
+    secondaryCtaDe: 'AI-Native Playbook ansehen',
+    secondaryCtaUrl: '/playbooks/ai-native-scaling',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
@@ -411,9 +411,9 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr über Portfolio Assessment',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/portfolio-assessment',
-    secondaryCtaEn: 'See sample',
-    secondaryCtaDe: 'Beispiel ansehen',
-    secondaryCtaUrl: '/cases/exit-readiness-achieved',
+    secondaryCtaEn: 'View Portfolio Playbook',
+    secondaryCtaDe: 'Portfolio Playbook ansehen',
+    secondaryCtaUrl: '/playbooks/portfolio-transformation',
     addOnPricing: {
       base: '€3.9K',
       bridge: '€5.9K'
