@@ -67,6 +67,14 @@ Wir haben 22 AI-native Unternehmen analysiert, um zu verstehen warum. Was wir fa
       { value: 'r=0.89', label: { en: 'Strong Correlation', de: 'Starke Korrelation' } },
       { value: '8-18', label: { en: 'Months to €100M', de: 'Monate bis €100M' } }
     ],
+    methodology: {
+      researchPeriod: { en: 'Fall/Winter 2025', de: 'Herbst/Winter 2025' },
+      observationPeriod: { en: '2021-2025', de: '2021-2025' },
+      methods: {
+        en: 'Public data analysis, explorative C-level & Board interviews, job posting analysis',
+        de: 'Öffentliche Datenanalyse, explorative C-Level- & Board-Interviews, Stellenanzeigen-Analyse'
+      }
+    },
     primaryCta: {
       text: { en: 'Book Strategy Call', de: 'Strategy Call buchen' },
       href: '/solutions/strategic-advisory'
