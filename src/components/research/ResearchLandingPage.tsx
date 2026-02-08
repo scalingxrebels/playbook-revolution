@@ -14,9 +14,10 @@ import {
 
 interface ResearchLandingPageProps {
   data: AMFPageData;
+  researchType?: 'amf' | 'anst' | 'sst' | 'unified';
 }
 
-const ResearchLandingPage: React.FC<ResearchLandingPageProps> = ({ data }) => {
+const ResearchLandingPage: React.FC<ResearchLandingPageProps> = ({ data, researchType = 'amf' }) => {
   return (
     <main>
       <ResearchHeroSection data={data.hero} />
@@ -27,7 +28,7 @@ const ResearchLandingPage: React.FC<ResearchLandingPageProps> = ({ data }) => {
       <ResearchCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />
-      <ResearchFinalCTASection data={data.finalCta} />
+      <ResearchFinalCTASection data={data.finalCta} researchType={researchType} />
     </main>
   );
 };

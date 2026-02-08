@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, Download, TrendingUp, Quote, Lightbulb, CheckCircle2, ExternalLink, Clock, Target, Sparkles, ArrowRight } from 'lucide-react';
 import Navigation from '@/components/Navigation';
@@ -10,10 +10,12 @@ import { Card } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import TwinklingStars from '@/components/TwinklingStars';
 import { getCaseStudyBySlug, ClientCaseStudy, RelatedSolution } from '@/data/cases';
-
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById } from '@/data/downloadRegistry';
 const CaseDetail: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { language } = useLanguage();
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   
   // Scroll to top when component mounts or slug changes
   useEffect(() => {
@@ -21,6 +23,10 @@ const CaseDetail: React.FC = () => {
   }, [slug]);
   
   const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
+  
+  // Asset-ID from Case-Slug
+  const assetId = slug ? `case-${slug}` : null;
+  const downloadAsset = assetId ? getAssetById(assetId) : null;
   
   if (!caseStudy) {
     return <Navigate to="/cases" replace />;
@@ -95,13 +101,15 @@ const CaseDetail: React.FC = () => {
           </div>
 
           {/* Download CTA */}
-          {caseStudy.downloadUrl && (
+          {caseStudy.downloadUrl && downloadAsset && downloadAsset.isAvailable && (
             <div className="flex justify-center">
-              <Button asChild variant="outline" size="lg">
-                <a href={caseStudy.downloadUrl} download>
-                  <Download className="w-5 h-5 mr-2" />
-                  {language === 'de' ? 'Case Study PDF herunterladen' : 'Download Case Study PDF'}
-                </a>
+              <Button 
+                variant="outline" 
+                size="lg"
+                onClick={() => setIsDownloadModalOpen(true)}
+              >
+                <Download className="w-5 h-5 mr-2" />
+                {language === 'de' ? 'Case Study PDF herunterladen' : 'Download Case Study PDF'}
               </Button>
             </div>
           )}
@@ -506,6 +514,13 @@ const CaseDetail: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Download Modal */}
+      <FilloutDownloadModal
+        asset={downloadAsset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
 
       <Footer />
     </div>

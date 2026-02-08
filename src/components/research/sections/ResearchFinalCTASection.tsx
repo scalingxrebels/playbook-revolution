@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -6,17 +6,31 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import TwinklingStars from '@/components/TwinklingStars';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, type DownloadAsset } from '@/data/downloadRegistry';
 import { FinalCTAData } from '@/data/research/types';
 import { ArrowRight, Download, CheckCircle2, Sparkles } from 'lucide-react';
 
 interface ResearchFinalCTASectionProps {
   data: FinalCTAData;
+  researchType?: 'amf' | 'anst' | 'sst' | 'unified';
 }
 
-const ResearchFinalCTASection: React.FC<ResearchFinalCTASectionProps> = ({ data }) => {
+const ResearchFinalCTASection: React.FC<ResearchFinalCTASectionProps> = ({ data, researchType }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.15, 0.25] });
   const { ref: contentRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+  // Asset-ID mapping
+  const assetIdMap: Record<string, string> = {
+    'amf': 'research-amf',
+    'anst': 'research-anst',
+    'sst': 'research-sst',
+    'unified': 'research-unified',
+  };
+  const assetId = researchType ? assetIdMap[researchType] : null;
+  const downloadAsset = assetId ? getAssetById(assetId) : null;
 
   return (
     <section
@@ -99,17 +113,29 @@ const ResearchFinalCTASection: React.FC<ResearchFinalCTASectionProps> = ({ data 
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
-            asChild
-          >
-            <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+          {downloadAsset && downloadAsset.isAvailable ? (
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
+              onClick={() => setIsDownloadModalOpen(true)}
+            >
               <Download className="w-4 h-4 mr-2" />
               {data.secondaryCta.text[language]}
-            </a>
-          </Button>
+            </Button>
+          ) : (
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
+              asChild
+            >
+              <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+                <Download className="w-4 h-4 mr-2" />
+                {data.secondaryCta.text[language]}
+              </a>
+            </Button>
+          )}
         </div>
 
         {/* Stats Row */}
@@ -131,6 +157,13 @@ const ResearchFinalCTASection: React.FC<ResearchFinalCTASectionProps> = ({ data 
           {data.subtext[language]}
         </p>
       </div>
+
+      {/* Download Modal */}
+      <FilloutDownloadModal
+        asset={downloadAsset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
     </section>
   );
 };

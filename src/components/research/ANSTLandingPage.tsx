@@ -29,7 +29,7 @@ const ANSTLandingPage: React.FC<ANSTLandingPageProps> = ({ data }) => {
       <ResearchCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />
-      <ResearchFinalCTASection data={data.finalCta} />
+      <ResearchFinalCTASection data={data.finalCta} researchType="anst" />
     </main>
   );
 };
