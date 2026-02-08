@@ -16,7 +16,7 @@ interface FilloutDownloadModalProps {
   onClose: () => void;
 }
 
-const FILLOUT_FORM_ID = 'fzeJtLouULus';
+const FILLOUT_BASE_URL = 'https://scalingx.fillout.com/download';
 
 const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   asset,
@@ -29,8 +29,8 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Build parameters for Fillout
-  const buildParams = useCallback(() => {
+  // Build full iframe URL with all parameters
+  const buildIframeUrl = useCallback(() => {
     if (!asset) return '';
     const params = new URLSearchParams();
     
@@ -45,12 +45,12 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     params.set('Asset_ID', asset.id);
     params.set('download_type', asset.type);
     
-    const paramString = params.toString();
-    console.log('📝 Fillout parameters:', paramString);
-    return paramString;
+    const url = `${FILLOUT_BASE_URL}?${params.toString()}`;
+    console.log('🔗 Fillout iframe URL:', url);
+    return url;
   }, [asset, utmParams]);
 
-  // Trigger automatic PDF download with error handling
+  // Trigger automatic PDF download
   const handleDownload = useCallback(() => {
     if (!asset) return;
     
@@ -67,7 +67,6 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
       console.log('✅ Download triggered successfully');
       setSubmitted(true);
       
-      // Close modal after 2 seconds
       setTimeout(() => {
         onClose();
       }, 2000);
@@ -79,28 +78,22 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     }
   }, [asset, onClose, language]);
 
-  // Listen for Fillout submission (with debug logging)
+  // Listen for Fillout submission via postMessage
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      // 🐛 DEBUG: Log all messages from Fillout
       if (event.origin.includes('fillout.com')) {
-        console.log('📨 Fillout message:', {
-          origin: event.origin,
-          data: event.data,
-          type: typeof event.data,
-        });
-      }
-      
-      // Check for form submission
-      // Note: Testing different possible event formats
-      const isSubmitted = 
-        event.data?.type === 'fillout-form-submitted' ||
-        event.data?.type === 'form-submitted' ||
-        event.data === 'fillout-form-submitted';
-      
-      if (event.origin.includes('fillout.com') && isSubmitted) {
-        console.log('🎉 Form submitted! Triggering download...');
-        handleDownload();
+        console.log('📨 Fillout message:', event.data);
+        
+        // Check for form submission
+        const isSubmitted = 
+          event.data?.type === 'fillout-form-submitted' ||
+          event.data?.type === 'form-submitted' ||
+          event.data === 'fillout-form-submitted';
+        
+        if (isSubmitted) {
+          console.log('🎉 Form submitted! Triggering download...');
+          handleDownload();
+        }
       }
     };
 
@@ -109,56 +102,12 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
       window.addEventListener('message', handleMessage);
     }
 
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
+    return () => window.removeEventListener('message', handleMessage);
   }, [isOpen, handleDownload]);
-
-  // Load Fillout script and initialize
-  useEffect(() => {
-    if (!isOpen || !asset) return;
-    
-    setLoading(true);
-    setSubmitted(false);
-    setError(null);
-    
-    const initFillout = () => {
-      if ((window as any).Fillout) {
-        console.log('🚀 Initializing Fillout embeds...');
-        (window as any).Fillout.initializeEmbeds();
-        setLoading(false);
-      }
-    };
-    
-    const script = document.querySelector('script[src*="fillout.com/embed"]');
-    
-    if (!script) {
-      console.log('📜 Loading Fillout script...');
-      const newScript = document.createElement('script');
-      newScript.src = 'https://server.fillout.com/embed/v1/';
-      newScript.async = true;
-      newScript.onload = () => {
-        console.log('✅ Fillout script loaded');
-        initFillout();
-      };
-      newScript.onerror = () => {
-        console.error('❌ Failed to load Fillout script');
-        setError(language === 'en' 
-          ? 'Failed to load form. Please refresh the page.' 
-          : 'Formular konnte nicht geladen werden. Bitte Seite neu laden.');
-        setLoading(false);
-      };
-      document.body.appendChild(newScript);
-    } else {
-      // Script already loaded, reinitialize after short delay
-      setTimeout(initFillout, 100);
-    }
-  }, [isOpen, asset, language]);
 
   // Reset state when modal closes
   useEffect(() => {
     if (!isOpen) {
-      // Delay reset to allow close animation
       const timer = setTimeout(() => {
         setSubmitted(false);
         setLoading(true);
@@ -174,13 +123,11 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-hidden">
         {error ? (
-          // Error State
           <div className="flex flex-col items-center justify-center py-12 space-y-4">
             <AlertCircle className="w-16 h-16 text-destructive" />
             <h3 className="text-xl font-bold text-center">{error}</h3>
           </div>
         ) : !submitted ? (
-          // Form State
           <>
             <DialogHeader>
               <DialogTitle className="flex items-center gap-2">
@@ -196,25 +143,24 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
                 </div>
               )}
               
-              <div
-                data-fillout-id={FILLOUT_FORM_ID}
-                data-fillout-embed-type="standard"
-                data-fillout-dynamic-resize
-                data-fillout-inherit-parameters
-                data-fillout-parameters={buildParams()}
+              <iframe
+                src={buildIframeUrl()}
+                onLoad={() => {
+                  console.log('✅ Fillout iframe loaded');
+                  setLoading(false);
+                }}
                 style={{ 
                   width: '100%', 
-                  minHeight: '500px',
-                  maxHeight: '70vh',
-                  overflowY: 'auto',
+                  height: '500px',
+                  border: 'none',
                   opacity: loading ? 0 : 1,
                   transition: 'opacity 0.3s ease'
                 }}
+                title="Download Form"
               />
             </div>
           </>
         ) : (
-          // Success State
           <div className="flex flex-col items-center justify-center py-16 space-y-4">
             <CheckCircle2 className="w-20 h-20 text-green-500 animate-in zoom-in duration-300" />
             <h3 className="text-2xl font-bold">
