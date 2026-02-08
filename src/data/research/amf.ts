@@ -50,23 +50,32 @@ export const amfPageData: AMFPageData = {
       de: 'Warum manche Unternehmen 8,2x schneller mit AI skalieren—und wie man es misst'
     },
     description: {
-      en: `We analyzed 47 high-growth companies to understand how they use AI. What we found surprised us: AI maturity isn't a continuum—it's three distinct levels.
+      en: `We analyzed 150+ high-growth companies (with 30+ CEO interviews and 22 in-depth case analyses) to understand how they use AI. What we found surprised us: AI maturity isn't a continuum—it's three distinct levels.
 
 Companies at Level 1 (AI-Powered) use AI as a tool. Companies at Level 2 (AI-Enabled) integrate AI into workflows. Companies at Level 3 (AI-Native) architect their entire business around AI.
 
 The difference? Companies at Level 3 reach €100M ARR in 8-18 months. Companies at Level 1 take 48-72 months. That's 8.2x faster.`,
-      de: `Wir haben 47 Hypergrowth-Unternehmen analysiert, um zu verstehen, wie sie AI nutzen. Was wir fanden, überraschte uns: AI Maturity ist kein Kontinuum—es sind drei distinkte Stufen.
+      de: `Wir haben 150+ Hypergrowth-Unternehmen (mit 30+ CEO-Interviews und 22 Tiefenanalysen) analysiert, um zu verstehen, wie sie AI nutzen. Was wir fanden, überraschte uns: AI Maturity ist kein Kontinuum—es sind drei distinkte Stufen.
 
 Unternehmen auf Level 1 (AI-Powered) nutzen AI als Werkzeug. Unternehmen auf Level 2 (AI-Enabled) integrieren AI in Workflows. Unternehmen auf Level 3 (AI-Native) architekturieren ihr gesamtes Business um AI.
 
 Der Unterschied? Unternehmen auf Level 3 erreichen €100M ARR in 8-18 Monaten. Unternehmen auf Level 1 brauchen 48-72 Monate. Das ist 8,2x schneller.`
     },
     stats: [
-      { value: '47', label: { en: 'Companies Analyzed', de: 'Unternehmen analysiert' } },
+      { value: '150+', label: { en: 'Companies Studied', de: 'Unternehmen untersucht' } },
+      { value: '30+', label: { en: 'CEO Interviews', de: 'CEO-Interviews' } },
       { value: '3', label: { en: 'Distinct Levels', de: 'Distinkte Stufen' } },
       { value: '8.2x', label: { en: 'Faster Scaling', de: 'Schnellere Skalierung' } },
       { value: 'r=0.89', label: { en: 'Strong Correlation', de: 'Starke Korrelation' } }
     ],
+    methodology: {
+      researchPeriod: { en: 'Fall/Winter 2025', de: 'Herbst/Winter 2025' },
+      observationPeriod: { en: '2021-2025', de: '2021-2025' },
+      methods: {
+        en: 'Public data analysis, explorative C-level & Board interviews, job posting analysis',
+        de: 'Öffentliche Datenanalyse, explorative C-Level- & Board-Interviews, Stellenanzeigen-Analyse'
+      }
+    },
     primaryCta: {
       text: { en: 'Calculate Your AI Maturity', de: 'Berechne deine AI Maturity' },
       href: '/tools/calculate-theta'

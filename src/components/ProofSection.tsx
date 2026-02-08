@@ -105,7 +105,7 @@ const ProofSection: React.FC = () => {
             <p className="text-sm text-muted-foreground">{language === 'de' ? 'Varianz erklärt' : 'Variance Explained'}</p>
           </Card>
           <Card className="p-6 text-center glass">
-            <div className="text-3xl font-bold text-primary mb-2">3</div>
+            <div className="text-3xl font-bold text-primary mb-2">4</div>
             <p className="text-sm text-muted-foreground">{language === 'de' ? 'Peer-review-ready Papers' : 'Peer-review-ready Papers'}</p>
           </Card>
         </div>

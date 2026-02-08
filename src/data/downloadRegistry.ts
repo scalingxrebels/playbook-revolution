@@ -416,7 +416,7 @@ export const researchAssets: DownloadAsset[] = [
     fileName: 'amf-executive-summary.pdf',
     filePath: '/downloads/research/amf-executive-summary.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'research-anst',
@@ -427,7 +427,7 @@ export const researchAssets: DownloadAsset[] = [
     fileName: 'anst-executive-summary.pdf',
     filePath: '/downloads/research/anst-executive-summary.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'research-sst',
@@ -438,7 +438,7 @@ export const researchAssets: DownloadAsset[] = [
     fileName: 'sst-executive-summary.pdf',
     filePath: '/downloads/research/sst-executive-summary.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'research-unified',
@@ -449,7 +449,7 @@ export const researchAssets: DownloadAsset[] = [
     fileName: 'architecture-v4.5.1.pdf',
     filePath: '/downloads/research/architecture-v4.5.1.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
 ];
 
