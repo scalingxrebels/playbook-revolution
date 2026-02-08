@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { buildFilloutUrl } from '@/hooks/useFilloutUrl';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -972,6 +973,9 @@ const FinalCTASection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.15, 0.3] });
 
+  // Build form URL with UTM + source
+  const formUrl = useMemo(() => buildFilloutUrl('inflection-call', 'solutions'), []);
+
   // Load Fillout script
   useEffect(() => {
     const script = document.createElement('script');
@@ -1053,17 +1057,15 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Fillout Form Embed */}
+        {/* Fillout Form Embed - Use iframe with explicit URL */}
         <div
           className="max-w-2xl mx-auto rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up mb-12"
           style={{ animationDelay: '0.2s' }}
         >
-          <div
-            style={{ width: '100%', height: '500px' }}
-            data-fillout-id="bE8Mpbmb4mus"
-            data-fillout-embed-type="standard"
-            data-fillout-inherit-parameters
-            data-fillout-dynamic-resize
+          <iframe
+            src={formUrl}
+            style={{ width: '100%', height: '500px', border: 'none' }}
+            title="Contact Form"
           />
         </div>
 

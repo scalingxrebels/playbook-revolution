@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   ArrowRight, Calendar, Clock, Zap, Target, Users, 
   Sparkles, Quote, TrendingUp, BarChart3, Briefcase, 
@@ -12,6 +11,32 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
+import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
+
+const STORAGE_KEY = 'scalingx_utm_params';
+
+function buildEmbedUrl(formSlug: string, source: string): string {
+  const baseUrl = `https://scalingx.fillout.com/${formSlug}`;
+  const params = new URLSearchParams();
+  
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const utmParams = JSON.parse(stored);
+      if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
+      if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
+      if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
+      if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
+      if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
+    }
+  } catch (e) {
+    console.warn('Failed to read UTM params:', e);
+  }
+  
+  params.set('source', source);
+  const queryString = params.toString();
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+}
 
 const AH = () => {
   const { t, language } = useLanguage();
@@ -238,13 +263,11 @@ const AH = () => {
     "Verhandlungsführung für Professionals - Zertifiziert (2019)",
   ];
 
-  const filloutUrl = selectedBooking === '30min' 
-    ? 'https://scalingx.fillout.com/t/ah-30min' 
-    : 'https://scalingx.fillout.com/t/ah-60min';
-
-  const popupFilloutUrl = popupBookingType === '30min'
-    ? 'https://scalingx.fillout.com/t/ah-30min'
-    : 'https://scalingx.fillout.com/t/ah-60min';
+  // Build embed URL with UTM + source
+  const filloutUrl = useMemo(() => {
+    const slug = selectedBooking === '30min' ? 'ah-sync' : 'ah-deep-dive';
+    return buildEmbedUrl(slug, 'team-ah');
+  }, [selectedBooking]);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -819,23 +842,14 @@ const AH = () => {
 
       <Footer />
 
-      {/* Booking Dialog */}
-      <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
-        <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden">
-          <DialogHeader>
-            <DialogTitle className="text-center">
-              {popupBookingType === '30min' ? '30 Min Sync Call' : '60 Min Deep Dive'}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="rounded-xl overflow-hidden">
-            <iframe 
-              src={popupFilloutUrl}
-              className="w-full h-[600px]"
-              title="Booking Calendar"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
+      {/* Booking Modal */}
+      <FilloutBookingModal
+        formSlug={popupBookingType === '30min' ? 'ah-sync' : 'ah-deep-dive'}
+        source="team-ah"
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+        title={popupBookingType === '30min' ? '30 Min Sync Call' : '60 Min Deep Dive'}
+      />
     </div>
   );
 };

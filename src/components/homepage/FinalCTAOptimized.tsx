@@ -1,14 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Target, Zap, Users, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
 
+const STORAGE_KEY = 'scalingx_utm_params';
+
+function buildInquiryUrl(): string {
+  const baseUrl = 'https://scalingx.fillout.com/inquiry';
+  const params = new URLSearchParams();
+  
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const utmParams = JSON.parse(stored);
+      if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
+      if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
+      if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
+      if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
+      if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
+    }
+  } catch (e) {
+    console.warn('Failed to read UTM params:', e);
+  }
+  
+  // Always add source for homepage
+  params.set('source', 'website');
+  
+  const queryString = params.toString();
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+}
+
 const FinalCTAOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.15, 0.3] });
+  
+  // Build the inquiry form URL with UTM + source
+  const inquiryUrl = useMemo(() => buildInquiryUrl(), []);
 
   // Fillout Script dynamisch laden
   useEffect(() => {
@@ -180,17 +210,15 @@ const FinalCTAOptimized: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Fillout Form */}
+          {/* Right Column: Fillout Form - Use iframe with explicit URL */}
           <div 
             className="rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up"
             style={{ animationDelay: '0.2s' }}
           >
-            <div 
-              style={{ width: '100%', height: '500px' }}
-              data-fillout-id="bE8Mpbmb4mus"
-              data-fillout-embed-type="standard"
-              data-fillout-inherit-parameters
-              data-fillout-dynamic-resize
+            <iframe
+              src={inquiryUrl}
+              style={{ width: '100%', height: '500px', border: 'none' }}
+              title="Contact Form"
             />
           </div>
         </div>
