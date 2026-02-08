@@ -3,3 +3,5 @@
 export { default as DownloadLeadForm } from './DownloadLeadForm';
 export { default as DownloadModal } from './DownloadModal';
 export { default as FilloutEmbed } from './FilloutEmbed';
+export { default as FilloutDownloadModal } from './FilloutDownloadModal';
+export { DownloadButton } from './DownloadButton';

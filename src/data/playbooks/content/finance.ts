@@ -24,6 +24,7 @@ export const financeData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-finance",
     gradient: "from-emerald-500 to-green-500"
   },
   summary: {

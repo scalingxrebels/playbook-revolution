@@ -28,6 +28,7 @@ export const gtmRevenueData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "/downloads/gtm-revenue-playbook.pdf",
+    assetId: "playbook-gtm-revenue",
     gradient: "from-orange-500 to-amber-500"
   },
 

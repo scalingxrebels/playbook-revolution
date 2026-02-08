@@ -24,6 +24,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-portfolio-excellence",
     gradient: "from-purple-500 to-indigo-500"
   },
   summary: {

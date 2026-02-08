@@ -25,6 +25,7 @@ export const growthEnginesData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-growth-engines",
     gradient: "from-green-500 to-emerald-500"
   },
   summary: {

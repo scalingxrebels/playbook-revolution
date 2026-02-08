@@ -24,6 +24,7 @@ export const customerSuccessData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "/downloads/customer-success-playbook.pdf",
+    assetId: "playbook-customer-success",
     gradient: "from-pink-500 to-rose-500"
   },
   summary: {
