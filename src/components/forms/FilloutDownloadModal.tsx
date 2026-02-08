@@ -34,6 +34,12 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     if (!asset) return '';
     const params = new URLSearchParams();
     
+    // Asset parameters
+    params.set('Asset_ID', asset.id);
+    params.set('Asset_Name', language === 'en' ? asset.titleEn : asset.titleDe);
+    params.set('Download_URL', `https://scalingx.com${asset.filePath}`);
+    params.set('Asset_Type', asset.type);
+    
     // UTM parameters
     if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
     if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
@@ -41,14 +47,10 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
     if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
     if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
     
-    // Asset parameters
-    params.set('Asset_ID', asset.id);
-    params.set('download_type', asset.type);
-    
     const url = `${FILLOUT_BASE_URL}?${params.toString()}`;
     console.log('🔗 Fillout iframe URL:', url);
     return url;
-  }, [asset, utmParams]);
+  }, [asset, utmParams, language]);
 
   // Trigger automatic PDF download
   const handleDownload = useCallback(() => {
