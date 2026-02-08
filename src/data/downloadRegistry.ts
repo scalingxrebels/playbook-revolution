@@ -37,7 +37,7 @@ export const playbookAssets: DownloadAsset[] = [
     titleEn: 'AI-Native Scaling Playbook',
     titleDe: 'AI-Native Scaling Playbook',
     fileName: 'ai-native-scaling-playbook.pdf',
-    filePath: '/downloads/ai-native-scaling-playbook.pdf',
+    filePath: '/downloads/playbooks/ai-native-scaling-playbook.pdf',
     requiresEmail: true,
     isAvailable: true,
     category: 'master',
