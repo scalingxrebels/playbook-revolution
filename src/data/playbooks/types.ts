@@ -42,6 +42,7 @@ export interface PlaybookHeroData {
   trustBadges: BilingualText[];
   bookingUrl: string;
   downloadUrl: string;
+  assetId?: string;  // Optional Asset-ID für Download-Button (z.B. 'playbook-ai-native-scaling')
   gradient: string;
 }
 

@@ -12,6 +12,7 @@ import {
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
 import { ArrowRight, Download, ChevronDown, BookOpen } from 'lucide-react';
+import { DownloadButton } from '@/components/forms/DownloadButton';
 import type { PlaybookHeroData, BilingualText } from '@/data/playbooks/types';
 
 interface Props {
@@ -119,17 +120,28 @@ const PlaybookHeroSection: React.FC<Props> = ({ data }) => {
               <ArrowRight className="w-5 h-5 ml-2" />
             </a>
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-2"
-            asChild
-          >
-            <a href={data.downloadUrl} target="_blank" rel="noopener noreferrer">
-              <Download className="w-4 h-4 mr-2" />
+          {data.assetId ? (
+            <DownloadButton
+              assetId={data.assetId}
+              variant="outline"
+              size="lg"
+              className="border-2"
+            >
               {language === 'de' ? 'Playbook laden' : 'Download Playbook'}
-            </a>
-          </Button>
+            </DownloadButton>
+          ) : (
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-2"
+              asChild
+            >
+              <a href={data.downloadUrl} target="_blank" rel="noopener noreferrer">
+                <Download className="w-4 h-4 mr-2" />
+                {language === 'de' ? 'Playbook laden' : 'Download Playbook'}
+              </a>
+            </Button>
+          )}
         </div>
       </div>
 

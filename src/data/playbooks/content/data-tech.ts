@@ -24,6 +24,7 @@ export const dataTechData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#download",
+    assetId: "playbook-data-tech",
     gradient: "from-cyan-500 to-blue-500"
   },
   summary: {

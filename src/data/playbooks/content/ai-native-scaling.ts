@@ -24,6 +24,7 @@ export const aiNativeScalingData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "/downloads/ai-native-scaling-playbook.pdf",
+    assetId: "playbook-ai-native-scaling",
     gradient: "from-purple-500 to-violet-500"
   },
   summary: {

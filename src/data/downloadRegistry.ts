@@ -52,7 +52,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'growth-engines-playbook.pdf',
     filePath: '/downloads/playbooks/growth-engines-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'domain',
   },
   {
@@ -64,7 +64,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'operating-systems-playbook.pdf',
     filePath: '/downloads/playbooks/operating-systems-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'domain',
   },
   {
@@ -76,7 +76,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'board-governance-playbook.pdf',
     filePath: '/downloads/playbooks/board-governance-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'domain',
   },
   {
@@ -88,7 +88,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'portfolio-transformation-playbook.pdf',
     filePath: '/downloads/playbooks/portfolio-transformation-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'domain',
   },
   {
@@ -100,7 +100,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'strategic-capabilities-playbook.pdf',
     filePath: '/downloads/playbooks/strategic-capabilities-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'domain',
   },
   // Sub-Playbooks (Level 3) - Growth Engines
@@ -113,7 +113,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'gtm-revenue-playbook.pdf',
     filePath: '/downloads/playbooks/gtm-revenue-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'growth-engines',
   },
   {
@@ -125,7 +125,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'product-playbook.pdf',
     filePath: '/downloads/playbooks/product-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'growth-engines',
   },
   {
@@ -137,7 +137,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'customer-success-playbook.pdf',
     filePath: '/downloads/playbooks/customer-success-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'growth-engines',
   },
   // Sub-Playbooks (Level 3) - Operating Systems
@@ -150,7 +150,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'operations-playbook.pdf',
     filePath: '/downloads/playbooks/operations-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'operating-systems',
   },
   {
@@ -162,7 +162,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'finance-playbook.pdf',
     filePath: '/downloads/playbooks/finance-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'operating-systems',
   },
   {
@@ -174,7 +174,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'talent-playbook.pdf',
     filePath: '/downloads/playbooks/talent-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'operating-systems',
   },
   {
@@ -186,7 +186,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'data-tech-playbook.pdf',
     filePath: '/downloads/playbooks/data-tech-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'operating-systems',
   },
   // Sub-Playbooks (Level 3) - Board & Governance
@@ -199,7 +199,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'strategic-governance-playbook.pdf',
     filePath: '/downloads/playbooks/strategic-governance-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'board-governance',
   },
   {
@@ -211,7 +211,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'operational-governance-playbook.pdf',
     filePath: '/downloads/playbooks/operational-governance-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'board-governance',
   },
   {
@@ -223,7 +223,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'exit-ma-playbook.pdf',
     filePath: '/downloads/playbooks/exit-ma-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'board-governance',
   },
   // Sub-Playbooks (Level 3) - Portfolio Transformation
@@ -236,7 +236,7 @@ export const playbookAssets: DownloadAsset[] = [
     fileName: 'portfolio-excellence-playbook.pdf',
     filePath: '/downloads/playbooks/portfolio-excellence-playbook.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
     category: 'portfolio-transformation',
   },
 ];
@@ -255,7 +255,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'cac-crisis-turnaround.pdf',
     filePath: '/downloads/cases/cac-crisis-turnaround.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-nrr-machine-breakthrough',
@@ -266,7 +266,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'nrr-machine-breakthrough.pdf',
     filePath: '/downloads/cases/nrr-machine-breakthrough.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-partner-channel-transformed',
@@ -277,7 +277,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'partner-channel-transformed.pdf',
     filePath: '/downloads/cases/partner-channel-transformed.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-pricing-redesigned',
@@ -288,7 +288,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'pricing-redesigned.pdf',
     filePath: '/downloads/cases/pricing-redesigned.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-strategic-transformation-market-leadership',
@@ -299,7 +299,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'strategic-transformation-market-leadership.pdf',
     filePath: '/downloads/cases/strategic-transformation-market-leadership.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-stage-transition-series-b-ready',
@@ -310,7 +310,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'stage-transition-series-b-ready.pdf',
     filePath: '/downloads/cases/stage-transition-series-b-ready.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-exit-readiness-achieved',
@@ -321,7 +321,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'exit-readiness-achieved.pdf',
     filePath: '/downloads/cases/exit-readiness-achieved.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-vision-2030-strategy-workshop',
@@ -332,7 +332,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'vision-2030-strategy-workshop.pdf',
     filePath: '/downloads/cases/vision-2030-strategy-workshop.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-saas-transition-accelerated',
@@ -343,7 +343,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'saas-transition-accelerated.pdf',
     filePath: '/downloads/cases/saas-transition-accelerated.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-strategic-transformation-ma-integration',
@@ -354,7 +354,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'strategic-transformation-ma-integration.pdf',
     filePath: '/downloads/cases/strategic-transformation-ma-integration.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-diagnostic-led-acquisition-scaled',
@@ -365,7 +365,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'diagnostic-led-acquisition-scaled.pdf',
     filePath: '/downloads/cases/diagnostic-led-acquisition-scaled.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-board-readiness-series-b-secured',
@@ -376,7 +376,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'board-readiness-series-b-secured.pdf',
     filePath: '/downloads/cases/board-readiness-series-b-secured.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-leadership-program-scaled',
@@ -387,7 +387,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'leadership-program-scaled.pdf',
     filePath: '/downloads/cases/leadership-program-scaled.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
   {
     id: 'case-new-market-segment-entry',
@@ -398,7 +398,7 @@ export const caseStudyAssets: DownloadAsset[] = [
     fileName: 'new-market-segment-entry.pdf',
     filePath: '/downloads/cases/new-market-segment-entry.pdf',
     requiresEmail: true,
-    isAvailable: false,
+    isAvailable: true,
   },
 ];
 

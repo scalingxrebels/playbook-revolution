@@ -25,6 +25,7 @@ export const portfolioTransformationData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-portfolio-transformation",
     gradient: "from-purple-500 to-pink-500"
   },
   summary: {

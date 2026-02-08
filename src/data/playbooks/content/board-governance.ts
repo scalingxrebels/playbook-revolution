@@ -25,6 +25,7 @@ export const boardGovernanceData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-board-governance",
     gradient: "from-orange-500 to-amber-500"
   },
   summary: {
