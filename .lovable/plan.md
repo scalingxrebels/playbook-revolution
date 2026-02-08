@@ -1,256 +1,323 @@
 
 
-# Plan: Fillout Download System - 3 Fixes
+# Plan: Download-System Erweiterung - 4 Bereiche
 
 ## Zusammenfassung
 
-Behebung von 3 Problemen:
-1. Modal 31% breiter machen (512px → 672px)
-2. UTM-Parameter global beim Seitenaufruf speichern (nicht erst beim Modal-Öffnen)
-3. postMessage-Erkennung robuster machen für Auto-Download
+Verknüpfung des Fillout-Download-Systems mit 4 Bereichen:
+
+| Bereich | Aktueller Status | Änderung |
+|---------|------------------|----------|
+| 1. Playbook-Kacheln Template Button | Toast-Nachricht | FilloutDownloadModal öffnen |
+| 2. Expertise Final CTA | Direkter Link zu `#download` | FilloutDownloadModal öffnen |
+| 3. Case Detail PDF Download | Direkter `<a href>` Download | FilloutDownloadModal öffnen |
+| 4. Case-Kacheln im Grid | Nur "Read Case" Button | Secondary CTA "Download PDF" hinzufügen |
 
 ---
 
-## Fix 1: Modal Breite erhöhen
+## Fix 1: Playbook-Kacheln Template Button
 
-### Datei: `src/components/forms/FilloutDownloadModal.tsx`
-
-**Zeile 124 ändern:**
-
-| Vorher | Nachher |
-|--------|---------|
-| `sm:max-w-lg` (512px) | `sm:max-w-2xl` (672px) |
+### Problem
+Der `onDownload` Handler in `PlaybookCard.tsx` zeigt aktuell nur einen Toast:
 
 ```typescript
-// Zeile 124
-<DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-hidden">
+// PlaybookLibrary.tsx (Zeile 33-39)
+const handleDownloadTemplate = (playbook: Playbook) => {
+  toast({
+    title: language === 'en' ? 'Template Download' : 'Vorlage Download',
+    description: language === 'en' 
+      ? `"${playbook.title.en}" template will be available soon.`
+      : `"${playbook.title.de}" Vorlage wird bald verfügbar sein.`,
+  });
+};
 ```
 
----
+### Lösung
 
-## Fix 2: Globale UTM-Persistenz
+**Datei: `src/components/PlaybookLibrary.tsx`**
 
-### Problem:
-Der aktuelle `usePersistentUTMParams` Hook wird nur in `FilloutDownloadModal` verwendet. Aber:
-- User landet auf `/?utm_source=linkedin&utm_medium=paid`
-- Modal ist **nicht gemounted** → Hook läuft nicht → UTMs werden nicht gespeichert
-- User navigiert → UTMs verloren
-
-### Lösung: Neuer Hook auf App-Level
-
-**Neue Datei: `src/hooks/useGlobalUTMPersistence.ts`**
+1. Import `FilloutDownloadModal` und `getAssetById` hinzufügen
+2. State für Modal und ausgewähltes Asset hinzufügen
+3. `handleDownloadTemplate` Funktion ändern, um Modal zu öffnen
 
 ```typescript
-import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useState } from 'react';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, DownloadAsset } from '@/data/downloadRegistry';
 
-const STORAGE_KEY = 'scalingx_utm_params';
+// In der Komponente:
+const [downloadAsset, setDownloadAsset] = useState<DownloadAsset | null>(null);
+const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
-/**
- * Hook to persist UTM parameters globally on app mount
- * Must be used inside BrowserRouter (App.tsx level)
- */
-export function useGlobalUTMPersistence(): void {
-  const [searchParams] = useSearchParams();
+const handleDownloadTemplate = (playbook: Playbook) => {
+  // Asset-ID aus Playbook-Slug generieren
+  const assetId = `playbook-${playbook.slug.replace('/', '-').replace('growth-engines/', '').replace('operating-systems/', '').replace('board-governance/', '')}`;
+  const asset = getAssetById(assetId);
   
-  useEffect(() => {
-    const utmSource = searchParams.get('utm_source');
-    const utmMedium = searchParams.get('utm_medium');
-    const utmCampaign = searchParams.get('utm_campaign');
-    const utmContent = searchParams.get('utm_content');
-    const utmTerm = searchParams.get('utm_term');
-    
-    const hasUtm = utmSource || utmMedium || utmCampaign || utmContent || utmTerm;
-    
-    if (hasUtm) {
-      const params = {
-        utm_source: utmSource || undefined,
-        utm_medium: utmMedium || undefined,
-        utm_campaign: utmCampaign || undefined,
-        utm_content: utmContent || undefined,
-        utm_term: utmTerm || undefined,
-      };
-      
-      console.log('💾 Storing UTM params globally:', params);
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(params));
-    }
-  }, [searchParams]);
-}
-```
-
-**Datei ändern: `src/App.tsx`**
-
-Neue Wrapper-Komponente innerhalb von `BrowserRouter`:
-
-```typescript
-import { useGlobalUTMPersistence } from '@/hooks/useGlobalUTMPersistence';
-
-// NEU: Wrapper-Komponente die den Hook verwendet
-const AppContent = () => {
-  useGlobalUTMPersistence(); // Muss innerhalb BrowserRouter sein!
-  
-  return (
-    <>
-      <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          {/* ... alle bestehenden Routes ... */}
-        </Routes>
-      </Suspense>
-      <CookieBanner />
-    </>
-  );
+  if (asset && asset.isAvailable) {
+    setDownloadAsset(asset);
+    setIsDownloadModalOpen(true);
+  } else {
+    // Fallback: Toast zeigen wenn Asset nicht verfügbar
+    toast({
+      title: language === 'en' ? 'Coming Soon' : 'Bald verfügbar',
+      description: language === 'en' 
+        ? `"${playbook.title.en}" template will be available soon.`
+        : `"${playbook.title.de}" Vorlage wird bald verfügbar sein.`,
+    });
+  }
 };
 
-// App-Komponente aktualisieren
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <ThemeProvider>
-      <LanguageProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AppContent />  {/* NEU: Wrapper verwenden */}
-          </BrowserRouter>
-        </TooltipProvider>
-      </LanguageProvider>
-    </ThemeProvider>
-  </QueryClientProvider>
-);
+// Am Ende der Komponente:
+<FilloutDownloadModal
+  asset={downloadAsset}
+  isOpen={isDownloadModalOpen}
+  onClose={() => setIsDownloadModalOpen(false)}
+/>
+```
+
+### Mapping Playbook-Slug zu Asset-ID
+
+| Playbook Slug | Asset ID |
+|---------------|----------|
+| `ai-native-scaling` | `playbook-ai-native-scaling` |
+| `growth-engines` | `playbook-growth-engines` |
+| `growth-engines/gtm-revenue` | `playbook-gtm-revenue` |
+| `operating-systems` | `playbook-operating-systems` |
+| `board-governance` | `playbook-board-governance` |
+| etc. | etc. |
+
+---
+
+## Fix 2: Expertise CTA "Research herunterladen"
+
+### Problem
+Der Secondary CTA in `ResearchFinalCTASection.tsx` ist ein direkter Link:
+
+```typescript
+// Zeile 102-112
+<Button size="lg" variant="outline" asChild>
+  <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+    <Download className="w-4 h-4 mr-2" />
+    {data.secondaryCta.text[language]}
+  </a>
+</Button>
+```
+
+Aktuell zeigt `secondaryCta.href` auf `#download` (siehe anst.ts Zeile 84).
+
+### Lösung
+
+**Datei: `src/components/research/sections/ResearchFinalCTASection.tsx`**
+
+1. Import `FilloutDownloadModal` und `getAssetById` hinzufügen
+2. State für Modal hinzufügen
+3. Button-Klick auf Modal-Öffnung ändern
+4. Asset-ID aus Props oder URL-Slug ableiten
+
+```typescript
+import { useState } from 'react';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, DownloadAsset } from '@/data/downloadRegistry';
+
+// Props erweitern:
+interface ResearchFinalCTASectionProps {
+  data: FinalCTAData;
+  researchType?: 'amf' | 'anst' | 'sst' | 'unified'; // NEU
+}
+
+// In der Komponente:
+const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+// Asset-ID mapping
+const assetIdMap: Record<string, string> = {
+  'amf': 'research-amf',
+  'anst': 'research-anst',
+  'sst': 'research-sst',
+  'unified': 'research-unified',
+};
+const assetId = researchType ? assetIdMap[researchType] : null;
+const downloadAsset = assetId ? getAssetById(assetId) : null;
+
+// Secondary CTA Button ändern:
+<Button
+  size="lg"
+  variant="outline"
+  className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
+  onClick={() => setIsDownloadModalOpen(true)}
+>
+  <Download className="w-4 h-4 mr-2" />
+  {data.secondaryCta.text[language]}
+</Button>
+
+// Am Ende:
+<FilloutDownloadModal
+  asset={downloadAsset}
+  isOpen={isDownloadModalOpen}
+  onClose={() => setIsDownloadModalOpen(false)}
+/>
+```
+
+**Zusätzlich: Research-Seiten anpassen**
+
+Jede Research-Seite muss den `researchType` Prop übergeben:
+- `ExpertiseAMF.tsx` → `researchType="amf"`
+- `ExpertiseANST.tsx` → `researchType="anst"`
+- `ExpertiseSST.tsx` → `researchType="sst"`
+- `ExpertiseUnifiedFramework.tsx` → `researchType="unified"`
+
+---
+
+## Fix 3: Case Detail PDF Download Button
+
+### Problem
+Der Download-Button in `CaseDetail.tsx` ist ein direkter Link:
+
+```typescript
+// Zeile 97-107
+{caseStudy.downloadUrl && (
+  <div className="flex justify-center">
+    <Button asChild variant="outline" size="lg">
+      <a href={caseStudy.downloadUrl} download>
+        <Download className="w-5 h-5 mr-2" />
+        {language === 'de' ? 'Case Study PDF herunterladen' : 'Download Case Study PDF'}
+      </a>
+    </Button>
+  </div>
+)}
+```
+
+### Lösung
+
+**Datei: `src/pages/CaseDetail.tsx`**
+
+1. Import `FilloutDownloadModal` und `getAssetById`
+2. State für Modal hinzufügen
+3. Button onClick-Handler statt `<a href>`
+
+```typescript
+import { useState } from 'react';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, DownloadAsset } from '@/data/downloadRegistry';
+
+// In der Komponente:
+const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+// Asset-ID aus Case-Slug
+const assetId = `case-${caseStudy.slug}`;
+const downloadAsset = getAssetById(assetId);
+
+// Button ändern (Zeile 97-107):
+{caseStudy.downloadUrl && downloadAsset && (
+  <div className="flex justify-center">
+    <Button 
+      variant="outline" 
+      size="lg"
+      onClick={() => setIsDownloadModalOpen(true)}
+    >
+      <Download className="w-5 h-5 mr-2" />
+      {language === 'de' ? 'Case Study PDF herunterladen' : 'Download Case Study PDF'}
+    </Button>
+  </div>
+)}
+
+// Am Ende der Komponente (vor </div>):
+<FilloutDownloadModal
+  asset={downloadAsset}
+  isOpen={isDownloadModalOpen}
+  onClose={() => setIsDownloadModalOpen(false)}
+/>
 ```
 
 ---
 
-## Fix 3: Robuste postMessage-Erkennung + Auto-Download
+## Fix 4: Case-Kacheln im Grid - Secondary CTA hinzufügen
 
-### Datei: `src/components/forms/FilloutDownloadModal.tsx`
-
-**Zeilen 82-106 ersetzen** mit robusterer Event-Erkennung:
+### Problem
+`CaseCard.tsx` hat aktuell nur einen "Read Case" Button:
 
 ```typescript
-// Listen for Fillout submission via postMessage
-useEffect(() => {
-  const handleMessage = (event: MessageEvent) => {
-    // Log ALL messages from fillout for debugging
-    if (event.origin.includes('fillout.com')) {
-      console.log('📨 Fillout message received:', {
-        origin: event.origin,
-        data: event.data,
-        dataType: typeof event.data,
-        dataKeys: typeof event.data === 'object' && event.data !== null ? Object.keys(event.data) : 'N/A'
-      });
-      
-      // Check for form submission - multiple possible formats
-      const isSubmitted = 
-        // Object with type property
-        event.data?.type === 'fillout-form-submitted' ||
-        event.data?.type === 'form-submitted' ||
-        event.data?.type === 'formSubmitted' ||
-        event.data?.type === 'submit' ||
-        event.data?.event === 'submit' ||
-        event.data?.event === 'formSubmitted' ||
-        // String message
-        event.data === 'fillout-form-submitted' ||
-        event.data === 'form-submitted' ||
-        event.data === 'formSubmitted' ||
-        // Check for submission in any property
-        (typeof event.data === 'object' && event.data !== null && 
-         JSON.stringify(event.data).toLowerCase().includes('submit'));
-      
-      if (isSubmitted) {
-        console.log('🎉 Form submitted! Triggering download...');
-        handleDownload();
-      }
-    }
-  };
-
-  if (isOpen) {
-    console.log('👂 Listening for Fillout messages...');
-    window.addEventListener('message', handleMessage);
-  }
-
-  return () => window.removeEventListener('message', handleMessage);
-}, [isOpen, handleDownload]);
+// Zeile 77-87
+<Button asChild variant="default" size="sm" className="w-full bg-primary text-primary-foreground">
+  <Link to={`/cases/${caseStudy.slug}`}>
+    {language === 'de' ? 'Case lesen' : 'Read Case'}
+    <ArrowRight className="w-4 h-4 ml-2" />
+  </Link>
+</Button>
 ```
 
-**handleDownload Funktion (Zeilen 53-79)** - Modal-Schließen auf 2.5 Sekunden:
+### Lösung
+
+**Datei: `src/components/cases/CaseCard.tsx`**
+
+1. Import `FilloutDownloadModal` und `getAssetById`
+2. Import `Download` Icon
+3. State für Modal hinzufügen
+4. Zweiten Button hinzufügen (analog zu Playbook-Kacheln)
+5. Layout auf `flex gap-2` ändern
 
 ```typescript
-// Trigger automatic PDF download
-const handleDownload = useCallback(() => {
-  if (!asset) return;
+import { useState } from 'react';
+import { ArrowRight, TrendingUp, Download } from 'lucide-react';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, DownloadAsset } from '@/data/downloadRegistry';
+
+// In der Komponente:
+const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+// Asset-ID aus Case-Slug
+const assetId = `case-${caseStudy.slug}`;
+const downloadAsset = getAssetById(assetId);
+
+// Neues CTA-Layout (ersetzt Zeilen 76-88):
+<div className="flex gap-2">
+  {/* Primary: Read Case */}
+  <Button 
+    asChild
+    variant="outline" 
+    size="sm" 
+    className="flex-1"
+  >
+    <Link to={`/cases/${caseStudy.slug}`}>
+      {language === 'de' ? 'Case lesen' : 'Read Case'}
+    </Link>
+  </Button>
   
-  try {
-    console.log('⬇️ Starting download:', asset.fileName);
-    
-    const link = document.createElement('a');
-    link.href = asset.filePath;
-    link.download = asset.fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    console.log('✅ Download triggered successfully');
-    setSubmitted(true);
-    
-    // Close modal after 2.5 seconds
-    setTimeout(() => {
-      onClose();
-    }, 2500);
-  } catch (err) {
-    console.error('❌ Download failed:', err);
-    setError(language === 'en' 
-      ? 'Download failed. Please try again.' 
-      : 'Download fehlgeschlagen. Bitte versuchen Sie es erneut.');
-  }
-}, [asset, onClose, language]);
+  {/* Secondary: Download PDF (nur wenn Asset verfügbar) */}
+  {downloadAsset && downloadAsset.isAvailable && (
+    <Button
+      size="sm"
+      className="flex-1 bg-gradient-to-r from-primary to-primary/80"
+      onClick={() => setIsDownloadModalOpen(true)}
+    >
+      {language === 'de' ? 'PDF' : 'PDF'}
+      <Download className="w-3 h-3 ml-1" />
+    </Button>
+  )}
+</div>
+
+// Am Ende der Card-Komponente:
+<FilloutDownloadModal
+  asset={downloadAsset}
+  isOpen={isDownloadModalOpen}
+  onClose={() => setIsDownloadModalOpen(false)}
+/>
 ```
 
----
+### Visuelles Ergebnis
 
-## Datenfluss nach Fix
-
-```text
-1. User öffnet: /?utm_source=linkedin&utm_medium=paid
-         │
-         ▼
+**Vorher:**
+```
 ┌─────────────────────────────────┐
-│ AppContent mounted              │
-│ useGlobalUTMPersistence() läuft │
-│ → sessionStorage speichert UTMs │
-└────────────┬────────────────────┘
-             │
-             ▼
-2. User navigiert zu /playbooks/ai-native-scaling
-         │
-         ▼
-┌─────────────────────────────────┐
-│ UTMs bleiben in sessionStorage  │
-│ (werden nicht gelöscht)         │
-└────────────┬────────────────────┘
-             │
-             ▼
-3. User klickt "Download Playbook"
-         │
-         ▼
-┌─────────────────────────────────┐
-│ FilloutDownloadModal öffnet     │
-│ usePersistentUTMParams() liest  │
-│ → Holt UTMs aus sessionStorage  │
-│ → Baut iframe URL mit UTMs      │
-└────────────┬────────────────────┘
-             │
-             ▼
-4. User füllt Form aus & submitted
-         │
-         ▼
-┌─────────────────────────────────┐
-│ postMessage empfangen           │
-│ → Download startet automatisch  │
-│ → Success-Screen erscheint      │
-│ → Modal schließt nach 2.5s      │
+│          Case lesen →           │
 └─────────────────────────────────┘
+```
+
+**Nachher (analog zu Playbook-Kacheln):**
+```
+┌───────────────┬─────────────────┐
+│  Case lesen   │   PDF ⬇        │
+└───────────────┴─────────────────┘
 ```
 
 ---
@@ -259,24 +326,52 @@ const handleDownload = useCallback(() => {
 
 | Datei | Änderung |
 |-------|----------|
-| `src/hooks/useGlobalUTMPersistence.ts` | NEU: Globaler UTM-Speicher-Hook |
-| `src/App.tsx` | AppContent Wrapper + Hook-Import |
-| `src/components/forms/FilloutDownloadModal.tsx` | 1. Breite: `sm:max-w-2xl` |
-| | 2. postMessage: Robustere Erkennung |
-| | 3. setTimeout: 2.5s statt 2s |
+| `src/components/PlaybookLibrary.tsx` | Modal-State + FilloutDownloadModal + Asset-Lookup |
+| `src/components/research/sections/ResearchFinalCTASection.tsx` | Props erweitern + Modal-State + FilloutDownloadModal |
+| `src/components/research/ANSTLandingPage.tsx` (und andere) | `researchType` Prop übergeben |
+| `src/pages/CaseDetail.tsx` | Modal-State + Button onClick statt a href |
+| `src/components/cases/CaseCard.tsx` | Zweiter Button + Modal-State + FilloutDownloadModal |
+
+---
+
+## Datenfluss
+
+```text
+User klickt Download-Button (an 4 Stellen)
+         │
+         ▼
+┌─────────────────────────────────┐
+│ getAssetById(assetId) aufrufen  │
+│ → Holt Asset aus downloadRegistry│
+└────────────┬────────────────────┘
+             │
+             ▼
+┌─────────────────────────────────┐
+│ FilloutDownloadModal öffnet     │
+│ → Asset wird übergeben          │
+│ → Fillout-Form mit UTMs lädt    │
+└────────────┬────────────────────┘
+             │
+             ▼
+User füllt Form aus & submitted
+         │
+         ▼
+┌─────────────────────────────────┐
+│ postMessage empfangen           │
+│ → PDF startet automatisch       │
+│ → Modal schließt nach 2.5s      │
+└─────────────────────────────────┘
+```
 
 ---
 
 ## Test-Plan nach Implementierung
 
-| Schritt | Aktion | Erwartetes Ergebnis |
-|---------|--------|---------------------|
-| 1 | Öffne `/?utm_source=linkedin&utm_medium=paid&utm_campaign=test` | Console: `💾 Storing UTM params globally:` |
-| 2 | Navigiere zu `/playbooks/ai-native-scaling` | sessionStorage enthält UTMs |
-| 3 | Klicke "Download Playbook" | Modal ist ~672px breit |
-| 4 | Prüfe iframe URL in Console | UTMs sind in URL enthalten |
-| 5 | Fülle Form aus & Submit | Console: `📨 Fillout message received:` |
-| 6 | Nach Submit | Console: `🎉 Form submitted!`, dann `⬇️ Starting download:` |
-| 7 | Download | PDF startet automatisch |
-| 8 | Nach 2.5 Sekunden | Modal schließt automatisch |
+| Test | Aktion | Erwartetes Ergebnis |
+|------|--------|---------------------|
+| Playbook Template | Klick auf "Template" Button auf Playbook-Kachel | FilloutDownloadModal öffnet |
+| Expertise Research | Klick auf "Research herunterladen" auf ANST-Seite | FilloutDownloadModal öffnet mit research-anst Asset |
+| Case Detail | Klick auf "Download Case Study PDF" auf Case-Seite | FilloutDownloadModal öffnet |
+| Case Card | Klick auf "PDF" Button auf Case-Kachel | FilloutDownloadModal öffnet |
+| Form Submit | Form ausfüllen und absenden | PDF startet automatisch, Modal schließt |
 
