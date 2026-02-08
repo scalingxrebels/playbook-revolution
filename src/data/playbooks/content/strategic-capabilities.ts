@@ -25,6 +25,7 @@ export const strategicCapabilitiesData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-strategic-capabilities",
     gradient: "from-red-500 to-rose-500"
   },
   summary: {

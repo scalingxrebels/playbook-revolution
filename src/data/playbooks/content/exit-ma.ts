@@ -24,6 +24,7 @@ export const exitMaData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-exit-ma",
     gradient: "from-rose-500 to-red-500"
   },
   summary: {

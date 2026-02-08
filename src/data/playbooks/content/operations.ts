@@ -24,6 +24,7 @@ export const operationsData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "/downloads/operations-playbook.pdf",
+    assetId: "playbook-operations",
     gradient: "from-blue-500 to-indigo-500"
   },
   summary: {

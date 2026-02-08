@@ -25,6 +25,7 @@ export const operatingSystemsData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#",
+    assetId: "playbook-operating-systems",
     gradient: "from-blue-500 to-cyan-500"
   },
   summary: {

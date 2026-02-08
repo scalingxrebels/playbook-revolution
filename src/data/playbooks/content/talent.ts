@@ -24,6 +24,7 @@ export const talentData: PlaybookPageData = {
     ],
     bookingUrl: "https://scalingx.fillout.com/inflection-call",
     downloadUrl: "#download",
+    assetId: "playbook-talent",
     gradient: "from-violet-500 to-purple-500"
   },
   summary: {
