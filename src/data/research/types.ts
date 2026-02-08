@@ -6,6 +6,13 @@ export interface BilingualText {
   de: string;
 }
 
+// Research Methodology
+export interface ResearchMethodology {
+  researchPeriod: BilingualText;
+  observationPeriod: BilingualText;
+  methods: BilingualText;
+}
+
 // Hero Section
 export interface AMFHeroData {
   breadcrumb: {
@@ -20,6 +27,7 @@ export interface AMFHeroData {
     value: string;
     label: BilingualText;
   }>;
+  methodology?: ResearchMethodology;
   primaryCta: {
     text: BilingualText;
     href: string;

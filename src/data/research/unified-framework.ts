@@ -20,15 +20,23 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
       de: 'Das einheitliche Framework für AI-natives Skalieren—4 Formeln, 1 System'
     },
     description: {
-      en: 'We spent 3 years researching why AI-native companies scale 8.2x faster than traditional companies. What we found: You need 4 formulas, not 1. One measures WHAT level you\'re at. One explains WHY you scale faster. One diagnoses WHAT\'s blocking you. One predicts WHEN you\'ll reach €100M ARR. Together, they form a complete system—the first unified framework for AI-native scaling.',
-      de: 'Wir haben 3 Jahre erforscht, warum AI-native Unternehmen 8,2x schneller skalieren als traditionelle Unternehmen. Was wir fanden: Man braucht 4 Formeln, nicht 1. Eine misst WO du stehst. Eine erklärt WARUM du schneller skalierst. Eine diagnostiziert WAS dich blockiert. Eine prognostiziert WANN du €100M ARR erreichst. Zusammen bilden sie ein vollständiges System—das erste unified Framework für AI-natives Skalieren.'
+      en: 'From October 2025 to January 2026, we researched why AI-native companies scale 8.2x faster than traditional companies. What we found: You need 4 formulas, not 1. One measures WHAT level you\'re at. One explains WHY you scale faster. One diagnoses WHAT\'s blocking you. One predicts WHEN you\'ll reach €100M ARR. Together, they form a complete system—the first unified framework for AI-native scaling.',
+      de: 'Von Oktober 2025 bis Januar 2026 haben wir erforscht, warum AI-native Unternehmen 8,2x schneller skalieren als traditionelle Unternehmen. Was wir fanden: Man braucht 4 Formeln, nicht 1. Eine misst WO du stehst. Eine erklärt WARUM du schneller skalierst. Eine diagnostiziert WAS dich blockiert. Eine prognostiziert WANN du €100M ARR erreichst. Zusammen bilden sie ein vollständiges System—das erste unified Framework für AI-natives Skalieren.'
     },
     stats: [
       { value: '4', label: { en: 'Formulas', de: 'Formeln' } },
       { value: '1', label: { en: 'Unified System', de: 'Einheitliches System' } },
-      { value: '22', label: { en: 'Companies Validated', de: 'Unternehmen validiert' } },
-      { value: '3 yrs', label: { en: 'Research', de: 'Forschung' } }
+      { value: '62', label: { en: 'Companies Validated', de: 'Unternehmen validiert' } },
+      { value: '4 mo', label: { en: 'Research (10/25–01/26)', de: 'Forschung (10/25–01/26)' } }
     ],
+    methodology: {
+      researchPeriod: { en: 'October 2025 – January 2026', de: 'Oktober 2025 – Januar 2026' },
+      observationPeriod: { en: '2021-2025', de: '2021-2025' },
+      methods: {
+        en: 'Public data analysis, explorative C-level & Board interviews, job posting analysis',
+        de: 'Öffentliche Datenanalyse, explorative C-Level- & Board-Interviews, Stellenanzeigen-Analyse'
+      }
+    },
     primaryCta: {
       text: { en: 'Download Framework', de: 'Framework herunterladen' },
       href: '#download'
@@ -85,8 +93,8 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
     callout: {
       title: { en: 'Why Not 1 Formula?', de: 'Warum nicht 1 Formel?' },
       content: {
-        en: 'We tried. We spent 2 years trying to build 1 formula that does everything. It didn\'t work. Each question requires different inputs, different methods, different validation. 4 formulas, 1 system is the answer.',
-        de: 'Wir haben es versucht. Wir haben 2 Jahre versucht, 1 Formel zu bauen, die alles kann. Es hat nicht funktioniert. Jede Frage erfordert andere Inputs, andere Methoden, andere Validierung. 4 Formeln, 1 System ist die Antwort.'
+        en: 'We tried. We spent months trying to build 1 formula that does everything. It didn\'t work. Each question requires different inputs, different methods, different validation. 4 formulas, 1 system is the answer.',
+        de: 'Wir haben es versucht. Wir haben Monate versucht, 1 Formel zu bauen, die alles kann. Es hat nicht funktioniert. Jede Frage erfordert andere Inputs, andere Methoden, andere Validierung. 4 Formeln, 1 System ist die Antwort.'
       }
     }
   },

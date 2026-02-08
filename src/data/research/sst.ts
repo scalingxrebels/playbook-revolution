@@ -16,15 +16,23 @@ export const sstPageData: SSTPageData = {
       de: 'Warum deine schwächste Capability deine Skalierungsgeschwindigkeit bestimmt—und wie du sie behebst',
     },
     description: {
-      en: "Most companies don't have a growth problem. They have a bottleneck problem. We analyzed 22 high-growth companies and found a pattern: Companies with bottlenecks (weakest capability < 0.6) scale 50% slower than companies without bottlenecks. Your weakest capability determines your scaling speed. Not your strongest. Not your average. Your weakest.",
-      de: 'Die meisten Unternehmen haben kein Wachstumsproblem. Sie haben ein Bottleneck-Problem. Wir haben 22 Hypergrowth-Unternehmen analysiert und ein Muster gefunden: Unternehmen mit Bottlenecks (schwächste Capability < 0.6) skalieren 50% langsamer als Unternehmen ohne Bottlenecks. Deine schwächste Capability bestimmt deine Skalierungsgeschwindigkeit. Nicht deine stärkste. Nicht der Durchschnitt. Deine schwächste.',
+      en: "Most companies don't have a growth problem. They have a bottleneck problem. We analyzed 62 companies (22 AI-native, 25 AI-enabled, 15 traditional) and found a pattern: Companies with bottlenecks (weakest capability < 0.6) scale 50% slower than companies without bottlenecks. Your weakest capability determines your scaling speed. Not your strongest. Not your average. Your weakest.",
+      de: 'Die meisten Unternehmen haben kein Wachstumsproblem. Sie haben ein Bottleneck-Problem. Wir haben 62 Unternehmen (22 AI-native, 25 AI-enabled, 15 traditionelle) analysiert und ein Muster gefunden: Unternehmen mit Bottlenecks (schwächste Capability < 0.6) skalieren 50% langsamer als Unternehmen ohne Bottlenecks. Deine schwächste Capability bestimmt deine Skalierungsgeschwindigkeit. Nicht deine stärkste. Nicht der Durchschnitt. Deine schwächste.',
     },
     stats: [
-      { value: '22', label: { en: 'companies analyzed', de: 'Unternehmen analysiert' } },
+      { value: '62', label: { en: 'companies analyzed', de: 'Unternehmen analysiert' } },
       { value: '36%', label: { en: 'Setup bottleneck', de: 'Setup-Bottleneck' } },
       { value: 'r=0.72', label: { en: 'strong correlation', de: 'starke Korrelation' } },
       { value: '1.5-2.2×', label: { en: 'faster after fix', de: 'schneller nach Fix' } },
     ],
+    methodology: {
+      researchPeriod: { en: 'Fall/Winter 2025', de: 'Herbst/Winter 2025' },
+      observationPeriod: { en: '2021-2025', de: '2021-2025' },
+      methods: {
+        en: 'Public data analysis, explorative C-level & Board interviews, job posting analysis',
+        de: 'Öffentliche Datenanalyse, explorative C-Level- & Board-Interviews, Stellenanzeigen-Analyse'
+      }
+    },
     primaryCta: {
       text: { en: 'Diagnose Your Bottleneck', de: 'Diagnostiziere deinen Bottleneck' },
       href: '/tools/bottleneck-diagnosis',
@@ -40,8 +48,8 @@ export const sstPageData: SSTPageData = {
       de: 'Das Problem: Die meisten Unternehmen haben einen Bottleneck',
     },
     content: {
-      en: 'We analyzed 22 AI-native companies (2021-2025) and found a clear pattern. Most companies have at least one capability significantly weaker than the others. This bottleneck—the constraint that limits scaling—determines how fast a company can grow.',
-      de: 'Wir haben 22 AI-native Unternehmen (2021-2025) analysiert und ein klares Muster gefunden. Die meisten Unternehmen haben mindestens eine Capability, die deutlich schwächer ist als die anderen. Dieser Bottleneck—die Beschränkung, die das Skalieren limitiert—bestimmt, wie schnell ein Unternehmen wachsen kann.',
+      en: 'We analyzed 62 companies (22 AI-native, 25 AI-enabled, 15 traditional) from 2021-2025 and found a clear pattern. Most companies have at least one capability significantly weaker than the others. This bottleneck—the constraint that limits scaling—determines how fast a company can grow.',
+      de: 'Wir haben 62 Unternehmen (22 AI-native, 25 AI-enabled, 15 traditionelle) von 2021-2025 analysiert und ein klares Muster gefunden. Die meisten Unternehmen haben mindestens eine Capability, die deutlich schwächer ist als die anderen. Dieser Bottleneck—die Beschränkung, die das Skalieren limitiert—bestimmt, wie schnell ein Unternehmen wachsen kann.',
     },
     findings: [
       {
