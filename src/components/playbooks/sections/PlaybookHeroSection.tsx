@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -13,6 +13,7 @@ import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
 import { ArrowRight, Download, ChevronDown, BookOpen } from 'lucide-react';
 import { DownloadButton } from '@/components/forms/DownloadButton';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import type { PlaybookHeroData, BilingualText } from '@/data/playbooks/types';
 
 interface Props {
@@ -23,6 +24,7 @@ const PlaybookHeroSection: React.FC<Props> = ({ data }) => {
   const { language } = useLanguage();
   const t = (text: BilingualText) => text[language];
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -113,12 +115,10 @@ const PlaybookHeroSection: React.FC<Props> = ({ data }) => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            asChild
+            onClick={() => setIsBookingModalOpen(true)}
           >
-            <a href={data.bookingUrl} target="_blank" rel="noopener noreferrer">
-              {language === 'de' ? 'Gespräch buchen' : 'Book a Call'}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
+            {language === 'de' ? 'Gespräch buchen' : 'Book a Call'}
+            <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           {data.assetId ? (
             <DownloadButton
@@ -153,6 +153,15 @@ const PlaybookHeroSection: React.FC<Props> = ({ data }) => {
       >
         <ChevronDown className="w-5 h-5 animate-bounce" />
       </button>
+
+      {/* Booking Modal */}
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="playbook"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </section>
   );
 };
