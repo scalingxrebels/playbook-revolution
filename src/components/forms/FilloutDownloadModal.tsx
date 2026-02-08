@@ -67,9 +67,10 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
       console.log('✅ Download triggered successfully');
       setSubmitted(true);
       
+      // Close modal after 2.5 seconds
       setTimeout(() => {
         onClose();
-      }, 2000);
+      }, 2500);
     } catch (err) {
       console.error('❌ Download failed:', err);
       setError(language === 'en' 
@@ -81,14 +82,31 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   // Listen for Fillout submission via postMessage
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
+      // Log ALL messages from fillout for debugging
       if (event.origin.includes('fillout.com')) {
-        console.log('📨 Fillout message:', event.data);
+        console.log('📨 Fillout message received:', {
+          origin: event.origin,
+          data: event.data,
+          dataType: typeof event.data,
+          dataKeys: typeof event.data === 'object' && event.data !== null ? Object.keys(event.data) : 'N/A'
+        });
         
-        // Check for form submission
+        // Check for form submission - multiple possible formats
         const isSubmitted = 
+          // Object with type property
           event.data?.type === 'fillout-form-submitted' ||
           event.data?.type === 'form-submitted' ||
-          event.data === 'fillout-form-submitted';
+          event.data?.type === 'formSubmitted' ||
+          event.data?.type === 'submit' ||
+          event.data?.event === 'submit' ||
+          event.data?.event === 'formSubmitted' ||
+          // String message
+          event.data === 'fillout-form-submitted' ||
+          event.data === 'form-submitted' ||
+          event.data === 'formSubmitted' ||
+          // Check for submission in any property
+          (typeof event.data === 'object' && event.data !== null && 
+           JSON.stringify(event.data).toLowerCase().includes('submit'));
         
         if (isSubmitted) {
           console.log('🎉 Form submitted! Triggering download...');
@@ -121,7 +139,7 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-hidden">
+      <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-hidden">
         {error ? (
           <div className="flex flex-col items-center justify-center py-12 space-y-4">
             <AlertCircle className="w-16 h-16 text-destructive" />

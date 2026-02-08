@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { useGlobalUTMPersistence } from "@/hooks/useGlobalUTMPersistence";
 
 // Lazy load pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -101,6 +102,101 @@ const PageLoader = () => (
   </div>
 );
 
+// Wrapper component to use hooks that require BrowserRouter
+const AppContent = () => {
+  useGlobalUTMPersistence(); // Capture UTM params immediately on any page load
+  
+  return (
+    <>
+      <ScrollToTop />
+      <Suspense fallback={<PageLoader />}>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/playbooks" element={<Playbooks />} />
+          <Route path="/solutions" element={<Solutions />} />
+          <Route path="/solutions/:category" element={<SolutionCategory />} />
+          <Route path="/expertise" element={<Expertise />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/cases" element={<Cases />} />
+          <Route path="/cases/:slug" element={<CaseDetail />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/case-study/:id" element={<CaseStudy />} />
+          <Route path="/leads-dashboard" element={<LeadsDashboard />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/impressum" element={<Impressum />} />
+          <Route path="/datenschutz" element={<Datenschutz />} />
+          <Route path="/agb" element={<AGB />} />
+          <Route path="/ml" element={<ML />} />
+          <Route path="/ah" element={<AH />} />
+          <Route path="/fm" element={<FM />} />
+          <Route path="/solutions/power-up/cac-crisis" element={<PowerUpCACCrisis />} />
+          <Route path="/solutions/power-up/growth-momentum" element={<PowerUpGrowthMomentum />} />
+          <Route path="/solutions/power-up/pricing-power" element={<PowerUpPricingPower />} />
+          <Route path="/solutions/power-up/nrr-engine" element={<PowerUpNRREngine />} />
+          <Route path="/solutions/power-up/scaling-velocity" element={<PowerUpScalingVelocity />} />
+          <Route path="/solutions/power-up/ai-quick-wins" element={<PowerUpAIQuickWins />} />
+          <Route path="/solutions/power-up/board-readiness" element={<PowerUpBoardReadiness />} />
+          <Route path="/solutions/power-up/portfolio-performance" element={<PowerUpPortfolioPerformance />} />
+          <Route path="/solutions/power-up/custom-sprint" element={<PowerUpCustomSprint />} />
+          <Route path="/solutions/boost/efficient-hypergrowth" element={<BoostEfficientHypergrowth />} />
+          <Route path="/solutions/boost/growth-engine" element={<BoostGrowthEngine />} />
+          <Route path="/solutions/boost/pricing-dominance" element={<BoostPricingDominance />} />
+          <Route path="/solutions/boost/nrr-machine" element={<BoostNRRMachine />} />
+          <Route path="/solutions/boost/scaling-os" element={<BoostScalingOS />} />
+          <Route path="/solutions/boost/ai-maturity" element={<BoostAIMaturity />} />
+          <Route path="/solutions/boost/board-excellence" element={<BoostBoardExcellence />} />
+          <Route path="/solutions/boost/portfolio-value" element={<BoostPortfolioValue />} />
+          <Route path="/solutions/boost/custom-program" element={<BoostCustomProgram />} />
+          <Route path="/solutions/accelerate/hypergrowth" element={<AccelerateHypergrowth />} />
+          <Route path="/solutions/accelerate/sustainable-growth" element={<AccelerateSustainableGrowth />} />
+          <Route path="/solutions/accelerate/exit-readiness" element={<AccelerateExitReadiness />} />
+          <Route path="/solutions/accelerate/ai-native-scaling" element={<AccelerateAINativeScaling />} />
+          <Route path="/solutions/accelerate/portfolio-transformation" element={<AcceleratePortfolioTransformation />} />
+          <Route path="/solutions/strategic-advisory" element={<StrategicAdvisory />} />
+          <Route path="/solutions/vc-dd-simulation" element={<VCDueDiligenceSimulation />} />
+          <Route path="/solutions/gtm-effectiveness-review" element={<GTMEffectivenessReview />} />
+          <Route path="/solutions/pricing-packaging-review" element={<PricingPackagingReview />} />
+          <Route path="/solutions/scaling-readiness-assessment" element={<ScalingReadinessAssessment />} />
+          <Route path="/solutions/ai-maturity-assessment" element={<AIMaturityAssessment />} />
+          <Route path="/solutions/portfolio-assessment" element={<PortfolioAssessment />} />
+          <Route path="/solutions/investor-readiness-pitch-deck-check" element={<InvestorReadinessPitchDeckCheck />} />
+          <Route path="/solutions/custom-analysis-report" element={<CustomAnalysisReport />} />
+          <Route path="/solutions/workshop" element={<Workshop />} />
+          <Route path="/solutions/keynote" element={<Keynote />} />
+          <Route path="/solutions/expert-session" element={<ExpertSession />} />
+          <Route path="/tools/maxxeed" element={<Maxxeed />} />
+          <Route path="/book/fix-growth" element={<FixGrowthBook />} />
+          <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
+          <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />
+          <Route path="/playbooks/growth-engines/customer-success" element={<PlaybookCustomerSuccess />} />
+          <Route path="/playbooks/operating-systems/operations" element={<PlaybookOperations />} />
+          <Route path="/playbooks/operating-systems/finance" element={<PlaybookFinance />} />
+          <Route path="/playbooks/operating-systems/talent" element={<PlaybookTalent />} />
+          <Route path="/playbooks/operating-systems/data-tech" element={<PlaybookDataTech />} />
+          <Route path="/playbooks/board-governance/strategic" element={<PlaybookStrategicGovernance />} />
+          <Route path="/playbooks/board-governance/operational" element={<PlaybookOperationalGovernance />} />
+          <Route path="/playbooks/board-governance/exit-ma" element={<PlaybookExitMA />} />
+          <Route path="/playbooks/portfolio/excellence" element={<PlaybookPortfolioExcellence />} />
+          <Route path="/playbooks/strategic-capabilities" element={<PlaybookStrategicCapabilities />} />
+          <Route path="/playbooks/growth-engines" element={<PlaybookGrowthEngines />} />
+          <Route path="/playbooks/operating-systems" element={<PlaybookOperatingSystems />} />
+          <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
+          <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
+          <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
+          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
+          <Route path="/expertise/anst" element={<ExpertiseANST />} />
+          <Route path="/expertise/sst" element={<ExpertiseSST />} />
+          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
+          <Route path="/glossar" element={<Glossar />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+      <CookieBanner />
+    </>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
@@ -109,11 +205,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <ScrollToTop />
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/playbooks" element={<Playbooks />} />
+            <AppContent />
                 <Route path="/solutions" element={<Solutions />} />
                 <Route path="/solutions/:category" element={<SolutionCategory />} />
                 <Route path="/expertise" element={<Expertise />} />
@@ -188,12 +280,6 @@ const App = () => (
                 <Route path="/expertise/anst" element={<ExpertiseANST />} />
                 <Route path="/expertise/sst" element={<ExpertiseSST />} />
                 <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
-                <Route path="/glossar" element={<Glossar />} />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-            <CookieBanner />
           </BrowserRouter>
         </TooltipProvider>
       </LanguageProvider>
