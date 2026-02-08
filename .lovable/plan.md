@@ -1,105 +1,133 @@
 
 
-# Plan: Fehlende Secondary CTAs mit Fillout-Modal verbinden
+# Plan: Fillout URL-Parameter erweitern
 
 ## Zusammenfassung
 
-Es fehlt noch **eine wichtige Stelle**, wo der Secondary Download-CTA nicht das Fillout-Modal öffnet:
+Ergänzung von zwei zusätzlichen URL-Parametern für die Fillout-Automatisierung:
 
-| Datei | Aktueller Status | Änderung |
-|-------|------------------|----------|
-| `PlaybookFinalCTASection.tsx` | Direkter `<a href>` Link | FilloutDownloadModal öffnen |
-| `ResearchDownloadSection.tsx` | Disabled, "Coming Soon" | Optional: FilloutDownloadModal aktivieren |
-| `CaseCTA.tsx` | Nur Primary CTA (Book Call) | Kein Download-Button vorhanden - OK |
-
----
-
-## Fix 1: PlaybookFinalCTASection - Download Button
-
-### Problem
-
-Der "Playbook herunterladen" Button ist ein direkter Link:
-
-```typescript
-// Zeile 102-112
-<Button size="lg" variant="outline" asChild>
-  <a href={data.downloadUrl} target="_blank" rel="noopener noreferrer">
-    <Download className="w-4 h-4 mr-2" />
-    {language === 'de' ? 'Playbook herunterladen' : 'Download Playbook'}
-  </a>
-</Button>
-```
-
-### Lösung
-
-**Datei: `src/components/playbooks/sections/PlaybookFinalCTASection.tsx`**
-
-1. Import `FilloutDownloadModal`, `getAssetById`, `useState`
-2. Props erweitern um `playbookSlug`
-3. Modal-State hinzufügen
-4. Button onClick statt `<a href>`
-
-```typescript
-import { useState } from 'react';
-import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
-import { getAssetById } from '@/data/downloadRegistry';
-
-interface Props {
-  data: FinalCTAData;
-  playbookSlug?: string; // NEU
-}
-
-// In der Komponente:
-const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
-
-// Asset-ID aus Playbook-Slug
-const assetId = playbookSlug ? `playbook-${playbookSlug}` : null;
-const downloadAsset = assetId ? getAssetById(assetId) : null;
-
-// Secondary CTA Button ändern (Zeile 102-112):
-<Button
-  size="lg"
-  variant="outline"
-  className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
-  onClick={() => setIsDownloadModalOpen(true)}
->
-  <Download className="w-4 h-4 mr-2" />
-  {language === 'de' ? 'Playbook herunterladen' : 'Download Playbook'}
-</Button>
-
-// Am Ende der Section (vor </section>):
-<FilloutDownloadModal
-  asset={downloadAsset}
-  isOpen={isDownloadModalOpen}
-  onClose={() => setIsDownloadModalOpen(false)}
-/>
-```
+| Parameter | Aktuell | Neu |
+|-----------|---------|-----|
+| `Asset_ID` | ✅ Vorhanden | - |
+| `download_type` | ✅ Vorhanden | Umbenennen zu `Asset_Type` |
+| `Asset_Name` | ❌ Fehlt | Hinzufügen |
+| `Download_URL` | ❌ Fehlt | Hinzufügen |
 
 ---
 
-## Fix 2: PlaybookLandingPage - Slug übergeben
+## Änderung: FilloutDownloadModal.tsx
 
-**Datei: `src/components/playbooks/PlaybookLandingPage.tsx`**
+**Datei:** `src/components/forms/FilloutDownloadModal.tsx`
 
-Die `PlaybookFinalCTASection` muss den `playbookSlug` erhalten:
+### Aktuelle buildIframeUrl Funktion (Zeilen 33-51)
 
 ```typescript
-// Zeile 69
-<PlaybookFinalCTASection 
-  data={data.finalCta} 
-  playbookSlug={data.meta.slug}  // NEU
-/>
+const buildIframeUrl = useCallback(() => {
+  if (!asset) return '';
+  const params = new URLSearchParams();
+  
+  // UTM parameters
+  if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
+  if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
+  if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
+  if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
+  if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
+  
+  // Asset parameters
+  params.set('Asset_ID', asset.id);
+  params.set('download_type', asset.type);  // ← Umbenennen
+  
+  const url = `${FILLOUT_BASE_URL}?${params.toString()}`;
+  console.log('🔗 Fillout iframe URL:', url);
+  return url;
+}, [asset, utmParams]);
 ```
 
-**Hinweis:** `data.meta.slug` muss im PlaybookPageData vorhanden sein. Falls nicht, prüfe ich das noch.
+### Neue buildIframeUrl Funktion
+
+```typescript
+const buildIframeUrl = useCallback(() => {
+  if (!asset) return '';
+  const params = new URLSearchParams();
+  
+  // ✅ ASSET DATEN
+  params.set('Asset_ID', asset.id);
+  params.set('Asset_Name', language === 'en' ? asset.titleEn : asset.titleDe);
+  params.set('Download_URL', `https://scalingx.com${asset.filePath}`);
+  params.set('Asset_Type', asset.type);
+  
+  // ✅ UTM PARAMETERS
+  if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
+  if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
+  if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
+  if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
+  if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
+  
+  console.log('🔗 Fillout iframe URL:', params.toString());
+  return `${FILLOUT_BASE_URL}?${params.toString()}`;
+}, [asset, utmParams, language]);
+```
+
+### Änderungen im Detail
+
+| Zeile | Alt | Neu |
+|-------|-----|-----|
+| 45 | `params.set('Asset_ID', asset.id);` | Bleibt gleich |
+| 46 | `params.set('download_type', asset.type);` | `params.set('Asset_Type', asset.type);` |
+| - | - | `params.set('Asset_Name', language === 'en' ? asset.titleEn : asset.titleDe);` |
+| - | - | `params.set('Download_URL', \`https://scalingx.com${asset.filePath}\`);` |
+
+### Dependency-Array anpassen
+
+Da `language` jetzt verwendet wird, muss es zum Dependency-Array hinzugefügt werden:
+
+```typescript
+// Alt:
+}, [asset, utmParams]);
+
+// Neu:
+}, [asset, utmParams, language]);
+```
 
 ---
 
-## Fix 3: Prüfen ob meta.slug existiert
+## Resultierende Fillout URL
 
-Ich prüfe die Playbook-Datenstruktur, um sicherzustellen, dass `slug` verfügbar ist.
+**Vorher:**
+```
+https://scalingx.fillout.com/download?
+  Asset_ID=playbook-ai-native-scaling
+  &download_type=playbook
+  &utm_source=linkedin
+  &utm_campaign=growth-q1
+```
 
-Falls nicht vorhanden, kann der Slug aus der URL extrahiert werden mit `useLocation()`.
+**Nachher:**
+```
+https://scalingx.fillout.com/download?
+  Asset_ID=playbook-ai-native-scaling
+  &Asset_Name=AI-Native%20Scaling%20Playbook
+  &Download_URL=https%3A%2F%2Fscalingx.com%2Fdownloads%2Fai-native-scaling-playbook.pdf
+  &Asset_Type=playbook
+  &utm_source=linkedin
+  &utm_campaign=growth-q1
+```
+
+---
+
+## Hinweis: Domain-Konfiguration
+
+Der Plan nutzt `https://scalingx.com` als Basis-URL. Falls die Production-Domain anders lautet, kann dies angepasst werden:
+
+```typescript
+// Option 1: Hardcoded (wie im Plan)
+const DOWNLOAD_BASE_URL = 'https://scalingx.com';
+
+// Option 2: Dynamisch aus window.location
+const DOWNLOAD_BASE_URL = window.location.origin;
+```
+
+Empfehlung: Hardcoded nutzen, da Fillout die absolute URL für externe Automatisierungen braucht.
 
 ---
 
@@ -107,28 +135,18 @@ Falls nicht vorhanden, kann der Slug aus der URL extrahiert werden mit `useLocat
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/playbooks/sections/PlaybookFinalCTASection.tsx` | Props erweitern + Modal-State + FilloutDownloadModal |
-| `src/components/playbooks/PlaybookLandingPage.tsx` | `playbookSlug` Prop übergeben |
-
----
-
-## Optional: ResearchDownloadSection aktivieren
-
-Die `ResearchDownloadSection.tsx` ist aktuell komplett disabled ("Coming Soon"). Soll ich diese auch aktivieren und mit dem Fillout-Modal verbinden?
-
-- Button ist `disabled`
-- Zeigt "Coming Soon" Badge
-- Kein Asset-Mapping vorhanden
-
-Falls ja, kann ich das im gleichen Update machen.
+| `src/components/forms/FilloutDownloadModal.tsx` | `buildIframeUrl` erweitern um Asset_Name, Download_URL, Asset_Type umbenennen |
 
 ---
 
 ## Test nach Implementierung
 
-| Seite | Aktion | Erwartetes Ergebnis |
-|-------|--------|---------------------|
-| `/playbooks/ai-native-scaling` | Scroll zu Final CTA, klick "Playbook herunterladen" | FilloutDownloadModal öffnet |
-| `/playbooks/gtm-revenue` | Scroll zu Final CTA, klick "Playbook herunterladen" | FilloutDownloadModal öffnet |
-| Alle 17 Playbook-Seiten | Download Button in Final CTA | FilloutDownloadModal öffnet |
+1. Öffne DevTools → Network Tab
+2. Klicke auf einen Download-Button (z.B. Playbook-Kachel)
+3. Prüfe die Fillout-iframe-URL auf alle 4 Asset-Parameter:
+   - `Asset_ID`
+   - `Asset_Name`
+   - `Download_URL`
+   - `Asset_Type`
+4. Prüfe, ob UTM-Parameter ebenfalls korrekt übergeben werden
 
