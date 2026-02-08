@@ -66,7 +66,7 @@ const PlaybookLandingPage: React.FC<Props> = ({ data }) => {
       <PlaybookSolutionsSection data={data.solutionsConnection} />
       
       {/* Section 12: Final CTA */}
-      <PlaybookFinalCTASection data={data.finalCta} />
+      <PlaybookFinalCTASection data={data.finalCta} playbookSlug={data.meta.slug} />
       
       <Footer />
     </div>
