@@ -1,48 +1,41 @@
 
-
-# Fix: AI-Native Scaling Playbook Pfad korrigieren
+# Fix: Download-URL dynamisch statt hardcoded
 
 ## Problem
 
-In `src/data/downloadRegistry.ts` (Zeile 40) ist der falsche Pfad eingetragen:
+In `src/components/forms/FilloutDownloadModal.tsx` (Zeile 40) ist die Domain hardcoded:
 
 ```typescript
-// AKTUELL (FALSCH):
-filePath: '/downloads/ai-native-scaling-playbook.pdf',
-
-// KORREKT:
-filePath: '/downloads/playbooks/ai-native-scaling-playbook.pdf',
+params.set('Download_URL', `https://scalingx.com${asset.filePath}`);
 ```
 
-Das PDF liegt tatsächlich unter `public/downloads/playbooks/ai-native-scaling-playbook.pdf`.
+Die Seite läuft aber aktuell auf `scalingx.net` und wird bald auf `scalingx.io` wechseln.
 
 ---
 
 ## Lösung
 
-**Datei:** `src/data/downloadRegistry.ts`
+Statt der hardcoded Domain `window.location.origin` verwenden:
+
+**Datei:** `src/components/forms/FilloutDownloadModal.tsx`
 
 **Zeile 40 ändern:**
 
-| Zeile | Alt | Neu |
-|-------|-----|-----|
-| 40 | `filePath: '/downloads/ai-native-scaling-playbook.pdf',` | `filePath: '/downloads/playbooks/ai-native-scaling-playbook.pdf',` |
+| Alt | Neu |
+|-----|-----|
+| `params.set('Download_URL', \`https://scalingx.com${asset.filePath}\`);` | `params.set('Download_URL', \`${window.location.origin}${asset.filePath}\`);` |
 
 ---
 
-## Auswirkung
+## Resultat
 
-Nach der Korrektur wird die `Download_URL`, die an Fillout übergeben wird, korrekt sein:
+Die Download-URL passt sich automatisch an die aktuelle Domain an:
 
-**Vorher (falsch):**
-```
-Download_URL=https://scalingx.com/downloads/ai-native-scaling-playbook.pdf
-```
-
-**Nachher (korrekt):**
-```
-Download_URL=https://scalingx.com/downloads/playbooks/ai-native-scaling-playbook.pdf
-```
+| Umgebung | Download_URL |
+|----------|--------------|
+| Preview (Lovable) | `https://id-preview--e5261949-8413-41bb-94df-f65b04b3ef39.lovable.app/downloads/playbooks/...` |
+| Aktuell (Production) | `https://scalingx.net/downloads/playbooks/...` |
+| Zukünftig (Production) | `https://scalingx.io/downloads/playbooks/...` |
 
 ---
 
@@ -50,5 +43,4 @@ Download_URL=https://scalingx.com/downloads/playbooks/ai-native-scaling-playbook
 
 | Datei | Änderung |
 |-------|----------|
-| `src/data/downloadRegistry.ts` | Zeile 40: Pfad von `/downloads/` zu `/downloads/playbooks/` korrigieren |
-
+| `src/components/forms/FilloutDownloadModal.tsx` | Zeile 40: `https://scalingx.com` → `${window.location.origin}` |
