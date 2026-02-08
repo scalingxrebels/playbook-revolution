@@ -8,7 +8,7 @@ const ExpertiseAMF: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <ResearchLandingPage data={amfPageData} />
+      <ResearchLandingPage data={amfPageData} researchType="amf" />
       <Footer />
     </div>
   );
