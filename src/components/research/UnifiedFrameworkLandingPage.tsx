@@ -29,7 +29,7 @@ const UnifiedFrameworkLandingPage: React.FC<UnifiedFrameworkLandingPageProps> = 
       <ResearchUnifiedCaseStudySection data={data.unifiedCaseStudy} />
       <ResearchImplicationsSection data={data.implications} />
       <ResearchDownloadSection data={data.download} />
-      <ResearchFinalCTASection data={data.finalCta} />
+      <ResearchFinalCTASection data={data.finalCta} researchType="unified" />
     </main>
   );
 };

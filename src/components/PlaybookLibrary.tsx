@@ -9,6 +9,8 @@ import PlaybookOnboardingHint from '@/components/playbooks/PlaybookOnboardingHin
 import PlaybookCard from '@/components/playbooks/PlaybookCard';
 import PlaybookModal from '@/components/playbooks/PlaybookModal';
 import { usePlaybookFilters } from '@/components/playbooks/usePlaybookFilters';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById, type DownloadAsset } from '@/data/downloadRegistry';
 import type { Playbook } from '@/data/playbooks';
 
 const PlaybookLibrary: React.FC = () => {
@@ -17,6 +19,8 @@ const PlaybookLibrary: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedPlaybook, setSelectedPlaybook] = useState<Playbook | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [downloadAsset, setDownloadAsset] = useState<DownloadAsset | null>(null);
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
   const {
     filters,
@@ -31,12 +35,25 @@ const PlaybookLibrary: React.FC = () => {
   };
 
   const handleDownloadTemplate = (playbook: Playbook) => {
-    toast({
-      title: language === 'en' ? 'Template Download' : 'Vorlage Download',
-      description: language === 'en' 
-        ? `"${playbook.title.en}" template will be available soon. Contact us for early access.`
-        : `"${playbook.title.de}" Vorlage wird bald verfügbar sein. Kontaktieren Sie uns für frühen Zugang.`,
-    });
+    // Generate asset ID from playbook slug - handle nested slugs like "growth-engines/gtm-revenue"
+    const slugPart = playbook.slug.includes('/') 
+      ? playbook.slug.split('/').pop() 
+      : playbook.slug;
+    const assetId = `playbook-${slugPart}`;
+    const asset = getAssetById(assetId);
+    
+    if (asset && asset.isAvailable) {
+      setDownloadAsset(asset);
+      setIsDownloadModalOpen(true);
+    } else {
+      // Fallback: show toast when asset not available
+      toast({
+        title: language === 'en' ? 'Coming Soon' : 'Bald verfügbar',
+        description: language === 'en' 
+          ? `"${playbook.title.en}" template will be available soon.`
+          : `"${playbook.title.de}" Vorlage wird bald verfügbar sein.`,
+      });
+    }
   };
 
   const playbookStats = [
@@ -164,6 +181,13 @@ const PlaybookLibrary: React.FC = () => {
         onClose={() => setIsDialogOpen(false)}
         language={language}
         onDownload={handleDownloadTemplate}
+      />
+
+      {/* Download Modal */}
+      <FilloutDownloadModal
+        asset={downloadAsset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
       />
 
       {/* CTA Section - Eigenständig außerhalb des Containers */}
