@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -1057,16 +1058,15 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Fillout Form Embed - Use iframe with explicit URL */}
-        <div
-          className="max-w-2xl mx-auto rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up mb-12"
-          style={{ animationDelay: '0.2s' }}
-        >
-          <iframe
-            src={formUrl}
-            style={{ width: '100%', height: '500px', border: 'none' }}
-            title="Contact Form"
-          />
+        <div className="flex justify-center mb-12">
+          <Button
+            size="xl"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
+          >
+            {language === 'de' ? 'Kostenloses Inflection Call buchen' : 'Book Free Inflection Call'}
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
         </div>
 
         {/* Trust Badges */}
@@ -1104,6 +1104,15 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const BoostEfficientHypergrowth: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    const handleOpenModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenModal);
+    return () => window.removeEventListener('openBookingModal', handleOpenModal);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
@@ -1117,6 +1126,13 @@ const BoostEfficientHypergrowth: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };

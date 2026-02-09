@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -1104,7 +1105,7 @@ const FinalCTASection: React.FC = () => {
             <Button
               size="xl"
               className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-              onClick={() => window.open('https://calendly.com/michel-scalingx/boost', '_blank')}
+              onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
             >
               {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -1188,7 +1189,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/boost', '_blank')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1208,8 +1209,15 @@ const FinalCTASection: React.FC = () => {
 // MAIN COMPONENT
 // ============================================================================
 const BoostCustomProgram: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const { language } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const handleOpenModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenModal);
+    return () => window.removeEventListener('openBookingModal', handleOpenModal);
   }, []);
 
   return (
@@ -1223,6 +1231,13 @@ const BoostCustomProgram: React.FC = () => {
       <QualificationSection />
       <FinalCTASection />
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };
