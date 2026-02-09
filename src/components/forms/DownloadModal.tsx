@@ -8,7 +8,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { Download, FileText, X } from 'lucide-react';
+import { Download, FileText } from 'lucide-react';
 import DownloadLeadForm from './DownloadLeadForm';
 import type { DownloadAsset } from '@/data/downloadRegistry';
 
