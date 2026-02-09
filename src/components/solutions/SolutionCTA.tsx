@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Phone, Check } from 'lucide-react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const SolutionCTA: React.FC = () => {
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
     <section className="py-24 lg:py-32 relative overflow-hidden">
@@ -45,7 +47,7 @@ const SolutionCTA: React.FC = () => {
             <Button 
               size="xl" 
               className="shadow-brutal hover-brutal group"
-              onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+              onClick={() => setIsBookingModalOpen(true)}
             >
               <Phone className="mr-2 w-5 h-5" />
               {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
@@ -70,6 +72,13 @@ const SolutionCTA: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };
