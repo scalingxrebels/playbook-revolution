@@ -1,138 +1,84 @@
 
 
-# Migration der verbleibenden Calendly-Links auf Homepage und globalen Komponenten
+# Fix: FilloutBookingModal - Breite erhöhen und doppeltes X entfernen
 
-## Übersicht
+## Problem-Analyse
 
-Es wurden 4 Dateien identifiziert, die noch Calendly-Links oder fehlerhafte `#booking` Scroll-Verweise haben:
+Aus dem Screenshot sind zwei Probleme ersichtlich:
 
-| Datei | Problem | Lösung |
-|-------|---------|--------|
-| `Navigation.tsx` | 2× scrollt zu `#booking` (existiert nicht) | Modal öffnen |
-| `Footer.tsx` | Link zu `#booking` | Modal öffnen |
-| `ResearchHub.tsx` | Calendly-Link | Modal öffnen |
-| `SolutionCTA.tsx` | Calendly-Link | Modal öffnen |
+| Problem | Ursache |
+|---------|---------|
+| Modal zu schmal | `sm:max-w-[900px]` - Calendly-Kalender wird abgeschnitten |
+| Doppeltes X | Manueller X-Button in DialogHeader + automatischer X-Button aus DialogContent |
 
 ---
 
-## Änderungen pro Datei
+## Lösung
 
-### 1. Navigation.tsx (`source="navigation"`)
+### 1. Modal-Breite erhöhen
 
-**Aktuell (Zeile 84):**
-```tsx
-onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-```
-
-**Neu:**
-- State `isBookingModalOpen` hinzufügen
-- Button öffnet Modal statt zu scrollen
-- `FilloutBookingModal` mit `source="navigation"` am Ende einfügen
-
-**Betroffen:**
-- Desktop CTA (Zeile 81-88)
-- Mobile CTA (Zeile 177-188)
-
----
-
-### 2. Footer.tsx (`source="footer"`)
-
-**Aktuell (Zeile 167):**
-```tsx
-<a href="#booking" className="...">Book a Call</a>
-```
-
-**Neu:**
-- State `isBookingModalOpen` hinzufügen
-- Link wird zu Button umgewandelt, der Modal öffnet
-- `FilloutBookingModal` mit `source="footer"` am Ende einfügen
-
----
-
-### 3. ResearchHub.tsx (`source="research"`)
-
-**Aktuell (Zeile 653):**
-```tsx
-onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
-```
-
-**Neu:**
-- State `isBookingModalOpen` hinzufügen
-- Button öffnet Modal
-- `FilloutBookingModal` mit `source="research"` am Ende einfügen
-
----
-
-### 4. SolutionCTA.tsx (`source="solutions"`)
-
-**Aktuell (Zeile 48):**
-```tsx
-onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
-```
-
-**Neu:**
-- State `isBookingModalOpen` hinzufügen
-- Button öffnet Modal
-- `FilloutBookingModal` mit `source="solutions"` am Ende einfügen
-
----
-
-## Technische Details
-
-### Standard-Import für alle Dateien
-
-```typescript
-import { useState } from 'react';
-import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
-```
-
-### Standard-Pattern
+Änderung von `900px` auf `1100px` für optimale Calendly-Darstellung:
 
 ```tsx
-const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+// Vorher (Zeile 96)
+className="sm:max-w-[900px] max-h-[90vh] p-0 overflow-hidden"
 
-// Button
-<Button onClick={() => setIsBookingModalOpen(true)}>Book Call</Button>
+// Nachher
+className="sm:max-w-[1100px] max-h-[90vh] p-0 overflow-hidden"
+```
 
-// Modal am Ende der Komponente
-<FilloutBookingModal
-  formSlug="inflection-call"
-  source="[spezifische-source]"
-  isOpen={isBookingModalOpen}
-  onClose={() => setIsBookingModalOpen(false)}
-/>
+### 2. Manuellen X-Button entfernen
+
+Der manuelle X-Button im `DialogHeader` (Zeilen 103-109) wird entfernt, da `DialogContent` bereits einen eingebauten Close-Button hat:
+
+```tsx
+// Vorher
+<DialogHeader className="p-4 pb-0 flex flex-row items-center justify-between">
+  <DialogTitle className="text-lg font-semibold">
+    {title || defaultTitle}
+  </DialogTitle>
+  <button 
+    onClick={onClose}
+    className="rounded-full p-1 hover:bg-muted transition-colors"
+    aria-label="Close"
+  >
+    <X className="w-5 h-5" />
+  </button>
+</DialogHeader>
+
+// Nachher (manueller Button entfernt)
+<DialogHeader className="p-4 pb-0">
+  <DialogTitle className="text-lg font-semibold">
+    {title || defaultTitle}
+  </DialogTitle>
+</DialogHeader>
+```
+
+### 3. Unnötigen Import entfernen
+
+Da der manuelle X-Button entfernt wird, ist der `X`-Import von lucide-react nicht mehr nötig:
+
+```tsx
+// Vorher
+import { X } from 'lucide-react';
+
+// Nachher: Diese Zeile entfernen
 ```
 
 ---
 
-## Source-Werte Mapping
+## Datei-Änderungen
 
-| Datei | source-Wert |
-|-------|-------------|
-| Navigation.tsx | `navigation` |
-| Footer.tsx | `footer` |
-| ResearchHub.tsx | `research` |
-| SolutionCTA.tsx | `solutions` |
+| Datei | Änderung |
+|-------|----------|
+| `src/components/forms/FilloutBookingModal.tsx` | Breite auf 1100px, manuellen X-Button entfernen, X-Import entfernen |
 
 ---
 
-## Zusammenfassung
+## Ergebnis
 
-| Datei | Anzahl CTAs | Status |
-|-------|-------------|--------|
-| Navigation.tsx | 2 (Desktop + Mobile) | Migrieren |
-| Footer.tsx | 1 | Migrieren |
-| ResearchHub.tsx | 1 | Migrieren |
-| SolutionCTA.tsx | 1 | Migrieren |
-| **Total** | **5** | |
-
----
-
-## Ergebnis nach Implementierung
-
-Nach dieser finalen Migration werden:
-1. Alle "Book Call" CTAs auf der gesamten Website das einheitliche Fillout-Modal öffnen
-2. Keine externen Calendly-Links mehr vorhanden sein
-3. Alle Booking-Interaktionen korrekt mit UTM-Parametern und Source-Tracking versehen sein
-4. Die Navigation und der Footer konsistent mit dem Rest der Website funktionieren
+Nach der Änderung:
+- Modal ist 1100px breit (ausreichend für Calendly-Kalender)
+- Nur ein einziger X-Button zum Schließen (von DialogContent)
+- Cleaner Code ohne redundante Elemente
 
