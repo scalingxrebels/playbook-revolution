@@ -220,16 +220,14 @@ const FinalCTAOptimized: React.FC = () => {
             className="rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up"
             style={{ animationDelay: '0.2s' }}
           >
-            <div
-              data-fillout-id="fzeJtLouULus"
-              data-fillout-embed-type="standard"
-              data-fillout-dynamic-resize
-              data-fillout-inherit-parameters
-              data-fillout-parameters={buildFilloutParams()}
+            <iframe
+              src={`https://scalingx.fillout.com/inquiry?${buildFilloutParams()}`}
               style={{ 
                 width: '100%', 
-                minHeight: '600px',
+                height: '600px', 
+                border: 'none' 
               }}
+              title="Inquiry Form"
             />
           </div>
         </div>
