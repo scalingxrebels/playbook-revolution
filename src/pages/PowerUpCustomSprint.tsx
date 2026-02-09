@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -1014,15 +1015,16 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Fillout Form */}
-        <div className="max-w-2xl mx-auto mb-16 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-          <div
-            data-fillout-id="wX5LjCi8eQus"
-            data-fillout-embed-type="standard"
-            data-fillout-inherit-parameters
-            data-fillout-dynamic-resize
-            style={{ width: '100%', minHeight: '400px' }}
-          />
+        {/* CTA Button */}
+        <div className="max-w-2xl mx-auto mb-16 animate-slide-up text-center" style={{ animationDelay: '0.1s' }}>
+          <Button
+            size="xl"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
+          >
+            {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
         </div>
 
         {/* Alternative: Expert Session */}
@@ -1046,7 +1048,10 @@ const FinalCTASection: React.FC = () => {
             </ul>
           </div>
           <div className="text-center">
-            <Button variant="outline" onClick={() => window.open('https://calendly.com/michel-scalingx/expert-session', '_blank')}>
+            <Button 
+              variant="outline" 
+              onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
+            >
               {language === 'de' ? 'Expert Session buchen' : 'Book Expert Session'}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
@@ -1097,8 +1102,15 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const PowerUpCustomSprint: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const { language } = useLanguage();
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    const handleOpenModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenModal);
+    return () => window.removeEventListener('openBookingModal', handleOpenModal);
   }, []);
 
   return (
@@ -1114,6 +1126,14 @@ const PowerUpCustomSprint: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };
