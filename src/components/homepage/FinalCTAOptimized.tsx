@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Target, Zap, Users, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,29 +8,35 @@ import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const STORAGE_KEY = 'scalingx_utm_params';
 
-function buildInquiryUrl(): string {
-  const baseUrl = 'https://scalingx.fillout.com/inquiry';
-  const params = new URLSearchParams();
-  
+function getStoredUTMParams(): Record<string, string> {
   try {
     const stored = sessionStorage.getItem(STORAGE_KEY);
     if (stored) {
-      const utmParams = JSON.parse(stored);
-      if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
-      if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
-      if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
-      if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
-      if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
+      const params = JSON.parse(stored);
+      const result: Record<string, string> = {};
+      if (params.utm_source) result.utm_source = params.utm_source;
+      if (params.utm_medium) result.utm_medium = params.utm_medium;
+      if (params.utm_campaign) result.utm_campaign = params.utm_campaign;
+      if (params.utm_content) result.utm_content = params.utm_content;
+      if (params.utm_term) result.utm_term = params.utm_term;
+      return result;
     }
   } catch (e) {
     console.warn('Failed to read UTM params:', e);
   }
+  return {};
+}
+
+function buildFilloutParams(): string {
+  const params = new URLSearchParams();
+  const utmParams = getStoredUTMParams();
   
-  // Always add source for homepage
+  Object.entries(utmParams).forEach(([key, value]) => {
+    if (value) params.set(key, value);
+  });
   params.set('source', 'website');
   
-  const queryString = params.toString();
-  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+  return params.toString();
 }
 
 const FinalCTAOptimized: React.FC = () => {
@@ -38,9 +44,6 @@ const FinalCTAOptimized: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.15, 0.3] });
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  
-  // Build the inquiry form URL with UTM + source
-  const inquiryUrl = useMemo(() => buildInquiryUrl(), []);
 
   // Fillout Script dynamisch laden
   useEffect(() => {
@@ -212,15 +215,19 @@ const FinalCTAOptimized: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Fillout Form - Use iframe with explicit URL */}
+          {/* Right Column: Fillout Form - Use Fillout Embed with dynamic resize */}
           <div 
             className="rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up"
             style={{ animationDelay: '0.2s' }}
           >
             <iframe
-              src={inquiryUrl}
-              style={{ width: '100%', height: '500px', border: 'none' }}
-              title="Contact Form"
+              src={`https://scalingx.fillout.com/inquiry?${buildFilloutParams()}`}
+              style={{ 
+                width: '100%', 
+                height: '900px', 
+                border: 'none' 
+              }}
+              title="Inquiry Form"
             />
           </div>
         </div>
