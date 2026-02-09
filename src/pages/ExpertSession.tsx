@@ -441,11 +441,13 @@ const ExpertSession = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Button size="xl" className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400" asChild>
-              <a href="https://calendly.com/michel-scalingx/expert-session" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
+            <Button 
+              size="xl" 
+              className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+              onClick={() => setIsExpertSessionModalOpen(true)}
+            >
+              {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8" asChild>
               <a href="#session-types">
@@ -596,11 +598,13 @@ const ExpertSession = () => {
           </Accordion>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="text-lg px-8" asChild>
-              <a href="https://calendly.com/michel-scalingx/expert-session" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
+            <Button 
+              size="lg" 
+              className="text-lg px-8"
+              onClick={() => setIsExpertSessionModalOpen(true)}
+            >
+              {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -675,11 +679,13 @@ const ExpertSession = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="text-lg px-8" asChild>
-              <a href="https://calendly.com/michel-scalingx/expert-session" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
+            <Button 
+              size="lg" 
+              className="text-lg px-8"
+              onClick={() => setIsExpertSessionModalOpen(true)}
+            >
+              {isEnglish ? 'Book Session (€490)' : 'Session buchen (€490)'}
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
