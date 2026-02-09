@@ -1,17 +1,17 @@
 
 
-# Fix: Inquiry-Formular Höhe weiter erhöhen
+# Fix: FilloutBookingModal Höhe erhöhen
 
 ## Problem
 
-Aus dem Screenshot ersichtlich:
-- Das Formular zeigt einen Scrollbalken auf der rechten Seite
-- 750px Höhe reicht nicht aus, um das komplette Formular ohne Scrollen anzuzeigen
-- Der "Absenden"-Button ist zwar sichtbar, aber es gibt noch Inhalte die gescrollt werden müssen
+Das Booking Modal für Expert Sessions (und andere Buchungsformulare) zeigt das Formular nicht vollständig an:
+- Ca. 50px fehlen oben
+- Ca. 50px fehlen unten
+- Aktuelle iframe-Höhe: 700px
 
 ## Lösung
 
-Die iframe-Höhe von 750px auf **900px** erhöhen, damit das Formular vollständig ohne Scrollen angezeigt wird.
+Die iframe-Höhe von 700px auf **800px** erhöhen, damit das Formular vollständig angezeigt wird.
 
 ---
 
@@ -19,43 +19,27 @@ Die iframe-Höhe von 750px auf **900px** erhöhen, damit das Formular vollständ
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/homepage/FinalCTAOptimized.tsx` | iframe-Höhe von 750px auf 900px erhöhen |
+| `src/components/forms/FilloutBookingModal.tsx` | iframe-Höhe von 700px auf 800px erhöhen |
 
 ---
 
 ## Code-Änderung
 
-### Aktuell (Zeile 223-231)
+### Aktuell (Zeile 104)
 ```tsx
-<iframe
-  src={`https://scalingx.fillout.com/inquiry?${buildFilloutParams()}`}
-  style={{ 
-    width: '100%', 
-    height: '750px',   // ← Immer noch zu klein
-    border: 'none' 
-  }}
-  title="Inquiry Form"
-/>
+<div className="w-full h-[700px]">
 ```
 
 ### Neu
 ```tsx
-<iframe
-  src={`https://scalingx.fillout.com/inquiry?${buildFilloutParams()}`}
-  style={{ 
-    width: '100%', 
-    height: '900px',   // ← Größer für vollständige Anzeige
-    border: 'none' 
-  }}
-  title="Inquiry Form"
-/>
+<div className="w-full h-[800px]">
 ```
 
 ---
 
 ## Ergebnis
 
-- Der schöne Rahmen bleibt unverändert
-- Das Formular wird vollständig ohne Scrollbalken angezeigt
-- Alle Formularfelder sind sichtbar ohne zu scrollen
+- Das Booking Modal zeigt alle Formularinhalte vollständig an
+- Keine abgeschnittenen Inhalte mehr oben oder unten
+- Betrifft alle Buchungsformulare: Inflection Call, Expert Session, Team-Calls
 

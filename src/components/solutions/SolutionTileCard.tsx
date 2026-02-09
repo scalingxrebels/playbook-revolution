@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { SolutionTile, getTransformationTierLabel, SolutionTypeId } from '@/data/solutionTiles';
 import { Card, CardContent } from '@/components/ui/card';
@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface SolutionTileCardProps {
   tile: SolutionTile;
@@ -32,9 +33,17 @@ const typeIcons: Record<Exclude<SolutionTypeId, 'all'>, React.ElementType> = {
   'keynote': Mic,
 };
 
+// Map primaryCtaUrl to valid FormSlug types
+type FormSlug = 'inflection-call' | 'expert-session' | 'ml-sync' | 'ml-deep-dive' | 'ah-sync' | 'ah-deep-dive' | 'fm-sync' | 'fm-deep-dive';
+
+const isValidFormSlug = (slug: string): slug is FormSlug => {
+  return ['inflection-call', 'expert-session', 'ml-sync', 'ml-deep-dive', 'ah-sync', 'ah-deep-dive', 'fm-sync', 'fm-deep-dive'].includes(slug);
+};
+
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
   const { language } = useLanguage();
   const lang = language as 'en' | 'de';
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const headline = lang === 'de' ? tile.headlineDe : tile.headlineEn;
   const problem = lang === 'de' ? tile.problemDe : tile.problemEn;
@@ -51,12 +60,20 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
     if (tile.primaryCtaAction === 'disabled') {
       return; // Do nothing for disabled buttons
     }
-    if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'book-call' || tile.primaryCtaAction === 'open-tool') {
+    // Handle book-call action with modal instead of external link
+    if (tile.primaryCtaAction === 'book-call' && isValidFormSlug(tile.primaryCtaUrl)) {
+      setIsBookingModalOpen(true);
+      return;
+    }
+    if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
     } else if (tile.primaryCtaUrl) {
       window.location.href = tile.primaryCtaUrl;
     }
   };
+
+  // Determine the form slug for the booking modal
+  const formSlug: FormSlug = isValidFormSlug(tile.primaryCtaUrl) ? tile.primaryCtaUrl : 'inflection-call';
 
   const getSolutionTypeLabel = () => {
     if (tile.transformationTier) {
@@ -227,6 +244,16 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
           );
         })()}
       </CardContent>
+      
+      {/* Booking Modal for book-call actions */}
+      {tile.primaryCtaAction === 'book-call' && (
+        <FilloutBookingModal
+          formSlug={formSlug}
+          source={`solutions-tile-${tile.id}`}
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+        />
+      )}
     </Card>
   );
 };

@@ -101,7 +101,7 @@ const FilloutBookingModal: React.FC<FilloutBookingModalProps> = ({
           </DialogTitle>
         </DialogHeader>
         
-        <div className="w-full h-[700px]">
+        <div className="w-full h-[800px]">
           {isOpen && filloutUrl && (
             <iframe
               src={filloutUrl}
