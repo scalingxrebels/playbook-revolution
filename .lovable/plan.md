@@ -1,139 +1,79 @@
 
-# Vollständige Fillout-Migration: Alle verbleibenden Seiten
+
+# Migration der verbleibenden Calendly-Links auf Homepage und globalen Komponenten
 
 ## Übersicht
 
-Basierend auf der Code-Analyse müssen noch **31 Dateien** mit **365+ Calendly-Links** auf das einheitliche `FilloutBookingModal`-Pattern migriert werden.
+Es wurden 4 Dateien identifiziert, die noch Calendly-Links oder fehlerhafte `#booking` Scroll-Verweise haben:
+
+| Datei | Problem | Lösung |
+|-------|---------|--------|
+| `Navigation.tsx` | 2× scrollt zu `#booking` (existiert nicht) | Modal öffnen |
+| `Footer.tsx` | Link zu `#booking` | Modal öffnen |
+| `ResearchHub.tsx` | Calendly-Link | Modal öffnen |
+| `SolutionCTA.tsx` | Calendly-Link | Modal öffnen |
 
 ---
 
-## Kategorien der verbleibenden Migrationen
+## Änderungen pro Datei
 
-### Kategorie 1: Accelerate-Seiten (5 Dateien, ~20 CTAs)
+### 1. Navigation.tsx (`source="navigation"`)
 
-| Datei | Source | Anzahl CTAs |
-|-------|--------|-------------|
-| `AccelerateHypergrowth.tsx` | `accelerate` | 4 |
-| `AccelerateExitReadiness.tsx` | `accelerate` | 4 |
-| `AccelerateAINativeScaling.tsx` | `accelerate` | 4 |
-| `AccelerateSustainableGrowth.tsx` | `accelerate` | 4 |
-| `AcceleratePortfolioTransformation.tsx` | `accelerate` | 4 |
-
-**Pattern in jeder Datei:**
-- Hero CTA: `scrollToSection('final-cta')` → bleibt (scrollt zum Formular)
-- FinalCTA Section: `window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')` → `FilloutBookingModal`
-- Alternative CTA: `window.open('https://calendly.com/michel-scalingx/assessment', '_blank')` → `FilloutBookingModal`
-
----
-
-### Kategorie 2: PowerUp-Seiten (8 Dateien, ~24 CTAs)
-
-| Datei | Source | Anzahl CTAs |
-|-------|--------|-------------|
-| `PowerUpBoardReadiness.tsx` | `solutions` | 3 |
-| `PowerUpPortfolioPerformance.tsx` | `solutions` | 3 |
-| `PowerUpPricingPower.tsx` | `solutions` | 3 |
-| `PowerUpNRREngine.tsx` | `solutions` | 3 |
-| `PowerUpScalingVelocity.tsx` | `solutions` | 3 |
-| `PowerUpGrowthMomentum.tsx` | `solutions` | 3 |
-| `PowerUpCACCrisis.tsx` | `solutions` | 3 |
-| `PowerUpCustomSprint.tsx` | `solutions` | 3 |
-
-**Pattern:** Alle haben CTA-Buttons mit `onClick={() => window.open('calendly...')}` die durch Modals ersetzt werden.
-
----
-
-### Kategorie 3: Assessment/Review-Seiten (5 Dateien, ~20 CTAs)
-
-| Datei | Source | Form-Slug |
-|-------|--------|-----------|
-| `AIMaturityAssessment.tsx` | `ai-assessment` | `inflection-call` |
-| `ScalingReadinessAssessment.tsx` | `scaling-assessment` | `inflection-call` |
-| `GTMEffectivenessReview.tsx` | `gtm-review` | `inflection-call` |
-| `PricingPackagingReview.tsx` | `pricing-review` | `inflection-call` |
-| `InvestorReadinessPitchDeckCheck.tsx` | `investor-readiness` | `inflection-call` |
-
----
-
-### Kategorie 4: Boost-Seiten (6 Dateien, ~12 CTAs)
-
-| Datei | Source |
-|-------|--------|
-| `BoostAIMaturity.tsx` | `solutions` |
-| `BoostCustomProgram.tsx` | `solutions` |
-| `BoostEfficientHypergrowth.tsx` | `solutions` |
-| `BoostGrowthEngine.tsx` | `solutions` |
-| `BoostNRRMachine.tsx` | `solutions` |
-| `BoostPricingDominance.tsx` | `solutions` |
-| `BoostPortfolioValue.tsx` | `solutions` |
-| `BoostScalingOS.tsx` | `solutions` |
-
----
-
-### Kategorie 5: Spezial-Seiten (4 Dateien)
-
-| Datei | Source | Besonderheit |
-|-------|--------|--------------|
-| `About.tsx` | `about` | Team CTA Button |
-| `SolutionCategory.tsx` | `solutions` | Generischer CTA |
-| `Workshop.tsx` | `workshop` | Hat 3 Workshop-Buttons (bleiben extern) + 1 Inflection |
-| `FixGrowthBook.tsx` | `book` | Book CTA |
-
----
-
-### Kategorie 6: Komponenten und Data-Files (3 Dateien)
-
-| Datei | Änderung |
-|-------|----------|
-| `ChallengeDetailModal.tsx` | CTA Links auf Modal umstellen |
-| `FinalCTAOptimized.tsx` | Hat noch einen Fallback-Calendly-Link |
-| `solutionTiles.ts` | `primaryCtaUrl` von Calendly auf Fillout-Slug ändern |
-
----
-
-## Implementierungs-Batches
-
-### Batch 1: Accelerate-Seiten (5 Dateien)
-
-Jede Datei erhält:
-```typescript
-import { useState } from 'react';
-import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
-
-// Am Anfang der Hauptkomponente:
-const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-
-// Button ändern:
-onClick={() => setIsBookingModalOpen(true)}
-
-// Modal am Ende hinzufügen:
-<FilloutBookingModal
-  formSlug="inflection-call"
-  source="accelerate"
-  isOpen={isBookingModalOpen}
-  onClose={() => setIsBookingModalOpen(false)}
-/>
+**Aktuell (Zeile 84):**
+```tsx
+onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
 ```
 
-### Batch 2: PowerUp-Seiten (8 Dateien)
+**Neu:**
+- State `isBookingModalOpen` hinzufügen
+- Button öffnet Modal statt zu scrollen
+- `FilloutBookingModal` mit `source="navigation"` am Ende einfügen
 
-Gleiches Pattern, `source="solutions"`
+**Betroffen:**
+- Desktop CTA (Zeile 81-88)
+- Mobile CTA (Zeile 177-188)
 
-### Batch 3: Assessment-Seiten (5 Dateien)
+---
 
-Gleiches Pattern mit individuellen Source-Werten
+### 2. Footer.tsx (`source="footer"`)
 
-### Batch 4: Boost-Seiten (6 Dateien)
+**Aktuell (Zeile 167):**
+```tsx
+<a href="#booking" className="...">Book a Call</a>
+```
 
-Gleiches Pattern, `source="solutions"`
+**Neu:**
+- State `isBookingModalOpen` hinzufügen
+- Link wird zu Button umgewandelt, der Modal öffnet
+- `FilloutBookingModal` mit `source="footer"` am Ende einfügen
 
-### Batch 5: Spezialseiten + Komponenten (7 Dateien)
+---
 
-- `About.tsx`: Modal für Team-CTA
-- `SolutionCategory.tsx`: Modal für generischen CTA
-- `ChallengeDetailModal.tsx`: Alle Booking-Buttons
-- `FinalCTAOptimized.tsx`: Fallback-Button
-- `solutionTiles.ts`: URL-Werte anpassen
+### 3. ResearchHub.tsx (`source="research"`)
+
+**Aktuell (Zeile 653):**
+```tsx
+onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+```
+
+**Neu:**
+- State `isBookingModalOpen` hinzufügen
+- Button öffnet Modal
+- `FilloutBookingModal` mit `source="research"` am Ende einfügen
+
+---
+
+### 4. SolutionCTA.tsx (`source="solutions"`)
+
+**Aktuell (Zeile 48):**
+```tsx
+onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+```
+
+**Neu:**
+- State `isBookingModalOpen` hinzufügen
+- Button öffnet Modal
+- `FilloutBookingModal` mit `source="solutions"` am Ende einfügen
 
 ---
 
@@ -146,29 +86,20 @@ import { useState } from 'react';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 ```
 
-### Ersetzungs-Pattern
-
-**Alt:**
-```typescript
-onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
-```
-
-**Neu:**
-```typescript
-onClick={() => setIsBookingModalOpen(true)}
-```
-
-### Modal-Platzierung
-
-Immer am Ende der Komponente, vor dem schließenden Fragment/div:
+### Standard-Pattern
 
 ```tsx
+const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+// Button
+<Button onClick={() => setIsBookingModalOpen(true)}>Book Call</Button>
+
+// Modal am Ende der Komponente
 <FilloutBookingModal
   formSlug="inflection-call"
-  source="accelerate"
+  source="[spezifische-source]"
   isOpen={isBookingModalOpen}
   onClose={() => setIsBookingModalOpen(false)}
-  title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
 />
 ```
 
@@ -176,45 +107,32 @@ Immer am Ende der Komponente, vor dem schließenden Fragment/div:
 
 ## Source-Werte Mapping
 
-| Seitentyp | source-Wert |
-|-----------|-------------|
-| Accelerate-Seiten | `accelerate` |
-| Boost-Seiten | `solutions` |
-| PowerUp-Seiten | `solutions` |
-| Assessment-Seiten | `{assessment-type}` (z.B. `ai-assessment`) |
-| About | `about` |
-| Workshop | `workshop` |
-| Book | `book` |
-
----
-
-## Form-Slugs Übersicht
-
-| Formular | Slug | Verwendung |
-|----------|------|------------|
-| Inflection Call | `inflection-call` | Standard für alle "Book Call" CTAs |
-| Expert Session | `expert-session` | Expert Session Seite |
-| Inquiry | `inquiry` | Homepage Embed |
+| Datei | source-Wert |
+|-------|-------------|
+| Navigation.tsx | `navigation` |
+| Footer.tsx | `footer` |
+| ResearchHub.tsx | `research` |
+| SolutionCTA.tsx | `solutions` |
 
 ---
 
 ## Zusammenfassung
 
-| Batch | Dateien | Geschätzte CTAs |
-|-------|---------|-----------------|
-| 1: Accelerate | 5 | ~20 |
-| 2: PowerUp | 8 | ~24 |
-| 3: Assessment | 5 | ~20 |
-| 4: Boost | 6 | ~18 |
-| 5: Spezial | 7 | ~15 |
-| **Total** | **31** | **~97** |
+| Datei | Anzahl CTAs | Status |
+|-------|-------------|--------|
+| Navigation.tsx | 2 (Desktop + Mobile) | Migrieren |
+| Footer.tsx | 1 | Migrieren |
+| ResearchHub.tsx | 1 | Migrieren |
+| SolutionCTA.tsx | 1 | Migrieren |
+| **Total** | **5** | |
 
 ---
 
 ## Ergebnis nach Implementierung
 
-Alle Booking-CTAs im gesamten Projekt werden:
-1. Ein 900px Fillout Modal öffnen (konsistente UX)
-2. Automatisch UTM-Parameter aus sessionStorage übergeben
-3. Den passenden `source`-Wert für Analytics tracken
-4. Keine externen Tab-Öffnungen mehr haben (außer Workshop-spezifische Calendly)
+Nach dieser finalen Migration werden:
+1. Alle "Book Call" CTAs auf der gesamten Website das einheitliche Fillout-Modal öffnen
+2. Keine externen Calendly-Links mehr vorhanden sein
+3. Alle Booking-Interaktionen korrekt mit UTM-Parametern und Source-Tracking versehen sein
+4. Die Navigation und der Footer konsistent mit dem Rest der Website funktionieren
+
