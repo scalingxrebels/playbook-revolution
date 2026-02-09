@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { Button } from '@/components/ui/button';
@@ -135,6 +136,7 @@ const ROICalculatorOptimized = () => {
   const [monthlyBurn, setMonthlyBurn] = useState(150000);
   const [currentLevel, setCurrentLevel] = useState<LevelKey>('ai_powered');
   const [targetLevel, setTargetLevel] = useState<LevelKey>('ai_native');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Apply preset
   const applyPreset = (presetKey: string) => {
@@ -218,8 +220,8 @@ const ROICalculatorOptimized = () => {
 
   const levels: LevelKey[] = ['traditional', 'ai_powered', 'ai_enabled', 'ai_native'];
 
-  const scrollToBooking = () => {
-    document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
+  const openBookingModal = () => {
+    setIsBookingModalOpen(true);
   };
 
   return (
@@ -558,7 +560,7 @@ const ROICalculatorOptimized = () => {
 
             {/* CTA */}
             <Button
-              onClick={scrollToBooking}
+              onClick={openBookingModal}
               size="lg"
               className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-brutal hover:shadow-brutal-sm transition-all"
             >
@@ -573,6 +575,13 @@ const ROICalculatorOptimized = () => {
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="roi-calculator"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Shield, Brain, AlertTriangle, Heart, Users, 
@@ -25,6 +26,7 @@ interface Pillar {
 const AIBoardGovernancePillars: React.FC = () => {
   const { language } = useLanguage();
   const [activePillar, setActivePillar] = useState<string>('decision-rights');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const pillars: Pillar[] = [
     {
@@ -250,17 +252,24 @@ const AIBoardGovernancePillars: React.FC = () => {
             </div>
 
             <div className="mt-6">
-              <a
-                href="#booking"
+              <button
+                onClick={() => setIsBookingModalOpen(true)}
                 className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <ArrowRight className="w-5 h-5" />
                 {language === 'de' ? 'Board Assessment starten' : 'Start Board Assessment'}
-              </a>
+              </button>
             </div>
           </Card>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="board-governance"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };

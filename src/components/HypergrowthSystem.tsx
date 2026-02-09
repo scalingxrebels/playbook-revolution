@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ import {
 
 const HypergrowthSystem: React.FC = () => {
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const pillars = [
     {
@@ -165,7 +167,7 @@ const HypergrowthSystem: React.FC = () => {
               <Button 
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-brutal"
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {language === 'de' ? 'Jetzt starten' : 'Start Now'}
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -174,6 +176,13 @@ const HypergrowthSystem: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="hypergrowth-system"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };
