@@ -7,6 +7,7 @@ import { useParallaxLayers } from '@/hooks/useParallax';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import TwinklingStars from '@/components/TwinklingStars';
 import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { getAssetById } from '@/data/downloadRegistry';
 import type { FinalCTAData, BilingualText } from '@/data/playbooks/types';
 
@@ -21,6 +22,7 @@ const PlaybookFinalCTASection: React.FC<Props> = ({ data, playbookSlug }) => {
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.15, 0.25] });
   const { ref: contentRef, isVisible } = useScrollAnimation({ threshold: 0.2 });
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Asset-ID aus Playbook-Slug
   const assetId = playbookSlug ? `playbook-${playbookSlug}` : null;
@@ -100,12 +102,10 @@ const PlaybookFinalCTASection: React.FC<Props> = ({ data, playbookSlug }) => {
           <Button 
             size="xl" 
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            asChild
+            onClick={() => setIsBookingModalOpen(true)}
           >
-            <a href={data.bookingUrl} target="_blank" rel="noopener noreferrer">
-              {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book Free Call'}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
+            {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book Free Call'}
+            <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           <Button 
             size="lg" 
@@ -138,6 +138,15 @@ const PlaybookFinalCTASection: React.FC<Props> = ({ data, playbookSlug }) => {
         asset={downloadAsset}
         isOpen={isDownloadModalOpen}
         onClose={() => setIsDownloadModalOpen(false)}
+      />
+
+      {/* Booking Modal */}
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="playbook"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
       />
     </section>
   );

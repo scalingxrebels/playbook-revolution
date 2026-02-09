@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -799,6 +800,7 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const steps = [
     { en: 'We\'ll send you a document checklist (what we need)', de: 'Wir senden dir eine Dokumenten-Checkliste (was wir brauchen)' },
@@ -876,7 +878,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            onClick={() => setIsBookingModalOpen(true)}
             className="border-2"
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
@@ -907,6 +909,14 @@ const FinalCTASection: React.FC = () => {
             {language === 'de' ? 'Noch Fragen? Email uns unter team@scalingx.io oder buche einen Call.' : 'Still have questions? Email us at team@scalingx.io or book a call.'}
           </p>
         </div>
+        
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="vc-dd-simulation"
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+        />
       </div>
     </section>
   );
