@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowUpRight, Linkedin, Youtube, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const Footer: React.FC = () => {
   const { t, language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const legalLinks = [
     { label: language === 'de' ? 'AGB' : 'Terms', href: '/agb' },
@@ -164,10 +166,13 @@ const Footer: React.FC = () => {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <a href="#booking" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
+                  <button 
+                    onClick={() => setIsBookingModalOpen(true)}
+                    className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors"
+                  >
                     Book a Call
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a href="mailto:team@scalingx.io" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
@@ -209,6 +214,13 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="footer"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </footer>
   );
 };

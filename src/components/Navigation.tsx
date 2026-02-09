@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from '@/components/ui/button';
 import { Moon, Sun, Globe, Menu, X, ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const Navigation: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
@@ -81,7 +82,7 @@ const Navigation: React.FC = () => {
             <Button
               size="sm"
               className="hidden lg:flex bg-gradient-primary text-primary-foreground font-semibold shadow-brutal-sm hover-brutal text-xs uppercase tracking-wider gap-1"
-              onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => setIsBookingModalOpen(true)}
             >
               Book Call
               <ArrowUpRight className="w-3 h-3" />
@@ -179,7 +180,7 @@ const Navigation: React.FC = () => {
                   className="w-full bg-[#1A1A1A] dark:bg-[#F5F5F0] text-[#FAFAF9] dark:text-[#0F0F14] font-semibold shadow-brutal hover-brutal"
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+                    setIsBookingModalOpen(true);
                   }}
                 >
                   Book a Call
@@ -190,6 +191,13 @@ const Navigation: React.FC = () => {
           </div>
         )}
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="navigation"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </nav>
   );
 };
