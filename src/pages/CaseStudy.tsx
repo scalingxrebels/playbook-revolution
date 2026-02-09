@@ -1,4 +1,6 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -15,7 +17,7 @@ import { researchCases, getResearchCaseById } from '@/data/cases';
 const CaseStudyPage = () => {
   const { id } = useParams<{ id: string }>();
   const { language } = useLanguage();
-  const navigate = useNavigate();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   
   const caseStudy = getResearchCaseById(id || '');
   const currentIndex = researchCases.findIndex(cs => cs.id === id);
@@ -42,11 +44,8 @@ const CaseStudyPage = () => {
 
   const Icon = caseStudy.icon;
 
-  const scrollToBooking = () => {
-    navigate('/#booking');
-    setTimeout(() => {
-      document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+  const openBookingModal = () => {
+    setIsBookingModalOpen(true);
   };
 
   return (
@@ -271,7 +270,7 @@ const CaseStudyPage = () => {
               </Link>
             ) : <div />}
             
-            <Button onClick={scrollToBooking} className="bg-primary text-primary-foreground">
+            <Button onClick={openBookingModal} className="bg-primary text-primary-foreground">
               {language === 'en' ? 'Apply These Learnings' : 'Diese Erkenntnisse anwenden'}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
@@ -287,6 +286,13 @@ const CaseStudyPage = () => {
           </div>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="case-study"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
 
       <Footer />
     </div>

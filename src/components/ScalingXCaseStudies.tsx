@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
@@ -411,9 +412,10 @@ const ScalingXCaseStudies = () => {
   const { language } = useLanguage();
   const { theme } = useTheme();
   const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  const scrollToBooking = () => {
-    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+  const openBookingModal = () => {
+    setIsBookingModalOpen(true);
     setSelectedStudy(null);
   };
 
@@ -706,7 +708,7 @@ const ScalingXCaseStudies = () => {
                       ? 'Want to apply these patterns to your company?'
                       : 'Möchten Sie diese Muster auf Ihr Unternehmen anwenden?'}
                   </p>
-                  <Button onClick={scrollToBooking} size="lg" className="gap-2">
+                  <Button onClick={openBookingModal} size="lg" className="gap-2">
                     {language === 'en' ? 'Apply These Patterns' : 'Diese Muster anwenden'}
                     <ArrowRight className="w-4 h-4" />
                   </Button>
@@ -715,6 +717,13 @@ const ScalingXCaseStudies = () => {
             )}
           </DialogContent>
         </Dialog>
+
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="case-studies"
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+        />
       </div>
     </section>
   );

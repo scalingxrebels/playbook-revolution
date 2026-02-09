@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Rocket, Users, MessageSquare, TrendingUp, CheckCircle,
@@ -26,6 +27,7 @@ interface GrowthEngine {
 const GrowthEngines: React.FC = () => {
   const { language } = useLanguage();
   const [activeEngine, setActiveEngine] = useState<string>('product');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const engines: GrowthEngine[] = [
     {
@@ -233,13 +235,13 @@ const GrowthEngines: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <a
-              href="#booking"
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
               className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1"
             >
               <Zap className="w-5 h-5" />
               {language === 'de' ? 'Engine-Analyse starten' : 'Start Engine Analysis'}
-            </a>
+            </button>
           </Card>
         </div>
 
@@ -255,6 +257,13 @@ const GrowthEngines: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="growth-engines"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };

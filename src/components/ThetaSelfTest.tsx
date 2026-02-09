@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Lightbulb, Building2, Workflow, Database, Users, Rocket,
@@ -157,6 +158,7 @@ const ThetaSelfTest: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const progress = ((currentQuestion + 1) / questions.length) * 100;
 
@@ -465,14 +467,14 @@ const ThetaSelfTest: React.FC = () => {
                   : 'In a 30-minute diagnostic call, we analyze your biggest levers and create your individual transformation plan.'}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <a
-                  href="#booking"
+                <button
+                  onClick={() => setIsBookingModalOpen(true)}
                   className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl transition-all duration-300"
                 >
                   <Sparkles className="w-5 h-5" />
                   {language === 'de' ? 'Diagnose-Gespräch buchen' : 'Book Diagnostic Call'}
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </button>
                 <Button variant="outline" onClick={restart} className="px-8 py-4">
                   <RotateCcw className="w-4 h-4 mr-2" />
                   {language === 'de' ? 'Nochmal starten' : 'Start again'}
@@ -480,6 +482,13 @@ const ThetaSelfTest: React.FC = () => {
               </div>
             </Card>
           </div>
+
+          <FilloutBookingModal
+            formSlug="inflection-call"
+            source="theta-self-test"
+            isOpen={isBookingModalOpen}
+            onClose={() => setIsBookingModalOpen(false)}
+          />
         </div>
       </section>
     );

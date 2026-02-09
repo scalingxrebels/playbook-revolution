@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -424,6 +425,7 @@ const BottleneckWizard: React.FC = () => {
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [savedResult, setSavedResult] = useState<SavedResult | null>(null);
   const [showSavedBanner, setShowSavedBanner] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Load saved results on mount
   useEffect(() => {
@@ -836,12 +838,19 @@ const BottleneckWizard: React.FC = () => {
                 <Button 
                   size="lg"
                   className="bg-gradient-to-r from-primary to-accent text-primary-foreground shadow-lg gap-2"
-                  onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => setIsBookingModalOpen(true)}
                 >
                   <Users className="w-4 h-4" />
                   {language === 'de' ? 'Kostenloses Diagnose-Gespräch' : 'Free Diagnosis Call'}
                 </Button>
               </div>
+
+              <FilloutBookingModal
+                formSlug="inflection-call"
+                source="bottleneck-wizard"
+                isOpen={isBookingModalOpen}
+                onClose={() => setIsBookingModalOpen(false)}
+              />
             </div>
           );
         })()}

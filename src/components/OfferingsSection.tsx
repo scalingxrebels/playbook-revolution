@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -121,6 +122,7 @@ const offerings: Offering[] = [
 
 const OfferingsSection: React.FC = () => {
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
     <section className="py-24 bg-card relative overflow-hidden" id="offerings">
@@ -204,7 +206,7 @@ const OfferingsSection: React.FC = () => {
                     ? 'bg-accent text-accent-foreground hover:bg-accent/90' 
                     : 'bg-foreground text-background hover:bg-foreground/90'
                 } shadow-brutal-sm`}
-                onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {offering.cta[language as 'en' | 'de']}
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -213,6 +215,13 @@ const OfferingsSection: React.FC = () => {
           ))}
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="offerings"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };
