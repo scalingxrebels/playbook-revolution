@@ -1,175 +1,171 @@
 
-# Plan: Fillout-Pattern auf alle verbleibenden Seiten anwenden ✅ DONE
+# Vollständige Fillout-Migration: Alle verbleibenden Seiten
 
-## Status: Implementiert
+## Übersicht
 
-Die folgenden Dateien wurden auf das FilloutBookingModal-Pattern migriert:
-- ✅ CaseCTA.tsx → `source="case_study"`
-- ✅ PlaybookLibrary.tsx → `source="playbooks"`
-- ✅ ExpertSession.tsx → `source="expert-session"`
-- ✅ Keynote.tsx → `source="keynote"`
-- ✅ Workshop.tsx → `source="workshop"`
-- ✅ StrategicAdvisory.tsx → `source="strategic-advisory"`
-- ✅ VCDueDiligenceSimulation.tsx → `source="vc-dd-simulation"`
-- ✅ BoostBoardExcellence.tsx → `source="solutions"`
-
-Noch offen für spätere Iteration:
-- CustomAnalysisReport.tsx
-- PortfolioAssessment.tsx
-- `ML.tsx`, `AH.tsx`, `FM.tsx` → Team-Seiten ✅
-- `PlaybookHeroSection.tsx` → Playbook Hero ✅
-- `PlaybookFinalCTASection.tsx` → Playbook CTA ✅
-
-### Noch mit Calendly-Links (müssen migriert werden)
-
-| Datei | Anzahl CTAs | Form-Typ(en) | Source |
-|-------|-------------|--------------|--------|
-| `ExpertSession.tsx` | 6 | `expert-session`, `inflection-call` | `expert-session` |
-| `Keynote.tsx` | 4 | `inflection-call` | `keynote` |
-| `Workshop.tsx` | 4 | `inflection-call` | `workshop` |
-| `StrategicAdvisory.tsx` | 2 | `inflection-call`, `expert-session` | `strategic-advisory` |
-| `VCDueDiligenceSimulation.tsx` | 1 | `inflection-call` | `vc-dd-simulation` |
-| `CustomAnalysisReport.tsx` | 1 | `inflection-call` | `custom-analysis` |
-| `BoostBoardExcellence.tsx` | 2 | `inflection-call` | `solutions` |
-| `CaseCTA.tsx` | 1 | `inflection-call` | `case_study` |
-| `PlaybookLibrary.tsx` | 1 | `inflection-call` | `playbooks` |
-| `PortfolioAssessment.tsx` | 4 | `inflection-call` | `portfolio-assessment` |
-
-### Accelerate-Seiten (4 Seiten)
-- `AccelerateHypergrowth.tsx`
-- `AccelerateSustainableGrowth.tsx`
-- `AccelerateExitReadiness.tsx`
-- `AcceleratePortfolioTransformation.tsx`
-- `AccelerateAINativeScaling.tsx`
-
-### Assessment/Review-Seiten (5 Seiten)
-- `ScalingReadinessAssessment.tsx`
-- `AIMaturityAssessment.tsx`
-- `GTMEffectivenessReview.tsx`
-- `PricingPackagingReview.tsx`
-- `InvestorReadinessPitchDeckCheck.tsx`
-
-### PowerUp-Seiten mit `data-fillout-id` (bereits teilweise aktualisiert, aber noch mit alten Embeds)
-- `PowerUpPricingPower.tsx`
-- `PowerUpNRREngine.tsx`
-- `PowerUpPortfolioPerformance.tsx`
-- `PowerUpBoardReadiness.tsx`
-- `PowerUpScalingVelocity.tsx`
-- `PowerUpGrowthMomentum.tsx`
-- `PowerUpCACCrisis.tsx`
-- `PowerUpCustomSprint.tsx`
+Basierend auf der Code-Analyse müssen noch **31 Dateien** mit **365+ Calendly-Links** auf das einheitliche `FilloutBookingModal`-Pattern migriert werden.
 
 ---
 
-## Implementierung
+## Kategorien der verbleibenden Migrationen
 
-### Phase 1: Core CTA-Komponenten (6 Dateien)
+### Kategorie 1: Accelerate-Seiten (5 Dateien, ~20 CTAs)
 
-#### 1. `src/components/cases/CaseCTA.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- Button: `onClick={() => setIsBookingModalOpen(true)}`
-- Modal: `formSlug="inflection-call"`, `source="case_study"`
+| Datei | Source | Anzahl CTAs |
+|-------|--------|-------------|
+| `AccelerateHypergrowth.tsx` | `accelerate` | 4 |
+| `AccelerateExitReadiness.tsx` | `accelerate` | 4 |
+| `AccelerateAINativeScaling.tsx` | `accelerate` | 4 |
+| `AccelerateSustainableGrowth.tsx` | `accelerate` | 4 |
+| `AcceleratePortfolioTransformation.tsx` | `accelerate` | 4 |
 
-#### 2. `src/components/PlaybookLibrary.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- Button (Zeile 232): `onClick={() => setIsBookingModalOpen(true)}`
-- Modal: `formSlug="inflection-call"`, `source="playbooks"`
+**Pattern in jeder Datei:**
+- Hero CTA: `scrollToSection('final-cta')` → bleibt (scrollt zum Formular)
+- FinalCTA Section: `window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')` → `FilloutBookingModal`
+- Alternative CTA: `window.open('https://calendly.com/michel-scalingx/assessment', '_blank')` → `FilloutBookingModal`
 
-### Phase 2: Product-Seiten (6 Dateien)
+---
 
-#### 3. `src/pages/ExpertSession.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- States: `isExpertSessionModalOpen`, `isInflectionCallModalOpen`
-- 5× Expert Session Buttons → `formSlug="expert-session"`, `source="expert-session"`
-- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="expert-session"`
+### Kategorie 2: PowerUp-Seiten (8 Dateien, ~24 CTAs)
 
-#### 4. `src/pages/Keynote.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- 3× Keynote Buttons → extern lassen (spezifisches Calendly)
-- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="keynote"`
+| Datei | Source | Anzahl CTAs |
+|-------|--------|-------------|
+| `PowerUpBoardReadiness.tsx` | `solutions` | 3 |
+| `PowerUpPortfolioPerformance.tsx` | `solutions` | 3 |
+| `PowerUpPricingPower.tsx` | `solutions` | 3 |
+| `PowerUpNRREngine.tsx` | `solutions` | 3 |
+| `PowerUpScalingVelocity.tsx` | `solutions` | 3 |
+| `PowerUpGrowthMomentum.tsx` | `solutions` | 3 |
+| `PowerUpCACCrisis.tsx` | `solutions` | 3 |
+| `PowerUpCustomSprint.tsx` | `solutions` | 3 |
 
-#### 5. `src/pages/Workshop.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- 3× Workshop Buttons → extern lassen (spezifisches Calendly)
-- 1× Inflection Call Button → `formSlug="inflection-call"`, `source="workshop"`
+**Pattern:** Alle haben CTA-Buttons mit `onClick={() => window.open('calendly...')}` die durch Modals ersetzt werden.
 
-#### 6. `src/pages/StrategicAdvisory.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- States: `isInflectionModalOpen`, `isExpertSessionModalOpen`
-- Inflection Call → `formSlug="inflection-call"`, `source="strategic-advisory"`
-- Expert Session → `formSlug="expert-session"`, `source="strategic-advisory"`
+---
 
-#### 7. `src/pages/VCDueDiligenceSimulation.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- Inflection Call → `formSlug="inflection-call"`, `source="vc-dd-simulation"`
+### Kategorie 3: Assessment/Review-Seiten (5 Dateien, ~20 CTAs)
 
-#### 8. `src/pages/CustomAnalysisReport.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- Inflection Call → `formSlug="inflection-call"`, `source="custom-analysis"`
+| Datei | Source | Form-Slug |
+|-------|--------|-----------|
+| `AIMaturityAssessment.tsx` | `ai-assessment` | `inflection-call` |
+| `ScalingReadinessAssessment.tsx` | `scaling-assessment` | `inflection-call` |
+| `GTMEffectivenessReview.tsx` | `gtm-review` | `inflection-call` |
+| `PricingPackagingReview.tsx` | `pricing-review` | `inflection-call` |
+| `InvestorReadinessPitchDeckCheck.tsx` | `investor-readiness` | `inflection-call` |
 
-### Phase 3: Boost-Seiten (1 Datei)
+---
 
-#### 9. `src/pages/BoostBoardExcellence.tsx`
-- Import: `FilloutBookingModal`, `useState`
-- State: `isBookingModalOpen`
-- 2× Inflection Call → `formSlug="inflection-call"`, `source="solutions"`
+### Kategorie 4: Boost-Seiten (6 Dateien, ~12 CTAs)
 
-### Phase 4: PowerUp-Seiten Inquiry Embeds (8 Dateien)
+| Datei | Source |
+|-------|--------|
+| `BoostAIMaturity.tsx` | `solutions` |
+| `BoostCustomProgram.tsx` | `solutions` |
+| `BoostEfficientHypergrowth.tsx` | `solutions` |
+| `BoostGrowthEngine.tsx` | `solutions` |
+| `BoostNRRMachine.tsx` | `solutions` |
+| `BoostPricingDominance.tsx` | `solutions` |
+| `BoostPortfolioValue.tsx` | `solutions` |
+| `BoostScalingOS.tsx` | `solutions` |
 
-Die PowerUp-Seiten verwenden noch das alte `data-fillout-id` Pattern. Umstellung auf `FilloutEmbed` mit explizitem `source`-Parameter:
+---
 
-| Datei | Form-ID | Source |
-|-------|---------|--------|
-| `PowerUpPricingPower.tsx` | `bE8Mpbmb4mus` | `solutions` |
-| `PowerUpNRREngine.tsx` | `bE8Mpbmb4mus` | `solutions` |
-| `PowerUpScalingVelocity.tsx` | `bE8Mpbmb4mus` | `solutions` |
-| `PowerUpGrowthMomentum.tsx` | `bE8Mpbmb4mus` | `solutions` |
-| `PowerUpCACCrisis.tsx` | `bE8Mpbmb4mus` | `solutions` |
-| `PowerUpPortfolioPerformance.tsx` | `wX5LjCi8eQus` | `solutions` |
-| `PowerUpBoardReadiness.tsx` | `wX5LjCi8eQus` | `solutions` |
-| `PowerUpCustomSprint.tsx` | `wX5LjCi8eQus` | `solutions` |
+### Kategorie 5: Spezial-Seiten (4 Dateien)
 
-Diese verwenden bereits iframes, also nur Parameter-Logik hinzufügen.
+| Datei | Source | Besonderheit |
+|-------|--------|--------------|
+| `About.tsx` | `about` | Team CTA Button |
+| `SolutionCategory.tsx` | `solutions` | Generischer CTA |
+| `Workshop.tsx` | `workshop` | Hat 3 Workshop-Buttons (bleiben extern) + 1 Inflection |
+| `FixGrowthBook.tsx` | `book` | Book CTA |
 
-### Phase 5: Assessment/Accelerate-Seiten (10+ Dateien)
+---
 
-Jede Seite mit Calendly-Links prüfen und auf `FilloutBookingModal` umstellen:
-- `PortfolioAssessment.tsx` → `source="portfolio-assessment"`
-- `ScalingReadinessAssessment.tsx` → `source="scaling-assessment"`
-- `AIMaturityAssessment.tsx` → `source="ai-assessment"`
-- `AccelerateHypergrowth.tsx` → `source="accelerate"`
-- etc.
+### Kategorie 6: Komponenten und Data-Files (3 Dateien)
+
+| Datei | Änderung |
+|-------|----------|
+| `ChallengeDetailModal.tsx` | CTA Links auf Modal umstellen |
+| `FinalCTAOptimized.tsx` | Hat noch einen Fallback-Calendly-Link |
+| `solutionTiles.ts` | `primaryCtaUrl` von Calendly auf Fillout-Slug ändern |
+
+---
+
+## Implementierungs-Batches
+
+### Batch 1: Accelerate-Seiten (5 Dateien)
+
+Jede Datei erhält:
+```typescript
+import { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
+
+// Am Anfang der Hauptkomponente:
+const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+// Button ändern:
+onClick={() => setIsBookingModalOpen(true)}
+
+// Modal am Ende hinzufügen:
+<FilloutBookingModal
+  formSlug="inflection-call"
+  source="accelerate"
+  isOpen={isBookingModalOpen}
+  onClose={() => setIsBookingModalOpen(false)}
+/>
+```
+
+### Batch 2: PowerUp-Seiten (8 Dateien)
+
+Gleiches Pattern, `source="solutions"`
+
+### Batch 3: Assessment-Seiten (5 Dateien)
+
+Gleiches Pattern mit individuellen Source-Werten
+
+### Batch 4: Boost-Seiten (6 Dateien)
+
+Gleiches Pattern, `source="solutions"`
+
+### Batch 5: Spezialseiten + Komponenten (7 Dateien)
+
+- `About.tsx`: Modal für Team-CTA
+- `SolutionCategory.tsx`: Modal für generischen CTA
+- `ChallengeDetailModal.tsx`: Alle Booking-Buttons
+- `FinalCTAOptimized.tsx`: Fallback-Button
+- `solutionTiles.ts`: URL-Werte anpassen
 
 ---
 
 ## Technische Details
 
-### Import-Block für alle Dateien
+### Standard-Import für alle Dateien
+
 ```typescript
 import { useState } from 'react';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 ```
 
-### Button-Pattern
-```typescript
-// Alt (Calendly)
-onClick={() => window.open('https://calendly.com/...', '_blank')}
+### Ersetzungs-Pattern
 
-// Neu (FilloutBookingModal)
+**Alt:**
+```typescript
+onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+```
+
+**Neu:**
+```typescript
 onClick={() => setIsBookingModalOpen(true)}
 ```
 
-### Modal-Pattern
+### Modal-Platzierung
+
+Immer am Ende der Komponente, vor dem schließenden Fragment/div:
+
 ```tsx
 <FilloutBookingModal
   formSlug="inflection-call"
-  source="case_study"
+  source="accelerate"
   isOpen={isBookingModalOpen}
   onClose={() => setIsBookingModalOpen(false)}
   title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
@@ -178,46 +174,47 @@ onClick={() => setIsBookingModalOpen(true)}
 
 ---
 
-## Source-Werte Übersicht
+## Source-Werte Mapping
 
-| Kontext | source-Wert |
-|---------|-------------|
-| Homepage | `website` |
-| Playbooks Hub | `playbooks` |
-| Playbook Landing Page | `playbook` |
-| Solutions Hub | `solutions` |
-| Case Study Seiten | `case_study` |
-| Expert Session | `expert-session` |
-| Keynote | `keynote` |
-| Workshop | `workshop` |
-| Strategic Advisory | `strategic-advisory` |
-| VC DD Simulation | `vc-dd-simulation` |
-| Custom Analysis | `custom-analysis` |
-| Portfolio Assessment | `portfolio-assessment` |
+| Seitentyp | source-Wert |
+|-----------|-------------|
 | Accelerate-Seiten | `accelerate` |
-| Team ML | `team-ml` |
-| Team AH | `team-ah` |
-| Team FM | `team-fm` |
-| Partner (Maxxeed) | `partner` |
+| Boost-Seiten | `solutions` |
+| PowerUp-Seiten | `solutions` |
+| Assessment-Seiten | `{assessment-type}` (z.B. `ai-assessment`) |
+| About | `about` |
+| Workshop | `workshop` |
+| Book | `book` |
 
 ---
 
-## Zusammenfassung der Änderungen
+## Form-Slugs Übersicht
 
-| Phase | Dateien | Beschreibung |
-|-------|---------|--------------|
-| 1 | 2 | Core CTA-Komponenten (CaseCTA, PlaybookLibrary) |
-| 2 | 6 | Product-Seiten (ExpertSession, Keynote, Workshop, etc.) |
-| 3 | 1 | Boost-Seiten (BoostBoardExcellence) |
-| 4 | 8 | PowerUp Inquiry Embeds (Source-Parameter) |
-| 5 | ~10 | Assessment/Accelerate-Seiten |
-| **Total** | **~27** | Vollständige UTM + Source Integration |
+| Formular | Slug | Verwendung |
+|----------|------|------------|
+| Inflection Call | `inflection-call` | Standard für alle "Book Call" CTAs |
+| Expert Session | `expert-session` | Expert Session Seite |
+| Inquiry | `inquiry` | Homepage Embed |
 
 ---
 
-## Ergebnis
+## Zusammenfassung
 
-Nach der Implementierung werden alle Booking-CTAs konsistent:
-- Öffnen ein 900px Fillout Modal (statt externem Tab)
-- Übergeben automatisch UTM-Parameter aus sessionStorage
-- Tracken den `source`-Wert für Analytics
+| Batch | Dateien | Geschätzte CTAs |
+|-------|---------|-----------------|
+| 1: Accelerate | 5 | ~20 |
+| 2: PowerUp | 8 | ~24 |
+| 3: Assessment | 5 | ~20 |
+| 4: Boost | 6 | ~18 |
+| 5: Spezial | 7 | ~15 |
+| **Total** | **31** | **~97** |
+
+---
+
+## Ergebnis nach Implementierung
+
+Alle Booking-CTAs im gesamten Projekt werden:
+1. Ein 900px Fillout Modal öffnen (konsistente UX)
+2. Automatisch UTM-Parameter aus sessionStorage übergeben
+3. Den passenden `source`-Wert für Analytics tracken
+4. Keine externen Tab-Öffnungen mehr haben (außer Workshop-spezifische Calendly)
