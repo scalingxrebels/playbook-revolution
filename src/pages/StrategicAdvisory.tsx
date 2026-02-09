@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -822,6 +823,8 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [isInflectionModalOpen, setIsInflectionModalOpen] = useState(false);
+  const [isExpertSessionModalOpen, setIsExpertSessionModalOpen] = useState(false);
 
   const faqItems = [
     {
@@ -879,7 +882,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            onClick={() => setIsInflectionModalOpen(true)}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -887,7 +890,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/expert-session', '_blank')}
+            onClick={() => setIsExpertSessionModalOpen(true)}
             className="border-2"
           >
             {language === 'de' ? 'Expert Session buchen (€490-€890)' : 'Book Expert Session (€490-€890)'}
@@ -924,6 +927,22 @@ const FinalCTASection: React.FC = () => {
             team@scalingx.io
           </a>
         </div>
+        
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="strategic-advisory"
+          isOpen={isInflectionModalOpen}
+          onClose={() => setIsInflectionModalOpen(false)}
+          title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+        />
+        
+        <FilloutBookingModal
+          formSlug="expert-session"
+          source="strategic-advisory"
+          isOpen={isExpertSessionModalOpen}
+          onClose={() => setIsExpertSessionModalOpen(false)}
+          title={language === 'de' ? 'Expert Session buchen' : 'Book Expert Session'}
+        />
       </div>
     </section>
   );
