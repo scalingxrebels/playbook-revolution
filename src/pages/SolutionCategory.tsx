@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
@@ -14,6 +15,7 @@ const SolutionCategoryContent: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   
   const solution = solutionCategories.find(s => s.id === category);
   
@@ -172,7 +174,7 @@ const SolutionCategoryContent: React.FC = () => {
             <Button 
               size="xl" 
               className="shadow-brutal hover-brutal"
-              onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+              onClick={() => setIsBookingModalOpen(true)}
             >
               <Phone className="mr-2 w-5 h-5" />
               {language === 'de' ? 'Gespräch buchen' : 'Book a Call'}
@@ -182,6 +184,14 @@ const SolutionCategoryContent: React.FC = () => {
         </section>
       </main>
       <Footer />
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };
