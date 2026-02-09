@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -20,6 +20,7 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import {
   ArrowRight,
   ChevronDown,
@@ -789,7 +790,7 @@ const QualificationSection: React.FC = () => {
 // ============================================================================
 // SECTION 7: FINAL CTA
 // ============================================================================
-const FinalCTASection: React.FC = () => {
+const FinalCTASection: React.FC<{ onOpenBooking: () => void }> = ({ onOpenBooking }) => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
@@ -854,7 +855,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="w-full bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/pricing-review', '_blank')}
+            onClick={onOpenBooking}
           >
             {language === 'de' ? 'Review anfragen (€3.9K)' : 'Request Review (€3.9K)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -869,7 +870,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            onClick={onOpenBooking}
             className="border-2"
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
@@ -909,6 +910,9 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const PricingPackagingReview: React.FC = () => {
+  const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
@@ -919,8 +923,15 @@ const PricingPackagingReview: React.FC = () => {
         <OutcomeSection />
         <ProcessSection />
         <QualificationSection />
-        <FinalCTASection />
+        <FinalCTASection onOpenBooking={() => setIsBookingModalOpen(true)} />
       </main>
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="pricing-review"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
       <Footer />
     </div>
   );

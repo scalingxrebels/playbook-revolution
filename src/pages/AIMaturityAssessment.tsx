@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import TwinklingStars from '@/components/TwinklingStars';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { 
   Brain, 
   Target, 
@@ -29,6 +31,7 @@ import {
 const AIMaturityAssessment = () => {
   const { language } = useLanguage();
   const isGerman = language === 'de';
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const content = {
     breadcrumb: isGerman ? 'Solutions > AI Maturity Assessment' : 'Solutions > AI Maturity Assessment',
@@ -877,7 +880,7 @@ const AIMaturityAssessment = () => {
               <Button 
                 size="lg" 
                 className="w-full mt-4 gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/ai-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -910,7 +913,7 @@ const AIMaturityAssessment = () => {
               </ul>
               <Button 
                 variant="outline" 
-                onClick={() => window.open('https://calendly.com/michel-scalingx/30min', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.inflectionCallCta}
               </Button>
@@ -938,7 +941,7 @@ const AIMaturityAssessment = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/ai-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -950,6 +953,14 @@ const AIMaturityAssessment = () => {
           </div>
         </div>
       </section>
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="ai-assessment"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={isGerman ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
       
       <Footer />
     </div>
