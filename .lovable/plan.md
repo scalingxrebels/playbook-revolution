@@ -1,250 +1,156 @@
 
 
-# Migration: Verbleibende Booking-Anchors auf Fillout-Modal umstellen
+# Fix: Inquiry-Formular füllt Container nicht aus
 
-## Übersicht der betroffenen Komponenten
+## Problem-Analyse
 
-Ich habe **10 Komponenten** mit insgesamt **11 CTAs** identifiziert, die noch zu `#booking` scrollen statt das Modal zu öffnen:
+Aus dem Screenshot ist ersichtlich:
+- Das Inquiry-Formular zeigt nur den oberen Teil und darunter ist viel leerer Raum
+- Der Container hat eine feste Höhe von 500px (Zeile 222 in FinalCTAOptimized.tsx)
+- Es wird ein einfacher `<iframe>` verwendet statt der Fillout Embed-Methode mit dynamischer Größenanpassung
 
-| Datei | Aktuelle Aktion | CTA-Text |
-|-------|-----------------|----------|
-| `AIBoardGovernancePillars.tsx` | `href="#booking"` | "Board Assessment starten" |
-| `InterventionModels.tsx` | `href="#booking"` | "Passende Intervention finden" |
-| `GrowthEngines.tsx` | `href="#booking"` | "Engine-Analyse starten" |
-| `ThetaIndexAssessment.tsx` | `href="#booking"` | "Diagnose-Gespräch" |
-| `ThetaSelfTest.tsx` | `href="#booking"` | "Diagnose-Gespräch buchen" |
-| `OfferingsSection.tsx` | `getElementById('booking')` | Dynamic CTA |
-| `BottleneckWizard.tsx` | `getElementById('booking')` | "Kostenloses Diagnose-Gespräch" |
-| `HypergrowthSystem.tsx` | `getElementById('booking')` | "Jetzt starten" |
-| `ScalingXCaseStudies.tsx` | `getElementById('booking')` | "Diese Muster anwenden" |
-| `ROICalculatorOptimized.tsx` | `getElementById('booking-form')` | "Start Transformation" |
-| `NotFound.tsx` | `Link to="/#booking-form"` | "Book a Call" |
-| `CaseStudy.tsx` | `navigate('/#booking')` | Noch zu prüfen |
-
----
-
-## Änderungen pro Datei
-
-### 1. AIBoardGovernancePillars.tsx (`source="board-governance"`)
-
-**Aktuell (Zeile 253-259):**
-```tsx
-<a href="#booking" className="...">
-  <ArrowRight className="w-5 h-5" />
-  {language === 'de' ? 'Board Assessment starten' : 'Start Board Assessment'}
-</a>
-```
-
-**Neu:**
-- State hinzufügen
-- `<a>` zu `<button>` umwandeln, Modal öffnen
-- FilloutBookingModal am Ende einfügen
-
----
-
-### 2. InterventionModels.tsx (`source="intervention-models"`)
-
-**Aktuell (Zeile 267-273):**
-```tsx
-<a href="#booking" className="...">
-  <Zap className="w-5 h-5" />
-  {language === 'de' ? 'Passende Intervention finden' : 'Find Your Intervention'}
-</a>
-```
-
-**Neu:** State + Button + Modal
-
----
-
-### 3. GrowthEngines.tsx (`source="growth-engines"`)
-
-**Aktuell (Zeile 236-242):**
-```tsx
-<a href="#booking" className="...">
-  <Zap className="w-5 h-5" />
-  {language === 'de' ? 'Engine-Analyse starten' : 'Start Engine Analysis'}
-</a>
-```
-
-**Neu:** State + Button + Modal
-
----
-
-### 4. ThetaIndexAssessment.tsx (`source="theta-assessment"`)
-
-**Aktuell (Zeile 361-368):**
-```tsx
-<a href="#booking" className="...">
-  <Sparkles className="w-4 h-4" />
-  Diagnose-Gespräch
-  <ArrowRight className="w-4 h-4" />
-</a>
-```
-
-**Neu:** State + Button + Modal
-
----
-
-### 5. ThetaSelfTest.tsx (`source="theta-self-test"`)
-
-**Aktuell (Zeile 468-475):**
-```tsx
-<a href="#booking" className="...">
-  <Sparkles className="w-5 h-5" />
-  {language === 'de' ? 'Diagnose-Gespräch buchen' : 'Book Diagnostic Call'}
-  <ArrowRight className="w-5 h-5" />
-</a>
-```
-
-**Neu:** State + Button + Modal
-
----
-
-### 6. OfferingsSection.tsx (`source="offerings"`)
-
-**Aktuell (Zeile 207):**
-```tsx
-onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-```
-
-**Neu:** State + onClick öffnet Modal + Modal am Ende
-
----
-
-### 7. BottleneckWizard.tsx (`source="bottleneck-wizard"`)
-
-**Aktuell (Zeile 839):**
-```tsx
-onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-```
-
-**Neu:** State + onClick öffnet Modal + Modal am Ende
-
----
-
-### 8. HypergrowthSystem.tsx (`source="hypergrowth-system"`)
-
-**Aktuell (Zeile 168):**
-```tsx
-onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
-```
-
-**Neu:** State + onClick öffnet Modal + Modal am Ende
-
----
-
-### 9. ScalingXCaseStudies.tsx (`source="case-studies"`)
-
-**Aktuell (Zeile 415-417):**
-```tsx
-const scrollToBooking = () => {
-  document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-  setSelectedStudy(null);
-};
-```
-
-**Neu:** scrollToBooking durch Modal-Öffnung ersetzen
-
----
-
-### 10. ROICalculatorOptimized.tsx (`source="roi-calculator"`)
-
-**Aktuell (Zeile 221-223):**
-```tsx
-const scrollToBooking = () => {
-  document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth' });
-};
-```
-
-**Neu:** scrollToBooking durch Modal-Öffnung ersetzen
-
----
-
-### 11. NotFound.tsx (`source="404"`)
-
-**Aktuell (Zeile 90-93):**
-```tsx
-<Link to="/#booking-form">
-  <Calendar className="w-5 h-5 mr-2" />
-  Book a Call
-</Link>
-```
-
-**Neu:** State + Button statt Link + Modal am Ende
-
----
-
-### 12. CaseStudy.tsx (`source="case-study"`)
-
-**Aktuell (Zeile 45-50):**
-```tsx
-const scrollToBooking = () => {
-  navigate('/#booking');
-  setTimeout(() => {
-    document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
-  }, 100);
-};
-```
-
-**Neu:** scrollToBooking durch Modal-Öffnung ersetzen
-
----
-
-## Standard-Pattern
+## Ursache
 
 ```tsx
-import { useState } from 'react';
-import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
-
-// State
-const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-
-// Button (statt <a href="#booking">)
-<button 
-  onClick={() => setIsBookingModalOpen(true)}
-  className="..." // bestehende Klassen beibehalten
->
-  {/* Icon + Text */}
-</button>
-
-// Modal am Ende der Komponente
-<FilloutBookingModal
-  formSlug="inflection-call"
-  source="[spezifische-source]"
-  isOpen={isBookingModalOpen}
-  onClose={() => setIsBookingModalOpen(false)}
+// Aktuell (Zeile 220-224)
+<iframe
+  src={inquiryUrl}
+  style={{ width: '100%', height: '500px', border: 'none' }}
+  title="Contact Form"
 />
 ```
 
----
-
-## Source-Werte Mapping
-
-| Datei | source-Wert |
-|-------|-------------|
-| AIBoardGovernancePillars.tsx | `board-governance` |
-| InterventionModels.tsx | `intervention-models` |
-| GrowthEngines.tsx | `growth-engines` |
-| ThetaIndexAssessment.tsx | `theta-assessment` |
-| ThetaSelfTest.tsx | `theta-self-test` |
-| OfferingsSection.tsx | `offerings` |
-| BottleneckWizard.tsx | `bottleneck-wizard` |
-| HypergrowthSystem.tsx | `hypergrowth-system` |
-| ScalingXCaseStudies.tsx | `case-studies` |
-| ROICalculatorOptimized.tsx | `roi-calculator` |
-| NotFound.tsx | `404` |
-| CaseStudy.tsx | `case-study` |
+Der iframe kann sich nicht dynamisch an den Inhalt anpassen. Der Fillout-Standard-Embed mit `data-fillout-dynamic-resize` wird nicht genutzt.
 
 ---
 
-## Zusammenfassung
+## Lösung
 
-| Kategorie | Anzahl |
-|-----------|--------|
-| Anchor-Links (`href="#booking"`) | 5 |
-| getElementById-Aufrufe | 5 |
-| Navigation mit Anchor | 2 |
-| **Gesamt** | **12 CTAs in 12 Dateien** |
+### Option A: Fillout Standard-Embed verwenden (Empfohlen)
 
-Nach dieser Migration werden alle "Book Call" CTAs auf der gesamten Website konsistent das Fillout-Modal öffnen.
+Ersetze den `<iframe>` durch die Fillout-Embed-Methode, die das offizielle Fillout-Script mit dynamischer Größenanpassung nutzt:
+
+```tsx
+// Neu
+<div
+  data-fillout-id="fzeJtLouULus"
+  data-fillout-embed-type="standard"
+  data-fillout-dynamic-resize
+  data-fillout-inherit-parameters
+  data-fillout-parameters={new URLSearchParams({
+    source: 'website',
+    ...getStoredUTMParams()
+  }).toString()}
+  style={{ 
+    width: '100%', 
+    minHeight: '600px',
+  }}
+/>
+```
+
+### Änderungen
+
+| Datei | Änderung |
+|-------|----------|
+| `src/components/homepage/FinalCTAOptimized.tsx` | iframe durch Fillout-Embed mit `data-fillout-dynamic-resize` ersetzen |
+
+---
+
+## Code-Änderungen im Detail
+
+### 1. Neue Helper-Funktion für UTM-Parameter (für data-fillout-parameters)
+
+```tsx
+// Neue Funktion (vor der Komponente)
+function getStoredUTMParams(): Record<string, string> {
+  try {
+    const stored = sessionStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      const params = JSON.parse(stored);
+      const result: Record<string, string> = {};
+      if (params.utm_source) result.utm_source = params.utm_source;
+      if (params.utm_medium) result.utm_medium = params.utm_medium;
+      if (params.utm_campaign) result.utm_campaign = params.utm_campaign;
+      if (params.utm_content) result.utm_content = params.utm_content;
+      if (params.utm_term) result.utm_term = params.utm_term;
+      return result;
+    }
+  } catch (e) {
+    console.warn('Failed to read UTM params:', e);
+  }
+  return {};
+}
+
+function buildFilloutParams(): string {
+  const params = new URLSearchParams();
+  const utmParams = getStoredUTMParams();
+  
+  Object.entries(utmParams).forEach(([key, value]) => {
+    if (value) params.set(key, value);
+  });
+  params.set('source', 'website');
+  
+  return params.toString();
+}
+```
+
+### 2. Iframe durch Fillout-Embed ersetzen
+
+```tsx
+// Vorher (Zeile 215-225)
+{/* Right Column: Fillout Form - Use iframe with explicit URL */}
+<div 
+  className="rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up"
+  style={{ animationDelay: '0.2s' }}
+>
+  <iframe
+    src={inquiryUrl}
+    style={{ width: '100%', height: '500px', border: 'none' }}
+    title="Contact Form"
+  />
+</div>
+
+// Nachher
+{/* Right Column: Fillout Form - Use Fillout Embed with dynamic resize */}
+<div 
+  className="rounded-3xl bg-card/50 border-2 border-border backdrop-blur-sm overflow-hidden animate-slide-up"
+  style={{ animationDelay: '0.2s' }}
+>
+  <div
+    data-fillout-id="fzeJtLouULus"
+    data-fillout-embed-type="standard"
+    data-fillout-dynamic-resize
+    data-fillout-inherit-parameters
+    data-fillout-parameters={buildFilloutParams()}
+    style={{ 
+      width: '100%', 
+      minHeight: '600px',
+    }}
+  />
+</div>
+```
+
+### 3. inquiryUrl Variable kann entfernt werden
+
+Die `inquiryUrl` useMemo-Variable und die `buildInquiryUrl`-Funktion werden nicht mehr benötigt.
+
+---
+
+## Ergebnis
+
+Nach dieser Änderung:
+- Das Formular passt sich dynamisch an seine Inhaltshöhe an (`data-fillout-dynamic-resize`)
+- Kein leerer Raum mehr unter dem Formular
+- UTM-Parameter werden weiterhin korrekt übergeben
+- Das Fillout-Script (bereits im useEffect geladen) initialisiert das Embed automatisch
+
+---
+
+## Technische Details
+
+Das Fillout-Embed-System funktioniert folgendermaßen:
+1. Das Script `https://server.fillout.com/embed/v1/` wird geladen (bereits in useEffect vorhanden)
+2. Es sucht nach allen Elementen mit `data-fillout-id` Attribut
+3. `data-fillout-dynamic-resize` ermöglicht automatische Höhenanpassung via postMessage
+4. Das Formular sendet seine tatsächliche Höhe an das Parent-Window und das Embed passt sich an
 
