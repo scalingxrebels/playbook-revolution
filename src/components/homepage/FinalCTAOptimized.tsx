@@ -224,7 +224,7 @@ const FinalCTAOptimized: React.FC = () => {
               src={`https://scalingx.fillout.com/inquiry?${buildFilloutParams()}`}
               style={{ 
                 width: '100%', 
-                height: '750px', 
+                height: '900px', 
                 border: 'none' 
               }}
               title="Inquiry Form"
