@@ -118,7 +118,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaEn: 'Book Free Call',
     primaryCtaDe: 'Kostenlos buchen',
     primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/inflection-call',
+    primaryCtaUrl: 'inflection-call',
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
@@ -151,7 +151,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaEn: 'Book Session',
     primaryCtaDe: 'Session buchen',
     primaryCtaAction: 'book-call',
-    primaryCtaUrl: 'https://calendly.com/michel-scalingx/expert-session',
+    primaryCtaUrl: 'expert-session',
     secondaryCtaEn: 'More About Expert Session',
     secondaryCtaDe: 'Mehr über Expert Session',
     secondaryCtaUrl: '/solutions/expert-session'
@@ -1360,7 +1360,7 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaUrl: '/solutions/keynote',
     secondaryCtaEn: 'Book Free Inflection Call',
     secondaryCtaDe: 'Kostenloses Inflection Call buchen',
-    secondaryCtaUrl: 'https://calendly.com/michel-scalingx/inflection-call'
+    secondaryCtaUrl: 'inflection-call'
   },
 
   // ============================================

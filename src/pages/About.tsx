@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -183,6 +184,7 @@ const caseStudies = [
 const About: React.FC = () => {
   const { language } = useLanguage();
   const lang = language as 'de' | 'en';
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -591,7 +593,7 @@ const About: React.FC = () => {
                 <Button 
                   size="lg" 
                   className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal"
-                  onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+                  onClick={() => setIsBookingModalOpen(true)}
                 >
                   {lang === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
                   <ArrowRight className="w-4 h-4 ml-2" />
@@ -609,6 +611,14 @@ const About: React.FC = () => {
       </main>
 
       <Footer />
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="about"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={lang === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };
