@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import TwinklingStars from '@/components/TwinklingStars';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -30,6 +32,7 @@ import {
 const CustomAnalysisReport = () => {
   const { language } = useLanguage();
   const isGerman = language === 'de';
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const content = {
     breadcrumb: isGerman ? 'Solutions > Custom Analysis & Report' : 'Solutions > Custom Analysis & Report',

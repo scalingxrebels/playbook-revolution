@@ -10,6 +10,7 @@ import PlaybookCard from '@/components/playbooks/PlaybookCard';
 import PlaybookModal from '@/components/playbooks/PlaybookModal';
 import { usePlaybookFilters } from '@/components/playbooks/usePlaybookFilters';
 import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { getAssetById, type DownloadAsset } from '@/data/downloadRegistry';
 import type { Playbook } from '@/data/playbooks';
 
@@ -21,6 +22,7 @@ const PlaybookLibrary: React.FC = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [downloadAsset, setDownloadAsset] = useState<DownloadAsset | null>(null);
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const {
     filters,
@@ -229,7 +231,7 @@ const PlaybookLibrary: React.FC = () => {
               <Button 
                 size="xl" 
                 className="shadow-brutal hover-brutal group"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
@@ -255,6 +257,15 @@ const PlaybookLibrary: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="playbooks"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </>
   );
 };

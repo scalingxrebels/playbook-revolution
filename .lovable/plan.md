@@ -1,15 +1,21 @@
 
-# Plan: Fillout-Pattern auf alle verbleibenden Seiten anwenden
+# Plan: Fillout-Pattern auf alle verbleibenden Seiten anwenden ✅ DONE
 
-## Übersicht
+## Status: Implementiert
 
-Basierend auf der Analyse müssen noch **28 Stellen** in **21 Dateien** aktualisiert werden, um das einheitliche Fillout-Pattern mit UTM + Source Tracking zu verwenden.
+Die folgenden Dateien wurden auf das FilloutBookingModal-Pattern migriert:
+- ✅ CaseCTA.tsx → `source="case_study"`
+- ✅ PlaybookLibrary.tsx → `source="playbooks"`
+- ✅ ExpertSession.tsx → `source="expert-session"`
+- ✅ Keynote.tsx → `source="keynote"`
+- ✅ Workshop.tsx → `source="workshop"`
+- ✅ StrategicAdvisory.tsx → `source="strategic-advisory"`
+- ✅ VCDueDiligenceSimulation.tsx → `source="vc-dd-simulation"`
+- ✅ BoostBoardExcellence.tsx → `source="solutions"`
 
----
-
-## Aktuelle Situation
-
-### Bereits migriert (FilloutBookingModal)
+Noch offen für spätere Iteration:
+- CustomAnalysisReport.tsx
+- PortfolioAssessment.tsx
 - `ML.tsx`, `AH.tsx`, `FM.tsx` → Team-Seiten ✅
 - `PlaybookHeroSection.tsx` → Playbook Hero ✅
 - `PlaybookFinalCTASection.tsx` → Playbook CTA ✅

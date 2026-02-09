@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
 import TwinklingStars from "@/components/TwinklingStars";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -44,6 +46,7 @@ const Keynote = () => {
   const { language } = useLanguage();
   const isEnglish = language === 'en';
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const keynoteTopics = [
     {
@@ -940,11 +943,9 @@ const Keynote = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 {isEnglish ? 'Not sure if you need keynote? Start with a free call:' : 'Nicht sicher, ob du eine Keynote brauchst? Starte mit einem kostenlosen Call:'}
               </p>
-              <Button variant="outline" asChild>
-                <a href="https://calendly.com/michel-scalingx/inflection-call" target="_blank" rel="noopener noreferrer">
-                  <Calendar className="mr-2 w-4 h-4" />
-                  {isEnglish ? 'Book Free Inflection Call (30 min)' : 'Kostenloses Inflection Call buchen (30 Min)'}
-                </a>
+              <Button variant="outline" onClick={() => setIsBookingModalOpen(true)}>
+                <Calendar className="mr-2 w-4 h-4" />
+                {isEnglish ? 'Book Free Inflection Call (30 min)' : 'Kostenloses Inflection Call buchen (30 Min)'}
               </Button>
             </div>
 
@@ -974,6 +975,14 @@ const Keynote = () => {
           </div>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="keynote"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={isEnglish ? 'Book Inflection Call' : 'Inflection Call buchen'}
+      />
 
       <Footer />
     </div>

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
 import TwinklingStars from "@/components/TwinklingStars";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -46,6 +48,7 @@ const Workshop = () => {
   const { language } = useLanguage();
   const isEnglish = language === 'en';
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const workshopTypes = [
     {
@@ -946,11 +949,9 @@ const Workshop = () => {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8" asChild>
-              <a href="https://calendly.com/michel-scalingx/inflection" target="_blank" rel="noopener noreferrer">
-                <Calendar className="mr-2 w-5 h-5" />
-                {isEnglish ? 'Book Free Inflection Call' : 'Kostenlosen Inflection Call buchen'}
-              </a>
+            <Button size="lg" variant="outline" className="text-lg px-8" onClick={() => setIsBookingModalOpen(true)}>
+              <Calendar className="mr-2 w-5 h-5" />
+              {isEnglish ? 'Book Free Inflection Call' : 'Kostenlosen Inflection Call buchen'}
             </Button>
           </div>
 
@@ -979,6 +980,14 @@ const Workshop = () => {
           </p>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="workshop"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={isEnglish ? 'Book Inflection Call' : 'Inflection Call buchen'}
+      />
 
       <Footer />
     </div>
