@@ -5,7 +5,6 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { X } from 'lucide-react';
 
 const STORAGE_KEY = 'scalingx_utm_params';
 
@@ -93,20 +92,13 @@ const FilloutBookingModal: React.FC<FilloutBookingModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent 
-        className="sm:max-w-[900px] max-h-[90vh] p-0 overflow-hidden"
+        className="sm:max-w-[1100px] max-h-[90vh] p-0 overflow-hidden"
         aria-describedby={undefined}
       >
-        <DialogHeader className="p-4 pb-0 flex flex-row items-center justify-between">
+        <DialogHeader className="p-4 pb-0">
           <DialogTitle className="text-lg font-semibold">
             {title || defaultTitle}
           </DialogTitle>
-          <button 
-            onClick={onClose}
-            className="rounded-full p-1 hover:bg-muted transition-colors"
-            aria-label="Close"
-          >
-            <X className="w-5 h-5" />
-          </button>
         </DialogHeader>
         
         <div className="w-full h-[700px]">
