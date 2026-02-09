@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -11,6 +11,7 @@ import {
   Lightbulb, BarChart3, ChevronRight, XCircle, CheckCircle2,
   BookOpen, Users, Download, ArrowRight, Linkedin, Phone, Check
 } from 'lucide-react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface ResearchCard {
   id: string;
@@ -215,6 +216,7 @@ const downloadCards = [
 
 const ResearchHub: React.FC = () => {
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   
   // Scroll animations for all sections
   const { ref: whyMattersRef, isVisible: whyMattersVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -650,7 +652,7 @@ const ResearchHub: React.FC = () => {
               <Button 
                 size="xl" 
                 className="shadow-brutal hover-brutal group"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
@@ -676,6 +678,13 @@ const ResearchHub: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="research"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </>
   );
 };

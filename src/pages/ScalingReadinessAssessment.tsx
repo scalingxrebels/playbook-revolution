@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,6 +10,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
 import {
   ChevronRight,
   TrendingUp,
@@ -30,6 +32,7 @@ import { Link } from "react-router-dom";
 
 const ScalingReadinessAssessment = () => {
   const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const content = {
     en: {
@@ -1121,11 +1124,9 @@ const ScalingReadinessAssessment = () => {
                 ))}
               </ul>
               <p className="font-semibold mb-4">{t.step1Cta}</p>
-              <Button size="lg" className="w-full" asChild>
-                <a href="https://calendly.com/michel-scalingx/scaling-assessment" target="_blank" rel="noopener noreferrer">
-                  {t.primaryCta}
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </a>
+              <Button size="lg" className="w-full" onClick={() => setIsBookingModalOpen(true)}>
+                {t.primaryCta}
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </div>
 
@@ -1159,11 +1160,9 @@ const ScalingReadinessAssessment = () => {
               ))}
             </ul>
             <div>
-              <Button variant="outline" size="lg" asChild>
-                <a href="https://calendly.com/michel-scalingx/inflection-call" target="_blank" rel="noopener noreferrer">
-                  <Phone className="mr-2 w-4 h-4" />
-                  {t.altCta}
-                </a>
+              <Button variant="outline" size="lg" onClick={() => setIsBookingModalOpen(true)}>
+                <Phone className="mr-2 w-4 h-4" />
+                {t.altCta}
               </Button>
             </div>
           </div>
@@ -1183,16 +1182,22 @@ const ScalingReadinessAssessment = () => {
 
           {/* Final CTA */}
           <div className="text-center mt-12">
-            <Button size="xl" className="group" asChild>
-              <a href="https://calendly.com/michel-scalingx/scaling-assessment" target="_blank" rel="noopener noreferrer">
-                {t.finalCta}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+            <Button size="xl" className="group" onClick={() => setIsBookingModalOpen(true)}>
+              {t.finalCta}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <p className="text-sm text-muted-foreground mt-4">{t.finalSubtext}</p>
           </div>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="scaling-assessment"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
 
       <Footer />
     </div>

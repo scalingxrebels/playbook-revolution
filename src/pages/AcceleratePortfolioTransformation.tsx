@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -1007,6 +1008,7 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -1073,7 +1075,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="w-full sm:w-auto bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+            onClick={() => setIsBookingModalOpen(true)}
           >
             {language === 'de' ? 'Kostenloses Portfolio Assessment Call buchen (30 Min.)' : 'Book Free Portfolio Assessment Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1148,7 +1150,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+            onClick={() => setIsBookingModalOpen(true)}
           >
             {language === 'de' ? 'Kostenloses Portfolio Assessment Call buchen (30 Min.)' : 'Book Free Portfolio Assessment Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1159,6 +1161,15 @@ const FinalCTASection: React.FC = () => {
               : 'Still have questions? Email us at team@scalingx.io or book a call.'}
           </p>
         </div>
+
+        {/* Booking Modal */}
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="accelerate"
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          title={language === 'de' ? 'Portfolio Assessment Call buchen' : 'Book Portfolio Assessment Call'}
+        />
       </div>
     </section>
   );

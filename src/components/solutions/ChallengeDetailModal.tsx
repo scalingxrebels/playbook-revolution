@@ -23,14 +23,16 @@ import {
   FileText
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface SolutionAccordionProps {
   solution: ChallengeSolution;
   isExpanded: boolean;
   onToggle: () => void;
+  onOpenBooking: () => void;
 }
 
-const SolutionAccordion: React.FC<SolutionAccordionProps> = ({ solution, isExpanded, onToggle }) => {
+const SolutionAccordion: React.FC<SolutionAccordionProps> = ({ solution, isExpanded, onToggle, onOpenBooking }) => {
   const { language } = useLanguage();
   const config = solutionTypeConfig[solution.type];
   const isPremium = solution.type === 'sprint' || solution.type === 'transformation';
@@ -184,7 +186,7 @@ const SolutionAccordion: React.FC<SolutionAccordionProps> = ({ solution, isExpan
             <Button 
               variant={isPremium ? "default" : "outline"}
               className={cn("w-full group", isPremium && "shadow-brutal hover-brutal")}
-              onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+              onClick={onOpenBooking}
             >
               <Phone className="mr-2 w-4 h-4" />
               {solution.investment === 'FREE'
@@ -213,6 +215,7 @@ const ChallengeDetailModal: React.FC<ChallengeDetailModalProps> = ({
 }) => {
   const { language } = useLanguage();
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   // Auto-expand first premium solution or first solution
   useEffect(() => {
@@ -334,6 +337,7 @@ const ChallengeDetailModal: React.FC<ChallengeDetailModalProps> = ({
                     solution={solution}
                     isExpanded={expandedId === solution.id}
                     onToggle={() => setExpandedId(expandedId === solution.id ? null : solution.id)}
+                    onOpenBooking={() => setIsBookingModalOpen(true)}
                   />
                 </div>
               ))}
@@ -351,13 +355,21 @@ const ChallengeDetailModal: React.FC<ChallengeDetailModalProps> = ({
             <Button 
               size="lg"
               className="shadow-brutal hover-brutal"
-              onClick={() => window.open('https://calendly.com/scalingx', '_blank')}
+              onClick={() => setIsBookingModalOpen(true)}
             >
               <Phone className="mr-2 w-4 h-4" />
               {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book a Free Call'}
             </Button>
           </div>
         </div>
+        
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="solutions"
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+          title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+        />
       </DialogContent>
     </Dialog>
   );

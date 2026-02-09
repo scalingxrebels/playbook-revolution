@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -1041,6 +1042,8 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isAssessmentModalOpen, setIsAssessmentModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -1146,7 +1149,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-12 py-8 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+            onClick={() => setIsBookingModalOpen(true)}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1166,7 +1169,7 @@ const FinalCTASection: React.FC = () => {
               ? 'Noch nicht bereit für ein vollständiges Accelerate? Starte kleiner mit einem Growth Efficiency Assessment (1-2 Wochen, €3.9K-€5.9K).'
               : 'Not ready for a full Accelerate? Start smaller with a Growth Efficiency Assessment (1-2 weeks, €3.9K-€5.9K).'}
           </p>
-          <Button variant="outline" onClick={() => window.open('https://calendly.com/michel-scalingx/growth-assessment', '_blank')}>
+          <Button variant="outline" onClick={() => setIsAssessmentModalOpen(true)}>
             {language === 'de' ? 'Growth Efficiency Assessment buchen' : 'Book Growth Efficiency Assessment'}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
@@ -1197,6 +1200,21 @@ const FinalCTASection: React.FC = () => {
               : 'Still have questions? Email us at team@scalingx.io or book a call.'}
           </p>
         </div>
+
+        {/* Booking Modals */}
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="accelerate"
+          isOpen={isBookingModalOpen}
+          onClose={() => setIsBookingModalOpen(false)}
+        />
+        <FilloutBookingModal
+          formSlug="inflection-call"
+          source="accelerate"
+          isOpen={isAssessmentModalOpen}
+          onClose={() => setIsAssessmentModalOpen(false)}
+          title={language === 'de' ? 'Growth Efficiency Assessment buchen' : 'Book Growth Efficiency Assessment'}
+        />
       </div>
     </section>
   );

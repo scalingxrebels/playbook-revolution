@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Target, Zap, Users, Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const STORAGE_KEY = 'scalingx_utm_params';
 
@@ -36,6 +37,7 @@ const FinalCTAOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.15, 0.3] });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   
   // Build the inquiry form URL with UTM + source
   const inquiryUrl = useMemo(() => buildInquiryUrl(), []);
@@ -201,7 +203,7 @@ const FinalCTAOptimized: React.FC = () => {
               <Button 
                 size="xl"
                 className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 group"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/inflection-call', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {language === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
@@ -223,6 +225,14 @@ const FinalCTAOptimized: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="website"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </section>
   );
 };
