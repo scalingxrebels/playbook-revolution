@@ -1,84 +1,35 @@
 
 
-# Fix: FilloutBookingModal - Breite erhöhen und doppeltes X entfernen
+# Cleanup: Ungenutzten X-Import aus DownloadModal entfernen
 
-## Problem-Analyse
+## Problem
 
-Aus dem Screenshot sind zwei Probleme ersichtlich:
+Die Datei `DownloadModal.tsx` importiert `X` von lucide-react, verwendet es aber nicht. Dies ist unnötiger Code, der bei der ursprünglichen Erstellung übrig geblieben ist.
 
-| Problem | Ursache |
-|---------|---------|
-| Modal zu schmal | `sm:max-w-[900px]` - Calendly-Kalender wird abgeschnitten |
-| Doppeltes X | Manueller X-Button in DialogHeader + automatischer X-Button aus DialogContent |
-
----
-
-## Lösung
-
-### 1. Modal-Breite erhöhen
-
-Änderung von `900px` auf `1100px` für optimale Calendly-Darstellung:
-
-```tsx
-// Vorher (Zeile 96)
-className="sm:max-w-[900px] max-h-[90vh] p-0 overflow-hidden"
-
-// Nachher
-className="sm:max-w-[1100px] max-h-[90vh] p-0 overflow-hidden"
-```
-
-### 2. Manuellen X-Button entfernen
-
-Der manuelle X-Button im `DialogHeader` (Zeilen 103-109) wird entfernt, da `DialogContent` bereits einen eingebauten Close-Button hat:
-
-```tsx
-// Vorher
-<DialogHeader className="p-4 pb-0 flex flex-row items-center justify-between">
-  <DialogTitle className="text-lg font-semibold">
-    {title || defaultTitle}
-  </DialogTitle>
-  <button 
-    onClick={onClose}
-    className="rounded-full p-1 hover:bg-muted transition-colors"
-    aria-label="Close"
-  >
-    <X className="w-5 h-5" />
-  </button>
-</DialogHeader>
-
-// Nachher (manueller Button entfernt)
-<DialogHeader className="p-4 pb-0">
-  <DialogTitle className="text-lg font-semibold">
-    {title || defaultTitle}
-  </DialogTitle>
-</DialogHeader>
-```
-
-### 3. Unnötigen Import entfernen
-
-Da der manuelle X-Button entfernt wird, ist der `X`-Import von lucide-react nicht mehr nötig:
-
-```tsx
-// Vorher
-import { X } from 'lucide-react';
-
-// Nachher: Diese Zeile entfernen
-```
-
----
-
-## Datei-Änderungen
+## Änderung
 
 | Datei | Änderung |
 |-------|----------|
-| `src/components/forms/FilloutBookingModal.tsx` | Breite auf 1100px, manuellen X-Button entfernen, X-Import entfernen |
+| `src/components/forms/DownloadModal.tsx` | Entferne ungenutzten `X` Import |
 
----
+## Code-Änderung
 
-## Ergebnis
+```tsx
+// Vorher (Zeile 11)
+import { Download, FileText, X } from 'lucide-react';
 
-Nach der Änderung:
-- Modal ist 1100px breit (ausreichend für Calendly-Kalender)
-- Nur ein einziger X-Button zum Schließen (von DialogContent)
-- Cleaner Code ohne redundante Elemente
+// Nachher
+import { Download, FileText } from 'lucide-react';
+```
+
+## Fazit Modal-Breiten
+
+| Modal | Aktuelle Breite | Status |
+|-------|-----------------|--------|
+| FilloutBookingModal | 1100px | ✅ Optimal für Calendly |
+| FilloutDownloadModal | 672px (2xl) | ✅ Passend für E-Mail-Formular |
+| DownloadModal | 448px (md) | ✅ Passend für einfaches Formular |
+| PlaybookModal | 672px (2xl) | ✅ Passend für Content-Übersicht |
+
+Alle Modals haben jetzt korrekte Breiten und nur einen X-Button (vom DialogContent).
 
