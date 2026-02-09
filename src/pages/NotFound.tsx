@@ -1,5 +1,6 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { ThemeProvider } from '@/contexts/ThemeContext';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
@@ -12,6 +13,7 @@ import GrowthTrails from '@/components/GrowthTrails';
 const NotFoundContent = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
@@ -84,17 +86,22 @@ const NotFoundContent = () => {
             
             <Button 
               size="lg"
-              asChild
+              onClick={() => setIsBookingModalOpen(true)}
               className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-8 py-6 shadow-accent-glow hover:shadow-glow transition-all duration-400"
             >
-              <Link to="/#booking-form">
-                <Calendar className="w-5 h-5 mr-2" />
-                Book a Call
-              </Link>
+              <Calendar className="w-5 h-5 mr-2" />
+              Book a Call
             </Button>
           </div>
         </div>
       </section>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="404"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
 
       <Footer />
     </div>

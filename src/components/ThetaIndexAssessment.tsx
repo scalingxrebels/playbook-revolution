@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Lightbulb, Building2, Workflow, Database, Users, Rocket,
@@ -142,6 +143,7 @@ const ThetaIndexAssessment: React.FC = () => {
     talent: 3,
     adoption: 4
   });
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const calculateThetaIndex = () => {
     return dimensions.reduce((sum, dim) => {
@@ -358,18 +360,25 @@ const ThetaIndexAssessment: React.FC = () => {
                   ? 'Erfahren Sie, wie Sie Ihren θ_index in 90 Tagen verdoppeln können.'
                   : 'Learn how to double your θ_index in 90 days.'}
               </p>
-              <a
-                href="#booking"
+              <button
+                onClick={() => setIsBookingModalOpen(true)}
                 className="inline-flex items-center gap-2 w-full justify-center px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl transition-all duration-300"
               >
                 <Sparkles className="w-4 h-4" />
                 Diagnose-Gespräch
                 <ArrowRight className="w-4 h-4" />
-              </a>
+              </button>
             </Card>
           </div>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="theta-assessment"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };

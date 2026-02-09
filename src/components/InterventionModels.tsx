@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { 
   Target, Layers, ArrowUpRight, Clock, TrendingUp, 
@@ -29,6 +30,7 @@ interface InterventionModel {
 const InterventionModels: React.FC = () => {
   const { language } = useLanguage();
   const [activeModel, setActiveModel] = useState<string>('bottleneck');
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const models: InterventionModel[] = [
     {
@@ -264,16 +266,23 @@ const InterventionModels: React.FC = () => {
             </div>
 
             {/* CTA */}
-            <a
-              href="#booking"
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
               className="mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-1"
             >
               <Zap className="w-5 h-5" />
               {language === 'de' ? 'Passende Intervention finden' : 'Find Your Intervention'}
-            </a>
+            </button>
           </Card>
         </div>
       </div>
+
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="intervention-models"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </section>
   );
 };
