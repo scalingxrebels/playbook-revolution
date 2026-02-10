@@ -16,7 +16,7 @@ interface FilloutDownloadModalProps {
   onClose: () => void;
 }
 
-const FILLOUT_BASE_URL = 'https://scalingx.fillout.com/download';
+const FILLOUT_BASE_URL = 'https://www.cal.scalingx.io/download';
 
 const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   asset,
@@ -85,7 +85,7 @@ const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
       // Log ALL messages from fillout for debugging
-      if (event.origin.includes('fillout.com')) {
+      if (event.origin.includes('fillout.com') || event.origin.includes('cal.scalingx.io')) {
         console.log('📨 Fillout message received:', {
           origin: event.origin,
           data: event.data,
