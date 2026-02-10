@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Download, ChevronDown, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -14,14 +14,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
 import { AMFHeroData } from '@/data/research/types';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById } from '@/data/downloadRegistry';
 
 interface ResearchHeroSectionProps {
   data: AMFHeroData;
+  researchType?: 'amf' | 'anst' | 'sst' | 'unified';
 }
 
-const ResearchHeroSection: React.FC<ResearchHeroSectionProps> = ({ data }) => {
+const ResearchHeroSection: React.FC<ResearchHeroSectionProps> = ({ data, researchType = 'amf' }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const asset = getAssetById(`research-${researchType}`);
 
   const scrollToSection = () => {
     document.getElementById('research-why-it-matters')?.scrollIntoView({ behavior: 'smooth' });
@@ -124,19 +129,37 @@ const ResearchHeroSection: React.FC<ResearchHeroSectionProps> = ({ data }) => {
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-2"
-            asChild
-          >
-            <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+          {data.secondaryCta.href === '#download' ? (
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-2"
+              onClick={() => setIsDownloadModalOpen(true)}
+            >
               <Download className="w-4 h-4 mr-2" />
               {data.secondaryCta.text[language]}
-            </a>
-          </Button>
+            </Button>
+          ) : (
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-2"
+              asChild
+            >
+              <a href={data.secondaryCta.href} target="_blank" rel="noopener noreferrer">
+                <Download className="w-4 h-4 mr-2" />
+                {data.secondaryCta.text[language]}
+              </a>
+            </Button>
+          )}
         </div>
       </div>
+
+      <FilloutDownloadModal
+        asset={asset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
 
       {/* Scroll Indicator */}
       <button
