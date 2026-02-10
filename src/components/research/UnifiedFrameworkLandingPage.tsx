@@ -20,7 +20,7 @@ interface UnifiedFrameworkLandingPageProps {
 const UnifiedFrameworkLandingPage: React.FC<UnifiedFrameworkLandingPageProps> = ({ data }) => {
   return (
     <main className="min-h-screen">
-      <ResearchHeroSection data={data.hero} />
+      <ResearchHeroSection data={data.hero} researchType="unified" />
       <ResearchWhyFourFormulasSection data={data.whyFourFormulas} />
       <ResearchFourFormulasSection data={data.fourFormulas} />
       <ResearchFrameworkFlowSection data={data.frameworkFlow} />
@@ -28,7 +28,7 @@ const UnifiedFrameworkLandingPage: React.FC<UnifiedFrameworkLandingPageProps> = 
       {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchUnifiedCaseStudySection data={data.unifiedCaseStudy} />
       <ResearchImplicationsSection data={data.implications} />
-      <ResearchDownloadSection data={data.download} />
+      <ResearchDownloadSection data={data.download} researchType="unified" />
       <ResearchFinalCTASection data={data.finalCta} researchType="unified" />
     </main>
   );

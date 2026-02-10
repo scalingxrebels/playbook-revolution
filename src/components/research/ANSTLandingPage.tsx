@@ -20,7 +20,7 @@ interface ANSTLandingPageProps {
 const ANSTLandingPage: React.FC<ANSTLandingPageProps> = ({ data }) => {
   return (
     <main>
-      <ResearchHeroSection data={data.hero} />
+      <ResearchHeroSection data={data.hero} researchType="anst" />
       <ResearchProblemSection data={data.problem} />
       <ResearchCapabilitiesSection data={data.solution} />
       <ResearchEvidenceSection data={data.evidence} />
@@ -28,7 +28,7 @@ const ANSTLandingPage: React.FC<ANSTLandingPageProps> = ({ data }) => {
       {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
-      <ResearchDownloadSection data={data.download} />
+      <ResearchDownloadSection data={data.download} researchType="anst" />
       <ResearchFinalCTASection data={data.finalCta} researchType="anst" />
     </main>
   );
