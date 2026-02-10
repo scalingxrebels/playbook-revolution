@@ -162,7 +162,7 @@ const HeroSection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => scrollToSection('final-cta')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -623,7 +623,7 @@ const OutcomeSection: React.FC = () => {
           <Button
             size="lg"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold"
-            onClick={() => scrollToSection('final-cta')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -922,7 +922,7 @@ const QualificationSection: React.FC = () => {
               </p>
               <Button
                 variant="default"
-                onClick={() => scrollToSection('final-cta')}
+                onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
               >
                 {language === 'de' ? 'Kostenloses Inflection Call buchen' : 'Book Free Inflection Call'}
                 <ArrowRight className="w-4 h-4 ml-2" />
