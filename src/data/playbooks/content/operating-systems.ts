@@ -23,7 +23,7 @@ export const operatingSystemsData: PlaybookPageData = {
       { en: "3 Case Studies", de: "3 Case Studies" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-operating-systems",
     gradient: "from-blue-500 to-cyan-500"
@@ -400,7 +400,7 @@ export const operatingSystemsData: PlaybookPageData = {
       { en: "3 real-world case studies", de: "3 echte Case Studies" },
       { en: "90-day implementation roadmap", de: "90-Tage-Implementierungs-Roadmap" }
     ], 
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call", 
+    bookingUrl: "https://cal.scalingx.io/inflection-call", 
     downloadUrl: "#" 
   }
 };

@@ -22,7 +22,7 @@ export const aiNativeScalingData: PlaybookPageData = {
       { en: "8-18 Months to €100M ARR", de: "8-18 Monate bis €100M ARR" },
       { en: "2-5x ARR/Employee", de: "2-5x ARR/Mitarbeiter" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "/downloads/ai-native-scaling-playbook.pdf",
     assetId: "playbook-ai-native-scaling",
     gradient: "from-purple-500 to-violet-500"
@@ -579,7 +579,7 @@ export const aiNativeScalingData: PlaybookPageData = {
       { en: "12 sub-playbooks included", de: "12 Sub-Playbooks inklusive" },
       { en: "22 real-world case studies", de: "22 echte Case Studies" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#"
   }
 };

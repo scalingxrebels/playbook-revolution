@@ -22,7 +22,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
       { en: "3 Case Studies", de: "3 Case Studies" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-portfolio-excellence",
     gradient: "from-purple-500 to-indigo-500"
@@ -454,7 +454,7 @@ export const portfolioExcellenceData: PlaybookPageData = {
       { en: "Portfolio maturity scoring", de: "Portfolio Maturity Scoring" },
       { en: "12-24 month transformation roadmap", de: "12-24 Monats-Transformations-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#"
   }
 };

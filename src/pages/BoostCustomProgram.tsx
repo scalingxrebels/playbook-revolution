@@ -1157,7 +1157,7 @@ const FinalCTASection: React.FC = () => {
                 <span className="font-bold text-foreground">{language === 'de' ? 'Custom Analyse & Report' : 'Custom Analysis & Report'}</span>
                 <span className="text-sm text-muted-foreground ml-2">(1-2 {language === 'de' ? 'Wochen' : 'weeks'}, €3.9K-€5.9K)</span>
               </div>
-              <Button variant="outline" size="sm" onClick={() => window.open('https://calendly.com/michel-scalingx/boost', '_blank')}>
+              <Button variant="outline" size="sm" onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}>
                 {language === 'de' ? 'Custom Analyse buchen' : 'Book Custom Analysis'}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

@@ -20,7 +20,7 @@ interface SSTLandingPageProps {
 const SSTLandingPage: React.FC<SSTLandingPageProps> = ({ data }) => {
   return (
     <main>
-      <ResearchHeroSection data={data.hero} />
+      <ResearchHeroSection data={data.hero} researchType="sst" />
       <ResearchBottleneckDistributionSection data={data.bottleneckDistribution} />
       <ResearchSSTCapabilitiesSection data={data.capabilities} />
       <ResearchSSTEvidenceSection data={data.evidence} />
@@ -28,7 +28,7 @@ const SSTLandingPage: React.FC<SSTLandingPageProps> = ({ data }) => {
       {data.businessDimensions && <ResearchBusinessDimensionsSection data={data.businessDimensions} />}
       <ResearchBottleneckCaseStudiesSection data={data.caseStudies} />
       <ResearchImplicationsSection data={data.implications} />
-      <ResearchDownloadSection data={data.download} />
+      <ResearchDownloadSection data={data.download} researchType="sst" />
       <ResearchFinalCTASection data={data.finalCta} researchType="sst" />
     </main>
   );

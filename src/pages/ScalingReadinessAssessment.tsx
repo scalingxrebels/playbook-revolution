@@ -765,11 +765,9 @@ const ScalingReadinessAssessment = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10">
-            <Button size="xl" className="group" asChild>
-              <a href="https://calendly.com/michel-scalingx/scaling-assessment" target="_blank" rel="noopener noreferrer">
-                {t.primaryCta}
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+            <Button size="xl" className="group" onClick={() => setIsBookingModalOpen(true)}>
+              {t.primaryCta}
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button variant="outline" size="xl" asChild>
               <a href="#solution">{t.secondaryCta}</a>
@@ -932,10 +930,8 @@ const ScalingReadinessAssessment = () => {
 
           <div className="text-center">
             <p className="text-muted-foreground mb-4">{t.outcomeCtaText}</p>
-            <Button size="lg" asChild>
-              <a href="https://calendly.com/michel-scalingx/scaling-assessment" target="_blank" rel="noopener noreferrer">
-                {t.primaryCta}
-              </a>
+            <Button size="lg" onClick={() => setIsBookingModalOpen(true)}>
+              {t.primaryCta}
             </Button>
           </div>
         </div>

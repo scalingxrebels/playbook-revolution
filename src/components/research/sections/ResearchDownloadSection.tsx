@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { DownloadData } from '@/data/research/types';
 import { Download, FileText, Check } from 'lucide-react';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById } from '@/data/downloadRegistry';
 
 interface ResearchDownloadSectionProps {
   data: DownloadData;
+  researchType: 'amf' | 'anst' | 'sst' | 'unified';
 }
 
-const ResearchDownloadSection: React.FC<ResearchDownloadSectionProps> = ({ data }) => {
+const ResearchDownloadSection: React.FC<ResearchDownloadSectionProps> = ({ data, researchType }) => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const asset = getAssetById(`research-${researchType}`);
 
   return (
     <section
@@ -57,7 +62,7 @@ const ResearchDownloadSection: React.FC<ResearchDownloadSectionProps> = ({ data 
           <Button 
             size="xl" 
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            disabled
+            onClick={() => setIsDownloadModalOpen(true)}
           >
             <Download className="w-5 h-5 mr-2" />
             {data.cta.text[language]}
@@ -67,13 +72,14 @@ const ResearchDownloadSection: React.FC<ResearchDownloadSectionProps> = ({ data 
           <p className="text-xs text-muted-foreground mt-4">
             {data.note[language]}
           </p>
-
-          {/* Coming Soon Badge */}
-          <p className="text-xs text-primary mt-2 font-medium">
-            {language === 'en' ? 'Coming Soon' : 'Demnächst verfügbar'}
-          </p>
         </div>
       </div>
+
+      <FilloutDownloadModal
+        asset={asset}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
     </section>
   );
 };

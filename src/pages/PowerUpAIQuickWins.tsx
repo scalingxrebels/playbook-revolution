@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { buildFilloutUrl } from '@/hooks/useFilloutUrl';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -1060,7 +1061,7 @@ const FinalCTASection: React.FC = () => {
           </p>
           <Button
             variant="outline"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/expert-session', '_blank')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Expert Session buchen' : 'Book Expert Session'}
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -1101,8 +1102,14 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const PowerUpAIQuickWins: React.FC = () => {
+  const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    const handleOpenModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenModal);
+    return () => window.removeEventListener('openBookingModal', handleOpenModal);
   }, []);
 
   return (
@@ -1118,6 +1125,13 @@ const PowerUpAIQuickWins: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="expert-session"
+        source="power-up-ai-quick-wins"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Expert Session buchen' : 'Book Expert Session'}
+      />
     </div>
   );
 };
