@@ -23,7 +23,7 @@ export const boardGovernanceData: PlaybookPageData = {
       { en: "3 Case Studies", de: "3 Case Studies" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-board-governance",
     gradient: "from-orange-500 to-amber-500"
@@ -522,7 +522,7 @@ export const boardGovernanceData: PlaybookPageData = {
       { en: "3 anonymized case studies", de: "3 anonymisierte Case Studies" },
       { en: "90-day implementation roadmap", de: "90-Tage Implementierungs-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#"
   }
 };

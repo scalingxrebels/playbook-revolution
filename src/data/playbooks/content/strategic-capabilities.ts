@@ -23,7 +23,7 @@ export const strategicCapabilitiesData: PlaybookPageData = {
       { en: "4 Capabilities Framework", de: "4 Capabilities Framework" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" }
     ],
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
+    bookingUrl: "https://cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-strategic-capabilities",
     gradient: "from-red-500 to-rose-500"
@@ -444,7 +444,7 @@ export const strategicCapabilitiesData: PlaybookPageData = {
       { en: "3 anonymized case studies", de: "3 anonymisierte Case Studies" },
       { en: "90-day implementation roadmap", de: "90-Tage-Implementierungs-Roadmap" }
     ], 
-    bookingUrl: "https://www.cal.scalingx.io/inflection-call", 
+    bookingUrl: "https://cal.scalingx.io/inflection-call", 
     downloadUrl: "#" 
   }
 };

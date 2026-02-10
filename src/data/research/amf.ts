@@ -552,7 +552,7 @@ Wir fanden eine starke Korrelation zwischen AI Maturity und Skalierungsgeschwind
         action: { en: 'Book a Strategy Call', de: 'Strategy Call buchen' },
         cta: {
           text: { en: 'Book Call', de: 'Call buchen' },
-          href: 'https://www.cal.scalingx.io/inflection-call'
+          href: 'https://cal.scalingx.io/inflection-call'
         }
       },
       {
@@ -617,7 +617,7 @@ Wir fanden eine starke Korrelation zwischen AI Maturity und Skalierungsgeschwind
     },
     secondaryCta: {
       text: { en: 'Book Strategy Call', de: 'Strategy Call buchen' },
-      href: 'https://www.cal.scalingx.io/inflection-call'
+      href: 'https://cal.scalingx.io/inflection-call'
     },
     subtext: { en: 'Free tool, no credit card required', de: 'Kostenloses Tool, keine Kreditkarte erforderlich' }
   }

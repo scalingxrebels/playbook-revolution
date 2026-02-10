@@ -221,7 +221,7 @@ const FinalCTAOptimized: React.FC = () => {
             style={{ animationDelay: '0.2s' }}
           >
             <iframe
-              src={`https://www.cal.scalingx.io/inquiry?${buildFilloutParams()}`}
+              src={`https://cal.scalingx.io/inquiry?${buildFilloutParams()}`}
               style={{ 
                 width: '100%', 
                 height: '900px', 
