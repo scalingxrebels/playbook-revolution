@@ -1,66 +1,48 @@
 
-# Research Download-Buttons mit Lead-Gate verbinden
 
-## Zusammenfassung
+# Fix: "www." Prefix aus allen cal.scalingx.io URLs entfernen
 
-Zwei Komponenten muessen mit dem bestehenden `FilloutDownloadModal` verbunden werden, damit auf allen 4 Expertise-Seiten (AMF, ANST, SST, Unified) die Download-Buttons das Lead-Gate-Formular oeffnen.
+## Problem
 
----
+Alle Fillout-Booking- und Formular-URLs verwenden `https://www.cal.scalingx.io/...`, aber die korrekte Domain ist `https://cal.scalingx.io/...` (ohne `www`). Dadurch funktionieren aktuell keine Booking- oder Download-Formulare.
 
-## Aenderung 1: ResearchDownloadSection aktivieren
+## Loesung
 
-**Datei:** `src/components/research/sections/ResearchDownloadSection.tsx`
+Globales Suchen-und-Ersetzen in allen 26 betroffenen Dateien:
 
-- Neuen Prop `researchType` hinzufuegen (gleich wie bei `ResearchFinalCTASection`)
-- `FilloutDownloadModal` importieren + `useState` fuer Modal-State
-- Den aktuell `disabled` Button aktivieren und mit `onClick={() => setIsDownloadModalOpen(true)}` versehen
-- "Coming Soon" Badge und `disabled`-Attribut entfernen
-- Asset-Lookup ueber `getAssetById('research-{researchType}')` aus der Registry
+`https://www.cal.scalingx.io/` wird zu `https://cal.scalingx.io/`
 
-## Aenderung 2: ResearchHeroSection Download-Button
+## Betroffene Dateien (26)
 
-**Datei:** `src/components/research/sections/ResearchHeroSection.tsx`
+**Zentrale Utility-Dateien (2):**
+- `src/hooks/useFilloutUrl.ts` -- buildFilloutUrl baseUrl
+- `src/components/forms/FilloutBookingModal.tsx` -- buildFilloutUrl baseUrl
 
-- Neuen Prop `researchType` hinzufuegen
-- `FilloutDownloadModal` importieren + `useState`
-- Den `secondaryCta`-Button (aktuell `<a href="..." target="_blank">`) nur dann als Modal-Trigger rendern, wenn der `href` auf `#download` zeigt (das ist der Fall bei AMF, ANST, SST)
-- Fuer andere `href`-Werte (z.B. externe Links) bleibt der Button ein normaler Link
-- Asset-Lookup gleich wie oben
+**Seiten mit Embed-URLs (3):**
+- `src/pages/ML.tsx`
+- `src/pages/FM.tsx`
+- `src/pages/AH.tsx`
 
-## Aenderung 3: Props durchreichen in allen 4 Landing Pages
+**Homepage (1):**
+- `src/components/homepage/FinalCTAOptimized.tsx`
 
-Die `researchType`-Prop muss von den Landing-Page-Komponenten an die Hero- und Download-Sections weitergereicht werden:
+**Playbook Content-Dateien (17):**
+- Alle Dateien in `src/data/playbooks/content/` (bookingUrl-Felder)
 
-| Datei | researchType |
-|---|---|
-| `ResearchLandingPage.tsx` (AMF) | `'amf'` |
-| `ANSTLandingPage.tsx` | `'anst'` |
-| `SSTLandingPage.tsx` | `'sst'` |
-| `UnifiedFrameworkLandingPage.tsx` | `'unified'` |
+**Research Data-Dateien (2):**
+- `src/data/research/amf.ts`
+- `src/data/research/unified-framework.ts`
 
-Jede dieser Dateien reicht `researchType` an `<ResearchHeroSection>` und `<ResearchDownloadSection>` weiter.
+**Download-Modal (1):**
+- `src/components/forms/FilloutDownloadModal.tsx`
 
----
+## Aenderung
 
-## Technische Details
+Identisch in jeder Datei -- reiner String-Replace:
 
 ```text
-Asset-ID Mapping (identisch zu ResearchFinalCTASection):
-  amf     → research-amf     → /downloads/research/amf-executive-summary.pdf
-  anst    → research-anst    → /downloads/research/anst-executive-summary.pdf
-  sst     → research-sst     → /downloads/research/sst-executive-summary.pdf
-  unified → research-unified → /downloads/research/architecture-v4.5.1.pdf
+Vorher:  https://www.cal.scalingx.io/
+Nachher: https://cal.scalingx.io/
 ```
 
-Alle 4 Assets sind in der `downloadRegistry.ts` bereits als `isAvailable: true` und `requiresEmail: true` konfiguriert -- keine Aenderungen an der Registry noetig.
-
----
-
-## Betroffene Dateien (6)
-
-1. `src/components/research/sections/ResearchDownloadSection.tsx` -- Modal-Integration + Button aktivieren
-2. `src/components/research/sections/ResearchHeroSection.tsx` -- Modal-Integration fuer secondaryCta
-3. `src/components/research/ResearchLandingPage.tsx` -- researchType an Hero + Download weiterreichen
-4. `src/components/research/ANSTLandingPage.tsx` -- researchType weiterreichen
-5. `src/components/research/SSTLandingPage.tsx` -- researchType weiterreichen
-6. `src/components/research/UnifiedFrameworkLandingPage.tsx` -- researchType weiterreichen
+Keine Logik-Aenderungen, keine neuen Props, keine strukturellen Anpassungen.
