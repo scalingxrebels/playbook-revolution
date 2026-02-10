@@ -154,7 +154,7 @@ const HeroSection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => scrollToSection('final-cta')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Review anfragen (€3.9K)' : 'Request Review (€3.9K)'}
             <ArrowRight className="w-5 h-5 ml-2" />
