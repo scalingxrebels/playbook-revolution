@@ -22,7 +22,7 @@ export const operationalGovernanceData: PlaybookPageData = {
       { en: "3 Case Studies", de: "3 Case Studies" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" }
     ],
-    bookingUrl: "https://scalingx.fillout.com/inflection-call",
+    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-operational-governance",
     gradient: "from-amber-500 to-orange-500"
@@ -386,7 +386,7 @@ export const operationalGovernanceData: PlaybookPageData = {
       { en: "3 real-world case studies with metrics", de: "3 echte Case Studies mit Metriken" },
       { en: "90-day implementation roadmap", de: "90-Tage-Implementierungs-Roadmap" }
     ], 
-    bookingUrl: "https://scalingx.fillout.com/inflection-call", 
+    bookingUrl: "https://www.cal.scalingx.io/inflection-call", 
     downloadUrl: "#" 
   }
 };

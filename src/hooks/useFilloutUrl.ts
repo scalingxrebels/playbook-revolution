@@ -10,7 +10,7 @@ const STORAGE_KEY = 'scalingx_utm_params';
  * @returns The complete Fillout URL with parameters
  */
 export function buildFilloutUrl(formSlug: string, source: string): string {
-  const baseUrl = `https://scalingx.fillout.com/${formSlug}`;
+  const baseUrl = `https://www.cal.scalingx.io/${formSlug}`;
   const params = new URLSearchParams();
   
   try {
