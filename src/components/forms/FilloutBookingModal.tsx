@@ -35,7 +35,7 @@ interface FilloutBookingModalProps {
  * Build the Fillout URL with UTM and source parameters
  */
 function buildFilloutUrl(formSlug: string, source: string): string {
-  const baseUrl = `https://www.cal.scalingx.io/${formSlug}`;
+  const baseUrl = `https://cal.scalingx.io/${formSlug}`;
   const params = new URLSearchParams();
   
   // Get UTM params from sessionStorage

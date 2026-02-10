@@ -16,7 +16,7 @@ interface FilloutDownloadModalProps {
   onClose: () => void;
 }
 
-const FILLOUT_BASE_URL = 'https://www.cal.scalingx.io/download';
+const FILLOUT_BASE_URL = 'https://cal.scalingx.io/download';
 
 const FilloutDownloadModal: React.FC<FilloutDownloadModalProps> = ({
   asset,

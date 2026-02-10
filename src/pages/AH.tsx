@@ -16,7 +16,7 @@ import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
 const STORAGE_KEY = 'scalingx_utm_params';
 
 function buildEmbedUrl(formSlug: string, source: string): string {
-  const baseUrl = `https://www.cal.scalingx.io/${formSlug}`;
+  const baseUrl = `https://cal.scalingx.io/${formSlug}`;
   const params = new URLSearchParams();
   
   try {
