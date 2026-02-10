@@ -457,7 +457,7 @@ const PortfolioAssessment = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -665,7 +665,7 @@ const PortfolioAssessment = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -868,7 +868,7 @@ const PortfolioAssessment = () => {
               <Button 
                 size="lg" 
                 className="w-full mt-4 gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -901,7 +901,7 @@ const PortfolioAssessment = () => {
               </ul>
               <Button 
                 variant="outline" 
-                onClick={() => window.open('https://calendly.com/michel-scalingx/30min', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.inflectionCallCta}
               </Button>
@@ -929,7 +929,7 @@ const PortfolioAssessment = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/portfolio-assessment', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -941,6 +941,14 @@ const PortfolioAssessment = () => {
           </div>
         </div>
       </section>
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="portfolio-assessment"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={isGerman ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
       
       <Footer />
     </div>

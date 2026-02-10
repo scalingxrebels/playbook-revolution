@@ -605,11 +605,9 @@ const Workshop = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="text-lg px-8" asChild>
-              <a href="https://calendly.com/michel-scalingx/workshop" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
+            <Button size="lg" className="text-lg px-8" onClick={() => setIsBookingModalOpen(true)}>
+              {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
         </div>
@@ -945,11 +943,9 @@ const Workshop = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <Button size="lg" className="text-lg px-8" asChild>
-              <a href="https://calendly.com/michel-scalingx/workshop" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
+            <Button size="lg" className="text-lg px-8" onClick={() => setIsBookingModalOpen(true)}>
+              {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8" onClick={() => setIsBookingModalOpen(true)}>
               <Calendar className="mr-2 w-5 h-5" />
