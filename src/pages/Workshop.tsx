@@ -429,11 +429,13 @@ const Workshop = () => {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
-            <Button size="xl" className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400" asChild>
-              <a href="https://calendly.com/michel-scalingx/workshop" target="_blank" rel="noopener noreferrer">
-                {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </a>
+            <Button 
+              size="xl" 
+              className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400" 
+              onClick={() => setIsBookingModalOpen(true)}
+            >
+              {isEnglish ? 'Book Workshop (€9.6K)' : 'Workshop buchen (€9.6K)'}
+              <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8" asChild>
               <a href="#workshop-types">
