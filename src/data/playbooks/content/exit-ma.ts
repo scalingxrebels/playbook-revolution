@@ -22,7 +22,7 @@ export const exitMaData: PlaybookPageData = {
       { en: "3 Case Studies", de: "3 Fallstudien" },
       { en: "90-Day Roadmap", de: "90-Tage-Roadmap" },
     ],
-    bookingUrl: "https://scalingx.fillout.com/inflection-call",
+    bookingUrl: "https://www.cal.scalingx.io/inflection-call",
     downloadUrl: "#",
     assetId: "playbook-exit-ma",
     gradient: "from-rose-500 to-red-500"
@@ -425,7 +425,7 @@ export const exitMaData: PlaybookPageData = {
       { en: "3 real-world case studies", de: "3 echte Fallstudien" },
       { en: "90-day implementation roadmap", de: "90-Tage-Implementierungs-Roadmap" },
     ], 
-    bookingUrl: "https://scalingx.fillout.com/inflection-call", 
+    bookingUrl: "https://www.cal.scalingx.io/inflection-call", 
     downloadUrl: "#" 
   }
 };
