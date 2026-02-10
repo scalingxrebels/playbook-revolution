@@ -1086,11 +1086,9 @@ const FinalCTASection: React.FC = () => {
               ? 'Starte kleiner mit einem Operations Audit (3-5 Tage, €3.9K-€5.9K). Deep-dive in dein Operating System, identifiziere welche Bottlenecks zuerst zu fixen sind, gehe mit einer 90-Tage-Operations-Roadmap.'
               : "Start smaller with an Operations Audit (3-5 days, €3.9K-€5.9K). Deep-dive into your operating system, identify which bottlenecks to fix first, walk away with a 90-day operations roadmap."}
           </p>
-          <Button variant="outline" asChild>
-            <a href="https://calendly.com/michel-scalingx/operations-audit" target="_blank" rel="noopener noreferrer">
-              {language === 'de' ? 'Operations Audit buchen' : 'Book Operations Audit'}
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </a>
+          <Button variant="outline" onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}>
+            {language === 'de' ? 'Operations Audit buchen' : 'Book Operations Audit'}
+            <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
 

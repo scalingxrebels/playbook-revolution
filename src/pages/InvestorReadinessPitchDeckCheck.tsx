@@ -492,7 +492,7 @@ const InvestorReadinessPitchDeckCheck = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/pitch-deck-check', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -700,7 +700,7 @@ const InvestorReadinessPitchDeckCheck = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/pitch-deck-check', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />

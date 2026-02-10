@@ -551,7 +551,7 @@ const CustomAnalysisReport = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/custom-analysis', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -699,7 +699,7 @@ const CustomAnalysisReport = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/custom-analysis', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -774,7 +774,7 @@ const CustomAnalysisReport = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/custom-analysis', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -989,7 +989,7 @@ const CustomAnalysisReport = () => {
               <Button 
                 size="lg" 
                 className="w-full mt-4 gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/custom-analysis', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -1036,7 +1036,7 @@ const CustomAnalysisReport = () => {
               </ul>
               <Button 
                 variant="outline" 
-                onClick={() => window.open('https://calendly.com/michel-scalingx/30min', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.inflectionCallCta}
               </Button>
@@ -1064,7 +1064,7 @@ const CustomAnalysisReport = () => {
               <Button 
                 size="lg" 
                 className="gap-2"
-                onClick={() => window.open('https://calendly.com/michel-scalingx/custom-analysis', '_blank')}
+                onClick={() => setIsBookingModalOpen(true)}
               >
                 {content.primaryCta}
                 <ArrowRight className="w-4 h-4" />
@@ -1076,6 +1076,14 @@ const CustomAnalysisReport = () => {
           </div>
         </div>
       </section>
+      
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="custom-analysis"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={isGerman ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
       
       <Footer />
     </div>

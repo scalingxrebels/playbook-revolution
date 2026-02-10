@@ -43,7 +43,7 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
     },
     secondaryCta: {
       text: { en: 'Book Strategy Call', de: 'Strategy Call buchen' },
-      href: 'https://calendly.com/scalingx/strategy-call'
+      href: 'https://www.cal.scalingx.io/inflection-call'
     }
   },
 
@@ -309,7 +309,7 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
           { en: 'Transformation roadmap', de: 'Transformations-Roadmap' },
           { en: 'Timeline to €100M', de: 'Timeline bis €100M' }
         ],
-        cta: { text: { en: 'Build Roadmap', de: 'Roadmap erstellen' }, href: 'https://calendly.com/scalingx/strategy-call' },
+        cta: { text: { en: 'Build Roadmap', de: 'Roadmap erstellen' }, href: 'https://www.cal.scalingx.io/inflection-call' },
         color: 'blue'
       },
       {
@@ -325,7 +325,7 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
           { en: 'Progress report', de: 'Fortschrittsbericht' },
           { en: 'New bottleneck (if any)', de: 'Neuer Engpass (falls vorhanden)' }
         ],
-        cta: { text: { en: 'Track Progress', de: 'Fortschritt verfolgen' }, href: 'https://calendly.com/scalingx/strategy-call' },
+        cta: { text: { en: 'Track Progress', de: 'Fortschritt verfolgen' }, href: 'https://www.cal.scalingx.io/inflection-call' },
         color: 'emerald'
       }
     ]
@@ -507,7 +507,7 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
         },
         cta: {
           text: { en: 'Book Strategy Call', de: 'Strategy Call buchen' },
-          href: 'https://calendly.com/scalingx/strategy-call'
+          href: 'https://www.cal.scalingx.io/inflection-call'
         }
       }
     ]
@@ -562,7 +562,7 @@ export const unifiedFrameworkPageData: UnifiedFrameworkPageData = {
     ],
     primaryCta: {
       text: { en: 'Book Strategy Call', de: 'Strategy Call buchen' },
-      href: 'https://calendly.com/scalingx/strategy-call'
+      href: 'https://www.cal.scalingx.io/inflection-call'
     },
     secondaryCta: {
       text: { en: 'Download Framework', de: 'Framework herunterladen' },

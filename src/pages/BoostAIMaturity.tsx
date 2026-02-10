@@ -1163,7 +1163,7 @@ const FinalCTASection: React.FC = () => {
                   {language === 'de' ? 'Gehe mit einer 90-Tage AI Roadmap' : 'Walk away with a 90-day AI roadmap'}
                 </li>
               </ul>
-              <Button variant="outline" className="border-2" onClick={() => window.open('https://calendly.com/michel-scalingx/ai-assessment', '_blank')}>
+              <Button variant="outline" className="border-2" onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}>
                 {language === 'de' ? 'AI Assessment buchen' : 'Book AI Assessment'}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

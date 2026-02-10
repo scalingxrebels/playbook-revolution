@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
@@ -863,7 +863,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="w-full bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => window.open('https://calendly.com/michel-scalingx/vc-dd-simulation', '_blank')}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Simulation anfragen (€5.9K)' : 'Request Simulation (€5.9K)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -926,6 +926,15 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const VCDueDiligenceSimulation: React.FC = () => {
+  const { language } = useLanguage();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenModal);
+    return () => window.removeEventListener('openBookingModal', handleOpenModal);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
@@ -939,6 +948,13 @@ const VCDueDiligenceSimulation: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="vc-dd-simulation"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };
