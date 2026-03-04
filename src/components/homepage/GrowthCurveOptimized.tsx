@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallax } from '@/hooks/useParallax';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { TrendingUp } from 'lucide-react';
@@ -80,6 +81,7 @@ const GrowthCurveOptimized: React.FC = () => {
   const t = translations[language];
   const isMobile = useIsMobile();
   const { ref: sectionRef, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const parallax = useParallax({ speed: 0.2 });
   const [activeTypes, setActiveTypes] = useState<string[]>(['traditional', 'aiNative']);
 
   const toggleType = (typeId: string) => {
@@ -92,16 +94,23 @@ const GrowthCurveOptimized: React.FC = () => {
     <section
       id="growth-curve-section"
       ref={sectionRef as React.RefObject<HTMLElement>}
-      className="relative py-20 md:py-28 bg-background"
+      className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      {/* Parallax Background */}
+      <div
+        ref={parallax.ref as React.RefObject<HTMLDivElement>}
+        className="absolute inset-0 bg-mesh opacity-30 pointer-events-none"
+        style={{ transform: `translateY(${parallax.offset}px) scale(1.1)` }}
+      />
+
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-            <TrendingUp className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">{t.badge}</span>
-          </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+        <div className="text-center mb-16 animate-slide-up">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            <TrendingUp className="w-4 h-4 inline-block mr-2 -mt-0.5" />
+            {t.badge}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-6">
             {t.title}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
