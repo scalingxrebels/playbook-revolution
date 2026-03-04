@@ -1042,8 +1042,6 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const [isAssessmentModalOpen, setIsAssessmentModalOpen] = useState(false);
 
   const faqItems = [
     {
@@ -1119,7 +1117,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1136,7 +1134,7 @@ const FinalCTASection: React.FC = () => {
               ? 'Noch nicht bereit für ein vollständiges Accelerate? Starte kleiner mit einem AI Maturity Assessment (1-2 Wochen, €3.9K-€5.9K).'
               : 'Not ready for a full Accelerate? Start smaller with an AI Maturity Assessment (1-2 weeks, €3.9K-€5.9K).'}
           </p>
-          <Button variant="outline" className="border-2" onClick={() => setIsAssessmentModalOpen(true)}>
+          <Button variant="outline" className="border-2" onClick={() => window.dispatchEvent(new CustomEvent('openAssessmentModal'))}>
             {language === 'de' ? 'AI Maturity Assessment buchen' : 'Book AI Maturity Assessment'}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
@@ -1164,7 +1162,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1174,20 +1172,6 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Booking Modals */}
-        <FilloutBookingModal
-          formSlug="inflection-call"
-          source="accelerate"
-          isOpen={isBookingModalOpen}
-          onClose={() => setIsBookingModalOpen(false)}
-        />
-        <FilloutBookingModal
-          formSlug="inflection-call"
-          source="accelerate"
-          isOpen={isAssessmentModalOpen}
-          onClose={() => setIsAssessmentModalOpen(false)}
-          title={language === 'de' ? 'AI Maturity Assessment buchen' : 'Book AI Maturity Assessment'}
-        />
       </div>
     </section>
   );
@@ -1197,21 +1181,49 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const AccelerateExitReadiness: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isAssessmentModalOpen, setIsAssessmentModalOpen] = useState(false);
+  const { language } = useLanguage();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const handleOpenBookingModal = () => setIsBookingModalOpen(true);
+    const handleOpenAssessmentModal = () => setIsAssessmentModalOpen(true);
+
+    window.addEventListener('openBookingModal', handleOpenBookingModal);
+    window.addEventListener('openAssessmentModal', handleOpenAssessmentModal);
+
+    return () => {
+      window.removeEventListener('openBookingModal', handleOpenBookingModal);
+      window.removeEventListener('openAssessmentModal', handleOpenAssessmentModal);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
-      <OutcomeSection />
-      <ProcessSection />
-      <QualificationSection />
-      <FinalCTASection />
+      <main>
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <OutcomeSection />
+        <ProcessSection />
+        <QualificationSection />
+        <FinalCTASection />
+      </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="accelerate"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="accelerate"
+        isOpen={isAssessmentModalOpen}
+        onClose={() => setIsAssessmentModalOpen(false)}
+        title={language === 'de' ? 'AI Maturity Assessment buchen' : 'Book AI Maturity Assessment'}
+      />
     </div>
   );
 };

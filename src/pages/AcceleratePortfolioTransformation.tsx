@@ -1008,7 +1008,6 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const faqs = [
     {
@@ -1075,7 +1074,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="w-full sm:w-auto bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Portfolio Assessment Call buchen (30 Min.)' : 'Book Free Portfolio Assessment Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1150,7 +1149,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Portfolio Assessment Call buchen (30 Min.)' : 'Book Free Portfolio Assessment Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1162,14 +1161,6 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Booking Modal */}
-        <FilloutBookingModal
-          formSlug="inflection-call"
-          source="accelerate"
-          isOpen={isBookingModalOpen}
-          onClose={() => setIsBookingModalOpen(false)}
-          title={language === 'de' ? 'Portfolio Assessment Call buchen' : 'Book Portfolio Assessment Call'}
-        />
       </div>
     </section>
   );
@@ -1179,14 +1170,22 @@ const FinalCTASection: React.FC = () => {
 // MAIN COMPONENT
 // ============================================================================
 const AcceleratePortfolioTransformation: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const { language } = useLanguage();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const handleOpenBookingModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenBookingModal);
+
+    return () => {
+      window.removeEventListener('openBookingModal', handleOpenBookingModal);
+    };
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <main className="flex-grow">
+      <main>
         <HeroSection />
         <ProblemSection />
         <SolutionSection />
@@ -1196,6 +1195,13 @@ const AcceleratePortfolioTransformation: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="accelerate"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Portfolio Assessment Call buchen' : 'Book Portfolio Assessment Call'}
+      />
     </div>
   );
 };

@@ -1028,7 +1028,6 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const faqs = [
     {
       question: { en: 'How long does Boost take?', de: 'Wie lange dauert Boost?' },
@@ -1098,7 +1097,7 @@ const FinalCTASection: React.FC = () => {
             <Button
               size="xl"
               className="w-full sm:w-auto bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-              onClick={() => setIsBookingModalOpen(true)}
+              onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
             >
               {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -1174,7 +1173,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1186,13 +1185,6 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
         
-        <FilloutBookingModal
-          formSlug="inflection-call"
-          source="solutions"
-          isOpen={isBookingModalOpen}
-          onClose={() => setIsBookingModalOpen(false)}
-          title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
-        />
       </div>
     </section>
   );
@@ -1202,8 +1194,16 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const BoostBoardExcellence: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const { language } = useLanguage();
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const handleOpenBookingModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenBookingModal);
+
+    return () => {
+      window.removeEventListener('openBookingModal', handleOpenBookingModal);
+    };
   }, []);
 
   return (
@@ -1219,6 +1219,13 @@ const BoostBoardExcellence: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="solutions"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+        title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+      />
     </div>
   );
 };

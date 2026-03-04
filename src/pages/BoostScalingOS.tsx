@@ -1135,7 +1135,7 @@ const BoostScalingOS: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <main>
         <HeroSection />
