@@ -1075,7 +1075,6 @@ const QualificationSection: React.FC = () => {
 const FinalCTASection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const faqItems = [
     {
@@ -1142,7 +1141,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="w-full bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold py-7 text-cta uppercase tracking-wide shadow-accent-glow"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1226,7 +1225,7 @@ const FinalCTASection: React.FC = () => {
           <Button
             size="xl"
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-12 py-7 text-cta uppercase tracking-wide shadow-accent-glow"
-            onClick={() => setIsBookingModalOpen(true)}
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
             {language === 'de' ? 'Kostenloses Inflection Call buchen (30 Min.)' : 'Book Free Inflection Call (30 min)'}
             <ArrowRight className="w-5 h-5 ml-2" />
@@ -1238,13 +1237,6 @@ const FinalCTASection: React.FC = () => {
           </p>
         </div>
 
-        {/* Booking Modal */}
-        <FilloutBookingModal
-          formSlug="inflection-call"
-          source="accelerate"
-          isOpen={isBookingModalOpen}
-          onClose={() => setIsBookingModalOpen(false)}
-        />
       </div>
     </section>
   );
@@ -1254,8 +1246,15 @@ const FinalCTASection: React.FC = () => {
 // MAIN PAGE COMPONENT
 // ============================================================================
 const AccelerateAINativeScaling: React.FC = () => {
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const handleOpenBookingModal = () => setIsBookingModalOpen(true);
+    window.addEventListener('openBookingModal', handleOpenBookingModal);
+
+    return () => {
+      window.removeEventListener('openBookingModal', handleOpenBookingModal);
+    };
   }, []);
 
   return (
@@ -1271,6 +1270,12 @@ const AccelerateAINativeScaling: React.FC = () => {
         <FinalCTASection />
       </main>
       <Footer />
+      <FilloutBookingModal
+        formSlug="inflection-call"
+        source="accelerate"
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </div>
   );
 };
