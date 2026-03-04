@@ -109,13 +109,13 @@ const ResearchProblemSection: React.FC<ResearchProblemSectionProps> = ({ data })
 
           {/* Right Column - Chart */}
           <div className="space-y-6">
-            <div className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm">
+            <div className="p-6 rounded-2xl bg-card/50 border border-border/50 backdrop-blur-sm overflow-hidden">
               <h3 className="font-semibold text-lg mb-4 text-center">
                 {data.chartTitle[language]}
               </h3>
               <ChartContainer config={chartConfig} className="h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={linearScalingData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                  <LineChart data={linearScalingData} margin={{ top: 20, right: 50, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" className="stroke-border/30" />
                     <XAxis
                       dataKey="headcount"
@@ -139,7 +139,7 @@ const ResearchProblemSection: React.FC<ResearchProblemSectionProps> = ({ data })
                       y={100}
                       stroke="hsl(var(--muted-foreground))"
                       strokeDasharray="5 5"
-                      label={{ value: '€100M ARR', position: 'right', fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
+                      label={{ value: '€100M ARR', position: 'insideTopRight', fill: 'hsl(var(--muted-foreground))', fontSize: 10 }}
                     />
                   </LineChart>
                 </ResponsiveContainer>

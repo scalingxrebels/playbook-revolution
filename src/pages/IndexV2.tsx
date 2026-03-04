@@ -3,8 +3,7 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
-// Optimized Homepage Components - 7 Essential Sections
-import HeroOptimized from '@/components/homepage/HeroOptimized';
+import HeroWithChart from '@/components/homepage/HeroWithChart';
 import ProblemOptimized from '@/components/homepage/ProblemOptimized';
 import SolutionOptimized from '@/components/homepage/SolutionOptimized';
 import HowItWorksOptimized from '@/components/homepage/HowItWorksOptimized';
@@ -14,38 +13,38 @@ import GrowthCurveOptimized from '@/components/homepage/GrowthCurveOptimized';
 import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
 import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
 
-const Index = () => {
+const IndexV2 = () => {
   return (
     <ThemeProvider>
       <LanguageProvider>
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
           <main>
-            {/* SECTION 1: HERO (100vh) */}
-            <HeroOptimized />
-            
-            {/* SECTION 2: THE PROBLEM (50vh) */}
+            {/* HERO with inline Growth Chart */}
+            <HeroWithChart />
+
+            {/* THE PROBLEM */}
             <ProblemOptimized />
-            
-            {/* SECTION 3: THE SOLUTION (50vh) */}
+
+            {/* THE SOLUTION */}
             <SolutionOptimized />
-            
-            {/* SECTION 4: HOW IT WORKS (60vh) */}
+
+            {/* HOW IT WORKS */}
             <HowItWorksOptimized />
-            
-            {/* SECTION 5: DIE FORMEL (50vh) */}
+
+            {/* DIE FORMEL */}
             <FormulaOptimized />
-            
-            {/* SECTION 6: PROOF & VALIDATION (50vh) */}
+
+            {/* PROOF & VALIDATION */}
             <ProofOptimized />
-            
-            {/* SECTION 7: GROWTH CURVE (interactive) */}
+
+            {/* INTERACTIVE GROWTH CURVE (full version with toggles) */}
             <GrowthCurveOptimized />
-            
-            {/* SECTION 8: ROI CALCULATOR (70vh) */}
+
+            {/* ROI CALCULATOR */}
             <ROICalculatorOptimized />
-            
-            {/* SECTION 8: FINAL CTA with BOOKING FORM (60vh) */}
+
+            {/* FINAL CTA */}
             <FinalCTAOptimized />
           </main>
           <Footer />
@@ -55,4 +54,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default IndexV2;

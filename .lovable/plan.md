@@ -1,77 +1,64 @@
 
 
-# Fix: Alle "Book Call" CTAs direkt das Modal oeffnen lassen (kein Scroll zum Seitenende)
+# Konsistenz-Check: GrowthCurveOptimized vs. andere Homepage-Sektionen
 
-## Problem
+## Gefundene Abweichungen
 
-Auf 28 Landing Pages scrollt der primaere CTA-Button (z.B. "Kostenloses Inflection Call buchen") zum `#final-cta` Abschnitt am Seitenende, wo der User dann **erneut** klicken muss, um das Booking-Modal zu oeffnen. Das ist ein unnötiger Doppelklick, der die Conversion reduziert.
-
-## Loesung
-
-Alle `scrollToSection('final-cta')` Aufrufe durch `window.dispatchEvent(new CustomEvent('openBookingModal'))` ersetzen. Das bestehende Event-Listener-Pattern (CustomEvent `openBookingModal`) ist bereits in jeder dieser Seiten implementiert -- es wird nur nicht genutzt.
-
-## Betroffene Dateien (28)
-
-**Power Up Seiten (9):**
-1. `PowerUpGrowthMomentum.tsx` -- 3 Stellen (Hero, Qualification "Decision Help", ggf. weitere)
-2. `PowerUpCACCrisis.tsx` -- ca. 3 Stellen
-3. `PowerUpPricingPower.tsx` -- 3 Stellen
-4. `PowerUpScalingVelocity.tsx` -- 3 Stellen
-5. `PowerUpNRREngine.tsx` -- 3 Stellen
-6. `PowerUpBoardReadiness.tsx` -- 3 Stellen
-7. `PowerUpPortfolioPerformance.tsx` -- 3 Stellen
-8. `PowerUpAIQuickWins.tsx` -- 3 Stellen
-9. `PowerUpCustomSprint.tsx` -- 3 Stellen
-
-**Boost Seiten (9):**
-10. `BoostGrowthEngine.tsx` -- 3 Stellen
-11. `BoostEfficientHypergrowth.tsx` -- 3 Stellen
-12. `BoostScalingOS.tsx` -- 3 Stellen
-13. `BoostNRRMachine.tsx` -- 3 Stellen
-14. `BoostPricingDominance.tsx` -- 3 Stellen
-15. `BoostBoardExcellence.tsx` -- 1 Stelle
-16. `BoostPortfolioValue.tsx` -- 1 Stelle
-17. `BoostAIMaturity.tsx` -- 1 Stelle
-18. `BoostCustomProgram.tsx` -- 1 Stelle
-
-**Accelerate Seiten (5):**
-19. `AccelerateHypergrowth.tsx` -- ca. 3 Stellen
-20. `AccelerateSustainableGrowth.tsx` -- 1 Stelle
-21. `AccelerateExitReadiness.tsx` -- 1 Stelle
-22. `AcceleratePortfolioTransformation.tsx` -- 1 Stelle
-23. `AccelerateAINativeScaling.tsx` -- 1 Stelle
-
-**Decision Support / Assessments (4):**
-24. `GTMEffectivenessReview.tsx` -- 1 Stelle
-25. `PricingPackagingReview.tsx` -- 1 Stelle
-26. `ScalingReadinessAssessment.tsx` -- 1 Stelle
-27. `VCDueDiligenceSimulation.tsx` -- 1 Stelle
-
-**Andere (1):**
-28. `Maxxeed.tsx` -- 2 Stellen
-
-**Sonderfaelle (kein scrollToSection('final-cta'), aber aehnliches Pattern):**
-- `StrategicAdvisory.tsx` -- 1 Stelle
-
-## Aenderung
-
-Identisch in jeder Datei -- reiner String-Replace:
-
-```text
-Vorher:  onClick={() => scrollToSection('final-cta')}
-Nachher: onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
+### 1. Fehlende Parallax-Background-Layer
+**Alle anderen Sektionen** (Problem, Solution, Proof, HowItWorks, Formula) haben:
 ```
+- useParallax() mit parallax.ref auf einem Hintergrund-div
+- Hintergrund: bg-gradient-to-b, bg-mesh, oder bg-grid-pattern
+- transform: translateY(parallax.offset) scale(1.1)
+```
+**GrowthCurveOptimized** hat: Kein Parallax, nur flaches `bg-background`. Kein Hintergrund-Gradient, keine Mesh/Grid-Textur.
 
-Die `scrollToSection`-Funktion und der `#final-cta` Abschnitt bleiben bestehen (der Abschnitt enthaelt FAQs und Trust Badges, die weiterhin per Scroll erreichbar sein sollen). Nur die **Booking-Buttons** oeffnen jetzt direkt das Modal.
+### 2. Section-Klassen abweichend
+**Alle anderen Sektionen:**
+```
+className="relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700
+  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}"
+```
+**GrowthCurveOptimized:**
+```
+className="relative py-20 md:py-28 bg-background"
+```
+Unterschiede: Kein `min-h-[50vh]`, anderes Padding (`py-20 md:py-28` statt `py-24 lg:py-32`), kein `overflow-hidden`, keine `transition-all` auf der Section selbst (stattdessen auf innere Elemente).
 
-## Technische Details
+### 3. Header-Pattern abweichend
+**Alle anderen Sektionen:**
+```
+<span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+  Badge Text
+</span>
+<h2 className="font-display text-display-md text-foreground mb-6">
+```
+**GrowthCurveOptimized:**
+```
+<div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+  <TrendingUp /> Badge Text
+</div>
+<h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
+```
+Unterschiede: Pill-Badge mit Icon statt einfacher `<span>`. Headline nutzt `text-3xl md:text-4xl font-bold` statt `text-display-md`. Spacing `mb-3` statt `mb-6`.
 
-- Jede dieser Seiten hat bereits den Event-Listener registriert:
-  ```tsx
-  const handleOpenModal = () => setIsBookingModalOpen(true);
-  window.addEventListener('openBookingModal', handleOpenModal);
-  ```
-- Der FinalCTA-Button am Seitenende nutzt bereits `window.dispatchEvent(new CustomEvent('openBookingModal'))` -- die anderen Buttons auf der gleichen Seite tun es nur noch nicht
-- Keine neuen Imports, Props oder Komponenten noetig
-- Ca. 80 einzelne Ersetzungen ueber 28 Dateien
+### 4. Fehlende animate-slide-up auf Header
+Andere Sektionen: `<div className="text-center mb-16 animate-slide-up">`
+GrowthCurve: `<div className="text-center mb-12 transition-all ...">`  (eigene Transition statt `animate-slide-up`, `mb-12` statt `mb-16`)
+
+### 5. HeroWithChart -- konsistent
+`HeroWithChart.tsx` ist konsistent mit `HeroOptimized.tsx` (gleiche Deep Space Layers, Parallax, TwinklingStars, `dark-section`).
+
+---
+
+## Umsetzungsplan
+
+**1 Datei editieren:** `src/components/homepage/GrowthCurveOptimized.tsx`
+
+### Aenderungen:
+1. **Parallax hinzufuegen:** `useParallax({ speed: 0.2 })` importieren und Hintergrund-div mit `bg-mesh` + transform
+2. **Section-Klassen angleichen:** `min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? ... translate-y-10}` statt der aktuellen Klassen
+3. **Header-Badge angleichen:** Einfacher `<span>` mit `text-sm font-semibold uppercase tracking-widest text-primary mb-4 block` statt Pill-Badge (das Icon kann bleiben, aber als inline-Element)
+4. **Headline-Klassen angleichen:** `text-display-md` statt `text-3xl md:text-4xl font-bold`, `mb-6` statt `mb-3`
+5. **Header-Wrapper angleichen:** `mb-16 animate-slide-up` statt `mb-12 transition-all`
 
