@@ -1,64 +1,100 @@
 
 
-# Konsistenz-Check: GrowthCurveOptimized vs. andere Homepage-Sektionen
+# Konsistenz-Audit: Alle Solutions-Seiten
 
-## Gefundene Abweichungen
+## Betroffene Seiten (23 Seiten + 1 SolutionCategory)
 
-### 1. Fehlende Parallax-Background-Layer
-**Alle anderen Sektionen** (Problem, Solution, Proof, HowItWorks, Formula) haben:
-```
-- useParallax() mit parallax.ref auf einem Hintergrund-div
-- Hintergrund: bg-gradient-to-b, bg-mesh, oder bg-grid-pattern
-- transform: translateY(parallax.offset) scale(1.1)
-```
-**GrowthCurveOptimized** hat: Kein Parallax, nur flaches `bg-background`. Kein Hintergrund-Gradient, keine Mesh/Grid-Textur.
+**Power Up (9):** CACCrisis, GrowthMomentum, PricingPower, NRREngine, ScalingVelocity, AIQuickWins, BoardReadiness, PortfolioPerformance, CustomSprint
+**Boost (9):** EfficientHypergrowth, GrowthEngine, PricingDominance, NRRMachine, ScalingOS, AIMaturity, BoardExcellence, PortfolioValue, CustomProgram
+**Accelerate (5):** Hypergrowth, SustainableGrowth, ExitReadiness, AINativeScaling, PortfolioTransformation
+**Decision Support (7):** GTMEffectivenessReview, VCDueDiligenceSimulation, PricingPackagingReview, ScalingReadinessAssessment, AIMaturityAssessment, PortfolioAssessment, InvestorReadinessPitchDeckCheck, CustomAnalysisReport
+**Sonstige:** SolutionCategory, ExpertSession, Workshop, Keynote, StrategicAdvisory
 
-### 2. Section-Klassen abweichend
-**Alle anderen Sektionen:**
-```
-className="relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700
-  ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}"
-```
-**GrowthCurveOptimized:**
-```
-className="relative py-20 md:py-28 bg-background"
-```
-Unterschiede: Kein `min-h-[50vh]`, anderes Padding (`py-20 md:py-28` statt `py-24 lg:py-32`), kein `overflow-hidden`, keine `transition-all` auf der Section selbst (stattdessen auf innere Elemente).
+---
 
-### 3. Header-Pattern abweichend
-**Alle anderen Sektionen:**
-```
-<span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
-  Badge Text
-</span>
-<h2 className="font-display text-display-md text-foreground mb-6">
-```
-**GrowthCurveOptimized:**
-```
-<div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-  <TrendingUp /> Badge Text
-</div>
-<h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">
-```
-Unterschiede: Pill-Badge mit Icon statt einfacher `<span>`. Headline nutzt `text-3xl md:text-4xl font-bold` statt `text-display-md`. Spacing `mb-3` statt `mb-6`.
+## Ergebnis: Hohe Konsistenz bei den Kern-Sektionen
 
-### 4. Fehlende animate-slide-up auf Header
-Andere Sektionen: `<div className="text-center mb-16 animate-slide-up">`
-GrowthCurve: `<div className="text-center mb-12 transition-all ...">`  (eigene Transition statt `animate-slide-up`, `mb-12` statt `mb-16`)
+Die Power Up, Boost und Accelerate Seiten folgen alle dem **gleichen 7-Sektionen-Muster**:
+1. Hero (Deep Space, Parallax, Breadcrumb, Badge, Stats, CTAs, Trust Badges)
+2. Problem (Symptom-Liste, Before/After)
+3. Solution (3-Phasen-Sprint)
+4. Impact/Outcome (ROI-Metriken)
+5. Process (Wochen-Ablauf)
+6. Qualification (Good Fit / Not Fit)
+7. Final CTA
 
-### 5. HeroWithChart -- konsistent
-`HeroWithChart.tsx` ist konsistent mit `HeroOptimized.tsx` (gleiche Deep Space Layers, Parallax, TwinklingStars, `dark-section`).
+Die **Hero-Sektionen** sind strukturell identisch: gleiche Parallax-Layer (4 Ebenen), gleiche Animations-Pattern (`animate-fade-in`, `animate-blur-in`, `animate-slide-up`), gleiche CTA-Buttons.
+
+---
+
+## Gefundene Inkonsistenzen
+
+### 1. Wrapper-Container: 6 verschiedene Varianten
+| Variante | Seiten |
+|---|---|
+| `min-h-screen bg-background text-foreground` | Die meisten PowerUp/Boost (Standard) |
+| `min-h-screen bg-background` (ohne `text-foreground`) | PowerUpBoardReadiness, BoostScalingOS, PowerUpCustomSprint |
+| `min-h-screen bg-background text-foreground overflow-x-hidden` | PowerUpPricingPower, AccelerateHypergrowth, GTMEffectivenessReview, VCDueDiligenceSimulation |
+| `min-h-screen bg-background text-foreground overflow-hidden` | PowerUpNRREngine |
+| `min-h-screen flex flex-col bg-background` | AcceleratePortfolioTransformation |
+| `min-h-screen flex flex-col` | AccelerateSustainableGrowth |
+
+**Empfehlung:** Standardisieren auf `min-h-screen bg-background text-foreground` (kein `overflow-x-hidden` noetig, da die Sektionen selbst `overflow-hidden` haben).
+
+### 2. `<main>` Tag fehlt bei AccelerateHypergrowth
+AccelerateHypergrowth hat die Sections direkt ohne `<main>` Wrapper, alle anderen haben `<main>`.
+AcceleratePortfolioTransformation nutzt `<main className="flex-grow">`, AccelerateSustainableGrowth `<main className="flex-1">`.
+
+**Empfehlung:** Alle auf `<main>` ohne zusaetzliche Klassen standardisieren.
+
+### 3. Booking Modal Pattern: 3 verschiedene Ansaetze
+| Pattern | Seiten |
+|---|---|
+| **A: CustomEvent** -- Sections dispatchen `openBookingModal`, Main-Component hoert und zeigt Modal | PowerUp-Serie, einige Boost, VCDueDiligenceSimulation |
+| **B: Prop-Drilling** -- Main uebergibt `onOpenBooking` als Prop an FinalCTASection | GTMEffectivenessReview |
+| **C: Lokal in FinalCTASection** -- Modal ist innerhalb der Section-Komponente, kein Event nach oben | BoostBoardExcellence, Accelerate-Serie |
+
+**Empfehlung:** Pattern A (CustomEvent) ist am weitesten verbreitet und entkoppelt die Sections vom Parent. Auf A standardisieren.
+
+### 4. FilloutBookingModal Platzierung
+- Einige: Modal nach `</Footer>` (PowerUp-Serie, Boost-Serie)
+- Einige: Modal vor `<Footer>` aber nach `</main>` (GTMEffectivenessReview)
+- Einige: Modal innerhalb der FinalCTASection (BoostBoardExcellence, Accelerate-Serie)
+
+**Empfehlung:** Einheitlich nach `<Footer />` platzieren.
+
+### 5. `scrollTo(0,0)` Handling
+- Einige Seiten haben `window.scrollTo(0,0)` im useEffect (BoostBoardExcellence, Accelerate-Serie)
+- Die meisten haben es nicht (nicht noetig dank `<ScrollToTop />` in App.tsx)
+
+**Empfehlung:** `window.scrollTo(0,0)` entfernen -- `ScrollToTop` in App.tsx erledigt das bereits.
+
+### 6. SolutionCategory: Doppelte Provider-Wrapper
+`SolutionCategory.tsx` wrapt in eigene `<ThemeProvider>` + `<LanguageProvider>`, obwohl App.tsx diese bereits global bereitstellt. Auch `<main className="pt-20">` weicht ab -- alle anderen Solutions-Seiten haben Hero mit `pt-20` auf der Section, nicht auf main.
+
+**Empfehlung:** Provider-Wrapper entfernen, `pt-20` von main auf die Hero-Section verschieben.
+
+### 7. Final CTA Button: Stilabweichungen
+- Die meisten: `bg-gradient-accent ... size="xl" ... shadow-accent-glow` (korrekter Standard)
+- AccelerateHypergrowth Final CTA: `size="lg" bg-gradient-primary` (abweichend)
+- ScalingReadinessAssessment Final CTA: `size="xl" className="group"` (kein Gradient)
 
 ---
 
 ## Umsetzungsplan
 
-**1 Datei editieren:** `src/components/homepage/GrowthCurveOptimized.tsx`
+### Prioritaet 1 -- Strukturelle Fixes (14 Dateien)
+1. **AccelerateHypergrowth.tsx:** `<main>` Wrapper hinzufuegen, `overflow-x-hidden` entfernen, Final CTA Button auf Standard angleichen
+2. **AccelerateSustainableGrowth.tsx:** Wrapper auf `min-h-screen bg-background text-foreground`, `<main>` ohne `flex-1`
+3. **AcceleratePortfolioTransformation.tsx:** Wrapper auf `min-h-screen bg-background text-foreground`, `<main>` ohne `flex-grow`
+4. **PowerUpBoardReadiness.tsx, BoostScalingOS.tsx, PowerUpCustomSprint.tsx:** `text-foreground` zum Wrapper hinzufuegen
+5. **PowerUpPricingPower.tsx, PowerUpNRREngine.tsx:** `overflow-x-hidden` / `overflow-hidden` entfernen
+6. **SolutionCategory.tsx:** `ThemeProvider` + `LanguageProvider` Wrapper entfernen, `pt-20` auf Section verschieben
 
-### Aenderungen:
-1. **Parallax hinzufuegen:** `useParallax({ speed: 0.2 })` importieren und Hintergrund-div mit `bg-mesh` + transform
-2. **Section-Klassen angleichen:** `min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? ... translate-y-10}` statt der aktuellen Klassen
-3. **Header-Badge angleichen:** Einfacher `<span>` mit `text-sm font-semibold uppercase tracking-widest text-primary mb-4 block` statt Pill-Badge (das Icon kann bleiben, aber als inline-Element)
-4. **Headline-Klassen angleichen:** `text-display-md` statt `text-3xl md:text-4xl font-bold`, `mb-6` statt `mb-3`
-5. **Header-Wrapper angleichen:** `mb-16 animate-slide-up` statt `mb-12 transition-all`
+### Prioritaet 2 -- Booking Modal Standardisierung (5 Dateien)
+7. **BoostBoardExcellence.tsx:** Modal aus FinalCTASection herausziehen, CustomEvent-Pattern einfuehren
+8. **Accelerate-Serie (Hypergrowth, ExitReadiness, SustainableGrowth, PortfolioTransformation):** Modal aus FinalCTASection herausziehen, CustomEvent-Pattern einfuehren, FilloutBookingModal nach Footer platzieren
+
+### Prioritaet 3 -- Cleanup (alle betroffenen)
+9. **Alle mit `scrollTo(0,0)`:** useEffect mit scrollTo entfernen (BoostBoardExcellence, 5x Accelerate)
 
