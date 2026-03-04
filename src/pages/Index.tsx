@@ -10,6 +10,7 @@ import SolutionOptimized from '@/components/homepage/SolutionOptimized';
 import HowItWorksOptimized from '@/components/homepage/HowItWorksOptimized';
 import FormulaOptimized from '@/components/homepage/FormulaOptimized';
 import ProofOptimized from '@/components/homepage/ProofOptimized';
+import GrowthCurveOptimized from '@/components/homepage/GrowthCurveOptimized';
 import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
 import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
 
@@ -38,7 +39,10 @@ const Index = () => {
             {/* SECTION 6: PROOF & VALIDATION (50vh) */}
             <ProofOptimized />
             
-            {/* SECTION 7: ROI CALCULATOR (70vh) */}
+            {/* SECTION 7: GROWTH CURVE (interactive) */}
+            <GrowthCurveOptimized />
+            
+            {/* SECTION 8: ROI CALCULATOR (70vh) */}
             <ROICalculatorOptimized />
             
             {/* SECTION 8: FINAL CTA with BOOKING FORM (60vh) */}
