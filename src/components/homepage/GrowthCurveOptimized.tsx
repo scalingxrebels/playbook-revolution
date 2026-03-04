@@ -107,7 +107,6 @@ const GrowthCurveOptimized: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
-            <TrendingUp className="w-4 h-4 inline-block mr-2 -mt-0.5" />
             {t.badge}
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
