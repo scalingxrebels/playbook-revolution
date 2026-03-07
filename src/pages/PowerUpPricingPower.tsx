@@ -1081,15 +1081,13 @@ const PowerUpPricingPower: React.FC = () => {
   const { language } = useLanguage();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    
     const handleOpenModal = () => setIsBookingModalOpen(true);
     window.addEventListener('openBookingModal', handleOpenModal);
     return () => window.removeEventListener('openBookingModal', handleOpenModal);
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <main>
         <HeroSection />

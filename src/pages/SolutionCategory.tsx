@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { solutionCategories } from '@/data/solutions';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, ArrowRight, Check, Phone, Clock, Shield } from 'lucide-react';
 import SolutionPlaybookLink from '@/components/SolutionPlaybookLink';
 
-const SolutionCategoryContent: React.FC = () => {
+const SolutionCategory: React.FC = () => {
   const { category } = useParams<{ category: string }>();
   const navigate = useNavigate();
   const { language } = useLanguage();
@@ -35,9 +33,9 @@ const SolutionCategoryContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <main className="pt-20">
+      <main>
         {/* Hero */}
-        <section className="py-24 lg:py-32 relative overflow-hidden">
+        <section className="py-24 lg:py-32 relative overflow-hidden pt-20">
           <div className="absolute inset-0 bg-mesh" />
           <div className="absolute inset-0 noise opacity-30" />
           
@@ -86,7 +84,7 @@ const SolutionCategoryContent: React.FC = () => {
             </h2>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {solution.programs.map((program, idx) => (
+              {solution.programs.map((program) => (
                 <div 
                   key={program.id}
                   className="bg-card border-2 border-border hover:border-primary p-8 transition-all hover:-translate-y-1 hover:shadow-brutal"
@@ -193,16 +191,6 @@ const SolutionCategoryContent: React.FC = () => {
         title={language === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
       />
     </div>
-  );
-};
-
-const SolutionCategory: React.FC = () => {
-  return (
-    <ThemeProvider>
-      <LanguageProvider>
-        <SolutionCategoryContent />
-      </LanguageProvider>
-    </ThemeProvider>
   );
 };
 
