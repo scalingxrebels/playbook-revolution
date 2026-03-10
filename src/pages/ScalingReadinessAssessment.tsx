@@ -1366,6 +1366,7 @@ const ScalingReadinessAssessment = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'Scaling Readiness Assessment', path: '/solutions/scaling-readiness-assessment' }]} />
       <Navigation />
       <main>
         <HeroSection t={t} language={currentLanguage} />

@@ -818,6 +818,7 @@ const AIMaturityAssessment: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'AI Maturity Assessment', path: '/solutions/ai-maturity-assessment' }]} />
       <Navigation />
       <main>
         <HeroSection />

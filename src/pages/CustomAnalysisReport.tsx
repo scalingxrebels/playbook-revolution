@@ -455,6 +455,7 @@ const CustomAnalysisReport: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'Custom Analysis & Report', path: '/solutions/custom-analysis-report' }]} />
       <Navigation />
       <main>
         <HeroSection />

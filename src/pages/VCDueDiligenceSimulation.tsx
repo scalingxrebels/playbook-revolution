@@ -938,6 +938,7 @@ const VCDueDiligenceSimulation: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'VC Due Diligence Simulation', path: '/solutions/vc-dd-simulation' }]} />
       <Navigation />
       <main>
         <HeroSection />

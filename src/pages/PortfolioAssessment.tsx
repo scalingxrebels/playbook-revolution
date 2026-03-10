@@ -445,6 +445,7 @@ const PortfolioAssessment: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'Portfolio Assessment', path: '/solutions/portfolio-assessment' }]} />
       <Navigation />
       <main>
         <HeroSection />

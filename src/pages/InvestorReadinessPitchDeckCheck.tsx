@@ -520,6 +520,7 @@ const InvestorReadinessPitchDeckCheck: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'Investor Readiness & Pitch Deck Check', path: '/solutions/investor-readiness-pitch-deck-check' }]} />
       <Navigation />
       <main>
         <HeroSection />
