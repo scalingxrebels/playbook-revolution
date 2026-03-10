@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { BreadcrumbSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
@@ -937,6 +938,7 @@ const VCDueDiligenceSimulation: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'VC Due Diligence Simulation', path: '/solutions/vc-dd-simulation' }]} />
       <Navigation />
       <main>
         <HeroSection />
