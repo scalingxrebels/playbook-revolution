@@ -4,11 +4,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { useGlobalUTMPersistence } from "@/hooks/useGlobalUTMPersistence";
+import OrganizationSchema from "@/components/seo/OrganizationSchema";
 
 // Lazy load pages for code splitting
 const Index = lazy(() => import("./pages/Index"));
