@@ -417,6 +417,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: '17 Playbooks für AI-Native Scaling: GTM, Revenue, Product, Operations, Finance, Talent, Board Governance, Portfolio.',
       en: '17 playbooks for AI-native scaling: GTM, revenue, product, operations, finance, talent, board governance, portfolio.',
     },
+    ogImage: '/images/og/playbooks.png',
   },
 
   // =========================================================================
