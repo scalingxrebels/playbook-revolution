@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { FAQSchema, BreadcrumbSchema, HowToSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -917,6 +918,27 @@ const GTMEffectivenessReview: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'GTM Effectiveness Review', path: '/solutions/gtm-effectiveness-review' },
+      ]} />
+      <FAQSchema questions={[
+        { question: language === 'de' ? 'Wie lange dauert das GTM Review?' : 'How long does GTM review take?', answer: language === 'de' ? '3-5 Tage (vom Daten-Sharing bis zum GTM Effectiveness Report)' : '3-5 days (from data sharing to GTM Effectiveness Report)' },
+        { question: language === 'de' ? 'Was ist das Investment?' : "What's the investment?", answer: language === 'de' ? '€3.9K (Base) oder €5.9K (Base + Execution Bridge)' : '€3.9K (Base) or €5.9K (Base + Execution Bridge)' },
+        { question: language === 'de' ? 'Welche Daten braucht ihr?' : 'What data do you need?', answer: language === 'de' ? 'GTM-Metriken (CAC, Win Rate, Sales Cycle), Kundendaten, Sales-Daten, Marketing-Daten' : 'GTM metrics (CAC, win rate, sales cycle), customer data, sales data, marketing data' },
+        { question: language === 'de' ? 'Was ist der ROI?' : "What's the ROI?", answer: language === 'de' ? 'Typischer ROI ist 10-30x (basierend auf CAC-Reduktion und Wachstumsbeschleunigung).' : 'Typical ROI is 10-30x (based on CAC reduction and growth acceleration).' },
+        { question: language === 'de' ? 'Wie unterscheidet sich das von einem Berater?' : 'How is this different from hiring a consultant?', answer: language === 'de' ? 'Berater brauchen 4-6 Wochen und kosten €20K-€50K. Wir liefern in 3-5 Tagen für €3.9K-€5.9K.' : 'Consultants take 4-6 weeks and cost €20K-€50K. We deliver in 3-5 days for €3.9K-€5.9K.' },
+      ]} />
+      <HowToSchema
+        name={language === 'de' ? 'GTM Effectiveness Review anfragen' : 'Request GTM Effectiveness Review'}
+        description={language === 'de' ? 'Expert-Analyse deiner GTM-Effektivität in 3-5 Tagen' : 'Expert analysis of your GTM effectiveness in 3-5 days'}
+        steps={[
+          { name: language === 'de' ? 'Review anfragen' : 'Request review', text: language === 'de' ? 'Klicke den Button und buche einen Inflection Call' : 'Click the button and book an inflection call' },
+          { name: language === 'de' ? 'Daten teilen' : 'Share data', text: language === 'de' ? 'Teile GTM-Metriken, Kundendaten und Sales-Daten (4-6 Stunden)' : 'Share GTM metrics, customer data and sales data (4-6 hours)' },
+          { name: language === 'de' ? 'Analyse erhalten' : 'Receive analysis', text: language === 'de' ? 'Erhalte GTM Effectiveness Report (20-30 Seiten) in 3-5 Tagen' : 'Receive GTM Effectiveness Report (20-30 pages) in 3-5 days' },
+        ]}
+        totalTime="P5D"
+      />
       <Navigation />
       <main>
         <HeroSection />

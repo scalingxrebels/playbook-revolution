@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url><loc>https://playbook-revolution.lovable.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- Solutions Hub -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
+  <!-- Power-Ups -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/cac-crisis</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/growth-momentum</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/pricing-power</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/nrr-engine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/scaling-velocity</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/ai-quick-wins</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/board-readiness</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/portfolio-performance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/custom-sprint</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Boosts -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/efficient-hypergrowth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/growth-engine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/pricing-dominance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/nrr-machine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/scaling-os</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/ai-maturity</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/board-excellence</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/portfolio-value</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/boost/custom-program</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Accelerates -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/accelerate/hypergrowth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/accelerate/sustainable-growth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/accelerate/exit-readiness</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/accelerate/ai-native-scaling</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/accelerate/portfolio-transformation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Decision Support -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/vc-dd-simulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/gtm-effectiveness-review</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/pricing-packaging-review</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/scaling-readiness-assessment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/ai-maturity-assessment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/investor-readiness-pitch-deck-check</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/portfolio-assessment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/custom-analysis-report</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Strategic Advisory & Events -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/strategic-advisory</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/workshop</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/keynote</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/solutions/expert-session</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Playbooks -->
+  <url><loc>https://playbook-revolution.lovable.app/playbooks</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/growth-engines</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/operating-systems</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/board-governance</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/strategic-capabilities</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/portfolio-transformation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/ai-native-scaling</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/growth-engines/gtm-revenue</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/growth-engines/product</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/growth-engines/customer-success</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/operating-systems/operations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/operating-systems/finance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/operating-systems/talent</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/operating-systems/data-tech</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/board-governance/strategic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/board-governance/operational</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/board-governance/exit-ma</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/playbooks/portfolio/excellence</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Expertise / Research -->
+  <url><loc>https://playbook-revolution.lovable.app/expertise</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/amf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/anst</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/sst</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/unified-framework</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Cases -->
+  <url><loc>https://playbook-revolution.lovable.app/cases</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- About & Team -->
+  <url><loc>https://playbook-revolution.lovable.app/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/ml</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/ah</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/fm</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Community -->
+  <url><loc>https://playbook-revolution.lovable.app/community</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Tools & Book -->
+  <url><loc>https://playbook-revolution.lovable.app/tools/maxxeed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/book/fix-growth</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Glossar -->
+  <url><loc>https://playbook-revolution.lovable.app/glossar</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://playbook-revolution.lovable.app/impressum</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/datenschutz</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/agb</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>

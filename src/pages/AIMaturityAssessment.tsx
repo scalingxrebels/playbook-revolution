@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { BreadcrumbSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
@@ -817,6 +818,7 @@ const AIMaturityAssessment: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[{ name: 'Solutions', path: '/solutions' }, { name: 'AI Maturity Assessment', path: '/solutions/ai-maturity-assessment' }]} />
       <Navigation />
       <main>
         <HeroSection />

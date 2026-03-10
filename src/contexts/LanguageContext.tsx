@@ -316,12 +316,14 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     setLanguage(prev => {
       const next = prev === 'en' ? 'de' : 'en';
       localStorage.setItem('preferred-language', next);
+      document.documentElement.lang = next;
       return next;
     });
   }, []);
 
   const handleSetLanguage = useCallback((lang: Language) => {
     localStorage.setItem('preferred-language', lang);
+    document.documentElement.lang = lang;
     setLanguage(lang);
   }, []);
 

@@ -109,3 +109,8 @@ Disallow: /
 # =============================================
 User-agent: *
 Allow: /
+
+# =============================================
+# Sitemap
+# =============================================
+Sitemap: https://playbook-revolution.lovable.app/sitemap.xml
