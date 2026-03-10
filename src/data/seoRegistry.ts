@@ -17,6 +17,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Series A-D SaaS-Unternehmen skalieren 3-5x schneller. Forschungsbasierte Methodik aus 22 AI-nativen Unternehmen. 80+ Unternehmen skaliert, €2,5Mrd+ Bewertung.',
       en: 'Series A-D SaaS companies scale 3-5x faster. Research-backed methodology from 22 AI-native companies. 80+ companies scaled, €2.5B+ valuation.',
     },
+    ogImage: '/images/og/scalingx-default.png',
   },
 
   // =========================================================================
