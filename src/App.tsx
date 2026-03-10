@@ -112,6 +112,7 @@ const AppContent = () => {
   
   return (
     <>
+      <PageSEO />
       <ScrollToTop />
       <Suspense fallback={<PageLoader />}>
         <Routes>
