@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { useGlobalUTMPersistence } from "@/hooks/useGlobalUTMPersistence";
+import PageSEO from "@/components/seo/PageSEO";
 import OrganizationSchema from "@/components/seo/OrganizationSchema";
 
 // Lazy load pages for code splitting
