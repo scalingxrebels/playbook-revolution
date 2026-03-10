@@ -610,6 +610,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Die wissenschaftliche Basis unserer Methodik: AMF, ANST, SST, Unified Framework. Analyse von 22 AI-nativen Unternehmen.',
       en: 'The scientific basis of our methodology: AMF, ANST, SST, unified framework. Analysis of 22 AI-native companies.',
     },
+    ogImage: '/images/og/expertise.png',
   },
   '/expertise/amf': {
     title: {
