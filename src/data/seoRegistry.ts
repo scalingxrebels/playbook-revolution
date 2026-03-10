@@ -680,6 +680,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Das Team hinter ScalingX: Michel Lason, Alban Halili, Florian Metzger. 80+ Unternehmen, 140+ Mandate, €2,5Mrd+ Bewertung.',
       en: 'The team behind ScalingX: Michel Lason, Alban Halili, Florian Metzger. 80+ companies, 140+ engagements, €2.5B+ valuation.',
     },
+    ogImage: '/images/og/about.png',
   },
   '/ml': {
     title: {
