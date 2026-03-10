@@ -189,6 +189,9 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PersonSchema name="Michel Lason" jobTitle="Founder & CEO" description="18 Jahre Startups skalieren. Autor Fix Growth. Scale Faster." image="/images/team-michel.png" url="/ml" sameAs={['https://www.linkedin.com/in/michellason/']} />
+      <PersonSchema name="Alban Halili" jobTitle="Partner" description="10+ Jahre B2B Sales skalieren. Ex-CSO Elba, Enterprise Sales Telefónica." image="/images/team-alban.png" url="/ah" sameAs={['https://www.linkedin.com/in/alban-halili/']} />
+      <PersonSchema name="Florian Metzger" jobTitle="Partner" description="4+ Jahre SaaS-Businesses aufbauen. Design Thinking HPI, RevOps." image="/images/team-florian-square.png" url="/fm" sameAs={['https://www.linkedin.com/in/florianmetzger/']} />
       <Navigation />
       
       {/* ================================================================= */}
