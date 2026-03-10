@@ -664,6 +664,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Echte Ergebnisse: CAC -58%, Rule of 40 +30pp, NRR 120%+. Case Studies von Series A-D SaaS-Unternehmen.',
       en: 'Real results: CAC -58%, Rule of 40 +30pp, NRR 120%+. Case studies from Series A-D SaaS companies.',
     },
+    ogImage: '/images/og/cases.png',
   },
 
   // =========================================================================
