@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
+import { PersonSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';

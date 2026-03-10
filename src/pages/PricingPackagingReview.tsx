@@ -916,6 +916,10 @@ const PricingPackagingReview: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <BreadcrumbSchema items={[
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'Pricing & Packaging Review', path: '/solutions/pricing-packaging-review' },
+      ]} />
       <Navigation />
       <main>
         <HeroSection />
