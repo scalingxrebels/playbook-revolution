@@ -17,6 +17,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Series A-D SaaS-Unternehmen skalieren 3-5x schneller. Forschungsbasierte Methodik aus 22 AI-nativen Unternehmen. 80+ Unternehmen skaliert, €2,5Mrd+ Bewertung.',
       en: 'Series A-D SaaS companies scale 3-5x faster. Research-backed methodology from 22 AI-native companies. 80+ companies scaled, €2.5B+ valuation.',
     },
+    ogImage: '/images/og/scalingx-default.png',
   },
 
   // =========================================================================
@@ -31,6 +32,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: '40+ Scaling-Lösungen: Power-Ups (2-4 Wochen), Boosts (6-12 Wochen), Accelerates (3-6 Monate). CAC -40%, NRR +15pp, Rule of 40 +30pp.',
       en: '40+ scaling solutions: Power-Ups (2-4 weeks), Boosts (6-12 weeks), Accelerates (3-6 months). CAC -40%, NRR +15pp, Rule of 40 +30pp.',
     },
+    ogImage: '/images/og/solutions.png',
   },
 
   // =========================================================================
@@ -415,6 +417,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: '17 Playbooks für AI-Native Scaling: GTM, Revenue, Product, Operations, Finance, Talent, Board Governance, Portfolio.',
       en: '17 playbooks for AI-native scaling: GTM, revenue, product, operations, finance, talent, board governance, portfolio.',
     },
+    ogImage: '/images/og/playbooks.png',
   },
 
   // =========================================================================
@@ -607,6 +610,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Die wissenschaftliche Basis unserer Methodik: AMF, ANST, SST, Unified Framework. Analyse von 22 AI-nativen Unternehmen.',
       en: 'The scientific basis of our methodology: AMF, ANST, SST, unified framework. Analysis of 22 AI-native companies.',
     },
+    ogImage: '/images/og/expertise.png',
   },
   '/expertise/amf': {
     title: {
@@ -661,6 +665,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Echte Ergebnisse: CAC -58%, Rule of 40 +30pp, NRR 120%+. Case Studies von Series A-D SaaS-Unternehmen.',
       en: 'Real results: CAC -58%, Rule of 40 +30pp, NRR 120%+. Case studies from Series A-D SaaS companies.',
     },
+    ogImage: '/images/og/cases.png',
   },
 
   // =========================================================================
@@ -675,6 +680,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Das Team hinter ScalingX: Michel Lason, Alban Halili, Florian Metzger. 80+ Unternehmen, 140+ Mandate, €2,5Mrd+ Bewertung.',
       en: 'The team behind ScalingX: Michel Lason, Alban Halili, Florian Metzger. 80+ companies, 140+ engagements, €2.5B+ valuation.',
     },
+    ogImage: '/images/og/about.png',
   },
   '/ml': {
     title: {
