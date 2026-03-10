@@ -32,6 +32,7 @@ export const seoRegistry: Record<string, SEOData> = {
       de: '40+ Scaling-Lösungen: Power-Ups (2-4 Wochen), Boosts (6-12 Wochen), Accelerates (3-6 Monate). CAC -40%, NRR +15pp, Rule of 40 +30pp.',
       en: '40+ scaling solutions: Power-Ups (2-4 weeks), Boosts (6-12 weeks), Accelerates (3-6 months). CAC -40%, NRR +15pp, Rule of 40 +30pp.',
     },
+    ogImage: '/images/og/solutions.png',
   },
 
   // =========================================================================
