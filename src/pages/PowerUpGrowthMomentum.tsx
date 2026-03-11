@@ -574,7 +574,7 @@ const OutcomeSection: React.FC = () => {
         </div>
 
         {/* Real Example / Case Study */}
-        <div className="bg-card border-2 border-primary/30 p-8 rounded-lg mb-12">
+        <div className="bg-card border-2 border-primary/30 p-8 mb-12">
           <h3 className="font-bold text-lg mb-6 text-center">
             {language === 'de' ? 'Echtes Beispiel:' : 'Real Example:'}
           </h3>
