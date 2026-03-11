@@ -382,7 +382,11 @@ const GTMStackMap: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
-      <BreadcrumbSchema />
+      <BreadcrumbSchema items={[
+        { name: 'Home', path: '/' },
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'GTM Stack Map 2026', path: '/solutions/gtm-stack-map' },
+      ]} />
       <main>
         <HeroSection />
         <BenefitsSection />
