@@ -357,7 +357,7 @@ const CTARepeatSection: React.FC = () => {
   return (
     <section ref={ref} className="dark-section relative py-24 lg:py-32 overflow-hidden noise">
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(240,15%,12%)] via-[hsl(240,10%,8%)] to-[hsl(var(--background))]" />
-      <TwinklingStars count={30} />
+      <TwinklingStars />
 
       <div className={`relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h2 className="font-display text-display-sm text-foreground mb-4">
