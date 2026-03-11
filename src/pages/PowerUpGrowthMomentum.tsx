@@ -263,7 +263,7 @@ const ProblemSection: React.FC = () => {
             {symptoms.map((symptom, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-4 bg-destructive/5 border border-destructive/20 rounded-lg animate-slide-up"
+                className="flex items-center gap-3 p-4 bg-destructive/5 border border-destructive/20 animate-slide-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="w-6 h-6 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
