@@ -173,6 +173,7 @@ const AppContent = () => {
           <Route path="/solutions/keynote" element={<Keynote />} />
           <Route path="/solutions/expert-session" element={<ExpertSession />} />
           <Route path="/tools/maxxeed" element={<Maxxeed />} />
+          <Route path="/solutions/gtm-stack-map" element={<GTMStackMap />} />
           <Route path="/book/fix-growth" element={<FixGrowthBook />} />
           <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
           <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />
