@@ -891,7 +891,7 @@ const QualificationSection: React.FC = () => {
             </h3>
             <div className="space-y-3">
               {idealFor.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-accent/5 border border-accent/20 rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-accent/5 border border-accent/20">
                   <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                   <span className="text-sm text-foreground">{language === 'de' ? item.de : item.en}</span>
                 </div>
