@@ -177,7 +177,7 @@ const HeroSection: React.FC = () => {
           transform: `translateY(${offsets[1]}px)`,
         }}
       />
-      <TwinklingStars count={60} />
+      <TwinklingStars />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Breadcrumb */}
