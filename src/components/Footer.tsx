@@ -20,6 +20,7 @@ const Footer: React.FC = () => {
     { label: 'Playbooks', href: '/playbooks' },
     { label: 'Insights', href: '/insights' },
     { label: 'Cases', href: '/cases' },
+    { label: 'Expertise', href: '/expertise' },
     { label: 'About', href: '/about' },
   ];
 
