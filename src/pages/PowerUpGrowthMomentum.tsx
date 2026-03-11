@@ -787,7 +787,7 @@ const ProcessSection: React.FC = () => {
         </div>
 
         {/* Outcome-Based Risk Sharing */}
-        <div className="bg-accent/10 border-2 border-accent/30 p-8 rounded-lg">
+        <div className="bg-accent/10 border-2 border-accent/30 p-8">
           <h3 className="font-bold text-lg mb-6 text-center text-accent">
             {language === 'de' ? 'Ergebnisbasierte Risikoteilung:' : 'Outcome-Based Risk Sharing:'}
           </h3>
