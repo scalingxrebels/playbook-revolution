@@ -70,6 +70,7 @@ const Workshop = lazy(() => import("./pages/Workshop"));
 const Keynote = lazy(() => import("./pages/Keynote"));
 const ExpertSession = lazy(() => import("./pages/ExpertSession"));
 const Maxxeed = lazy(() => import("./pages/Maxxeed"));
+const GTMStackMap = lazy(() => import("./pages/GTMStackMap"));
 const FixGrowthBook = lazy(() => import("./pages/FixGrowthBook"));
 const PlaybookGtmRevenue = lazy(() => import("./pages/PlaybookGtmRevenue"));
 const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));
