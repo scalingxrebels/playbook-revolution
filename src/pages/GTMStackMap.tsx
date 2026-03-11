@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BreadcrumbSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
@@ -21,11 +21,18 @@ import { toast } from 'sonner';
 import {
   ArrowRight,
   Check,
+  ChevronDown,
   Download,
   Users,
   Target,
   Sparkles,
   Quote,
+  Layers,
+  Brain,
+  Zap,
+  Shield,
+  Clock,
+  MessageCircle,
 } from 'lucide-react';
 
 // ============================================================================
@@ -76,7 +83,6 @@ const InlineLeadForm: React.FC<LeadFormProps> = ({ variant = 'hero' }) => {
       setIsSubmitted(true);
       toast.success(language === 'de' ? 'Download startet…' : 'Download starting…');
 
-      // Trigger download
       const link = document.createElement('a');
       link.href = '/downloads/gtm-stack-map-2026.pdf';
       link.download = 'GTM-Stack-Map-2026.pdf';
@@ -132,11 +138,7 @@ const InlineLeadForm: React.FC<LeadFormProps> = ({ variant = 'hero' }) => {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className={`h-12 px-6 whitespace-nowrap font-bold uppercase tracking-wide text-sm ${
-          variant === 'cta'
-            ? 'bg-accent hover:bg-accent/90 text-accent-foreground shadow-accent-glow'
-            : 'bg-gradient-accent text-primary-foreground shadow-accent-glow'
-        }`}
+        className="h-12 px-6 whitespace-nowrap font-bold uppercase tracking-wide text-sm bg-gradient-accent text-primary-foreground shadow-accent-glow"
       >
         {isSubmitting ? (
           <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
@@ -158,6 +160,22 @@ const HeroSection: React.FC = () => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const heroStats = [
+    { value: '120+', label: { en: 'Tools Mapped', de: 'Tools kartiert' }, sublabel: { en: 'All categories', de: 'Alle Kategorien' } },
+    { value: '4', label: { en: 'Funnel Layers', de: 'Funnel-Layer' }, sublabel: { en: 'Traffic → Retention', de: 'Traffic → Retention' } },
+    { value: 'AI', label: { en: 'Native Tools Tagged', de: 'Native Tools markiert' }, sublabel: { en: 'Separately identified', de: 'Separat identifiziert' } },
+  ];
+
+  const trustBadges = [
+    { icon: Shield, label: { en: 'No Spam, No Pitch', de: 'Kein Spam, kein Pitch' } },
+    { icon: Clock, label: { en: 'Instant Download', de: 'Sofortiger Download' } },
+    { icon: MessageCircle, label: { en: 'Used by 200+ GTM Teams', de: 'Von 200+ GTM-Teams genutzt' } },
+  ];
+
   return (
     <section
       ref={containerRef as React.RefObject<HTMLElement>}
@@ -165,59 +183,104 @@ const HeroSection: React.FC = () => {
     >
       {/* Deep Space Background */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--background))] via-[hsl(240,10%,8%)] to-[hsl(240,15%,12%)] transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      {/* Mesh overlay */}
+      {/* Mesh Gradient Overlay */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)',
-          backgroundSize: '40px 40px',
-          transform: `translateY(${offsets[1]}px)`,
-        }}
+        className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      <TwinklingStars />
+      {/* Twinkling Stars */}
+      <div
+        className="absolute inset-0 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px)` }}
+      >
+        <TwinklingStars />
+      </div>
+      {/* Grid Pattern */}
+      <div
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
+      />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Content */}
+      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
         {/* Breadcrumb */}
-        <Breadcrumb className="justify-center mb-8">
+        <Breadcrumb className="justify-center mb-6 animate-fade-in">
           <BreadcrumbList>
-            <BreadcrumbItem><BreadcrumbLink href="/">Home</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/solutions" className="text-muted-foreground hover:text-foreground">
+                Solutions
+              </BreadcrumbLink>
+            </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem><BreadcrumbLink href="/solutions">Solutions</BreadcrumbLink></BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem><BreadcrumbLink className="text-foreground">GTM Stack Map 2026</BreadcrumbLink></BreadcrumbItem>
+            <BreadcrumbItem>
+              <span className="text-foreground font-medium">GTM Stack Map 2026</span>
+            </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
         {/* Badge */}
-        <Badge variant="outline" className="mb-6 border-accent/40 text-accent bg-accent/10 px-4 py-1.5 text-xs uppercase tracking-widest">
-          Free · Lead Magnet
+        <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <Download className="w-4 h-4 mr-2" />
+          Free · Lead Magnet · PDF
         </Badge>
 
         {/* Headline */}
-        <h1 className="font-display text-display-lg text-foreground mb-6 leading-tight">
-          {language === 'de' ? 'Der GTM Stack 2026.' : 'The GTM Stack 2026.'}
+        <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
+          <span className="block text-foreground">{language === 'de' ? 'Der GTM Stack 2026.' : 'The GTM Stack 2026.'}</span>
+          <span className="block text-gradient animate-gradient bg-gradient-primary">
+            {language === 'de' ? 'Alle Tools. Eine Übersicht.' : 'All Tools. One Overview.'}
+          </span>
         </h1>
 
-        {/* Subline */}
-        <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+        {/* Subheadline */}
+        <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           {language === 'de'
             ? 'Alle Tools. Alle Layer. Eine Übersicht — für B2B SaaS Teams, die aufhören wollen zu raten.'
             : 'All tools. All layers. One overview — for B2B SaaS teams that want to stop guessing.'}
         </p>
 
+        {/* Hero Stats */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          {heroStats.map((stat, index) => (
+            <div key={index} className="bg-card/50 backdrop-blur-sm border-2 border-border p-6 text-center">
+              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">{stat.value}</div>
+              <div className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                {language === 'de' ? stat.label.de : stat.label.en}
+              </div>
+              <div className="text-xs text-muted-foreground mt-1">
+                ({language === 'de' ? stat.sublabel.de : stat.sublabel.en})
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Inline Form */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <InlineLeadForm variant="hero" />
         </div>
 
-        {/* Trust Signal */}
-        <p className="text-sm text-muted-foreground/70">
-          {language === 'de' ? 'Bereits von 200+ GTM-Teams genutzt' : 'Already used by 200+ GTM teams'}
-        </p>
+        {/* Trust Badges */}
+        <div className="flex flex-wrap justify-center gap-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          {trustBadges.map((badge, index) => (
+            <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Check className="w-4 h-4 text-accent" />
+              <span>{language === 'de' ? badge.label.de : badge.label.en}</span>
+            </div>
+          ))}
+        </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <button
+        onClick={() => scrollToSection('benefits-section')}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors animate-fade-in cursor-pointer"
+        style={{ animationDelay: '1s' }}
+      >
+        <ChevronDown className="w-5 h-5 animate-bounce" />
+      </button>
     </section>
   );
 };
@@ -227,41 +290,62 @@ const HeroSection: React.FC = () => {
 // ============================================================================
 const BenefitsSection: React.FC = () => {
   const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const benefits = language === 'de'
     ? [
-        'Alle GTM-Tools 2026 — kategorisiert nach Funnel-Layer',
-        'Empfehlungs-Logik: Welches Tool für welchen Reifegrad?',
-        'Traffic · Entry · Conversion · Retention — vollständig',
-        'AI-native Tools separat markiert',
-        'Sofort nutzbar — kein Setup, kein Login',
+        { icon: Layers, title: 'Alle GTM-Tools 2026', desc: 'Kategorisiert nach Funnel-Layer — Traffic, Entry, Conversion, Retention.' },
+        { icon: Target, title: 'Empfehlungs-Logik', desc: 'Welches Tool für welchen Reifegrad? Klare Orientierung statt Ratespiel.' },
+        { icon: Brain, title: 'AI-Native markiert', desc: 'AI-native Tools separat gekennzeichnet — damit du die Zukunft nicht verpasst.' },
+        { icon: Zap, title: 'Sofort nutzbar', desc: 'Kein Setup, kein Login. PDF herunterladen und sofort loslegen.' },
+        { icon: Users, title: 'Für jede Team-Größe', desc: 'Egal ob 5 oder 500 — die Map skaliert mit deinem GTM-System.' },
       ]
     : [
-        'All GTM tools 2026 — categorized by funnel layer',
-        'Recommendation logic: Which tool for which maturity level?',
-        'Traffic · Entry · Conversion · Retention — complete',
-        'AI-native tools separately marked',
-        'Instantly usable — no setup, no login',
+        { icon: Layers, title: 'All GTM Tools 2026', desc: 'Categorized by funnel layer — Traffic, Entry, Conversion, Retention.' },
+        { icon: Target, title: 'Recommendation Logic', desc: 'Which tool for which maturity level? Clear orientation, not guesswork.' },
+        { icon: Brain, title: 'AI-Native Tagged', desc: 'AI-native tools separately marked — so you don\'t miss the future.' },
+        { icon: Zap, title: 'Instantly Usable', desc: 'No setup, no login. Download the PDF and start immediately.' },
+        { icon: Users, title: 'For Any Team Size', desc: 'Whether 5 or 500 — the map scales with your GTM system.' },
       ];
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-muted/30 border-y border-border">
-      <div className={`max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="font-display text-display-sm text-foreground mb-12">
-          {language === 'de' ? 'Was du bekommst:' : 'What you get:'}
-        </h2>
+    <section
+      id="benefits-section"
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
 
-        <ul className="space-y-5 text-left max-w-xl mx-auto">
-          {benefits.map((benefit, i) => (
-            <li key={i} className="flex items-start gap-4">
-              <div className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <Check className="w-4 h-4 text-accent" />
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 animate-slide-up">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Was du bekommst' : 'What You Get'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' ? 'Alles in einer Übersicht' : 'Everything in One Overview'}
+          </h2>
+        </div>
+
+        {/* Benefits Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <div
+                key={index}
+                className="bg-card border-2 border-border hover:border-accent/50 p-6 transition-all duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-12 h-12 bg-accent/10 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="font-bold text-lg text-foreground mb-2">{benefit.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{benefit.desc}</p>
               </div>
-              <span className="text-foreground/90 text-lg leading-relaxed">{benefit}</span>
-            </li>
-          ))}
-        </ul>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -272,7 +356,7 @@ const BenefitsSection: React.FC = () => {
 // ============================================================================
 const ICPSection: React.FC = () => {
   const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const personas = language === 'de'
     ? [
@@ -287,17 +371,32 @@ const ICPSection: React.FC = () => {
       ];
 
   return (
-    <section ref={ref} className="py-24 lg:py-32">
-      <div className={`max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="font-display text-display-sm text-foreground mb-12 text-center">
-          {language === 'de' ? 'Für wen ist das?' : 'Who is this for?'}
-        </h2>
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[40vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
+
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 animate-slide-up">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Zielgruppe' : 'Target Audience'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' ? 'Für wen ist das?' : 'Who Is This For?'}
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {personas.map((p, i) => (
-            <div key={i} className="border-2 border-border bg-card p-8 text-center hover:border-accent/40 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-5">
-                <p.icon className="w-6 h-6 text-accent" />
+            <div
+              key={i}
+              className="bg-card backdrop-blur-sm border-2 border-border p-8 text-center hover:border-primary/50 transition-colors animate-slide-up"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
+              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-5">
+                <p.icon className="w-6 h-6 text-primary" />
               </div>
               <h3 className="font-bold text-foreground mb-3 text-lg">{p.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
@@ -314,7 +413,7 @@ const ICPSection: React.FC = () => {
 // ============================================================================
 const SocialProofSection: React.FC = () => {
   const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const quotes = language === 'de'
     ? [
@@ -327,15 +426,30 @@ const SocialProofSection: React.FC = () => {
       ];
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-muted/30 border-y border-border">
-      <div className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="font-display text-display-sm text-foreground mb-12 text-center">
-          {language === 'de' ? 'Was andere sagen:' : 'What others say:'}
-        </h2>
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative min-h-[30vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 animate-slide-up">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Social Proof' : 'Social Proof'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground mb-6">
+            {language === 'de' ? 'Was andere sagen' : 'What Others Say'}
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {quotes.map((q, i) => (
-            <div key={i} className="border-2 border-border bg-card p-8 relative">
+            <div
+              key={i}
+              className="border-2 border-border border-l-4 border-l-accent bg-card p-8 relative animate-slide-up"
+              style={{ animationDelay: `${i * 0.1}s` }}
+            >
               <Quote className="w-8 h-8 text-accent/20 absolute top-6 right-6" />
               <p className="text-foreground text-lg leading-relaxed mb-6 italic">"{q.text}"</p>
               <p className="text-muted-foreground text-sm font-medium">— {q.name}</p>
@@ -352,23 +466,94 @@ const SocialProofSection: React.FC = () => {
 // ============================================================================
 const CTARepeatSection: React.FC = () => {
   const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+
+  const stats = language === 'de'
+    ? [
+        { value: '200+', label: 'GTM-Teams' },
+        { value: 'Free', label: 'Kein Pitch' },
+        { value: 'PDF', label: 'Sofort-Download' },
+      ]
+    : [
+        { value: '200+', label: 'GTM Teams' },
+        { value: 'Free', label: 'No Pitch' },
+        { value: 'PDF', label: 'Instant Download' },
+      ];
+
+  const trustBadges = [
+    { en: 'No Spam', de: 'Kein Spam' },
+    { en: 'No Sales Call', de: 'Kein Verkaufsgespräch' },
+    { en: 'Just the Map', de: 'Nur die Map' },
+  ];
 
   return (
-    <section ref={ref} className="dark-section relative py-24 lg:py-32 overflow-hidden noise">
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(240,15%,12%)] via-[hsl(240,10%,8%)] to-[hsl(var(--background))]" />
-      <TwinklingStars />
+    <section
+      id="final-cta"
+      ref={(node) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = node;
+      }}
+      className={`dark-section relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      {/* Deep Space Background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
+      />
+      <div
+        className="absolute inset-0 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px)` }}
+      >
+        <TwinklingStars />
+      </div>
+      <div
+        className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
+      />
 
-      <div className={`relative z-10 max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="font-display text-display-sm text-foreground mb-4">
-          {language === 'de' ? 'Kostenlos herunterladen.' : 'Download for free.'}
-        </h2>
-        <p className="text-muted-foreground mb-10 text-lg">
-          {language === 'de' ? 'Kein Spam. Kein Pitch. Nur die Map.' : 'No spam. No pitch. Just the map.'}
-        </p>
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12 animate-slide-up">
+          <Badge variant="gradient" className="mb-8">
+            <Sparkles className="w-4 h-4 mr-2" />
+            {language === 'de' ? 'Kostenloser Download' : 'Free Download'}
+          </Badge>
+          <h2 className="font-display text-display-md lg:text-display-lg text-foreground mb-4">
+            {language === 'de' ? 'Kostenlos herunterladen.' : 'Download for Free.'}
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {language === 'de' ? 'Kein Spam. Kein Pitch. Nur die Map.' : 'No spam. No pitch. Just the map.'}
+          </p>
+        </div>
 
-        <div className="flex justify-center">
+        {/* Stats Row */}
+        <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <div className="text-2xl font-bold text-gradient mb-1">{stat.value}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Inline Form */}
+        <div className="flex justify-center mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
           <InlineLeadForm variant="cta" />
+        </div>
+
+        {/* Trust Badges */}
+        <div className="flex flex-wrap justify-center gap-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>
+          {trustBadges.map((badge, index) => (
+            <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Check className="w-4 h-4 text-accent" />
+              <span>{language === 'de' ? badge.de : badge.en}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

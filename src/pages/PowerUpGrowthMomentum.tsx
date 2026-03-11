@@ -263,7 +263,7 @@ const ProblemSection: React.FC = () => {
             {symptoms.map((symptom, index) => (
               <div
                 key={index}
-                className="flex items-center gap-3 p-4 bg-destructive/5 border border-destructive/20 rounded-lg animate-slide-up"
+                className="flex items-center gap-3 p-4 bg-destructive/5 border border-destructive/20 animate-slide-up"
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <div className="w-6 h-6 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
@@ -289,7 +289,7 @@ const ProblemSection: React.FC = () => {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {realCosts.map((cost, index) => (
-              <div key={index} className="flex items-start gap-3 p-4 bg-card border border-border rounded-lg">
+              <div key={index} className="flex items-start gap-3 p-4 bg-card border border-border">
                 <TrendingDown className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">{language === 'de' ? cost.de : cost.en}</span>
               </div>
@@ -447,7 +447,7 @@ const SolutionSection: React.FC = () => {
         </div>
 
         {/* What Makes This Different */}
-        <div className="bg-card border-2 border-primary/30 p-8 rounded-lg">
+        <div className="bg-card border-2 border-primary/30 p-8">
           <h3 className="font-bold text-lg mb-6 text-center">
             {language === 'de' ? 'Was das hier anders macht:' : 'What makes this different:'}
           </h3>
@@ -564,7 +564,7 @@ const OutcomeSection: React.FC = () => {
                   <ChevronDown className={`w-3 h-3 transition-transform ${openMeasurement === outcome.id ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="pt-3">
-                  <p className="text-xs text-muted-foreground bg-muted/50 p-3 rounded">
+                  <p className="text-xs text-muted-foreground bg-muted/50 p-3">
                     {language === 'de' ? outcome.why.de : outcome.why.en}
                   </p>
                 </CollapsibleContent>
@@ -574,7 +574,7 @@ const OutcomeSection: React.FC = () => {
         </div>
 
         {/* Real Example / Case Study */}
-        <div className="bg-card border-2 border-primary/30 p-8 rounded-lg mb-12">
+        <div className="bg-card border-2 border-primary/30 p-8 mb-12">
           <h3 className="font-bold text-lg mb-6 text-center">
             {language === 'de' ? 'Echtes Beispiel:' : 'Real Example:'}
           </h3>
@@ -603,7 +603,7 @@ const OutcomeSection: React.FC = () => {
                 <p className="text-sm text-foreground">{language === 'de' ? caseStudy.fix.de : caseStudy.fix.en}</p>
               </div>
             </div>
-            <div className="bg-accent/10 border border-accent/30 p-6 rounded-lg">
+            <div className="bg-accent/10 border border-accent/30 p-6">
               <h4 className="text-sm font-bold uppercase tracking-widest text-accent mb-4">
                 {language === 'de' ? 'Ergebnisse:' : 'Outcomes:'}
               </h4>
@@ -787,7 +787,7 @@ const ProcessSection: React.FC = () => {
         </div>
 
         {/* Outcome-Based Risk Sharing */}
-        <div className="bg-accent/10 border-2 border-accent/30 p-8 rounded-lg">
+        <div className="bg-accent/10 border-2 border-accent/30 p-8">
           <h3 className="font-bold text-lg mb-6 text-center text-accent">
             {language === 'de' ? 'Ergebnisbasierte Risikoteilung:' : 'Outcome-Based Risk Sharing:'}
           </h3>
@@ -891,7 +891,7 @@ const QualificationSection: React.FC = () => {
             </h3>
             <div className="space-y-3">
               {idealFor.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-accent/5 border border-accent/20 rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-accent/5 border border-accent/20">
                   <Check className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
                   <span className="text-sm text-foreground">{language === 'de' ? item.de : item.en}</span>
                 </div>
@@ -907,7 +907,7 @@ const QualificationSection: React.FC = () => {
             </h3>
             <div className="space-y-3">
               {notFor.map((item, index) => (
-                <div key={index} className="flex items-start gap-3 p-3 bg-destructive/5 border border-destructive/20 rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-3 bg-destructive/5 border border-destructive/20">
                   <X className="w-4 h-4 text-destructive mt-0.5 flex-shrink-0" />
                   <span className="text-sm text-foreground">{language === 'de' ? item.de : item.en}</span>
                 </div>

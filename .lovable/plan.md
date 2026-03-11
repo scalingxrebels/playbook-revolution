@@ -1,80 +1,124 @@
 
+Ich gehe mit hoher Wahrscheinlichkeit von `/solutions/scaling-readiness-assessment` aus, weil genau diese Route in deiner Session geöffnet wurde und der Hero dort mit „Expert Scaling Assessment” betitelt ist.
 
-# GTM Stack Map + Power Up Growth Momentum — Redesign
+## Befund
 
-## Problem
+Die Seite ist aktuell nicht auf dem gleichen Standard wie die anderen Decision-Support-/Solutions-Seiten wie `GTMEffectivenessReview` oder `PricingPackagingReview`.
 
-Comparing both pages against the **Boost Efficient Hypergrowth** reference reveals clear gaps:
+## Hauptabweichungen
 
-### GTM Stack Map (major issues)
-- **Hero**: Missing 4-layer Deep Space system (Gradient + Mesh + Stars + Grid with parallax). Uses `text-display-lg` instead of `text-hero-lg`, no `animate-blur-in`, `Badge variant="outline"` instead of `variant="gradient"`, no scroll indicator, wrong container sizing (`max-w-4xl` vs `max-w-5xl`)
-- **All sections**: Missing the standardized section header pattern (`text-sm font-semibold uppercase tracking-widest` color-coded label above `text-display-md` headline)
-- **Benefits**: Simple bullet list instead of structured grid cards with icons
-- **ICP / Social Proof sections**: Missing `animate-slide-up` stagger delays, no section labels
-- **CTA Repeat**: Missing proper 4-layer Deep Space, no trust badges, no stats row
+1. **Andere Seitenarchitektur**
+   - `ScalingReadinessAssessment.tsx` ist als großer Monolith gebaut.
+   - Die konsistenten Vergleichsseiten sind in klar getrennte Section-Komponenten gegliedert:
+     `HeroSection`, `ProblemSection`, `SolutionSection`, `OutcomeSection`, `ProcessSection`, `QualificationSection`, `FinalCTASection`.
 
-### Power Up Growth Momentum (minor issues)
-- **Problem section**: Symptom + real-cost cards use `rounded-lg` (reference uses no rounded corners — brutalist style)
-- **Outcome section**: Case study card uses `rounded-lg` on outcome box
-- **Solution section**: Differentiators card uses `rounded-lg`
-- **FinalCTA**: Background uses `from-secondary/30` (same as Boost — this is fine). But FAQ items in both Boost and PowerUp could be more consistent. Minor: no section label above Final CTA headline.
+2. **Fehlender Standard-Wrapper**
+   - Es gibt **kein `<main>`** um die Sections.
+   - Die Standardseiten nutzen:
+     ```text
+     <div className="min-h-screen bg-background text-foreground">
+       <Navigation />
+       <main>...</main>
+       <FilloutBookingModal ... />
+       <Footer />
+     </div>
+     ```
 
----
+3. **Hero visuell nicht konsistent**
+   - Aktuell: einfacher Hero mit `TwinklingStars` + flachem Gradient.
+   - Standard: Deep-space Hero mit `useParallaxLayers`, Mesh/Grid-Overlay, Breadcrumb-Komponente, Badge-Komponente, animierten Stats, Premium-CTA.
 
-## Changes
+4. **Sections folgen nicht dem standardisierten Design-System**
+   - Aktuell: einfache `py-20`-Blöcke mit Basis-Typografie.
+   - Standard: animierte Sections mit
+     - `useScrollAnimation`
+     - `min-h-[50vh] py-24 lg:py-32`
+     - Gradient-Hintergründen
+     - `font-display text-display-md`
+     - konsistenten Header-Spacings
 
-### 1. GTM Stack Map (`src/pages/GTMStackMap.tsx`) — Full rewrite
+5. **CTA-/Modal-Pattern inkonsistent**
+   - Aktuell: direkte lokale `setIsBookingModalOpen(true)`-Aufrufe im Hero und in der Final CTA.
+   - Standard: Hero-CTA feuert `window.dispatchEvent(new CustomEvent('openBookingModal'))`, Final CTA bekommt `onOpenBooking` vom Parent.
 
-**Hero Section** — Match Boost exactly:
-- 4-layer Deep Space: `bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]` + `bg-mesh opacity-60` + `TwinklingStars` in parallax wrapper + `bg-grid-pattern bg-grid-lg opacity-20`
-- Container: `container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center`
-- Breadcrumb: same pattern as Boost (Solutions > GTM Stack Map 2026)
-- Badge: `variant="gradient"` with Download icon
-- Headline: `text-hero-lg` + `animate-blur-in`, line 2 uses `text-gradient animate-gradient bg-gradient-primary`
-- Subline: `text-body-lg text-muted-foreground max-w-3xl mx-auto mb-12 animate-slide-up`
-- Inline form stays (this is a lead magnet, not booking)
-- Trust signal below form
-- Scroll indicator at bottom (ChevronDown bounce)
+6. **Modal-Reihenfolge inkonsistent**
+   - Aktuell steht `FilloutBookingModal` **vor** dem Footer.
+   - Standard in den vereinheitlichten Solutions-Seiten: Modal **nach** dem Footer.
 
-**Benefits Section** — Add section label + grid cards:
-- Section label: `text-sm font-semibold uppercase tracking-widest text-accent mb-4 block`
-- Headline: `text-display-md`
-- Replace bullet list with 5 benefit cards in a grid (`md:grid-cols-3` with stagger)
-- Each card: `bg-card border-2 border-border hover:border-accent/50 p-6 transition-all` with icon + text
+7. **Button-Styling nicht auf Premium-Standard**
+   - Aktuell: mehrere generische Buttons mit `className="group"` oder einfachem Outline.
+   - Standard: primäre CTA mit
+     ```text
+     bg-gradient-accent
+     shadow-accent-glow
+     text-cta
+     uppercase tracking-wide
+     ```
 
-**ICP Section** — Add section label:
-- Add `text-sm font-semibold uppercase tracking-widest text-primary mb-4 block` label
-- Headline: `text-display-md`
-- Cards: add `backdrop-blur-sm`, stagger delays
+## Umsetzungsplan
 
-**Social Proof Section** — Add section label + improve cards:
-- Section label
-- Cards: add `border-l-4 border-accent` for visual distinction
+### 1. Seite auf Standardstruktur umbauen
+`src/pages/ScalingReadinessAssessment.tsx` auf dieselbe Seitenarchitektur wie die anderen Decision-Support-Seiten refaktorieren:
+- `HeroSection`
+- `ProblemSection`
+- `SolutionSection`
+- `OutcomeSection`
+- `ProcessSection`
+- `QualificationSection`
+- `FinalCTASection`
+- schlanke Main-Page-Komponente mit `<main>`
 
-**CTA Repeat Section** — Full Deep Space:
-- 4-layer background (same as hero)
-- Section label
-- Stats row (200+ Teams, Free, Instant Download)
-- Trust badges below form
-- Badge `variant="gradient"` with Sparkles
+### 2. Hero auf Decision-Support-Standard bringen
+Hero an `GTMEffectivenessReview.tsx` ausrichten:
+- `useParallaxLayers` ergänzen
+- Deep-space Background + Mesh + Grid + Stars
+- Breadcrumb mit UI-Komponente statt einfachem `nav`
+- Badge auf konsistente Variante umstellen
+- Headline-/Subheadline-/Stats-Typografie angleichen
+- Primäre CTA auf Premium-Gradient standardisieren
 
-### 2. Power Up Growth Momentum (`src/pages/PowerUpGrowthMomentum.tsx`) — Targeted fixes
+### 3. Alle Inhaltssektionen visuell harmonisieren
+Die bestehenden Inhalte beibehalten, aber in das standardisierte Section-Layout überführen:
+- `useScrollAnimation`
+- `min-h-[50vh] py-24 lg:py-32`
+- einheitliche Header-Struktur
+- konsistente Karten, Spacings, Hintergrundwechsel und Animationen
 
-- **Problem section** (line 266): Remove `rounded-lg` from symptom items — change to no border-radius (brutalist). Same for real-cost cards (line 292)
-- **Solution section** (line 450): Remove `rounded-lg` from differentiators card
-- **Outcome section** (line 577): Remove `rounded-lg` from case study card. Remove `rounded-lg` from outcome box (line 606). Remove `rounded` from measurement popup (line 567)
-- **Qualification section** (line 894): Remove `rounded-lg` from fit/not-fit items
+### 4. CTA- und Booking-Logik vereinheitlichen
+- Hero-CTA auf `openBookingModal`-Event umstellen
+- Final CTA als Section-Komponente mit `onOpenBooking`-Prop
+- lokale Direktaufrufe im Content entfernen, wo das Pattern abweicht
 
-These are ~10 small `rounded-lg` → empty string replacements across the file.
+### 5. Footer-/Modal-Reihenfolge angleichen
+Seitenende auf den konsistenten Aufbau umstellen:
+```text
+<main>...</main>
+<Footer />
+<FilloutBookingModal ... />
+```
 
----
+## Technische Details
 
-## Files
+**Datei mit Hauptbedarf:**
+- `src/pages/ScalingReadinessAssessment.tsx`
 
-| File | Change |
-|---|---|
-| `src/pages/GTMStackMap.tsx` | Full rewrite (~400 lines, same content, new styling) |
-| `src/pages/PowerUpGrowthMomentum.tsx` | Remove ~10 instances of `rounded-lg` and `rounded` |
+**Referenz-Dateien für den Zielstandard:**
+- `src/pages/GTMEffectivenessReview.tsx`
+- `src/pages/PricingPackagingReview.tsx`
 
-No new files. No database changes. No new dependencies.
+**Wichtig bei der Umsetzung:**
+- Inhalte, Copy und Angebotslogik bleiben erhalten
+- geändert wird vor allem:
+  - Seitenstruktur
+  - Hero-System
+  - Section-Layout
+  - CTA-/Modal-Pattern
+  - Typography/spacing/button styling
 
+## Erwartetes Ergebnis
+
+Nach der Umsetzung wirkt das Expert Scaling Assessment:
+- wie Teil derselben Solutions-Familie,
+- visuell und strukturell konsistent mit den anderen Decision-Support-Seiten,
+- sauberer wartbar,
+- und im CTA-/Modal-Verhalten identisch zu den bereits standardisierten Pages.
