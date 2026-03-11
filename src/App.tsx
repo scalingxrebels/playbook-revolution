@@ -122,6 +122,7 @@ const AppContent = () => {
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
