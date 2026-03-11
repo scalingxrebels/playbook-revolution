@@ -812,4 +812,19 @@ export const seoRegistry: Record<string, SEOData> = {
       en: 'Terms and conditions of ScalingX GmbH.',
     },
   },
+
+  // =========================================================================
+  // GTM STACK MAP 2026
+  // =========================================================================
+  '/solutions/gtm-stack-map': {
+    title: {
+      de: 'GTM Stack Map 2026 — Kostenlos für B2B SaaS Teams | ScalingX',
+      en: 'GTM Stack Map 2026 — Free for B2B SaaS Teams | ScalingX',
+    },
+    description: {
+      de: 'Die vollständige Übersicht aller GTM-Tools 2026. Kategorisiert nach Funnel-Layer. Kostenlos.',
+      en: 'The complete overview of all GTM tools 2026. Categorized by funnel layer. Free.',
+    },
+    ogImage: '/images/og/solutions.png',
+  },
 };

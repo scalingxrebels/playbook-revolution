@@ -405,4 +405,10 @@ export const breadcrumbRegistry: Record<string, BreadcrumbItem[]> = {
     { name: 'Home', path: '/' },
     { name: 'Glossar', path: '/glossar' },
   ],
+
+  '/solutions/gtm-stack-map': [
+    { name: 'Home', path: '/' },
+    { name: 'Solutions', path: '/solutions' },
+    { name: 'GTM Stack Map 2026', path: '/solutions/gtm-stack-map' },
+  ],
 };

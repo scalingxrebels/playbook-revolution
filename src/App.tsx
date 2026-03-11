@@ -70,6 +70,7 @@ const Workshop = lazy(() => import("./pages/Workshop"));
 const Keynote = lazy(() => import("./pages/Keynote"));
 const ExpertSession = lazy(() => import("./pages/ExpertSession"));
 const Maxxeed = lazy(() => import("./pages/Maxxeed"));
+const GTMStackMap = lazy(() => import("./pages/GTMStackMap"));
 const FixGrowthBook = lazy(() => import("./pages/FixGrowthBook"));
 const PlaybookGtmRevenue = lazy(() => import("./pages/PlaybookGtmRevenue"));
 const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));
@@ -172,6 +173,7 @@ const AppContent = () => {
           <Route path="/solutions/keynote" element={<Keynote />} />
           <Route path="/solutions/expert-session" element={<ExpertSession />} />
           <Route path="/tools/maxxeed" element={<Maxxeed />} />
+          <Route path="/solutions/gtm-stack-map" element={<GTMStackMap />} />
           <Route path="/book/fix-growth" element={<FixGrowthBook />} />
           <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
           <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />
