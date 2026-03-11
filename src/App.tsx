@@ -21,6 +21,7 @@ const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
 const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
+const Insights = lazy(() => import("./pages/Insights"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
