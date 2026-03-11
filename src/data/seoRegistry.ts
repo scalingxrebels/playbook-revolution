@@ -714,7 +714,21 @@ export const seoRegistry: Record<string, SEOData> = {
   },
 
   // =========================================================================
-  // COMMUNITY
+  // INSIGHTS
+  // =========================================================================
+  '/insights': {
+    title: {
+      de: 'Insights — Artikel, Events & Case Studies | ScalingX',
+      en: 'Insights — Articles, Events & Case Studies | ScalingX',
+    },
+    description: {
+      de: 'Operator-Grade Insights für Founder und Revenue Leader. Execution-first Artikel, Live Events und Case Studies. AI-native, DACH-fokussiert, Series A–C.',
+      en: 'Operator-grade insights for founders and revenue leaders. Execution-first articles, live events and case studies. AI-native, DACH-focused, Series A–C.',
+    },
+  },
+
+  // =========================================================================
+  // COMMUNITY (legacy)
   // =========================================================================
   '/community': {
     title: {

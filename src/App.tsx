@@ -21,6 +21,7 @@ const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
 const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
+const Insights = lazy(() => import("./pages/Insights"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
@@ -121,6 +122,7 @@ const AppContent = () => {
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
