@@ -564,7 +564,7 @@ const OutcomeSection: React.FC = () => {
                   <ChevronDown className={`w-3 h-3 transition-transform ${openMeasurement === outcome.id ? 'rotate-180' : ''}`} />
                 </CollapsibleTrigger>
                 <CollapsibleContent className="pt-3">
-                  <p className="text-xs text-muted-foreground bg-muted/50 p-3 rounded">
+                  <p className="text-xs text-muted-foreground bg-muted/50 p-3">
                     {language === 'de' ? outcome.why.de : outcome.why.en}
                   </p>
                 </CollapsibleContent>
