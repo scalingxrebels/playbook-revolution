@@ -447,7 +447,7 @@ const SolutionSection: React.FC = () => {
         </div>
 
         {/* What Makes This Different */}
-        <div className="bg-card border-2 border-primary/30 p-8 rounded-lg">
+        <div className="bg-card border-2 border-primary/30 p-8">
           <h3 className="font-bold text-lg mb-6 text-center">
             {language === 'de' ? 'Was das hier anders macht:' : 'What makes this different:'}
           </h3>
