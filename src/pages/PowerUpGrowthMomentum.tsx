@@ -289,7 +289,7 @@ const ProblemSection: React.FC = () => {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {realCosts.map((cost, index) => (
-              <div key={index} className="flex items-start gap-3 p-4 bg-card border border-border rounded-lg">
+              <div key={index} className="flex items-start gap-3 p-4 bg-card border border-border">
                 <TrendingDown className="w-5 h-5 text-destructive mt-0.5 flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">{language === 'de' ? cost.de : cost.en}</span>
               </div>
