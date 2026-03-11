@@ -603,7 +603,7 @@ const OutcomeSection: React.FC = () => {
                 <p className="text-sm text-foreground">{language === 'de' ? caseStudy.fix.de : caseStudy.fix.en}</p>
               </div>
             </div>
-            <div className="bg-accent/10 border border-accent/30 p-6 rounded-lg">
+            <div className="bg-accent/10 border border-accent/30 p-6">
               <h4 className="text-sm font-bold uppercase tracking-widest text-accent mb-4">
                 {language === 'de' ? 'Ergebnisse:' : 'Outcomes:'}
               </h4>
