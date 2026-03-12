@@ -1,28 +1,124 @@
 
+Ich gehe mit hoher Wahrscheinlichkeit von `/solutions/scaling-readiness-assessment` aus, weil genau diese Route in deiner Session geöffnet wurde und der Hero dort mit „Expert Scaling Assessment” betitelt ist.
 
-## Plan: Pre-Cohort Proof Closing + Neuer Finaler CTA mit Lead-Capture
+## Befund
 
-### 1. Pre-Cohort Proof Closing-Statement wiederherstellen (S9b)
+Die Seite ist aktuell nicht auf dem gleichen Standard wie die anderen Decision-Support-/Solutions-Seiten wie `GTMEffectivenessReview` oder `PricingPackagingReview`.
 
-Das originale Verknappungs-Statement wurde versehentlich ersetzt. Es muss wiederhergestellt und durch "Impact First" ergaenzt werden:
+## Hauptabweichungen
 
-**Zeile 522-526** aendern zu:
-- DE: `'Cohort 1 ist bewusst klein gehalten. Impact First — Fokus für jede/n Teilnehmer:in.'`
-- EN: `'Cohort 1 is deliberately kept small. Impact First — Focus for every participant.'`
+1. **Andere Seitenarchitektur**
+   - `ScalingReadinessAssessment.tsx` ist als großer Monolith gebaut.
+   - Die konsistenten Vergleichsseiten sind in klar getrennte Section-Komponenten gegliedert:
+     `HeroSection`, `ProblemSection`, `SolutionSection`, `OutcomeSection`, `ProcessSection`, `QualificationSection`, `FinalCTASection`.
 
-### 2. Finaler CTA komplett umbauen (S11e)
+2. **Fehlender Standard-Wrapper**
+   - Es gibt **kein `<main>`** um die Sections.
+   - Die Standardseiten nutzen:
+     ```text
+     <div className="min-h-screen bg-background text-foreground">
+       <Navigation />
+       <main>...</main>
+       <FilloutBookingModal ... />
+       <Footer />
+     </div>
+     ```
 
-Statt des bisherigen "Early Access sichern"-Buttons wird der finale CTA zu einer Lead-Capture-Sektion mit E-Mail-Feld und PDF-Download-Versprechen:
+3. **Hero visuell nicht konsistent**
+   - Aktuell: einfacher Hero mit `TwinklingStars` + flachem Gradient.
+   - Standard: Deep-space Hero mit `useParallaxLayers`, Mesh/Grid-Overlay, Breadcrumb-Komponente, Badge-Komponente, animierten Stats, Premium-CTA.
 
-**Headline:** "Bereit, mehr zu erfahren?" / "Ready to learn more?"
+4. **Sections folgen nicht dem standardisierten Design-System**
+   - Aktuell: einfache `py-20`-Blöcke mit Basis-Typografie.
+   - Standard: animierte Sections mit
+     - `useScrollAnimation`
+     - `min-h-[50vh] py-24 lg:py-32`
+     - Gradient-Hintergründen
+     - `font-display text-display-md`
+     - konsistenten Header-Spacings
 
-**Subtext:** "Trag dich ein. Du erhaeltst sofort 'Das Revenue System' als PDF — und erfaehrst als Erste/r, wenn die naechste Kohorte oeffnet. Kostenlos. Kein Commitment. Kein Verkaufsdruck."
+5. **CTA-/Modal-Pattern inkonsistent**
+   - Aktuell: direkte lokale `setIsBookingModalOpen(true)`-Aufrufe im Hero und in der Final CTA.
+   - Standard: Hero-CTA feuert `window.dispatchEvent(new CustomEvent('openBookingModal'))`, Final CTA bekommt `onOpenBooking` vom Parent.
 
-**Card darunter:** "Sofort-Download: 'Das Revenue System'" mit Erklaerung: "Das PDF erklaert, wie du aufhoerst, Taktiken zu stapeln — und anfaengst, systematisch zu wachsen."
+6. **Modal-Reihenfolge inkonsistent**
+   - Aktuell steht `FilloutBookingModal` **vor** dem Footer.
+   - Standard in den vereinheitlichten Solutions-Seiten: Modal **nach** dem Footer.
 
-**Technisch:** Inline-Email-Eingabe + Button, das bei Submit den Lead in `download_leads` speichert (asset_id: `revenue-system-whitepaper`) und den PDF-Download triggert. Nutzt die bestehende Supabase-Integration aus `DownloadLeadForm`. Die Trust-Signale (Session-1-Guarantee, etc.) bleiben darunter.
+7. **Button-Styling nicht auf Premium-Standard**
+   - Aktuell: mehrere generische Buttons mit `className="group"` oder einfachem Outline.
+   - Standard: primäre CTA mit
+     ```text
+     bg-gradient-accent
+     shadow-accent-glow
+     text-cta
+     uppercase tracking-wide
+     ```
 
-### Umfang
-- 1 Datei editiert: `src/pages/RevenueArchitectureSystem.tsx`
-- 2 Stellen: Closing-Statement (Zeile 522-526) + Finaler CTA (Zeile 1016-1053)
+## Umsetzungsplan
 
+### 1. Seite auf Standardstruktur umbauen
+`src/pages/ScalingReadinessAssessment.tsx` auf dieselbe Seitenarchitektur wie die anderen Decision-Support-Seiten refaktorieren:
+- `HeroSection`
+- `ProblemSection`
+- `SolutionSection`
+- `OutcomeSection`
+- `ProcessSection`
+- `QualificationSection`
+- `FinalCTASection`
+- schlanke Main-Page-Komponente mit `<main>`
+
+### 2. Hero auf Decision-Support-Standard bringen
+Hero an `GTMEffectivenessReview.tsx` ausrichten:
+- `useParallaxLayers` ergänzen
+- Deep-space Background + Mesh + Grid + Stars
+- Breadcrumb mit UI-Komponente statt einfachem `nav`
+- Badge auf konsistente Variante umstellen
+- Headline-/Subheadline-/Stats-Typografie angleichen
+- Primäre CTA auf Premium-Gradient standardisieren
+
+### 3. Alle Inhaltssektionen visuell harmonisieren
+Die bestehenden Inhalte beibehalten, aber in das standardisierte Section-Layout überführen:
+- `useScrollAnimation`
+- `min-h-[50vh] py-24 lg:py-32`
+- einheitliche Header-Struktur
+- konsistente Karten, Spacings, Hintergrundwechsel und Animationen
+
+### 4. CTA- und Booking-Logik vereinheitlichen
+- Hero-CTA auf `openBookingModal`-Event umstellen
+- Final CTA als Section-Komponente mit `onOpenBooking`-Prop
+- lokale Direktaufrufe im Content entfernen, wo das Pattern abweicht
+
+### 5. Footer-/Modal-Reihenfolge angleichen
+Seitenende auf den konsistenten Aufbau umstellen:
+```text
+<main>...</main>
+<Footer />
+<FilloutBookingModal ... />
+```
+
+## Technische Details
+
+**Datei mit Hauptbedarf:**
+- `src/pages/ScalingReadinessAssessment.tsx`
+
+**Referenz-Dateien für den Zielstandard:**
+- `src/pages/GTMEffectivenessReview.tsx`
+- `src/pages/PricingPackagingReview.tsx`
+
+**Wichtig bei der Umsetzung:**
+- Inhalte, Copy und Angebotslogik bleiben erhalten
+- geändert wird vor allem:
+  - Seitenstruktur
+  - Hero-System
+  - Section-Layout
+  - CTA-/Modal-Pattern
+  - Typography/spacing/button styling
+
+## Erwartetes Ergebnis
+
+Nach der Umsetzung wirkt das Expert Scaling Assessment:
+- wie Teil derselben Solutions-Familie,
+- visuell und strukturell konsistent mit den anderen Decision-Support-Seiten,
+- sauberer wartbar,
+- und im CTA-/Modal-Verhalten identisch zu den bereits standardisierten Pages.

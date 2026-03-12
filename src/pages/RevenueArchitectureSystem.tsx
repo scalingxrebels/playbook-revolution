@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
@@ -38,7 +38,15 @@ import {
   Star,
   ExternalLink,
   Mail,
+  Download,
+  Loader2,
+  CheckCircle,
 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { supabase } from '@/integrations/supabase/client';
+import { useTrackingParams } from '@/hooks/useUTMParams';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
 
 // ============================================================================
 // SECTION S1: HERO
@@ -521,8 +529,8 @@ const PreCohortProofSection: React.FC = () => {
 
         <p className="text-center text-muted-foreground max-w-2xl mx-auto">
           {language === 'de'
-            ? 'Impact First — Fokus für jede/n Teilnehmer:in.'
-            : 'Impact First — Focus for every participant.'}
+            ? 'Cohort 1 ist bewusst klein gehalten. Impact First — Fokus für jede/n Teilnehmer:in.'
+            : 'Cohort 1 is deliberately kept small. Impact First — Focus for every participant.'}
         </p>
       </div>
     </section>
@@ -704,9 +712,19 @@ const FoundingFrameSection: React.FC = () => {
 // ============================================================================
 // SECTION S11: PRICING + APPLICATION + FAQ + FINAL CTA
 // ============================================================================
+const emailSchema = z.object({
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+});
+
 const PricingSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { toast } = useToast();
+  const trackingParams = useTrackingParams('revenue-system-whitepaper');
+  const [leadEmail, setLeadEmail] = useState('');
+  const [isLeadSubmitting, setIsLeadSubmitting] = useState(false);
+  const [isLeadSuccess, setIsLeadSuccess] = useState(false);
+  const [leadError, setLeadError] = useState('');
 
   const tiers = [
     {
@@ -1013,32 +1031,142 @@ const PricingSection: React.FC = () => {
           </Accordion>
         </div>
 
-        {/* S11e — Final CTA */}
-        <div className="text-center">
+        {/* S11e — Final CTA with Lead Capture */}
+        <div className="text-center max-w-2xl mx-auto">
           <h2 className="font-display text-display-md text-foreground mb-4">
-            {language === 'de' ? 'Dein Platz in Cohort 1' : 'Your Seat in Cohort 1'}
+            {language === 'de' ? 'Bereit, mehr zu erfahren?' : 'Ready to learn more?'}
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
+          <p className="text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
             {language === 'de'
-              ? 'Max. 12 Plätze. Founding-Preis gilt nur für Cohort 1. Ich schaue mir jede Bewerbung persönlich an.'
-              : 'Max. 12 seats. Founding Price valid for Cohort 1 only. I review every application personally.'}
+              ? 'Trag dich ein. Du erhältst sofort „Das Revenue System" als PDF — und erfährst als Erste/r, wenn die nächste Kohorte öffnet. Kostenlos. Kein Commitment. Kein Verkaufsdruck.'
+              : 'Sign up. You\'ll instantly receive "The Revenue System" as a PDF — and be the first to know when the next cohort opens. Free. No commitment. No sales pressure.'}
           </p>
-          <Button
-            size="xl"
-            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 mb-4"
-            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
-          >
-            {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
-            <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-          <p className="text-sm text-muted-foreground">
+
+          {isLeadSuccess ? (
+            <div className="p-8 rounded-lg border border-accent/30 bg-accent/5">
+              <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2 text-foreground">
+                {language === 'de' ? 'Download gestartet!' : 'Download started!'}
+              </h3>
+              <p className="text-muted-foreground">
+                {language === 'de'
+                  ? 'Überprüfe deinen Downloads-Ordner.'
+                  : 'Check your downloads folder.'}
+              </p>
+            </div>
+          ) : (
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                setLeadError('');
+
+                const validation = emailSchema.safeParse({ email: leadEmail });
+                if (!validation.success) {
+                  setLeadError(validation.error.errors[0]?.message || 'Invalid email');
+                  return;
+                }
+
+                setIsLeadSubmitting(true);
+                try {
+                  const { error } = await supabase.from('download_leads').insert({
+                    email: validation.data.email,
+                    asset_id: 'revenue-system-whitepaper',
+                    asset_type: 'lead-magnet',
+                    utm_source: trackingParams.utm_source || null,
+                    utm_medium: trackingParams.utm_medium || null,
+                    utm_campaign: trackingParams.utm_campaign || null,
+                    utm_content: trackingParams.utm_content || null,
+                    utm_term: trackingParams.utm_term || null,
+                    page_url: trackingParams.page_url || null,
+                    referrer: trackingParams.referrer || null,
+                  });
+
+                  if (error) throw error;
+
+                  setIsLeadSuccess(true);
+                  toast({
+                    title: language === 'de' ? 'Download bereit!' : 'Download ready!',
+                    description: language === 'de'
+                      ? 'Dein PDF-Download startet in Kürze.'
+                      : 'Your PDF download will start shortly.',
+                  });
+
+                  setTimeout(() => {
+                    window.open('/downloads/fix-growth-sample.pdf', '_blank');
+                  }, 500);
+                } catch (err) {
+                  console.error('Lead capture error:', err);
+                  toast({
+                    variant: 'destructive',
+                    title: language === 'de' ? 'Fehler' : 'Error',
+                    description: language === 'de'
+                      ? 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'
+                      : 'Something went wrong. Please try again.',
+                  });
+                } finally {
+                  setIsLeadSubmitting(false);
+                }
+              }}
+              className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-8"
+            >
+              <Input
+                type="email"
+                placeholder={language === 'de' ? 'Deine E-Mail-Adresse' : 'Your email address'}
+                value={leadEmail}
+                onChange={(e) => setLeadEmail(e.target.value)}
+                required
+                disabled={isLeadSubmitting}
+                className={`flex-1 h-14 text-base ${leadError ? 'border-destructive' : ''}`}
+              />
+              <Button
+                type="submit"
+                size="xl"
+                disabled={isLeadSubmitting}
+                className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-8 py-4 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 whitespace-nowrap"
+              >
+                {isLeadSubmitting ? (
+                  <Loader2 className="w-5 h-5 animate-spin" />
+                ) : (
+                  <>
+                    <Download className="w-5 h-5 mr-2" />
+                    {language === 'de' ? 'PDF sichern' : 'Get PDF'}
+                  </>
+                )}
+              </Button>
+            </form>
+          )}
+
+          {leadError && (
+            <p className="text-sm text-destructive mb-4">{leadError}</p>
+          )}
+
+          {/* PDF Preview Card */}
+          {!isLeadSuccess && (
+            <div className="max-w-md mx-auto p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm mb-8">
+              <div className="flex items-start gap-4">
+                <FileText className="w-8 h-8 text-accent shrink-0 mt-0.5" />
+                <div className="text-left">
+                  <h4 className="font-semibold text-foreground mb-1">
+                    {language === 'de' ? 'Sofort-Download: „Das Revenue System"' : 'Instant Download: "The Revenue System"'}
+                  </h4>
+                  <p className="text-sm text-muted-foreground">
+                    {language === 'de'
+                      ? 'Das PDF erklärt, wie du aufhörst, Taktiken zu stapeln — und anfängst, systematisch zu wachsen.'
+                      : 'The PDF explains how to stop stacking tactics — and start growing systematically.'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <p className="text-sm text-muted-foreground mb-6">
             {language === 'de' ? 'Fragen? Direkt schreiben → ' : 'Questions? Write directly → '}
             <a href="mailto:michel@scalingx.com" className="text-primary hover:text-primary/80 transition-colors">
               michel@scalingx.com
             </a>
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 mt-8">
+          <div className="flex flex-wrap justify-center gap-6">
             {[
               { de: 'Session-1-Guarantee', en: 'Session 1 Guarantee' },
               { de: 'Kein Commitment vor dem Gespräch', en: 'No commitment before conversation' },
