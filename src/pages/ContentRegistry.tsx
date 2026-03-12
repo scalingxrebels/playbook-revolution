@@ -91,13 +91,23 @@ const ContentRegistry: React.FC = () => {
             ))}
           </div>
 
+          {/* Filter */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-xs font-medium text-muted-foreground">Status:</span>
+            <ToggleGroup type="single" value={statusFilter} onValueChange={(v) => v && setStatusFilter(v)} size="sm">
+              <ToggleGroupItem value="all" className="text-xs px-3">Alle</ToggleGroupItem>
+              <ToggleGroupItem value="live" className="text-xs px-3">Live</ToggleGroupItem>
+              <ToggleGroupItem value="hidden" className="text-xs px-3">Hidden</ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+
           {/* Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-6">
-              <TabsTrigger value="solutions">Solutions ({solutionTiles.length})</TabsTrigger>
-              <TabsTrigger value="playbooks">Playbooks ({playbooks.length})</TabsTrigger>
-              <TabsTrigger value="cases">Cases ({caseStudies.length})</TabsTrigger>
-              <TabsTrigger value="insights">Insights ({sampleInsights.length})</TabsTrigger>
+              <TabsTrigger value="solutions">Solutions ({filteredSolutions.length})</TabsTrigger>
+              <TabsTrigger value="playbooks">Playbooks ({filteredPlaybooks.length})</TabsTrigger>
+              <TabsTrigger value="cases">Cases ({filteredCases.length})</TabsTrigger>
+              <TabsTrigger value="insights">Insights ({filteredInsights.length})</TabsTrigger>
             </TabsList>
 
             {/* Solutions Tab */}
