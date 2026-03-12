@@ -215,14 +215,16 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <LanguageProvider>
-          <TooltipProvider>
-            <OrganizationSchema />
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <AppContent />
-            </BrowserRouter>
-          </TooltipProvider>
+          <ContentVisibilityProvider>
+            <TooltipProvider>
+              <OrganizationSchema />
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <AppContent />
+              </BrowserRouter>
+            </TooltipProvider>
+          </ContentVisibilityProvider>
         </LanguageProvider>
       </ThemeProvider>
     </QueryClientProvider>
