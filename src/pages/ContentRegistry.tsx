@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import Navigation from '@/components/Navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Eye, EyeOff, LayoutGrid, BookOpen, Lightbulb, FolderOpen } from 'lucide-react';
 import { solutionTiles, visibleSolutionTiles } from '@/data/solutionTiles';
@@ -27,6 +28,18 @@ const TableHeader = ({ children }: { children: React.ReactNode }) => (
 const ContentRegistry: React.FC = () => {
   const { user, loading, isAdmin } = useAuth();
   const [activeTab, setActiveTab] = useState('solutions');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+
+  const filterByStatus = <T extends { hidden?: boolean }>(items: T[]) => {
+    if (statusFilter === 'live') return items.filter(i => !i.hidden);
+    if (statusFilter === 'hidden') return items.filter(i => i.hidden);
+    return items;
+  };
+
+  const filteredSolutions = useMemo(() => filterByStatus(solutionTiles), [statusFilter]);
+  const filteredPlaybooks = useMemo(() => filterByStatus(playbooks), [statusFilter]);
+  const filteredCases = useMemo(() => filterByStatus(caseStudies), [statusFilter]);
+  const filteredInsights = useMemo(() => filterByStatus(sampleInsights), [statusFilter]);
 
   if (loading) {
     return (
@@ -78,13 +91,23 @@ const ContentRegistry: React.FC = () => {
             ))}
           </div>
 
+          {/* Filter */}
+          <div className="flex items-center gap-3 mb-4">
+            <span className="text-xs font-medium text-muted-foreground">Status:</span>
+            <ToggleGroup type="single" value={statusFilter} onValueChange={(v) => v && setStatusFilter(v)} size="sm">
+              <ToggleGroupItem value="all" className="text-xs px-3">Alle</ToggleGroupItem>
+              <ToggleGroupItem value="live" className="text-xs px-3">Live</ToggleGroupItem>
+              <ToggleGroupItem value="hidden" className="text-xs px-3">Hidden</ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+
           {/* Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="mb-6">
-              <TabsTrigger value="solutions">Solutions ({solutionTiles.length})</TabsTrigger>
-              <TabsTrigger value="playbooks">Playbooks ({playbooks.length})</TabsTrigger>
-              <TabsTrigger value="cases">Cases ({caseStudies.length})</TabsTrigger>
-              <TabsTrigger value="insights">Insights ({sampleInsights.length})</TabsTrigger>
+              <TabsTrigger value="solutions">Solutions ({filteredSolutions.length})</TabsTrigger>
+              <TabsTrigger value="playbooks">Playbooks ({filteredPlaybooks.length})</TabsTrigger>
+              <TabsTrigger value="cases">Cases ({filteredCases.length})</TabsTrigger>
+              <TabsTrigger value="insights">Insights ({filteredInsights.length})</TabsTrigger>
             </TabsList>
 
             {/* Solutions Tab */}
@@ -104,7 +127,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {solutionTiles.map((tile, i) => (
+                      {filteredSolutions.map((tile, i) => (
                         <tr key={tile.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
                           <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
                           <td className="px-4 py-3">
@@ -153,7 +176,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {playbooks.map((pb, i) => {
+                      {filteredPlaybooks.map((pb, i) => {
                         const url = `/playbooks/${pb.slug}`;
                         return (
                           <tr key={pb.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
@@ -201,7 +224,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {caseStudies.map((cs, i) => {
+                      {filteredCases.map((cs, i) => {
                         const url = `/cases/${cs.slug}`;
                         return (
                           <tr key={cs.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
@@ -245,30 +268,37 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Kategorie</TableHeader>
                         <TableHeader>Status</TableHeader>
+                        <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
-                      {sampleInsights.map((item, i) => (
-                        <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                          <td className="px-4 py-3">
-                            <span className="text-sm font-medium text-foreground">{item.title.de}</span>
-                            <br />
-                            <span className="text-xs text-muted-foreground">{item.slug}</span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <Badge variant="outline" className="text-xs">{item.type}</Badge>
-                          </td>
-                          <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
-                          <td className="px-4 py-3"><StatusBadge hidden={item.hidden} /></td>
-                          <td className="px-4 py-3">
-                            <Link to={`/insights/${item.slug}`} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                              <ExternalLink className="w-3 h-3" /> Öffnen
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
+                      {filteredInsights.map((item, i) => {
+                        const url = `/insights/${item.slug}`;
+                        return (
+                          <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                            <td className="px-4 py-3">
+                              <span className="text-sm font-medium text-foreground">{item.title.de}</span>
+                              <br />
+                              <span className="text-xs text-muted-foreground">{item.slug}</span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Badge variant="outline" className="text-xs">{item.type}</Badge>
+                            </td>
+                            <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
+                            <td className="px-4 py-3"><StatusBadge hidden={item.hidden} /></td>
+                            <td className="px-4 py-3">
+                              <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
+                                <ExternalLink className="w-3 h-3" /> Öffnen
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
