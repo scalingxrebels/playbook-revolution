@@ -127,7 +127,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {solutionTiles.map((tile, i) => (
+                      {filteredSolutions.map((tile, i) => (
                         <tr key={tile.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
                           <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
                           <td className="px-4 py-3">
