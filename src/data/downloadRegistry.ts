@@ -549,6 +549,25 @@ export const sampleAssets: DownloadAsset[] = [
 ];
 
 // ============================================================================
+// LEAD MAGNETS (1)
+// ============================================================================
+
+export const leadMagnetAssets: DownloadAsset[] = [
+  {
+    id: 'lead-magnet-gtm-stack-map',
+    type: 'sample',
+    slug: 'gtm-stack-map',
+    titleEn: 'GTM Stack Map 2026',
+    titleDe: 'GTM Stack Map 2026',
+    fileName: 'gtm-stack-map-2026.pdf',
+    filePath: '/downloads/gtm-stack-map-2026.pdf',
+    requiresEmail: true,
+    isAvailable: true,
+    category: 'lead-magnet',
+  },
+];
+
+// ============================================================================
 // BOOK (1)
 // ============================================================================
 
@@ -575,6 +594,7 @@ export const downloadRegistry: DownloadAsset[] = [
   ...caseStudyAssets,
   ...researchAssets,
   ...sampleAssets,
+  ...leadMagnetAssets,
   ...bookAssets,
 ];
 

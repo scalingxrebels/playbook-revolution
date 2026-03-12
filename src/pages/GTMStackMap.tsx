@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BreadcrumbSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -16,8 +15,8 @@ import {
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
-import { supabase } from '@/integrations/supabase/client';
-import { toast } from 'sonner';
+import FilloutDownloadModal from '@/components/forms/FilloutDownloadModal';
+import { getAssetById } from '@/data/downloadRegistry';
 import {
   ArrowRight,
   Check,
@@ -36,127 +35,9 @@ import {
 } from 'lucide-react';
 
 // ============================================================================
-// INLINE LEAD FORM
-// ============================================================================
-interface LeadFormProps {
-  variant?: 'hero' | 'cta';
-}
-
-const InlineLeadForm: React.FC<LeadFormProps> = ({ variant = 'hero' }) => {
-  const { language } = useLanguage();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email.trim()) return;
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
-      toast.error(language === 'de' ? 'Bitte gib eine gültige E-Mail-Adresse ein.' : 'Please enter a valid email address.');
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
-      const utmRaw = sessionStorage.getItem('scalingx_utm_params');
-      const utm = utmRaw ? JSON.parse(utmRaw) : {};
-
-      const { error } = await supabase.from('download_leads').insert({
-        email: email.trim(),
-        name: name.trim() || null,
-        asset_id: 'gtm-stack-map-2026',
-        asset_type: 'lead-magnet',
-        page_url: window.location.href,
-        referrer: document.referrer || null,
-        utm_source: utm.utm_source || null,
-        utm_medium: utm.utm_medium || null,
-        utm_campaign: utm.utm_campaign || null,
-        utm_content: utm.utm_content || null,
-        utm_term: utm.utm_term || null,
-      });
-
-      if (error) throw error;
-
-      setIsSubmitted(true);
-      toast.success(language === 'de' ? 'Download startet…' : 'Download starting…');
-
-      const link = document.createElement('a');
-      link.href = '/downloads/gtm-stack-map-2026.pdf';
-      link.download = 'GTM-Stack-Map-2026.pdf';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch {
-      toast.error(language === 'de' ? 'Etwas ist schiefgelaufen. Bitte versuche es erneut.' : 'Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  if (isSubmitted) {
-    return (
-      <div className="flex flex-col items-center gap-3 py-4">
-        <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
-          <Check className="w-6 h-6 text-accent" />
-        </div>
-        <p className="text-foreground font-semibold text-lg">
-          {language === 'de' ? 'Dein Download startet automatisch.' : 'Your download is starting automatically.'}
-        </p>
-        <a
-          href="/downloads/gtm-stack-map-2026.pdf"
-          download="GTM-Stack-Map-2026.pdf"
-          className="text-accent underline underline-offset-4 text-sm hover:text-accent/80 transition-colors"
-        >
-          {language === 'de' ? 'Download nicht gestartet? Hier klicken →' : 'Download didn\'t start? Click here →'}
-        </a>
-      </div>
-    );
-  }
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full max-w-lg">
-      <Input
-        type="text"
-        placeholder={language === 'de' ? 'Vorname' : 'First name'}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="bg-background/50 border-border/50 backdrop-blur-sm h-12"
-        maxLength={100}
-      />
-      <Input
-        type="email"
-        placeholder={language === 'de' ? 'E-Mail *' : 'Email *'}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        className="bg-background/50 border-border/50 backdrop-blur-sm h-12"
-        maxLength={255}
-      />
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        className="h-12 px-6 whitespace-nowrap font-bold uppercase tracking-wide text-sm bg-gradient-accent text-primary-foreground shadow-accent-glow"
-      >
-        {isSubmitting ? (
-          <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-        ) : (
-          <>
-            <Download className="w-4 h-4 mr-2" />
-            {language === 'de' ? 'Herunterladen' : 'Download'}
-          </>
-        )}
-      </Button>
-    </form>
-  );
-};
-
-// ============================================================================
 // SECTION 1: HERO
 // ============================================================================
-const HeroSection: React.FC = () => {
+const HeroSection: React.FC<{ onDownload: () => void }> = ({ onDownload }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
 
@@ -186,19 +67,16 @@ const HeroSection: React.FC = () => {
         className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      {/* Mesh Gradient Overlay */}
       <div
         className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
-      {/* Twinkling Stars */}
       <div
         className="absolute inset-0 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px)` }}
       >
         <TwinklingStars />
       </div>
-      {/* Grid Pattern */}
       <div
         className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[2]}px) scale(1.1)` }}
@@ -257,9 +135,16 @@ const HeroSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Inline Form */}
+        {/* CTA Button */}
         <div className="flex justify-center mb-8 animate-slide-up" style={{ animationDelay: '0.4s' }}>
-          <InlineLeadForm variant="hero" />
+          <Button
+            size="xl"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            onClick={onDownload}
+          >
+            <Download className="w-5 h-5 mr-2" />
+            {language === 'de' ? 'Kostenlos herunterladen' : 'Download for Free'}
+          </Button>
         </div>
 
         {/* Trust Badges */}
@@ -317,7 +202,6 @@ const BenefitsSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
 
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             {language === 'de' ? 'Was du bekommst' : 'What You Get'}
@@ -327,7 +211,6 @@ const BenefitsSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* Benefits Grid */}
         <div className="grid md:grid-cols-3 gap-6">
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
@@ -378,7 +261,6 @@ const ICPSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
 
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
             {language === 'de' ? 'Zielgruppe' : 'Target Audience'}
@@ -433,7 +315,6 @@ const SocialProofSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-16 animate-slide-up">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             {language === 'de' ? 'Social Proof' : 'Social Proof'}
@@ -464,7 +345,7 @@ const SocialProofSection: React.FC = () => {
 // ============================================================================
 // SECTION 5: CTA REPEAT
 // ============================================================================
-const CTARepeatSection: React.FC = () => {
+const CTARepeatSection: React.FC<{ onDownload: () => void }> = ({ onDownload }) => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
@@ -517,7 +398,6 @@ const CTARepeatSection: React.FC = () => {
       />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
-        {/* Header */}
         <div className="text-center mb-12 animate-slide-up">
           <Badge variant="gradient" className="mb-8">
             <Sparkles className="w-4 h-4 mr-2" />
@@ -541,9 +421,16 @@ const CTARepeatSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Inline Form */}
+        {/* CTA Button */}
         <div className="flex justify-center mb-8 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-          <InlineLeadForm variant="cta" />
+          <Button
+            size="xl"
+            className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
+            onClick={onDownload}
+          >
+            <Download className="w-5 h-5 mr-2" />
+            {language === 'de' ? 'Kostenlos herunterladen' : 'Download for Free'}
+          </Button>
         </div>
 
         {/* Trust Badges */}
@@ -564,6 +451,9 @@ const CTARepeatSection: React.FC = () => {
 // PAGE
 // ============================================================================
 const GTMStackMap: React.FC = () => {
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const downloadAsset = getAssetById('lead-magnet-gtm-stack-map');
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
@@ -573,13 +463,18 @@ const GTMStackMap: React.FC = () => {
         { name: 'GTM Stack Map 2026', path: '/solutions/gtm-stack-map' },
       ]} />
       <main>
-        <HeroSection />
+        <HeroSection onDownload={() => setIsDownloadModalOpen(true)} />
         <BenefitsSection />
         <ICPSection />
         <SocialProofSection />
-        <CTARepeatSection />
+        <CTARepeatSection onDownload={() => setIsDownloadModalOpen(true)} />
       </main>
       <Footer />
+      <FilloutDownloadModal
+        asset={downloadAsset ?? null}
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+      />
     </div>
   );
 };
