@@ -37,7 +37,7 @@ const ContentRegistry: React.FC = () => {
   }
 
   if (!user || !isAdmin) {
-    return <Navigate to="/auth" replace />;
+    return <Navigate to="/auth?returnTo=/content-registry" replace />;
   }
 
   return (
