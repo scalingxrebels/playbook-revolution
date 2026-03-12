@@ -462,8 +462,8 @@ const PreCohortProofSection: React.FC = () => {
       icon: Award,
       titleDe: 'Practitioner-Proof',
       titleEn: 'Practitioner Proof',
-      textDe: 'Über 15 Jahre Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
-      textEn: 'Over 15 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
+      textDe: 'Seit 19 Jahren Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
+      textEn: 'For 19 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
     },
     {
       icon: FileText,
