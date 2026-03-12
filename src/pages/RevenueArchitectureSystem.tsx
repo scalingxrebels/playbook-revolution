@@ -38,7 +38,15 @@ import {
   Star,
   ExternalLink,
   Mail,
+  Download,
+  Loader2,
+  CheckCircle,
 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { supabase } from '@/integrations/supabase/client';
+import { useTrackingParams } from '@/hooks/useUTMParams';
+import { useToast } from '@/hooks/use-toast';
+import { z } from 'zod';
 
 // ============================================================================
 // SECTION S1: HERO
