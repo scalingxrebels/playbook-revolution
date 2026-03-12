@@ -689,6 +689,11 @@ const FoundingFrameSection: React.FC = () => {
                 ? 'Warum ein Founding-Preis? Weil Cohort 1 auch für mich ein Aufbau-Moment ist. Ich will, dass die ersten Teilnehmer außergewöhnlich gut betreut werden. Dafür halte ich die Gruppe klein — und den Preis fair.'
                 : "Why a Founding Price? Because Cohort 1 is a building moment for me too. I want the first participants to be exceptionally well supported. That's why I keep the group small — and the price fair."}
             </p>
+            <p className="pt-4 text-foreground font-medium">
+              {language === 'de'
+                ? 'Als Cohort-1-Teilnehmer:in bist du Teil des Beirats. Du gestaltest das Programm aktiv mit — dein Feedback fließt direkt in die Weiterentwicklung ein.'
+                : "As a Cohort 1 participant, you're part of the advisory board. You actively shape the program — your feedback feeds directly into its evolution."}
+            </p>
           </div>
         </div>
       </div>
