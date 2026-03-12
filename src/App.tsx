@@ -95,6 +95,7 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Glossar = lazy(() => import("./pages/Glossar"));
 const IndexV2 = lazy(() => import("./pages/IndexV2"));
+const ContentRegistry = lazy(() => import("./pages/ContentRegistry"));
 
 const queryClient = new QueryClient();
 
