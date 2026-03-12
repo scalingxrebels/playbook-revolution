@@ -7,7 +7,7 @@ import CaseFilterSection from '@/components/cases/CaseFilterSection';
 import CaseCard from '@/components/cases/CaseCard';
 import CaseCTA from '@/components/cases/CaseCTA';
 import { useCaseFilters } from '@/components/cases/useCaseFilters';
-import { caseStudies } from '@/data/cases';
+import { caseStudies, visibleCaseStudies } from '@/data/cases';
 
 // Helper: Parse ROI string to number
 const parseRoi = (roi: string): number | null => {
@@ -27,7 +27,7 @@ const parseRoi = (roi: string): number | null => {
 
 // Calculate median ROI from case studies
 const calculateMedianRoi = (): string => {
-  const roiValues = caseStudies
+  const roiValues = visibleCaseStudies
     .map(c => parseRoi(c.roi))
     .filter((v): v is number => v !== null)
     .sort((a, b) => a - b);
@@ -43,7 +43,7 @@ const calculateMedianRoi = (): string => {
 };
 
 const casesStats = [
-  { value: String(caseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+  { value: String(visibleCaseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
   { value: calculateMedianRoi(), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
   { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
   { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },

@@ -95,6 +95,7 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Glossar = lazy(() => import("./pages/Glossar"));
 const IndexV2 = lazy(() => import("./pages/IndexV2"));
+const ContentRegistry = lazy(() => import("./pages/ContentRegistry"));
 
 const queryClient = new QueryClient();
 
@@ -198,6 +199,7 @@ const AppContent = () => {
           <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/glossar" element={<Glossar />} />
           <Route path="/home-v2" element={<IndexV2 />} />
+          <Route path="/content-registry" element={<ContentRegistry />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { caseStudies, ClientCaseStudy } from '@/data/cases';
+import { visibleCaseStudies, ClientCaseStudy } from '@/data/cases';
 
 interface UseCaseFiltersReturn {
   searchQuery: string;
@@ -75,7 +75,7 @@ export const useCaseFilters = (): UseCaseFiltersReturn => {
 
   // Filter cases
   const filteredCases = useMemo(() => {
-    return caseStudies.filter((caseStudy) => {
+    return visibleCaseStudies.filter((caseStudy) => {
       // Search filter
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
@@ -123,7 +123,7 @@ export const useCaseFilters = (): UseCaseFiltersReturn => {
     selectedStage,
     setSelectedStage,
     filteredCases,
-    totalCount: caseStudies.length,
+    totalCount: visibleCaseStudies.length,
     filteredCount: filteredCases.length,
     clearFilters,
     hasActiveFilters,
