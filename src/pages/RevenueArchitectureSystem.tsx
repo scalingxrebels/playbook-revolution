@@ -934,7 +934,7 @@ const LeadCaptureSection: React.FC = () => {
           >
             <Input
               type="email"
-              placeholder={language === 'de' ? 'Deine E-Mail-Adresse' : 'Your email address'}
+              placeholder="michel@scalingx.io"
               value={leadEmail}
               onChange={(e) => setLeadEmail(e.target.value)}
               required
