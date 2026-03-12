@@ -49,8 +49,27 @@ const ContentRegistry: React.FC = () => {
     );
   }
 
-  if (!user || !isAdmin) {
+  if (!user) {
     return <Navigate to="/auth?returnTo=/content-registry" replace />;
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen bg-background text-foreground">
+        <Navigation />
+        <main className="pt-24 pb-16">
+          <div className="container max-w-2xl mx-auto px-4 text-center">
+            <h1 className="text-2xl font-bold text-foreground mb-3">Zugriff verweigert</h1>
+            <p className="text-sm text-muted-foreground mb-6">
+              Du bist eingeloggt, hast aber keine Admin-Berechtigung für die Content Registry.
+            </p>
+            <Link to="/" className="text-primary hover:underline text-sm">
+              Zur Startseite
+            </Link>
+          </div>
+        </main>
+      </div>
+    );
   }
 
   return (
