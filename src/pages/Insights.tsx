@@ -5,7 +5,8 @@ import InsightsHero from '@/components/insights/InsightsHero';
 import InsightsFilterSection, { type InsightTab } from '@/components/insights/InsightsFilterSection';
 import InsightsGrid from '@/components/insights/InsightsGrid';
 import InsightsCTA from '@/components/insights/InsightsCTA';
-import { visibleInsights } from '@/data/insights';
+import { sampleInsights } from '@/data/insights';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 
 const Insights: React.FC = () => {
   const [activeTab, setActiveTab] = useState<InsightTab>('all');
