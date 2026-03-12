@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { ContentVisibilityProvider } from "@/contexts/ContentVisibilityContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import CookieBanner from "./components/CookieBanner";
 import { ScrollToTop } from "./components/ScrollToTop";
