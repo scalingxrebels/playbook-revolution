@@ -22,7 +22,7 @@ const Insights: React.FC = () => {
   }, []);
 
   const filteredItems = useMemo(() => {
-    let items = [...sampleInsights];
+    let items = [...visibleInsights];
 
     // Tab filter
     if (activeTab === 'articles') {
