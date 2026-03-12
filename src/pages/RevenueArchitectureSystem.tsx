@@ -579,7 +579,7 @@ const CredibilitySection: React.FC = () => {
           <div>
             <div className="aspect-[3/4] bg-card/10 border-2 border-border mb-6 overflow-hidden">
               <img
-                src="/images/ml-portrait-closeup.png"
+                src="/images/ml-speaking.png"
                 alt="Michel Lason"
                 className="w-full h-full object-cover"
                 loading="lazy"
