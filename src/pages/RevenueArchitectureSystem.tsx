@@ -521,8 +521,8 @@ const PreCohortProofSection: React.FC = () => {
 
         <p className="text-center text-muted-foreground max-w-2xl mx-auto">
           {language === 'de'
-            ? 'Impact First — Fokus für jede/n Teilnehmer:in.'
-            : 'Impact First — Focus for every participant.'}
+            ? 'Cohort 1 ist bewusst klein gehalten. Impact First — Fokus für jede/n Teilnehmer:in.'
+            : 'Cohort 1 is deliberately kept small. Impact First — Focus for every participant.'}
         </p>
       </div>
     </section>
