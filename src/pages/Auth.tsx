@@ -26,7 +26,9 @@ export default function Auth() {
 
   useEffect(() => {
     if (!loading && user) {
-      navigate('/leads-dashboard');
+      const params = new URLSearchParams(window.location.search);
+      const returnTo = params.get('returnTo') || '/leads-dashboard';
+      navigate(returnTo);
     }
   }, [user, loading, navigate]);
 
