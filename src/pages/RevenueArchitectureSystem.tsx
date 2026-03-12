@@ -180,7 +180,7 @@ const VSLSection: React.FC = () => {
       ]
     : [
         "Most B2B SaaS teams solve the wrong problem — and wonder why CAC keeps rising.",
-        'The Revenue Architecture System™ — 6 weeks, 22 revenue building blocks, complete Revenue System built live.',
+        'The Revenue Architecture System — 6 weeks, 22 revenue building blocks, complete Revenue System built live.',
         'Participants report significantly reduced CAC — through systematic ICP sharpening and funnel optimization.',
       ];
 
