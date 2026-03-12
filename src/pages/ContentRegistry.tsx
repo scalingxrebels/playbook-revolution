@@ -28,6 +28,18 @@ const TableHeader = ({ children }: { children: React.ReactNode }) => (
 const ContentRegistry: React.FC = () => {
   const { user, loading, isAdmin } = useAuth();
   const [activeTab, setActiveTab] = useState('solutions');
+  const [statusFilter, setStatusFilter] = useState<string>('all');
+
+  const filterByStatus = <T extends { hidden?: boolean }>(items: T[]) => {
+    if (statusFilter === 'live') return items.filter(i => !i.hidden);
+    if (statusFilter === 'hidden') return items.filter(i => i.hidden);
+    return items;
+  };
+
+  const filteredSolutions = useMemo(() => filterByStatus(solutionTiles), [statusFilter]);
+  const filteredPlaybooks = useMemo(() => filterByStatus(playbooks), [statusFilter]);
+  const filteredCases = useMemo(() => filterByStatus(caseStudies), [statusFilter]);
+  const filteredInsights = useMemo(() => filterByStatus(sampleInsights), [statusFilter]);
 
   if (loading) {
     return (
