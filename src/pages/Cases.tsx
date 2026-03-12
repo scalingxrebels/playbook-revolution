@@ -7,7 +7,7 @@ import CaseFilterSection from '@/components/cases/CaseFilterSection';
 import CaseCard from '@/components/cases/CaseCard';
 import CaseCTA from '@/components/cases/CaseCTA';
 import { useCaseFilters } from '@/components/cases/useCaseFilters';
-import { caseStudies } from '@/data/cases';
+import { caseStudies, visibleCaseStudies } from '@/data/cases';
 
 // Helper: Parse ROI string to number
 const parseRoi = (roi: string): number | null => {
