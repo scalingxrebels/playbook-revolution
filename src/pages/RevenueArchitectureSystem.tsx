@@ -130,7 +130,7 @@ const HeroSection: React.FC = () => {
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
             onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
-            {language === 'de' ? 'Jetzt bewerben — Founding-Preis sichern' : 'Apply Now — Secure Founding Price'}
+            {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           <Button
@@ -139,7 +139,7 @@ const HeroSection: React.FC = () => {
             onClick={() => scrollToSection('vsl-section')}
             className="border-2"
           >
-            {language === 'de' ? 'Erst mehr erfahren' : 'Learn More First'}
+            {language === 'de' ? 'Erst Video ansehen' : 'Watch Video First'}
             <ChevronDown className="w-4 h-4 ml-2" />
           </Button>
         </div>
@@ -312,51 +312,57 @@ const ProgramSection: React.FC = () => {
   const sessions = [
     {
       week: 1,
-      titleDe: 'Market & ICP',
-      titleEn: 'Market & ICP',
-      descDe: 'Wer kauft wirklich, warum, wann?',
-      descEn: 'Who really buys, why, when?',
-      deliverables: 'D01 · D02 · D03',
+      titleDe: 'Strategische Grundlagen',
+      titleEn: 'Strategic Foundations',
+      outcomeDe: 'Du weißt, in welchem Markt du spielst und wen du ansprichst.',
+      outcomeEn: 'You know which market you play in and who you address.',
+      deliverables: ['Marktanalyse', 'Challenge-Solution-Matrix', 'ICP-Profil'],
+      deliverablesEn: ['Market Analysis', 'Challenge-Solution Matrix', 'ICP Profile'],
     },
     {
       week: 2,
-      titleDe: 'Offer & Growth Engine',
-      titleEn: 'Offer & Growth Engine',
-      descDe: 'Was ist der Wert — und wie wird er kommuniziert?',
-      descEn: 'What is the value — and how is it communicated?',
-      deliverables: 'D04 · D05 · D06',
+      titleDe: 'Value Stack & Growth Engine',
+      titleEn: 'Value Stack & Growth Engine',
+      outcomeDe: 'Du weißt, wie dein ICP kauft — und welcher Funnel-Typ passt.',
+      outcomeEn: 'You know how your ICP buys — and which funnel type fits.',
+      deliverables: ['Customer Journey', 'Value Stack', 'Growth Engine Architecture'],
+      deliverablesEn: ['Customer Journey', 'Value Stack', 'Growth Engine Architecture'],
     },
     {
       week: 3,
-      titleDe: 'Entry Layer',
-      titleEn: 'Entry Layer',
-      descDe: 'Landing Pages, Assets, Persuasion-Architektur',
-      descEn: 'Landing pages, assets, persuasion architecture',
-      deliverables: 'D07 · D08 · D09',
+      titleDe: 'Entry Layer & Persuasion',
+      titleEn: 'Entry Layer & Persuasion',
+      outcomeDe: 'Dein Funnel-Eingang steht. Landing Pages und Forms sind live.',
+      outcomeEn: 'Your funnel entry is live. Landing pages and forms are ready.',
+      deliverables: ['Channel Playbook', 'Entry Layer Blueprint', 'Persuasion Blueprint'],
+      deliverablesEn: ['Channel Playbook', 'Entry Layer Blueprint', 'Persuasion Blueprint'],
     },
     {
       week: 4,
-      titleDe: 'Messaging & Funnel',
-      titleEn: 'Messaging & Funnel',
-      descDe: 'Email-Sequenzen, Asset Stack, Funnel Blueprint',
-      descEn: 'Email sequences, asset stack, funnel blueprint',
-      deliverables: 'D10 · D11 · D12',
+      titleDe: 'Messaging & Funnel-Abschluss',
+      titleEn: 'Messaging & Funnel Completion',
+      outcomeDe: 'Dein Funnel konvertiert. Email-Sequenzen laufen. Assets stehen.',
+      outcomeEn: 'Your funnel converts. Email sequences are running. Assets are ready.',
+      deliverables: ['Email Sequencing', 'Asset Stack', 'Funnel Blueprint'],
+      deliverablesEn: ['Email Sequencing', 'Asset Stack', 'Funnel Blueprint'],
     },
     {
       week: 5,
       titleDe: 'Revenue Operating System',
       titleEn: 'Revenue Operating System',
-      descDe: 'Tech Stack, Revenue System Architecture, Automation',
-      descEn: 'Tech stack, revenue system architecture, automation',
-      deliverables: 'D13 · D14 · D15',
+      outcomeDe: 'Marketing, Sales und CS arbeiten in einer Logik.',
+      outcomeEn: 'Marketing, Sales, and CS operate in one logic.',
+      deliverables: ['Revenue System Architecture', 'Data Flow', 'Automation Priorities', 'Tech Stack Map', 'Revenue Report'],
+      deliverablesEn: ['Revenue System Architecture', 'Data Flow', 'Automation Priorities', 'Tech Stack Map', 'Revenue Report'],
     },
     {
       week: 6,
-      titleDe: 'Aktivierung & Scale',
-      titleEn: 'Activation & Scale',
-      descDe: 'Launch Playbook, Retention, Traffic & Scale Blueprints',
-      descEn: 'Launch playbook, retention, traffic & scale blueprints',
-      deliverables: 'D16 · D17 · D18–D22',
+      titleDe: 'Traffic Activation',
+      titleEn: 'Traffic Activation',
+      outcomeDe: 'Dein System bekommt skalierbaren Traffic. Phase II startet.',
+      outcomeEn: 'Your system gets scalable traffic. Phase II starts.',
+      deliverables: ['SEO', 'SEA', 'GEO', 'Earned Media', 'Content Flywheel'],
+      deliverablesEn: ['SEO', 'SEA', 'GEO', 'Earned Media', 'Content Flywheel'],
     },
   ];
 
@@ -402,15 +408,19 @@ const ProgramSection: React.FC = () => {
               <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
                 {language === 'de' ? `Woche ${session.week}` : `Week ${session.week}`}
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">
+              <h3 className="font-display text-lg font-bold text-foreground mb-3">
                 {language === 'de' ? session.titleDe : session.titleEn}
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {language === 'de' ? session.descDe : session.descEn}
-              </p>
-              <div className="text-xs text-muted-foreground/70 font-mono">
-                {session.deliverables}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {(language === 'de' ? session.deliverables : session.deliverablesEn).map((d, i) => (
+                  <span key={i} className="text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-sm">
+                    {d}
+                  </span>
+                ))}
               </div>
+              <p className="text-sm text-muted-foreground italic">
+                → {language === 'de' ? session.outcomeDe : session.outcomeEn}
+              </p>
             </div>
           ))}
         </div>
@@ -452,8 +462,8 @@ const PreCohortProofSection: React.FC = () => {
       icon: Award,
       titleDe: 'Practitioner-Proof',
       titleEn: 'Practitioner Proof',
-      textDe: 'Über 15 Jahre Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
-      textEn: 'Over 15 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
+      textDe: 'Seit 19 Jahren Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
+      textEn: 'For 19 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
     },
     {
       icon: FileText,
@@ -569,7 +579,7 @@ const CredibilitySection: React.FC = () => {
           <div>
             <div className="aspect-[3/4] bg-card/10 border-2 border-border mb-6 overflow-hidden">
               <img
-                src="/images/ml-portrait-closeup.png"
+                src="/images/ml-speaking.png"
                 alt="Michel Lason"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -591,8 +601,8 @@ const CredibilitySection: React.FC = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 {language === 'de'
-                  ? 'Über 15 Jahre habe ich Revenue-Systeme für B2B-SaaS-Unternehmen aufgebaut — als Operator. Nicht als Berater, der Empfehlungen gibt und geht.'
-                  : "For over 15 years I've built Revenue Systems for B2B SaaS companies — as an operator. Not as a consultant who gives recommendations and leaves."}
+                  ? 'Seit 19 Jahren baue ich Revenue-Systeme für B2B-SaaS-Unternehmen auf — als Operator. Nicht als Berater, der Empfehlungen gibt und geht.'
+                  : "For 19 years I've built Revenue Systems for B2B SaaS companies — as an operator. Not as a consultant who gives recommendations and leaves."}
               </p>
               <p>
                 {language === 'de'
