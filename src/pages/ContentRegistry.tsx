@@ -224,7 +224,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {caseStudies.map((cs, i) => {
+                      {filteredCases.map((cs, i) => {
                         const url = `/cases/${cs.slug}`;
                         return (
                           <tr key={cs.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
