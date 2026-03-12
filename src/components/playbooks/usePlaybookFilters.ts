@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { visiblePlaybooks, type Playbook } from '@/data/playbooks';
+import { playbooks, type Playbook } from '@/data/playbooks';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 import { 
   type ActiveFilters, 
   defaultFilters,
