@@ -27,7 +27,7 @@ const parseRoi = (roi: string): number | null => {
 
 // Calculate median ROI from case studies
 const calculateMedianRoi = (): string => {
-  const roiValues = caseStudies
+  const roiValues = visibleCaseStudies
     .map(c => parseRoi(c.roi))
     .filter((v): v is number => v !== null)
     .sort((a, b) => a - b);
