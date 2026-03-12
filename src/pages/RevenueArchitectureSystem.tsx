@@ -601,8 +601,8 @@ const CredibilitySection: React.FC = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 {language === 'de'
-                  ? 'Über 15 Jahre habe ich Revenue-Systeme für B2B-SaaS-Unternehmen aufgebaut — als Operator. Nicht als Berater, der Empfehlungen gibt und geht.'
-                  : "For over 15 years I've built Revenue Systems for B2B SaaS companies — as an operator. Not as a consultant who gives recommendations and leaves."}
+                  ? 'Seit 19 Jahren baue ich Revenue-Systeme für B2B-SaaS-Unternehmen auf — als Operator. Nicht als Berater, der Empfehlungen gibt und geht.'
+                  : "For 19 years I've built Revenue Systems for B2B SaaS companies — as an operator. Not as a consultant who gives recommendations and leaves."}
               </p>
               <p>
                 {language === 'de'
