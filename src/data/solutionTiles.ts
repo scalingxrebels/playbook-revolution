@@ -1646,6 +1646,42 @@ export const solutionTiles: SolutionTile[] = [
     secondaryCtaEn: 'Learn more',
     secondaryCtaDe: 'Mehr erfahren',
     secondaryCtaUrl: '/about'
+  },
+
+  // ============================================
+  // AI-POWERED TOOLS - GTM STACK MAP 2026 (ID 46)
+  // ============================================
+  {
+    id: 46,
+    slug: 'gtm-stack-map',
+    solutionType: 'tools',
+    challenges: ['cac-crisis', 'growth-stalled', 'scaling-chaos', 'ai-transformation', 'orientation'],
+    price: 'Free',
+    priceTag: 'free',
+    headlineEn: 'GTM Stack Map 2026',
+    headlineDe: 'GTM Stack Map 2026',
+    problemEn: "B2B SaaS teams waste weeks researching GTM tools—and still miss the best options. The landscape changes every quarter, and most overviews are outdated before they're published.",
+    problemDe: "B2B SaaS Teams verschwenden Wochen mit der Recherche von GTM-Tools—und verpassen trotzdem die besten Optionen. Die Landschaft ändert sich jedes Quartal, und die meisten Übersichten sind veraltet, bevor sie veröffentlicht werden.",
+    solutionEn: "The complete 2026 GTM tool landscape, categorized by funnel layer. With recommendation logic for every maturity stage and AI-native tools separately marked.",
+    solutionDe: "Die vollständige GTM-Tool-Landschaft 2026, kategorisiert nach Funnel-Layer. Mit Empfehlungs-Logik für jeden Reifegrad und separat markierten AI-nativen Tools.",
+    deliverablesEn: [
+      'All GTM tools 2026 by funnel layer',
+      'Maturity-based recommendation logic',
+      'AI-native tools highlighted',
+      'Instant download — no setup needed'
+    ],
+    deliverablesDe: [
+      'Alle GTM-Tools 2026 nach Funnel-Layer',
+      'Reifegrad-basierte Empfehlungs-Logik',
+      'AI-native Tools hervorgehoben',
+      'Sofortiger Download — kein Setup nötig'
+    ],
+    impactEn: "Stop guessing, start building. The only GTM tool overview that's actually current — used by 200+ teams.",
+    impactDe: "Schluss mit Raten, anfangen zu bauen. Die einzige GTM-Tool-Übersicht, die wirklich aktuell ist — von 200+ Teams genutzt.",
+    primaryCtaEn: 'Learn more',
+    primaryCtaDe: 'Mehr erfahren',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/gtm-stack-map'
   }
 ];
 

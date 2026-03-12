@@ -21,6 +21,7 @@ const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
 const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
+const Insights = lazy(() => import("./pages/Insights"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
@@ -69,6 +70,7 @@ const Workshop = lazy(() => import("./pages/Workshop"));
 const Keynote = lazy(() => import("./pages/Keynote"));
 const ExpertSession = lazy(() => import("./pages/ExpertSession"));
 const Maxxeed = lazy(() => import("./pages/Maxxeed"));
+const GTMStackMap = lazy(() => import("./pages/GTMStackMap"));
 const FixGrowthBook = lazy(() => import("./pages/FixGrowthBook"));
 const PlaybookGtmRevenue = lazy(() => import("./pages/PlaybookGtmRevenue"));
 const PlaybookProduct = lazy(() => import("./pages/PlaybookProduct"));
@@ -121,6 +123,7 @@ const AppContent = () => {
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
@@ -170,6 +173,7 @@ const AppContent = () => {
           <Route path="/solutions/keynote" element={<Keynote />} />
           <Route path="/solutions/expert-session" element={<ExpertSession />} />
           <Route path="/tools/maxxeed" element={<Maxxeed />} />
+          <Route path="/solutions/gtm-stack-map" element={<GTMStackMap />} />
           <Route path="/book/fix-growth" element={<FixGrowthBook />} />
           <Route path="/playbooks/growth-engines/gtm-revenue" element={<PlaybookGtmRevenue />} />
           <Route path="/playbooks/growth-engines/product" element={<PlaybookProduct />} />

@@ -714,7 +714,21 @@ export const seoRegistry: Record<string, SEOData> = {
   },
 
   // =========================================================================
-  // COMMUNITY
+  // INSIGHTS
+  // =========================================================================
+  '/insights': {
+    title: {
+      de: 'Insights — Artikel, Events & Case Studies | ScalingX',
+      en: 'Insights — Articles, Events & Case Studies | ScalingX',
+    },
+    description: {
+      de: 'Operator-Grade Insights für Founder und Revenue Leader. Execution-first Artikel, Live Events und Case Studies. AI-native, DACH-fokussiert, Series A–C.',
+      en: 'Operator-grade insights for founders and revenue leaders. Execution-first articles, live events and case studies. AI-native, DACH-focused, Series A–C.',
+    },
+  },
+
+  // =========================================================================
+  // COMMUNITY (legacy)
   // =========================================================================
   '/community': {
     title: {
@@ -797,5 +811,20 @@ export const seoRegistry: Record<string, SEOData> = {
       de: 'Allgemeine Geschäftsbedingungen der ScalingX GmbH.',
       en: 'Terms and conditions of ScalingX GmbH.',
     },
+  },
+
+  // =========================================================================
+  // GTM STACK MAP 2026
+  // =========================================================================
+  '/solutions/gtm-stack-map': {
+    title: {
+      de: 'GTM Stack Map 2026 — Kostenlos für B2B SaaS Teams | ScalingX',
+      en: 'GTM Stack Map 2026 — Free for B2B SaaS Teams | ScalingX',
+    },
+    description: {
+      de: 'Die vollständige Übersicht aller GTM-Tools 2026. Kategorisiert nach Funnel-Layer. Kostenlos.',
+      en: 'The complete overview of all GTM tools 2026. Categorized by funnel layer. Free.',
+    },
+    ogImage: '/images/og/solutions.png',
   },
 };
