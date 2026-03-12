@@ -5985,6 +5985,9 @@ Der Board war unterstützend aber fordernd: "Zeigt uns jeden Quartal Fortschritt
 
 ];
 
+// Visible case studies (excludes hidden)
+export const visibleCaseStudies = caseStudies.filter(c => !c.hidden);
+
 // Helper functions
 export const getCaseStudyBySlug = (slug: string): ClientCaseStudy | undefined => {
   return caseStudies.find(c => c.slug === slug);
@@ -5995,11 +5998,11 @@ export const getCaseStudyById = (id: string): ClientCaseStudy | undefined => {
 };
 
 export const getCaseStudiesByChallenge = (challengeType: string): ClientCaseStudy[] => {
-  if (challengeType === 'all') return caseStudies;
-  return caseStudies.filter(c => c.challengeType === challengeType);
+  if (challengeType === 'all') return visibleCaseStudies;
+  return visibleCaseStudies.filter(c => c.challengeType === challengeType);
 };
 
 export const getCaseStudiesByIndustry = (industry: string): ClientCaseStudy[] => {
-  if (industry === 'all') return caseStudies;
-  return caseStudies.filter(c => c.industry.toLowerCase().includes(industry.toLowerCase()));
+  if (industry === 'all') return visibleCaseStudies;
+  return visibleCaseStudies.filter(c => c.industry.toLowerCase().includes(industry.toLowerCase()));
 };

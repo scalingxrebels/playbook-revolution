@@ -12,7 +12,8 @@ export { clientCases, getClientCaseById } from './clients';
 
 // Full Case Studies (Story-First Format)
 export { 
-  caseStudies, 
+  caseStudies,
+  visibleCaseStudies,
   getCaseStudyBySlug, 
   getCaseStudyById as getFullCaseStudyById,
   getCaseStudiesByChallenge,

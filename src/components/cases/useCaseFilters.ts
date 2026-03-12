@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { caseStudies, ClientCaseStudy } from '@/data/cases';
+import { visibleCaseStudies, ClientCaseStudy } from '@/data/cases';
 
 interface UseCaseFiltersReturn {
   searchQuery: string;

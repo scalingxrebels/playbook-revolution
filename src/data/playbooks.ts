@@ -613,3 +613,6 @@ export const playbooks: Playbook[] = [
     sortOrder: 5,
   },
 ];
+
+// Visible playbooks (excludes hidden)
+export const visiblePlaybooks = playbooks.filter(p => !p.hidden);

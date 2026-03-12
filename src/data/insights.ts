@@ -223,3 +223,6 @@ export const sampleInsights: InsightItem[] = [
     reactions: { fire: 89, lightbulb: 41, thinking: 12 },
   },
 ];
+
+// Visible insights (excludes hidden)
+export const visibleInsights = sampleInsights.filter(i => !i.hidden);
