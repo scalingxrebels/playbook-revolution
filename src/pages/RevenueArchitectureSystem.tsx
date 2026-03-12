@@ -175,7 +175,7 @@ const VSLSection: React.FC = () => {
   const safetyNetLines = language === 'de'
     ? [
         'Die meisten B2B-SaaS-Teams lösen das falsche Problem — und wundern sich, warum der CAC steigt.',
-        'The Revenue Architecture System™ — 6 Wochen, 22 Revenue-Bausteine, vollständiges Revenue System live aufgebaut.',
+        'The Revenue Architecture System — 6 Wochen, 22 Revenue-Bausteine, vollständiges Revenue System live aufgebaut.',
         'Teilnehmer berichten von signifikant reduziertem CAC — durch systematische ICP-Schärfung und Funnel-Optimierung.',
       ]
     : [
