@@ -102,7 +102,7 @@ const HeroSection: React.FC<{ onDownload: () => void }> = ({ onDownload }) => {
         {/* Badge */}
         <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
           <Download className="w-4 h-4 mr-2" />
-          Free · Lead Magnet · PDF
+          Free · PDF
         </Badge>
 
         {/* Headline */}
