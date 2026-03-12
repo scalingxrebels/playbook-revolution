@@ -25,6 +25,7 @@ export interface InsightArticle {
   readingTime: number;
   featured?: boolean;
   reactions: InsightReactionCounts;
+  hidden?: boolean;
 }
 
 export interface InsightEvent {
@@ -44,6 +45,7 @@ export interface InsightEvent {
   isFree: boolean;
   isUpcoming: boolean;
   featured?: boolean;
+  hidden?: boolean;
 }
 
 export interface InsightCaseStudy {
@@ -57,6 +59,7 @@ export interface InsightCaseStudy {
   readingTime: number;
   isAnonymized: boolean;
   reactions: InsightReactionCounts;
+  hidden?: boolean;
 }
 
 export type InsightItem = InsightArticle | InsightEvent | InsightCaseStudy;
@@ -220,3 +223,6 @@ export const sampleInsights: InsightItem[] = [
     reactions: { fire: 89, lightbulb: 41, thinking: 12 },
   },
 ];
+
+// Visible insights (excludes hidden)
+export const visibleInsights = sampleInsights.filter(i => !i.hidden);

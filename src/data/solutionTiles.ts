@@ -33,6 +33,7 @@ export interface SolutionTile {
   solutionType: Exclude<SolutionTypeId, 'all'>;
   transformationTier?: 'power-up' | 'boost' | 'accelerate';
   challenges: Exclude<ChallengeId, 'all'>[] | 'universal';
+  hidden?: boolean;
   price: string;
   priceTag: 'free' | 'paid' | 'custom';
   headlineEn: string;
@@ -1685,20 +1686,23 @@ export const solutionTiles: SolutionTile[] = [
   }
 ];
 
-// Helper functions
+// Visible tiles (excludes hidden)
+export const visibleSolutionTiles = solutionTiles.filter(t => !t.hidden);
+
+// Helper functions (all use visible tiles only)
 export const getTilesByChallenge = (challengeId: Exclude<ChallengeId, 'all'>): SolutionTile[] => {
-  return solutionTiles.filter(tile => 
+  return visibleSolutionTiles.filter(tile => 
     tile.challenges === 'universal' || 
     (Array.isArray(tile.challenges) && tile.challenges.includes(challengeId))
   );
 };
 
 export const getTilesBySolutionType = (typeId: Exclude<SolutionTypeId, 'all'>): SolutionTile[] => {
-  return solutionTiles.filter(tile => tile.solutionType === typeId);
+  return visibleSolutionTiles.filter(tile => tile.solutionType === typeId);
 };
 
 export const getFilteredTiles = (challengeId: Exclude<ChallengeId, 'all'> | null, typeId: Exclude<SolutionTypeId, 'all'> | null): SolutionTile[] => {
-  return solutionTiles.filter(tile => {
+  return visibleSolutionTiles.filter(tile => {
     const matchesChallenge = !challengeId || tile.challenges === 'universal' || 
       (Array.isArray(tile.challenges) && tile.challenges.includes(challengeId));
     const matchesType = !typeId || tile.solutionType === typeId;

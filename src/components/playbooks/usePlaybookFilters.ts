@@ -1,6 +1,6 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { playbooks, type Playbook } from '@/data/playbooks';
+import { visiblePlaybooks, type Playbook } from '@/data/playbooks';
 import { 
   type ActiveFilters, 
   defaultFilters,
@@ -77,7 +77,7 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
   // Filter and score playbooks
   const filteredPlaybooks = useMemo(() => {
     // First, apply text search
-    let results = playbooks.filter(playbook => {
+    let results = visiblePlaybooks.filter(playbook => {
       if (searchQuery === '') return true;
       const searchLower = searchQuery.toLowerCase();
       return (
@@ -136,6 +136,6 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     resetFilters,
     hasActiveFilters,
     filteredPlaybooks,
-    totalPlaybooks: playbooks.length,
+    totalPlaybooks: visiblePlaybooks.length,
   };
 }

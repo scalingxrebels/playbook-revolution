@@ -18,6 +18,7 @@ export interface Playbook {
   // Sorting Properties
   ebene: 1 | 2 | 3;
   sortOrder: number;
+  hidden?: boolean;
 }
 
 export const playbooks: Playbook[] = [
@@ -612,3 +613,6 @@ export const playbooks: Playbook[] = [
     sortOrder: 5,
   },
 ];
+
+// Visible playbooks (excludes hidden)
+export const visiblePlaybooks = playbooks.filter(p => !p.hidden);

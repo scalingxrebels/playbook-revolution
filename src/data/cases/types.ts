@@ -150,6 +150,7 @@ export interface ClientCaseStudy {
   // META
   playbooks: string[];
   downloadUrl?: string;
+  hidden?: boolean;
   
   // RELATED CONTENT (optional)
   relatedSolutions?: RelatedSolution[];

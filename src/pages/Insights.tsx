@@ -5,7 +5,7 @@ import InsightsHero from '@/components/insights/InsightsHero';
 import InsightsFilterSection, { type InsightTab } from '@/components/insights/InsightsFilterSection';
 import InsightsGrid from '@/components/insights/InsightsGrid';
 import InsightsCTA from '@/components/insights/InsightsCTA';
-import { sampleInsights } from '@/data/insights';
+import { visibleInsights } from '@/data/insights';
 
 const Insights: React.FC = () => {
   const [activeTab, setActiveTab] = useState<InsightTab>('all');
@@ -22,7 +22,7 @@ const Insights: React.FC = () => {
   }, []);
 
   const filteredItems = useMemo(() => {
-    let items = [...sampleInsights];
+    let items = [...visibleInsights];
 
     // Tab filter
     if (activeTab === 'articles') {
@@ -58,7 +58,7 @@ const Insights: React.FC = () => {
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
           filteredCount={filteredItems.length}
-          totalCount={sampleInsights.length}
+          totalCount={visibleInsights.length}
         />
         <InsightsGrid items={filteredItems} />
         <InsightsCTA />
