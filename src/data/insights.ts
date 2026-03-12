@@ -59,6 +59,7 @@ export interface InsightCaseStudy {
   readingTime: number;
   isAnonymized: boolean;
   reactions: InsightReactionCounts;
+  hidden?: boolean;
 }
 
 export type InsightItem = InsightArticle | InsightEvent | InsightCaseStudy;

@@ -18,6 +18,7 @@ export interface Playbook {
   // Sorting Properties
   ebene: 1 | 2 | 3;
   sortOrder: number;
+  hidden?: boolean;
 }
 
 export const playbooks: Playbook[] = [

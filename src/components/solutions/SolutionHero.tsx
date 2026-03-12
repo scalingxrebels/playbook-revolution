@@ -1,13 +1,13 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SharedHero from '@/components/shared/SharedHero';
-import { solutionTiles, challenges } from '@/data/solutionTiles';
+import { visibleSolutionTiles, challenges } from '@/data/solutionTiles';
 
 const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
 
   // Dynamic counts from data
-  const solutionCount = solutionTiles.length;
+  const solutionCount = visibleSolutionTiles.length;
   const challengeCount = challenges.length - 1; // Minus "all"
 
   const stats = [
