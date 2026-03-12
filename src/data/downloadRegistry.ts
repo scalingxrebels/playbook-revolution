@@ -594,6 +594,7 @@ export const downloadRegistry: DownloadAsset[] = [
   ...caseStudyAssets,
   ...researchAssets,
   ...sampleAssets,
+  ...leadMagnetAssets,
   ...bookAssets,
 ];
 
