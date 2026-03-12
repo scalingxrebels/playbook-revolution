@@ -1683,6 +1683,43 @@ export const solutionTiles: SolutionTile[] = [
     primaryCtaDe: 'Mehr erfahren',
     primaryCtaAction: 'learn-more',
     primaryCtaUrl: '/solutions/gtm-stack-map'
+  },
+
+  // ============================================
+  // TRANSFORMATION - REVENUE ARCHITECTURE SYSTEM (ID 47)
+  // ============================================
+  {
+    id: 47,
+    slug: 'revenue-architecture-system',
+    solutionType: 'transformation',
+    transformationTier: 'accelerate',
+    challenges: ['cac-crisis', 'growth-stalled', 'scaling-chaos', 'ai-transformation'],
+    price: 'ab €6.900',
+    priceTag: 'paid',
+    headlineEn: 'The Revenue Architecture System™',
+    headlineDe: 'The Revenue Architecture System™',
+    problemEn: "Your CAC is rising. Your conversion is dropping. You've tested channels, switched agencies, added tools — and the system still doesn't carry. Because it's not a channel problem. It's an architecture problem.",
+    problemDe: "Dein CAC steigt. Deine Conversion sinkt. Du hast Kanäle getestet, Agenturen gewechselt, Tools eingeführt — und das System trägt trotzdem nicht. Weil es kein Kanal-Problem ist. Es ist ein Architektur-Problem.",
+    solutionEn: "The most structured Guided Build format for Revenue Architecture in the DACH region. In 6 weeks, you build your complete Revenue System — ICP, Value Stack, Entry Layer, Conversion System, Revenue OS. Not plan. Not learn. Build.",
+    solutionDe: "Das strukturierteste Guided-Build-Format für Revenue Architecture im DACH-Raum. In 6 Wochen baust du dein vollständiges Revenue System — ICP, Value Stack, Entry Layer, Conversion System, Revenue OS. Nicht planen. Nicht lernen. Bauen.",
+    deliverablesEn: [
+      '22 Revenue building blocks (live-built)',
+      '6 weekly live sessions (4h each)',
+      '3× Expert Sessions 1:1 (1h each)',
+      'Complete Revenue System — ready to go live'
+    ],
+    deliverablesDe: [
+      '22 Revenue-Bausteine (live aufgebaut)',
+      '6 wöchentliche Live-Sessions (je 4h)',
+      '3× Expert Sessions 1:1 (je 1h)',
+      'Vollständiges Revenue System — live-fähig'
+    ],
+    impactEn: "In 6 weeks from fragmented GTM activities to a complete, operational Revenue System. Founding Cohort — max. 12 seats.",
+    impactDe: "In 6 Wochen von fragmentierten GTM-Aktivitäten zu einem vollständigen, operativen Revenue System. Founding Cohort — max. 12 Plätze.",
+    primaryCtaEn: 'Learn more',
+    primaryCtaDe: 'Mehr erfahren',
+    primaryCtaAction: 'learn-more',
+    primaryCtaUrl: '/solutions/revenue-architecture-system'
   }
 ];
 
