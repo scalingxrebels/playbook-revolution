@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface SolutionTileCardProps {
@@ -43,6 +44,7 @@ const isValidFormSlug = (slug: string): slug is FormSlug => {
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
   const { language } = useLanguage();
   const lang = language as 'en' | 'de';
+  const navigate = useNavigate();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const headline = lang === 'de' ? tile.headlineDe : tile.headlineEn;
@@ -68,7 +70,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
     if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
     } else if (tile.primaryCtaUrl) {
-      window.location.href = tile.primaryCtaUrl;
+      navigate(tile.primaryCtaUrl);
     }
   };
 
