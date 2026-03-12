@@ -38,7 +38,12 @@ function calculateMatchScore(playbook: Playbook, filters: ActiveFilters): number
 
 export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { isHidden } = useContentVisibilityContext();
   
+  const visiblePlaybooks = useMemo(
+    () => playbooks.filter(p => !isHidden('playbook', p.slug, p.hidden)),
+    [isHidden]
+  );
   // Initialize filters from URL params
   const [filters, setFilters] = useState<ActiveFilters>(() => {
     return {

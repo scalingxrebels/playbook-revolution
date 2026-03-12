@@ -20,6 +20,12 @@ interface UseCaseFiltersReturn {
 }
 
 export const useCaseFilters = (): UseCaseFiltersReturn => {
+  const { isHidden } = useContentVisibilityContext();
+  
+  const visibleCaseStudies = useMemo(
+    () => caseStudies.filter(c => !isHidden('case', c.slug, c.hidden)),
+    [isHidden]
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   
   // Get initial values from URL params
