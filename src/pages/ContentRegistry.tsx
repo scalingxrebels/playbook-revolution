@@ -1,23 +1,17 @@
 import React, { useState, useMemo } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { useContentVisibility } from '@/hooks/useContentVisibility';
 import Navigation from '@/components/Navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Eye, EyeOff, LayoutGrid, BookOpen, Lightbulb, FolderOpen } from 'lucide-react';
-import { solutionTiles, visibleSolutionTiles } from '@/data/solutionTiles';
-import { playbooks, visiblePlaybooks } from '@/data/playbooks';
-import { caseStudies, visibleCaseStudies } from '@/data/cases';
-import { sampleInsights, visibleInsights } from '@/data/insights';
-
-const StatusBadge = ({ hidden }: { hidden?: boolean }) => (
-  <Badge variant={hidden ? 'secondary' : 'default'} className={hidden 
-    ? 'bg-muted text-muted-foreground' 
-    : 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30'}>
-    {hidden ? <><EyeOff className="w-3 h-3 mr-1" /> Hidden</> : <><Eye className="w-3 h-3 mr-1" /> Live</>}
-  </Badge>
-);
+import { Switch } from '@/components/ui/switch';
+import { ExternalLink, LayoutGrid, BookOpen, Lightbulb, FolderOpen, Loader2 } from 'lucide-react';
+import { solutionTiles } from '@/data/solutionTiles';
+import { playbooks } from '@/data/playbooks';
+import { caseStudies } from '@/data/cases';
+import { sampleInsights } from '@/data/insights';
 
 const TableHeader = ({ children }: { children: React.ReactNode }) => (
   <th className="text-left text-xs font-semibold uppercase tracking-wider text-muted-foreground px-4 py-3 border-b border-border">
@@ -27,19 +21,29 @@ const TableHeader = ({ children }: { children: React.ReactNode }) => (
 
 const ContentRegistry: React.FC = () => {
   const { user, loading, isAdmin } = useAuth();
+  const { mergeVisibility, toggleVisibility, isLoading: visLoading } = useContentVisibility();
   const [activeTab, setActiveTab] = useState('solutions');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
-  const filterByStatus = <T extends { hidden?: boolean }>(items: T[]) => {
+  // Merge DB overrides into static data
+  const mergedSolutions = useMemo(() => mergeVisibility(solutionTiles, 'solution', t => t.slug), [mergeVisibility]);
+  const mergedPlaybooks = useMemo(() => mergeVisibility(playbooks, 'playbook', p => p.slug), [mergeVisibility]);
+  const mergedCases = useMemo(() => mergeVisibility(caseStudies, 'case', c => c.slug), [mergeVisibility]);
+  const mergedInsights = useMemo(() => mergeVisibility(sampleInsights, 'insight', i => i.slug), [mergeVisibility]);
+
+  const filterByStatus = <T extends { hidden: boolean }>(items: T[]) => {
     if (statusFilter === 'live') return items.filter(i => !i.hidden);
     if (statusFilter === 'hidden') return items.filter(i => i.hidden);
     return items;
   };
 
-  const filteredSolutions = useMemo(() => filterByStatus(solutionTiles), [statusFilter]);
-  const filteredPlaybooks = useMemo(() => filterByStatus(playbooks), [statusFilter]);
-  const filteredCases = useMemo(() => filterByStatus(caseStudies), [statusFilter]);
-  const filteredInsights = useMemo(() => filterByStatus(sampleInsights), [statusFilter]);
+  const filteredSolutions = useMemo(() => filterByStatus(mergedSolutions), [mergedSolutions, statusFilter]);
+  const filteredPlaybooks = useMemo(() => filterByStatus(mergedPlaybooks), [mergedPlaybooks, statusFilter]);
+  const filteredCases = useMemo(() => filterByStatus(mergedCases), [mergedCases, statusFilter]);
+  const filteredInsights = useMemo(() => filterByStatus(mergedInsights), [mergedInsights, statusFilter]);
+
+  // Summary counts
+  const liveCount = (items: { hidden: boolean }[]) => items.filter(i => !i.hidden).length;
 
   if (loading) {
     return (
@@ -80,19 +84,22 @@ const ContentRegistry: React.FC = () => {
         <div className="container max-w-7xl mx-auto px-4">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-foreground mb-2">Content Registry</h1>
+            <div className="flex items-center gap-3 mb-2">
+              <h1 className="text-2xl font-bold text-foreground">Content Registry</h1>
+              {visLoading && <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />}
+            </div>
             <p className="text-sm text-muted-foreground">
-              Übersicht aller Inhalte. Status, Landing Pages und Verknüpfungen.
+              Übersicht aller Inhalte. Status per Toggle umschalten – Änderungen werden sofort gespeichert.
             </p>
           </div>
 
           {/* Summary Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {[
-              { label: 'Solutions', icon: LayoutGrid, total: solutionTiles.length, live: visibleSolutionTiles.length },
-              { label: 'Playbooks', icon: BookOpen, total: playbooks.length, live: visiblePlaybooks.length },
-              { label: 'Cases', icon: FolderOpen, total: caseStudies.length, live: visibleCaseStudies.length },
-              { label: 'Insights', icon: Lightbulb, total: sampleInsights.length, live: visibleInsights.length },
+              { label: 'Solutions', icon: LayoutGrid, total: mergedSolutions.length, live: liveCount(mergedSolutions) },
+              { label: 'Playbooks', icon: BookOpen, total: mergedPlaybooks.length, live: liveCount(mergedPlaybooks) },
+              { label: 'Cases', icon: FolderOpen, total: mergedCases.length, live: liveCount(mergedCases) },
+              { label: 'Insights', icon: Lightbulb, total: mergedInsights.length, live: liveCount(mergedInsights) },
             ].map(({ label, icon: Icon, total, live }) => (
               <div key={label} className="rounded-lg border border-border bg-card p-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -140,7 +147,7 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Tier</TableHeader>
-                        <TableHeader>Status</TableHeader>
+                        <TableHeader>Sichtbar</TableHeader>
                         <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
@@ -160,7 +167,12 @@ const ContentRegistry: React.FC = () => {
                           <td className="px-4 py-3 text-xs text-muted-foreground">
                             {tile.transformationTier || '—'}
                           </td>
-                          <td className="px-4 py-3"><StatusBadge hidden={tile.hidden} /></td>
+                          <td className="px-4 py-3">
+                            <Switch
+                              checked={!tile.hidden}
+                              onCheckedChange={(checked) => toggleVisibility('solution', tile.slug, !checked)}
+                            />
+                          </td>
                           <td className="px-4 py-3">
                             <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
                               {tile.primaryCtaUrl || `/${tile.slug}`}
@@ -189,7 +201,7 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>#</TableHeader>
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Ebene</TableHeader>
-                        <TableHeader>Status</TableHeader>
+                        <TableHeader>Sichtbar</TableHeader>
                         <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
@@ -208,7 +220,12 @@ const ContentRegistry: React.FC = () => {
                             <td className="px-4 py-3">
                               <Badge variant="outline" className="text-xs">Ebene {pb.ebene}</Badge>
                             </td>
-                            <td className="px-4 py-3"><StatusBadge hidden={pb.hidden} /></td>
+                            <td className="px-4 py-3">
+                              <Switch
+                                checked={!pb.hidden}
+                                onCheckedChange={(checked) => toggleVisibility('playbook', pb.slug, !checked)}
+                              />
+                            </td>
                             <td className="px-4 py-3">
                               <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
                             </td>
@@ -237,7 +254,7 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Industry</TableHeader>
                         <TableHeader>Stage</TableHeader>
-                        <TableHeader>Status</TableHeader>
+                        <TableHeader>Sichtbar</TableHeader>
                         <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
@@ -257,7 +274,12 @@ const ContentRegistry: React.FC = () => {
                             <td className="px-4 py-3">
                               <Badge variant="outline" className="text-xs">{cs.stage}</Badge>
                             </td>
-                            <td className="px-4 py-3"><StatusBadge hidden={cs.hidden} /></td>
+                            <td className="px-4 py-3">
+                              <Switch
+                                checked={!cs.hidden}
+                                onCheckedChange={(checked) => toggleVisibility('case', cs.slug, !checked)}
+                              />
+                            </td>
                             <td className="px-4 py-3">
                               <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
                             </td>
@@ -286,7 +308,7 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Kategorie</TableHeader>
-                        <TableHeader>Status</TableHeader>
+                        <TableHeader>Sichtbar</TableHeader>
                         <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
@@ -306,7 +328,12 @@ const ContentRegistry: React.FC = () => {
                               <Badge variant="outline" className="text-xs">{item.type}</Badge>
                             </td>
                             <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
-                            <td className="px-4 py-3"><StatusBadge hidden={item.hidden} /></td>
+                            <td className="px-4 py-3">
+                              <Switch
+                                checked={!item.hidden}
+                                onCheckedChange={(checked) => toggleVisibility('insight', item.slug, !checked)}
+                              />
+                            </td>
                             <td className="px-4 py-3">
                               <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
                             </td>
