@@ -25,6 +25,16 @@ const ContentRegistry: React.FC = () => {
   const { mergeVisibility, toggleVisibility, isLoading: visLoading } = useContentVisibility();
   const [activeTab, setActiveTab] = useState('solutions');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [previewModal, setPreviewModal] = useState<{
+    open: boolean;
+    mode: PreviewMode;
+    contentType: 'solution' | 'playbook' | 'case' | 'insight';
+    item: any;
+  }>({ open: false, mode: 'card', contentType: 'solution', item: null });
+
+  const openPreview = (mode: PreviewMode, contentType: 'solution' | 'playbook' | 'case' | 'insight', item: any) => {
+    setPreviewModal({ open: true, mode, contentType, item });
+  };
 
   // Merge DB overrides into static data
   const mergedSolutions = useMemo(() => mergeVisibility(solutionTiles, 'solution', t => t.slug), [mergeVisibility]);
