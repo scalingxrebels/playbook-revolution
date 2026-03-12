@@ -839,12 +839,12 @@ const PricingSection: React.FC = () => {
       descEn: 'Michel reviews every application personally.',
     },
     {
-      stepDe: 'Kurzes Gespräch',
-      stepEn: 'Short Conversation',
+      stepDe: 'Persönliches Gespräch',
+      stepEn: 'Personal Conversation',
       timeDe: '15–30 Min',
       timeEn: '15–30 min',
-      descDe: 'Kein Verkaufsgespräch. Passung prüfen — für beide Seiten.',
-      descEn: 'No sales call. Checking fit — for both sides.',
+      descDe: 'Wir entscheiden gemeinsam, ob es passt.',
+      descEn: 'We decide together if it\'s a fit.',
     },
     {
       stepDe: 'Commitment & Platz sichern',
