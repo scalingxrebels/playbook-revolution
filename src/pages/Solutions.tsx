@@ -9,11 +9,11 @@ import SolutionTypeChips from '@/components/solutions/SolutionTypeChips';
 import SolutionTileGrid from '@/components/solutions/SolutionTileGrid';
 import SolutionCTA from '@/components/solutions/SolutionCTA';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 import { Search, X } from 'lucide-react';
 import { 
   ChallengeId, 
   SolutionTypeId, 
-  getFilteredTiles,
   solutionTiles,
   challenges,
   solutionTypes
