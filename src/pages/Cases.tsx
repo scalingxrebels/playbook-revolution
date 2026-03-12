@@ -49,6 +49,20 @@ const clientNames = [
 
 const Cases: React.FC = () => {
   const { language } = useLanguage();
+  const { isHidden } = useContentVisibilityContext();
+  
+  const visibleCases = useMemo(
+    () => caseStudies.filter(c => !isHidden('case', c.slug, c.hidden)),
+    [isHidden]
+  );
+
+  const casesStats = useMemo(() => [
+    { value: String(visibleCases.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+    { value: calculateMedianRoi(visibleCases), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
+    { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
+    { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
+  ], [visibleCases]);
+
   const {
     searchQuery,
     setSearchQuery,
