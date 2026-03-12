@@ -668,10 +668,15 @@ const FoundingFrameSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-4xl mx-auto px-6 relative z-10">
-        <div className="bg-accent/10 border-2 border-accent/30 p-8 md:p-12">
-          <h2 className="font-display text-display-sm text-foreground mb-6 text-center">
-            {language === 'de' ? 'Founding Cohort — was das bedeutet' : 'Founding Cohort — What That Means'}
+        <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            Founding Cohort
+          </span>
+          <h2 className="font-display text-display-md text-foreground">
+            {language === 'de' ? 'Dein Platz in Cohort 1' : 'Your Seat in Cohort 1'}
           </h2>
+        </div>
+        <div className="bg-accent/10 border-2 border-accent/30 p-8 md:p-12">
           <div className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             <p>
               {language === 'de'
@@ -710,13 +715,131 @@ const FoundingFrameSection: React.FC = () => {
 };
 
 // ============================================================================
-// SECTION S11: PRICING + APPLICATION + FAQ + FINAL CTA
+// SECTION: APPLICATION PROCESS
+// ============================================================================
+const ApplicationProcessSection: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  const processSteps = [
+    {
+      stepDe: 'Bewerbung einreichen',
+      stepEn: 'Submit Application',
+      timeDe: '5 Minuten',
+      timeEn: '5 minutes',
+      descDe: 'Kurzes Formular: Unternehmen, Rolle, aktuelle Situation, Ziel.',
+      descEn: 'Short form: Company, role, current situation, goal.',
+    },
+    {
+      stepDe: 'Persönliche Prüfung',
+      stepEn: 'Personal Review',
+      timeDe: '48h',
+      timeEn: '48h',
+      descDe: 'Michel prüft jede Bewerbung persönlich.',
+      descEn: 'Michel reviews every application personally.',
+    },
+    {
+      stepDe: 'Persönliches Gespräch',
+      stepEn: 'Personal Conversation',
+      timeDe: '15–30 Min',
+      timeEn: '15–30 min',
+      descDe: 'Wir entscheiden gemeinsam, ob es passt.',
+      descEn: 'We decide together if it\'s a fit.',
+    },
+    {
+      stepDe: 'Commitment & Platz sichern',
+      stepEn: 'Commitment & Secure Your Seat',
+      timeDe: '',
+      timeEn: '',
+      descDe: 'Founding-Preis gilt bis Cohort-Start.',
+      descEn: 'Founding price valid until cohort start.',
+    },
+  ];
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+      <div className="container max-w-3xl mx-auto px-6 relative z-10">
+        <h3 className="font-display text-display-sm text-foreground text-center mb-12">
+          {language === 'de' ? 'Wie die Bewerbung funktioniert' : 'How the Application Works'}
+        </h3>
+        <div className="space-y-6">
+          {processSteps.map((step, index) => (
+            <div key={index} className="flex gap-6">
+              <div className="flex flex-col items-center">
+                <div className="w-10 h-10 bg-primary/10 border-2 border-primary/30 flex items-center justify-center text-primary font-bold text-sm shrink-0">
+                  {index + 1}
+                </div>
+                {index < processSteps.length - 1 && (
+                  <div className="w-px h-full bg-border mt-2" />
+                )}
+              </div>
+              <div className="pb-6">
+                <div className="flex items-center gap-3 mb-1">
+                  <h4 className="font-display font-bold text-foreground">
+                    {language === 'de' ? step.stepDe : step.stepEn}
+                  </h4>
+                  {(language === 'de' ? step.timeDe : step.timeEn) && (
+                    <span className="text-xs text-muted-foreground">
+                      ({language === 'de' ? step.timeDe : step.timeEn})
+                    </span>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'de' ? step.descDe : step.descEn}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// SECTION: COHORT START CARD
+// ============================================================================
+const CohortStartCard: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative py-16 lg:py-24 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
+      <div className="container max-w-3xl mx-auto px-6 relative z-10">
+        <div className="bg-gradient-to-br from-primary/10 via-accent/10 to-primary/5 border-2 border-accent/40 p-10 md:p-14 text-center shadow-accent-glow/10">
+          <Zap className="w-10 h-10 text-accent mx-auto mb-6" />
+          <h3 className="font-display text-display-sm text-foreground mb-4">
+            {language === 'de'
+              ? 'Start Ende April'
+              : 'Starting End of April'}
+          </h3>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            {language === 'de'
+              ? 'Erfahre als Erste/r, wenn die Cohort 1 öffnet.'
+              : 'Be the first to know when Cohort 1 opens.'}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// SECTION: LEAD CAPTURE CTA
 // ============================================================================
 const emailSchema = z.object({
   email: z.string().trim().email({ message: "Invalid email address" }).max(255),
 });
 
-const PricingSection: React.FC = () => {
+const LeadCaptureSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const { toast } = useToast();
@@ -725,6 +848,236 @@ const PricingSection: React.FC = () => {
   const [isLeadSubmitting, setIsLeadSubmitting] = useState(false);
   const [isLeadSuccess, setIsLeadSuccess] = useState(false);
   const [leadError, setLeadError] = useState('');
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+      <div className="container max-w-2xl mx-auto px-6 relative z-10 text-center">
+        <h2 className="font-display text-display-md text-foreground mb-4">
+          {language === 'de' ? 'Bereit, mehr zu erfahren?' : 'Ready to learn more?'}
+        </h2>
+        <p className="text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
+          {language === 'de'
+            ? 'Trag dich ein. Du erhältst sofort „Das Revenue System" als PDF — und erfährst als Erste/r, wenn die nächste Kohorte öffnet. Kostenlos. Kein Commitment. Kein Verkaufsdruck.'
+            : 'Sign up. You\'ll instantly receive "The Revenue System" as a PDF — and be the first to know when the next cohort opens. Free. No commitment. No sales pressure.'}
+        </p>
+
+        {isLeadSuccess ? (
+          <div className="p-8 rounded-lg border border-accent/30 bg-accent/5">
+            <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
+            <h3 className="text-lg font-semibold mb-2 text-foreground">
+              {language === 'de' ? 'Download gestartet!' : 'Download started!'}
+            </h3>
+            <p className="text-muted-foreground">
+              {language === 'de'
+                ? 'Überprüfe deinen Downloads-Ordner.'
+                : 'Check your downloads folder.'}
+            </p>
+          </div>
+        ) : (
+          <form
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setLeadError('');
+
+              const validation = emailSchema.safeParse({ email: leadEmail });
+              if (!validation.success) {
+                setLeadError(validation.error.errors[0]?.message || 'Invalid email');
+                return;
+              }
+
+              setIsLeadSubmitting(true);
+              try {
+                const { error } = await supabase.from('download_leads').insert({
+                  email: validation.data.email,
+                  asset_id: 'revenue-system-whitepaper',
+                  asset_type: 'lead-magnet',
+                  utm_source: trackingParams.utm_source || null,
+                  utm_medium: trackingParams.utm_medium || null,
+                  utm_campaign: trackingParams.utm_campaign || null,
+                  utm_content: trackingParams.utm_content || null,
+                  utm_term: trackingParams.utm_term || null,
+                  page_url: trackingParams.page_url || null,
+                  referrer: trackingParams.referrer || null,
+                });
+
+                if (error) throw error;
+
+                setIsLeadSuccess(true);
+                toast({
+                  title: language === 'de' ? 'Download bereit!' : 'Download ready!',
+                  description: language === 'de'
+                    ? 'Dein PDF-Download startet in Kürze.'
+                    : 'Your PDF download will start shortly.',
+                });
+
+                setTimeout(() => {
+                  window.open('/downloads/fix-growth-sample.pdf', '_blank');
+                }, 500);
+              } catch (err) {
+                console.error('Lead capture error:', err);
+                toast({
+                  variant: 'destructive',
+                  title: language === 'de' ? 'Fehler' : 'Error',
+                  description: language === 'de'
+                    ? 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'
+                    : 'Something went wrong. Please try again.',
+                });
+              } finally {
+                setIsLeadSubmitting(false);
+              }
+            }}
+            className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-8"
+          >
+            <Input
+              type="email"
+              placeholder={language === 'de' ? 'Deine E-Mail-Adresse' : 'Your email address'}
+              value={leadEmail}
+              onChange={(e) => setLeadEmail(e.target.value)}
+              required
+              disabled={isLeadSubmitting}
+              className={`flex-1 h-14 text-base ${leadError ? 'border-destructive' : ''}`}
+            />
+            <Button
+              type="submit"
+              size="xl"
+              disabled={isLeadSubmitting}
+              className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-8 py-4 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 whitespace-nowrap"
+            >
+              {isLeadSubmitting ? (
+                <Loader2 className="w-5 h-5 animate-spin" />
+              ) : (
+                <>
+                  <Download className="w-5 h-5 mr-2" />
+                  {language === 'de' ? 'PDF sichern' : 'Get PDF'}
+                </>
+              )}
+            </Button>
+          </form>
+        )}
+
+        {leadError && (
+          <p className="text-sm text-destructive mb-4">{leadError}</p>
+        )}
+
+        {/* PDF Preview Card */}
+        {!isLeadSuccess && (
+          <div className="max-w-md mx-auto p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm mb-8">
+            <div className="flex items-start gap-4">
+              <FileText className="w-8 h-8 text-accent shrink-0 mt-0.5" />
+              <div className="text-left">
+                <h4 className="font-semibold text-foreground mb-1">
+                  {language === 'de' ? 'Sofort-Download: „Das Revenue System"' : 'Instant Download: "The Revenue System"'}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'de'
+                    ? 'Das PDF erklärt, wie du aufhörst, Taktiken zu stapeln — und anfängst, systematisch zu wachsen.'
+                    : 'The PDF explains how to stop stacking tactics — and start growing systematically.'}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <p className="text-sm text-muted-foreground mb-6">
+          {language === 'de' ? 'Fragen? Direkt schreiben → ' : 'Questions? Write directly → '}
+          <a href="mailto:michel@scalingx.com" className="text-primary hover:text-primary/80 transition-colors">
+            michel@scalingx.com
+          </a>
+        </p>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// SECTION: FAQ
+// ============================================================================
+const FAQSection: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  const faqItems = [
+    {
+      qDe: 'Ich habe wenig Zeit. Wie viel Aufwand ist das wirklich?',
+      qEn: 'I have limited time. How much effort is this really?',
+      aDe: '4h Live pro Woche + ca. 2–3h Nacharbeit. Wer 6–7h pro Woche investieren kann, baut in 6 Wochen ein System, das danach für sich arbeitet.',
+      aEn: '4h live per week + approx. 2–3h follow-up work. If you can invest 6–7h per week, you build a system in 6 weeks that works for you afterward.',
+    },
+    {
+      qDe: 'Ich bin kein Anfänger. Ist das nicht zu basic für mich?',
+      qEn: "I'm not a beginner. Isn't this too basic for me?",
+      aDe: 'Das Programm ist für Head of Growth, VP Marketing und CMOs gebaut — nicht für Einsteiger. Der Unterschied: Sie haben noch nie ihr System als Architektur gebaut.',
+      aEn: "The program is built for Heads of Growth, VP Marketing, and CMOs — not beginners. The difference: they've never built their system as architecture.",
+    },
+    {
+      qDe: 'Was passiert, wenn ich nach Session 1 merke, dass es nicht passt?',
+      qEn: "What happens if I realize after Session 1 that it's not right?",
+      aDe: 'Session-1-Guarantee: Volle Rückerstattung. Kein Prozess. Kein Kleingedrucktes.',
+      aEn: 'Session 1 Guarantee: Full refund. No process. No fine print.',
+    },
+    {
+      qDe: 'Founding Price — ist das ein Rabatt, weil das Programm unfertig ist?',
+      qEn: 'Founding Price — is that a discount because the program is unfinished?',
+      aDe: 'Nein. Das Programm ist vollständig. Founding Price bedeutet: Cohort-1-Teilnehmer schärfen das Programm mit. Das ist ein anderes Verhältnis, kein Preisnachlass.',
+      aEn: "No. The program is complete. Founding Price means: Cohort 1 participants help sharpen the program. That's a different relationship, not a discount.",
+    },
+    {
+      qDe: 'Was passiert, wenn meine Bewerbung abgelehnt wird?',
+      qEn: 'What happens if my application is rejected?',
+      aDe: 'Ich erkläre dir ehrlich, warum — und was ich stattdessen empfehle. Kein Programm passt zu jedem.',
+      aEn: "I'll honestly explain why — and what I recommend instead. No program fits everyone.",
+    },
+    {
+      qDe: 'Kann ich auch als Team teilnehmen?',
+      qEn: 'Can I participate as a team?',
+      aDe: 'Für Teams gibt es die Company Cohort — ein separates Format. Details auf Anfrage: team@scalingx.io',
+      aEn: 'For teams there is the Company Cohort — a separate format. Details on request: team@scalingx.io',
+    },
+    {
+      qDe: 'Gibt es Ratenzahlung?',
+      qEn: 'Is installment payment available?',
+      aDe: 'Ja. 3× monatliche Raten möglich — alle Tiers. Details im Gespräch nach der Bewerbung.',
+      aEn: 'Yes. 3× monthly installments available — all tiers. Details in the conversation after application.',
+    },
+  ];
+
+  return (
+    <section
+      ref={ref as React.RefObject<HTMLElement>}
+      className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
+      <div className="container max-w-3xl mx-auto px-6 relative z-10">
+        <h3 className="font-display text-display-sm text-foreground text-center mb-12">
+          {language === 'de' ? 'Häufige Fragen' : 'Frequently Asked Questions'}
+        </h3>
+        <Accordion type="single" collapsible className="w-full">
+          {faqItems.map((item, index) => (
+            <AccordionItem key={index} value={`faq-${index}`}>
+              <AccordionTrigger className="text-left font-medium">
+                {language === 'de' ? item.qDe : item.qEn}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground">
+                {language === 'de' ? item.aDe : item.aEn}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+};
+
+// ============================================================================
+// SECTION: PRICING (Angebot für Cohort 1) + RISK REVERSAL
+// ============================================================================
+const PricingSection: React.FC = () => {
+  const { language } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const tiers = [
     {
@@ -794,102 +1147,22 @@ const PricingSection: React.FC = () => {
     },
   ];
 
-  const faqItems = [
-    {
-      qDe: 'Ich habe wenig Zeit. Wie viel Aufwand ist das wirklich?',
-      qEn: 'I have limited time. How much effort is this really?',
-      aDe: '4h Live pro Woche + ca. 2–3h Nacharbeit. Wer 6–7h pro Woche investieren kann, baut in 6 Wochen ein System, das danach für sich arbeitet.',
-      aEn: '4h live per week + approx. 2–3h follow-up work. If you can invest 6–7h per week, you build a system in 6 weeks that works for you afterward.',
-    },
-    {
-      qDe: 'Ich bin kein Anfänger. Ist das nicht zu basic für mich?',
-      qEn: "I'm not a beginner. Isn't this too basic for me?",
-      aDe: 'Das Programm ist für Head of Growth, VP Marketing und CMOs gebaut — nicht für Einsteiger. Der Unterschied: Sie haben noch nie ihr System als Architektur gebaut.',
-      aEn: "The program is built for Heads of Growth, VP Marketing, and CMOs — not beginners. The difference: they've never built their system as architecture.",
-    },
-    {
-      qDe: 'Was passiert, wenn ich nach Session 1 merke, dass es nicht passt?',
-      qEn: "What happens if I realize after Session 1 that it's not right?",
-      aDe: 'Session-1-Guarantee: Volle Rückerstattung. Kein Prozess. Kein Kleingedrucktes.',
-      aEn: 'Session 1 Guarantee: Full refund. No process. No fine print.',
-    },
-    {
-      qDe: 'Founding Price — ist das ein Rabatt, weil das Programm unfertig ist?',
-      qEn: 'Founding Price — is that a discount because the program is unfinished?',
-      aDe: 'Nein. Das Programm ist vollständig. Founding Price bedeutet: Cohort-1-Teilnehmer schärfen das Programm mit. Das ist ein anderes Verhältnis, kein Preisnachlass.',
-      aEn: "No. The program is complete. Founding Price means: Cohort 1 participants help sharpen the program. That's a different relationship, not a discount.",
-    },
-    {
-      qDe: 'Was passiert, wenn meine Bewerbung abgelehnt wird?',
-      qEn: 'What happens if my application is rejected?',
-      aDe: 'Ich erkläre dir ehrlich, warum — und was ich stattdessen empfehle. Kein Programm passt zu jedem.',
-      aEn: "I'll honestly explain why — and what I recommend instead. No program fits everyone.",
-    },
-    {
-      qDe: 'Kann ich auch als Team teilnehmen?',
-      qEn: 'Can I participate as a team?',
-      aDe: 'Für Teams gibt es die Company Cohort — ein separates Format. Details auf Anfrage: team@scalingx.io',
-      aEn: 'For teams there is the Company Cohort — a separate format. Details on request: team@scalingx.io',
-    },
-    {
-      qDe: 'Gibt es Ratenzahlung?',
-      qEn: 'Is installment payment available?',
-      aDe: 'Ja. 3× monatliche Raten möglich — alle Tiers. Details im Gespräch nach der Bewerbung.',
-      aEn: 'Yes. 3× monthly installments available — all tiers. Details in the conversation after application.',
-    },
-  ];
-
-  const processSteps = [
-    {
-      stepDe: 'Bewerbung einreichen',
-      stepEn: 'Submit Application',
-      timeDe: '5 Minuten',
-      timeEn: '5 minutes',
-      descDe: 'Kurzes Formular: Unternehmen, Rolle, aktuelle Situation, Ziel.',
-      descEn: 'Short form: Company, role, current situation, goal.',
-    },
-    {
-      stepDe: 'Persönliche Prüfung',
-      stepEn: 'Personal Review',
-      timeDe: '48h',
-      timeEn: '48h',
-      descDe: 'Michel prüft jede Bewerbung persönlich.',
-      descEn: 'Michel reviews every application personally.',
-    },
-    {
-      stepDe: 'Persönliches Gespräch',
-      stepEn: 'Personal Conversation',
-      timeDe: '15–30 Min',
-      timeEn: '15–30 min',
-      descDe: 'Wir entscheiden gemeinsam, ob es passt.',
-      descEn: 'We decide together if it\'s a fit.',
-    },
-    {
-      stepDe: 'Commitment & Platz sichern',
-      stepEn: 'Commitment & Secure Your Seat',
-      timeDe: '',
-      timeEn: '',
-      descDe: 'Founding-Preis gilt bis Cohort-Start.',
-      descEn: 'Founding price valid until cohort start.',
-    },
-  ];
-
   return (
     <section
       id="pricing-section"
       ref={ref as React.RefObject<HTMLElement>}
-      className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+      className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
 
-        {/* S11a — Pricing Intro */}
+        {/* Pricing Intro */}
         <div className="text-center mb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             Pricing
           </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
-            {language === 'de' ? 'Dein Platz in Cohort 1' : 'Your Seat in Cohort 1'}
+            {language === 'de' ? 'Angebot für Cohort 1' : 'Offer for Cohort 1'}
           </h2>
           <p className="text-muted-foreground">
             {language === 'de'
@@ -898,15 +1171,15 @@ const PricingSection: React.FC = () => {
           </p>
         </div>
 
-        {/* S11b — Pricing Tiers */}
+        {/* Pricing Tiers */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {tiers.map((tier) => (
             <div
               key={tier.name}
-              className={`relative bg-card/80 backdrop-blur-sm border-2 p-8 flex flex-col ${
+              className={`relative bg-card/10 backdrop-blur-sm border-2 p-8 flex flex-col ${
                 tier.recommended
                   ? 'border-accent shadow-accent-glow'
-                  : 'border-border hover:border-primary/30'
+                  : 'border-border/50 hover:border-primary/30'
               } transition-all duration-300`}
             >
               {tier.recommended && (
@@ -961,44 +1234,8 @@ const PricingSection: React.FC = () => {
             : '3× monthly installments available (all tiers). Details in conversation.'}
         </p>
 
-        {/* S11c — Process */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <h3 className="font-display text-display-sm text-foreground text-center mb-12">
-            {language === 'de' ? 'Wie die Bewerbung funktioniert' : 'How the Application Works'}
-          </h3>
-          <div className="space-y-6">
-            {processSteps.map((step, index) => (
-              <div key={index} className="flex gap-6">
-                <div className="flex flex-col items-center">
-                  <div className="w-10 h-10 bg-primary/10 border-2 border-primary/30 flex items-center justify-center text-primary font-bold text-sm shrink-0">
-                    {index + 1}
-                  </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="w-px h-full bg-border mt-2" />
-                  )}
-                </div>
-                <div className="pb-6">
-                  <div className="flex items-center gap-3 mb-1">
-                    <h4 className="font-display font-bold text-foreground">
-                      {language === 'de' ? step.stepDe : step.stepEn}
-                    </h4>
-                    {(language === 'de' ? step.timeDe : step.timeEn) && (
-                      <span className="text-xs text-muted-foreground">
-                        ({language === 'de' ? step.timeDe : step.timeEn})
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'de' ? step.descDe : step.descEn}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* S11d — Risk Reversal */}
-        <div className="max-w-3xl mx-auto mb-20">
+        {/* Risk Reversal */}
+        <div className="max-w-3xl mx-auto">
           <div className="bg-accent/5 border-2 border-accent/20 p-8 text-center">
             <Shield className="w-10 h-10 text-accent mx-auto mb-4" />
             <h3 className="font-display text-xl font-bold text-foreground mb-4">
@@ -1009,174 +1246,6 @@ const PricingSection: React.FC = () => {
                 ? 'Session-1-Guarantee: Wenn Session 1 nicht hält, was sie verspricht — kein weiteres Commitment. Volle Rückerstattung. Du entscheidest nach der ersten Session. Nicht vorher. Nicht blind.'
                 : "Session 1 Guarantee: If Session 1 doesn't deliver what it promises — no further commitment. Full refund. You decide after the first session. Not before. Not blindly."}
             </p>
-          </div>
-        </div>
-
-        {/* S11d — FAQ */}
-        <div className="max-w-3xl mx-auto mb-20">
-          <h3 className="font-display text-display-sm text-foreground text-center mb-12">
-            {language === 'de' ? 'Häufige Fragen' : 'Frequently Asked Questions'}
-          </h3>
-          <Accordion type="single" collapsible className="w-full">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`faq-${index}`}>
-                <AccordionTrigger className="text-left font-medium">
-                  {language === 'de' ? item.qDe : item.qEn}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">
-                  {language === 'de' ? item.aDe : item.aEn}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-
-        {/* S11e — Final CTA with Lead Capture */}
-        <div className="text-center max-w-2xl mx-auto">
-          <h2 className="font-display text-display-md text-foreground mb-4">
-            {language === 'de' ? 'Bereit, mehr zu erfahren?' : 'Ready to learn more?'}
-          </h2>
-          <p className="text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-            {language === 'de'
-              ? 'Trag dich ein. Du erhältst sofort „Das Revenue System" als PDF — und erfährst als Erste/r, wenn die nächste Kohorte öffnet. Kostenlos. Kein Commitment. Kein Verkaufsdruck.'
-              : 'Sign up. You\'ll instantly receive "The Revenue System" as a PDF — and be the first to know when the next cohort opens. Free. No commitment. No sales pressure.'}
-          </p>
-
-          {isLeadSuccess ? (
-            <div className="p-8 rounded-lg border border-accent/30 bg-accent/5">
-              <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
-              <h3 className="text-lg font-semibold mb-2 text-foreground">
-                {language === 'de' ? 'Download gestartet!' : 'Download started!'}
-              </h3>
-              <p className="text-muted-foreground">
-                {language === 'de'
-                  ? 'Überprüfe deinen Downloads-Ordner.'
-                  : 'Check your downloads folder.'}
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={async (e) => {
-                e.preventDefault();
-                setLeadError('');
-
-                const validation = emailSchema.safeParse({ email: leadEmail });
-                if (!validation.success) {
-                  setLeadError(validation.error.errors[0]?.message || 'Invalid email');
-                  return;
-                }
-
-                setIsLeadSubmitting(true);
-                try {
-                  const { error } = await supabase.from('download_leads').insert({
-                    email: validation.data.email,
-                    asset_id: 'revenue-system-whitepaper',
-                    asset_type: 'lead-magnet',
-                    utm_source: trackingParams.utm_source || null,
-                    utm_medium: trackingParams.utm_medium || null,
-                    utm_campaign: trackingParams.utm_campaign || null,
-                    utm_content: trackingParams.utm_content || null,
-                    utm_term: trackingParams.utm_term || null,
-                    page_url: trackingParams.page_url || null,
-                    referrer: trackingParams.referrer || null,
-                  });
-
-                  if (error) throw error;
-
-                  setIsLeadSuccess(true);
-                  toast({
-                    title: language === 'de' ? 'Download bereit!' : 'Download ready!',
-                    description: language === 'de'
-                      ? 'Dein PDF-Download startet in Kürze.'
-                      : 'Your PDF download will start shortly.',
-                  });
-
-                  setTimeout(() => {
-                    window.open('/downloads/fix-growth-sample.pdf', '_blank');
-                  }, 500);
-                } catch (err) {
-                  console.error('Lead capture error:', err);
-                  toast({
-                    variant: 'destructive',
-                    title: language === 'de' ? 'Fehler' : 'Error',
-                    description: language === 'de'
-                      ? 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'
-                      : 'Something went wrong. Please try again.',
-                  });
-                } finally {
-                  setIsLeadSubmitting(false);
-                }
-              }}
-              className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-8"
-            >
-              <Input
-                type="email"
-                placeholder={language === 'de' ? 'Deine E-Mail-Adresse' : 'Your email address'}
-                value={leadEmail}
-                onChange={(e) => setLeadEmail(e.target.value)}
-                required
-                disabled={isLeadSubmitting}
-                className={`flex-1 h-14 text-base ${leadError ? 'border-destructive' : ''}`}
-              />
-              <Button
-                type="submit"
-                size="xl"
-                disabled={isLeadSubmitting}
-                className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-8 py-4 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 whitespace-nowrap"
-              >
-                {isLeadSubmitting ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : (
-                  <>
-                    <Download className="w-5 h-5 mr-2" />
-                    {language === 'de' ? 'PDF sichern' : 'Get PDF'}
-                  </>
-                )}
-              </Button>
-            </form>
-          )}
-
-          {leadError && (
-            <p className="text-sm text-destructive mb-4">{leadError}</p>
-          )}
-
-          {/* PDF Preview Card */}
-          {!isLeadSuccess && (
-            <div className="max-w-md mx-auto p-6 rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm mb-8">
-              <div className="flex items-start gap-4">
-                <FileText className="w-8 h-8 text-accent shrink-0 mt-0.5" />
-                <div className="text-left">
-                  <h4 className="font-semibold text-foreground mb-1">
-                    {language === 'de' ? 'Sofort-Download: „Das Revenue System"' : 'Instant Download: "The Revenue System"'}
-                  </h4>
-                  <p className="text-sm text-muted-foreground">
-                    {language === 'de'
-                      ? 'Das PDF erklärt, wie du aufhörst, Taktiken zu stapeln — und anfängst, systematisch zu wachsen.'
-                      : 'The PDF explains how to stop stacking tactics — and start growing systematically.'}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          <p className="text-sm text-muted-foreground mb-6">
-            {language === 'de' ? 'Fragen? Direkt schreiben → ' : 'Questions? Write directly → '}
-            <a href="mailto:michel@scalingx.com" className="text-primary hover:text-primary/80 transition-colors">
-              michel@scalingx.com
-            </a>
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-6">
-            {[
-              { de: 'Session-1-Guarantee', en: 'Session 1 Guarantee' },
-              { de: 'Kein Commitment vor dem Gespräch', en: 'No commitment before conversation' },
-              { de: 'Antwort innerhalb von 48h', en: 'Response within 48h' },
-            ].map((signal, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Check className="w-4 h-4 text-accent" />
-                <span>{language === 'de' ? signal.de : signal.en}</span>
-              </div>
-            ))}
           </div>
         </div>
       </div>
@@ -1208,6 +1277,10 @@ const RevenueArchitectureSystem: React.FC = () => {
         <PreCohortProofSection />
         <CredibilitySection />
         <FoundingFrameSection />
+        <ApplicationProcessSection />
+        <CohortStartCard />
+        <LeadCaptureSection />
+        <FAQSection />
         <PricingSection />
       </main>
       <Footer />
