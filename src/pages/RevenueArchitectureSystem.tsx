@@ -130,7 +130,7 @@ const HeroSection: React.FC = () => {
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
             onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
-            {language === 'de' ? 'Jetzt bewerben — Founding-Preis sichern' : 'Apply Now — Secure Founding Price'}
+            {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           <Button
