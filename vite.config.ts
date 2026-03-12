@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ["favicon-sx.png", "images/scalingx-logo.png"],
       workbox: {
         navigateFallbackDenylist: [/^\/~oauth/],
+        maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
       },
       manifest: {
@@ -51,6 +52,17 @@ export default defineConfig(({ mode }) => ({
       },
     }),
   ].filter(Boolean),
+  build: {
+    reportCompressedSize: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          ui: ["lucide-react", "recharts", "sonner"],
+        },
+      },
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
