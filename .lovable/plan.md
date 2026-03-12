@@ -1,124 +1,54 @@
 
-Ich gehe mit hoher Wahrscheinlichkeit von `/solutions/scaling-readiness-assessment` aus, weil genau diese Route in deiner Session geöffnet wurde und der Hero dort mit „Expert Scaling Assessment” betitelt ist.
 
-## Befund
+## Plan: Revenue Architecture System — Kachel + Landing Page (v9.1)
 
-Die Seite ist aktuell nicht auf dem gleichen Standard wie die anderen Decision-Support-/Solutions-Seiten wie `GTMEffectivenessReview` oder `PricingPackagingReview`.
+### Aenderungen gegenueber v9.0-Plan
 
-## Hauptabweichungen
+Das v9.1-Briefing bringt folgende inhaltliche Aenderungen:
 
-1. **Andere Seitenarchitektur**
-   - `ScalingReadinessAssessment.tsx` ist als großer Monolith gebaut.
-   - Die konsistenten Vergleichsseiten sind in klar getrennte Section-Komponenten gegliedert:
-     `HeroSection`, `ProblemSection`, `SolutionSection`, `OutcomeSection`, `ProcessSection`, `QualificationSection`, `FinalCTASection`.
+1. **Kategorie**: "AI-native Execution Consulting" → "Revenue Architecture Build Program / Guided Build"
+2. **Claims auditiert**: Kein "einziges Programm", kein "22-58% CAC-Reduktion" — stattdessen qualifizierte Aussagen
+3. **Pricing-Hierarchie**: Plus = Sweet Spot (visuell hervorgehoben), VIP = Anchor, Standard = Entry
+4. **S5 komprimiert** in Variante A (3 Kernpunkte statt 22er-Grid)
+5. **Sektions-Nummern verschoben**: S8=Michel (war S10), S9b=Pre-Cohort Proof, S10=Founding Frame (war S11a), S11a-e=Pricing+CTA
+6. **Ton**: Souveraener, weniger Superlative, keine Countdown-Timer/Urgency-Banner
+7. **Wiederholungen reduziert**: "22 Deliverables / Max. 12 / Founding" nur je einmal prominent
 
-2. **Fehlender Standard-Wrapper**
-   - Es gibt **kein `<main>`** um die Sections.
-   - Die Standardseiten nutzen:
-     ```text
-     <div className="min-h-screen bg-background text-foreground">
-       <Navigation />
-       <main>...</main>
-       <FilloutBookingModal ... />
-       <Footer />
-     </div>
-     ```
+### Implementierung
 
-3. **Hero visuell nicht konsistent**
-   - Aktuell: einfacher Hero mit `TwinklingStars` + flachem Gradient.
-   - Standard: Deep-space Hero mit `useParallaxLayers`, Mesh/Grid-Overlay, Breadcrumb-Komponente, Badge-Komponente, animierten Stats, Premium-CTA.
+**1. Neue Solution Tile (ID 47) in `src/data/solutionTiles.ts`**
+- slug: `revenue-architecture-system`
+- solutionType: `transformation`, transformationTier: `accelerate`
+- challenges: `['cac-crisis', 'growth-stalled', 'scaling-chaos', 'ai-transformation']`
+- price: `ab €6.900`, priceTag: `paid`
+- Content aus v9.1 Briefing (DE+EN), auditierte Claims
+- primaryCtaAction: `learn-more`, primaryCtaUrl: `/solutions/revenue-architecture-system`
 
-4. **Sections folgen nicht dem standardisierten Design-System**
-   - Aktuell: einfache `py-20`-Blöcke mit Basis-Typografie.
-   - Standard: animierte Sections mit
-     - `useScrollAnimation`
-     - `min-h-[50vh] py-24 lg:py-32`
-     - Gradient-Hintergründen
-     - `font-display text-display-md`
-     - konsistenten Header-Spacings
+**2. Neue Landing Page: `src/pages/RevenueArchitectureSystem.tsx`**
 
-5. **CTA-/Modal-Pattern inkonsistent**
-   - Aktuell: direkte lokale `setIsBookingModalOpen(true)`-Aufrufe im Hero und in der Final CTA.
-   - Standard: Hero-CTA feuert `window.dispatchEvent(new CustomEvent('openBookingModal'))`, Final CTA bekommt `onOpenBooking` vom Parent.
+Folgt dem Accelerate-Muster (monolithische Sektionen, Deep Space Hero, `openBookingModal` CustomEvent, FilloutBookingModal). Implementiert **Variante A** (warm-heiss):
 
-6. **Modal-Reihenfolge inkonsistent**
-   - Aktuell steht `FilloutBookingModal` **vor** dem Footer.
-   - Standard in den vereinheitlichten Solutions-Seiten: Modal **nach** dem Footer.
+| Sektion | Inhalt |
+|---|---|
+| S1 Hero | Deep Space BG, Problem-Led Headline, "Jetzt bewerben" CTA, Social Proof Strip, kein Urgency-Banner |
+| S2 VSL | Video-Platzhalter (16:9) + Text-Safety-Net |
+| S5 komprimiert | 3 Kernpunkte (ICP+Value Stack, Entry+Conversion, Revenue OS) |
+| S7 Programm | 6 Session-Kacheln + Format-Box |
+| S9b Pre-Cohort | 3 Saeulen (Practitioner, Methoden, Session-1-Guarantee) |
+| S8 Michel | Foto + Bio + LinkedIn + anonyme Zitate |
+| S10 Founding | Amber-Box mit Founding-Frame-Erklaerung |
+| S11a-b Pricing | 3 Tiers, Plus hervorgehoben mit Badge, Ratenzahlung |
+| S11c Prozess | 4 Schritte |
+| S11d Risk Reversal | Session-1-Guarantee |
+| S11e CTA | Finaler CTA + sekundaerer Kontakt-Link |
 
-7. **Button-Styling nicht auf Premium-Standard**
-   - Aktuell: mehrere generische Buttons mit `className="group"` oder einfachem Outline.
-   - Standard: primäre CTA mit
-     ```text
-     bg-gradient-accent
-     shadow-accent-glow
-     text-cta
-     uppercase tracking-wide
-     ```
+Design: Projekt-eigenes Design-System (League Spartan + DM Sans, HSL-Farben, brutalist borders), nicht das Briefing-Farbschema. Deep Space Parallax + TwinklingStars konsistent mit anderen Accelerate-Seiten.
 
-## Umsetzungsplan
+**3. Route in `src/App.tsx`**
+- Lazy import + Route `/solutions/revenue-architecture-system`
 
-### 1. Seite auf Standardstruktur umbauen
-`src/pages/ScalingReadinessAssessment.tsx` auf dieselbe Seitenarchitektur wie die anderen Decision-Support-Seiten refaktorieren:
-- `HeroSection`
-- `ProblemSection`
-- `SolutionSection`
-- `OutcomeSection`
-- `ProcessSection`
-- `QualificationSection`
-- `FinalCTASection`
-- schlanke Main-Page-Komponente mit `<main>`
+### Umfang
+- 1 neue Datei (~900-1100 Zeilen)
+- 2 bestehende Dateien editieren (`solutionTiles.ts`, `App.tsx`)
+- Keine DB-Aenderungen
 
-### 2. Hero auf Decision-Support-Standard bringen
-Hero an `GTMEffectivenessReview.tsx` ausrichten:
-- `useParallaxLayers` ergänzen
-- Deep-space Background + Mesh + Grid + Stars
-- Breadcrumb mit UI-Komponente statt einfachem `nav`
-- Badge auf konsistente Variante umstellen
-- Headline-/Subheadline-/Stats-Typografie angleichen
-- Primäre CTA auf Premium-Gradient standardisieren
-
-### 3. Alle Inhaltssektionen visuell harmonisieren
-Die bestehenden Inhalte beibehalten, aber in das standardisierte Section-Layout überführen:
-- `useScrollAnimation`
-- `min-h-[50vh] py-24 lg:py-32`
-- einheitliche Header-Struktur
-- konsistente Karten, Spacings, Hintergrundwechsel und Animationen
-
-### 4. CTA- und Booking-Logik vereinheitlichen
-- Hero-CTA auf `openBookingModal`-Event umstellen
-- Final CTA als Section-Komponente mit `onOpenBooking`-Prop
-- lokale Direktaufrufe im Content entfernen, wo das Pattern abweicht
-
-### 5. Footer-/Modal-Reihenfolge angleichen
-Seitenende auf den konsistenten Aufbau umstellen:
-```text
-<main>...</main>
-<Footer />
-<FilloutBookingModal ... />
-```
-
-## Technische Details
-
-**Datei mit Hauptbedarf:**
-- `src/pages/ScalingReadinessAssessment.tsx`
-
-**Referenz-Dateien für den Zielstandard:**
-- `src/pages/GTMEffectivenessReview.tsx`
-- `src/pages/PricingPackagingReview.tsx`
-
-**Wichtig bei der Umsetzung:**
-- Inhalte, Copy und Angebotslogik bleiben erhalten
-- geändert wird vor allem:
-  - Seitenstruktur
-  - Hero-System
-  - Section-Layout
-  - CTA-/Modal-Pattern
-  - Typography/spacing/button styling
-
-## Erwartetes Ergebnis
-
-Nach der Umsetzung wirkt das Expert Scaling Assessment:
-- wie Teil derselben Solutions-Familie,
-- visuell und strukturell konsistent mit den anderen Decision-Support-Seiten,
-- sauberer wartbar,
-- und im CTA-/Modal-Verhalten identisch zu den bereits standardisierten Pages.
