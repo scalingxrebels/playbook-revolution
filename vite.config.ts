@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "favicon.png", "images/scalingx-logo.png"],
+      includeAssets: ["favicon-sx.png", "images/scalingx-logo.png"],
       workbox: {
         navigateFallbackDenylist: [/^\/~oauth/],
         globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
@@ -31,17 +31,17 @@ export default defineConfig(({ mode }) => ({
         scope: "/",
         icons: [
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
