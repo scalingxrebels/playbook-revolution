@@ -7,7 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { ExternalLink, LayoutGrid, BookOpen, Lightbulb, FolderOpen, Loader2 } from 'lucide-react';
+import { LayoutGrid, BookOpen, Lightbulb, FolderOpen, Loader2, Eye, Globe } from 'lucide-react';
+import ContentPreviewModal, { type PreviewMode } from '@/components/registry/ContentPreviewModal';
 import { solutionTiles } from '@/data/solutionTiles';
 import { playbooks } from '@/data/playbooks';
 import { caseStudies } from '@/data/cases';
@@ -24,6 +25,16 @@ const ContentRegistry: React.FC = () => {
   const { mergeVisibility, toggleVisibility, isLoading: visLoading } = useContentVisibility();
   const [activeTab, setActiveTab] = useState('solutions');
   const [statusFilter, setStatusFilter] = useState<string>('all');
+  const [previewModal, setPreviewModal] = useState<{
+    open: boolean;
+    mode: PreviewMode;
+    contentType: 'solution' | 'playbook' | 'case' | 'insight';
+    item: any;
+  }>({ open: false, mode: 'card', contentType: 'solution', item: null });
+
+  const openPreview = (mode: PreviewMode, contentType: 'solution' | 'playbook' | 'case' | 'insight', item: any) => {
+    setPreviewModal({ open: true, mode, contentType, item });
+  };
 
   // Merge DB overrides into static data
   const mergedSolutions = useMemo(() => mergeVisibility(solutionTiles, 'solution', t => t.slug), [mergeVisibility]);
@@ -148,8 +159,7 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Tier</TableHeader>
                         <TableHeader>Sichtbar</TableHeader>
-                        <TableHeader>Landing Page</TableHeader>
-                        <TableHeader>Links</TableHeader>
+                        <TableHeader>Vorschau</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
@@ -174,14 +184,14 @@ const ContentRegistry: React.FC = () => {
                             />
                           </td>
                           <td className="px-4 py-3">
-                            <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
-                              {tile.primaryCtaUrl || `/${tile.slug}`}
-                            </code>
-                          </td>
-                          <td className="px-4 py-3">
-                            <Link to={tile.primaryCtaUrl || `/${tile.slug}`} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                              <ExternalLink className="w-3 h-3" /> Öffnen
-                            </Link>
+                            <div className="flex items-center gap-1.5">
+                              <button onClick={() => openPreview('card', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Eye className="w-3 h-3" /> Kachel
+                              </button>
+                              <button onClick={() => openPreview('landing', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Globe className="w-3 h-3" /> Landing
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       ))}
@@ -202,41 +212,39 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Ebene</TableHeader>
                         <TableHeader>Sichtbar</TableHeader>
-                        <TableHeader>Landing Page</TableHeader>
-                        <TableHeader>Links</TableHeader>
+                        <TableHeader>Vorschau</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredPlaybooks.map((pb, i) => {
-                        const url = `/playbooks/${pb.slug}`;
-                        return (
-                          <tr key={pb.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                            <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                            <td className="px-4 py-3">
-                              <span className="text-sm font-medium text-foreground">{pb.title.de}</span>
-                              <br />
-                              <span className="text-xs text-muted-foreground">{pb.slug}</span>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Badge variant="outline" className="text-xs">Ebene {pb.ebene}</Badge>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Switch
-                                checked={!pb.hidden}
-                                onCheckedChange={(checked) => toggleVisibility('playbook', pb.slug, !checked)}
-                              />
-                            </td>
-                            <td className="px-4 py-3">
-                              <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                                <ExternalLink className="w-3 h-3" /> Öffnen
-                              </Link>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      {filteredPlaybooks.map((pb, i) => (
+                        <tr key={pb.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                          <td className="px-4 py-3">
+                            <span className="text-sm font-medium text-foreground">{pb.title.de}</span>
+                            <br />
+                            <span className="text-xs text-muted-foreground">{pb.slug}</span>
+                          </td>
+                          <td className="px-4 py-3">
+                            <Badge variant="outline" className="text-xs">Ebene {pb.ebene}</Badge>
+                          </td>
+                          <td className="px-4 py-3">
+                            <Switch
+                              checked={!pb.hidden}
+                              onCheckedChange={(checked) => toggleVisibility('playbook', pb.slug, !checked)}
+                            />
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-1.5">
+                              <button onClick={() => openPreview('card', 'playbook', pb)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Eye className="w-3 h-3" /> Kachel
+                              </button>
+                              <button onClick={() => openPreview('landing', 'playbook', pb)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Globe className="w-3 h-3" /> Landing
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -255,42 +263,40 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Industry</TableHeader>
                         <TableHeader>Stage</TableHeader>
                         <TableHeader>Sichtbar</TableHeader>
-                        <TableHeader>Landing Page</TableHeader>
-                        <TableHeader>Links</TableHeader>
+                        <TableHeader>Vorschau</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredCases.map((cs, i) => {
-                        const url = `/cases/${cs.slug}`;
-                        return (
-                          <tr key={cs.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                            <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                            <td className="px-4 py-3">
-                              <span className="text-sm font-medium text-foreground">{cs.headline.de}</span>
-                              <br />
-                              <span className="text-xs text-muted-foreground">{cs.slug}</span>
-                            </td>
-                            <td className="px-4 py-3 text-xs text-muted-foreground">{cs.industry}</td>
-                            <td className="px-4 py-3">
-                              <Badge variant="outline" className="text-xs">{cs.stage}</Badge>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Switch
-                                checked={!cs.hidden}
-                                onCheckedChange={(checked) => toggleVisibility('case', cs.slug, !checked)}
-                              />
-                            </td>
-                            <td className="px-4 py-3">
-                              <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                                <ExternalLink className="w-3 h-3" /> Öffnen
-                              </Link>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      {filteredCases.map((cs, i) => (
+                        <tr key={cs.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                          <td className="px-4 py-3">
+                            <span className="text-sm font-medium text-foreground">{cs.headline.de}</span>
+                            <br />
+                            <span className="text-xs text-muted-foreground">{cs.slug}</span>
+                          </td>
+                          <td className="px-4 py-3 text-xs text-muted-foreground">{cs.industry}</td>
+                          <td className="px-4 py-3">
+                            <Badge variant="outline" className="text-xs">{cs.stage}</Badge>
+                          </td>
+                          <td className="px-4 py-3">
+                            <Switch
+                              checked={!cs.hidden}
+                              onCheckedChange={(checked) => toggleVisibility('case', cs.slug, !checked)}
+                            />
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-1.5">
+                              <button onClick={() => openPreview('card', 'case', cs)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Eye className="w-3 h-3" /> Kachel
+                              </button>
+                              <button onClick={() => openPreview('landing', 'case', cs)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Globe className="w-3 h-3" /> Landing
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -309,48 +315,55 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Kategorie</TableHeader>
                         <TableHeader>Sichtbar</TableHeader>
-                        <TableHeader>Landing Page</TableHeader>
-                        <TableHeader>Links</TableHeader>
+                        <TableHeader>Vorschau</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
-                      {filteredInsights.map((item, i) => {
-                        const url = `/insights/${item.slug}`;
-                        return (
-                          <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                            <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                            <td className="px-4 py-3">
-                              <span className="text-sm font-medium text-foreground">{item.title.de}</span>
-                              <br />
-                              <span className="text-xs text-muted-foreground">{item.slug}</span>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Badge variant="outline" className="text-xs">{item.type}</Badge>
-                            </td>
-                            <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
-                            <td className="px-4 py-3">
-                              <Switch
-                                checked={!item.hidden}
-                                onCheckedChange={(checked) => toggleVisibility('insight', item.slug, !checked)}
-                              />
-                            </td>
-                            <td className="px-4 py-3">
-                              <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
-                            </td>
-                            <td className="px-4 py-3">
-                              <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                                <ExternalLink className="w-3 h-3" /> Öffnen
-                              </Link>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                      {filteredInsights.map((item, i) => (
+                        <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                          <td className="px-4 py-3">
+                            <span className="text-sm font-medium text-foreground">{item.title.de}</span>
+                            <br />
+                            <span className="text-xs text-muted-foreground">{item.slug}</span>
+                          </td>
+                          <td className="px-4 py-3">
+                            <Badge variant="outline" className="text-xs">{item.type}</Badge>
+                          </td>
+                          <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
+                          <td className="px-4 py-3">
+                            <Switch
+                              checked={!item.hidden}
+                              onCheckedChange={(checked) => toggleVisibility('insight', item.slug, !checked)}
+                            />
+                          </td>
+                          <td className="px-4 py-3">
+                            <div className="flex items-center gap-1.5">
+                              <button onClick={() => openPreview('card', 'insight', item)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Eye className="w-3 h-3" /> Kachel
+                              </button>
+                              <button onClick={() => openPreview('landing', 'insight', item)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                <Globe className="w-3 h-3" /> Landing
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
               </div>
             </TabsContent>
           </Tabs>
+
+          {/* Preview Modal */}
+          <ContentPreviewModal
+            open={previewModal.open}
+            onOpenChange={(open) => setPreviewModal(prev => ({ ...prev, open }))}
+            mode={previewModal.mode}
+            contentType={previewModal.contentType}
+            item={previewModal.item}
+          />
         </div>
       </main>
     </div>
