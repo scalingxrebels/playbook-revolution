@@ -930,7 +930,7 @@ const PricingSection: React.FC = () => {
                 }`}
                 onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
               >
-                {language === 'de' ? 'Jetzt bewerben' : 'Apply Now'}
+                {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
