@@ -58,7 +58,7 @@ const Insights: React.FC = () => {
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
           filteredCount={filteredItems.length}
-          totalCount={sampleInsights.length}
+          totalCount={visibleInsights.length}
         />
         <InsightsGrid items={filteredItems} />
         <InsightsCTA />

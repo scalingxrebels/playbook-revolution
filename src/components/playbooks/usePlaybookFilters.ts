@@ -136,6 +136,6 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
     resetFilters,
     hasActiveFilters,
     filteredPlaybooks,
-    totalPlaybooks: playbooks.length,
+    totalPlaybooks: visiblePlaybooks.length,
   };
 }

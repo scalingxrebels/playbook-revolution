@@ -123,7 +123,7 @@ export const useCaseFilters = (): UseCaseFiltersReturn => {
     selectedStage,
     setSelectedStage,
     filteredCases,
-    totalCount: caseStudies.length,
+    totalCount: visibleCaseStudies.length,
     filteredCount: filteredCases.length,
     clearFilters,
     hasActiveFilters,
