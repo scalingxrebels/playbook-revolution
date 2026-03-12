@@ -408,15 +408,19 @@ const ProgramSection: React.FC = () => {
               <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
                 {language === 'de' ? `Woche ${session.week}` : `Week ${session.week}`}
               </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-2">
+              <h3 className="font-display text-lg font-bold text-foreground mb-3">
                 {language === 'de' ? session.titleDe : session.titleEn}
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {language === 'de' ? session.descDe : session.descEn}
-              </p>
-              <div className="text-xs text-muted-foreground/70 font-mono">
-                {session.deliverables}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {(language === 'de' ? session.deliverables : session.deliverablesEn).map((d, i) => (
+                  <span key={i} className="text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-sm">
+                    {d}
+                  </span>
+                ))}
               </div>
+              <p className="text-sm text-muted-foreground italic">
+                → {language === 'de' ? session.outcomeDe : session.outcomeEn}
+              </p>
             </div>
           ))}
         </div>
