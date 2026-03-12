@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface SolutionTileCardProps {
