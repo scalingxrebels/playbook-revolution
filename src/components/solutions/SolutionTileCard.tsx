@@ -70,7 +70,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
     if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
     } else if (tile.primaryCtaUrl) {
-      window.location.href = tile.primaryCtaUrl;
+      navigate(tile.primaryCtaUrl);
     }
   };
 
