@@ -25,6 +25,7 @@ export interface InsightArticle {
   readingTime: number;
   featured?: boolean;
   reactions: InsightReactionCounts;
+  hidden?: boolean;
 }
 
 export interface InsightEvent {
