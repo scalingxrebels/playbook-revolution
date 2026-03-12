@@ -31,17 +31,17 @@ export default defineConfig(({ mode }) => ({
         scope: "/",
         icons: [
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "192x192",
             type: "image/png",
           },
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "/favicon.png",
+            src: "/favicon-sx.png",
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
