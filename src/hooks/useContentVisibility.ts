@@ -20,7 +20,7 @@ export function useContentVisibility() {
         .from('content_visibility' as any)
         .select('content_type, content_id, hidden');
       if (error) throw error;
-      return (data ?? []) as VisibilityOverride[];
+      return (data ?? []) as unknown as VisibilityOverride[];
     },
     staleTime: 30_000,
   });
