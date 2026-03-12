@@ -616,8 +616,8 @@ const CredibilitySection: React.FC = () => {
               </p>
               <p className="text-foreground font-medium">
                 {language === 'de'
-                  ? 'The Revenue Architecture System™ ist das, was ich mir selbst gewünscht hätte — als ich zum ersten Mal ein Revenue System aufgebaut habe.'
-                  : 'The Revenue Architecture System™ is what I wished I had — when I built a Revenue System for the first time.'}
+                  ? 'The Revenue Architecture System ist das, was ich mir selbst gewünscht hätte — als ich zum ersten Mal ein Revenue System aufgebaut habe.'
+                  : 'The Revenue Architecture System is what I wished I had — when I built a Revenue System for the first time.'}
               </p>
             </div>
           </div>
