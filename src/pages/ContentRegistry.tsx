@@ -176,7 +176,7 @@ const ContentRegistry: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {playbooks.map((pb, i) => {
+                      {filteredPlaybooks.map((pb, i) => {
                         const url = `/playbooks/${pb.slug}`;
                         return (
                           <tr key={pb.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
