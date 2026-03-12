@@ -175,12 +175,12 @@ const VSLSection: React.FC = () => {
   const safetyNetLines = language === 'de'
     ? [
         'Die meisten B2B-SaaS-Teams lösen das falsche Problem — und wundern sich, warum der CAC steigt.',
-        'The Revenue Architecture System™ — 6 Wochen, 22 Revenue-Bausteine, vollständiges Revenue System live aufgebaut.',
+        'The Revenue Architecture System — 6 Wochen, 22 Revenue-Bausteine, vollständiges Revenue System live aufgebaut.',
         'Teilnehmer berichten von signifikant reduziertem CAC — durch systematische ICP-Schärfung und Funnel-Optimierung.',
       ]
     : [
         "Most B2B SaaS teams solve the wrong problem — and wonder why CAC keeps rising.",
-        'The Revenue Architecture System™ — 6 weeks, 22 revenue building blocks, complete Revenue System built live.',
+        'The Revenue Architecture System — 6 weeks, 22 revenue building blocks, complete Revenue System built live.',
         'Participants report significantly reduced CAC — through systematic ICP sharpening and funnel optimization.',
       ];
 
@@ -460,15 +460,15 @@ const PreCohortProofSection: React.FC = () => {
   const proofPillars = [
     {
       icon: Award,
-      titleDe: 'Practitioner-Proof',
-      titleEn: 'Practitioner Proof',
+      titleDe: 'Revenue Systeme von Microsoft bis Swarovski bis smapOne',
+      titleEn: 'Revenue Systems from Microsoft to Swarovski to smapOne',
       textDe: 'Seit 19 Jahren Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
       textEn: 'For 19 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
     },
     {
       icon: FileText,
-      titleDe: 'Methoden-Proof',
-      titleEn: 'Method Proof',
+      titleDe: 'Growth Engine Framework',
+      titleEn: 'Growth Engine Framework',
       textDe: '22 Revenue-Bausteine. Vollständig dokumentiert. Jede Session hat ein klares Deliverable. Du weißt vorher, was du danach hast.',
       textEn: '22 revenue building blocks. Fully documented. Every session has a clear deliverable. You know upfront what you\'ll have afterward.',
     },
@@ -495,8 +495,8 @@ const PreCohortProofSection: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
             {language === 'de'
-              ? 'Warum das funktioniert — bevor Cohort 1 startet'
-              : 'Why This Works — Before Cohort 1 Starts'}
+              ? 'Warum das funktioniert'
+              : 'Why This Works'}
           </h2>
         </div>
 
@@ -521,8 +521,8 @@ const PreCohortProofSection: React.FC = () => {
 
         <p className="text-center text-muted-foreground max-w-2xl mx-auto">
           {language === 'de'
-            ? 'Cohort 1 ist bewusst klein gehalten. Nicht weil das Programm nicht skaliert — sondern weil jedes System wirklich fertig werden soll.'
-            : "Cohort 1 is deliberately kept small. Not because the program doesn't scale — but because every system should truly be completed."}
+            ? 'Impact First — Fokus für jede/n Teilnehmer:in.'
+            : 'Impact First — Focus for every participant.'}
         </p>
       </div>
     </section>
@@ -616,8 +616,8 @@ const CredibilitySection: React.FC = () => {
               </p>
               <p className="text-foreground font-medium">
                 {language === 'de'
-                  ? 'The Revenue Architecture System™ ist das, was ich mir selbst gewünscht hätte — als ich zum ersten Mal ein Revenue System aufgebaut habe.'
-                  : 'The Revenue Architecture System™ is what I wished I had — when I built a Revenue System for the first time.'}
+                  ? 'The Revenue Architecture System ist das, was ich mir selbst gewünscht hätte — als ich zum ersten Mal ein Revenue System aufgebaut habe.'
+                  : 'The Revenue Architecture System is what I wished I had — when I built a Revenue System for the first time.'}
               </p>
             </div>
           </div>
@@ -688,6 +688,11 @@ const FoundingFrameSection: React.FC = () => {
               {language === 'de'
                 ? 'Warum ein Founding-Preis? Weil Cohort 1 auch für mich ein Aufbau-Moment ist. Ich will, dass die ersten Teilnehmer außergewöhnlich gut betreut werden. Dafür halte ich die Gruppe klein — und den Preis fair.'
                 : "Why a Founding Price? Because Cohort 1 is a building moment for me too. I want the first participants to be exceptionally well supported. That's why I keep the group small — and the price fair."}
+            </p>
+            <p className="pt-4 text-foreground font-medium">
+              {language === 'de'
+                ? 'Als Cohort-1-Teilnehmer:in bist du Teil des Beirats. Du gestaltest das Programm aktiv mit — dein Feedback fließt direkt in die Weiterentwicklung ein.'
+                : "As a Cohort 1 participant, you're part of the advisory board. You actively shape the program — your feedback feeds directly into its evolution."}
             </p>
           </div>
         </div>
@@ -834,12 +839,12 @@ const PricingSection: React.FC = () => {
       descEn: 'Michel reviews every application personally.',
     },
     {
-      stepDe: 'Kurzes Gespräch',
-      stepEn: 'Short Conversation',
+      stepDe: 'Persönliches Gespräch',
+      stepEn: 'Personal Conversation',
       timeDe: '15–30 Min',
       timeEn: '15–30 min',
-      descDe: 'Kein Verkaufsgespräch. Passung prüfen — für beide Seiten.',
-      descEn: 'No sales call. Checking fit — for both sides.',
+      descDe: 'Wir entscheiden gemeinsam, ob es passt.',
+      descEn: 'We decide together if it\'s a fit.',
     },
     {
       stepDe: 'Commitment & Platz sichern',
@@ -925,7 +930,7 @@ const PricingSection: React.FC = () => {
                 }`}
                 onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
               >
-                {language === 'de' ? 'Jetzt bewerben' : 'Apply Now'}
+                {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
@@ -1023,7 +1028,7 @@ const PricingSection: React.FC = () => {
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 mb-4"
             onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
-            {language === 'de' ? 'Jetzt bewerben — Founding-Platz sichern' : 'Apply Now — Secure Your Founding Seat'}
+            {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           <p className="text-sm text-muted-foreground">
