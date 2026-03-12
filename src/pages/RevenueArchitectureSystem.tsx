@@ -712,9 +712,19 @@ const FoundingFrameSection: React.FC = () => {
 // ============================================================================
 // SECTION S11: PRICING + APPLICATION + FAQ + FINAL CTA
 // ============================================================================
+const emailSchema = z.object({
+  email: z.string().trim().email({ message: "Invalid email address" }).max(255),
+});
+
 const PricingSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { toast } = useToast();
+  const trackingParams = useTrackingParams('revenue-system-whitepaper');
+  const [leadEmail, setLeadEmail] = useState('');
+  const [isLeadSubmitting, setIsLeadSubmitting] = useState(false);
+  const [isLeadSuccess, setIsLeadSuccess] = useState(false);
+  const [leadError, setLeadError] = useState('');
 
   const tiers = [
     {
