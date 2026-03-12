@@ -45,6 +45,7 @@ export interface InsightEvent {
   isFree: boolean;
   isUpcoming: boolean;
   featured?: boolean;
+  hidden?: boolean;
 }
 
 export interface InsightCaseStudy {
