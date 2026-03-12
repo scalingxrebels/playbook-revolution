@@ -1028,7 +1028,7 @@ const PricingSection: React.FC = () => {
             className="bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400 mb-4"
             onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
           >
-            {language === 'de' ? 'Jetzt bewerben — Founding-Platz sichern' : 'Apply Now — Secure Your Founding Seat'}
+            {language === 'de' ? 'Early Access sichern' : 'Secure Early Access'}
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
           <p className="text-sm text-muted-foreground">
