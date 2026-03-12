@@ -44,6 +44,7 @@ const isValidFormSlug = (slug: string): slug is FormSlug => {
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
   const { language } = useLanguage();
   const lang = language as 'en' | 'de';
+  const navigate = useNavigate();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const headline = lang === 'de' ? tile.headlineDe : tile.headlineEn;
