@@ -75,7 +75,7 @@ export const useCaseFilters = (): UseCaseFiltersReturn => {
 
   // Filter cases
   const filteredCases = useMemo(() => {
-    return caseStudies.filter((caseStudy) => {
+    return visibleCaseStudies.filter((caseStudy) => {
       // Search filter
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
