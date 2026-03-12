@@ -3,6 +3,7 @@ import { Navigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import Navigation from '@/components/Navigation';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Badge } from '@/components/ui/badge';
 import { ExternalLink, Eye, EyeOff, LayoutGrid, BookOpen, Lightbulb, FolderOpen } from 'lucide-react';
 import { solutionTiles, visibleSolutionTiles } from '@/data/solutionTiles';
