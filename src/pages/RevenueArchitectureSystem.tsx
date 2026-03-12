@@ -467,8 +467,8 @@ const PreCohortProofSection: React.FC = () => {
     },
     {
       icon: FileText,
-      titleDe: 'Methoden-Proof',
-      titleEn: 'Method Proof',
+      titleDe: 'Growth Engine Framework',
+      titleEn: 'Growth Engine Framework',
       textDe: '22 Revenue-Bausteine. Vollständig dokumentiert. Jede Session hat ein klares Deliverable. Du weißt vorher, was du danach hast.',
       textEn: '22 revenue building blocks. Fully documented. Every session has a clear deliverable. You know upfront what you\'ll have afterward.',
     },
