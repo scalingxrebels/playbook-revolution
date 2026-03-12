@@ -33,6 +33,7 @@ export interface SolutionTile {
   solutionType: Exclude<SolutionTypeId, 'all'>;
   transformationTier?: 'power-up' | 'boost' | 'accelerate';
   challenges: Exclude<ChallengeId, 'all'>[] | 'universal';
+  hidden?: boolean;
   price: string;
   priceTag: 'free' | 'paid' | 'custom';
   headlineEn: string;
