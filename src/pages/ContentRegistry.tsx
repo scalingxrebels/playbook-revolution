@@ -268,30 +268,37 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Kategorie</TableHeader>
                         <TableHeader>Status</TableHeader>
+                        <TableHeader>Landing Page</TableHeader>
                         <TableHeader>Links</TableHeader>
                       </tr>
                     </thead>
                     <tbody>
-                      {sampleInsights.map((item, i) => (
-                        <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                          <td className="px-4 py-3">
-                            <span className="text-sm font-medium text-foreground">{item.title.de}</span>
-                            <br />
-                            <span className="text-xs text-muted-foreground">{item.slug}</span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <Badge variant="outline" className="text-xs">{item.type}</Badge>
-                          </td>
-                          <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
-                          <td className="px-4 py-3"><StatusBadge hidden={item.hidden} /></td>
-                          <td className="px-4 py-3">
-                            <Link to={`/insights/${item.slug}`} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
-                              <ExternalLink className="w-3 h-3" /> Öffnen
-                            </Link>
-                          </td>
-                        </tr>
-                      ))}
+                      {filteredInsights.map((item, i) => {
+                        const url = `/insights/${item.slug}`;
+                        return (
+                          <tr key={item.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                            <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                            <td className="px-4 py-3">
+                              <span className="text-sm font-medium text-foreground">{item.title.de}</span>
+                              <br />
+                              <span className="text-xs text-muted-foreground">{item.slug}</span>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Badge variant="outline" className="text-xs">{item.type}</Badge>
+                            </td>
+                            <td className="px-4 py-3 text-xs text-muted-foreground">{item.category}</td>
+                            <td className="px-4 py-3"><StatusBadge hidden={item.hidden} /></td>
+                            <td className="px-4 py-3">
+                              <code className="text-xs text-muted-foreground bg-muted px-1.5 py-0.5 rounded">{url}</code>
+                            </td>
+                            <td className="px-4 py-3">
+                              <Link to={url} target="_blank" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
+                                <ExternalLink className="w-3 h-3" /> Öffnen
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
