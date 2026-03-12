@@ -77,7 +77,7 @@ export function usePlaybookFilters(searchQuery: string, language: 'en' | 'de') {
   // Filter and score playbooks
   const filteredPlaybooks = useMemo(() => {
     // First, apply text search
-    let results = playbooks.filter(playbook => {
+    let results = visiblePlaybooks.filter(playbook => {
       if (searchQuery === '') return true;
       const searchLower = searchQuery.toLowerCase();
       return (
