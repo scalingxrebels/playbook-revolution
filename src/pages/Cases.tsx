@@ -43,7 +43,7 @@ const calculateMedianRoi = (): string => {
 };
 
 const casesStats = [
-  { value: String(caseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+  { value: String(visibleCaseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
   { value: calculateMedianRoi(), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
   { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
   { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
