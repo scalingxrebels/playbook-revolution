@@ -495,8 +495,8 @@ const PreCohortProofSection: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-6">
             {language === 'de'
-              ? 'Warum das funktioniert — bevor Cohort 1 startet'
-              : 'Why This Works — Before Cohort 1 Starts'}
+              ? 'Warum das funktioniert'
+              : 'Why This Works'}
           </h2>
         </div>
 
