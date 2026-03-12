@@ -139,7 +139,7 @@ const HeroSection: React.FC = () => {
             onClick={() => scrollToSection('vsl-section')}
             className="border-2"
           >
-            {language === 'de' ? 'Erst mehr erfahren' : 'Learn More First'}
+            {language === 'de' ? 'Erst Video ansehen' : 'Watch Video First'}
             <ChevronDown className="w-4 h-4 ml-2" />
           </Button>
         </div>
