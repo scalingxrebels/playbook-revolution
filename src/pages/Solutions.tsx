@@ -9,11 +9,11 @@ import SolutionTypeChips from '@/components/solutions/SolutionTypeChips';
 import SolutionTileGrid from '@/components/solutions/SolutionTileGrid';
 import SolutionCTA from '@/components/solutions/SolutionCTA';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 import { Search, X } from 'lucide-react';
 import { 
   ChallengeId, 
   SolutionTypeId, 
-  getFilteredTiles,
   solutionTiles,
   challenges,
   solutionTypes
@@ -21,6 +21,7 @@ import {
 
 const Solutions: React.FC = () => {
   const { language } = useLanguage();
+  const { isHidden } = useContentVisibilityContext();
   const [searchParams, setSearchParams] = useSearchParams();
   
   // Get filters from URL or use defaults
@@ -40,7 +41,17 @@ const Solutions: React.FC = () => {
   const filteredTiles = useMemo(() => {
     const challenge = challengeFilter === 'all' ? null : challengeFilter;
     const type = solutionTypeFilter === 'all' ? null : solutionTypeFilter;
-    let tiles = getFilteredTiles(challenge, type);
+    
+    // First filter by visibility
+    let tiles = solutionTiles.filter(t => !isHidden('solution', t.slug, t.hidden));
+    
+    // Then filter by challenge and type
+    tiles = tiles.filter(tile => {
+      const matchesChallenge = !challenge || tile.challenges === 'universal' || 
+        (Array.isArray(tile.challenges) && tile.challenges.includes(challenge));
+      const matchesType = !type || tile.solutionType === type;
+      return matchesChallenge && matchesType;
+    });
     
     // Apply search filter
     if (searchQuery.trim()) {

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SharedHero from '@/components/shared/SharedHero';
-import { visibleSolutionTiles, challenges } from '@/data/solutionTiles';
+import { solutionTiles, challenges } from '@/data/solutionTiles';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 
 const SolutionHero: React.FC = () => {
   const { language } = useLanguage();
+  const { isHidden } = useContentVisibilityContext();
 
   // Dynamic counts from data
-  const solutionCount = visibleSolutionTiles.length;
+  const visibleCount = useMemo(
+    () => solutionTiles.filter(t => !isHidden('solution', t.slug, t.hidden)).length,
+    [isHidden]
+  );
+  const solutionCount = visibleCount;
   const challengeCount = challenges.length - 1; // Minus "all"
 
   const stats = [

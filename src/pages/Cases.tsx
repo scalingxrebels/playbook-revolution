@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -7,11 +7,11 @@ import CaseFilterSection from '@/components/cases/CaseFilterSection';
 import CaseCard from '@/components/cases/CaseCard';
 import CaseCTA from '@/components/cases/CaseCTA';
 import { useCaseFilters } from '@/components/cases/useCaseFilters';
-import { caseStudies, visibleCaseStudies } from '@/data/cases';
+import { caseStudies } from '@/data/cases';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 
 // Helper: Parse ROI string to number
 const parseRoi = (roi: string): number | null => {
-  // Handle ranges like "3.5-5.3x" → take average
   if (roi.includes('-') && roi.includes('x')) {
     const parts = roi.replace('x', '').replace('+', '').split('-');
     if (parts.length === 2) {
@@ -20,14 +20,12 @@ const parseRoi = (roi: string): number | null => {
       if (!isNaN(low) && !isNaN(high)) return (low + high) / 2;
     }
   }
-  // Handle simple values like "5x", "8.6x", "10x+"
   const num = parseFloat(roi.replace('x', '').replace('+', '').replace(',', ''));
   return isNaN(num) ? null : num;
 };
 
-// Calculate median ROI from case studies
-const calculateMedianRoi = (): string => {
-  const roiValues = visibleCaseStudies
+const calculateMedianRoi = (cases: typeof caseStudies): string => {
+  const roiValues = cases
     .map(c => parseRoi(c.roi))
     .filter((v): v is number => v !== null)
     .sort((a, b) => a - b);
@@ -42,13 +40,6 @@ const calculateMedianRoi = (): string => {
   return `${median % 1 === 0 ? median : median.toFixed(1)}x`;
 };
 
-const casesStats = [
-  { value: String(visibleCaseStudies.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
-  { value: calculateMedianRoi(), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
-  { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
-  { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
-];
-
 const clientNames = [
   'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
   'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
@@ -58,6 +49,20 @@ const clientNames = [
 
 const Cases: React.FC = () => {
   const { language } = useLanguage();
+  const { isHidden } = useContentVisibilityContext();
+  
+  const visibleCases = useMemo(
+    () => caseStudies.filter(c => !isHidden('case', c.slug, c.hidden)),
+    [isHidden]
+  );
+
+  const casesStats = useMemo(() => [
+    { value: String(visibleCases.length), label: { en: 'Case Studies', de: 'Case Studies' }, color: 'primary' as const },
+    { value: calculateMedianRoi(visibleCases), label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'accent' as const },
+    { value: '140+', label: { en: 'Engagements', de: 'Engagements' }, color: 'primary' as const },
+    { value: '€2.5B', label: { en: 'Value Created', de: 'Wert geschaffen' }, color: 'accent' as const },
+  ], [visibleCases]);
+
   const {
     searchQuery,
     setSearchQuery,

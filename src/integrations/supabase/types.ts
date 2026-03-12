@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      content_visibility: {
+        Row: {
+          content_id: string
+          content_type: string
+          hidden: boolean
+          id: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          content_id: string
+          content_type: string
+          hidden?: boolean
+          id?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          content_id?: string
+          content_type?: string
+          hidden?: boolean
+          id?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       download_leads: {
         Row: {
           asset_id: string

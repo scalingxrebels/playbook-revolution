@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { visibleCaseStudies, ClientCaseStudy } from '@/data/cases';
+import { caseStudies, ClientCaseStudy } from '@/data/cases';
+import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 
 interface UseCaseFiltersReturn {
   searchQuery: string;
@@ -19,6 +20,12 @@ interface UseCaseFiltersReturn {
 }
 
 export const useCaseFilters = (): UseCaseFiltersReturn => {
+  const { isHidden } = useContentVisibilityContext();
+  
+  const visibleCaseStudies = useMemo(
+    () => caseStudies.filter(c => !isHidden('case', c.slug, c.hidden)),
+    [isHidden]
+  );
   const [searchParams, setSearchParams] = useSearchParams();
   
   // Get initial values from URL params
