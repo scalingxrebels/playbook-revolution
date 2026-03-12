@@ -199,6 +199,7 @@ const AppContent = () => {
           <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/glossar" element={<Glossar />} />
           <Route path="/home-v2" element={<IndexV2 />} />
+          <Route path="/content-registry" element={<ContentRegistry />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
