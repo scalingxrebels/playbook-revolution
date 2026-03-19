@@ -101,7 +101,8 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
       className={cn(
         "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
         "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-        (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50"
+        (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50",
+        tile.featured && "border-primary/40 shadow-md shadow-primary/10 ring-1 ring-primary/20"
       )}
       style={{
         animationDelay: `${index * 50}ms`
