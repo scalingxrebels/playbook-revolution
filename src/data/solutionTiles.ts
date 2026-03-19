@@ -30,6 +30,7 @@ export interface Challenge {
 export interface SolutionTile {
   id: number;
   slug: string;
+  featured?: boolean;
   solutionType: Exclude<SolutionTypeId, 'all'>;
   transformationTier?: 'power-up' | 'boost' | 'accelerate';
   challenges: Exclude<ChallengeId, 'all'>[] | 'universal';
