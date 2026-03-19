@@ -68,6 +68,9 @@ const Solutions: React.FC = () => {
       });
     }
     
+    // Featured tiles always first
+    tiles.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+    
     return tiles;
   }, [challengeFilter, solutionTypeFilter, searchQuery, language]);
 
