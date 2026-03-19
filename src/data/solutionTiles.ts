@@ -1692,6 +1692,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 47,
     slug: 'revenue-architecture-system',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'accelerate',
     challenges: ['cac-crisis', 'growth-stalled', 'scaling-chaos', 'ai-transformation'],

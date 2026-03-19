@@ -128,6 +128,14 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
 
         {/* Badges */}
         <div className="flex flex-wrap gap-2 mb-3">
+          {tile.featured && (
+            <Badge 
+              variant="default"
+              className="text-xs font-semibold bg-primary text-primary-foreground"
+            >
+              Featured
+            </Badge>
+          )}
           <Badge 
             variant="outline" 
             className="text-xs font-medium"
