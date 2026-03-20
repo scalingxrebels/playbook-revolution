@@ -884,6 +884,9 @@ const MichelSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Gründer' : 'Founder'}
+          </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de' ? 'Wer das gebaut hat.' : 'Who built this.'}
           </h2>
