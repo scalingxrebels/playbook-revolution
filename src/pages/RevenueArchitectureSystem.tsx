@@ -438,7 +438,7 @@ const SessionsSection: React.FC = () => {
       titleDe: 'Strategische Grundlagen', titleEn: 'Strategic Foundations',
       badges: language === 'de' ? ['Marktanalyse', 'Challenge-Solution-Matrix', 'ICP-Profil'] : ['Market Analysis', 'Challenge-Solution Matrix', 'ICP Profile'],
       outcomeDe: 'Du weißt, in welchem Markt du spielst und wen du ansprichst.',
-      outcomeEn: 'You know your market and who you're targeting.',
+      outcomeEn: "You know your market and who you're targeting.",
     },
     {
       num: language === 'de' ? 'WOCHE 2' : 'WEEK 2',
