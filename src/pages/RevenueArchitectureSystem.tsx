@@ -318,8 +318,11 @@ const DeliverablesSection: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {deliverablesBySession.map((session) => (
             <div key={session.session} className="bg-card/50 border border-border p-5">
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
-                {language === 'de' ? `Session ${session.session.replace('S', '')}` : `Session ${session.session.replace('S', '')}`}
+              <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-1">
+                {`Session ${session.session.replace('S', '')}`}
+              </div>
+              <div className="text-sm font-medium text-foreground mb-3">
+                {session.title}
               </div>
               <div className="space-y-2">
                 {session.items.map((item, i) => (
