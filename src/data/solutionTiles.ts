@@ -30,6 +30,7 @@ export interface Challenge {
 export interface SolutionTile {
   id: number;
   slug: string;
+  featured?: boolean;
   solutionType: Exclude<SolutionTypeId, 'all'>;
   transformationTier?: 'power-up' | 'boost' | 'accelerate';
   challenges: Exclude<ChallengeId, 'all'>[] | 'universal';
@@ -1691,13 +1692,14 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 47,
     slug: 'revenue-architecture-system',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'accelerate',
     challenges: ['cac-crisis', 'growth-stalled', 'scaling-chaos', 'ai-transformation'],
     price: 'ab €6.900',
     priceTag: 'paid',
-    headlineEn: 'The Revenue Architecture System™',
-    headlineDe: 'The Revenue Architecture System™',
+    headlineEn: 'The Revenue Architecture System',
+    headlineDe: 'The Revenue Architecture System',
     problemEn: "Your CAC is rising. Your conversion is dropping. You've tested channels, switched agencies, added tools — and the system still doesn't carry. Because it's not a channel problem. It's an architecture problem.",
     problemDe: "Dein CAC steigt. Deine Conversion sinkt. Du hast Kanäle getestet, Agenturen gewechselt, Tools eingeführt — und das System trägt trotzdem nicht. Weil es kein Kanal-Problem ist. Es ist ein Architektur-Problem.",
     solutionEn: "The most structured Guided Build format for Revenue Architecture in the DACH region. In 6 weeks, you build your complete Revenue System — ICP, Value Stack, Entry Layer, Conversion System, Revenue OS. Not plan. Not learn. Build.",

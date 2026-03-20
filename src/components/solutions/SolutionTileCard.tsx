@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Check, ArrowRight, ExternalLink, Lightbulb, Target, Rocket, Compass, Mic, Wrench, Building2, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useNavigate } from 'react-router-dom';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 interface SolutionTileCardProps {
@@ -43,6 +44,7 @@ const isValidFormSlug = (slug: string): slug is FormSlug => {
 const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) => {
   const { language } = useLanguage();
   const lang = language as 'en' | 'de';
+  const navigate = useNavigate();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const headline = lang === 'de' ? tile.headlineDe : tile.headlineEn;
@@ -68,7 +70,7 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
     if (tile.primaryCtaAction === 'external' || tile.primaryCtaAction === 'open-tool') {
       window.open(tile.primaryCtaUrl, '_blank');
     } else if (tile.primaryCtaUrl) {
-      window.location.href = tile.primaryCtaUrl;
+      navigate(tile.primaryCtaUrl);
     }
   };
 
@@ -99,7 +101,8 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
       className={cn(
         "group relative h-full flex flex-col overflow-hidden transition-all duration-300",
         "hover:shadow-lg hover:shadow-accent/10 hover:border-accent/30",
-        (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50"
+        (tile.priceTag === 'free' || tile.solutionType === 'tools') && "border-accent/50",
+        tile.featured && "border-primary/40 shadow-md shadow-primary/10 ring-1 ring-primary/20"
       )}
       style={{
         animationDelay: `${index * 50}ms`
@@ -125,6 +128,14 @@ const SolutionTileCard: React.FC<SolutionTileCardProps> = ({ tile, index = 0 }) 
 
         {/* Badges */}
         <div className="flex flex-wrap gap-2 mb-3">
+          {tile.featured && (
+            <Badge 
+              variant="default"
+              className="text-xs font-semibold bg-primary text-primary-foreground"
+            >
+              Featured
+            </Badge>
+          )}
           <Badge 
             variant="outline" 
             className="text-xs font-medium"
