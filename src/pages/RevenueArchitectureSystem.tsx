@@ -264,12 +264,12 @@ const DeliverablesSection: React.FC = () => {
   ];
 
   const deliverablesBySession = [
-    { session: 'S1', title: language === 'de' ? 'Strategische Grundlagen' : 'Strategic Foundations', items: ['D01 Marktanalyse', 'D02 Challenge-Solution-Matrix', 'D03 ICP-Profil'] },
-    { session: 'S2', title: language === 'de' ? 'Value Stack & Growth Engine' : 'Value Stack & Growth Engine', items: ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint (HW)', 'D07 Growth Engine Architecture'] },
-    { session: 'S3', title: language === 'de' ? 'Entry Layer & Persuasion' : 'Entry Layer & Persuasion', items: ['D08 Asset-Plan & Traffic-Architektur', 'D09a Landing Page Blueprint', 'D09b Form + DOI-Flow'] },
-    { session: 'S4', title: language === 'de' ? 'Messaging & Funnel Compiler' : 'Messaging & Funnel Compiler', items: ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] },
-    { session: 'S5', title: language === 'de' ? 'Revenue Operating System' : 'Revenue Operating System', items: ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] },
-    { session: 'S6', title: language === 'de' ? 'Traffic Activation' : 'Traffic Activation', items: ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] },
+    { session: 'S1', title: language === 'de' ? 'Strategische Grundlagen' : 'Strategic Foundations', items: language === 'de' ? ['D01 Marktanalyse', 'D02 Challenge-Solution-Matrix', 'D03 ICP-Profil'] : ['D01 Market Analysis', 'D02 Challenge-Solution Matrix', 'D03 ICP Profile'] },
+    { session: 'S2', title: language === 'de' ? 'Value Stack & Growth Engine' : 'Value Stack & Growth Engine', items: language === 'de' ? ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint', 'D07 Growth Engine Architecture'] : ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint', 'D07 Growth Engine Architecture'] },
+    { session: 'S3', title: language === 'de' ? 'Entry Layer & Persuasion' : 'Entry Layer & Persuasion', items: language === 'de' ? ['D08 Asset-Plan & Traffic-Architektur', 'D09a Landing Page Blueprint', 'D09b Form + DOI-Flow'] : ['D08 Asset Plan & Traffic Architecture', 'D09a Landing Page Blueprint', 'D09b Form + DOI Flow'] },
+    { session: 'S4', title: language === 'de' ? 'Messaging & Funnel Compiler' : 'Messaging & Funnel Compiler', items: language === 'de' ? ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] : ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] },
+    { session: 'S5', title: language === 'de' ? 'Revenue Operating System' : 'Revenue Operating System', items: language === 'de' ? ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] : ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] },
+    { session: 'S6', title: language === 'de' ? 'Traffic Activation' : 'Traffic Activation', items: language === 'de' ? ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] : ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] },
   ];
 
   return (
