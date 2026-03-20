@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
       className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
     >
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)] transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
       <div
