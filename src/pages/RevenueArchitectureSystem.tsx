@@ -635,8 +635,8 @@ const PricingSection: React.FC = () => {
       priceC2: '€8.900',
       recommended: false,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '1 × 1h Expert Session', 'Peer Group ✓', 'Async-Feedback: Gruppe']
-        : ['6 × 4h live sessions', '1 × 1h expert session', 'Peer group ✓', 'Async feedback: group'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '1 × 1h Expert Session', 'Peer Group ✓', 'Async-Feedback: Gruppe']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '1 × 1h expert session', 'Peer group ✓', 'Async feedback: group'],
     },
     {
       name: 'Plus',
@@ -644,17 +644,17 @@ const PricingSection: React.FC = () => {
       priceC2: '€10.900',
       recommended: true,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '2 × 1h Expert Sessions', 'Peer Group ✓', 'Async-Feedback: Gruppe']
-        : ['6 × 4h live sessions', '2 × 1h expert sessions', 'Peer group ✓', 'Async feedback: group'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '3 × 1h Expert Sessions', 'Peer Group ✓', 'Async-Review deiner Deliverables']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '3 × 1h expert sessions', 'Peer group ✓', 'Async review of your deliverables'],
     },
     {
       name: 'VIP',
-      price: '€14.900',
-      priceC2: '€16.900',
+      price: '€12.900',
+      priceC2: '€14.900',
       recommended: false,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '4 × 1h Expert Sessions', '1:1 Review jede Woche ✓', 'Peer Group ✓', 'Async-Feedback: Direkt mit Michel']
-        : ['6 × 4h live sessions', '4 × 1h expert sessions', '1:1 review every week ✓', 'Peer group ✓', 'Async feedback: directly with Michel'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '6 × 1h Expert Sessions', '1:1 Review jede Woche ✓', 'Peer Group ✓', 'Async-Feedback: Direkt mit Michel', 'System-Audit nach Woche 6 (90 Min)', '30-Tage-Follow-up']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '6 × 1h expert sessions', '1:1 review every week ✓', 'Peer group ✓', 'Async feedback: directly with Michel', 'System audit after week 6 (90 min)', '30-day follow-up'],
     },
   ];
 
@@ -744,8 +744,8 @@ const PricingSection: React.FC = () => {
               <span className="text-foreground font-semibold">Plus {language === 'de' ? 'ist der Sweet Spot' : 'is the sweet spot'}</span>
               {' — '}
               {language === 'de'
-                ? 'für Teams, die nicht nur das System bauen, sondern es direkt auf ihren Kontext anwenden wollen. 2 Expert Sessions mit Michel: eine nach Session 2 (wenn das Fundament steht), eine nach Session 4 (wenn der Funnel gebaut ist). Genau dann, wenn du die wichtigsten Entscheidungen triffst.'
-                : 'for teams that don\'t just want to build the system, but apply it directly to their context. 2 expert sessions with Michel: one after Session 2 (when the foundation is set), one after Session 4 (when the funnel is built). Exactly when you\'re making the most important decisions.'}
+                ? 'für Teams, die nicht nur das System bauen, sondern es direkt auf ihren Kontext anwenden wollen. 3 Expert Sessions mit Michel — verteilt über das Programm, genau dann, wenn du die wichtigsten Entscheidungen triffst.'
+                : 'for teams that don\'t just want to build the system, but apply it directly to their context. 3 expert sessions with Michel — distributed across the program, exactly when you\'re making the most important decisions.'}
             </p>
           </div>
         </div>
@@ -757,8 +757,8 @@ const PricingSection: React.FC = () => {
               <span className="text-foreground font-semibold">VIP</span>
               {' — '}
               {language === 'de'
-                ? 'für Founder und Führungsteams, die das Programm als vollständigen Revenue-Aufbau nutzen wollen — mit wöchentlichem 1:1 mit Michel, direktem Async-Feedback und 4 Expert Sessions über alle 6 Wochen. Nicht für jeden. Für die, bei denen Geschwindigkeit und direkte Begleitung entscheidend sind.'
-                : 'for founders and leadership teams who want to use the program as a complete revenue build — with weekly 1:1 with Michel, direct async feedback, and 4 expert sessions across all 6 weeks. Not for everyone. For those where speed and direct support are critical.'}
+                ? 'für Founder und Führungsteams, die das Programm als vollständigen Revenue-Aufbau nutzen wollen — mit wöchentlichem 1:1 mit Michel, direktem Async-Feedback und 6 Expert Sessions über alle 6 Wochen. Nicht für jeden. Für die, bei denen Geschwindigkeit und direkte Begleitung entscheidend sind.'
+                : 'for founders and leadership teams who want to use the program as a complete revenue build — with weekly 1:1 with Michel, direct async feedback, and 6 expert sessions across all 6 weeks. Not for everyone. For those where speed and direct support are critical.'}
             </p>
           </div>
         </div>
