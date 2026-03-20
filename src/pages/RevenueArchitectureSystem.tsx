@@ -29,7 +29,7 @@ import {
   Play,
   Users,
   Shield,
-  Zap,
+  Layers,
   Award,
   Star,
   ExternalLink,
