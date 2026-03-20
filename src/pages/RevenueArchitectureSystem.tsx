@@ -757,8 +757,8 @@ const PricingSection: React.FC = () => {
               <span className="text-foreground font-semibold">VIP</span>
               {' — '}
               {language === 'de'
-                ? 'für Founder und Führungsteams, die das Programm als vollständigen Revenue-Aufbau nutzen wollen — mit wöchentlichem 1:1 mit Michel, direktem Async-Feedback und 4 Expert Sessions über alle 6 Wochen. Nicht für jeden. Für die, bei denen Geschwindigkeit und direkte Begleitung entscheidend sind.'
-                : 'for founders and leadership teams who want to use the program as a complete revenue build — with weekly 1:1 with Michel, direct async feedback, and 4 expert sessions across all 6 weeks. Not for everyone. For those where speed and direct support are critical.'}
+                ? 'für Founder und Führungsteams, die das Programm als vollständigen Revenue-Aufbau nutzen wollen — mit wöchentlichem 1:1 mit Michel, direktem Async-Feedback und 6 Expert Sessions über alle 6 Wochen. Nicht für jeden. Für die, bei denen Geschwindigkeit und direkte Begleitung entscheidend sind.'
+                : 'for founders and leadership teams who want to use the program as a complete revenue build — with weekly 1:1 with Michel, direct async feedback, and 6 expert sessions across all 6 weeks. Not for everyone. For those where speed and direct support are critical.'}
             </p>
           </div>
         </div>
