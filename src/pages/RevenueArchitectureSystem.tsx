@@ -111,10 +111,10 @@ const HeroSection: React.FC = () => {
 
         {/* Amber Urgency Badge */}
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-accent/15 border border-accent/40 text-accent text-sm font-semibold rounded-full">
-            <Zap className="w-4 h-4" />
-            Founding Cohort · Max. 12 {language === 'de' ? 'Plätze' : 'Seats'} · {language === 'de' ? 'Startet Ende April 2026' : 'Starts Late April 2026'}
-          </span>
+          <Badge variant="gradient">
+            <Layers className="w-4 h-4 mr-2" />
+            {language === 'de' ? 'GUIDED BUILD · 6 WOCHEN · FOUNDING COHORT' : 'GUIDED BUILD · 6 WEEKS · FOUNDING COHORT'}
+          </Badge>
         </div>
 
         <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
