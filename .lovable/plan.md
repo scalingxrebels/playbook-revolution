@@ -1,16 +1,35 @@
-## Plan: Michel-Text aktualisieren
 
-### Datei: `src/pages/RevenueArchitectureSystem.tsx` — Zeilen 916–940
 
-Ersetze den gesamten Body-Text (nach "Michel Lason.") mit dem neuen Text in folgender Struktur:
+## Plan: "Das Programm" Sektion an altes Design anpassen
 
-1. **Absatz 1:** "19 Jahre B2B SaaS GTM — 10 Jahre Consulting, 9 Jahre SaaS Executive."
-2. **Absatz 2:** "140+ operative Engagements.   
-22–58% CAC-Reduktion in validierten Projekten.   
-Microsoft · XING · Haufe · smapOne.   
-€1M–€50M ARR. DACH. B2B SaaS."
-3. **Absatz 3:** "Ich habe Revenue Systeme für Unternehmen von €1M bis €50M ARR gebaut. Nicht als Berater, der Empfehlungen gibt und weiterzieht. Sondern als Operator, der Revenue Systeme selbst gebaut, geführt und Ergebnisse verantwortet hat."
-4. **Absatz 4 (Zitat, italic + text-foreground):** „Ich kenne die Entscheidungen, die du gerade triffst — weil ich sie selbst treffen musste. Und ich weiß, was passiert, wenn das System dahinter fehlt."
-5. **Absatz 5:** "Dieses Programm ist keine Theorie. Es ist eine Weiterentwicklung von dem, was in 140+ Engagements funktioniert hat — verdichtet in 6 Wochen, die du direkt umsetzt."
+### Datei: `src/pages/RevenueArchitectureSystem.tsx` — SessionsSection (Zeilen 431–474)
 
-Englische Übersetzungen werden analog mitgeführt. Alle 6 bisherigen `<p>`-Blöcke (Zeilen 916–940) werden durch 5 neue ersetzt.
+### Änderungen
+
+Die aktuelle Session-Darstellung zeigt `S1`–`S6` mit Deliverable-Codes (D01 · D02 · D03). Das Bild zeigt ein anderes Format:
+
+**Neues Card-Design pro Woche:**
+- Label: `WOCHE 1` statt `S1` (orange, uppercase tracking)
+- Titel: Bold, z.B. "Strategische Grundlagen"
+- Topic-Badges: Outline-Badges in Violet/Primary statt Deliverable-Codes (z.B. "Marktanalyse", "Challenge-Solution-Matrix", "ICP-Profil")
+- Outcome: Italic muted text mit Pfeil, z.B. "→ Du weißt, in welchem Markt du spielst und wen du ansprichst."
+
+**Daten (aus dem Bild):**
+
+| Woche | Titel (DE) | Badges | Outcome |
+|-------|-----------|--------|---------|
+| 1 | Strategische Grundlagen | Marktanalyse, Challenge-Solution-Matrix, ICP-Profil | Du weißt, in welchem Markt du spielst und wen du ansprichst. |
+| 2 | Value Stack & Growth Engine | Customer Journey, Value Stack, Growth Engine Architecture | Du weißt, wie dein ICP kauft — und welcher Funnel-Typ passt. |
+| 3 | Entry Layer & Persuasion | Channel Playbook, Entry Layer Blueprint, Persuasion Blueprint | Dein Funnel-Eingang steht. Landing Pages und Forms sind live. |
+| 4 | Messaging & Funnel-Abschluss | Email Sequencing, Asset Stack, Funnel Blueprint | Dein Funnel konvertiert. Email-Sequenzen laufen. Assets stehen. |
+| 5 | Revenue Operating System | Revenue System Architecture, Data Flow, Automation Priorities, Tech Stack Map, Revenue Report | Marketing, Sales und CS arbeiten in einer Logik. |
+| 6 | Traffic Activation | SEO, SEA, GEO, Earned Media, Content Flywheel | Dein System bekommt skalierbaren Traffic. Phase II startet. |
+
+**Styling:**
+- 3×2 Grid bleibt (`grid md:grid-cols-2 lg:grid-cols-3`)
+- Cards: Dark background mit Border (`bg-card/10 border border-border/50 p-6`)
+- Badges: Small outline-style pills in primary/violet color
+- Outcome-Text: Italic, muted-foreground, mit "→" Prefix
+
+**Englische Übersetzungen** werden analog mitgeführt.
+
