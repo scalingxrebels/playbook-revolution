@@ -635,8 +635,8 @@ const PricingSection: React.FC = () => {
       priceC2: '€8.900',
       recommended: false,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '1 × 1h Expert Session', 'Peer Group ✓', 'Async-Feedback: Gruppe']
-        : ['6 × 4h live sessions', '1 × 1h expert session', 'Peer group ✓', 'Async feedback: group'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '1 × 1h Expert Session', 'Peer Group ✓', 'Async-Feedback: Gruppe']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '1 × 1h expert session', 'Peer group ✓', 'Async feedback: group'],
     },
     {
       name: 'Plus',
@@ -644,17 +644,17 @@ const PricingSection: React.FC = () => {
       priceC2: '€10.900',
       recommended: true,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '2 × 1h Expert Sessions', 'Peer Group ✓', 'Async-Feedback: Gruppe']
-        : ['6 × 4h live sessions', '2 × 1h expert sessions', 'Peer group ✓', 'Async feedback: group'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '3 × 1h Expert Sessions', 'Peer Group ✓', 'Async-Review deiner Deliverables']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '3 × 1h expert sessions', 'Peer group ✓', 'Async review of your deliverables'],
     },
     {
       name: 'VIP',
-      price: '€14.900',
-      priceC2: '€16.900',
+      price: '€12.900',
+      priceC2: '€14.900',
       recommended: false,
       features: language === 'de'
-        ? ['6 × 4h Live-Sessions', '4 × 1h Expert Sessions', '1:1 Review jede Woche ✓', 'Peer Group ✓', 'Async-Feedback: Direkt mit Michel']
-        : ['6 × 4h live sessions', '4 × 1h expert sessions', '1:1 review every week ✓', 'Peer group ✓', 'Async feedback: directly with Michel'],
+        ? ['22 Revenue-Bausteine', '6 × 4h Live-Sessions', '6 × 1h Expert Sessions', '1:1 Review jede Woche ✓', 'Peer Group ✓', 'Async-Feedback: Direkt mit Michel', 'System-Audit nach Woche 6 (90 Min)', '30-Tage-Follow-up']
+        : ['22 revenue building blocks', '6 × 4h live sessions', '6 × 1h expert sessions', '1:1 review every week ✓', 'Peer group ✓', 'Async feedback: directly with Michel', 'System audit after week 6 (90 min)', '30-day follow-up'],
     },
   ];
 
