@@ -491,9 +491,14 @@ const FormatSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
-        <h2 className="font-display text-display-sm text-foreground text-center mb-12">
-          {language === 'de' ? 'Was dich das kostet — an Zeit.' : 'What it costs you — in time.'}
-        </h2>
+        <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            Format
+          </span>
+          <h2 className="font-display text-display-sm text-foreground">
+            {language === 'de' ? 'Was dich das kostet — an Zeit.' : 'What it costs you — in time.'}
+          </h2>
+        </div>
 
         <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8 mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-6">Format</p>
