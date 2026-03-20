@@ -744,8 +744,8 @@ const PricingSection: React.FC = () => {
               <span className="text-foreground font-semibold">Plus {language === 'de' ? 'ist der Sweet Spot' : 'is the sweet spot'}</span>
               {' — '}
               {language === 'de'
-                ? 'für Teams, die nicht nur das System bauen, sondern es direkt auf ihren Kontext anwenden wollen. 2 Expert Sessions mit Michel: eine nach Session 2 (wenn das Fundament steht), eine nach Session 4 (wenn der Funnel gebaut ist). Genau dann, wenn du die wichtigsten Entscheidungen triffst.'
-                : 'for teams that don\'t just want to build the system, but apply it directly to their context. 2 expert sessions with Michel: one after Session 2 (when the foundation is set), one after Session 4 (when the funnel is built). Exactly when you\'re making the most important decisions.'}
+                ? 'für Teams, die nicht nur das System bauen, sondern es direkt auf ihren Kontext anwenden wollen. 3 Expert Sessions mit Michel — verteilt über das Programm, genau dann, wenn du die wichtigsten Entscheidungen triffst.'
+                : 'for teams that don\'t just want to build the system, but apply it directly to their context. 3 expert sessions with Michel — distributed across the program, exactly when you\'re making the most important decisions.'}
             </p>
           </div>
         </div>
