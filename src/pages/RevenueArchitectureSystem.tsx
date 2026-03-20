@@ -263,14 +263,25 @@ const DeliverablesSection: React.FC = () => {
     },
   ];
 
-  const deliverablesBySession = [
-    { session: 'S1', title: language === 'de' ? 'Strategische Grundlagen' : 'Strategic Foundations', items: language === 'de' ? ['D01 Marktanalyse', 'D02 Challenge-Solution-Matrix', 'D03 ICP-Profil'] : ['D01 Market Analysis', 'D02 Challenge-Solution Matrix', 'D03 ICP Profile'] },
-    { session: 'S2', title: language === 'de' ? 'Value Stack & Growth Engine' : 'Value Stack & Growth Engine', items: language === 'de' ? ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint', 'D07 Growth Engine Architecture'] : ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint', 'D07 Growth Engine Architecture'] },
-    { session: 'S3', title: language === 'de' ? 'Entry Layer & Persuasion' : 'Entry Layer & Persuasion', items: language === 'de' ? ['D08 Asset-Plan & Traffic-Architektur', 'D09a Landing Page Blueprint', 'D09b Form + DOI-Flow'] : ['D08 Asset Plan & Traffic Architecture', 'D09a Landing Page Blueprint', 'D09b Form + DOI Flow'] },
-    { session: 'S4', title: language === 'de' ? 'Messaging & Funnel Compiler' : 'Messaging & Funnel Compiler', items: language === 'de' ? ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] : ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] },
-    { session: 'S5', title: language === 'de' ? 'Revenue Operating System' : 'Revenue Operating System', items: language === 'de' ? ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] : ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] },
-    { session: 'S6', title: language === 'de' ? 'Traffic Activation' : 'Traffic Activation', items: language === 'de' ? ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] : ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] },
-  ];
+  const allDeliverables = language === 'de'
+    ? [
+        'Marktanalyse', 'Challenge-Solution-Matrix', 'ICP-Profil', 'Customer Journey Map',
+        'Value Stack', 'Market Entry Strategy Blueprint', 'Growth Engine Architecture',
+        'Asset-Plan & Traffic-Architektur', 'Landing Page Blueprint', 'Form + DOI-Flow',
+        'Email Sequencing', 'Asset Stack & Trust Architecture', 'Funnel Blueprint Compiler',
+        'Revenue System Architecture', 'Revenue Data Flow & Orchestration', 'Automation Priorities',
+        'GTM Execution Stack Map', 'Automation Priority Matrix',
+        'SEO Playbook', 'SEA Playbook', 'GEO Playbook', 'Earned Media Playbook', 'Content Flywheel Blueprint',
+      ]
+    : [
+        'Market Analysis', 'Challenge-Solution Matrix', 'ICP Profile', 'Customer Journey Map',
+        'Value Stack', 'Market Entry Strategy Blueprint', 'Growth Engine Architecture',
+        'Asset Plan & Traffic Architecture', 'Landing Page Blueprint', 'Form + DOI Flow',
+        'Email Sequencing', 'Asset Stack & Trust Architecture', 'Funnel Blueprint Compiler',
+        'Revenue System Architecture', 'Revenue Data Flow & Orchestration', 'Automation Priorities',
+        'GTM Execution Stack Map', 'Automation Priority Matrix',
+        'SEO Playbook', 'SEA Playbook', 'GEO Playbook', 'Earned Media Playbook', 'Content Flywheel Blueprint',
+      ];
 
   return (
     <section
@@ -285,17 +296,12 @@ const DeliverablesSection: React.FC = () => {
             {language === 'de' ? 'Was du baust' : 'What You Build'}
           </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
-            {language === 'de' ? 'Was du in 6 Wochen baust' : 'What You Build in 6 Weeks'}
+            {language === 'de' ? '22 Revenue-Bausteine. Einsatzbereit.' : '22 Revenue Building Blocks. Ready to Deploy.'}
           </h2>
           <p className="text-muted-foreground mb-2">
             {language === 'de'
-              ? '22 fertige Revenue-Bausteine. In 6 Wochen. Live aufgebaut.'
-              : '22 finished revenue building blocks. In 6 weeks. Built live.'}
-          </p>
-          <p className="text-sm text-accent font-medium italic">
-            {language === 'de'
-              ? 'Jedes Deliverable ist ein einsatzbereites Asset — kein leeres Template.'
-              : 'Every deliverable is a ready-to-use asset — not an empty template.'}
+              ? 'Kein leeres Template. Jedes Deliverable ist ein fertiges Asset für deine GTM-Motion.'
+              : 'No empty template. Every deliverable is a finished asset for your GTM motion.'}
           </p>
         </div>
 
@@ -314,33 +320,21 @@ const DeliverablesSection: React.FC = () => {
           ))}
         </div>
 
-        {/* D01–D22 Grid by Session */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {deliverablesBySession.map((session) => (
-            <div key={session.session} className="bg-card/50 border border-border p-5">
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-1">
-                {`Session ${session.session.replace('S', '')}`}
-              </div>
-              <div className="text-sm font-medium text-foreground mb-3">
-                {session.title}
-              </div>
-              <div className="space-y-2">
-                {session.items.map((item, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <Check className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </div>
-                ))}
-              </div>
+        {/* Flat Deliverables Grid — no session grouping */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {allDeliverables.map((item, i) => (
+            <div
+              key={i}
+              className="inline-flex items-center gap-2 bg-card/60 border border-border px-4 py-2.5 text-sm text-foreground hover:border-primary/40 transition-colors duration-200"
+            >
+              <Check className="w-3.5 h-3.5 text-primary shrink-0" />
+              {item}
             </div>
           ))}
         </div>
-
-        <p className="text-center text-muted-foreground mt-12 font-medium">
-          {language === 'de'
-            ? '22 fertige Revenue-Bausteine. In 6 Wochen. Live aufgebaut.'
-            : '22 finished revenue building blocks. In 6 weeks. Built live.'}
-        </p>
+      </div>
+    </section>
+  );
       </div>
     </section>
   );
