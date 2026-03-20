@@ -433,12 +433,48 @@ const SessionsSection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const sessions = [
-    { num: 'S1', titleDe: 'Strategie & ICP', titleEn: 'Strategy & ICP', dels: 'D01 · D02 · D03' },
-    { num: 'S2', titleDe: 'Value Stack & Growth Engine', titleEn: 'Value Stack & Growth Engine', dels: 'D04 · D05 · D06 · D07' },
-    { num: 'S3', titleDe: 'Entry Layer & Persuasion', titleEn: 'Entry Layer & Persuasion', dels: 'D08 · D09a · D09b' },
-    { num: 'S4', titleDe: 'Messaging & Funnel-Abschluss', titleEn: 'Messaging & Funnel Completion', dels: 'D10 · D11 · D12' },
-    { num: 'S5', titleDe: 'Revenue Operating System', titleEn: 'Revenue Operating System', dels: 'D13 · D14 · D15 · D16 · D17' },
-    { num: 'S6', titleDe: 'Traffic Activation', titleEn: 'Traffic Activation', dels: 'D18 · D19 · D20 · D21 · D22' },
+    {
+      num: language === 'de' ? 'WOCHE 1' : 'WEEK 1',
+      titleDe: 'Strategische Grundlagen', titleEn: 'Strategic Foundations',
+      badges: language === 'de' ? ['Marktanalyse', 'Challenge-Solution-Matrix', 'ICP-Profil'] : ['Market Analysis', 'Challenge-Solution Matrix', 'ICP Profile'],
+      outcomeDe: 'Du weißt, in welchem Markt du spielst und wen du ansprichst.',
+      outcomeEn: 'You know your market and who you're targeting.',
+    },
+    {
+      num: language === 'de' ? 'WOCHE 2' : 'WEEK 2',
+      titleDe: 'Value Stack & Growth Engine', titleEn: 'Value Stack & Growth Engine',
+      badges: ['Customer Journey', 'Value Stack', 'Growth Engine Architecture'],
+      outcomeDe: 'Du weißt, wie dein ICP kauft — und welcher Funnel-Typ passt.',
+      outcomeEn: 'You know how your ICP buys — and which funnel type fits.',
+    },
+    {
+      num: language === 'de' ? 'WOCHE 3' : 'WEEK 3',
+      titleDe: 'Entry Layer & Persuasion', titleEn: 'Entry Layer & Persuasion',
+      badges: ['Channel Playbook', 'Entry Layer Blueprint', 'Persuasion Blueprint'],
+      outcomeDe: 'Dein Funnel-Eingang steht. Landing Pages und Forms sind live.',
+      outcomeEn: 'Your funnel entry is set. Landing pages and forms are live.',
+    },
+    {
+      num: language === 'de' ? 'WOCHE 4' : 'WEEK 4',
+      titleDe: 'Messaging & Funnel-Abschluss', titleEn: 'Messaging & Funnel Completion',
+      badges: ['Email Sequencing', 'Asset Stack', 'Funnel Blueprint'],
+      outcomeDe: 'Dein Funnel konvertiert. Email-Sequenzen laufen. Assets stehen.',
+      outcomeEn: 'Your funnel converts. Email sequences run. Assets are set.',
+    },
+    {
+      num: language === 'de' ? 'WOCHE 5' : 'WEEK 5',
+      titleDe: 'Revenue Operating System', titleEn: 'Revenue Operating System',
+      badges: language === 'de' ? ['Revenue System Architecture', 'Data Flow', 'Automation Priorities', 'Tech Stack Map', 'Revenue Report'] : ['Revenue System Architecture', 'Data Flow', 'Automation Priorities', 'Tech Stack Map', 'Revenue Report'],
+      outcomeDe: 'Marketing, Sales und CS arbeiten in einer Logik.',
+      outcomeEn: 'Marketing, Sales, and CS operate within one logic.',
+    },
+    {
+      num: language === 'de' ? 'WOCHE 6' : 'WEEK 6',
+      titleDe: 'Traffic Activation', titleEn: 'Traffic Activation',
+      badges: ['SEO', 'SEA', 'GEO', 'Earned Media', 'Content Flywheel'],
+      outcomeDe: 'Dein System bekommt skalierbaren Traffic. Phase II startet.',
+      outcomeEn: 'Your system gets scalable traffic. Phase II starts.',
+    },
   ];
 
   return (
@@ -460,12 +496,21 @@ const SessionsSection: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
           {sessions.map((s) => (
-            <div key={s.num} className="bg-card/80 backdrop-blur-sm border-2 border-border/50 p-6 hover:border-primary/30 transition-all duration-300">
+            <div key={s.num} className="bg-card/80 backdrop-blur-sm border-2 border-border/50 p-6 hover:border-primary/30 transition-all duration-300 flex flex-col">
               <div className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{s.num}</div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-3">
+              <h3 className="font-display text-lg font-bold text-foreground mb-4">
                 {language === 'de' ? s.titleDe : s.titleEn}
               </h3>
-              <p className="text-sm text-muted-foreground font-mono">{s.dels}</p>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {s.badges.map((badge) => (
+                  <span key={badge} className="text-xs px-2.5 py-1 border border-primary/40 text-primary rounded-sm">
+                    {badge}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm text-muted-foreground italic mt-auto">
+                → {language === 'de' ? s.outcomeDe : s.outcomeEn}
+              </p>
             </div>
           ))}
         </div>
