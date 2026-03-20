@@ -1411,6 +1411,7 @@ const RevenueArchitectureSystem: React.FC = () => {
   const [bookingSlug, setBookingSlug] = useState<'inflection-call' | 'ml-sync'>('inflection-call');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleOpenBookingModal = () => {
       setBookingSlug('inflection-call');
       setIsBookingModalOpen(true);
