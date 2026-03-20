@@ -1010,9 +1010,9 @@ const FAQSection: React.FC = () => {
             {language === 'de' ? 'Die wichtigsten Fragen.' : 'The most important questions.'}
           </h2>
         </div>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full space-y-4">
           {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`faq-${index}`}>
+            <AccordionItem key={index} value={`faq-${index}`} className="border-2 border-border bg-card px-6">
               <AccordionTrigger className="text-left font-medium">
                 {language === 'de' ? item.qDe : item.qEn}
               </AccordionTrigger>
