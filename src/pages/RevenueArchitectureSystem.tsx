@@ -498,7 +498,7 @@ const FormatSection: React.FC = () => {
         </div>
 
         <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8 mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-6">Format</p>
+          
           <div className="space-y-3 text-muted-foreground">
             <p>├── 6 Live-Sessions à 4h ({language === 'de' ? 'online · Gruppe · max. 12 Teilnehmer' : 'online · group · max. 12 participants'})</p>
             <p>├── {language === 'de' ? 'ca. 2–3h Async-Arbeit pro Woche (zwischen den Sessions)' : 'approx. 2–3h async work per week (between sessions)'}</p>
