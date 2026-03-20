@@ -494,43 +494,99 @@ const FormatSection: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
+  const formatCards = [
+    {
+      icon: Users,
+      titleDe: '6 Live Sessions',
+      titleEn: '6 Live Sessions',
+      detailDe: '4h · online · max. 12 Teilnehmer',
+      detailEn: '4h · online · max. 12 participants',
+    },
+    {
+      icon: Clock,
+      titleDe: 'Async-Arbeit',
+      titleEn: 'Async Work',
+      detailDe: '2–3h pro Woche zwischen den Sessions',
+      detailEn: '2–3h per week between sessions',
+    },
+    {
+      icon: MessageSquare,
+      titleDe: 'Peer Review & Expert',
+      titleEn: 'Peer Review & Expert',
+      detailDe: 'Strukturiertes Feedback in jeder Session. 1:1 Expert Sessions je nach Tier.',
+      detailEn: 'Structured feedback in every session. 1:1 expert sessions depending on tier.',
+    },
+  ];
+
+  const diffItems = [
+    { type: 'no' as const, de: 'Webinar-Modus', en: 'Webinar mode' },
+    { type: 'no' as const, de: 'Vorlesungen ohne Umsetzung', en: 'Lectures without implementation' },
+    { type: 'yes' as const, de: 'Du baust in der Session — nicht danach', en: 'You build in the session — not after' },
+  ];
+
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
-      <div className="container max-w-3xl mx-auto px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             Format
           </span>
-          <h2 className="font-display text-display-sm text-foreground">
+          <h2 className="font-display text-section text-foreground">
             {language === 'de' ? 'Was dich das kostet — an Zeit.' : 'What it costs you — in time.'}
           </h2>
         </div>
 
-        <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8 mb-8">
-          
-          <div className="space-y-3 text-muted-foreground">
-            <p>├── 6 Live-Sessions à 4h ({language === 'de' ? 'online · Gruppe · max. 12 Teilnehmer' : 'online · group · max. 12 participants'})</p>
-            <p>├── {language === 'de' ? 'ca. 2–3h Async-Arbeit pro Woche (zwischen den Sessions)' : 'approx. 2–3h async work per week (between sessions)'}</p>
-            <p>├── Peer Review {language === 'de' ? 'in jeder Session — strukturiert, nicht optional' : 'in every session — structured, not optional'}</p>
-            <p>└── 1:1 Expert Sessions {language === 'de' ? 'je nach Tier' : 'depending on tier'}</p>
-          </div>
-          <div className="mt-6 pt-6 border-t border-border/50">
-            <p className="text-foreground font-semibold">
-              {language === 'de' ? 'GESAMT: ca. 6–7h pro Woche · 6 Wochen' : 'TOTAL: approx. 6–7h per week · 6 weeks'}
-            </p>
-          </div>
+        {/* 3-Column Format Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-8">
+          {formatCards.map((card, i) => {
+            const Icon = card.icon;
+            return (
+              <div
+                key={i}
+                className="bg-card/10 backdrop-blur-sm border border-border/50 p-6 hover:border-primary/30 transition-all"
+              >
+                <Icon className="w-8 h-8 text-accent mb-4" />
+                <h3 className="text-lg font-bold text-foreground mb-2">
+                  {language === 'de' ? card.titleDe : card.titleEn}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {language === 'de' ? card.detailDe : card.detailEn}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
-        <div className="bg-card/10 backdrop-blur-sm border border-border/30 p-6">
-          <div className="space-y-2 text-sm">
-            <p className="text-destructive/80">✗ {language === 'de' ? 'Webinar-Modus' : 'Webinar mode'}</p>
-            <p className="text-destructive/80">✗ {language === 'de' ? 'Vorlesungen ohne Umsetzung' : 'Lectures without implementation'}</p>
-            <p className="text-accent">✓ {language === 'de' ? 'Du baust in der Session — nicht danach' : 'You build in the session — not after'}</p>
-          </div>
+        {/* Total Summary */}
+        <p className="text-center text-foreground font-bold text-lg mb-10">
+          {language === 'de' ? 'ca. 6–7h pro Woche · 6 Wochen' : 'approx. 6–7h per week · 6 weeks'}
+        </p>
+
+        {/* Differentiation Row */}
+        <div className="grid md:grid-cols-3 gap-4">
+          {diffItems.map((item, i) => (
+            <div
+              key={i}
+              className={`flex items-center gap-3 p-4 border ${
+                item.type === 'no'
+                  ? 'border-destructive/20 bg-destructive/5'
+                  : 'border-accent/30 bg-accent/5'
+              }`}
+            >
+              {item.type === 'no' ? (
+                <X className="w-5 h-5 text-destructive/70 shrink-0" />
+              ) : (
+                <Check className="w-5 h-5 text-accent shrink-0" />
+              )}
+              <span className={`text-sm ${item.type === 'no' ? 'text-muted-foreground' : 'text-accent'}`}>
+                {language === 'de' ? item.de : item.en}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
