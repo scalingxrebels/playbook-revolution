@@ -849,12 +849,6 @@ const PricingSection: React.FC = () => {
             : 'Installment payment available on request. Expert session (€890) is credited toward the program price.'}
         </p>
 
-        {/* Pricing Trust Bridge AFTER table */}
-        <p className="text-center text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          {language === 'de'
-            ? 'Der Founding-Preis gilt für Cohort 1. Ab Cohort 2 steigt der Preis. Das ist keine Taktik — das ist die Logik eines Programms, das mit jeder Kohorte besser wird.'
-            : 'The Founding Price applies to Cohort 1. From Cohort 2, the price increases. That\'s not a tactic — it\'s the logic of a program that improves with every cohort.'}
-        </p>
       </div>
     </section>
   );
