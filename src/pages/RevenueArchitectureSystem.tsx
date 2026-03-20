@@ -220,9 +220,6 @@ const VSLSection: React.FC = () => {
           ].map((line, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{line}</p>
           ))}
-          <p className="text-xs text-muted-foreground/60 text-center mt-4 italic">
-            {language === 'de' ? 'Bewusst klein: Tiefenanalyse statt Massenerhebung.' : 'Deliberately small: deep analysis over mass surveys.'}
-          </p>
         </div>
       </div>
     </section>
