@@ -1,22 +1,20 @@
 
 
-# Fix: Revenue Architecture System fehlt im Solutions Hub
+## Plan: Revenue Architecture Kachel als "featured" markieren
 
-## Diagnose
+### 1. `featured`-Flag zum Interface hinzufügen
+**Datei:** `src/data/solutionTiles.ts`
+- `SolutionTile`-Interface um `featured?: boolean` erweitern
+- Bei Tile ID 47 `featured: true` setzen
 
-Die `content_visibility`-Tabelle hat **keinen Eintrag** für `revenue-architecture-system`. Theoretisch sollte der Fallback (`staticHidden: undefined → false`) die Kachel sichtbar machen. Da sie trotzdem nicht erscheint, ist der sicherste Fix ein expliziter DB-Eintrag.
+### 2. Sortierung im Grid: Featured immer oben
+**Datei:** `src/pages/Solutions.tsx`
+- Nach dem Filtern die Tiles sortieren: `featured: true` zuerst, Rest in bestehender Reihenfolge
 
-**Aktuelle sichtbare Tiles:** 4 mit `hidden: false` in DB + 11 ohne DB-Eintrag (Fallback visible) = 15 erwartet, 14 angezeigt.
+### 3. Visuelle Hervorhebung der Featured-Kachel
+**Datei:** `src/components/solutions/SolutionTileCard.tsx`
+- Wenn `tile.featured`: dezenter Akzent-Rahmen oder Badge ("Featured" / "Neu") zur Unterscheidung
 
-## Fix
-
-**1 Migration:** `content_visibility`-Eintrag für `revenue-architecture-system` mit `hidden = false` einfügen:
-
-```sql
-INSERT INTO content_visibility (content_type, content_id, hidden)
-VALUES ('solution', 'revenue-architecture-system', false)
-ON CONFLICT (content_type, content_id) DO UPDATE SET hidden = false;
-```
-
-Das stellt sicher, dass RAS explizit als sichtbar markiert ist — unabhängig von Fallback-Logik.
+### Umfang
+- 3 Dateien, kleine Änderungen
 
