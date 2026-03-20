@@ -574,6 +574,9 @@ const ICPFilterSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Zielgruppe' : 'Target Audience'}
+          </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de' ? 'Für wen es passt — und für wen nicht.' : 'Who it\'s for — and who it\'s not.'}
           </h2>
