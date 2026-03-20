@@ -1366,6 +1366,9 @@ const WaitlistSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
       <div className="container max-w-2xl mx-auto px-6 relative z-10 text-center">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+          {language === 'de' ? 'Warteliste' : 'Waitlist'}
+        </span>
         <h2 className="font-display text-display-sm text-foreground mb-6">
           {language === 'de'
             ? 'Cohort 1 ist nicht der richtige Zeitpunkt für dich?'
