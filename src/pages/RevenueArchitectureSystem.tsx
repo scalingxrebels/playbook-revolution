@@ -333,8 +333,8 @@ const ProgramSection: React.FC = () => {
       titleEn: 'Value Stack & Growth Engine',
       outcomeDe: 'Du weißt, wie dein ICP kauft — und welcher Funnel-Typ passt.',
       outcomeEn: 'You know how your ICP buys — and which funnel type fits.',
-      deliverables: ['Customer Journey', 'Value Stack', 'Growth Engine Architecture'],
-      deliverablesEn: ['Customer Journey', 'Value Stack', 'Growth Engine Architecture'],
+      deliverables: ['Customer Journey', 'Value Stack', 'Market Entry Strategy', 'Growth Engine Architecture'],
+      deliverablesEn: ['Customer Journey', 'Value Stack', 'Market Entry Strategy', 'Growth Engine Architecture'],
     },
     {
       week: 3,
