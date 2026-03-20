@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
               : 'Your CAC Is Rising. Your Conversion Is Dropping.'}
           </span>
           <span className="block text-gradient animate-gradient bg-gradient-primary">
-            {language === 'de' ? 'Das ist kein Kanal-Problem.' : "That's Not a Channel Problem."}
+            {language === 'de' ? 'Du hast Taktiken. Kein System.' : 'You Have Tactics. No System.'}
           </span>
         </h1>
 
