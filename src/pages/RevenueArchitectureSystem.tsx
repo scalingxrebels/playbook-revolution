@@ -367,7 +367,7 @@ const ProblemReframeSection: React.FC = () => {
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' ? 'Das ist kein Kanal-Problem.' : "This Is Not a Channel Problem."}
+            {language === 'de' ? 'Warum mehr Budget das Problem nicht löst.' : "Why More Budget Won't Fix the Problem."}
           </h2>
           <p className="text-body-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {language === 'de'
