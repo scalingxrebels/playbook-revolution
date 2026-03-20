@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
               : 'Your CAC Is Rising. Your Conversion Is Dropping.'}
           </span>
           <span className="block text-gradient animate-gradient bg-gradient-primary">
-            {language === 'de' ? 'Das ist kein Kanal-Problem.' : "That's Not a Channel Problem."}
+            {language === 'de' ? 'Du hast Taktiken. Kein System.' : 'You Have Tactics. No System.'}
           </span>
         </h1>
 
@@ -468,8 +468,8 @@ const PreCohortProofSection: React.FC = () => {
   const proofPillars = [
     {
       icon: Award,
-      titleDe: 'Revenue Systeme von Microsoft über Swarovski bis smapOne',
-      titleEn: 'Revenue Systems from Microsoft via Swarovski to smapOne',
+      titleDe: 'Revenue Systeme von Microsoft über Haufe Group bis smapOne',
+      titleEn: 'Revenue Systems from Microsoft via Haufe Group to smapOne',
       textDe: 'Seit 19 Jahren Revenue-Systeme aufgebaut — nicht als Berater, als Operator. Die Methode kommt aus der Praxis, nicht aus der Theorie.',
       textEn: 'For 19 years building Revenue Systems — not as a consultant, as an operator. The method comes from practice, not theory.',
     },
