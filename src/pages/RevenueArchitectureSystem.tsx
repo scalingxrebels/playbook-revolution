@@ -220,9 +220,6 @@ const VSLSection: React.FC = () => {
           ].map((line, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{line}</p>
           ))}
-          <p className="text-xs text-muted-foreground/60 text-center mt-4 italic">
-            {language === 'de' ? 'Bewusst klein: Tiefenanalyse statt Massenerhebung.' : 'Deliberately small: deep analysis over mass surveys.'}
-          </p>
         </div>
       </div>
     </section>
@@ -501,7 +498,7 @@ const FormatSection: React.FC = () => {
         </div>
 
         <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8 mb-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-6">Format</p>
+          
           <div className="space-y-3 text-muted-foreground">
             <p>├── 6 Live-Sessions à 4h ({language === 'de' ? 'online · Gruppe · max. 12 Teilnehmer' : 'online · group · max. 12 participants'})</p>
             <p>├── {language === 'de' ? 'ca. 2–3h Async-Arbeit pro Woche (zwischen den Sessions)' : 'approx. 2–3h async work per week (between sessions)'}</p>
@@ -613,8 +610,8 @@ const ICPFilterSection: React.FC = () => {
 
         <p className="text-center text-sm text-muted-foreground italic">
           {language === 'de'
-            ? 'Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht. Das ist Absicht.'
-            : 'Those on the left self-select out — before they see the form. That\'s by design.'}
+            ? 'Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht.'
+            : 'Those on the left self-select out — before they see the form.'}
         </p>
       </div>
     </section>
