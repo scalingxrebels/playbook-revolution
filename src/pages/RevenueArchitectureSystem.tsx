@@ -915,28 +915,28 @@ const MichelSection: React.FC = () => {
               <p className="text-foreground font-semibold text-lg">Michel Lason.</p>
               <p>
                 {language === 'de'
-                  ? '19 Jahre B2B SaaS GTM — als Operator, nicht als Berater.'
-                  : '19 years B2B SaaS GTM — as an operator, not a consultant.'}
+                  ? '19 Jahre B2B SaaS GTM — 10 Jahre Consulting, 9 Jahre SaaS Executive.'
+                  : '19 years B2B SaaS GTM — 10 years consulting, 9 years SaaS executive.'}
               </p>
               <p>
                 {language === 'de'
-                  ? 'Ich habe Revenue Systeme für Unternehmen von €1M bis €50M ARR gebaut. Nicht als Externer, der Empfehlungen gibt und weiterzieht. Als jemand, der die Maschine selbst gebaut, betrieben und für die Ergebnisse verantwortet hat.'
-                  : 'I\'ve built Revenue Systems for companies from €1M to €50M ARR. Not as an outsider who gives recommendations and moves on. As someone who built the machine, ran it, and was responsible for the results.'}
-              </p>
-              <p className="text-foreground font-medium">
-                {language === 'de'
-                  ? 'Ich bin kein Framework-Guy. Ich habe keine Methode, die ich dir erkläre. Ich baue mit dir — weil ich weiß, wie es sich anfühlt, wenn nichts systematisch greift und du nicht weißt warum.'
-                  : 'I\'m not a framework guy. I don\'t have a method I explain to you. I build with you — because I know how it feels when nothing works systematically and you don\'t know why.'}
+                  ? '140+ operative Engagements. 22–58% CAC-Reduktion in validierten Projekten. Microsoft · XING · Haufe · smapOne. €1M–€50M ARR. DACH. B2B SaaS.'
+                  : '140+ operational engagements. 22–58% CAC reduction in validated projects. Microsoft · XING · Haufe · smapOne. €1M–€50M ARR. DACH. B2B SaaS.'}
               </p>
               <p>
                 {language === 'de'
-                  ? '140+ operative Engagements. 22–58% CAC-Reduktion in validierten Projekten. DACH-Fokus. B2B SaaS.'
-                  : '140+ operational engagements. 22–58% CAC reduction in validated projects. DACH focus. B2B SaaS.'}
+                  ? 'Ich habe Revenue Systeme für Unternehmen von €1M bis €50M ARR gebaut. Nicht als Berater, der Empfehlungen gibt und weiterzieht. Sondern als Operator, der Revenue Systeme selbst gebaut, geführt und Ergebnisse verantwortet hat.'
+                  : 'I\'ve built Revenue Systems for companies from €1M to €50M ARR. Not as a consultant who gives recommendations and moves on. But as an operator who built, led, and owned the results of Revenue Systems.'}
               </p>
-              <p className="italic">
+              <p className="italic text-foreground">
                 {language === 'de'
-                  ? 'Das Programm ist das, was ich mir gewünscht hätte, als ich angefangen habe.'
-                  : 'The program is what I wished I had when I started.'}
+                  ? '„Ich kenne die Entscheidungen, die du gerade triffst — weil ich sie selbst treffen musste. Und ich weiß, was passiert, wenn das System dahinter fehlt."'
+                  : '"I know the decisions you\'re making right now — because I had to make them myself. And I know what happens when the system behind it is missing."'}
+              </p>
+              <p>
+                {language === 'de'
+                  ? 'Dieses Programm ist keine Theorie. Es ist eine Weiterentwicklung von dem, was in 140+ Engagements funktioniert hat — verdichtet in 6 Wochen, die du direkt umsetzt.'
+                  : 'This program is not theory. It\'s an evolution of what worked in 140+ engagements — condensed into 6 weeks you implement directly.'}
               </p>
             </div>
           </div>
