@@ -677,10 +677,16 @@ const ICPFilterSection: React.FC = () => {
           </div>
         </div>
 
-        <p className="text-center text-sm text-muted-foreground italic">
+        <p className="text-center text-sm text-muted-foreground">
           {language === 'de'
-            ? 'Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht.'
-            : 'Those on the left self-select out — before they see the form.'}
+            ? 'Falls du rechts stehst, ist das Revenue Architecture System nicht das richtige für dich — lass uns besprechen, was für dich passt. '
+            : "If you're on the right, the Revenue Architecture System isn't the right fit — let's discuss what works for you. "}
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent('openBookingModal'))}
+            className="text-primary hover:underline cursor-pointer font-medium inline"
+          >
+            {language === 'de' ? 'Buche hier einen Inflection Call →' : 'Book an Inflection Call here →'}
+          </button>
         </p>
       </div>
     </section>
