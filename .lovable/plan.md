@@ -1,42 +1,21 @@
 
 
-## Plan: Format-Sektion Redesign
+## Plan: ICP-Filter Schlusstext anpassen
 
-### Datei: `src/pages/RevenueArchitectureSystem.tsx` — Zeilen 491–536
+### Datei: `src/pages/RevenueArchitectureSystem.tsx` — Zeile 680–684
 
-### Problem
-Die aktuelle Format-Sektion wirkt technisch/trocken (Monospace-Tree-Struktur `├──`, `└──`) und fällt visuell aus dem Premium-Design der restlichen LP heraus. Die "Nicht dies / Sondern das"-Box unten ist zu klein und unauffällig.
+### Änderung
 
-### Neues Design
+Ersetze den aktuellen italic `<p>` durch einen Text, der Besucher auf der "rechten Seite" (nicht passend) freundlich zum Inflection Call weiterleitet, mit klickbarem Link der das Booking-Modal öffnet.
 
-**Layout:** 3-spaltig (lg:grid-cols-3) statt single-column, konsistent mit Sessions-Grid.
+**Neuer deutscher Text:**
+"Falls du rechts stehst, ist das Revenue Architecture System nicht das richtige für dich — lass uns besprechen, was für dich passt. [Buche hier einen Inflection Call →]"
 
-**Karte 1 — Live Sessions:**
-- Icon: `Users` (Lucide)
-- Titel: "6 Live Sessions"
-- Detail: "4h · online · max. 12 Teilnehmer"
-- Subtle accent border left
+**Neuer englischer Text:**
+"If you're on the right, the Revenue Architecture System isn't the right fit — let's discuss what works for you. [Book an Inflection Call here →]"
 
-**Karte 2 — Async Work:**
-- Icon: `Clock` (Lucide)
-- Titel: "Async-Arbeit"
-- Detail: "2–3h pro Woche zwischen den Sessions"
-
-**Karte 3 — Peer Review & Expert:**
-- Icon: `MessageSquare` (Lucide)
-- Titel: "Peer Review & Expert"
-- Detail: "Strukturiertes Feedback in jeder Session. 1:1 Expert Sessions je nach Tier."
-
-**Gesamt-Zusammenfassung:** Zentriert unter dem Grid, bold: "ca. 6–7h pro Woche · 6 Wochen"
-
-**Differenzierung (darunter):** Horizontal 3-col row mit ✗/✗/✓ Items statt gestackter Box — gleiche Items wie bisher, aber als gleichberechtigte Chips/Cols.
-
-### Styling
-- Cards: `bg-card/10 backdrop-blur-sm border border-border/50 p-6` (wie Sessions-Cards)
-- Icons: `text-accent w-8 h-8 mb-4`
-- Dark section background bleibt (Deep Space gradient)
-- Hover: `hover:border-primary/30 transition-all`
-
-### Imports
-- `Users`, `Clock`, `MessageSquare` aus lucide-react hinzufügen (falls nicht vorhanden)
+**Technisch:**
+- Der `<p>` wird zu einem `<p>` mit einem `<button>` oder `<span>` darin, der `onClick` das bestehende Booking-Modal (`openBookingModal` CustomEvent oder lokaler State) triggert
+- Styling: Link-Teil als `text-primary hover:underline cursor-pointer font-medium` (nicht italic)
+- Prüfen ob die Sektion bereits einen `isBookingModalOpen` State hat oder ob das CustomEvent genutzt wird
 
