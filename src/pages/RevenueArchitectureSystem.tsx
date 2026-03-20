@@ -120,11 +120,11 @@ const HeroSection: React.FC = () => {
         <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
           <span className="block text-foreground">
             {language === 'de'
-              ? 'Dein CAC steigt. Deine Conversion sinkt.'
-              : 'Your CAC Is Rising. Your Conversion Is Dropping.'}
+              ? 'GTM Motion, die einschlägt.'
+              : 'A GTM Motion That Hits.'}
           </span>
           <span className="block text-gradient animate-gradient bg-gradient-primary">
-            {language === 'de' ? 'Das ist kein Kanal-Problem.' : "That's Not a Channel Problem."}
+            {language === 'de' ? 'Ein Funnel, der performt.' : 'A Funnel That Performs.'}
           </span>
         </h1>
 
