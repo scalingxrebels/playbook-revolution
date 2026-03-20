@@ -1003,6 +1003,9 @@ const FAQSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            FAQ
+          </span>
           <h2 className="font-display text-display-sm text-foreground">
             {language === 'de' ? 'Die wichtigsten Fragen.' : 'The most important questions.'}
           </h2>
