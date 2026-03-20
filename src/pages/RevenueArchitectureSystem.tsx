@@ -176,7 +176,7 @@ const VSLSection: React.FC = () => {
       className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
-      <div className="container max-w-4xl mx-auto px-6 relative z-10">
+        <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             Video
