@@ -76,7 +76,7 @@ const HeroSection: React.FC = () => {
       className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise pt-20"
     >
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)] transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
       />
       <div
@@ -111,10 +111,10 @@ const HeroSection: React.FC = () => {
 
         {/* Amber Urgency Badge */}
         <div className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-accent/15 border border-accent/40 text-accent text-sm font-semibold rounded-full">
-            <Zap className="w-4 h-4" />
-            Founding Cohort · Max. 12 {language === 'de' ? 'Plätze' : 'Seats'} · {language === 'de' ? 'Startet Ende April 2026' : 'Starts Late April 2026'}
-          </span>
+          <Badge variant="gradient">
+            <Layers className="w-4 h-4 mr-2" />
+            {language === 'de' ? 'GUIDED BUILD · 6 WOCHEN · FOUNDING COHORT' : 'GUIDED BUILD · 6 WEEKS · FOUNDING COHORT'}
+          </Badge>
         </div>
 
         <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
@@ -372,7 +372,7 @@ const ProblemReframeSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-display text-display-md text-foreground mb-6">
@@ -592,7 +592,7 @@ const ProgramSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
@@ -769,7 +769,7 @@ const CredibilitySection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
@@ -911,7 +911,7 @@ const PricingSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-8">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">Pricing</span>
@@ -1194,7 +1194,7 @@ const ApplyFormSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         {/* Urgency Badge */}
         <div className="text-center mb-8">
@@ -1310,7 +1310,7 @@ const WaitlistSection: React.FC = () => {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ backgroundColor: 'hsl(222, 40%, 14%)' }}
+      style={{ backgroundColor: '#0D1F3C' }}
     >
       <div className="container max-w-2xl mx-auto px-6 relative z-10 text-center">
         {isSuccess ? (
