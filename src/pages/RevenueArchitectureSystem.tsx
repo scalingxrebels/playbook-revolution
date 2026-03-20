@@ -1124,6 +1124,9 @@ const ApplyFormSection: React.FC<{ onOpenMlSync: () => void }> = ({ onOpenMlSync
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-2xl mx-auto px-6 relative z-10">
         <div className="text-center mb-8">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Bewerbung' : 'Application'}
+          </span>
           <Badge className="mb-6 bg-amber-500/20 text-amber-400 border-amber-500/30">
             <Zap className="w-4 h-4 mr-2" />
             Founding Cohort · {language === 'de' ? 'Limitierte Plätze' : 'Limited Seats'}
