@@ -1310,7 +1310,7 @@ const WaitlistSection: React.FC = () => {
     <section
       ref={ref as React.RefObject<HTMLElement>}
       className={`relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-      style={{ backgroundColor: 'hsl(222, 40%, 14%)' }}
+      style={{ backgroundColor: '#0D1F3C' }}
     >
       <div className="container max-w-2xl mx-auto px-6 relative z-10 text-center">
         {isSuccess ? (
