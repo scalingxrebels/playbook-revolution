@@ -1194,7 +1194,7 @@ const ApplyFormSection: React.FC = () => {
       ref={ref as React.RefObject<HTMLElement>}
       className={`dark-section relative py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--deep-navy))] via-[hsl(222,40%,8%)] to-[hsl(222,30%,12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         {/* Urgency Badge */}
         <div className="text-center mb-8">
