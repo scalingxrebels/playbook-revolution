@@ -119,66 +119,6 @@ export type Database = {
         }
         Relationships: []
       }
-      ras_applications: {
-        Row: {
-          company: string
-          created_at: string
-          current_cac: string
-          email: string
-          first_name: string
-          gtm_challenge: string
-          id: string
-          last_name: string
-          page_url: string | null
-          referrer: string | null
-          role: string
-          source_channel: string | null
-          utm_campaign: string | null
-          utm_content: string | null
-          utm_medium: string | null
-          utm_source: string | null
-          utm_term: string | null
-        }
-        Insert: {
-          company: string
-          created_at?: string
-          current_cac: string
-          email: string
-          first_name: string
-          gtm_challenge: string
-          id?: string
-          last_name: string
-          page_url?: string | null
-          referrer?: string | null
-          role: string
-          source_channel?: string | null
-          utm_campaign?: string | null
-          utm_content?: string | null
-          utm_medium?: string | null
-          utm_source?: string | null
-          utm_term?: string | null
-        }
-        Update: {
-          company?: string
-          created_at?: string
-          current_cac?: string
-          email?: string
-          first_name?: string
-          gtm_challenge?: string
-          id?: string
-          last_name?: string
-          page_url?: string | null
-          referrer?: string | null
-          role?: string
-          source_channel?: string | null
-          utm_campaign?: string | null
-          utm_content?: string | null
-          utm_medium?: string | null
-          utm_source?: string | null
-          utm_term?: string | null
-        }
-        Relationships: []
-      }
       user_roles: {
         Row: {
           created_at: string
