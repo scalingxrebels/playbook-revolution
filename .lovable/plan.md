@@ -1,38 +1,44 @@
 
 
-# S3 "Was du baust" und S6 "Das Programm" — Redundanz auflösen
+# S4 "Das ist kein Kanal-Problem" — Redundanz mit S2 auflösen
 
 ## Problem
 
-Aktuell zeigen zwei Sektionen dasselbe:
+Zwei Sektionen transportieren dieselbe Kernbotschaft:
 
-- **S3 "Was du baust"** (Zeilen 241–347): 3 Core-Points-Karten + 6-Session-Grid mit D01–D22
-- **S6 "Das Programm"** (Zeilen 518–651): Nochmal 6 Sessions mit denselben Deliverables + Outcomes + Format-Box
+- **S2 Video** (Zeile 208): Headline "Warum dein CAC-Problem kein Kanal-Problem ist"
+- **S4 Problem Reframe** (Zeile 370): Headline "Das ist kein Kanal-Problem."
 
-Die Session-Gruppierung (S1–S6 mit Titeln und Deliverables) ist in beiden Sektionen nahezu identisch. Das ist redundant und verwirrend.
+S2 sagt bereits: "Das ist kein Kanal-Problem — hier ist das Video, das es erklärt." S4 wiederholt dieselbe Aussage nochmal mit Vergleichstabelle. Das ist inhaltlich redundant.
 
-## Lösung nach Briefing-Logik
+## Briefing-Abgleich
 
-Das Briefing definiert S3 und S6 als zwei unterschiedliche Perspektiven:
+Laut Briefing-Struktur (D08 v10.2, 13 Sektionen) ist S4 als **"Problem Reframe"** definiert — die Sektion, die das Problem neu einrahmt. Das Video in S2 macht aber bereits genau das: Es reframed "CAC-Problem" als "kein Kanal-Problem". S4 doppelt das nur textlich nach.
 
-- **S3 = "Was du baust"** → Ergebnis-Perspektive: Die 22 Deliverables als reine Liste/Grid, ohne Session-Zuordnung. Zeigt *was* am Ende rauskommt.
-- **S6 = "Das Programm"** → Prozess-Perspektive: Die 6-Wochen-Reise mit Woche-für-Woche Ablauf, Outcomes pro Session, und Format-Details. Zeigt *wie* man dahin kommt.
+Die Briefing-Logik sieht den Flow so:
+- S2 = Video (zeigt das Problem)
+- S3 = Was du baust (Deliverables)
+- S4 = Problem Reframe (vertieft das "Warum")
 
-## Umsetzungsplan
+## Lösung
 
-### 1. S3 "Was du baust" vereinfachen (Zeilen 241–347)
-- **Behalten:** Die 3 Core-Points-Karten (ICP + Value Stack, Entry Layer + Conversion, Revenue OS) — guter Überblick
-- **Entfernen:** Das Session-Grid (deliverablesBySession) mit S1–S6-Zuordnung
-- **Ersetzen durch:** Einfache kompakte Liste aller 22 Deliverables (D01–D22) ohne Session-Gruppierung — z.B. als Chip/Tag-Grid oder simple 3-Spalten-Liste
-- Kernaussage: "22 fertige Revenue-Bausteine" — reines Ergebnis, kein Prozess
+**S4 Headline ändern**, damit sie nicht dieselbe Aussage wiederholt, sondern das Reframe vertieft. Die Vergleichstabelle (Kanal optimieren → ICP-Architektur etc.) ist guter Content — nur die Headline ist das Problem.
 
-### 2. S6 "Das Programm" bleibt (Zeilen 518–651)
-- Behält die 6-Wochen-Karten mit Outcomes und Deliverable-Tags
-- Behält Format-Box und Closing Quote
-- Ist die einzige Stelle, die Session-Struktur zeigt
+### Änderung
 
-### Ergebnis
-- S3 zeigt das **Was** (22 Deliverables als Outcome-Grid)
-- S6 zeigt das **Wie** (6-Wochen-Curriculum mit Ablauf)
-- Keine Redundanz mehr
+**Aktuelle Headline (Zeile 370):**
+- DE: "Das ist kein Kanal-Problem."
+- EN: "This Is Not a Channel Problem."
+
+**Neue Headline:**
+- DE: "Warum mehr Budget das Problem nicht löst."
+- EN: "Why More Budget Won't Fix the Problem."
+
+Das verschiebt den Fokus: S2 sagt "kein Kanal-Problem", S4 vertieft mit "und mehr Budget hilft auch nicht — hier ist was wirklich fehlt" + Vergleichstabelle.
+
+### Technisch
+
+- **Datei:** `src/pages/RevenueArchitectureSystem.tsx`
+- **Zeile 370:** Headline-Text ersetzen
+- 1 Zeile, 1 Datei
 
