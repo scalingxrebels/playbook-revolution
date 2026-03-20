@@ -1,35 +1,42 @@
 
 
-## Plan: "Das Programm" Sektion an altes Design anpassen
+## Plan: Format-Sektion Redesign
 
-### Datei: `src/pages/RevenueArchitectureSystem.tsx` — SessionsSection (Zeilen 431–474)
+### Datei: `src/pages/RevenueArchitectureSystem.tsx` — Zeilen 491–536
 
-### Änderungen
+### Problem
+Die aktuelle Format-Sektion wirkt technisch/trocken (Monospace-Tree-Struktur `├──`, `└──`) und fällt visuell aus dem Premium-Design der restlichen LP heraus. Die "Nicht dies / Sondern das"-Box unten ist zu klein und unauffällig.
 
-Die aktuelle Session-Darstellung zeigt `S1`–`S6` mit Deliverable-Codes (D01 · D02 · D03). Das Bild zeigt ein anderes Format:
+### Neues Design
 
-**Neues Card-Design pro Woche:**
-- Label: `WOCHE 1` statt `S1` (orange, uppercase tracking)
-- Titel: Bold, z.B. "Strategische Grundlagen"
-- Topic-Badges: Outline-Badges in Violet/Primary statt Deliverable-Codes (z.B. "Marktanalyse", "Challenge-Solution-Matrix", "ICP-Profil")
-- Outcome: Italic muted text mit Pfeil, z.B. "→ Du weißt, in welchem Markt du spielst und wen du ansprichst."
+**Layout:** 3-spaltig (lg:grid-cols-3) statt single-column, konsistent mit Sessions-Grid.
 
-**Daten (aus dem Bild):**
+**Karte 1 — Live Sessions:**
+- Icon: `Users` (Lucide)
+- Titel: "6 Live Sessions"
+- Detail: "4h · online · max. 12 Teilnehmer"
+- Subtle accent border left
 
-| Woche | Titel (DE) | Badges | Outcome |
-|-------|-----------|--------|---------|
-| 1 | Strategische Grundlagen | Marktanalyse, Challenge-Solution-Matrix, ICP-Profil | Du weißt, in welchem Markt du spielst und wen du ansprichst. |
-| 2 | Value Stack & Growth Engine | Customer Journey, Value Stack, Growth Engine Architecture | Du weißt, wie dein ICP kauft — und welcher Funnel-Typ passt. |
-| 3 | Entry Layer & Persuasion | Channel Playbook, Entry Layer Blueprint, Persuasion Blueprint | Dein Funnel-Eingang steht. Landing Pages und Forms sind live. |
-| 4 | Messaging & Funnel-Abschluss | Email Sequencing, Asset Stack, Funnel Blueprint | Dein Funnel konvertiert. Email-Sequenzen laufen. Assets stehen. |
-| 5 | Revenue Operating System | Revenue System Architecture, Data Flow, Automation Priorities, Tech Stack Map, Revenue Report | Marketing, Sales und CS arbeiten in einer Logik. |
-| 6 | Traffic Activation | SEO, SEA, GEO, Earned Media, Content Flywheel | Dein System bekommt skalierbaren Traffic. Phase II startet. |
+**Karte 2 — Async Work:**
+- Icon: `Clock` (Lucide)
+- Titel: "Async-Arbeit"
+- Detail: "2–3h pro Woche zwischen den Sessions"
 
-**Styling:**
-- 3×2 Grid bleibt (`grid md:grid-cols-2 lg:grid-cols-3`)
-- Cards: Dark background mit Border (`bg-card/10 border border-border/50 p-6`)
-- Badges: Small outline-style pills in primary/violet color
-- Outcome-Text: Italic, muted-foreground, mit "→" Prefix
+**Karte 3 — Peer Review & Expert:**
+- Icon: `MessageSquare` (Lucide)
+- Titel: "Peer Review & Expert"
+- Detail: "Strukturiertes Feedback in jeder Session. 1:1 Expert Sessions je nach Tier."
 
-**Englische Übersetzungen** werden analog mitgeführt.
+**Gesamt-Zusammenfassung:** Zentriert unter dem Grid, bold: "ca. 6–7h pro Woche · 6 Wochen"
+
+**Differenzierung (darunter):** Horizontal 3-col row mit ✗/✗/✓ Items statt gestackter Box — gleiche Items wie bisher, aber als gleichberechtigte Chips/Cols.
+
+### Styling
+- Cards: `bg-card/10 backdrop-blur-sm border border-border/50 p-6` (wie Sessions-Cards)
+- Icons: `text-accent w-8 h-8 mb-4`
+- Dark section background bleibt (Deep Space gradient)
+- Hover: `hover:border-primary/30 transition-all`
+
+### Imports
+- `Users`, `Clock`, `MessageSquare` aus lucide-react hinzufügen (falls nicht vorhanden)
 
