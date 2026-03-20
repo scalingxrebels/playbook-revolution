@@ -610,8 +610,8 @@ const ICPFilterSection: React.FC = () => {
 
         <p className="text-center text-sm text-muted-foreground italic">
           {language === 'de'
-            ? 'Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht. Das ist Absicht.'
-            : 'Those on the left self-select out — before they see the form. That\'s by design.'}
+            ? 'Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht.'
+            : 'Those on the left self-select out — before they see the form.'}
         </p>
       </div>
     </section>
