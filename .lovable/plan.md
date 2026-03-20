@@ -1,25 +1,28 @@
 
 
-## Plan: Pricing-Anpassungen in der RAS Landing Page
+## Design-Prüfung: RAS Landing Page
 
-### Datei
-`src/pages/RevenueArchitectureSystem.tsx` — Zeilen 631–658 (Tier-Definitionen)
+### Gefundene Probleme
 
-### Änderungen
+#### 1. Stage Directions (sichtbar als Text gerendert)
 
-**Alle 3 Tiers:** Feature "22 Revenue-Bausteine" als erstes Feature ergänzen.
+**Zeile 223–225 (VSL):** `"Bewusst klein: Tiefenanalyse statt Massenerhebung."` — Das ist ein redaktioneller Kommentar zur Datenmethodik, kein kundengerichteter Text. Sollte entfernt werden.
 
-**Plus:** 
-- Expert Sessions von "2 × 1h" auf "3 × 1h" andern
-- "Async-Feedback: Gruppe" ersetzen durch "Async-Review deiner Deliverables"
+**Zeile 614–617 (ICP-Filter):** `"Wer links steht, filtert sich selbst heraus — bevor er das Formular sieht. Das ist Absicht."` — Der letzte Satz "Das ist Absicht." ist eine Stage Direction. Der erste Satz ist grenzwertig, aber "Das ist Absicht." muss raus.
 
-**VIP:**
-- Preis von €14.900 auf **€12.900**, Cohort 2 von €16.900 auf **€14.900**
-- Expert Sessions von "4 × 1h" auf "6 × 1h"
-- "1:1 Review jede Woche" und "Async-Feedback: Direkt mit Michel" bleiben
-- Neue Features: "System-Audit nach Woche 6 (90 Min)" und "30-Tage-Follow-up"
+#### 2. Doppeltes "Format"-Label (Zeile 495–504)
 
-**Sweet-Spot-Frame (Plus):** Text anpassen — "3 Expert Sessions" statt "2 Expert Sessions"
+Die Sektion hat ein Section-Label `Format` (Zeile 495–497) UND innerhalb der Format-Box nochmal `Format` als Label (Zeile 504). Eines davon muss weg — das innere Label in der Box entfernen.
 
-**VIP-Frame:** Text anpassen — "6 Expert Sessions" statt "4 Expert Sessions"
+#### 3. Hero Badge Position
+
+Der Badge ist aktuell zentriert (Zeile 105). Das Briefing sagt "Amber Pill · oben rechts". Im zentrierten Hero-Layout ist zentriert allerdings konsistent mit allen anderen LPs. Kein Fix nötig, es sei denn du willst es explizit rechts.
+
+---
+
+### Fixes (alle in `src/pages/RevenueArchitectureSystem.tsx`)
+
+1. **Zeile 223–225:** Die italic Zeile `"Bewusst klein: Tiefenanalyse statt Massenerhebung."` entfernen
+2. **Zeile 614–617:** Closing-Text kürzen — `"Das ist Absicht."` entfernen, nur den ersten Satz behalten
+3. **Zeile 504:** Das doppelte `Format`-Label innerhalb der Format-Box entfernen
 
