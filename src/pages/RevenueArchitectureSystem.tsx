@@ -392,6 +392,9 @@ const DeliverablesListSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            Deliverables
+          </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
             {language === 'de' ? '22 Deliverables. Einsatzbereit nach Session 6.' : '22 Deliverables. Ready to deploy after Session 6.'}
           </h2>
