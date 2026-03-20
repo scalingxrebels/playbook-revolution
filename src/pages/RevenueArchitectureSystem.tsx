@@ -264,12 +264,12 @@ const DeliverablesSection: React.FC = () => {
   ];
 
   const deliverablesBySession = [
-    { session: 'S1', items: ['D01 ICP-Profil', 'D02 Market Intelligence', 'D03 Competitive Map', 'D04 Customer Journey Map'] },
-    { session: 'S2', items: ['D05 Value Stack', 'D06 Market Entry Strategy Blueprint', 'D07 Growth Engine Architecture'] },
-    { session: 'S3', items: ['D08 Entry Layer Design', 'D09a Landing Page Blueprint', 'D09b Persuasion Layer + Form System'] },
-    { session: 'S4', items: ['D10 Email-Sequenz-Architektur', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] },
-    { session: 'S5', items: ['D13 Revenue System Architecture Canvas', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities Map', 'D16 Tech Stack Blueprint'] },
-    { session: 'S6', items: ['D17 SEO-Architektur', 'D18 SEA-Blueprint', 'D19 GEO-Strategie', 'D20 Earned Media Plan', 'D21 Content Flywheel', 'D22 Launch Readiness Gate'] },
+    { session: 'S1', title: language === 'de' ? 'Strategische Grundlagen' : 'Strategic Foundations', items: ['D01 Marktanalyse', 'D02 Challenge-Solution-Matrix', 'D03 ICP-Profil'] },
+    { session: 'S2', title: language === 'de' ? 'Value Stack & Growth Engine' : 'Value Stack & Growth Engine', items: ['D04 Customer Journey Map', 'D05 Value Stack', 'D06 Market Entry Strategy Blueprint (HW)', 'D07 Growth Engine Architecture'] },
+    { session: 'S3', title: language === 'de' ? 'Entry Layer & Persuasion' : 'Entry Layer & Persuasion', items: ['D08 Asset-Plan & Traffic-Architektur', 'D09a Landing Page Blueprint', 'D09b Form + DOI-Flow'] },
+    { session: 'S4', title: language === 'de' ? 'Messaging & Funnel Compiler' : 'Messaging & Funnel Compiler', items: ['D10 Email Sequencing', 'D11 Asset Stack & Trust Architecture', 'D12 Funnel Blueprint Compiler'] },
+    { session: 'S5', title: language === 'de' ? 'Revenue Operating System' : 'Revenue Operating System', items: ['D13 Revenue System Architecture', 'D14 Revenue Data Flow & Orchestration', 'D15 Automation Priorities', 'D16* GTM Execution Stack Map', 'D17* Automation Priority Matrix'] },
+    { session: 'S6', title: language === 'de' ? 'Traffic Activation' : 'Traffic Activation', items: ['D18 SEO Playbook', 'D19 SEA Playbook', 'D20 GEO Playbook', 'D21 Earned Media Playbook', 'D22 Content Flywheel Blueprint'] },
   ];
 
   return (
