@@ -102,9 +102,9 @@ const HeroSection: React.FC = () => {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <Badge className="mb-8 animate-fade-in bg-amber-500/20 text-amber-400 border-amber-500/30" style={{ animationDelay: '0.1s' }}>
-          <Zap className="w-4 h-4 mr-2" />
-          Founding Cohort · {language === 'de' ? 'Limitierte Plätze' : 'Limited Seats'}
+        <Badge variant="gradient" className="mb-8 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <Layers className="w-4 h-4 mr-2" />
+          Guided Build · 6 Wochen · Founding Cohort
         </Badge>
 
         <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
