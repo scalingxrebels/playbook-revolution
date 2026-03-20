@@ -119,11 +119,6 @@ const HeroSection: React.FC = () => {
           Guided Build · 6 {language === 'de' ? 'Wochen' : 'Weeks'} · Founding Cohort
         </Badge>
 
-        <p className="text-sm text-muted-foreground mb-6 animate-fade-in" style={{ animationDelay: '0.15s' }}>
-          {language === 'de'
-            ? 'Founding Cohort · Max. 12 Plätze · Startet Ende April 2026'
-            : 'Founding Cohort · Max. 12 Seats · Starts Late April 2026'}
-        </p>
 
         <h1 className="font-display text-hero-lg mb-6 animate-blur-in">
           <span className="block text-foreground">
