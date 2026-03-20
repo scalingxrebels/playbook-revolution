@@ -176,7 +176,7 @@ const VSLSection: React.FC = () => {
       className={`relative min-h-[50vh] py-24 lg:py-32 overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
     >
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
-      <div className="container max-w-4xl mx-auto px-6 relative z-10">
+        <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
           <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
             Video
@@ -243,11 +243,16 @@ const ProblemReframeSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
-        <h2 className="font-display text-display-md text-foreground text-center mb-12">
-          {language === 'de'
-            ? 'Du drehst an Stellschrauben. Das System bleibt kaputt.'
-            : 'You\'re turning levers. The system stays broken.'}
-        </h2>
+        <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Das Problem' : 'The Problem'}
+          </span>
+          <h2 className="font-display text-display-md text-foreground">
+            {language === 'de'
+              ? 'Du drehst an Stellschrauben. Das System bleibt kaputt.'
+              : 'You\'re turning levers. The system stays broken.'}
+          </h2>
+        </div>
 
         <div className="space-y-6 text-muted-foreground leading-relaxed">
           <p>
@@ -387,6 +392,9 @@ const DeliverablesListSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            Deliverables
+          </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
             {language === 'de' ? '22 Deliverables. Einsatzbereit nach Session 6.' : '22 Deliverables. Ready to deploy after Session 6.'}
           </h2>
@@ -483,9 +491,14 @@ const FormatSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
-        <h2 className="font-display text-display-sm text-foreground text-center mb-12">
-          {language === 'de' ? 'Was dich das kostet — an Zeit.' : 'What it costs you — in time.'}
-        </h2>
+        <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            Format
+          </span>
+          <h2 className="font-display text-display-sm text-foreground">
+            {language === 'de' ? 'Was dich das kostet — an Zeit.' : 'What it costs you — in time.'}
+          </h2>
+        </div>
 
         <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8 mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-6">Format</p>
@@ -561,6 +574,9 @@ const ICPFilterSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-4xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Zielgruppe' : 'Target Audience'}
+          </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de' ? 'Für wen es passt — und für wen nicht.' : 'Who it\'s for — and who it\'s not.'}
           </h2>
@@ -788,6 +804,9 @@ const TrustSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Vertrauen' : 'Trust'}
+          </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de' ? 'Warum du es riskieren kannst.' : 'Why you can take the risk.'}
           </h2>
@@ -865,6 +884,9 @@ const MichelSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
+          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+            {language === 'de' ? 'Gründer' : 'Founder'}
+          </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de' ? 'Wer das gebaut hat.' : 'Who built this.'}
           </h2>
@@ -981,13 +1003,16 @@ const FAQSection: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            FAQ
+          </span>
           <h2 className="font-display text-display-sm text-foreground">
             {language === 'de' ? 'Die wichtigsten Fragen.' : 'The most important questions.'}
           </h2>
         </div>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full space-y-4">
           {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`faq-${index}`}>
+            <AccordionItem key={index} value={`faq-${index}`} className="border-2 border-border bg-card px-6">
               <AccordionTrigger className="text-left font-medium">
                 {language === 'de' ? item.qDe : item.qEn}
               </AccordionTrigger>
@@ -1099,6 +1124,9 @@ const ApplyFormSection: React.FC<{ onOpenMlSync: () => void }> = ({ onOpenMlSync
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]" />
       <div className="container max-w-2xl mx-auto px-6 relative z-10">
         <div className="text-center mb-8">
+          <span className="text-sm font-semibold uppercase tracking-widest text-accent mb-4 block">
+            {language === 'de' ? 'Bewerbung' : 'Application'}
+          </span>
           <Badge className="mb-6 bg-amber-500/20 text-amber-400 border-amber-500/30">
             <Zap className="w-4 h-4 mr-2" />
             Founding Cohort · {language === 'de' ? 'Limitierte Plätze' : 'Limited Seats'}
@@ -1338,6 +1366,9 @@ const WaitlistSection: React.FC = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
       <div className="container max-w-2xl mx-auto px-6 relative z-10 text-center">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+          {language === 'de' ? 'Warteliste' : 'Waitlist'}
+        </span>
         <h2 className="font-display text-display-sm text-foreground mb-6">
           {language === 'de'
             ? 'Cohort 1 ist nicht der richtige Zeitpunkt für dich?'
@@ -1411,6 +1442,7 @@ const RevenueArchitectureSystem: React.FC = () => {
   const [bookingSlug, setBookingSlug] = useState<'inflection-call' | 'ml-sync'>('inflection-call');
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const handleOpenBookingModal = () => {
       setBookingSlug('inflection-call');
       setIsBookingModalOpen(true);
