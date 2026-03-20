@@ -185,8 +185,8 @@ const VSLSection: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground">
             {language === 'de'
-              ? 'Du hast neue Kanäle getestet. Neue Botschaften. Neue Segmente. Warum greift trotzdem nichts systematisch?'
-              : 'You tested new channels. New messages. New segments. Why does nothing work systematically?'}
+              ? 'Neue LPs. Neue Botschaften. Neue Ads. Warum greift trotzdem nichts systematisch?'
+              : 'New LPs. New messages. New ads. Why does nothing work systematically?'}
           </h2>
         </div>
 
