@@ -203,7 +203,6 @@ const AppContent = () => {
           <Route path="/glossar" element={<Glossar />} />
           <Route path="/home-v2" element={<IndexV2 />} />
           <Route path="/content-registry" element={<ContentRegistry />} />
-          <Route path="/solutions/revenue-architecture-system" element={<RevenueArchitectureSystem />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
