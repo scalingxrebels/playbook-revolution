@@ -168,6 +168,7 @@ const FilloutEmbed: React.FC<FilloutEmbedProps> = ({
         data-fillout-inherit-parameters={inheritParams}
         data-fillout-dynamic-resize
         data-fillout-parameters={paramString}
+        {...(domain ? { 'data-fillout-domain': domain } : {})}
         style={{ 
           width: '100%', 
           height: height,
