@@ -44,6 +44,11 @@ interface FilloutEmbedProps {
    * Additional custom parameters to pass to the form
    */
   customParams?: Record<string, string>;
+  
+  /**
+   * Custom domain for the Fillout embed (e.g., 'cal.scalingx.io')
+   */
+  domain?: string;
 }
 
 /**
