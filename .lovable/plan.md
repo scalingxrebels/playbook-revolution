@@ -1,20 +1,25 @@
 
 
-## Plan: Revenue Architecture Kachel als "featured" markieren
+## Plan: Apply-Form durch Fillout Embed ersetzen
 
-### 1. `featured`-Flag zum Interface hinzufügen
-**Datei:** `src/data/solutionTiles.ts`
-- `SolutionTile`-Interface um `featured?: boolean` erweitern
-- Bei Tile ID 47 `featured: true` setzen
+### Datei 1: `src/components/forms/FilloutEmbed.tsx`
 
-### 2. Sortierung im Grid: Featured immer oben
-**Datei:** `src/pages/Solutions.tsx`
-- Nach dem Filtern die Tiles sortieren: `featured: true` zuerst, Rest in bestehender Reihenfolge
+**Änderung:** `domain` Prop hinzufügen, damit `data-fillout-domain` unterstützt wird (das Embed nutzt `cal.scalingx.io` statt der Standard-Fillout-Domain).
 
-### 3. Visuelle Hervorhebung der Featured-Kachel
-**Datei:** `src/components/solutions/SolutionTileCard.tsx`
-- Wenn `tile.featured`: dezenter Akzent-Rahmen oder Badge ("Featured" / "Neu") zur Unterscheidung
+- Neues optionales Prop: `domain?: string`
+- Im Render: `data-fillout-domain={domain}` hinzufügen wenn gesetzt
 
-### Umfang
-- 3 Dateien, kleine Änderungen
+### Datei 2: `src/pages/RevenueArchitectureSystem.tsx`
+
+**Änderung:** Die gesamte `ApplyFormSection`-Komponente (Zeilen 1096–1370) wird ersetzt durch eine schlanke Sektion, die `FilloutEmbed` einbettet — konsistent mit dem Maxxeed-Pattern.
+
+**Neues Design der Sektion:**
+- Section-Wrapper bleibt: `id="apply-section"`, Dark Section mit Gradient-Background, `useScrollAnimation`
+- Header bleibt: Section-Label "Bewerbung", Badge, Headline "Bereit?", Subtext
+- **Formular:** `FilloutEmbed` mit `formId="sjieneK4Qeus"`, `formType="inquiry"`, `source="ras-apply"`, `domain="cal.scalingx.io"`, `height={500}`
+- Wrapper um Embed: `max-w-2xl mx-auto bg-card/10 backdrop-blur-sm border-2 border-border/50 overflow-hidden` (konsistent mit bestehendem Form-Container-Styling)
+- 3-Step-Process und "Lieber direkt sprechen?" Link bleiben erhalten
+- **Entfällt:** Der gesamte custom Form-State (Schema, Submit-Handler, Supabase-Insert, Zod-Validierung, Success-State) — das übernimmt jetzt Fillout
+
+**Imports aufräumen:** `applySchema`, `supabase`-Import (prüfen ob noch anderweitig genutzt), `Loader2`, `Select`/`SelectContent`/`SelectItem`/`SelectTrigger`/`SelectValue`, `Textarea`, `Input`, `Label` — nur entfernen wenn nicht anderweitig in der Datei genutzt (Waitlist nutzt einige davon).
 

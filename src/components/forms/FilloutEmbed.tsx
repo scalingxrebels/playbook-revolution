@@ -44,6 +44,11 @@ interface FilloutEmbedProps {
    * Additional custom parameters to pass to the form
    */
   customParams?: Record<string, string>;
+  
+  /**
+   * Custom domain for the Fillout embed (e.g., 'cal.scalingx.io')
+   */
+  domain?: string;
 }
 
 /**
@@ -98,6 +103,7 @@ const FilloutEmbed: React.FC<FilloutEmbedProps> = ({
   className = '',
   inheritParams = true,
   customParams = {},
+  domain,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -162,6 +168,7 @@ const FilloutEmbed: React.FC<FilloutEmbedProps> = ({
         data-fillout-inherit-parameters={inheritParams}
         data-fillout-dynamic-resize
         data-fillout-parameters={paramString}
+        {...(domain ? { 'data-fillout-domain': domain } : {})}
         style={{ 
           width: '100%', 
           height: height,
