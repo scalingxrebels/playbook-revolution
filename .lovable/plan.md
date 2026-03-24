@@ -1,25 +1,25 @@
 
 
-## Problem: Route-Kollision
+## Plan: Apply-Form durch Fillout Embed ersetzen
 
-Die Route `/solutions/:category` (Zeile 127) fängt `/solutions/revenue-architecture-system` ab, **bevor** die spezifische Route (Zeile 205) erreicht wird. React Router matcht Routen in der definierten Reihenfolge — der `:category`-Wildcard greift zuerst.
+### Datei 1: `src/components/forms/FilloutEmbed.tsx`
 
-Das Ergebnis: Die `SolutionCategory`-Seite sucht nach `revenue-architecture-system` in `solutionCategories`, findet es nicht, und zeigt "Category not found".
+**Änderung:** `domain` Prop hinzufügen, damit `data-fillout-domain` unterstützt wird (das Embed nutzt `cal.scalingx.io` statt der Standard-Fillout-Domain).
 
----
+- Neues optionales Prop: `domain?: string`
+- Im Render: `data-fillout-domain={domain}` hinzufügen wenn gesetzt
 
-### Fix
+### Datei 2: `src/pages/RevenueArchitectureSystem.tsx`
 
-**Datei:** `src/App.tsx`
+**Änderung:** Die gesamte `ApplyFormSection`-Komponente (Zeilen 1096–1370) wird ersetzt durch eine schlanke Sektion, die `FilloutEmbed` einbettet — konsistent mit dem Maxxeed-Pattern.
 
-Die spezifische Route `/solutions/revenue-architecture-system` (Zeile 205) muss **vor** die generische Route `/solutions/:category` (Zeile 127) verschoben werden.
+**Neues Design der Sektion:**
+- Section-Wrapper bleibt: `id="apply-section"`, Dark Section mit Gradient-Background, `useScrollAnimation`
+- Header bleibt: Section-Label "Bewerbung", Badge, Headline "Bereit?", Subtext
+- **Formular:** `FilloutEmbed` mit `formId="sjieneK4Qeus"`, `formType="inquiry"`, `source="ras-apply"`, `domain="cal.scalingx.io"`, `height={500}`
+- Wrapper um Embed: `max-w-2xl mx-auto bg-card/10 backdrop-blur-sm border-2 border-border/50 overflow-hidden` (konsistent mit bestehendem Form-Container-Styling)
+- 3-Step-Process und "Lieber direkt sprechen?" Link bleiben erhalten
+- **Entfällt:** Der gesamte custom Form-State (Schema, Submit-Handler, Supabase-Insert, Zod-Validierung, Success-State) — das übernimmt jetzt Fillout
 
-Konkret: Zeile 205 löschen und stattdessen vor Zeile 127 einfügen:
-
-```text
-<Route path="/solutions/revenue-architecture-system" element={<RevenueArchitectureSystem />} />
-<Route path="/solutions/:category" element={<SolutionCategory />} />
-```
-
-Das ist ein Einzeiler-Fix — nur die Reihenfolge ändern.
+**Imports aufräumen:** `applySchema`, `supabase`-Import (prüfen ob noch anderweitig genutzt), `Loader2`, `Select`/`SelectContent`/`SelectItem`/`SelectTrigger`/`SelectValue`, `Textarea`, `Input`, `Label` — nur entfernen wenn nicht anderweitig in der Datei genutzt (Waitlist nutzt einige davon).
 
