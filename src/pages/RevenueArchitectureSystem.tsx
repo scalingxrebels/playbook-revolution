@@ -1094,92 +1094,11 @@ const FAQSection: React.FC = () => {
 };
 
 // ============================================================================
-// S12b: APPLY-FORM
+// S12b: APPLY-FORM (Fillout Embed)
 // ============================================================================
-const applySchema = z.object({
-  first_name: z.string().trim().min(1, 'Required').max(100),
-  last_name: z.string().trim().min(1, 'Required').max(100),
-  email: z.string().trim().email('Invalid email').max(255),
-  company: z.string().trim().min(1, 'Required').max(200),
-  role: z.string().trim().min(1, 'Required').max(200),
-  current_cac: z.string().min(1, 'Required'),
-  gtm_challenge: z.string().trim().min(1, 'Required').max(2000),
-});
-
 const ApplyFormSection: React.FC<{ onOpenMlSync: () => void }> = ({ onOpenMlSync }) => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
-  const { toast } = useToast();
-  const trackingParams = useTrackingParams('ras-apply');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    email: '',
-    company: '',
-    role: '',
-    current_cac: '',
-    gtm_challenge: '',
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrors({});
-
-    const result = applySchema.safeParse(formData);
-    if (!result.success) {
-      const fieldErrors: Record<string, string> = {};
-      result.error.errors.forEach(err => {
-        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setIsSubmitting(true);
-    try {
-      const { error } = await supabase.from('ras_applications').insert({
-        first_name: result.data.first_name,
-        last_name: result.data.last_name,
-        email: result.data.email,
-        company: result.data.company,
-        role: result.data.role,
-        current_cac: result.data.current_cac,
-        gtm_challenge: result.data.gtm_challenge,
-        utm_source: trackingParams.utm_source || null,
-        utm_medium: trackingParams.utm_medium || null,
-        utm_campaign: trackingParams.utm_campaign || null,
-        utm_content: trackingParams.utm_content || null,
-        utm_term: trackingParams.utm_term || null,
-        page_url: trackingParams.page_url || null,
-        referrer: trackingParams.referrer || null,
-      });
-
-      if (error) throw error;
-      setIsSuccess(true);
-    } catch (err) {
-      console.error('Application error:', err);
-      toast({
-        variant: 'destructive',
-        title: language === 'de' ? 'Fehler' : 'Error',
-        description: language === 'de'
-          ? 'Etwas ist schiefgelaufen. Bitte versuche es erneut.'
-          : 'Something went wrong. Please try again.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const roleOptions = language === 'de'
-    ? ['Founder / CEO', 'VP / Head of Marketing oder Growth', 'VP / Head of Sales oder Revenue', 'Anderes']
-    : ['Founder / CEO', 'VP / Head of Marketing or Growth', 'VP / Head of Sales or Revenue', 'Other'];
-
-  const arrOptions = language === 'de'
-    ? ['Unter €1M', '€1M–€5M', '€5M–€20M', 'Über €20M']
-    : ['Under €1M', '€1M–€5M', '€5M–€20M', 'Over €20M'];
 
   return (
     <section
@@ -1207,138 +1126,15 @@ const ApplyFormSection: React.FC<{ onOpenMlSync: () => void }> = ({ onOpenMlSync
           </p>
         </div>
 
-        {isSuccess ? (
-          <div className="p-8 border border-accent/30 bg-accent/5 text-center">
-            <CheckCircle className="w-12 h-12 text-accent mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2 text-foreground">
-              {language === 'de' ? 'Deine Bewerbung ist eingegangen.' : 'Your application has been received.'}
-            </h3>
-            <p className="text-muted-foreground mb-6">
-              {language === 'de'
-                ? 'Michel meldet sich innerhalb von 48h persönlich bei dir. Kein automatisierter Prozess.'
-                : 'Michel will get back to you personally within 48h. No automated process.'}
-            </p>
-            <button
-              onClick={onOpenMlSync}
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              <Calendar className="w-4 h-4" />
-              {language === 'de' ? 'Termin mit Michel buchen →' : 'Book a call with Michel →'}
-            </button>
-            <p className="text-xs text-muted-foreground mt-2">
-              {language === 'de' ? 'Optional — falls du lieber sofort sprechen willst.' : 'Optional — if you prefer to talk right away.'}
-            </p>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="space-y-6 bg-card/10 backdrop-blur-sm border-2 border-border/50 p-8">
-            {/* Role Selection */}
-            <div className="space-y-2">
-              <Label className="text-foreground">{language === 'de' ? 'Deine Rolle' : 'Your Role'} *</Label>
-              <Select value={formData.role} onValueChange={(v) => setFormData(d => ({ ...d, role: v }))}>
-                <SelectTrigger className={errors.role ? 'border-destructive' : ''}>
-                  <SelectValue placeholder={language === 'de' ? 'Bitte wählen' : 'Please select'} />
-                </SelectTrigger>
-                <SelectContent>
-                  {roleOptions.map((opt) => (
-                    <SelectItem key={opt} value={opt}>{opt}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.role && <p className="text-xs text-destructive">{errors.role}</p>}
-            </div>
-
-            {/* ARR */}
-            <div className="space-y-2">
-              <Label className="text-foreground">ARR *</Label>
-              <Select value={formData.current_cac} onValueChange={(v) => setFormData(d => ({ ...d, current_cac: v }))}>
-                <SelectTrigger className={errors.current_cac ? 'border-destructive' : ''}>
-                  <SelectValue placeholder={language === 'de' ? 'Bitte wählen' : 'Please select'} />
-                </SelectTrigger>
-                <SelectContent>
-                  {arrOptions.map((opt) => (
-                    <SelectItem key={opt} value={opt}>{opt}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              {errors.current_cac && <p className="text-xs text-destructive">{errors.current_cac}</p>}
-            </div>
-
-            {/* Expectation */}
-            <div className="space-y-2">
-              <Label htmlFor="gtm_challenge" className="text-foreground">
-                {language === 'de'
-                  ? 'Welche Erwartung hast du an das Programm — und welche Frage soll unbedingt beantwortet werden?'
-                  : 'What do you expect from the program — and what question must be answered?'} *
-              </Label>
-              <Textarea
-                id="gtm_challenge"
-                value={formData.gtm_challenge}
-                onChange={(e) => setFormData(d => ({ ...d, gtm_challenge: e.target.value }))}
-                placeholder={language === 'de'
-                  ? 'z.B. Ich will verstehen, warum unser CAC steigt, obwohl wir mehr investieren.'
-                  : 'e.g. I want to understand why our CAC is rising even though we\'re investing more.'}
-                className={`min-h-[100px] ${errors.gtm_challenge ? 'border-destructive' : ''}`}
-                disabled={isSubmitting}
-              />
-              {errors.gtm_challenge && <p className="text-xs text-destructive">{errors.gtm_challenge}</p>}
-            </div>
-
-            {/* Contact */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="first_name" className="text-foreground">{language === 'de' ? 'Vorname' : 'First Name'} *</Label>
-                <Input id="first_name" value={formData.first_name} onChange={(e) => setFormData(d => ({ ...d, first_name: e.target.value }))} className={errors.first_name ? 'border-destructive' : ''} disabled={isSubmitting} />
-                {errors.first_name && <p className="text-xs text-destructive">{errors.first_name}</p>}
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="last_name" className="text-foreground">{language === 'de' ? 'Nachname' : 'Last Name'} *</Label>
-                <Input id="last_name" value={formData.last_name} onChange={(e) => setFormData(d => ({ ...d, last_name: e.target.value }))} className={errors.last_name ? 'border-destructive' : ''} disabled={isSubmitting} />
-                {errors.last_name && <p className="text-xs text-destructive">{errors.last_name}</p>}
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-foreground">E-Mail *</Label>
-                <Input id="email" type="email" value={formData.email} onChange={(e) => setFormData(d => ({ ...d, email: e.target.value }))} className={errors.email ? 'border-destructive' : ''} disabled={isSubmitting} />
-                {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="company" className="text-foreground">{language === 'de' ? 'Unternehmen' : 'Company'} *</Label>
-                <Input id="company" value={formData.company} onChange={(e) => setFormData(d => ({ ...d, company: e.target.value }))} className={errors.company ? 'border-destructive' : ''} disabled={isSubmitting} />
-                {errors.company && <p className="text-xs text-destructive">{errors.company}</p>}
-              </div>
-            </div>
-
-            <Button
-              type="submit"
-              size="xl"
-              disabled={isSubmitting}
-              className="w-full bg-gradient-accent text-accent-foreground hover:opacity-90 font-bold py-6 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow transition-all duration-400"
-            >
-              {isSubmitting ? (
-                <Loader2 className="w-5 h-5 animate-spin" />
-              ) : (
-                <>
-                  {language === 'de' ? 'Bewerbung absenden' : 'Submit Application'}
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </>
-              )}
-            </Button>
-
-            <p className="text-xs text-muted-foreground text-center">
-              {language === 'de'
-                ? 'Kostenlos & unverbindlich. Kein Verkaufsgespräch. Michel meldet sich persönlich.'
-                : 'Free & non-binding. No sales pitch. Michel will reach out personally.'}
-            </p>
-
-            <p className="text-xs text-muted-foreground/60 text-center">
-              {language === 'de'
-                ? 'Mit dem Absenden stimmst du der Verarbeitung deiner Daten gemäß unserer Datenschutzerklärung zu.'
-                : 'By submitting, you agree to the processing of your data according to our privacy policy.'}
-            </p>
-          </form>
-        )}
+        <div className="bg-card/10 backdrop-blur-sm border-2 border-border/50 overflow-hidden">
+          <FilloutEmbed
+            formId="sjieneK4Qeus"
+            formType="inquiry"
+            source="ras-apply"
+            domain="cal.scalingx.io"
+            height={500}
+          />
+        </div>
 
         {/* 3-Step Process */}
         <div className="flex items-center justify-center gap-4 mt-8 text-sm text-muted-foreground">
@@ -1350,20 +1146,17 @@ const ApplyFormSection: React.FC<{ onOpenMlSync: () => void }> = ({ onOpenMlSync
         </div>
 
         {/* Direct contact */}
-        {!isSuccess && (
-          <div className="text-center mt-8">
-            <p className="text-muted-foreground mb-2">
-              {language === 'de' ? 'Lieber direkt sprechen?' : 'Prefer to talk directly?'}
-            </p>
-            <button
-              onClick={onOpenMlSync}
-              className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
-            >
-              <Calendar className="w-4 h-4" />
-              {language === 'de' ? 'Termin mit Michel buchen →' : 'Book a call with Michel →'}
-            </button>
-          </div>
-        )}
+        <div className="text-center mt-8">
+          <p className="text-muted-foreground mb-2">
+            {language === 'de' ? 'Lieber direkt sprechen?' : 'Prefer to talk directly?'}
+          </p>
+          <button
+            onClick={onOpenMlSync}
+            className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
+          >
+            {language === 'de' ? 'Termin mit Michel buchen →' : 'Book a call with Michel →'}
+          </button>
+        </div>
       </div>
     </section>
   );
