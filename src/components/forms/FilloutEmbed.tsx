@@ -103,6 +103,7 @@ const FilloutEmbed: React.FC<FilloutEmbedProps> = ({
   className = '',
   inheritParams = true,
   customParams = {},
+  domain,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
