@@ -35,7 +35,6 @@ import {
   ExternalLink,
   Loader2,
   CheckCircle,
-  Calendar,
   Clock,
   MessageSquare,
 } from 'lucide-react';
