@@ -98,7 +98,7 @@ const HomeTeam: React.FC = () => {
             <img
               src="/images/team-alban.png"
               alt="Alban Halili"
-              className="w-10 h-10 rounded-full border border-accent/20 object-cover flex-shrink-0"
+              className="w-10 h-10 rounded-full border border-accent/20 object-cover object-[center_10%] flex-shrink-0"
               loading="lazy"
             />
             <div>
