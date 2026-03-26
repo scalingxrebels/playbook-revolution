@@ -25,6 +25,8 @@ const Index = () => {
             <HomeShift />
             {/* SECTION 3: WINNING MECHANISMS GRID */}
             <HomeMechanisms />
+            {/* SECTION 3.5: VERGLEICHSTABELLE */}
+            <HomeComparison />
             {/* SECTION 4: DIE FORMEL FÜR HYPERGROWTH */}
             <FormulaOptimized />
             {/* SECTION 5: CASES TEASER */}
