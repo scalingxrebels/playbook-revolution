@@ -123,12 +123,11 @@ const formatPercent = (value: number): string => {
   return `${(value * 100).toFixed(0)}%`;
 };
 
-const ROICalculatorOptimized = () => {
+// Extracted content component for reuse in modal
+export const ROICalculatorContent = () => {
   const { language } = useLanguage();
-  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const t = translations[language as keyof typeof translations] || translations.en;
 
-  // State
   const [selectedPreset, setSelectedPreset] = useState<string>('seriesA');
   const [arrEur, setArrEur] = useState(3000000);
   const [employees, setEmployees] = useState(20);
@@ -138,7 +137,6 @@ const ROICalculatorOptimized = () => {
   const [targetLevel, setTargetLevel] = useState<LevelKey>('ai_native');
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
-  // Apply preset
   const applyPreset = (presetKey: string) => {
     const preset = phasePresets[presetKey as keyof typeof phasePresets];
     if (preset) {
@@ -148,431 +146,344 @@ const ROICalculatorOptimized = () => {
       setYoyGrowth(preset.yoyGrowth);
       setMonthlyBurn(preset.monthlyBurn);
       setCurrentLevel(preset.currentLevel as LevelKey);
-      // Set target to next level
       const levels: LevelKey[] = ['traditional', 'ai_powered', 'ai_enabled', 'ai_native'];
       const currentIdx = levels.indexOf(preset.currentLevel as LevelKey);
       setTargetLevel(levels[Math.min(currentIdx + 1, levels.length - 1)]);
     }
   };
 
-  // Calculations (exakt aus Briefing)
   const results = useMemo(() => {
     const currentBenchmark = benchmarks[currentLevel];
     const targetBenchmark = benchmarks[targetLevel];
-
-    // Theta Gap
     const thetaGap = targetBenchmark.theta_index - currentBenchmark.theta_index;
-
-    // YoY Growth (User Input Based)
     const targetYoYGrowth = yoyGrowth * (1 + thetaGap * 1.5);
-
-    // Monthly Burn (User Input Based)
     const targetMonthlyBurn = monthlyBurn * (1 - thetaGap * 0.3);
-
-    // Time to €100M
     const calculateTimeToTarget = (arr: number, growth: number): number => {
       const targetARR = 100000000;
       if (arr >= targetARR) return 0;
       return Math.round(Math.log(targetARR / arr) / Math.log(1 + growth / 12));
     };
-
     const currentTimeToTarget = calculateTimeToTarget(arrEur, yoyGrowth);
     const targetTimeToTarget = calculateTimeToTarget(arrEur, targetYoYGrowth);
-
-    // 12-Month ARR
     const current12MonthARR = arrEur * (1 + yoyGrowth);
     const target12MonthARR = arrEur * (1 + targetYoYGrowth);
-
-    // ARR per Employee
     const currentArrPerEmployee = arrEur / employees;
     const targetArrPerEmployee = targetBenchmark.arr_per_employee;
-
-    // Value Pool (Includes Burn Savings)
     const arrIncrease = target12MonthARR - current12MonthARR;
     const burnSavings = (monthlyBurn - targetMonthlyBurn) * 12;
     const valuePool = arrIncrease + burnSavings;
-
-    // ROI
     const investment = 200000;
     const roiMultiple = valuePool / investment;
     const paybackMonths = investment / (valuePool / 12);
-
     return {
-      thetaGap,
-      currentYoYGrowth: yoyGrowth,
-      targetYoYGrowth,
-      currentMonthlyBurn: monthlyBurn,
-      targetMonthlyBurn,
-      currentTimeToTarget,
-      targetTimeToTarget,
-      current12MonthARR,
-      target12MonthARR,
-      currentArrPerEmployee,
-      targetArrPerEmployee,
-      arrIncrease,
-      burnSavings,
-      valuePool,
-      investment,
-      roiMultiple,
-      paybackMonths,
+      thetaGap, currentYoYGrowth: yoyGrowth, targetYoYGrowth,
+      currentMonthlyBurn: monthlyBurn, targetMonthlyBurn,
+      currentTimeToTarget, targetTimeToTarget,
+      current12MonthARR, target12MonthARR,
+      currentArrPerEmployee, targetArrPerEmployee,
+      arrIncrease, burnSavings, valuePool, investment, roiMultiple, paybackMonths,
     };
   }, [arrEur, employees, yoyGrowth, monthlyBurn, currentLevel, targetLevel]);
 
   const levels: LevelKey[] = ['traditional', 'ai_powered', 'ai_enabled', 'ai_native'];
 
-  const openBookingModal = () => {
-    setIsBookingModalOpen(true);
-  };
-
   return (
-    <section
-      id="roi-calculator"
-      ref={ref}
-      className="relative min-h-[70vh] py-24 lg:py-32 bg-background overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute inset-0 bg-mesh opacity-50" />
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        {/* Header */}
-        <div
-          className={cn(
-            'text-center mb-12 transition-all duration-700',
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          )}
-        >
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
-            {t.badge}
+    <>
+      {/* Header */}
+      <div className="text-center mb-8">
+        <span className="text-sm font-semibold uppercase tracking-widest text-primary mb-4 block">
+          {t.badge}
+        </span>
+        <h2 className="font-display text-2xl md:text-3xl text-foreground mb-4">
+          {language === 'de'
+            ? 'Wie schnell kannst du auf €100M skalieren?'
+            : 'How fast can you scale to €100M?'}
+        </h2>
+        <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-lg">
+          <Target className="w-4 h-4 text-accent" />
+          <span className="text-sm text-muted-foreground">
+            {language === 'de' ? '2 von 3 Ergebnissen garantiert – oder 50% zurück' : '2 of 3 results guaranteed – or 50% back'}
           </span>
-          <h2 className="font-display text-display-md text-foreground mb-6">
-            {language === 'de' 
-              ? 'Wie schnell kannst du auf €100M skalieren?' 
-              : 'How fast can you scale to €100M?'}
-          </h2>
-          {/* Trust badge - matches Proof section pattern */}
-          <div className="inline-flex items-center gap-2 bg-card/80 backdrop-blur-sm border border-border px-4 py-2 rounded-lg">
-            <Target className="w-4 h-4 text-accent" />
-            <span className="text-sm text-muted-foreground">
-              {language === 'de' ? '2 von 3 Ergebnissen garantiert – oder 50% zurück' : '2 of 3 results guaranteed – or 50% back'}
-            </span>
-          </div>
         </div>
+      </div>
 
-        {/* Calculator Grid */}
-        <div
-          className={cn(
-            'grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto transition-all duration-700 delay-200',
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          )}
-        >
-          {/* LEFT: Inputs */}
-          <div className="space-y-6">
-            {/* Phase Presets */}
-            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                {t.phasePreset}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {Object.keys(phasePresets).map((key) => (
-                  <button
-                    key={key}
-                    onClick={() => applyPreset(key)}
-                    className={cn(
-                      'px-4 py-2 rounded-md text-sm font-medium transition-all',
-                      selectedPreset === key
-                        ? 'bg-primary text-primary-foreground shadow-brutal-sm'
-                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-                    )}
-                  >
-                    {t.phases[key as keyof typeof t.phases]}
-                  </button>
-                ))}
+      {/* Calculator Grid */}
+      <div className="grid lg:grid-cols-2 gap-8">
+        {/* LEFT: Inputs */}
+        <div className="space-y-6">
+          {/* Phase Presets */}
+          <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+              {t.phasePreset}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {Object.keys(phasePresets).map((key) => (
+                <button
+                  key={key}
+                  onClick={() => applyPreset(key)}
+                  className={cn(
+                    'px-4 py-2 rounded-md text-sm font-medium transition-all',
+                    selectedPreset === key
+                      ? 'bg-primary text-primary-foreground shadow-brutal-sm'
+                      : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                  )}
+                >
+                  {t.phases[key as keyof typeof t.phases]}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Current AI Maturity */}
+          <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+              {t.currentLevel}
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              {levels.map((level) => (
+                <button
+                  key={level}
+                  onClick={() => {
+                    setCurrentLevel(level);
+                    setSelectedPreset('custom');
+                    const currentIdx = levels.indexOf(level);
+                    const targetIdx = levels.indexOf(targetLevel);
+                    if (targetIdx <= currentIdx) {
+                      setTargetLevel(levels[Math.min(currentIdx + 1, levels.length - 1)]);
+                    }
+                  }}
+                  className={cn(
+                    'px-3 py-2 rounded-md text-sm font-medium transition-all',
+                    currentLevel === level
+                      ? 'bg-primary text-primary-foreground shadow-brutal-sm'
+                      : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                  )}
+                >
+                  {t.levels[level]}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Sliders */}
+          <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card space-y-6 transition-all duration-200">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+              {t.inputs}
+            </h3>
+
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  {t.arr}
+                </label>
+                <span className="text-sm font-bold text-primary">{formatCurrency(arrEur)}</span>
+              </div>
+              <Slider
+                value={[Math.log10(arrEur)]}
+                onValueChange={(v) => {
+                  setArrEur(Math.round(Math.pow(10, v[0]) / 100000) * 100000);
+                  setSelectedPreset('custom');
+                }}
+                min={5} max={7.7} step={0.05} className="w-full"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>€100K</span><span>€50M</span>
               </div>
             </div>
 
-            {/* Current AI Maturity */}
-            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                {t.currentLevel}
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {levels.map((level) => (
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Users className="w-4 h-4 text-primary" />
+                  {t.employees}
+                </label>
+                <span className="text-sm font-bold text-primary">{employees}</span>
+              </div>
+              <Slider
+                value={[employees]}
+                onValueChange={(v) => { setEmployees(v[0]); setSelectedPreset('custom'); }}
+                min={3} max={500} step={1} className="w-full"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>3</span><span>500</span>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Zap className="w-4 h-4 text-primary" />
+                  {t.yoyGrowth}
+                </label>
+                <span className="text-sm font-bold text-primary">{formatPercent(yoyGrowth)}</span>
+              </div>
+              <Slider
+                value={[yoyGrowth * 100]}
+                onValueChange={(v) => { setYoyGrowth(v[0] / 100); setSelectedPreset('custom'); }}
+                min={20} max={400} step={5} className="w-full"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>20%</span><span>400%</span>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex justify-between items-center mb-2">
+                <label className="text-sm font-medium text-foreground flex items-center gap-2">
+                  <Flame className="w-4 h-4 text-primary" />
+                  {t.monthlyBurn}
+                </label>
+                <span className="text-sm font-bold text-primary">{formatCurrency(monthlyBurn)}</span>
+              </div>
+              <Slider
+                value={[Math.log10(monthlyBurn)]}
+                onValueChange={(v) => {
+                  setMonthlyBurn(Math.round(Math.pow(10, v[0]) / 10000) * 10000);
+                  setSelectedPreset('custom');
+                }}
+                min={4} max={6.7} step={0.05} className="w-full"
+              />
+              <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                <span>€10K</span><span>€5M</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT: Results */}
+        <div className="space-y-6">
+          {/* Target AI Maturity */}
+          <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
+            <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
+              {t.targetLevel}
+            </h3>
+            <div className="grid grid-cols-2 gap-2">
+              {levels.map((level) => {
+                const currentIdx = levels.indexOf(currentLevel);
+                const levelIdx = levels.indexOf(level);
+                const isDisabled = levelIdx <= currentIdx;
+                return (
                   <button
                     key={level}
-                    onClick={() => {
-                      setCurrentLevel(level);
-                      setSelectedPreset('custom');
-                      // Ensure target is higher
-                      const currentIdx = levels.indexOf(level);
-                      const targetIdx = levels.indexOf(targetLevel);
-                      if (targetIdx <= currentIdx) {
-                        setTargetLevel(levels[Math.min(currentIdx + 1, levels.length - 1)]);
-                      }
-                    }}
+                    onClick={() => !isDisabled && setTargetLevel(level)}
+                    disabled={isDisabled}
                     className={cn(
                       'px-3 py-2 rounded-md text-sm font-medium transition-all',
-                      currentLevel === level
-                        ? 'bg-primary text-primary-foreground shadow-brutal-sm'
+                      targetLevel === level
+                        ? 'bg-accent text-accent-foreground shadow-brutal-sm'
+                        : isDisabled
+                        ? 'bg-muted text-muted-foreground opacity-50 cursor-not-allowed'
                         : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
                     )}
                   >
                     {t.levels[level]}
                   </button>
-                ))}
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Comparison Cards */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-card border-2 border-border rounded-lg p-4 shadow-card">
+              <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+                {t.currentState}
+              </h4>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.projectedArr}</p>
+                  <p className="text-lg font-bold text-foreground">{formatCurrency(results.current12MonthARR)}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.timeTo100m}</p>
+                  <p className="text-lg font-bold text-foreground">{results.currentTimeToTarget} {t.months}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.monthlyBurn}</p>
+                  <p className="text-lg font-bold text-foreground">{formatCurrency(results.currentMonthlyBurn)}</p>
+                </div>
               </div>
             </div>
 
-            {/* Sliders */}
-            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card space-y-6 transition-all duration-200">
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-                {t.inputs}
-              </h3>
-
-              {/* ARR Slider */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-primary" />
-                    {t.arr}
-                  </label>
-                  <span className="text-sm font-bold text-primary">{formatCurrency(arrEur)}</span>
+            <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/30 rounded-lg p-4 shadow-card">
+              <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
+                {t.targetState}
+              </h4>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.projectedArr}</p>
+                  <p className="text-lg font-bold text-foreground">
+                    {formatCurrency(results.target12MonthARR)}
+                    <span className="text-xs font-normal text-accent ml-1">
+                      +{formatPercent((results.target12MonthARR - results.current12MonthARR) / results.current12MonthARR)}
+                    </span>
+                  </p>
                 </div>
-                <Slider
-                  value={[Math.log10(arrEur)]}
-                  onValueChange={(v) => {
-                    setArrEur(Math.round(Math.pow(10, v[0]) / 100000) * 100000);
-                    setSelectedPreset('custom');
-                  }}
-                  min={5}
-                  max={7.7}
-                  step={0.05}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                  <span>€100K</span>
-                  <span>€50M</span>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.timeTo100m}</p>
+                  <p className="text-lg font-bold text-foreground">
+                    {results.targetTimeToTarget} {t.months}
+                    <span className="text-xs font-normal text-accent ml-1">
+                      -{results.currentTimeToTarget - results.targetTimeToTarget}
+                    </span>
+                  </p>
                 </div>
-              </div>
-
-              {/* Employees Slider */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <Users className="w-4 h-4 text-primary" />
-                    {t.employees}
-                  </label>
-                  <span className="text-sm font-bold text-primary">{employees}</span>
-                </div>
-                <Slider
-                  value={[employees]}
-                  onValueChange={(v) => {
-                    setEmployees(v[0]);
-                    setSelectedPreset('custom');
-                  }}
-                  min={3}
-                  max={500}
-                  step={1}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                  <span>3</span>
-                  <span>500</span>
-                </div>
-              </div>
-
-              {/* YoY Growth Slider */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-primary" />
-                    {t.yoyGrowth}
-                  </label>
-                  <span className="text-sm font-bold text-primary">{formatPercent(yoyGrowth)}</span>
-                </div>
-                <Slider
-                  value={[yoyGrowth * 100]}
-                  onValueChange={(v) => {
-                    setYoyGrowth(v[0] / 100);
-                    setSelectedPreset('custom');
-                  }}
-                  min={20}
-                  max={400}
-                  step={5}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                  <span>20%</span>
-                  <span>400%</span>
-                </div>
-              </div>
-
-              {/* Monthly Burn Slider */}
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <label className="text-sm font-medium text-foreground flex items-center gap-2">
-                    <Flame className="w-4 h-4 text-primary" />
-                    {t.monthlyBurn}
-                  </label>
-                  <span className="text-sm font-bold text-primary">{formatCurrency(monthlyBurn)}</span>
-                </div>
-                <Slider
-                  value={[Math.log10(monthlyBurn)]}
-                  onValueChange={(v) => {
-                    setMonthlyBurn(Math.round(Math.pow(10, v[0]) / 10000) * 10000);
-                    setSelectedPreset('custom');
-                  }}
-                  min={4}
-                  max={6.7}
-                  step={0.05}
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                  <span>€10K</span>
-                  <span>€5M</span>
+                <div>
+                  <p className="text-xs text-muted-foreground">{t.monthlyBurn}</p>
+                  <p className="text-lg font-bold text-foreground">
+                    {formatCurrency(results.targetMonthlyBurn)}
+                    <span className="text-xs font-normal text-accent ml-1">
+                      -{formatPercent((results.currentMonthlyBurn - results.targetMonthlyBurn) / results.currentMonthlyBurn)}
+                    </span>
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: Results */}
-          <div className="space-y-6">
-            {/* Target AI Maturity */}
-            <div className="bg-card border-2 border-border hover:border-primary/50 rounded-lg p-6 shadow-card transition-all duration-200">
-              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">
-                {t.targetLevel}
-              </h3>
-              <div className="grid grid-cols-2 gap-2">
-                {levels.map((level) => {
-                  const currentIdx = levels.indexOf(currentLevel);
-                  const levelIdx = levels.indexOf(level);
-                  const isDisabled = levelIdx <= currentIdx;
-
-                  return (
-                    <button
-                      key={level}
-                      onClick={() => !isDisabled && setTargetLevel(level)}
-                      disabled={isDisabled}
-                      className={cn(
-                        'px-3 py-2 rounded-md text-sm font-medium transition-all',
-                        targetLevel === level
-                          ? 'bg-accent text-accent-foreground shadow-brutal-sm'
-                          : isDisabled
-                          ? 'bg-muted text-muted-foreground opacity-50 cursor-not-allowed'
-                          : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-                      )}
-                    >
-                      {t.levels[level]}
-                    </button>
-                  );
-                })}
+          {/* ROI Summary */}
+          <div className="bg-gradient-to-br from-primary via-primary/90 to-accent text-primary-foreground rounded-lg p-6 shadow-glow">
+            <div className="flex items-center gap-2 mb-4">
+              <Target className="w-5 h-5" />
+              <h4 className="text-sm font-semibold uppercase tracking-wider">ROI Summary</h4>
+            </div>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <p className="text-xs opacity-80">{t.investment}</p>
+                <p className="text-xl font-bold">{formatCurrency(results.investment)}</p>
+              </div>
+              <div>
+                <p className="text-xs opacity-80">{t.valuePool}</p>
+                <p className="text-xl font-bold">{formatCurrency(results.valuePool)}</p>
               </div>
             </div>
-
-            {/* Comparison Cards */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Current State */}
-              <div className="bg-card border-2 border-border rounded-lg p-4 shadow-card">
-                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
-                  {t.currentState}
-                </h4>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.projectedArr}</p>
-                    <p className="text-lg font-bold text-foreground">{formatCurrency(results.current12MonthARR)}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.timeTo100m}</p>
-                    <p className="text-lg font-bold text-foreground">{results.currentTimeToTarget} {t.months}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.monthlyBurn}</p>
-                    <p className="text-lg font-bold text-foreground">{formatCurrency(results.currentMonthlyBurn)}</p>
-                  </div>
-                </div>
+            <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/20">
+              <div>
+                <p className="text-xs opacity-80">{t.roiMultiple}</p>
+                <p className="text-3xl font-bold">{results.roiMultiple.toFixed(1)}x</p>
               </div>
-
-              {/* Target State */}
-              <div className="bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/30 rounded-lg p-4 shadow-card">
-                <h4 className="text-xs font-semibold text-primary uppercase tracking-wider mb-3">
-                  {t.targetState}
-                </h4>
-                <div className="space-y-3">
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.projectedArr}</p>
-                    <p className="text-lg font-bold text-foreground">
-                      {formatCurrency(results.target12MonthARR)}
-                      <span className="text-xs font-normal text-accent ml-1">
-                        +{formatPercent((results.target12MonthARR - results.current12MonthARR) / results.current12MonthARR)}
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.timeTo100m}</p>
-                    <p className="text-lg font-bold text-foreground">
-                      {results.targetTimeToTarget} {t.months}
-                      <span className="text-xs font-normal text-accent ml-1">
-                        -{results.currentTimeToTarget - results.targetTimeToTarget}
-                      </span>
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-xs text-muted-foreground">{t.monthlyBurn}</p>
-                    <p className="text-lg font-bold text-foreground">
-                      {formatCurrency(results.targetMonthlyBurn)}
-                      <span className="text-xs font-normal text-accent ml-1">
-                        -{formatPercent((results.currentMonthlyBurn - results.targetMonthlyBurn) / results.currentMonthlyBurn)}
-                      </span>
-                    </p>
-                  </div>
-                </div>
+              <div>
+                <p className="text-xs opacity-80">{t.payback}</p>
+                <p className="text-3xl font-bold">{Math.round(results.paybackMonths)} {t.months}</p>
               </div>
             </div>
-
-            {/* ROI Summary */}
-            <div className="bg-gradient-to-br from-primary via-primary/90 to-accent text-primary-foreground rounded-lg p-6 shadow-glow">
-              <div className="flex items-center gap-2 mb-4">
-                <Target className="w-5 h-5" />
-                <h4 className="text-sm font-semibold uppercase tracking-wider">ROI Summary</h4>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-xs opacity-80">{t.investment}</p>
-                  <p className="text-xl font-bold">{formatCurrency(results.investment)}</p>
-                </div>
-                <div>
-                  <p className="text-xs opacity-80">{t.valuePool}</p>
-                  <p className="text-xl font-bold">{formatCurrency(results.valuePool)}</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-primary-foreground/20">
-                <div>
-                  <p className="text-xs opacity-80">{t.roiMultiple}</p>
-                  <p className="text-3xl font-bold">{results.roiMultiple.toFixed(1)}x</p>
-                </div>
-                <div>
-                  <p className="text-xs opacity-80">{t.payback}</p>
-                  <p className="text-3xl font-bold">{Math.round(results.paybackMonths)} {t.months}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <Button
-              onClick={openBookingModal}
-              size="lg"
-              className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-brutal hover:shadow-brutal-sm transition-all"
-            >
-              {t.primaryCTA}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-
-            {/* Disclaimer */}
-            <p className="text-xs text-muted-foreground text-center">
-              {t.disclaimer}
-            </p>
           </div>
+
+          {/* CTA */}
+          <Button
+            onClick={() => setIsBookingModalOpen(true)}
+            size="lg"
+            className="w-full bg-accent hover:bg-accent/90 text-accent-foreground shadow-brutal hover:shadow-brutal-sm transition-all"
+          >
+            {t.primaryCTA}
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+
+          {/* Disclaimer */}
+          <p className="text-xs text-muted-foreground text-center">
+            {t.disclaimer}
+          </p>
         </div>
       </div>
 
@@ -582,6 +493,26 @@ const ROICalculatorOptimized = () => {
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
       />
+    </>
+  );
+};
+
+const ROICalculatorOptimized = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
+  return (
+    <section
+      id="roi-calculator"
+      ref={ref}
+      className="relative min-h-[70vh] py-24 lg:py-32 bg-background overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-mesh opacity-50" />
+      <div className={cn(
+        'container mx-auto px-4 md:px-6 relative z-10 transition-all duration-700',
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      )}>
+        <ROICalculatorContent />
+      </div>
     </section>
   );
 };
