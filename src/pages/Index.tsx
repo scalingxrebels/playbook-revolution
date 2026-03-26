@@ -3,16 +3,12 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
-// Optimized Homepage Components - 7 Essential Sections
-import HeroOptimized from '@/components/homepage/HeroOptimized';
-import ProblemOptimized from '@/components/homepage/ProblemOptimized';
-import SolutionOptimized from '@/components/homepage/SolutionOptimized';
-import HowItWorksOptimized from '@/components/homepage/HowItWorksOptimized';
-import FormulaOptimized from '@/components/homepage/FormulaOptimized';
-import ProofOptimized from '@/components/homepage/ProofOptimized';
-import GrowthCurveOptimized from '@/components/homepage/GrowthCurveOptimized';
-import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
-import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
+import HeroV2 from '@/components/homepage/HeroV2';
+import ShiftSection from '@/components/homepage/ShiftSection';
+import MechanismsGrid from '@/components/homepage/MechanismsGrid';
+import CasesTeaser from '@/components/homepage/CasesTeaser';
+import WorkWithUs from '@/components/homepage/WorkWithUs';
+import MichelSection from '@/components/homepage/MichelSection';
 
 const Index = () => {
   return (
@@ -21,32 +17,12 @@ const Index = () => {
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
           <main>
-            {/* SECTION 1: HERO (100vh) */}
-            <HeroOptimized />
-            
-            {/* SECTION 2: THE PROBLEM (50vh) */}
-            <ProblemOptimized />
-            
-            {/* SECTION 3: THE SOLUTION (50vh) */}
-            <SolutionOptimized />
-            
-            {/* SECTION 4: HOW IT WORKS (60vh) */}
-            <HowItWorksOptimized />
-            
-            {/* SECTION 5: DIE FORMEL (50vh) */}
-            <FormulaOptimized />
-            
-            {/* SECTION 6: PROOF & VALIDATION (50vh) */}
-            <ProofOptimized />
-            
-            {/* SECTION 7: GROWTH CURVE (interactive) */}
-            <GrowthCurveOptimized />
-            
-            {/* SECTION 8: ROI CALCULATOR (70vh) */}
-            <ROICalculatorOptimized />
-            
-            {/* SECTION 8: FINAL CTA with BOOKING FORM (60vh) */}
-            <FinalCTAOptimized />
+            <HeroV2 />
+            <ShiftSection />
+            <MechanismsGrid />
+            <CasesTeaser />
+            <WorkWithUs />
+            <MichelSection />
           </main>
           <Footer />
         </div>
