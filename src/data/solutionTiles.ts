@@ -637,6 +637,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 16,
     slug: 'power-up-ai-quick-wins',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['ai-transformation'],
