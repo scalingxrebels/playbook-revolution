@@ -7,10 +7,13 @@ import SharedHero from '@/components/shared/SharedHero';
 import MechanismFlowDiagram from './MechanismFlowDiagram';
 import type { SpokeData } from '@/data/expertise/types';
 
-/* ─── Section wrapper ─── */
-const Section: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+/* ─── Section wrapper with alternating gradients ─── */
+const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = ({ children, gradient = 'a' }) => (
   <section className="relative py-24 md:py-32 overflow-hidden">
-    <div className="absolute inset-0 bg-mesh opacity-30" />
+    <div className={`absolute inset-0 bg-gradient-to-b ${
+      gradient === 'a' ? 'from-background to-secondary/30' : 'from-secondary/30 to-background'
+    }`} />
+    <div className="absolute inset-0 bg-mesh opacity-40" />
     <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
     <div className="container max-w-5xl mx-auto px-6 relative z-10">{children}</div>
   </section>
@@ -38,6 +41,12 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
   const colorClass = data.color === 'amber' ? 'text-amber-500' : 'text-primary';
   const borderClass = data.color === 'amber' ? 'border-amber-500/30' : 'border-primary/30';
 
+  /* Scroll-reveal refs */
+  const { ref: notCardsRef, isVisible: notCardsVisible } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: howRef, isVisible: howVisible } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: caseRef, isVisible: caseVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <>
       {/* ── Section 1: Hero ── */}
@@ -57,7 +66,7 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       />
 
       {/* ── Section 2: Was es ist ── */}
-      <Section>
+      <Section gradient="a">
         <SectionHeader
           overline={t('WAS ES IST', 'WHAT IT IS')}
           headline={t(data.whatItIs.headlineDe, data.whatItIs.headlineEn)}
@@ -70,14 +79,18 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       </Section>
 
       {/* ── Section 3: Was es NICHT ist ── */}
-      <Section>
+      <Section gradient="b">
         <SectionHeader
           overline={t('WAS ES NICHT IST', 'WHAT IT IS NOT')}
           headline={t('Drei Dinge die es nicht sind.', 'Three things it is not.')}
         />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div ref={notCardsRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {data.whatItIsNot.map((card, i) => (
-            <div key={i} className="p-8 border-2 border-border bg-card">
+            <div
+              key={i}
+              className={`p-8 border-2 border-border bg-card transition-all duration-700 ${notCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${(i + 1) * 100}ms` }}
+            >
               <h3 className="font-display text-lg text-foreground mb-3">
                 {t(card.titleDe, card.titleEn)}
               </h3>
@@ -90,14 +103,18 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       </Section>
 
       {/* ── Section 4: Wie es funktioniert ── */}
-      <Section>
+      <Section gradient="a">
         <SectionHeader
           overline={t('WIE ES FUNKTIONIERT', 'HOW IT WORKS')}
           headline={t(data.howItWorks.headlineDe, data.howItWorks.headlineEn)}
         />
-        <div className="max-w-3xl mx-auto space-y-8">
+        <div ref={howRef as React.RefObject<HTMLDivElement>} className="max-w-3xl mx-auto space-y-6">
           {data.howItWorks.levels.map((level, i) => (
-            <div key={i} className={`p-8 border-2 bg-card ${borderClass}`}>
+            <div
+              key={i}
+              className={`p-8 border-2 bg-card ${borderClass} transition-all duration-700 ${howVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${(i + 1) * 120}ms` }}
+            >
               <div className="flex items-center gap-3 mb-3">
                 <span className={`text-xs font-bold ${colorClass}`}>{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="font-display text-lg text-foreground">
@@ -113,7 +130,7 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       </Section>
 
       {/* ── Section 5: Competitive Moat ── */}
-      <Section>
+      <Section gradient="b">
         <SectionHeader
           overline={t('DER COMPETITIVE MOAT', 'THE COMPETITIVE MOAT')}
           headline={t(data.moat.headlineDe, data.moat.headlineEn)}
@@ -126,13 +143,16 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       </Section>
 
       {/* ── Section 6: In der Praxis ── */}
-      <Section>
+      <Section gradient="a">
         <SectionHeader
           overline={t('BEWEIS', 'PROOF')}
           headline={t(`${data.num} in der Praxis.`, `${data.num} in practice.`)}
         />
-        <div className="max-w-2xl mx-auto">
-          <Link to={data.caseStudy.href} className="group block p-8 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all">
+        <div ref={caseRef as React.RefObject<HTMLDivElement>} className="max-w-2xl mx-auto">
+          <Link
+            to={data.caseStudy.href}
+            className={`group block p-8 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all duration-700 ${caseVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
             <span className="text-xs text-muted-foreground">{t(data.caseStudy.tagDe, data.caseStudy.tagEn)}</span>
             <div className="flex gap-2 my-3">
               {data.caseStudy.mechanisms.map((m) => (
@@ -150,8 +170,11 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
       </Section>
 
       {/* ── Section 7: Verbindung ── */}
-      <Section>
-        <div className="text-center">
+      <Section gradient="b">
+        <div
+          ref={ctaRef as React.RefObject<HTMLDivElement>}
+          className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
           <p className="text-sm font-semibold uppercase tracking-widest text-accent mb-4">
             {t('DAS SYSTEM', 'THE SYSTEM')}
           </p>
