@@ -72,9 +72,18 @@ const HomeTeam: React.FC = () => {
                 ? 'Founder von ScalingX Hypergrowth. 19 Jahre B2B SaaS GTM — als Operator, nicht als Berater. Er baut die Mechanismen selbst.'
                 : 'Founder of ScalingX Hypergrowth. 19 years B2B SaaS GTM — as an operator, not a consultant. He builds the mechanisms himself.'}
             </p>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-muted-foreground/60 mb-3">
               n=22 · DACH B2B SaaS · Series A–C
             </p>
+            <a
+              href="https://www.linkedin.com/in/michellason/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+              aria-label="LinkedIn Michel Lason"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
