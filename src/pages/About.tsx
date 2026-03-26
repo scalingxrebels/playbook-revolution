@@ -463,8 +463,8 @@ const About: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-8 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {de
-              ? 'Die Lücke zwischen Strategie und Realität kostet Startups ihre Zukunft.'
-              : 'The gap between strategy and reality costs startups their future.'}
+              ? <>Die Lücke zwischen Strategie und Realität kostet Startups <span className="italic text-gradient">ihre Zukunft.</span></>
+              : <>The gap between strategy and reality costs startups <span className="italic text-gradient">their future.</span></>}
           </h2>
 
           <p className={`text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
