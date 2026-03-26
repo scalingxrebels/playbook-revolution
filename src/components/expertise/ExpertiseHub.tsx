@@ -116,7 +116,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="b">
         <SectionHeader
           overline={t('DIE VIER MECHANISMEN', 'THE FOUR MECHANISMS')}
-          headline={t('Vier Mechanismen. Einer davon erklärt die Lücke.', 'Four mechanisms. One of them explains the gap.')}
+          headline={language === 'de' ? <>Vier Mechanismen.<br />Einer davon erklärt die Lücke.</> : <>Four mechanisms.<br />One of them explains the gap.</>}
         />
         <div ref={mechGridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {mechanismCards.map((m, i) => {
