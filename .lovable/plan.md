@@ -1,39 +1,54 @@
 
 
-## Plan: USP-Vergleichstabelle korrigieren
+## Plan: Home Light/Dark Mode an AI-Native angleichen
 
-### Änderungen in `src/components/homepage/HomeComparison.tsx`
+### Problem
+Die gesamte Homepage ist permanent dunkel — alle 7 Sektionen nutzen `dark-section`. Auf der AI-Native Seite ist nur der Hero dunkel, alle anderen Sektionen reagieren korrekt auf den Light/Dark-Mode Toggle.
 
-**1. Interface erweitern** — neue Spalte `diy` hinzufügen:
-```typescript
-interface Row {
-  labelDe: string;
-  labelEn: string;
-  mckinsey: Status;
-  freelancer: Status;
-  intern: Status;
-  diy: Status;      // NEU
-  wir: Status;
-}
+### Analyse: Welche Sektionen brauchen was?
+
+```text
+SEKTION              HOME (IST)        AI-NATIVE (SOLL)
+─────────────────────────────────────────────────────────
+Hero                 dark-section ✅    dark-section ✅  (bleibt)
+Shift                dark-section ❌    theme-responsive
+Mechanisms           dark-section ❌    theme-responsive
+Comparison           dark-section ❌    theme-responsive
+Formula (shared)     theme-responsive ✅ (bereits korrekt)
+Cases                dark-section ❌    theme-responsive
+WorkWithUs           dark-section ❌    theme-responsive
+Team                 dark-section ❌    theme-responsive
 ```
 
-**2. Rows-Daten komplett ersetzen** (Zeilen 25–31):
+### Änderungen in 6 Dateien
 
-| Label DE | Label EN | McKinsey | Freelancer | Intern | DIY | Wir |
-|---|---|---|---|---|---|---|
-| Market Insights | Market Insights | ✅ | ⚠️ | ❌ | ❌ | ✅ |
-| Winning Mechanisms | Winning Mechanisms | ✅ | ⚠️ | ⚠️ | ❌ | ✅ |
-| Operative Umsetzung | Operational Execution | ❌ | ⚠️ | ✅ | ⚠️ | ✅ |
-| AI als Multiplier | AI as Multiplier | ❌ | ❌ | ❌ | ❌ | ✅ |
-| Speed (30 Tage) | Speed (30 Days) | ❌ | ⚠️ | ❌ | ❌ | ✅ |
-| Startup-Kultur | Startup Culture | ❌ | ✅ | ✅ | ✅ | ✅ |
+Für jede der 6 Sektionen (nicht Hero, nicht FormulaOptimized):
 
-**3. Header-Spalten anpassen** (Zeilen 106–115):
-- "McKinsey" → "McKinsey / BCG"
-- Neue Spalte "DIY / Intern lösen" (DE) / "DIY / Solve Internally" (EN) zwischen "Intern" und "Wir"
+**1. `dark-section` und `noise` Klasse entfernen** von der `<section>`
 
-**4. TableBody** — zusätzliche `<TableCell>` für `row.diy` einfügen (zwischen intern und wir).
+**2. Deep-Space-Hintergrundlayer ersetzen** durch theme-responsive Backgrounds nach AI-Native Muster:
+- Statt `bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]`
+- Verwende alternierende Patterns wie auf AI-Native:
+  - `bg-gradient-to-b from-background to-secondary/30` (wie ProblemOptimized)
+  - `bg-mesh` (wie SolutionOptimized / FormulaOptimized)
+  - `bg-gradient-to-b from-secondary/30 to-background` (wie HowItWorksOptimized)
 
-### Keine sonstigen Änderungen
-Nur Daten und eine Spalte hinzufügen. Layout, Styling und alle anderen Sektionen bleiben unverändert.
+**3. Feste Farbwerte entfernen** — alle `from-[#0A0A0F]` etc. raus, nur CSS-Variablen nutzen
+
+### Mapping pro Sektion
+
+| Datei | Background-Stil (wie AI-Native) |
+|---|---|
+| `HomeShift.tsx` | `from-background to-secondary/30` + `bg-mesh` |
+| `HomeMechanisms.tsx` | `bg-mesh` + `bg-grid-pattern` |
+| `HomeComparison.tsx` | `from-secondary/30 to-background` |
+| `HomeCases.tsx` | `bg-mesh` + `bg-grid-pattern` |
+| `HomeWorkWithUs.tsx` | `from-background to-secondary/30` |
+| `HomeTeam.tsx` | `bg-mesh` + `bg-grid-pattern` |
+
+### Was sich nicht ändert
+- **HomeHero.tsx** — bleibt `dark-section` (wie AI-Native Hero)
+- **FormulaOptimized.tsx** — ist bereits theme-responsive (shared component)
+- Alle Texte, Daten, Links, CTAs bleiben identisch
+- Card-Styling bleibt identisch (wird automatisch theme-responsive ohne `dark-section` Wrapper)
 
