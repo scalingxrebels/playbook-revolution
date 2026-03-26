@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -6,6 +6,8 @@ import { useParallaxLayers } from '@/hooks/useParallax';
 import { ArrowRight } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 import MechanismFlowDiagram from './MechanismFlowDiagram';
+import { Button } from '@/components/ui/button';
+import { FilloutBookingModal } from '@/components/forms';
 import type { SpokeData } from '@/data/expertise/types';
 
 /* ─── Section wrapper with alternating gradients ─── */
@@ -44,6 +46,7 @@ const SectionHeader: React.FC<{ overline: string; headline: string }> = ({ overl
 const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
   const { language } = useLanguage();
   const t = (de: string, en: string) => (language === 'de' ? de : en);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   const colorClass = data.color === 'amber' ? 'text-amber-500' : 'text-primary';
   const borderClass = data.color === 'amber' ? 'border-amber-500/30' : 'border-primary/30';
@@ -56,7 +59,7 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
 
   return (
     <>
-      {/* ── Section 1: Hero ── */}
+      {/* ── Section 1: Hero — no stats ── */}
       <SharedHero
         overlineEn={data.overlineEn}
         overlineDe={data.overlineDe}
@@ -64,11 +67,6 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
         headlineLine1De={data.headlineDe}
         subheadlineEn={data.sublineEn}
         subheadlineDe={data.sublineDe}
-        stats={data.stats.map((s) => ({
-          value: s.value,
-          label: { en: s.labelEn, de: s.labelDe },
-          color: data.color === 'amber' ? 'accent' as const : 'primary' as const,
-        }))}
         variant="dark"
       />
 
@@ -176,7 +174,7 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
         </div>
       </Section>
 
-      {/* ── Section 7: Verbindung ── */}
+      {/* ── Section 7: Verbindung — larger diagram + Home-style CTAs ── */}
       <Section gradient="b">
         <div
           ref={ctaRef as React.RefObject<HTMLDivElement>}
@@ -198,14 +196,13 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://calendly.com/scalingx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-accent text-accent-foreground font-bold text-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+            <Button
+              size="lg"
+              className="bg-gradient-accent text-accent-foreground shadow-accent-glow text-lg px-8 py-4 h-auto whitespace-nowrap"
+              onClick={() => setBookingOpen(true)}
             >
               {t('Gespräch buchen', 'Book a call')}
-            </a>
+            </Button>
             <Link
               to={data.connection.nextHref}
               className="px-8 py-4 border-2 border-border text-foreground font-bold text-lg hover:border-primary/50 transition-colors whitespace-nowrap inline-flex items-center gap-2"
@@ -216,6 +213,8 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
           </div>
         </div>
       </Section>
+
+      <FilloutBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };

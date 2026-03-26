@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallaxLayers } from '@/hooks/useParallax';
-import { Check, X, AlertTriangle, ArrowRight } from 'lucide-react';
+import { Check, X, AlertTriangle, ArrowRight, Eye, ArrowRightLeft, Settings, Cpu } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 import MechanismFlowDiagram from './MechanismFlowDiagram';
 import { mechanismCards, comparisonRows, hubCases } from '@/data/expertise/hub';
 import type { ComparisonStatus } from '@/data/expertise/hub';
+import { Button } from '@/components/ui/button';
+import { FilloutBookingModal } from '@/components/forms';
 import {
   Table,
   TableBody,
@@ -22,6 +24,8 @@ const StatusIcon = ({ status, highlight }: { status: ComparisonStatus; highlight
   if (status === 'partial') return <AlertTriangle className="h-5 w-5 text-amber-500" />;
   return <X className="h-5 w-5 text-muted-foreground/50" />;
 };
+
+const mechIcons = [Eye, ArrowRightLeft, Settings, Cpu];
 
 /* ─────────────────────── Section wrapper ─────────────────────── */
 const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = ({ children, gradient = 'a' }) => {
@@ -68,6 +72,7 @@ const SectionHeader: React.FC<{
 const ExpertiseHub: React.FC = () => {
   const { language } = useLanguage();
   const t = (de: string, en: string) => (language === 'de' ? de : en);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   /* Scroll-reveal refs for staggered sections */
   const { ref: mechGridRef, isVisible: mechGridVisible } = useScrollAnimation({ threshold: 0.05 });
@@ -107,53 +112,55 @@ const ExpertiseHub: React.FC = () => {
         </p>
       </Section>
 
-      {/* ── Section 3: Die 4 Mechanismen (2×2) ── */}
+      {/* ── Section 3: Die 4 Mechanismen (2×2) — matching HomeMechanisms ── */}
       <Section gradient="b">
         <SectionHeader
           overline={t('DIE VIER MECHANISMEN', 'THE FOUR MECHANISMS')}
           headline={t('Vier Mechanismen. Einer davon erklärt die Lücke.', 'Four mechanisms. One of them explains the gap.')}
         />
         <div ref={mechGridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {mechanismCards.map((m, i) => (
-            <Link
-              key={m.num}
-              to={m.href}
-              className={`group relative block p-8 border-2 bg-card hover:shadow-glow transition-all duration-500 ${
-                m.color === 'amber'
-                  ? 'border-amber-500/30 hover:border-amber-500/60'
-                  : 'border-border hover:border-primary/50'
-              } ${mechGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${(i + 1) * 100}ms` }}
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className={`text-xs font-bold tracking-wider ${m.color === 'amber' ? 'text-amber-500' : 'text-primary'}`}>
+          {mechanismCards.map((m, i) => {
+            const Icon = mechIcons[i];
+            return (
+              <Link
+                key={m.num}
+                to={m.href}
+                className={`group relative block p-8 border-2 bg-card hover:shadow-glow transition-all duration-500 ${
+                  m.color === 'amber'
+                    ? 'border-amber-500/30 hover:border-amber-500/60'
+                    : 'border-border hover:border-primary/50'
+                } ${mechGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 1) * 100}ms` }}
+              >
+                {/* M-number badge — top right like Home */}
+                <span className={`absolute top-4 right-4 text-xs font-bold tracking-wider ${
+                  m.color === 'amber' ? 'text-amber-500/60' : 'text-accent/60'
+                }`}>
                   {m.num}
                 </span>
-                <span className={`text-[10px] font-medium uppercase tracking-wider px-2 py-0.5 border ${
-                  m.color === 'amber'
-                    ? 'border-amber-500/30 text-amber-500/80'
-                    : 'border-primary/30 text-primary/80'
+
+                {/* Icon container — matching Home */}
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 ${
+                  m.color === 'amber' ? 'bg-amber-500/10' : 'bg-accent/10'
                 }`}>
-                  {t(m.badge.de, m.badge.en)}
+                  <Icon className={`h-5 w-5 ${m.color === 'amber' ? 'text-amber-500' : 'text-accent'}`} />
+                </div>
+
+                <h3 className="font-display text-xl mb-2 text-foreground">
+                  {t(m.titleDe, m.titleEn)}
+                </h3>
+                <p className="text-muted-foreground mb-4">
+                  {t(m.headlineDe, m.headlineEn)}
+                </p>
+                <span className={`inline-flex items-center text-sm group-hover:gap-2 transition-all ${
+                  m.color === 'amber' ? 'text-amber-500' : 'text-accent'
+                }`}>
+                  {t('Mehr erfahren', 'Learn more')}
+                  <ArrowRight className="ml-1 h-4 w-4" />
                 </span>
-              </div>
-              <h3 className="font-display text-lg mb-2 text-foreground">
-                {t(m.titleDe, m.titleEn)}
-              </h3>
-              <p className="text-foreground/90 italic mb-2 text-sm">
-                {t(m.headlineDe, m.headlineEn)}
-              </p>
-              <p className="text-muted-foreground text-sm mb-4">
-                {t(m.contrastDe, m.contrastEn)}
-              </p>
-              <span className={`inline-flex items-center text-sm group-hover:gap-2 transition-all ${
-                m.color === 'amber' ? 'text-amber-500' : 'text-accent'
-              }`}>
-                {t('Mehr erfahren', 'Learn more')}
-                <ArrowRight className="ml-1 h-4 w-4" />
-              </span>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
         </div>
       </Section>
 
@@ -195,7 +202,7 @@ const ExpertiseHub: React.FC = () => {
         </p>
       </Section>
 
-      {/* ── Section 5: Beweis ── */}
+      {/* ── Section 5: Beweis — matching HomeCases structure ── */}
       <Section gradient="b">
         <SectionHeader
           overline={t('DIE MECHANISMEN IN DER PRAXIS', 'THE MECHANISMS IN PRACTICE')}
@@ -206,20 +213,49 @@ const ExpertiseHub: React.FC = () => {
             <Link
               key={i}
               to={c.href}
-              className={`group block p-8 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all duration-500 ${casesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`group block p-6 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all duration-500 ${casesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${(i + 1) * 150}ms` }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs text-muted-foreground">{t(c.tagDe, c.tagEn)}</span>
-              </div>
-              <div className="flex gap-2 mb-4">
+              {/* Tag pill — matching HomeCases */}
+              <span className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-wider text-accent bg-accent/10 rounded-full shadow-brutal-sm mb-3">
+                {t(c.tagDe, c.tagEn)}
+              </span>
+
+              {/* Mechanism badges */}
+              <div className="flex gap-2 mt-2 mb-3">
                 {c.mechanisms.map((m) => (
                   <span key={m} className={`text-[10px] font-bold px-2 py-0.5 border ${
                     m === 'M4' ? 'border-amber-500/30 text-amber-500' : 'border-primary/30 text-primary'
                   }`}>{m}</span>
                 ))}
               </div>
-              <p className="text-foreground font-medium mb-4">{t(c.resultDe, c.resultEn)}</p>
+
+              {/* Title */}
+              <h3 className="font-display text-lg mb-3 text-foreground leading-snug">
+                {t(c.titleDe, c.titleEn)}
+              </h3>
+
+              {/* Body */}
+              <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+                {t(c.bodyDe, c.bodyEn)}
+              </p>
+
+              {/* Metrics — matching HomeCases */}
+              <div className="grid grid-cols-3 gap-3 mb-4">
+                {c.metrics.map((m, j) => (
+                  <div key={j} className="text-center">
+                    <div className="text-xl font-bold text-accent">{m.value}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Investment */}
+              <p className="text-xs text-muted-foreground mb-4">
+                {t(c.investmentDe, c.investmentEn)}
+              </p>
+
+              {/* CTA */}
               <span className="inline-flex items-center text-sm text-accent group-hover:gap-2 transition-all">
                 {t(c.ctaDe, c.ctaEn)} <ArrowRight className="ml-1 h-4 w-4" />
               </span>
@@ -231,7 +267,7 @@ const ExpertiseHub: React.FC = () => {
         </p>
       </Section>
 
-      {/* ── Section 6: CTA ── */}
+      {/* ── Section 6: CTA — matching Home buttons ── */}
       <Section gradient="a">
         <div
           ref={ctaRef as React.RefObject<HTMLDivElement>}
@@ -241,14 +277,13 @@ const ExpertiseHub: React.FC = () => {
             {t('Bereit den richtigen Hebel zu finden?', 'Ready to find the right lever?')}
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://calendly.com/scalingx"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-accent text-accent-foreground font-bold text-lg hover:opacity-90 transition-opacity whitespace-nowrap"
+            <Button
+              size="lg"
+              className="bg-gradient-accent text-accent-foreground shadow-accent-glow text-lg px-8 py-4 h-auto whitespace-nowrap"
+              onClick={() => setBookingOpen(true)}
             >
               {t('Gespräch buchen', 'Book a call')}
-            </a>
+            </Button>
             <Link
               to="/insights"
               className="px-8 py-4 border-2 border-border text-foreground font-bold text-lg hover:border-primary/50 transition-colors whitespace-nowrap"
@@ -261,6 +296,8 @@ const ExpertiseHub: React.FC = () => {
           </p>
         </div>
       </Section>
+
+      <FilloutBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
     </>
   );
 };
