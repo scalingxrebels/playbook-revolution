@@ -41,12 +41,6 @@ const calculateMedianRoi = (cases: typeof caseStudies): string => {
   return `${median % 1 === 0 ? median : median.toFixed(1)}x`;
 };
 
-const clientNames = [
-  'Pigtie', 'the beautiful unleashed truth', 'KODE®', 'FILADOS', '2p Team',
-  'Microsoft Surface', 'XING e-Recruiting', 'Lexware', 'Haufe Group', 'smapOne',
-  'SBB E-Business', 'Swarovski', 'local.ch', 'BWK Group', 'DBA', 'Burda Media',
-  'START', 'Elba', 'Semigator', 'Umantis', 'Sage', 'LifiMax', 'BeQueen', 'BonGusto'
-];
 
 const Cases: React.FC = () => {
   const { language } = useLanguage();
