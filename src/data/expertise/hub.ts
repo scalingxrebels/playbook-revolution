@@ -83,7 +83,7 @@ export const hubCases: CasePreview[] = [
     resultEn: 'CAC from €12k to €5k in 30 days.',
     ctaDe: 'Case lesen',
     ctaEn: 'Read case',
-    href: '/cases',
+    href: '/cases/cac-crisis-turnaround',
   },
   {
     tagDe: 'Series A · €8M ARR',
@@ -93,6 +93,6 @@ export const hubCases: CasePreview[] = [
     resultEn: 'ARR +53% in 17 months.',
     ctaDe: 'Case lesen',
     ctaEn: 'Read case',
-    href: '/cases',
+    href: '/cases/stage-transition-series-b-ready',
   },
 ];

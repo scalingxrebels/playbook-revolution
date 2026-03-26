@@ -79,7 +79,7 @@ export const m2Data: SpokeData = {
     resultEn: 'Translation into 3 target systems simultaneously — GTM, Ops, Board Reporting. ARR +53% in 17 months.',
     ctaDe: 'Vollständigen Case lesen',
     ctaEn: 'Read full case',
-    href: '/cases',
+    href: '/cases/stage-transition-series-b-ready',
   },
   connection: {
     bodyDe: 'M2 übersetzt was M1 gefunden hat. M3 baut das System das M2 definiert hat. Ohne M2 ist M3 Bauen ohne Plan.',

@@ -85,7 +85,7 @@ export const m4Data: SpokeData = {
     resultEn: 'AI as multiplier on all three mechanisms simultaneously. Hypothesis speed 8x. First results in 14 days.',
     ctaDe: 'Vollständigen Case lesen',
     ctaEn: 'Read full case',
-    href: '/cases',
+    href: '/cases/strategic-transformation-market-leadership',
   },
   connection: {
     bodyDe: 'M4 ist nicht der letzte Schritt. M4 ist die Ebene die alles andere beschleunigt.',
