@@ -181,12 +181,6 @@ const Footer: React.FC = () => {
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
-                <li>
-                  <a href="https://lasr.io" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    lasr.io
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

@@ -234,7 +234,7 @@ const About: React.FC = () => {
           {/* Badge */}
           <div className={`transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
             <span className="inline-block px-6 py-2 border-2 border-accent/40 bg-accent/10 text-accent font-mono text-sm font-bold tracking-wider">
-              EXPERTISE × SPEED = IMPACT
+              {de ? 'FÜR CEOS VON FINANZIERTEN STARTUPS · SERIES A–B · DACH' : 'FOR CEOS OF FUNDED STARTUPS · SERIES A–B · DACH'}
             </span>
           </div>
         </div>

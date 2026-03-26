@@ -26,28 +26,6 @@ const InsightsHero: React.FC = () => {
       subheadlineEn="Execution-first articles, live events and case studies — AI-native, DACH-focused, built for Series A–C. No theory. No fluff. Just what works."
       subheadlineDe="Execution-first Artikel, Live Events und Case Studies — AI-native, DACH-fokussiert, gebaut für Series A–C. Keine Theorie. Kein Fluff. Nur was funktioniert."
     >
-      {/* Qualitative Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-8 max-w-lg mx-auto">
-        <div className="px-4 py-3 bg-card border-2 border-primary/30 shadow-brutal-sm rounded-lg">
-          <span className="block text-sm font-bold text-foreground">Operator-led</span>
-          <span className="block text-[10px] text-muted-foreground uppercase tracking-wide">
-            Execution-first
-          </span>
-        </div>
-        <div className="px-4 py-3 bg-card border-2 border-accent/30 shadow-brutal-sm rounded-lg">
-          <span className="block text-sm font-bold text-foreground">Live Events</span>
-          <span className="block text-[10px] text-muted-foreground uppercase tracking-wide">
-            Webinars + Q&As
-          </span>
-        </div>
-        <div className="px-4 py-3 bg-card border-2 border-primary/30 shadow-brutal-sm rounded-lg">
-          <span className="block text-sm font-bold text-foreground">Free Access</span>
-          <span className="block text-[10px] text-muted-foreground uppercase tracking-wide">
-            No paywall
-          </span>
-        </div>
-      </div>
-
       {/* CTAs */}
       <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <Button
