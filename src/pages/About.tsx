@@ -484,7 +484,7 @@ const About: React.FC = () => {
           {/* 3 Values */}
           <div className={`grid md:grid-cols-3 gap-8 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
             {[
-              { icon: Target, title: 'Execution-First', desc: { de: 'Systeme, nicht Slides.', en: 'Systems, not slides.' } },
+              { icon: Target, title: 'Impact-First', desc: { de: 'Funktionierende Systeme, nicht Slides.', en: 'Functioning systems, not slides.' } },
               { icon: Zap, title: 'Speed Matters', desc: { de: '30 Tage, nicht 6 Monate.', en: '30 days, not 6 months.' } },
               { icon: Handshake, title: 'Partnership', desc: { de: 'Co-Pilots, nicht Consultants.', en: 'Co-pilots, not consultants.' } },
             ].map((v, i) => (
