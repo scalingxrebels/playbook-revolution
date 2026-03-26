@@ -38,6 +38,11 @@ const Solutions: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<CategoryId | 'all'>(categoryParam || 'all');
   const [searchQuery, setSearchQuery] = useState(searchParam);
 
+  const visibleTilesTotal = useMemo(() => 
+    solutionTiles.filter(t => !isHidden('solution', t.slug, t.hidden)),
+    [isHidden]
+  );
+
   const filteredTiles = useMemo(() => {
     const challenge = challengeFilter === 'all' ? null : challengeFilter;
     const type = solutionTypeFilter === 'all' ? null : solutionTypeFilter;
