@@ -99,6 +99,7 @@ const IndexV2 = lazy(() => import("./pages/IndexV2"));
 const ContentRegistry = lazy(() => import("./pages/ContentRegistry"));
 const RevenueArchitectureSystem = lazy(() => import("./pages/RevenueArchitectureSystem"));
 const FunnelV2 = lazy(() => import("./pages/FunnelV2"));
+const AINativeHome = lazy(() => import("./pages/AINativeHome"));
 
 const queryClient = new QueryClient();
 
