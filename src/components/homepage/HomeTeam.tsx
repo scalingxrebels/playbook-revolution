@@ -116,9 +116,15 @@ const HomeTeam: React.FC = () => {
             </a>
           </div>
           <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+            <img
+              src="/images/team-florian.png"
+              alt="Florian Metzger"
+              className="w-10 h-10 rounded-full border border-accent/20 object-cover flex-shrink-0"
+              loading="lazy"
+            />
             <div>
               <h4 className="font-display text-base text-foreground">Florian Metzger</h4>
-              <p className="text-sm text-muted-foreground">Partner · Product & Tech · Scaling Systems</p>
+              <p className="text-sm text-muted-foreground">Partner · GTM · Venture Architect · RevOps</p>
             </div>
             <a
               href="https://www.linkedin.com/in/florianmetzger/"
