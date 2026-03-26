@@ -1299,6 +1299,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 35,
     slug: 'strategic-advisory',
+    featured: true,
     solutionType: 'advisory',
     challenges: 'universal',
     price: '€3.9K–€11K/Mo',
