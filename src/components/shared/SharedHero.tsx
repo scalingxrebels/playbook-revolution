@@ -60,7 +60,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   return (
     <section 
       ref={enableParallax ? containerRef as React.RefObject<HTMLElement> : undefined}
-      className={`relative min-h-[85vh] flex flex-col justify-center items-center overflow-hidden noise ${variant === 'dark' ? 'dark-section' : ''}`}
+      className={`relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise ${variant === 'dark' ? 'dark-section' : ''}`}
     >
       {/* Background - only for dark variant */}
       {variant === 'dark' && (
