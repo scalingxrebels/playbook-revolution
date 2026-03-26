@@ -65,15 +65,17 @@ const HomeTeam: React.FC = () => {
             />
           </div>
           <div>
-            <h3 className="font-display text-2xl mb-1 text-foreground">Michel Lason</h3>
-            <p className="text-sm text-accent mb-4">Founder · ScalingX Hypergrowth</p>
-            <p className="text-muted-foreground leading-relaxed max-w-xl mb-3">
+            <h3 className="font-display text-2xl mb-1 text-foreground">Michel Lason <span className="text-accent text-lg font-normal">M.A. HSG</span></h3>
+            <p className="text-sm text-accent mb-4">Founder & CEO · ScalingX Hypergrowth</p>
+            <p className="text-muted-foreground leading-relaxed max-w-xl mb-3 whitespace-pre-line">
               {language === 'de'
-                ? 'Founder von ScalingX Hypergrowth. 19 Jahre B2B SaaS GTM — als Operator, nicht als Berater. Er baut die Mechanismen selbst.'
-                : 'Founder of ScalingX Hypergrowth. 19 years B2B SaaS GTM — as an operator, not a consultant. He builds the mechanisms himself.'}
+                ? 'SaaS von €1,3M auf €13,7M ARR gebracht — in 2 Jahren.\n\n19 Jahre B2B SaaS Startups gebaut, skaliert und repariert. Als Operator, nicht als Berater. Findet den Hebel, der wirklich zieht — und setzt ihn um. Autor „Fix Growth. Scale Faster."'
+                : 'Scaled SaaS from €1.3M to €13.7M ARR — in 2 years.\n\n19 years building, scaling and fixing B2B SaaS startups. As an operator, not a consultant. Finds the lever that truly moves the needle — and executes. Author "Fix Growth. Scale Faster."'}
             </p>
             <p className="text-xs text-muted-foreground/60 mb-3">
-              n=22 · DACH B2B SaaS · Series A–C
+              {language === 'de'
+                ? 'Hauptmann a.D. Schweizer Armee, ehemaliger Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'
+                : 'Former Captain Swiss Army, former Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'}
             </p>
             <a
               href="https://www.linkedin.com/in/michellason/"
