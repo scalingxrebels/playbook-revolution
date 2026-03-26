@@ -1,67 +1,50 @@
 
 
-## Plan: Research-Teaser auf /expertise + Research Hub Route + Detail-Routes
+## Analyse des Briefings 2/2 v2.0 — /playbooks/ai-native-scaling
 
-### Überblick
+### Machbarkeit: Ja, mit Korrekturen
 
-3 Schritte: (1) Neue Research-Teaser-Sektion auf der bestehenden /expertise-Seite, (2) Neue Route `/expertise/research` als Research Hub mit den Briefing-Eingriffen, (3) Detail-Routes für AMF/ANST/SST/Unified registrieren.
-
----
-
-### Schritt 1 — Research-Teaser-Sektion auf /expertise (ExpertiseHub.tsx)
-
-Neue Section zwischen Cases (Section 5) und CTA (Section 6) einfügen:
-
-- **Overline**: "AI-NATIVE SCALING RESEARCH" / "AI-NATIVE SCALING RESEARCH"
-- **Headline**: DE: `Die wissenschaftliche Basis.` / EN: `The scientific foundation.`  
-  Mit `italic text-gradient` auf "Basis" / "foundation"
-- **Subline**: DE: "Drei Frameworks. 62+ Unternehmen. Eine klare Antwort." / EN: "Three frameworks. 62+ companies. One clear answer."
-- **3 kompakte Kacheln** (3-spaltig Desktop, 1-spaltig Mobile):
-  - AMF — "Wie reif ist ein Unternehmen im Umgang mit AI?" → `/expertise/amf`
-  - ANST — "Warum skalieren AI-native Unternehmen superlinear?" → `/expertise/anst`
-  - SST — "Welche Schichten müssen zusammenspielen?" → `/expertise/sst`
-- **CTA-Link**: "Zum Research Hub →" → `/expertise/research`
-- Design: Gleicher `Section`-Wrapper + `SectionHeader` wie die anderen Sektionen
+Das Briefing ist grundsätzlich umsetzbar. Die Seite nutzt die generische `PlaybookLandingPage` Komponente mit Daten aus `ai-native-scaling.ts`. Es gibt aber mehrere Konflikte:
 
 ---
 
-### Schritt 2 — Research Hub Page (`/expertise/research`)
+### Problem 1: `/tools/roi-calculator` existiert nicht
 
-Neue Seite `src/pages/ExpertiseResearch.tsx` mit den 5 Eingriffen aus dem Briefing:
+Das Briefing verlinkt auf `/tools/roi-calculator`. Diese Route existiert nicht. Der ROI-Calculator existiert als `ROICalculatorOptimized` Komponente und wurde kürzlich als Modal in `FormulaOptimized.tsx` auf Home eingebaut.
 
-| Eingriff | Inhalt |
-|---|---|
-| 1 | Positioning-Header: Breadcrumb, Overline "AI-NATIVE SCALING RESEARCH · 2024–2026", H1, Subline, Navigation-Pills (AMF/ANST/SST/Fallstudien) |
-| 2 | Stat-Zeile: 3 Frameworks · 62+ Unternehmen · R²=0.76 · 2024–2026 |
-| 3 | Mapping-Section: 3 Zeilen (AMF/ANST/SST) mit Framework-Name, Frage, Beschreibung |
-| 4 | Framework-Kacheln: 3×1 Grid mit Overline, Headline, Subline, Body, Key Stats, Link — gemäß Briefing-Spezifikation |
-| 5 | Cross-Link-Section: "Vom Verstehen zum Handeln." mit Links zu /playbooks, /cases, Booking-Modal |
-
-Bilingual (DE/EN). Nutzt bestehende Komponenten (SharedHero, Button, FilloutBookingModal). Styling folgt dem bestehenden Dark-Theme der Seite.
+**Optionen:**
+- (A) Neue Route `/tools/roi-calculator` anlegen (eigenständige Seite)
+- (B) Auf `/ai-native` verlinken (wo der Calculator als Section existiert)
+- (C) Den Calculator auch hier als Modal öffnen (wie auf Home)
 
 ---
 
-### Schritt 3 — Routes in App.tsx
+### Problem 2: Shared Components betroffen
 
-5 neue Routes registrieren (vor den Mechanism-Routes, da spezifischere Pfade Vorrang haben):
+Die Hero-CTAs und die Final-CTA-Section (mit Stats) sind **shared Components** (`PlaybookHeroSection.tsx`, `PlaybookFinalCTASection.tsx`), die von **allen 18 Playbooks** genutzt werden. Die Briefing-Änderungen (Ghost-Buttons statt Primary-CTA, Stats entfernen) würden alle Playbooks brechen — oder erfordern eine Sonderbehandlung nur für den Master Playbook.
 
-```
-/expertise/research → ExpertiseResearch (neu)
-/expertise/amf → ExpertiseAMF (existiert, ungeroutet)
-/expertise/anst → ExpertiseANST (existiert, ungeroutet)
-/expertise/sst → ExpertiseSST (existiert, ungeroutet)
-/expertise/unified-framework → ExpertiseUnifiedFramework (existiert, ungeroutet)
-```
+**Optionen:**
+- (A) Nur für `ai-native-scaling` eine eigene Page-Komponente statt `PlaybookLandingPage` verwenden
+- (B) Conditional Logic in den Shared Components (z.B. `if ebene === 1`)
+- (C) Die Shared Components lassen und nur die Daten-Datei anpassen (begrenzterer Eingriff)
 
 ---
 
-### Dateien
+### Problem 3: "Pricing-Tabelle entfernen" = Section 11
 
-| Datei | Änderung |
-|---|---|
-| `src/pages/ExpertiseResearch.tsx` | **Neu** — Research Hub Page mit 5 Sections |
-| `src/components/expertise/ExpertiseHub.tsx` | Research-Teaser-Section einfügen (zwischen Cases und CTA) |
-| `src/App.tsx` | 5 neue Routes + lazy imports für ExpertiseResearch, ExpertiseAMF, ExpertiseANST, ExpertiseSST, ExpertiseUnifiedFramework |
+Die "Pricing-Tabelle" ist die `PlaybookSolutionsSection` (Section 11 in `PlaybookLandingPage.tsx`). Diese zeigt Assessment/Power Up/Boost/Accelerate Engagement-Modelle mit Preisen. Sie zu entfernen ist möglich durch Conditional Rendering (`ebene !== 1`), aber das ändert das Verhalten für den Master Playbook.
 
-3 Dateien (1 neu, 2 geändert).
+---
+
+### Problem 4: Wachstumskurven-Grafik Position
+
+Das Briefing will die Grafik "nach den 4 Phasen" in der Framework-Section. Die `PlaybookFrameworkSection` ist aber eine Shared Component. Die Grafik müsste entweder:
+- Als separate Section zwischen Framework und Dimensions eingefügt werden (in `PlaybookLandingPage.tsx`, nur für `ebene === 1`)
+- Oder in die Framework-Section selbst eingebettet werden (bricht Shared Component)
+
+---
+
+### Empfehlung: Entscheidung nötig
+
+Bevor umgesetzt werden kann, brauche ich eine Entscheidung zu den 4 Punkten oben — insbesondere ob `/tools/roi-calculator` als eigene Route angelegt werden soll und ob die Änderungen nur den Master Playbook betreffen sollen (via Conditional Logic) oder ob eine eigene Page-Komponente gebaut wird.
 
