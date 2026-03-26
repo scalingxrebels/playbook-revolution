@@ -93,7 +93,7 @@ const Solutions: React.FC = () => {
       <Navigation />
       
       {/* S1 — Hero */}
-      <SolutionHero />
+      <SolutionHero visibleSolutionCount={visibleTilesTotal.length} />
       
       {/* S2 — Featured */}
       <SolutionFeatured />
