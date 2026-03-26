@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import HomeHero from '@/components/homepage/HomeHero';
 import HomeShift from '@/components/homepage/HomeShift';
 import HomeMechanisms from '@/components/homepage/HomeMechanisms';
+import HomeComparison from '@/components/homepage/HomeComparison';
 import FormulaOptimized from '@/components/homepage/FormulaOptimized';
 import HomeCases from '@/components/homepage/HomeCases';
 import HomeWorkWithUs from '@/components/homepage/HomeWorkWithUs';
