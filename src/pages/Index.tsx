@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import HomeHero from '@/components/homepage/HomeHero';
 import HomeShift from '@/components/homepage/HomeShift';
 import HomeMechanisms from '@/components/homepage/HomeMechanisms';
+import HomeComparison from '@/components/homepage/HomeComparison';
 import FormulaOptimized from '@/components/homepage/FormulaOptimized';
 import HomeCases from '@/components/homepage/HomeCases';
 import HomeWorkWithUs from '@/components/homepage/HomeWorkWithUs';
@@ -24,6 +25,8 @@ const Index = () => {
             <HomeShift />
             {/* SECTION 3: WINNING MECHANISMS GRID */}
             <HomeMechanisms />
+            {/* SECTION 3.5: VERGLEICHSTABELLE */}
+            <HomeComparison />
             {/* SECTION 4: DIE FORMEL FÜR HYPERGROWTH */}
             <FormulaOptimized />
             {/* SECTION 5: CASES TEASER */}
