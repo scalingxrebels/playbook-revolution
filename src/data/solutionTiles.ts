@@ -1587,6 +1587,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 44,
     slug: 'fix-growth-scale-faster',
+    featured: true,
     solutionType: 'insights',
     challenges: 'universal',
     price: '€4.29-€44.90',
