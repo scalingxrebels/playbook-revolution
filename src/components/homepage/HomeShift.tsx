@@ -46,7 +46,7 @@ const HomeShift: React.FC = () => {
 
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         <p
-          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
