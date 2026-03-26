@@ -72,9 +72,18 @@ const HomeTeam: React.FC = () => {
                 ? 'Founder von ScalingX Hypergrowth. 19 Jahre B2B SaaS GTM — als Operator, nicht als Berater. Er baut die Mechanismen selbst.'
                 : 'Founder of ScalingX Hypergrowth. 19 years B2B SaaS GTM — as an operator, not a consultant. He builds the mechanisms himself.'}
             </p>
-            <p className="text-xs text-muted-foreground/60">
+            <p className="text-xs text-muted-foreground/60 mb-3">
               n=22 · DACH B2B SaaS · Series A–C
             </p>
+            <a
+              href="https://www.linkedin.com/in/michellason/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+              aria-label="LinkedIn Michel Lason"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
@@ -86,9 +95,15 @@ const HomeTeam: React.FC = () => {
           style={{ transitionDelay: '350ms' }}
         >
           <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+            <img
+              src="/images/team-alban.png"
+              alt="Alban Halili"
+              className="w-10 h-10 rounded-full border border-accent/20 object-cover flex-shrink-0"
+              loading="lazy"
+            />
             <div>
               <h4 className="font-display text-base text-foreground">Alban Halili</h4>
-              <p className="text-sm text-muted-foreground">Partner · GTM & Growth · Operations & AI-Automation</p>
+              <p className="text-sm text-muted-foreground">Partner · Growth · Operations · AI Solutions</p>
             </div>
             <a
               href="https://www.linkedin.com/in/albanhalili/"
@@ -101,9 +116,15 @@ const HomeTeam: React.FC = () => {
             </a>
           </div>
           <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+            <img
+              src="/images/team-florian.png"
+              alt="Florian Metzger"
+              className="w-10 h-10 rounded-full border border-accent/20 object-cover flex-shrink-0"
+              loading="lazy"
+            />
             <div>
               <h4 className="font-display text-base text-foreground">Florian Metzger</h4>
-              <p className="text-sm text-muted-foreground">Partner · Product & Tech · Scaling Systems</p>
+              <p className="text-sm text-muted-foreground">Partner · GTM · Venture Architect · RevOps</p>
             </div>
             <a
               href="https://www.linkedin.com/in/florianmetzger/"
