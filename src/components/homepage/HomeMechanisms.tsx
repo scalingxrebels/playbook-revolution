@@ -22,7 +22,7 @@ const mechanisms = [
     titleEn: 'Translation Competence',
     descDe: 'Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt.',
     descEn: 'We translate strategy into the right target system — so it actually works.',
-    href: '/expertise',
+    href: '/expertise/uebersetzungskompetenz',
   },
   {
     icon: Settings,
