@@ -183,8 +183,8 @@ const Solutions: React.FC = () => {
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
                 {language === 'de'
-                  ? `Zeige ${filteredTiles.length} von ${solutionTiles.length} Solutions`
-                  : `Showing ${filteredTiles.length} of ${solutionTiles.length} solutions`}
+                  ? `Zeige ${filteredTiles.length} von ${visibleTilesTotal.length} Solutions`
+                  : `Showing ${filteredTiles.length} of ${visibleTilesTotal.length} solutions`}
               </p>
             </div>
           </div>
