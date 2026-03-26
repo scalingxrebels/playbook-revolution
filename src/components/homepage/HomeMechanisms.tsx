@@ -2,39 +2,47 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { Eye, Rocket, Settings, Cpu, ArrowRight } from 'lucide-react';
+import { Eye, ArrowRightLeft, Settings, Cpu, ArrowRight } from 'lucide-react';
 
 const mechanisms = [
   {
     icon: Eye,
-    titleDe: 'Insights & Levers',
-    titleEn: 'Insights & Levers',
-    descDe: 'Wir sehen was andere nicht sehen. Märkte, Muster, Hebel.',
-    descEn: 'We see what others don\'t. Markets, patterns, levers.',
-    href: '/insights',
+    labelDe: 'M1',
+    labelEn: 'M1',
+    titleDe: 'Hypothesen-Maschine',
+    titleEn: 'Hypothesis Engine',
+    descDe: 'Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen.',
+    descEn: 'We find the right lever — before others even ask the question.',
+    href: '/expertise',
   },
   {
-    icon: Rocket,
-    titleDe: 'Growth Engines',
-    titleEn: 'Growth Engines',
-    descDe: 'GTM, Product, Customer Success — als System, nicht als Silos.',
-    descEn: 'GTM, Product, Customer Success — as a system, not silos.',
-    href: '/solutions',
+    icon: ArrowRightLeft,
+    labelDe: 'M2',
+    labelEn: 'M2',
+    titleDe: 'Übersetzungskompetenz',
+    titleEn: 'Translation Competence',
+    descDe: 'Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt.',
+    descEn: 'We translate strategy into the right target system — so it actually works.',
+    href: '/expertise',
   },
   {
     icon: Settings,
-    titleDe: 'Scaling Systems',
-    titleEn: 'Scaling Systems',
-    descDe: 'Ops, Finance, Talent — so dass Wachstum nicht zusammenbricht.',
-    descEn: 'Ops, Finance, Talent — so growth doesn\'t collapse.',
-    href: '/solutions',
+    labelDe: 'M3',
+    labelEn: 'M3',
+    titleDe: 'Funktionierende Synthese',
+    titleEn: 'Functioning Synthesis',
+    descDe: 'Wir bauen Systeme die tragen — vollständig, ohne Kompromiss.',
+    descEn: 'We build systems that hold — complete, without compromise.',
+    href: '/expertise',
   },
   {
     icon: Cpu,
+    labelDe: 'M4',
+    labelEn: 'M4',
     titleDe: 'AI Orchestration',
     titleEn: 'AI Orchestration',
-    descDe: 'AI nicht als Feature. Als Multiplier auf alle drei Mechanismen.',
-    descEn: 'AI not as a feature. As a multiplier across all three mechanisms.',
+    descDe: 'Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer.',
+    descEn: 'Not a feature. A multiplier on M1–M3. Makes everything faster, sharper, deeper.',
     href: '/expertise',
   },
 ];
@@ -96,6 +104,9 @@ const HomeMechanisms: React.FC = () => {
                 style={{ transitionDelay: `${(i + 2) * 100}ms` }}
               >
                 <Icon className="h-6 w-6 text-accent mb-4" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-accent/70 mb-1 block">
+                  {language === 'de' ? m.labelDe : m.labelEn}
+                </span>
                 <h3 className="font-display text-xl mb-2 text-foreground">
                   {language === 'de' ? m.titleDe : m.titleEn}
                 </h3>

@@ -1,56 +1,82 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Rocket, Cpu, Zap } from 'lucide-react';
+import { ArrowRight, Eye, ArrowRightLeft, Settings, Cpu, Check, X } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallax } from '@/hooks/useParallax';
 
-const components = [
+const mechanisms = [
   {
-    id: '1',
-    icon: Rocket,
-    titleEn: 'Growth Engines',
-    titleDe: 'Growth Engines',
-    descEn: 'Everything that drives growth.',
-    descDe: 'Alles, was Wachstum antreibt.',
-    detailsEn: '• Customer acquisition (Sales & Marketing)\n• Product development (Features customers love)\n• Customer retention (Retention & Expansion)',
-    detailsDe: '• Kundengewinnung (Sales & Marketing)\n• Produktentwicklung (Features, die Kunden lieben)\n• Kundenbindung (Retention & Expansion)',
-    warningEn: 'Without Growth Engines: No revenue growth',
-    warningDe: 'Ohne Growth Engines: Kein Umsatzwachstum',
+    id: 'M1',
+    icon: Eye,
+    titleEn: 'Hypothesis Engine',
+    titleDe: 'Hypothesen-Maschine',
+    descEn: 'We find the right lever — before others even ask the question.',
+    descDe: 'Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen.',
     color: 'primary',
   },
   {
-    id: '2',
+    id: 'M2',
+    icon: ArrowRightLeft,
+    titleEn: 'Translation Competence',
+    titleDe: 'Übersetzungskompetenz',
+    descEn: 'We translate strategy into the right target system — so it actually works.',
+    descDe: 'Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt.',
+    color: 'primary',
+  },
+  {
+    id: 'M3',
+    icon: Settings,
+    titleEn: 'Functioning Synthesis',
+    titleDe: 'Funktionierende Synthese',
+    descEn: 'We build systems that hold — complete, without compromise.',
+    descDe: 'Wir bauen Systeme die tragen — vollständig, ohne Kompromiss.',
+    color: 'primary',
+  },
+  {
+    id: 'M4',
     icon: Cpu,
-    titleEn: 'Scaling Systems',
-    titleDe: 'Scaling Systems',
-    descEn: 'Everything that keeps your company running.',
-    descDe: 'Alles, was dein Unternehmen am Laufen hält.',
-    detailsEn: '• Processes & Operations (How does the business run?)\n• Finance & Capital (How long does the money last?)\n• Team & Governance (Who does what? Who decides?)',
-    detailsDe: '• Prozesse & Operations (Wie läuft der Laden?)\n• Finanzen & Kapital (Wie lange reicht das Geld?)\n• Team & Governance (Wer macht was? Wer entscheidet?)',
-    warningEn: 'Without Scaling Systems: Chaos grows faster than revenue',
-    warningDe: 'Ohne Scaling Systems: Chaos wächst schneller als Umsatz',
-    color: 'primary',
-  },
-  {
-    id: '3',
-    icon: Zap,
-    titleEn: 'AI as Multiplier',
-    titleDe: 'AI als Multiplikator',
-    descEn: 'AI amplifies both – Growth Engines and Scaling Systems.',
-    descDe: 'AI verstärkt beides – Growth Engines und Scaling Systems.',
-    detailsEn: '• 10-30x faster processes\n• 2-4x better profitability\n• From 72 months to 13 months to €100M ARR',
-    detailsDe: '• 10-30x schnellere Prozesse\n• 2-4x bessere Profitabilität\n• Von 72 Monaten auf 13 Monate zu €100M ARR',
-    warningEn: 'Without AI: You are 4x slower than competitors',
-    warningDe: 'Ohne AI: Du bist 4x langsamer als Competitors',
+    titleEn: 'AI Orchestration',
+    titleDe: 'AI Orchestration',
+    descEn: 'Not a feature. A multiplier on M1–M3. Makes everything faster, sharper, deeper.',
+    descDe: 'Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer.',
     color: 'accent',
   },
 ];
+
+const comparisonDe = {
+  header: ['', 'McKinsey & Co.', 'Freelancer', 'Internes Team', 'ScalingX'],
+  rows: [
+    { label: 'M1 — Hypothesen', values: ['check', 'x', 'x', 'check'] },
+    { label: 'M2 — Übersetzung', values: ['x', 'x', 'half', 'check'] },
+    { label: 'M3 — Synthese', values: ['x', 'half', 'half', 'check'] },
+    { label: 'M4 — AI Orchestration', values: ['x', 'x', 'x', 'check'] },
+    { label: 'Speed', values: ['x', 'half', 'x', 'check'] },
+  ],
+};
+
+const comparisonEn = {
+  header: ['', 'McKinsey & Co.', 'Freelancer', 'Internal Team', 'ScalingX'],
+  rows: [
+    { label: 'M1 — Hypotheses', values: ['check', 'x', 'x', 'check'] },
+    { label: 'M2 — Translation', values: ['x', 'x', 'half', 'check'] },
+    { label: 'M3 — Synthesis', values: ['x', 'half', 'half', 'check'] },
+    { label: 'M4 — AI Orchestration', values: ['x', 'x', 'x', 'check'] },
+    { label: 'Speed', values: ['x', 'half', 'x', 'check'] },
+  ],
+};
+
+const ValueIcon = ({ value }: { value: string }) => {
+  if (value === 'check') return <Check className="w-5 h-5 text-accent mx-auto" />;
+  if (value === 'half') return <span className="text-muted-foreground text-sm mx-auto block text-center">~</span>;
+  return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" />;
+};
 
 const FormulaOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const parallax = useParallax({ speed: 0.25, direction: 'down' });
+  const comparison = language === 'de' ? comparisonDe : comparisonEn;
 
   const scrollToCalculator = () => {
     document.getElementById('roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
@@ -76,20 +102,20 @@ const FormulaOptimized: React.FC = () => {
             {language === 'de' ? 'Die Formel für Hypergrowth' : 'The Formula for Hypergrowth'}
           </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
-            <span className="block">Growth Engines × Scaling Systems × AI</span>
+            <span className="block">M1 × M2 × M3 × M4</span>
             <span className="block text-primary">= Hypergrowth</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === 'de' 
-              ? 'Drei Komponenten müssen zusammenspielen. Wenn eine fehlt, funktioniert die Formel nicht.' 
-              : 'Three components must work together. If one is missing, the formula doesn\'t work.'
+              ? 'Vier Winning Mechanisms müssen zusammenspielen. Wenn einer fehlt, funktioniert die Formel nicht.' 
+              : 'Four Winning Mechanisms must work together. If one is missing, the formula doesn\'t work.'
             }
           </p>
         </div>
 
-        {/* Component Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {components.map((item, index) => {
+        {/* Mechanism Cards — 2×2 Grid */}
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
+          {mechanisms.map((item, index) => {
             const Icon = item.icon;
             const isAccent = item.color === 'accent';
             return (
@@ -98,42 +124,61 @@ const FormulaOptimized: React.FC = () => {
                 className={`group relative bg-card border-2 ${isAccent ? 'border-accent/30 hover:border-accent' : 'border-primary/30 hover:border-primary'} p-8 transition-all duration-400 animate-slide-up`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-lg ${isAccent ? 'bg-accent/10 group-hover:bg-accent/20' : 'bg-primary/10 group-hover:bg-primary/20'} flex items-center justify-center mb-6 transition-colors`}>
-                  <Icon className={`w-7 h-7 ${isAccent ? 'text-accent' : 'text-primary'}`} />
+                <div className={`w-12 h-12 rounded-lg ${isAccent ? 'bg-accent/10 group-hover:bg-accent/20' : 'bg-primary/10 group-hover:bg-primary/20'} flex items-center justify-center mb-5 transition-colors`}>
+                  <Icon className={`w-6 h-6 ${isAccent ? 'text-accent' : 'text-primary'}`} />
                 </div>
-
-                {/* Content */}
+                <span className={`text-xs font-semibold uppercase tracking-widest ${isAccent ? 'text-accent/70' : 'text-primary/70'} mb-1 block`}>
+                  {item.id}
+                </span>
                 <h3 className="font-sans text-xl font-bold text-foreground mb-3">
                   {language === 'de' ? item.titleDe : item.titleEn}
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-muted-foreground">
                   {language === 'de' ? item.descDe : item.descEn}
                 </p>
-
-                {/* Details */}
-                <div className="mb-4 space-y-1">
-                  {(language === 'de' ? item.detailsDe : item.detailsEn).split('\n').map((line, i) => (
-                    <p key={i} className="text-sm text-muted-foreground">{line}</p>
-                  ))}
-                </div>
-
-                {/* Warning */}
-                <div className={`pt-4 border-t border-border`}>
-                  <span className={`text-xs font-semibold uppercase tracking-widest ${isAccent ? 'text-accent' : 'text-primary'}`}>
-                    {language === 'de' ? item.warningDe : item.warningEn}
-                  </span>
-                </div>
-
-                {/* Glow Effect on Hover */}
                 <div className={`absolute inset-0 ${isAccent ? 'shadow-accent-glow' : 'shadow-glow'} opacity-0 group-hover:opacity-50 transition-opacity pointer-events-none`} />
               </div>
             );
           })}
         </div>
 
+        {/* Comparison Table */}
+        <div className="animate-slide-up" style={{ animationDelay: '0.3s' }}>
+          <h3 className="font-display text-2xl text-foreground text-center mb-8">
+            {language === 'de' ? 'Warum nicht McKinsey, Freelancer oder intern?' : 'Why not McKinsey, freelancers, or in-house?'}
+          </h3>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  {comparison.header.map((h, i) => (
+                    <th 
+                      key={i} 
+                      className={`py-3 px-4 text-sm font-semibold text-left ${i === 0 ? 'text-muted-foreground' : ''} ${i === comparison.header.length - 1 ? 'text-accent' : 'text-foreground'} border-b border-border/50`}
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {comparison.rows.map((row, ri) => (
+                  <tr key={ri} className="border-b border-border/30">
+                    <td className="py-3 px-4 text-sm font-medium text-foreground">{row.label}</td>
+                    {row.values.map((v, vi) => (
+                      <td key={vi} className={`py-3 px-4 ${vi === row.values.length - 1 ? 'bg-accent/5' : ''}`}>
+                        <ValueIcon value={v} />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         {/* CTA */}
-        <div className="text-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
+        <div className="text-center mt-16 animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button 
             variant="outline"
             size="lg"
