@@ -108,9 +108,9 @@ const HomeCases: React.FC = () => {
           style={{ transitionDelay: '100ms' }}
         >
           {language === 'de' ? (
-            <>Was passiert wenn<br />der Hebel stimmt.</>
+            <>Was passiert wenn<br /><span className="italic text-gradient">der Hebel stimmt.</span></>
           ) : (
-            <>What happens when<br />the lever is right.</>
+            <>What happens when<br /><span className="italic text-gradient">the lever is right.</span></>
           )}
         </h2>
         <p

@@ -74,9 +74,9 @@ const HomeWorkWithUs: React.FC = () => {
             }`}
           >
             {language === 'de' ? (
-              <>Drei Wege.<br />Du wählst den richtigen.</>
+              <>Drei Wege.<br />Du wählst <span className="italic text-gradient">den richtigen.</span></>
             ) : (
-              <>Three paths.<br />You choose the right one.</>
+              <>Three paths.<br />You choose <span className="italic text-gradient">the right one.</span></>
             )}
           </h2>
 

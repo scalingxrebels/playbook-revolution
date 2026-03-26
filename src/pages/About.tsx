@@ -268,7 +268,7 @@ const About: React.FC = () => {
             {de ? 'DAS TEAM' : 'THE TEAM'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? <>Drei Menschen.<br />Ein System.</> : <>Three people.<br />One system.</>}
+            {de ? <>Drei Menschen.<br /><span className="italic text-gradient">Ein System.</span></> : <>Three people.<br /><span className="italic text-gradient">One system.</span></>}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -346,7 +346,7 @@ const About: React.FC = () => {
             {de ? 'WARUM ES FUNKTIONIERT' : 'WHY IT WORKS'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? <>Andere beraten.<br />Wir bauen.</> : <>Others advise.<br />We build.</>}
+            {de ? <>Andere beraten.<br /><span className="italic text-gradient">Wir bauen.</span></> : <>Others advise.<br /><span className="italic text-gradient">We build.</span></>}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -463,8 +463,8 @@ const About: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-8 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {de
-              ? 'Die Lücke zwischen Strategie und Realität kostet Startups ihre Zukunft.'
-              : 'The gap between strategy and reality costs startups their future.'}
+              ? <>Die Lücke zwischen Strategie und Realität kostet Startups <span className="italic text-gradient">ihre Zukunft.</span></>
+              : <>The gap between strategy and reality costs startups <span className="italic text-gradient">their future.</span></>}
           </h2>
 
           <p className={`text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
@@ -549,7 +549,7 @@ const About: React.FC = () => {
             {de ? 'NÄCHSTER SCHRITT' : 'NEXT STEP'}
           </p>
           <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? <>30 Minuten. Kein Pitch.<br />Direkt mit Michel.</> : <>30 minutes. No pitch.<br />Directly with Michel.</>}
+            {de ? <>30 Minuten. Kein Pitch.<br /><span className="italic text-gradient">Direkt mit Michel.</span></> : <>30 minutes. No pitch.<br /><span className="italic text-gradient">Directly with Michel.</span></>}
           </h2>
           <p className={`text-lg text-muted-foreground max-w-xl mx-auto mb-10 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             {de

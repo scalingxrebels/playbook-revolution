@@ -308,8 +308,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>Expertise × Speed = Impact.<br />Nicht als Slogan. Als Arbeitsweise.</>
-              : <>Expertise × Speed = Impact.<br />Not a slogan. A way of working.</>}
+              ? <>Expertise × Speed = Impact.<br />Nicht als Slogan. <span className="italic text-gradient">Als Arbeitsweise.</span></>
+              : <>Expertise × Speed = Impact.<br />Not a slogan. <span className="italic text-gradient">A way of working.</span></>}
           </h2>
 
           <div className="space-y-6">
@@ -337,7 +337,7 @@ const ML: React.FC = () => {
             {de ? 'DIE STORY' : 'THE STORY'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {de ? <>Nicht Biographie.<br />Fähigkeit.</> : <>Not biography.<br />Capability.</>}
+            {de ? <>Nicht Biographie.<br /><span className="italic text-gradient">Fähigkeit.</span></> : <>Not biography.<br /><span className="italic text-gradient">Capability.</span></>}
           </h2>
 
           <div className="space-y-8 max-w-3xl mx-auto">
@@ -461,8 +461,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>Drei Momente.<br />Das ist warum ich tue, was ich tue.</>
-              : <>Three moments.<br />That's why I do what I do.</>}
+              ? <>Drei Momente.<br />Das ist warum ich tue, <span className="italic text-gradient">was ich tue.</span></>
+              : <>Three moments.<br />That's why I do <span className="italic text-gradient">what I do.</span></>}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
@@ -507,8 +507,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>30 Minuten. Kein Pitch.<br />Direkt mit mir.</>
-              : <>30 minutes. No pitch.<br />Directly with me.</>}
+              ? <>30 Minuten. Kein Pitch.<br /><span className="italic text-gradient">Direkt mit mir.</span></>
+              : <>30 minutes. No pitch.<br /><span className="italic text-gradient">Directly with me.</span></>}
           </h2>
           <p className={`text-body-lg text-muted-foreground mb-4 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {de
