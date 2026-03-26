@@ -218,7 +218,7 @@ const ML: React.FC = () => {
           <div className="grid md:grid-cols-[2fr_3fr] gap-12 items-center">
             {/* Photo */}
             <div className="flex justify-center md:justify-end animate-fade-in">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-glow">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-glow">
                 <img
                   src="/images/ml-hero-new.png"
                   alt="Michel Lason"
