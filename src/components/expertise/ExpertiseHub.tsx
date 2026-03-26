@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useParallaxLayers } from '@/hooks/useParallax';
 import { Check, X, AlertTriangle, ArrowRight } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 import MechanismFlowDiagram from './MechanismFlowDiagram';
@@ -24,9 +23,12 @@ const StatusIcon = ({ status, highlight }: { status: ComparisonStatus; highlight
 };
 
 /* ─────────────────────── Section wrapper ─────────────────────── */
-const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <section className={`relative py-24 md:py-32 overflow-hidden ${className}`}>
-    <div className="absolute inset-0 bg-mesh opacity-30" />
+const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = ({ children, gradient = 'a' }) => (
+  <section className="relative py-24 md:py-32 overflow-hidden">
+    <div className={`absolute inset-0 bg-gradient-to-b ${
+      gradient === 'a' ? 'from-background to-secondary/30' : 'from-secondary/30 to-background'
+    }`} />
+    <div className="absolute inset-0 bg-mesh opacity-40" />
     <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
     <div className="container max-w-5xl mx-auto px-6 relative z-10">{children}</div>
   </section>
@@ -43,7 +45,7 @@ const SectionHeader: React.FC<{
       <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {overline}
       </p>
-      <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+      <h2 className={`font-display text-display-md ${sub ? 'mb-6' : 'mb-12'} transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
         {headline}
       </h2>
       {sub && (
@@ -60,6 +62,12 @@ const ExpertiseHub: React.FC = () => {
   const { language } = useLanguage();
   const t = (de: string, en: string) => (language === 'de' ? de : en);
 
+  /* Scroll-reveal refs for staggered sections */
+  const { ref: mechGridRef, isVisible: mechGridVisible } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: tableRef, isVisible: tableVisible } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: casesRef, isVisible: casesVisible } = useScrollAnimation({ threshold: 0.05 });
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <>
       {/* ── Section 1: Hero ── */}
@@ -74,35 +82,32 @@ const ExpertiseHub: React.FC = () => {
         subheadlineDe="Vier Mechanismen. Kombiniert mit Speed. Das ist warum es funktioniert."
         variant="dark"
       >
-        {/* Badge */}
         <div className="inline-block px-5 py-2.5 border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider">
           EXPERTISE × SPEED = IMPACT
         </div>
       </SharedHero>
 
       {/* ── Section 2: Das System ── */}
-      <Section>
+      <Section gradient="a">
         <SectionHeader
           overline={t('DAS SYSTEM', 'THE SYSTEM')}
           headline={t('Vier Mechanismen. Ein Multiplier. Fucking fast.', 'Four mechanisms. One multiplier. Fucking fast.')}
           sub={t('M1–M3 sind die Mechanismen. M4 ist der Verstärker auf alle drei.', 'M1–M3 are the mechanisms. M4 is the amplifier on all three.')}
         />
-        <div className="mt-12">
-          <MechanismFlowDiagram />
-        </div>
+        <MechanismFlowDiagram />
         <p className="text-xs text-muted-foreground text-center mt-6">
           {t('M1–M3 sind die Mechanismen. M4 ist der Verstärker — nicht der vierte Mechanismus.', 'M1–M3 are the mechanisms. M4 is the amplifier — not the fourth mechanism.')}
         </p>
       </Section>
 
       {/* ── Section 3: Die 4 Mechanismen (2×2) ── */}
-      <Section>
+      <Section gradient="b">
         <SectionHeader
           overline={t('DIE VIER MECHANISMEN', 'THE FOUR MECHANISMS')}
           headline={t('Vier Mechanismen. Einer davon erklärt die Lücke.', 'Four mechanisms. One of them explains the gap.')}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          {mechanismCards.map((m) => (
+        <div ref={mechGridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {mechanismCards.map((m, i) => (
             <Link
               key={m.num}
               to={m.href}
@@ -110,9 +115,9 @@ const ExpertiseHub: React.FC = () => {
                 m.color === 'amber'
                   ? 'border-amber-500/30 hover:border-amber-500/60'
                   : 'border-border hover:border-primary/50'
-              }`}
+              } ${mechGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${(i + 1) * 100}ms` }}
             >
-              {/* Top row: number + badge */}
               <div className="flex items-center gap-3 mb-4">
                 <span className={`text-xs font-bold tracking-wider ${m.color === 'amber' ? 'text-amber-500' : 'text-primary'}`}>
                   {m.num}
@@ -125,7 +130,6 @@ const ExpertiseHub: React.FC = () => {
                   {t(m.badge.de, m.badge.en)}
                 </span>
               </div>
-
               <h3 className="font-display text-lg mb-2 text-foreground">
                 {t(m.titleDe, m.titleEn)}
               </h3>
@@ -147,12 +151,15 @@ const ExpertiseHub: React.FC = () => {
       </Section>
 
       {/* ── Section 4: Warum das funktioniert (Comparison) ── */}
-      <Section>
+      <Section gradient="a">
         <SectionHeader
           overline={t('DER UNTERSCHIED', 'THE DIFFERENCE')}
           headline={t('Viele haben Expertise. Wenige haben ein System.', 'Many have expertise. Few have a system.')}
         />
-        <div className="w-full overflow-x-auto border-2 border-border bg-card mt-12">
+        <div
+          ref={tableRef as React.RefObject<HTMLDivElement>}
+          className={`w-full overflow-x-auto border-2 border-border bg-card transition-all duration-700 ${tableVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
           <Table>
             <TableHeader>
               <TableRow className="border-border/30 bg-muted/30">
@@ -176,20 +183,25 @@ const ExpertiseHub: React.FC = () => {
             </TableBody>
           </Table>
         </div>
-        <p className="text-lg text-foreground mt-8 text-center font-medium">
+        <p className={`text-lg text-foreground mt-8 text-center font-medium transition-all duration-700 ${tableVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
           {t('Das ist kein Grad-Unterschied. Das ist ein Kategorie-Unterschied.', 'This is not a degree difference. This is a category difference.')}
         </p>
       </Section>
 
       {/* ── Section 5: Beweis ── */}
-      <Section>
+      <Section gradient="b">
         <SectionHeader
           overline={t('DIE MECHANISMEN IN DER PRAXIS', 'THE MECHANISMS IN PRACTICE')}
           headline={t('Was möglich ist.', 'What\'s possible.')}
         />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div ref={casesRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {hubCases.map((c, i) => (
-            <Link key={i} to={c.href} className="group block p-8 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all">
+            <Link
+              key={i}
+              to={c.href}
+              className={`group block p-8 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all duration-500 ${casesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+            >
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs text-muted-foreground">{t(c.tagDe, c.tagEn)}</span>
               </div>
@@ -213,8 +225,11 @@ const ExpertiseHub: React.FC = () => {
       </Section>
 
       {/* ── Section 6: CTA ── */}
-      <Section>
-        <div className="text-center">
+      <Section gradient="a">
+        <div
+          ref={ctaRef as React.RefObject<HTMLDivElement>}
+          className={`text-center transition-all duration-700 ${ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        >
           <h2 className="font-display text-display-md mb-8">
             {t('Bereit den richtigen Hebel zu finden?', 'Ready to find the right lever?')}
           </h2>
