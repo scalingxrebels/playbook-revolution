@@ -27,7 +27,7 @@ const HomeTeam: React.FC = () => {
         className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
       />
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
@@ -94,7 +94,7 @@ const HomeTeam: React.FC = () => {
           }`}
           style={{ transitionDelay: '350ms' }}
         >
-          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+          <div className="flex items-center gap-4 p-5 border-2 border-border bg-card hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <img
               src="/images/team-alban.png"
               alt="Alban Halili"
@@ -115,7 +115,7 @@ const HomeTeam: React.FC = () => {
               <Linkedin className="h-4 w-4" />
             </a>
           </div>
-          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+          <div className="flex items-center gap-4 p-5 border-2 border-border bg-card hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <img
               src="/images/team-florian.png"
               alt="Florian Metzger"

@@ -42,7 +42,7 @@ const HomeShift: React.FC = () => {
         className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
       />
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
 
       <div className="container max-w-3xl mx-auto px-6 relative z-10">
         <p
