@@ -209,10 +209,6 @@ const AppContent = () => {
           <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
           <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
           <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
-          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
-          <Route path="/expertise/anst" element={<ExpertiseANST />} />
-          <Route path="/expertise/sst" element={<ExpertiseSST />} />
-          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/glossar" element={<Glossar />} />
           <Route path="/home-v2" element={<IndexV2 />} />
           <Route path="/content-registry" element={<ContentRegistry />} />
