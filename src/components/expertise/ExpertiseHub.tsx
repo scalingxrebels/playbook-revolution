@@ -94,7 +94,7 @@ const ExpertiseHub: React.FC = () => {
         subheadlineDe="Vier Mechanismen. Kombiniert mit Speed. Das ist warum es funktioniert."
         variant="dark"
       >
-        <div className="<div className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-card shadow-brutal-sm">">
+        <div className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-card shadow-brutal-sm">
           {t('WIE WIR DENKEN · NICHT WAS WIR WISSEN', 'HOW WE THINK · NOT WHAT WE KNOW')}
         </div>
       </SharedHero>
