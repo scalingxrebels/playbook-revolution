@@ -206,6 +206,7 @@ const AppContent = () => {
           <Route path="/home-v2" element={<IndexV2 />} />
           <Route path="/content-registry" element={<ContentRegistry />} />
           <Route path="/go" element={<FunnelV2 />} />
+          <Route path="/ai-native" element={<AINativeHome />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
