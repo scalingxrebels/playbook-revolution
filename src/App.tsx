@@ -95,10 +95,6 @@ const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSys
 const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
 const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
 const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
-const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
-const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
-const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
-const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Glossar = lazy(() => import("./pages/Glossar"));
 const IndexV2 = lazy(() => import("./pages/IndexV2"));
 const ContentRegistry = lazy(() => import("./pages/ContentRegistry"));
