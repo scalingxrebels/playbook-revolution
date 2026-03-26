@@ -363,8 +363,8 @@ export const featuredSolutionCopy: Record<string, { badgeEn: string; badgeDe: st
   'revenue-architecture-system': {
     badgeEn: 'Transformation · Accelerate · 6 Weeks',
     badgeDe: 'Transformation · Accelerate · 6 Wochen',
-    copyEn: 'The Signature Program. 23 Deliverables. Ready to deploy.',
-    copyDe: 'Das Signature Program. 23 Deliverables. Einsatzbereit.',
+    copyEn: 'The Signature Program. 22 Deliverables. Ready to deploy.',
+    copyDe: 'Das Signature Program. 22 Deliverables. Einsatzbereit.',
   },
   'maxxeed': {
     badgeEn: 'Tool · Digital Buyer Experience · from €135/User/Mo',
