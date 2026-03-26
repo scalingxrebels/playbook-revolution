@@ -239,10 +239,10 @@ const ML: React.FC = () => {
                 </span>
                 <span className="h-px w-12 bg-gradient-primary" />
               </div>
-              <h1 className="font-display text-hero-lg mb-4 animate-blur-in">
+              <h1 className="font-display text-hero-lg animate-blur-in">
                 Michel Lason
               </h1>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 animate-slide-up" style={{ animationDelay: '0.15s' }}>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground animate-slide-up" style={{ animationDelay: '0.15s' }}>
                 {de ? 'Hat €1,3M auf €13,7M ARR gebracht.' : 'Grew €1.3M to €13.7M ARR.'}
                 <br />
                 {de ? 'In 2 Jahren.' : 'In 2 years.'}
