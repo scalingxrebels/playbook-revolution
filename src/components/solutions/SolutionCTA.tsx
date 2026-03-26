@@ -9,15 +9,13 @@ const SolutionCTA: React.FC = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden">
+    <section className="py-24 md:py-32 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
-      <div className="absolute inset-0 noise opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
+      <div className="absolute inset-0 bg-mesh opacity-40" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
       
-      {/* Decorative */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="container max-w-4xl mx-auto px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center">
           {/* Headline */}
           <h2 className="font-display text-display-md text-foreground mb-6">
