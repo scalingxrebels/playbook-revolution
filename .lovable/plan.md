@@ -1,20 +1,12 @@
 
 
-## Plan: "ScalingX" in Team-Headline hervorheben
+## Fix: About-Seite Values-Text ändern
 
-`src/components/homepage/HomeTeam.tsx` Z.47-49:
+`src/pages/About.tsx` Z.487:
 
-```tsx
-// Vorher:
-{language === 'de'
-  ? 'Die Menschen hinter ScalingX.'
-  : 'The people behind ScalingX.'}
+- Title: `Execution-First` → `Impact-First`
+- DE: `Systeme, nicht Slides.` → `Funktionierende Systeme, nicht Slides.`
+- EN: `Systems, not slides.` → `Functioning systems, not slides.`
 
-// Nachher:
-{language === 'de'
-  ? <>Die Menschen hinter <span className="italic text-gradient">ScalingX.</span></>
-  : <>The people behind <span className="italic text-gradient">ScalingX.</span></>}
-```
-
-1 Datei, 1 Stelle.
+1 Datei, 1 Zeile.
 
