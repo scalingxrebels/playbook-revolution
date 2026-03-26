@@ -1,26 +1,39 @@
 
 
-## Fix: Nur Überschriften zentrieren, nicht den gesamten Content
+## Plan: USP-Vergleichstabelle korrigieren
 
-### Problem
-In allen 6 Sektionen wurde `text-center` auf den äusseren Container-`div` gesetzt. Das zentriert alles — Card-Texte, Paragraphen, Tabellen-Labels, Bio-Text.
+### Änderungen in `src/components/homepage/HomeComparison.tsx`
 
-### Lösung
-`text-center` vom Container entfernen und stattdessen nur auf die Header-Elemente (Overline, h2, Subtitle-p) setzen.
+**1. Interface erweitern** — neue Spalte `diy` hinzufügen:
+```typescript
+interface Row {
+  labelDe: string;
+  labelEn: string;
+  mckinsey: Status;
+  freelancer: Status;
+  intern: Status;
+  diy: Status;      // NEU
+  wir: Status;
+}
+```
 
-### Änderungen in 6 Dateien
+**2. Rows-Daten komplett ersetzen** (Zeilen 25–31):
 
-| Datei | Zeile | Container `text-center` entfernen | Header `text-center` hinzufügen |
-|---|---|---|---|
-| `HomeShift.tsx` | 47 | Ja | Overline (Z.48) + h2 (Z.55) bereits zentriert via Container — einzeln setzen |
-| `HomeMechanisms.tsx` | 71 | Ja | Overline (Z.73), h2 (Z.81), p (Z.94) |
-| `HomeComparison.tsx` | 57 | Ja | Overline (Z.59), h2 (Z.67), p (Z.76), Badge-div (Z.88) |
-| `HomeCases.tsx` | 96 | Ja | Overline (Z.97), h2 (Z.104), p (Z.116) |
-| `HomeWorkWithUs.tsx` | 63 | Ja | Overline (Z.64), h2 (Z.71) |
-| `HomeTeam.tsx` | 32 | Ja | Overline (Z.34), h2 (Z.41) |
+| Label DE | Label EN | McKinsey | Freelancer | Intern | DIY | Wir |
+|---|---|---|---|---|---|---|
+| Market Insights | Market Insights | ✅ | ⚠️ | ❌ | ❌ | ✅ |
+| Winning Mechanisms | Winning Mechanisms | ✅ | ⚠️ | ⚠️ | ❌ | ✅ |
+| Operative Umsetzung | Operational Execution | ❌ | ⚠️ | ✅ | ⚠️ | ✅ |
+| AI als Multiplier | AI as Multiplier | ❌ | ❌ | ❌ | ❌ | ✅ |
+| Speed (30 Tage) | Speed (30 Days) | ❌ | ⚠️ | ❌ | ❌ | ✅ |
+| Startup-Kultur | Startup Culture | ❌ | ✅ | ✅ | ✅ | ✅ |
 
-Jedes Header-Element bekommt individuell `text-center`. Card-Inhalte, Bio-Texte, Paragraphen und Tabellen bleiben linksbündig (Standard).
+**3. Header-Spalten anpassen** (Zeilen 106–115):
+- "McKinsey" → "McKinsey / BCG"
+- Neue Spalte "DIY / Intern lösen" (DE) / "DIY / Solve Internally" (EN) zwischen "Intern" und "Wir"
 
-### Kein inhaltlicher Eingriff
-Nur CSS-Klassen werden verschoben — keine Texte, Links oder Strukturen ändern sich.
+**4. TableBody** — zusätzliche `<TableCell>` für `row.diy` einfügen (zwischen intern und wir).
+
+### Keine sonstigen Änderungen
+Nur Daten und eine Spalte hinzufügen. Layout, Styling und alle anderen Sektionen bleiben unverändert.
 
