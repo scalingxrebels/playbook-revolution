@@ -11,7 +11,7 @@ import TwinklingStars from '@/components/TwinklingStars';
 import GrowthTrails from '@/components/GrowthTrails';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import PersonSchema from '@/components/seo/PersonSchema';
-import { PageSEO } from '@/components/seo';
+import PageSEO from '@/components/seo/PageSEO';
 
 /* ─────────────── SECTION WRAPPER (Home pattern) ─────────────── */
 const Section: React.FC<{
