@@ -20,6 +20,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
 const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
+const SolutionCategoryLanding = lazy(() => import("./pages/SolutionCategoryLanding"));
 const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
