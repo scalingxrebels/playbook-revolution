@@ -40,6 +40,13 @@ const PlaybookLandingPage: React.FC<Props> = ({ data }) => {
       
       {/* Section 4: Framework/Solution (4 Core Capabilities) */}
       <PlaybookFrameworkSection data={data.framework} />
+
+      {/* Section 4b: Growth Curve (only for Ebene 1 Master Playbook) */}
+      {data.meta.ebene === 1 && (
+        <React.Suspense fallback={null}>
+          <GrowthCurveOptimized />
+        </React.Suspense>
+      )}
       
       {/* Section 5: 8 Dimensions (only for Ebene 1 Master Playbook) */}
       {data.dimensions && data.meta.ebene === 1 && (
@@ -65,8 +72,15 @@ const PlaybookLandingPage: React.FC<Props> = ({ data }) => {
       {/* Section 10: Who This Is For */}
       <PlaybookPersonasSection data={data.whoThisIsFor} />
       
-      {/* Section 11: Solutions Connection (Power Up/Boost/Accelerate) */}
-      <PlaybookSolutionsSection data={data.solutionsConnection} />
+      {/* Section 11: Solutions Connection (hidden for Ebene 1 — replaced by Soft-CTA) */}
+      {data.meta.ebene !== 1 && (
+        <PlaybookSolutionsSection data={data.solutionsConnection} />
+      )}
+
+      {/* Section 11b: Soft-CTA (only for Ebene 1 Master Playbook) */}
+      {data.meta.ebene === 1 && (
+        <PlaybookSoftCTASection />
+      )}
       
       {/* Section 12: Final CTA */}
       <PlaybookFinalCTASection data={data.finalCta} playbookSlug={data.meta.slug} />
