@@ -138,7 +138,7 @@ const Solutions: React.FC = () => {
                 placeholder={language === 'de' ? 'Solutions durchsuchen...' : 'Search solutions...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-10 py-3 bg-card border border-border className="w-full pl-12 pr-10 py-3 bg-card border border-border focus:outline-none focus:ring-2 focus:ring-accent/50 text-foreground placeholder:text-muted-foreground transition-all" focus:ring-2 focus:ring-accent/50 text-foreground placeholder:text-muted-foreground transition-all"
+                className="w-full pl-12 pr-10 py-3 bg-card border border-border focus:outline-none focus:ring-2 focus:ring-accent/50 text-foreground placeholder:text-muted-foreground transition-all"
               />
               {searchQuery && (
                 <button
