@@ -16,6 +16,9 @@ import {
   PlaybookDimensionsSection,
   PlaybookMaturitySection,
 } from './sections/index';
+import PlaybookSoftCTASection from './sections/PlaybookSoftCTASection';
+
+const GrowthCurveOptimized = React.lazy(() => import('@/components/homepage/GrowthCurveOptimized'));
 
 interface Props {
   data: PlaybookPageData;
