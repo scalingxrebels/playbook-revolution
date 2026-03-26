@@ -352,6 +352,19 @@ const ML: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* Second photo — Michel in action */}
+          <div
+            className={`max-w-lg mx-auto mt-12 rounded-2xl border-2 border-primary/30 overflow-hidden transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ transitionDelay: '800ms' }}
+          >
+            <img
+              src="/images/ml-speaking.png"
+              alt={de ? 'Michel Lason in Aktion' : 'Michel Lason in action'}
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
+          </div>
         </div>
       </Section>
 
