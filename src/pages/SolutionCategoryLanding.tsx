@@ -8,9 +8,9 @@ import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
 import { solutionTiles } from '@/data/solutionTiles';
-import { solutionCategories, categoryMapping, CategoryId } from '@/data/solutionCategoryData';
+import { solutionCategories, categoryMapping } from '@/data/solutionCategoryData';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, Phone, Check } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Phone } from 'lucide-react';
 import { BreadcrumbSchema } from '@/components/seo';
 
 const SolutionCategoryLanding: React.FC = () => {
@@ -26,6 +26,16 @@ const SolutionCategoryLanding: React.FC = () => {
 
   const category = solutionCategories.find(c => c.id === categorySlug);
 
+  const categoryTiles = useMemo(() => {
+    if (!category) return [];
+    return solutionTiles.filter(tile => {
+      if (isHidden('solution', tile.slug, tile.hidden)) return false;
+      const mapping = categoryMapping[tile.slug];
+      if (!mapping) return false;
+      return mapping.category === category.id || mapping.categorySecondary === category.id;
+    });
+  }, [category, isHidden]);
+
   if (!category) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
@@ -37,17 +47,6 @@ const SolutionCategoryLanding: React.FC = () => {
     );
   }
 
-  // Filter tiles by category (primary or secondary)
-  const categoryTiles = useMemo(() => {
-    return solutionTiles.filter(tile => {
-      if (isHidden('solution', tile.slug, tile.hidden)) return false;
-      const mapping = categoryMapping[tile.slug];
-      if (!mapping) return false;
-      return mapping.category === category.id || mapping.categorySecondary === category.id;
-    });
-  }, [category.id, isHidden]);
-
-  const Icon = category.icon;
   const hero = category.hero;
 
   return (
@@ -56,8 +55,8 @@ const SolutionCategoryLanding: React.FC = () => {
 
       <BreadcrumbSchema
         items={[
-          { name: 'Solutions', url: '/solutions' },
-          { name: language === 'de' ? category.labelDe : category.labelEn, url: category.route },
+          { name: 'Solutions', path: '/solutions' },
+          { name: language === 'de' ? category.labelDe : category.labelEn, path: category.route },
         ]}
       />
 
