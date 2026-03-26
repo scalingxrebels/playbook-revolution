@@ -1,18 +1,39 @@
 
 
-## Plan: Solutions Hero Copy anpassen
+## Plan: Featured-Toggle in Content Registry
 
-### Änderungen in `src/components/solutions/SolutionHero.tsx`
+### Ansatz
 
-| Element | Alt | Neu |
-|---|---|---|
-| **Overline** | `WIE WIR ARBEITEN · SERIES A–B · DACH` | `GROWTH ENGINES × SCALING SYSTEMS × AI = HYPERGROWTH` |
-| **Subheadline DE** | `15-80x Ø ROI. 92% Erfolgsrate. X Solutions. Eine ist deine.` | `Wie wir arbeiten · Series A–B · DACH` |
-| **Subheadline EN** | `15-80x avg ROI. 92% success rate. X solutions. One is yours.` | `How we work · Series A–B · DACH` |
-| **Stats: Challenges** | dynamisch (`challenges.length - 1`) | fest `9` |
-| **Stats: Solutions** | dynamisch (`visibleCount`) | fest `6` |
-| **Stats: ROI** | `15-80x` | `15-80x` (bleibt) |
-| **Stats: Erfolgsrate** | `92%` | `92%` (bleibt) |
+Die `content_visibility`-Tabelle hat bereits `content_type` + `content_id` + `hidden`. Statt eine neue Tabelle zu bauen, fügen wir eine `featured`-Spalte zur bestehenden `content_visibility`-Tabelle hinzu. Das gleiche Upsert-Pattern wie für `hidden` wird für `featured` verwendet.
 
-1 Datei, reine Copy-Änderungen.
+### Änderungen
+
+**1. DB-Migration** — `featured` Spalte hinzufügen:
+```sql
+ALTER TABLE public.content_visibility 
+ADD COLUMN featured boolean NOT NULL DEFAULT false;
+```
+
+**2. `useContentVisibility.ts`** — erweitern:
+- Interface `VisibilityOverride` bekommt `featured: boolean`
+- Neue Funktion `toggleFeatured(contentType, contentId, featured)` analog zu `toggleVisibility`
+- Neue Hilfsfunktion `isFeatured(contentType, contentId, staticFeatured?)` — DB-Override gewinnt über statischen Wert
+
+**3. `ContentVisibilityContext.tsx`** — erweitern:
+- `isFeatured()` Funktion ins Context-Interface aufnehmen
+- Provider liest `featured` mit aus der DB-Query
+
+**4. `ContentRegistry.tsx` — Solutions-Tab** erweitern:
+- Neue Spalte "Featured" mit `Switch`-Toggle (zwischen "Sichtbar" und "Vorschau")
+- `toggleFeatured('solution', tile.slug, newValue)` beim Umschalten
+- Visuell: Star-Icon oder Badge zur Kennzeichnung
+
+**5. `SolutionFeatured.tsx`** — anpassen:
+- Statt `t.featured` (statisch aus `solutionTiles.ts`) die neue `isFeatured('solution', t.slug, t.featured)` Funktion nutzen
+- So überschreibt der Admin-Toggle die statischen Defaults
+
+### Was sich nicht ändert
+- RLS-Policies bleiben (Admins full access, Public read)
+- Alle anderen Tabs (Playbooks, Cases, Insights) bleiben unverändert
+- Die statischen `featured`-Flags in `solutionTiles.ts` bleiben als Fallback
 
