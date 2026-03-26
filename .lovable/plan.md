@@ -1,52 +1,82 @@
 
 
-## Plan: Expertise Hub + Spokes Design-Overhaul
+## Plan: Solutions + Expertise auf Home/AI-Native Niveau bringen
 
 ### Kernprobleme
 
-1. **Kein Parallax** — Home nutzt `useParallaxLayers` mit animierten Transforms, Expertise hat statische Backgrounds
-2. **Keine staggered Animations** — Cards erscheinen ohne Verzögerung, kein Reveal-Effekt
-3. **MechanismFlowDiagram ist primitiv** — winzige Kreise mit Text-Pfeilen, wirkt amateurhaft
-4. **Falsche Opacities** — `opacity-30` statt `opacity-40` auf Mesh, keine Gradient-Layer
-5. **Fehlende Gradient-Backgrounds** — Home wechselt zwischen `from-background to-secondary/30` und umgekehrt, Expertise hat überall das gleiche flache Pattern
-6. **Header-Spacing inkonsistent** — Hub SectionHeader hat `mb-6` ohne Sub-Text (sollte `mb-12`), doppeltes Spacing durch `mt-12` auf Grids
+```text
+ELEMENT                  HOME/AI-NATIVE              SOLUTIONS/EXPERTISE
+────────────────────────────────────────────────────────────────────────
+Hero Höhe                min-h-screen                pt-32 pb-16 (zu kurz!)
+Hero H1 Grösse           text-hero-lg                text-4xl/5xl/6xl (viel kleiner!)
+Hero Hintergrund         3 Parallax-Layer + Stars    Statisch, kein Parallax
+Hero GrowthTrails        ✅                           ❌
+Hero Scroll-Chevron      ✅                           ❌
+Section Parallax         useParallaxLayers + transforms  Statische Hintergründe
+Section Container        max-w-5xl                   max-w-7xl (Solutions)
+Section Bg Layers        Transform + scale(1.05)     Keine Transforms
+```
 
 ### Änderungen
 
-**1. `MechanismFlowDiagram.tsx` — komplett neu**
+**1. `SharedHero.tsx` — auf Home-Niveau heben**
 
-Statt winziger Kreise mit `→` Text: Vollbreite architektonische Darstellung (max-w-2xl):
-- M1, M2, M3 als grosse Cards/Blocks in einer horizontalen Reihe, verbunden durch SVG-Pfeile (Electric Blue)
-- Jeder Block zeigt Nummer + Kurzname + 1-Zeiler
-- M4 als breiter Amber-Block darunter über die volle Breite, mit doppelter Border (══ Effekt), SVG-Linien die nach oben zu allen drei M-Blocks zeigen
-- Responsive: auf Mobile 1-spaltig vertikal
-- Statt `max-w-md`: `max-w-2xl`
+Das ist der grösste Hebel — SharedHero wird von Solutions UND Expertise (Hub + 4 Spokes) verwendet.
 
-**2. `ExpertiseHub.tsx` — Home-Pattern übernehmen**
+- `pt-32 pb-16` → `min-h-[85vh] flex flex-col justify-center` (Above-the-fold, fast fullscreen)
+- H1: `text-4xl md:text-5xl lg:text-6xl` → `text-hero-lg` (gleiche Grösse wie Home)
+- `enableParallax` Default von `false` → `true` (alle Heroes bekommen Parallax)
+- GrowthTrails + TwinklingStars einbauen (wie HomeHero)
+- Scroll-Chevron am unteren Rand hinzufügen
+- `mb-6` auf Overline → `mb-8` (wie Home)
+- Subheadline: `text-xl` → `text-body-lg` (wie Home)
+- Stats-Cards: `rounded-lg` → entfernen (rounded-none, wie überall)
 
-Jede Section bekommt eigene Parallax-Layer wie Home:
-- `useParallaxLayers` mit `speeds: [0.05, 0.12]` pro Section
-- Gradient-Backgrounds alternierend: `from-background to-secondary/30` / `from-secondary/30 to-background`
-- Mesh-Opacity von `opacity-30` auf `opacity-40`
-- SectionHeader: `mb-6` → `mb-12` wenn kein Sub-Text
-- Cards bekommen staggered entry: `transitionDelay: ${(i + 2) * 100}ms` + `useScrollAnimation`
-- Entfernung der redundanten `mt-12` auf Grids (Header hat bereits `mb-12`)
-- Comparison Table bekommt eigenen scroll-reveal mit Delay
+**2. `SolutionFeatured.tsx` — Parallax + Spacing**
 
-**3. `ExpertiseSpoke.tsx` — gleiche Patterns**
+- Container: `max-w-7xl` → `max-w-5xl` (konsistent mit Home)
+- Parallax-Layer hinzufügen (wie HomeShift)
+- Section: `py-16 md:py-24` → `py-24 md:py-32` (wie Home-Sections)
+- Cards: Scroll-reveal mit staggered Delays
 
-- Section-Wrapper bekommt Parallax-Layer + Gradient-Backgrounds
-- Cards in Section 3 (Was es NICHT ist) und Section 4 (Wie es funktioniert) bekommen staggered animations
-- Case-Card in Section 6 bekommt scroll-reveal
-- Mesh-Opacity `opacity-30` → `opacity-40`
+**3. `SolutionCategoryNav.tsx` — Parallax + Spacing**
+
+- Container: `max-w-7xl` → `max-w-5xl`
+- Parallax-Layer hinzufügen
+- Section: `py-16 md:py-24` → `py-24 md:py-32`
+- Cards: Staggered scroll-reveal
+
+**4. `Solutions.tsx` Section 4 (Filter Grid)**
+
+- Container: `max-w-7xl` → `max-w-6xl` (etwas breiter als 5xl wegen Grid, aber nicht 7xl)
+- Section: `py-16 md:py-24` → `py-24 md:py-32`
+- Parallax-Layer + mesh opacity-40 hinzufügen
+
+**5. `SolutionCTA.tsx` — Parallax + mesh**
+
+- Parallax-Layer hinzufügen wie Home-Sections
+- `max-w-4xl` → `max-w-5xl` (konsistent)
+
+**6. `ExpertiseHub.tsx` — Section-Wrapper mit Parallax**
+
+- Section-Wrapper bekommt `useParallaxLayers` mit transforms (wie HomeShift/HomeMechanisms)
+- Aktuell hat es nur statische bg-mesh/grid — braucht animierte Transforms
+
+**7. `ExpertiseSpoke.tsx` — gleich wie Hub**
+
+- Section-Wrapper bekommt Parallax-Transforms
 
 ### Betroffene Dateien
 
 | Datei | Änderung |
 |---|---|
-| `MechanismFlowDiagram.tsx` | Kompletter Redesign — architektonische Blocks statt Miniatur-Kreise |
-| `ExpertiseHub.tsx` | Parallax, Gradients, Stagger-Animations, Spacing-Fixes |
-| `ExpertiseSpoke.tsx` | Parallax, Gradients, Stagger-Animations |
+| `SharedHero.tsx` | min-h-[85vh], text-hero-lg, GrowthTrails, Stars, Parallax default true, Scroll-Chevron |
+| `SolutionFeatured.tsx` | max-w-5xl, py-24 md:py-32, Parallax, staggered reveal |
+| `SolutionCategoryNav.tsx` | max-w-5xl, py-24 md:py-32, Parallax, staggered reveal |
+| `Solutions.tsx` | max-w-6xl, py-24 md:py-32, Parallax + mesh |
+| `SolutionCTA.tsx` | max-w-5xl, Parallax |
+| `ExpertiseHub.tsx` | Section-Wrapper Parallax-Transforms |
+| `ExpertiseSpoke.tsx` | Section-Wrapper Parallax-Transforms |
 
-3 Dateien. Keine Daten- oder Strukturänderungen. Rein visuelles Upgrade.
+7 Dateien. Rein CSS + Import-Änderungen. Keine inhaltlichen oder strukturellen Änderungen.
 
