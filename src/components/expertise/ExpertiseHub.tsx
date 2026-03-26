@@ -79,8 +79,8 @@ const ExpertiseHub: React.FC = () => {
     <>
       {/* ── Section 1: Hero ── */}
       <SharedHero
-        overlineEn="HOW WE THINK · NOT WHAT WE KNOW"
-        overlineDe="WIE WIR DENKEN · NICHT WAS WIR WISSEN"
+        overlineEn="EXPERTISE × SPEED = IMPACT"
+        overlineDe="EXPERTISE × SPEED = IMPACT"
         headlineLine1En="Expertise is not a title."
         headlineLine1De="Expertise ist kein Titel."
         headlineLine2En="It's a system."
