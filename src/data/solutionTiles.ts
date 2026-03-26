@@ -1544,6 +1544,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 43,
     slug: 'maxxeed',
+    featured: true,
     solutionType: 'tools',
     challenges: ['cac-crisis', 'growth-stalled'],
     price: '€135/User/Mo',
