@@ -85,7 +85,7 @@ export const m3Data: SpokeData = {
     resultEn: 'Complete synthesis — Ops, Board Reporting, Team Structure in one move. ARR per FTE +48%. Exit successful.',
     ctaDe: 'Vollständigen Case lesen',
     ctaEn: 'Read full case',
-    href: '/cases',
+    href: '/cases/exit-readiness-achieved',
   },
   connection: {
     bodyDe: 'M3 baut was M1 gefunden und M2 übersetzt hat. M4 macht M3 schneller, schärfer, tiefer. Ohne M3 ist alles Theorie.',

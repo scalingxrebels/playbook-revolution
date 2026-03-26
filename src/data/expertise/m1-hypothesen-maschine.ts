@@ -79,7 +79,7 @@ export const m1Data: SpokeData = {
     resultEn: 'Hypothesis in conversation 1 — ICP too broad, wrong segment prioritization. CAC from €12k to €5k in 30 days.',
     ctaDe: 'Vollständigen Case lesen',
     ctaEn: 'Read full case',
-    href: '/cases',
+    href: '/cases/cac-crisis-turnaround',
   },
   connection: {
     bodyDe: 'M1 findet den Hebel. M2 weiss wo er eingebaut werden muss. Ohne M1 ist M2 Raten. Ohne M2 ist M1 wertlos.',
