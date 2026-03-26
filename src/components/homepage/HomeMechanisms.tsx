@@ -104,6 +104,9 @@ const HomeMechanisms: React.FC = () => {
                 style={{ transitionDelay: `${(i + 2) * 100}ms` }}
               >
                 <Icon className="h-6 w-6 text-accent mb-4" />
+                <span className="text-xs font-semibold uppercase tracking-widest text-accent/70 mb-1 block">
+                  {language === 'de' ? m.labelDe : m.labelEn}
+                </span>
                 <h3 className="font-display text-xl mb-2 text-foreground">
                   {language === 'de' ? m.titleDe : m.titleEn}
                 </h3>
