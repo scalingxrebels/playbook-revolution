@@ -6,6 +6,7 @@ import SharedHero from '@/components/shared/SharedHero';
 import CaseFilterSection from '@/components/cases/CaseFilterSection';
 import CaseCard from '@/components/cases/CaseCard';
 import CaseCTA from '@/components/cases/CaseCTA';
+import ClientTicker from '@/components/ClientTicker';
 import { useCaseFilters } from '@/components/cases/useCaseFilters';
 import { caseStudies } from '@/data/cases';
 import { useContentVisibilityContext } from '@/contexts/ContentVisibilityContext';
