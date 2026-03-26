@@ -1,57 +1,41 @@
 
 
-## Analyse & Bewertung: Expertise Hub + 4 Spoke-Seiten
+## Plan: Expertise Hub + Spokes Design-Konsistenz mit Home
 
-### Design-Bewertung
+### Probleme und Fixes
 
-**Was funktioniert:**
-- SharedHero mit min-h-[85vh], GrowthTrails, TwinklingStars, Parallax — konsistent mit Home
-- Section-Wrapper mit alternierenden Gradients, Parallax-Transforms, mesh/grid Layers
-- Staggered scroll-reveal Animationen auf Cards
-- MechanismFlowDiagram mit architektonischem Layout (M1-M3 horizontal + M4 Multiplier-Bar)
-- Comparison Table auf Hub — saubere Umsetzung
+**1a + 2b. MechanismFlowDiagram zu klein**
+- `max-w-2xl` → `max-w-4xl` (wie das 2x2 Grid auf Home)
+- M1-M3 Cards: `p-5` → `p-6 md:p-8`, Title `text-sm` → `text-base md:text-lg`
+- M4 Bar: `p-5` → `p-6 md:p-8`, Title `text-sm` → `text-base md:text-lg`
+- Arrow SVGs: `width="16"` → `width="24"`, proportional skalieren
 
-**Keine kritischen Design-Probleme.** Die letzte Überarbeitung hat die Konsistenz mit Home/AI-Native hergestellt.
+**1b. Mechanismus-Cards auf Hub nicht konsistent mit Home**
+- Home (`HomeMechanisms`): Jede Card hat ein **Icon** (Eye, ArrowRightLeft, Settings, Cpu), ein `w-10 h-10 rounded-lg bg-accent/10` Icon-Container, Title in `text-xl`, Description in voller Grösse (`text-muted-foreground` ohne `text-sm`)
+- Expertise Hub: Kein Icon, Title in `text-lg`, Description in `text-sm`
+- **Fix**: Icons + Icon-Container von HomeMechanisms übernehmen, Title `text-lg` → `text-xl`, Description `text-sm` entfernen, `M`-Badge in `absolute top-4 right-4` wie Home
 
----
+**1c. Cases auf Hub zu dünn vs. Home**
+- Home (`HomeCases`): Tag-Pill (`rounded-full bg-accent/10`), Title (`text-lg`), Body-Text, **3 Metrics** (value + label), Investment-Zeile, CTA
+- Expertise Hub: Nur Tag (plain text), Mechanism-Badges, ein Result-Satz, CTA — viel weniger Inhalt
+- **Fix**: Hub-Cases auf HomeCases-Struktur umbauen. Metrics + Investment aus den echten Cases einbauen. Dafür `hubCases` Datenstruktur erweitern (title, body, metrics, investment hinzufügen). Grid `md:grid-cols-2` beibehalten (nur 2 Cases).
 
-### Problem: Case-Verlinkung
+**1d + 2c. CTA-Button nicht konsistent mit Home**
+- Home (`HomeWorkWithUs`): Nutzt `<Button>` mit `bg-accent shadow-accent-glow` + `FilloutBookingModal`
+- Expertise: Plain `<a>` mit `bg-accent` ohne Shadow, ohne Modal
+- **Fix Hub + Spokes**: `FilloutBookingModal` einbauen, Primary CTA als `<Button className="bg-gradient-accent shadow-accent-glow text-lg px-8 py-4">`, Secondary als `<Link>` mit `border-2 border-border`
 
-Aktuell linken **alle** Cases (Hub + 4 Spokes) generisch auf `/cases` statt auf spezifische Case-Detailseiten. Das ist verschenktes Potenzial.
+**2a. Stats auf Spokes weglassen**
+- Stats-Prop aus dem SharedHero-Aufruf in `ExpertiseSpoke.tsx` entfernen
 
-#### Vorhandene Case Studies mit passendem Mechanismus-Mapping:
+### Betroffene Dateien
 
-| Mechanismus | Passender Case | Slug |
-|---|---|---|
-| **M1** (Hypothesen-Maschine) | CAC Crisis Turnaround — "Wir fanden den echten Hebel (ICP-Problem, nicht Sales)" | `cac-crisis-turnaround` |
-| **M2** (Übersetzungskompetenz) | Stage Transition Series B — "Strategie übersetzt in GTM-Engine + Ops" | `stage-transition-series-b-ready` |
-| **M3** (Funktionierende Synthese) | Exit Readiness Achieved — "Ops, Board, Team in einem System" | `exit-readiness-achieved` |
-| **M4** (AI Orchestration) | Strategic Transformation Market Leadership — "AI-native Execution auf allen Ebenen" | `strategic-transformation-market-leadership` |
-| **Hub Case 1** (M1+M4) | CAC Crisis Turnaround | `cac-crisis-turnaround` |
-| **Hub Case 2** (M2+M3) | Stage Transition Series B | `stage-transition-series-b-ready` |
+| Datei | Änderung |
+|---|---|
+| `MechanismFlowDiagram.tsx` | max-w-4xl, grössere Cards + Arrows |
+| `ExpertiseHub.tsx` | Icons auf Mechanism-Cards, Cases mit Metrics/Body, CTA mit FilloutBookingModal |
+| `ExpertiseSpoke.tsx` | Stats entfernen, CTA mit FilloutBookingModal |
+| `hub.ts` | hubCases erweitern: title, body, metrics, investment |
 
-### Plan
-
-**1. `src/data/expertise/hub.ts`** — Hub-Cases mit echten Slugs:
-- Case 1 `href`: `/cases` → `/cases/cac-crisis-turnaround`
-- Case 2 `href`: `/cases` → `/cases/stage-transition-series-b-ready`
-
-**2. `src/data/expertise/m1-hypothesen-maschine.ts`** — Case Study:
-- `href`: `/cases` → `/cases/cac-crisis-turnaround`
-- Tag/Result aus echtem Case übernehmen (CAC €12k → €5k)
-
-**3. `src/data/expertise/m2-uebersetzungskompetenz.ts`** — Case Study:
-- `href`: `/cases` → `/cases/stage-transition-series-b-ready`
-- Tag/Result aus echtem Case (€5M → €25M ARR)
-
-**4. `src/data/expertise/m3-funktionierende-synthese.ts`** — Case Study:
-- `href`: `/cases` → `/cases/exit-readiness-achieved`
-- Tag/Result aus echtem Case (Exit erfolgreich, ARR per FTE +48%)
-
-**5. `src/data/expertise/m4-ai-orchestration.ts`** — Case Study:
-- `href`: `/cases` → `/cases/strategic-transformation-market-leadership`
-- Tag/Result aus echtem Case (Market Leadership, AI-native Execution)
-
-### Umfang
-5 Daten-Dateien, reine `href`-Änderungen + ggf. leichte Copy-Anpassung der Tags/Results an die echten Cases. Keine strukturellen Änderungen.
+4 Dateien. Rein visuelle + Copy-Anpassungen.
 
