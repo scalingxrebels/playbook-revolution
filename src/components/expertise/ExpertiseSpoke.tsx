@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
 import { ArrowRight } from 'lucide-react';
 import SharedHero from '@/components/shared/SharedHero';
 import MechanismFlowDiagram from './MechanismFlowDiagram';
