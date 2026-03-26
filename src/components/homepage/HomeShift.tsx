@@ -44,9 +44,16 @@ const HomeShift: React.FC = () => {
       />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
 
-      <div className="container max-w-3xl mx-auto px-6 relative z-10">
+      <div className="container max-w-3xl mx-auto px-6 relative z-10 text-center">
+        <p
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          {language === 'de' ? 'Der Kontext' : 'The Context'}
+        </p>
         <h2
-          className={`font-display text-3xl md:text-4xl lg:text-5xl mb-12 transition-all duration-700 ${
+          className={`font-display text-display-md mb-6 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
