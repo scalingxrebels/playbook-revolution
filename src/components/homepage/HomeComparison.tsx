@@ -19,15 +19,17 @@ interface Row {
   mckinsey: Status;
   freelancer: Status;
   intern: Status;
+  diy: Status;
   wir: Status;
 }
 
 const rows: Row[] = [
-  { labelDe: 'M1 Hypothesen-Maschine', labelEn: 'M1 Hypothesis Engine', mckinsey: 'yes', freelancer: 'partial', intern: 'no', wir: 'yes' },
-  { labelDe: 'M2 Übersetzungskompetenz', labelEn: 'M2 Translation Competence', mckinsey: 'yes', freelancer: 'partial', intern: 'partial', wir: 'yes' },
-  { labelDe: 'M3 Funktionierende Synthese', labelEn: 'M3 Functioning Synthesis', mckinsey: 'no', freelancer: 'partial', intern: 'yes', wir: 'yes' },
-  { labelDe: 'M4 AI Orchestration', labelEn: 'M4 AI Orchestration', mckinsey: 'no', freelancer: 'no', intern: 'no', wir: 'yes' },
-  { labelDe: 'Speed (30 Tage)', labelEn: 'Speed (30 Days)', mckinsey: 'no', freelancer: 'partial', intern: 'no', wir: 'yes' },
+  { labelDe: 'Market Insights', labelEn: 'Market Insights', mckinsey: 'yes', freelancer: 'partial', intern: 'no', diy: 'no', wir: 'yes' },
+  { labelDe: 'Winning Mechanisms', labelEn: 'Winning Mechanisms', mckinsey: 'yes', freelancer: 'partial', intern: 'partial', diy: 'no', wir: 'yes' },
+  { labelDe: 'Operative Umsetzung', labelEn: 'Operational Execution', mckinsey: 'no', freelancer: 'partial', intern: 'yes', diy: 'partial', wir: 'yes' },
+  { labelDe: 'AI als Multiplier', labelEn: 'AI as Multiplier', mckinsey: 'no', freelancer: 'no', intern: 'no', diy: 'no', wir: 'yes' },
+  { labelDe: 'Speed (30 Tage)', labelEn: 'Speed (30 Days)', mckinsey: 'no', freelancer: 'partial', intern: 'no', diy: 'no', wir: 'yes' },
+  { labelDe: 'Startup-Kultur', labelEn: 'Startup Culture', mckinsey: 'no', freelancer: 'yes', intern: 'yes', diy: 'yes', wir: 'yes' },
 ];
 
 const StatusIcon = ({ status, highlight }: { status: Status; highlight?: boolean }) => {
@@ -105,10 +107,13 @@ const HomeComparison: React.FC = () => {
             <TableHeader>
               <TableRow className="border-border/30 bg-white/5">
                 <TableHead className="min-w-[180px]" />
-                <TableHead className="text-center text-muted-foreground font-medium">McKinsey</TableHead>
+                <TableHead className="text-center text-muted-foreground font-medium">McKinsey / BCG</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">Freelancer</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">
-                  {language === 'de' ? 'Intern' : 'Internal'}
+                  {language === 'de' ? 'Interner Hire' : 'Internal Hire'}
+                </TableHead>
+                <TableHead className="text-center text-muted-foreground font-medium">
+                  {language === 'de' ? 'DIY / Intern lösen' : 'DIY / Solve Internally'}
                 </TableHead>
                 <TableHead className="text-center font-bold text-accent border-l-2 border-accent/30 bg-accent/10">
                   {language === 'de' ? 'Wir' : 'Us'}
@@ -129,6 +134,9 @@ const HomeComparison: React.FC = () => {
                   </TableCell>
                   <TableCell className="text-center">
                     <div className="flex justify-center"><StatusIcon status={row.intern} /></div>
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <div className="flex justify-center"><StatusIcon status={row.diy} /></div>
                   </TableCell>
                   <TableCell className="text-center border-l-2 border-accent/30 bg-accent/5">
                     <div className="flex justify-center"><StatusIcon status={row.wir} highlight /></div>
