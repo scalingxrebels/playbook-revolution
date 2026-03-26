@@ -249,7 +249,7 @@ const ML: React.FC = () => {
               </h2>
               <p className="text-body-lg text-muted-foreground animate-slide-up" style={{ animationDelay: '0.25s' }}>
                 {de
-                  ? 'Findet den Hebel der wirklich zieht. Setzt ihn um — fucking fast.'
+                  ? 'Findet den Hebel der wirklich zieht. Setzt ihn um — fucking schnell.'
                   : 'Finds the lever that actually works. Executes it — fucking fast.'}
               </p>
 

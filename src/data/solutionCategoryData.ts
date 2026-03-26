@@ -388,7 +388,7 @@ export const featuredSolutionCopy: Record<string, { badgeEn: string; badgeDe: st
     badgeEn: 'Transformation · Power Up · 30 Days · €23.6K',
     badgeDe: 'Transformation · Power Up · 30 Tage · €23.6K',
     copyEn: 'Get growth moving again. Fucking fast.',
-    copyDe: 'Wachstum wieder in Bewegung bringen. Fucking fast.',
+    copyDe: 'Wachstum wieder in Bewegung bringen. Fucking schnell.',
   },
 };
 

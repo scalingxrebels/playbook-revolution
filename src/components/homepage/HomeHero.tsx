@@ -82,7 +82,7 @@ const HomeHero: React.FC = () => {
           {/* Subline */}
           <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-6 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             {language === 'de'
-              ? 'Wir finden den Hebel der wirklich zieht — und setzen ihn um. Fucking fast.'
+              ? 'Wir finden den Hebel der wirklich zieht — und setzen ihn um. Fucking schnell.'
               : 'We find the lever that actually works — and execute it. Fucking fast.'}
           </p>
 
