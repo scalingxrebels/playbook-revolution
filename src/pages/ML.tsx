@@ -337,7 +337,7 @@ const ML: React.FC = () => {
             {de ? 'DIE STORY' : 'THE STORY'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            {de ? <>Nicht Biographie.<br />Fähigkeit.</> : <>Not biography.<br />Capability.</>}
+            {de ? <>Nicht Biographie.<br /><span className="italic text-gradient">Fähigkeit.</span></> : <>Not biography.<br /><span className="italic text-gradient">Capability.</span></>}
           </h2>
 
           <div className="space-y-8 max-w-3xl mx-auto">
