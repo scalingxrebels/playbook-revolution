@@ -47,17 +47,17 @@ const Footer: React.FC = () => {
               <img src="/images/scalingx-logo.png" alt="ScalingX" className="h-10 w-auto" />
             </div>
             <p className="text-xs uppercase tracking-widest text-accent mb-2">
-              GROWTH ENGINES × SCALING SYSTEMS × AI = HYPERGROWTH
+              EXPERTISE × SPEED = IMPACT
             </p>
             <p className="text-sm text-muted-foreground max-w-md mb-2">
               {language === 'de' 
-                ? 'VC/PE-unterstützte Startups (Series A-D) skalieren schneller mit AI-Native Scaling und Systemen, die messbare Ergebnisse liefern.'
-                : 'VC/PE-backed startups (Series A-D) scale faster with AI-Native Scaling and systems that deliver measurable outcomes.'}
+                ? 'Für CEOs von finanzierten Startups, deren Strategie auf dem Slide Deck funktioniert — aber nicht in der Realität.'
+                : 'For CEOs of funded startups whose strategy works on the slide deck — but not in reality.'}
             </p>
             <p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
               {language === 'de' 
-                ? 'Wachstum sollte kein Kampf sein. Es sollte System haben.'
-                : "Growth shouldn't be a struggle. It should be a system."}
+                ? 'Wir finden den Hebel. Wir bauen den Mechanismus. Fucking fast.'
+                : 'We find the lever. We build the mechanism. Fucking fast.'}
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-4">
@@ -178,12 +178,6 @@ const Footer: React.FC = () => {
                 <li>
                   <a href="mailto:team@scalingx.io" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
                     team@scalingx.io
-                    <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://lasr.io" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors">
-                    lasr.io
                     <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </a>
                 </li>
