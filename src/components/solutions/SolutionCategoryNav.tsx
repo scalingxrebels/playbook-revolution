@@ -20,9 +20,9 @@ const SolutionCategoryNav: React.FC = () => {
         </span>
         <h2 className="font-display text-display-md text-foreground text-center mb-12">
           {language === 'de' ? (
-            <>Fünf Situationen. Fünf Wege. <span className="italic text-gradient">Eine ist deine.</span></>
+            <>Sechs Situationen. Sechs Wege. <span className="italic text-gradient">Eine ist deine.</span></>
           ) : (
-            <>Five situations. Five paths. <span className="italic text-gradient">One is yours.</span></>
+            <>Six situations. Six paths. <span className="italic text-gradient">One is yours.</span></>
           )}
         </h2>
 

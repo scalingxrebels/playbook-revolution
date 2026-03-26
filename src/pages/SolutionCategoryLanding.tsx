@@ -162,7 +162,7 @@ const SolutionCategoryLanding: React.FC = () => {
               {language === 'de' ? (
                 <>Was <span className="italic text-gradient">möglich ist.</span></>
               ) : (
-                <>What\'s <span className="italic text-gradient">possible.</span></>
+                <>What&apos;s <span className="italic text-gradient">possible.</span></>
               )}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
