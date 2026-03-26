@@ -71,7 +71,7 @@ const HomeMechanisms: React.FC = () => {
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
-          className={`text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4 transition-all duration-700 ${
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -110,7 +110,7 @@ const HomeMechanisms: React.FC = () => {
               <Link
                 key={i}
                 to={m.href}
-                className={`group relative block p-8 rounded-xl border-2 border-border/50 bg-card hover:border-accent/50 hover:shadow-glow transition-all duration-500 ${
+                className={`group relative block p-8 border-2 border-border bg-card hover:border-accent/50 hover:shadow-glow transition-all duration-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${(i + 2) * 100}ms` }}
