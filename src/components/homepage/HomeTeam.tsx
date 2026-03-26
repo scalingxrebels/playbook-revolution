@@ -32,7 +32,7 @@ const HomeTeam: React.FC = () => {
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
-          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
