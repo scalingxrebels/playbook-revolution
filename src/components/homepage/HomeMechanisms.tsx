@@ -68,7 +68,7 @@ const HomeMechanisms: React.FC = () => {
       />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-15" />
 
-      <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
           className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
