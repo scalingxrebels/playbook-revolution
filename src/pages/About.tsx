@@ -346,7 +346,7 @@ const About: React.FC = () => {
             {de ? 'WARUM ES FUNKTIONIERT' : 'WHY IT WORKS'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? <>Andere beraten.<br />Wir bauen.</> : <>Others advise.<br />We build.</>}
+            {de ? <>Andere beraten.<br /><span className="italic text-gradient">Wir bauen.</span></> : <>Others advise.<br /><span className="italic text-gradient">We build.</span></>}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
