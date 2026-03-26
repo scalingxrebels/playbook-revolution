@@ -53,9 +53,14 @@ const HomeWorkWithUs: React.FC = () => {
     <>
       <section
         ref={ref as React.RefObject<HTMLElement>}
-        className="relative py-24 md:py-32 bg-muted/30"
+        className="dark-section relative py-24 md:py-32 overflow-hidden noise"
       >
-        <div className="container max-w-5xl mx-auto px-6">
+        {/* Deep space background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1A] to-[#0A0A0F]" />
+        <div className="absolute inset-0 bg-mesh opacity-30" />
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+
+        <div className="container max-w-5xl mx-auto px-6 relative z-10">
           <h2
             className={`font-display text-3xl md:text-4xl lg:text-5xl mb-14 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -75,14 +80,18 @@ const HomeWorkWithUs: React.FC = () => {
 
               const card = (
                 <div
-                  className={`flex flex-col p-8 rounded-xl border transition-all duration-500 h-full ${
+                  className={`flex flex-col p-8 rounded-xl border-2 transition-all duration-500 h-full ${
                     p.prominent
-                      ? 'border-accent/50 bg-accent/5 hover:bg-accent/10'
-                      : 'border-border/50 bg-card/50 backdrop-blur-sm hover:border-accent/40 hover:bg-card/80'
+                      ? 'border-accent/50 bg-accent/10 hover:bg-accent/15 shadow-accent-glow'
+                      : 'border-border/50 bg-card/5 backdrop-blur-sm hover:border-accent/40 hover:shadow-glow'
                   } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   style={{ transitionDelay: `${(i + 1) * 120}ms` }}
                 >
-                  <Icon className={`h-6 w-6 mb-4 ${p.prominent ? 'text-accent' : 'text-muted-foreground'}`} />
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 ${
+                    p.prominent ? 'bg-accent/20' : 'bg-accent/10'
+                  }`}>
+                    <Icon className={`h-5 w-5 ${p.prominent ? 'text-accent' : 'text-accent/80'}`} />
+                  </div>
                   <h3 className="font-display text-xl mb-2 text-foreground">
                     {language === 'de' ? p.titleDe : p.titleEn}
                   </h3>
@@ -96,7 +105,7 @@ const HomeWorkWithUs: React.FC = () => {
                   </p>
                   {p.prominent ? (
                     <Button
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold w-full"
+                      className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold w-full shadow-accent-glow"
                       onClick={() => setIsBookingOpen(true)}
                     >
                       {language === 'de' ? p.ctaDe : p.ctaEn}

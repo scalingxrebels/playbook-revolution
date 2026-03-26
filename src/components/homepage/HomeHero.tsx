@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronDown } from 'lucide-react';
 import { useParallaxLayers } from '@/hooks/useParallax';
 import TwinklingStars from '@/components/TwinklingStars';
+import GrowthTrails from '@/components/GrowthTrails';
 import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
 
 const HomeHero: React.FC = () => {
@@ -23,7 +24,7 @@ const HomeHero: React.FC = () => {
       >
         {/* Deep Space Background */}
         <div
-          className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--background))] via-[hsl(240,20%,6%)] to-[hsl(240,20%,12%)] transition-transform duration-100"
+          className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
           style={{ transform: `translateY(${offsets[0]}px) scale(1.1)` }}
         />
         <div
@@ -35,6 +36,13 @@ const HomeHero: React.FC = () => {
           style={{ transform: `translateY(${offsets[1]}px)` }}
         >
           <TwinklingStars />
+        </div>
+        {/* GrowthTrails — animated S-curves */}
+        <div
+          className="absolute inset-0 transition-transform duration-100"
+          style={{ transform: `translateY(${offsets[1]}px)` }}
+        >
+          <GrowthTrails />
         </div>
         <div
           className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
@@ -82,7 +90,7 @@ const HomeHero: React.FC = () => {
 
           {/* Badge */}
           <div className="flex justify-center mb-10 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-accent/5">
+            <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-accent/5 shadow-brutal-sm">
               Expertise × Speed = Impact
             </span>
           </div>
@@ -91,7 +99,7 @@ const HomeHero: React.FC = () => {
           <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Button
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-base"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-base shadow-accent-glow"
               onClick={() => setIsBookingOpen(true)}
             >
               {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book a free call'}

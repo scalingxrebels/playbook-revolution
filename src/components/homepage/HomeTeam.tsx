@@ -2,18 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { ArrowRight, Linkedin } from 'lucide-react';
+import { useParallaxLayers } from '@/hooks/useParallax';
+import { Linkedin } from 'lucide-react';
 
 const HomeTeam: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.1] });
 
   return (
     <section
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative py-24 md:py-32 bg-background"
+      ref={(el) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = el;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+      }}
+      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
     >
-      <div className="container max-w-5xl mx-auto px-6">
+      {/* Deep space background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-30 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
           className={`text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4 transition-all duration-700 ${
@@ -40,7 +56,7 @@ const HomeTeam: React.FC = () => {
           }`}
           style={{ transitionDelay: '200ms' }}
         >
-          <div className="w-40 h-40 md:w-48 md:h-48 flex-shrink-0 rounded-2xl overflow-hidden border border-border/50">
+          <div className="w-44 h-44 md:w-52 md:h-52 flex-shrink-0 rounded-2xl overflow-hidden border-2 border-accent/30 shadow-accent-glow">
             <img
               src="/images/team-michel.png"
               alt="Michel Lason"
@@ -69,7 +85,7 @@ const HomeTeam: React.FC = () => {
           }`}
           style={{ transitionDelay: '350ms' }}
         >
-          <div className="flex items-center gap-4 p-4 rounded-lg border border-border/30 bg-card/30">
+          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/5 backdrop-blur-sm hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <div>
               <h4 className="font-display text-base text-foreground">Alban Halili</h4>
               <p className="text-sm text-muted-foreground">Partner · GTM & Growth · Operations & AI-Automation</p>
@@ -84,7 +100,7 @@ const HomeTeam: React.FC = () => {
               <Linkedin className="h-4 w-4" />
             </a>
           </div>
-          <div className="flex items-center gap-4 p-4 rounded-lg border border-border/30 bg-card/30">
+          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/5 backdrop-blur-sm hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <div>
               <h4 className="font-display text-base text-foreground">Florian Metzger</h4>
               <p className="text-sm text-muted-foreground">Partner · Product & Tech · Scaling Systems</p>

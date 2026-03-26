@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
 import { ArrowRight } from 'lucide-react';
 
 interface CaseData {
@@ -71,13 +72,28 @@ const cases: CaseData[] = [
 const HomeCases: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.1] });
 
   return (
     <section
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative py-24 md:py-32 bg-background"
+      ref={(el) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = el;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+      }}
+      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
     >
-      <div className="container max-w-6xl mx-auto px-6">
+      {/* Deep space background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-30 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <p
           className={`text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -114,18 +130,18 @@ const HomeCases: React.FC = () => {
             <Link
               key={i}
               to={c.slug}
-              className={`group block p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-accent/40 hover:bg-card/80 transition-all duration-500 ${
+              className={`group block p-6 rounded-xl border-2 border-border/50 bg-card/5 backdrop-blur-sm hover:border-accent/50 hover:shadow-accent-glow transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${(i + 2) * 120}ms` }}
             >
               {/* Tag */}
-              <span className="text-xs font-medium uppercase tracking-wider text-accent">
+              <span className="inline-block px-3 py-1 text-xs font-medium uppercase tracking-wider text-accent bg-accent/10 rounded-full shadow-brutal-sm mb-3">
                 {language === 'de' ? c.tagDe : c.tagEn}
               </span>
 
               {/* Title */}
-              <h3 className="font-display text-lg mt-3 mb-3 text-foreground leading-snug">
+              <h3 className="font-display text-lg mt-2 mb-3 text-foreground leading-snug">
                 {language === 'de' ? c.titleDe : c.titleEn}
               </h3>
 
@@ -138,7 +154,7 @@ const HomeCases: React.FC = () => {
               <div className="grid grid-cols-3 gap-3 mb-4">
                 {c.metrics.map((m, j) => (
                   <div key={j} className="text-center">
-                    <div className="text-xl font-bold text-foreground">{m.value}</div>
+                    <div className="text-xl font-bold text-accent">{m.value}</div>
                     <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{m.label}</div>
                   </div>
                 ))}
