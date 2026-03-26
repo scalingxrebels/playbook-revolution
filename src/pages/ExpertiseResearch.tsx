@@ -234,7 +234,7 @@ const ExpertiseResearch: React.FC = () => {
                     {t(card.bodyDe, card.bodyEn)}
                   </p>
                   <div className="space-y-1 mb-4">
-                    {(t(card.stats, card.statsEn) as string[]).map((stat, j) => (
+                    {(language === 'de' ? card.stats : card.statsEn).map((stat, j) => (
                       <p key={j} className="text-xs font-bold text-primary">{stat}</p>
                     ))}
                   </div>
