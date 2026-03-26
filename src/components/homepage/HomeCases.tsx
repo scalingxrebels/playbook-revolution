@@ -93,16 +93,16 @@ const HomeCases: React.FC = () => {
       />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
 
-      <div className="container max-w-6xl mx-auto px-6 relative z-10 text-center">
+      <div className="container max-w-6xl mx-auto px-6 relative z-10">
         <p
-          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           {language === 'de' ? 'Ergebnisse aus der Praxis' : 'Real-world results'}
         </p>
         <h2
-          className={`font-display text-display-md mb-6 transition-all duration-700 ${
+          className={`font-display text-display-md mb-6 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -114,7 +114,7 @@ const HomeCases: React.FC = () => {
           )}
         </h2>
         <p
-          className={`text-lg text-muted-foreground mb-6 transition-all duration-700 ${
+          className={`text-lg text-muted-foreground mb-6 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}

@@ -54,10 +54,10 @@ const HomeComparison: React.FC = () => {
       <div className="absolute inset-0 bg-mesh opacity-30" />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
 
-      <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
-          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+          className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
@@ -65,7 +65,7 @@ const HomeComparison: React.FC = () => {
         </p>
 
         <h2
-          className={`font-display text-display-md mb-6 transition-all duration-700 ${
+          className={`font-display text-display-md mb-6 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -74,7 +74,7 @@ const HomeComparison: React.FC = () => {
         </h2>
 
         <p
-          className={`text-lg text-muted-foreground mb-6 transition-all duration-700 ${
+          className={`text-lg text-muted-foreground mb-6 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -86,7 +86,7 @@ const HomeComparison: React.FC = () => {
 
         {/* Formula Badge */}
         <div
-          className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider mb-10 shadow-brutal-sm transition-all duration-700 ${
+          className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider mb-10 shadow-brutal-sm text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
