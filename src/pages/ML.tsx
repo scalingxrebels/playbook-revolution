@@ -214,41 +214,47 @@ const ML: React.FC = () => {
           style={{ transform: `translateY(${heroRef.offsets[2]}px) scale(1.1)` }}
         />
 
-        <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
-          <div className="grid md:grid-cols-[2fr_3fr] gap-12 items-center">
+        <div className="max-w-6xl mx-auto px-6 py-24 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Photo */}
-            <div className="flex justify-center md:justify-end animate-fade-in">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-glow">
+            <div className="flex justify-center lg:justify-start animate-fade-in">
+              <div className="relative aspect-[3/4] max-w-md w-full">
                 <img
                   src="/images/ml-hero-new.png"
                   alt="Michel Lason"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl border-2 border-accent/30 shadow-accent-glow"
+                  style={{ objectPosition: 'center 10%' }}
                   loading="eager"
                 />
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-accent rounded-2xl blur-2xl opacity-40" />
               </div>
             </div>
 
             {/* Text */}
-            <div className="text-center md:text-left">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground mb-3 animate-fade-in">
-                {de ? 'GRÜNDER & CEO · SCALINGX HYPERGROWTH' : 'FOUNDER & CEO · SCALINGX HYPERGROWTH'}
-              </p>
-              <h1 className="font-display text-hero-lg mb-4 animate-blur-in">
+            <div className="space-y-8">
+              <div className="flex items-center gap-4 animate-fade-in">
+                <span className="h-px w-12 bg-gradient-primary" />
+                <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
+                  {de ? 'GRÜNDER & CEO · SCALINGX HYPERGROWTH' : 'FOUNDER & CEO · SCALINGX HYPERGROWTH'}
+                </span>
+                <span className="h-px w-12 bg-gradient-primary" />
+              </div>
+              <h1 className="font-display text-hero-lg animate-blur-in">
                 Michel Lason
               </h1>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 animate-slide-up" style={{ animationDelay: '0.15s' }}>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground animate-slide-up" style={{ animationDelay: '0.15s' }}>
                 {de ? 'Hat €1,3M auf €13,7M ARR gebracht.' : 'Grew €1.3M to €13.7M ARR.'}
                 <br />
                 {de ? 'In 2 Jahren.' : 'In 2 years.'}
               </h2>
-              <p className="text-body-lg text-muted-foreground mb-6 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+              <p className="text-body-lg text-muted-foreground animate-slide-up" style={{ animationDelay: '0.25s' }}>
                 {de
                   ? 'Findet den Hebel der wirklich zieht. Setzt ihn um — fucking fast.'
                   : 'Finds the lever that actually works. Executes it — fucking fast.'}
               </p>
 
               {/* Expertise Badges */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
+              <div className="flex flex-wrap gap-2 animate-slide-up" style={{ animationDelay: '0.35s' }}>
                 {badges.map((b) => (
                   <span key={b} className="text-xs text-muted-foreground border border-border px-3 py-1">
                     {b}
@@ -257,7 +263,7 @@ const ML: React.FC = () => {
               </div>
 
               {/* Result Badges */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="flex flex-wrap gap-2 animate-slide-up" style={{ animationDelay: '0.4s' }}>
                 {['Rule of 40 +10 Pkt', 'EBITDA –€300k → +€150k', de ? '18 Jahre Operator' : '18 years Operator'].map((b) => (
                   <span key={b} className="text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1">
                     {b}
@@ -273,7 +279,7 @@ const ML: React.FC = () => {
               </div>
 
               {/* CTA */}
-              <div className="animate-slide-up mt-8" style={{ animationDelay: '0.5s' }}>
+              <div className="animate-slide-up" style={{ animationDelay: '0.5s' }}>
                 <Button
                   size="lg"
                   className="bg-gradient-accent text-accent-foreground font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow whitespace-nowrap"
