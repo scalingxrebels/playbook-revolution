@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
             </p>
             <p className="text-sm text-muted-foreground max-w-md font-medium mb-4">
               {language === 'de' 
-                ? 'Wir finden den Hebel. Wir bauen den Mechanismus. Fucking fast.'
+                ? 'Wir finden den Hebel. Wir bauen den Mechanismus. Fucking schnell.'
                 : 'We find the lever. We build the mechanism. Fucking fast.'}
             </p>
             {/* Social Icons */}

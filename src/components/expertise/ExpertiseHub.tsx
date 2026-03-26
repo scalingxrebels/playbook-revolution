@@ -103,7 +103,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="a">
         <SectionHeader
           overline={t('DAS SYSTEM', 'THE SYSTEM')}
-          headline={language === 'de' ? <>Vier Mechanismen. Ein Multiplier.<br /><span className="italic text-gradient">Fucking fast.</span></> : <>Four mechanisms. One multiplier.<br /><span className="italic text-gradient">Fucking fast.</span></>}
+          headline={language === 'de' ? <>Vier Mechanismen. Ein Multiplier.<br /><span className="italic text-gradient">Fucking schnell.</span></> : <>Four mechanisms. One multiplier.<br /><span className="italic text-gradient">Fucking fast.</span></>}
           sub={t('M1–M3 sind die Mechanismen. M4 ist der Verstärker auf alle drei.', 'M1–M3 are the mechanisms. M4 is the amplifier on all three.')}
         />
         <MechanismFlowDiagram />
