@@ -109,14 +109,27 @@ const Solutions: React.FC = () => {
             Growth Engines × Scaling Systems × AI ={' '}
             <span className="italic text-gradient">Hypergrowth</span>
           </h2>
-          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground text-center mb-6 max-w-2xl mx-auto">
             {language === 'de'
-              ? `${solutionTiles.length} Lösungen für ${challenges.length - 1} Challenges. Filtere nach Challenge, Solution Type oder Kategorie.`
-              : `${solutionTiles.length} solutions for ${challenges.length - 1} challenges. Filter by challenge, solution type or category.`}
+              ? 'Finde die richtige Lösung für deine Growth Challenge.'
+              : 'Find the right solution for your growth challenge.'}
           </p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8">
+            {[
+              { value: `${challenges.length - 1}`, labelDe: 'Challenges', labelEn: 'Challenges' },
+              { value: `${solutionTiles.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
+              { value: '15-80x', labelDe: 'Ø ROI', labelEn: 'Avg ROI' },
+              { value: '92%', labelDe: 'Erfolgsrate', labelEn: 'Success Rate' },
+            ].map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <span className="text-xl font-bold text-foreground">{stat.value}</span>
+                <span className="ml-1.5 text-sm text-muted-foreground">{language === 'de' ? stat.labelDe : stat.labelEn}</span>
+              </div>
+            ))}
+          </div>
 
           {/* Filters */}
-          <div className="space-y-6 bg-muted/30 border border-border rounded-lg p-6 mb-8">
+          <div className="space-y-6 bg-muted/30 border border-border p-6 mb-8">
             {/* Search */}
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -125,7 +138,7 @@ const Solutions: React.FC = () => {
                 placeholder={language === 'de' ? 'Solutions durchsuchen...' : 'Search solutions...'}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-10 py-3 bg-card border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent/50 text-foreground placeholder:text-muted-foreground transition-all"
+                className="w-full pl-12 pr-10 py-3 bg-card border border-border focus:outline-none focus:ring-2 focus:ring-accent/50 text-foreground placeholder:text-muted-foreground transition-all"
               />
               {searchQuery && (
                 <button
@@ -226,7 +239,7 @@ const Solutions: React.FC = () => {
             </div>
           )}
 
-          <SolutionTileGrid tiles={filteredTiles} maxVisible={12} />
+          <SolutionTileGrid tiles={filteredTiles} maxVisible={50} />
         </div>
       </section>
       

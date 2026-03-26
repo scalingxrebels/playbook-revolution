@@ -50,7 +50,7 @@ const SolutionCTA: React.FC = () => {
               onClick={() => setIsBookingModalOpen(true)}
             >
               <Phone className="mr-2 w-5 h-5" />
-              {language === 'de' ? 'Kostenlosen Inflection Call buchen' : 'Book Free Inflection Call'}
+              {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book a free call'}
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>

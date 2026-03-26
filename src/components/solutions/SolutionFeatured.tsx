@@ -66,7 +66,7 @@ const SolutionFeatured: React.FC = () => {
               >
                 {/* Badge */}
                 {badge && (
-                  <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-accent bg-accent/10 px-2 py-1 rounded-full mb-3">
+                  <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-accent bg-accent/10 px-2 py-1 mb-3">
                     {badge}
                   </span>
                 )}
