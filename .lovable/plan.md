@@ -1,41 +1,29 @@
 
 
-## Plan: Expertise Hub + Spokes Design-Konsistenz mit Home
+## Analyse: Above-the-Fold Vergleich
 
-### Probleme und Fixes
+### Ist-Zustand
 
-**1a + 2b. MechanismFlowDiagram zu klein**
-- `max-w-2xl` → `max-w-4xl` (wie das 2x2 Grid auf Home)
-- M1-M3 Cards: `p-5` → `p-6 md:p-8`, Title `text-sm` → `text-base md:text-lg`
-- M4 Bar: `p-5` → `p-6 md:p-8`, Title `text-sm` → `text-base md:text-lg`
-- Arrow SVGs: `width="16"` → `width="24"`, proportional skalieren
+```text
+PAGE         HERO HEIGHT       CTA IM FOLD?    BADGE?      SCROLL-CHEVRON
+─────────────────────────────────────────────────────────────────────────
+Home         min-h-screen      ✅ Ja           ✅ Ja       ✅ bottom-8
+Solutions    min-h-[85vh]      ❌ Nein         ❌ Nein     ✅ bottom-8
+Playbooks    min-h-[85vh]      ❌ Nein         ❌ Nein     ✅ bottom-8
+Insights     min-h-[85vh]      ✅ Ja (CTAs)    ❌ Nein     ✅ bottom-8
+Cases        min-h-[85vh]      ❌ Nein         ❌ Nein     ✅ bottom-8
+Expertise    min-h-[85vh]      ✅ Ja (Badge)   ✅ Ja       ✅ bottom-8
+```
 
-**1b. Mechanismus-Cards auf Hub nicht konsistent mit Home**
-- Home (`HomeMechanisms`): Jede Card hat ein **Icon** (Eye, ArrowRightLeft, Settings, Cpu), ein `w-10 h-10 rounded-lg bg-accent/10` Icon-Container, Title in `text-xl`, Description in voller Grösse (`text-muted-foreground` ohne `text-sm`)
-- Expertise Hub: Kein Icon, Title in `text-lg`, Description in `text-sm`
-- **Fix**: Icons + Icon-Container von HomeMechanisms übernehmen, Title `text-lg` → `text-xl`, Description `text-sm` entfernen, `M`-Badge in `absolute top-4 right-4` wie Home
+### Kernunterschied
 
-**1c. Cases auf Hub zu dünn vs. Home**
-- Home (`HomeCases`): Tag-Pill (`rounded-full bg-accent/10`), Title (`text-lg`), Body-Text, **3 Metrics** (value + label), Investment-Zeile, CTA
-- Expertise Hub: Nur Tag (plain text), Mechanism-Badges, ein Result-Satz, CTA — viel weniger Inhalt
-- **Fix**: Hub-Cases auf HomeCases-Struktur umbauen. Metrics + Investment aus den echten Cases einbauen. Dafür `hubCases` Datenstruktur erweitern (title, body, metrics, investment hinzufügen). Grid `md:grid-cols-2` beibehalten (nur 2 Cases).
+Home nutzt `min-h-screen` (100vh = 1008px auf deinem Viewport). Alle anderen Seiten nutzen `SharedHero` mit `min-h-[85vh]` (~857px). Das sind **~150px weniger** — genug, damit bei Solutions und Playbooks die Stats teilweise abgeschnitten werden und kein CTA sichtbar ist.
 
-**1d + 2c. CTA-Button nicht konsistent mit Home**
-- Home (`HomeWorkWithUs`): Nutzt `<Button>` mit `bg-accent shadow-accent-glow` + `FilloutBookingModal`
-- Expertise: Plain `<a>` mit `bg-accent` ohne Shadow, ohne Modal
-- **Fix Hub + Spokes**: `FilloutBookingModal` einbauen, Primary CTA als `<Button className="bg-gradient-accent shadow-accent-glow text-lg px-8 py-4">`, Secondary als `<Link>` mit `border-2 border-border`
+Home hat ausserdem einen grossen Gradient-CTA-Button ("Kostenloses Gespräch buchen") und ein Badge ("Für CEOs...") — beides fehlt bei den meisten anderen Seiten.
 
-**2a. Stats auf Spokes weglassen**
-- Stats-Prop aus dem SharedHero-Aufruf in `ExpertiseSpoke.tsx` entfernen
+### Empfehlung
 
-### Betroffene Dateien
+Soll ich `SharedHero` auf `min-h-screen` hochziehen, damit alle Seiten die gleiche Above-the-Fold-Grenze haben wie Home? Das wäre eine 1-Zeilen-Änderung in `SharedHero.tsx`.
 
-| Datei | Änderung |
-|---|---|
-| `MechanismFlowDiagram.tsx` | max-w-4xl, grössere Cards + Arrows |
-| `ExpertiseHub.tsx` | Icons auf Mechanism-Cards, Cases mit Metrics/Body, CTA mit FilloutBookingModal |
-| `ExpertiseSpoke.tsx` | Stats entfernen, CTA mit FilloutBookingModal |
-| `hub.ts` | hubCases erweitern: title, body, metrics, investment |
-
-4 Dateien. Rein visuelle + Copy-Anpassungen.
+Oder soll der Unterschied (85vh vs 100vh) bewusst beibehalten werden, weil die Sub-Pages weniger Content im Hero haben als Home?
 
