@@ -85,7 +85,7 @@ const HomeTeam: React.FC = () => {
           }`}
           style={{ transitionDelay: '350ms' }}
         >
-          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/5 backdrop-blur-sm hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <div>
               <h4 className="font-display text-base text-foreground">Alban Halili</h4>
               <p className="text-sm text-muted-foreground">Partner · GTM & Growth · Operations & AI-Automation</p>
