@@ -297,7 +297,7 @@ const ExpertiseHub: React.FC = () => {
         </div>
       </Section>
 
-      <FilloutBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      <FilloutBookingModal formSlug="inflection-call" source="expertise-hub" isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );
 };

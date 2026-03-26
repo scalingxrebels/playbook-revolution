@@ -214,7 +214,7 @@ const ExpertiseSpoke: React.FC<{ data: SpokeData }> = ({ data }) => {
         </div>
       </Section>
 
-      <FilloutBookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
+      <FilloutBookingModal formSlug="inflection-call" source={`expertise-${data.slug}`} isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
     </>
   );
 };
