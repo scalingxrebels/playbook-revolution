@@ -102,10 +102,11 @@ const Solutions: React.FC = () => {
       <SolutionCategoryNav />
       
       {/* S4 — All Solutions Filter Grid */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
+      <section className="py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30" />
+        <div className="absolute inset-0 bg-mesh opacity-40" />
         <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
-        <div className="container max-w-7xl mx-auto px-4 md:px-6 relative z-10">
+        <div className="container max-w-6xl mx-auto px-6 relative z-10">
           {/* Section header */}
           <span className="block text-sm font-semibold uppercase tracking-widest text-accent text-center mb-4">
             {language === 'de' ? 'Alle Solutions' : 'All Solutions'}

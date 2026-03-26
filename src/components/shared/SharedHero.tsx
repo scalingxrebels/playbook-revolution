@@ -1,7 +1,9 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import TwinklingStars from '@/components/TwinklingStars';
+import GrowthTrails from '@/components/GrowthTrails';
 import { useParallaxLayers } from '@/hooks/useParallax';
+import { ChevronDown } from 'lucide-react';
 
 interface StatItem {
   value: string;
@@ -37,7 +39,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   stats,
   children,
   variant = 'dark',
-  enableParallax = false
+  enableParallax = true
 }) => {
   const { language } = useLanguage();
   const { containerRef, offsets } = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
@@ -47,44 +49,58 @@ const SharedHero: React.FC<SharedHeroProps> = ({
   const headlineLine2 = language === 'de' ? headlineLine2De : headlineLine2En;
   const subheadline = language === 'de' ? subheadlineDe : subheadlineEn;
 
+  const scrollToNext = () => {
+    const hero = containerRef.current;
+    if (hero) {
+      const next = hero.nextElementSibling as HTMLElement;
+      next?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section 
       ref={enableParallax ? containerRef as React.RefObject<HTMLElement> : undefined}
-      className={`relative overflow-hidden noise pt-32 pb-16 ${variant === 'dark' ? 'dark-section' : ''}`}
+      className={`relative min-h-[85vh] flex flex-col justify-center items-center overflow-hidden noise ${variant === 'dark' ? 'dark-section' : ''}`}
     >
       {/* Background - only for dark variant */}
       {variant === 'dark' && (
         <>
           {/* Layer 1: Deep Space Background (slowest) */}
           <div 
-            className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E]"
-            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+            className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px) scale(1.1)` } : undefined}
           />
           <div 
-            className="absolute inset-0 bg-mesh opacity-60"
-            style={enableParallax ? { transform: `translateY(${offsets[0]}px)` } : undefined}
+            className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+            style={enableParallax ? { transform: `translateY(${offsets[0]}px) scale(1.1)` } : undefined}
           />
           
-          {/* Layer 2: Stars (medium speed) */}
+          {/* Layer 2: Stars + GrowthTrails (medium speed) */}
           <div 
-            className="absolute inset-0"
+            className="absolute inset-0 transition-transform duration-100"
             style={enableParallax ? { transform: `translateY(${offsets[1]}px)` } : undefined}
           >
             <TwinklingStars />
           </div>
+          <div 
+            className="absolute inset-0 transition-transform duration-100"
+            style={enableParallax ? { transform: `translateY(${offsets[1]}px)` } : undefined}
+          >
+            <GrowthTrails />
+          </div>
           
           {/* Layer 3: Grid Pattern (fastest) */}
           <div 
-            className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20"
-            style={enableParallax ? { transform: `translateY(${offsets[2]}px)` } : undefined}
+            className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+            style={enableParallax ? { transform: `translateY(${offsets[2]}px) scale(1.1)` } : undefined}
           />
         </>
       )}
 
-      <div className="container max-w-5xl mx-auto px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
         <div className="text-center">
           {/* Overline */}
-          <div className="flex items-center justify-center gap-4 mb-6 animate-fade-in">
+          <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
             <span className="h-px w-12 bg-gradient-primary" />
             <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
               {overline}
@@ -93,7 +109,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
           </div>
 
           {/* Headline */}
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-blur-in">
+          <h1 className="font-display text-hero-lg mb-8 animate-blur-in">
             <span className="block text-foreground">
               {headlineLine1}
             </span>
@@ -105,7 +121,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             {subheadline}
           </p>
 
@@ -117,7 +133,7 @@ const SharedHero: React.FC<SharedHeroProps> = ({
                   key={idx} 
                   className={`px-4 py-3 bg-card border-2 ${
                     stat.color === 'accent' ? 'border-accent/30' : 'border-primary/30'
-                  } shadow-brutal-sm rounded-lg`}
+                  } shadow-brutal-sm`}
                 >
                   <span className={`font-mono text-2xl font-bold ${
                     stat.color === 'accent' ? 'text-accent' : 'text-primary'
@@ -145,6 +161,15 @@ const SharedHero: React.FC<SharedHeroProps> = ({
           )}
         </div>
       </div>
+
+      {/* Scroll-down Chevron */}
+      <button
+        onClick={scrollToNext}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce text-muted-foreground hover:text-foreground transition-colors"
+        aria-label="Scroll down"
+      >
+        <ChevronDown className="w-8 h-8" />
+      </button>
     </section>
   );
 };
