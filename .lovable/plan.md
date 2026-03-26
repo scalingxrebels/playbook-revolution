@@ -1,30 +1,18 @@
 
 
-## Plan: Team-Sektion erweitern
+## Plan: `bg-card` Hintergrund auf 5 Bereiche übertragen
 
-### Änderungen in `src/components/homepage/HomeTeam.tsx`
+Die Formula-Cards nutzen `bg-card` (volle Opacity). Alle anderen Sektionen nutzen `bg-card/10` (fast transparent). Änderung: überall `bg-card` statt `bg-card/10` bzw. `bg-accent/5`.
 
-**1. Michel — LinkedIn-Link hinzufügen**
-Nach dem `text-xs` Absatz (Zeile 75–77) einen LinkedIn-Link einfügen, gleicher Stil wie bei Alban/Florian:
-- URL: `https://www.linkedin.com/in/michellason/`
+### 5 Änderungen
 
-**2. Alban — Bild + neuer Titel**
-- Kleines rundes Bild (w-10 h-10) mit `src="/images/team-alban.png"` vor dem Text einfügen
-- Titel ändern zu: `Partner · Growth · Operations · AI Solutions`
+| # | Datei | Element | Alt | Neu |
+|---|---|---|---|---|
+| 1 | `HomeHero.tsx` Z.91 | Badge | `bg-accent/5` | `bg-card` |
+| 2 | `HomeMechanisms.tsx` Z.113 | M1–M4 Cards | `bg-card/10` | `bg-card` |
+| 3 | `HomeComparison.tsx` Z.99 | Tabelle | `bg-card/10` | `bg-card` |
+| 4 | `HomeCases.tsx` Z.133 | Case-Cards | `bg-card/10` | `bg-card` |
+| 5 | `HomeWorkWithUs.tsx` Z.86 | Nicht-prominente Cards | `bg-card/10` | `bg-card` |
 
-**3. Florian — Bild + neuer Titel**
-- Kleines rundes Bild (w-10 h-10) mit `src="/images/team-florian.png"` vor dem Text einfügen
-- Titel ändern zu: `Partner · GTM · Venture Architect · RevOps`
-
-### Visuelles Ergebnis der Partner-Cards
-
-```text
-┌──────────────────────────────────────────┐
-│ [IMG] Alban Halili                  [in] │
-│       Partner · Growth · Operations ·    │
-│       AI Solutions                       │
-└──────────────────────────────────────────┘
-```
-
-Bilder als kleine Kreise (`rounded-full border border-accent/20`), konsistent mit dem bestehenden Card-Layout.
+Nur CSS-Klassen-Änderungen, keine inhaltlichen Änderungen.
 
