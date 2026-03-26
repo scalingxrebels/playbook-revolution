@@ -4,6 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
 import HomeHero from '@/components/homepage/HomeHero';
+import ClientTicker from '@/components/ClientTicker';
 import HomeShift from '@/components/homepage/HomeShift';
 import HomeMechanisms from '@/components/homepage/HomeMechanisms';
 import HomeComparison from '@/components/homepage/HomeComparison';
