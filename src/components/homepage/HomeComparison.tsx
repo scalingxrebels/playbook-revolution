@@ -135,6 +135,9 @@ const HomeComparison: React.FC = () => {
                   <TableCell className="text-center">
                     <div className="flex justify-center"><StatusIcon status={row.intern} /></div>
                   </TableCell>
+                  <TableCell className="text-center">
+                    <div className="flex justify-center"><StatusIcon status={row.diy} /></div>
+                  </TableCell>
                   <TableCell className="text-center border-l-2 border-accent/30 bg-accent/5">
                     <div className="flex justify-center"><StatusIcon status={row.wir} highlight /></div>
                   </TableCell>
