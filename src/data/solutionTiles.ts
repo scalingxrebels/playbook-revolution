@@ -95,6 +95,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 1,
     slug: 'inflection-call',
+    featured: true,
     solutionType: 'insights',
     challenges: 'universal',
     price: 'Free',
