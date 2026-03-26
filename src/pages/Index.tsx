@@ -3,16 +3,13 @@ import { LanguageProvider } from '@/contexts/LanguageContext';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 
-// Optimized Homepage Components - 7 Essential Sections
-import HeroOptimized from '@/components/homepage/HeroOptimized';
-import ProblemOptimized from '@/components/homepage/ProblemOptimized';
-import SolutionOptimized from '@/components/homepage/SolutionOptimized';
-import HowItWorksOptimized from '@/components/homepage/HowItWorksOptimized';
+import HomeHero from '@/components/homepage/HomeHero';
+import HomeShift from '@/components/homepage/HomeShift';
+import HomeMechanisms from '@/components/homepage/HomeMechanisms';
 import FormulaOptimized from '@/components/homepage/FormulaOptimized';
-import ProofOptimized from '@/components/homepage/ProofOptimized';
-import GrowthCurveOptimized from '@/components/homepage/GrowthCurveOptimized';
-import ROICalculatorOptimized from '@/components/homepage/ROICalculatorOptimized';
-import FinalCTAOptimized from '@/components/homepage/FinalCTAOptimized';
+import HomeCases from '@/components/homepage/HomeCases';
+import HomeWorkWithUs from '@/components/homepage/HomeWorkWithUs';
+import HomeTeam from '@/components/homepage/HomeTeam';
 
 const Index = () => {
   return (
@@ -21,32 +18,20 @@ const Index = () => {
         <div className="min-h-screen bg-background text-foreground">
           <Navigation />
           <main>
-            {/* SECTION 1: HERO (100vh) */}
-            <HeroOptimized />
-            
-            {/* SECTION 2: THE PROBLEM (50vh) */}
-            <ProblemOptimized />
-            
-            {/* SECTION 3: THE SOLUTION (50vh) */}
-            <SolutionOptimized />
-            
-            {/* SECTION 4: HOW IT WORKS (60vh) */}
-            <HowItWorksOptimized />
-            
-            {/* SECTION 5: DIE FORMEL (50vh) */}
+            {/* SECTION 1: HERO */}
+            <HomeHero />
+            {/* SECTION 2: THE SHIFT */}
+            <HomeShift />
+            {/* SECTION 3: WINNING MECHANISMS GRID */}
+            <HomeMechanisms />
+            {/* SECTION 4: DIE FORMEL FÜR HYPERGROWTH */}
             <FormulaOptimized />
-            
-            {/* SECTION 6: PROOF & VALIDATION (50vh) */}
-            <ProofOptimized />
-            
-            {/* SECTION 7: GROWTH CURVE (interactive) */}
-            <GrowthCurveOptimized />
-            
-            {/* SECTION 8: ROI CALCULATOR (70vh) */}
-            <ROICalculatorOptimized />
-            
-            {/* SECTION 8: FINAL CTA with BOOKING FORM (60vh) */}
-            <FinalCTAOptimized />
+            {/* SECTION 5: CASES TEASER */}
+            <HomeCases />
+            {/* SECTION 6: WORK WITH US */}
+            <HomeWorkWithUs />
+            {/* SECTION 7: MENSCHEN HINTER SCALINGX */}
+            <HomeTeam />
           </main>
           <Footer />
         </div>
