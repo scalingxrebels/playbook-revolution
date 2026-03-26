@@ -14,7 +14,8 @@ import { ArrowLeft, ArrowRight, Phone } from 'lucide-react';
 import { BreadcrumbSchema } from '@/components/seo';
 
 const SolutionCategoryLanding: React.FC = () => {
-  const { categorySlug } = useParams<{ categorySlug: string }>();
+  const location = useLocation();
+  const categorySlug = location.pathname.split('/').pop();
   const navigate = useNavigate();
   const { language } = useLanguage();
   const { isHidden } = useContentVisibilityContext();
