@@ -271,6 +271,21 @@ const ML: React.FC = () => {
                   EXPERTISE × SPEED = IMPACT
                 </span>
               </div>
+
+              {/* CTA */}
+              <div className="animate-slide-up mt-8" style={{ animationDelay: '0.5s' }}>
+                <Button
+                  size="lg"
+                  className="bg-gradient-accent text-accent-foreground font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow whitespace-nowrap"
+                  onClick={() => setIsBookingOpen(true)}
+                >
+                  {de ? 'Kostenloses Gespräch buchen' : 'Book a free call'}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <p className="text-xs text-muted-foreground mt-3">
+                  {de ? '30 Minuten · Kein Pitch · Direkt mit Michel' : '30 minutes · No pitch · Directly with Michel'}
+                </p>
+              </div>
             </div>
           </div>
         </div>
