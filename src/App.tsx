@@ -141,6 +141,11 @@ const AppContent = () => {
           <Route path="/solutions/tools" element={<SolutionCategoryLanding />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/expertise/research" element={<ExpertiseResearch />} />
+          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
+          <Route path="/expertise/anst" element={<ExpertiseANST />} />
+          <Route path="/expertise/sst" element={<ExpertiseSST />} />
+          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/expertise/hypothesen-maschine" element={<ExpertiseM1 />} />
           <Route path="/expertise/uebersetzungskompetenz" element={<ExpertiseM2 />} />
           <Route path="/expertise/funktionierende-synthese" element={<ExpertiseM3 />} />
