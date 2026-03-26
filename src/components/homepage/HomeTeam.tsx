@@ -16,15 +16,15 @@ const HomeTeam: React.FC = () => {
         (ref as React.MutableRefObject<HTMLElement | null>).current = el;
         (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
       }}
-      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
+      className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Deep space background */}
+      {/* Theme-responsive background */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        className="absolute inset-0 bg-mesh opacity-30 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
       />
       <div
-        className="absolute inset-0 bg-mesh opacity-30 transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
       />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />

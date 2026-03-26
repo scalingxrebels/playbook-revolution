@@ -49,10 +49,10 @@ const HomeComparison: React.FC = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
+      className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Deep space background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1A] to-[#0A0A0F]" />
+      {/* Theme-responsive background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="absolute inset-0 bg-mesh opacity-30" />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
 

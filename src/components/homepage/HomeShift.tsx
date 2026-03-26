@@ -31,11 +31,11 @@ const HomeShift: React.FC = () => {
         (ref as React.MutableRefObject<HTMLElement | null>).current = el;
         (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
       }}
-      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
+      className="relative py-24 md:py-32 overflow-hidden"
     >
-      {/* Deep space background */}
+      {/* Theme-responsive background */}
       <div
-        className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1A] to-[#0A0A0F] transition-transform duration-100"
+        className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30 transition-transform duration-100"
         style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
       />
       <div
