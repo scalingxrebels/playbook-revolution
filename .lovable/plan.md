@@ -1,16 +1,19 @@
 
 
-## Plan: Overline und Badge-Text tauschen
+## Plan: Overline im HomeHero an SharedHero-Stil anpassen
 
-**Datei:** `src/components/homepage/HomeHero.tsx`
+**Datei:** `src/components/homepage/HomeHero.tsx`, Zeile 57
 
-### Änderung 1 — Overline (Zeile 58–60)
-Aktuell: `Für CEOs von finanzierten Startups · Series A–B · DACH`
-Neu: `Expertise × Speed = Impact` (beide Sprachen gleich)
+Die SharedHero (Solutions, Playbooks, etc.) nutzt `text-sm` + `text-accent`. Die HomeHero nutzt `text-xs` + `text-muted-foreground`.
 
-### Änderung 2 — Badge (Zeile 93–94)
-Aktuell: `Expertise × Speed = Impact`
-Neu: `Für CEOs von finanzierten Startups · Series A–B · DACH` (DE) / `For CEOs of funded startups · Series A–B · DACH` (EN)
+**Änderung:**
+```
+text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground
+```
+wird zu:
+```
+text-sm font-medium uppercase tracking-[0.3em] text-accent
+```
 
-Styling bleibt jeweils identisch — nur die Textinhalte werden getauscht.
+Nur 2 CSS-Klassen ändern sich — alles andere bleibt identisch.
 
