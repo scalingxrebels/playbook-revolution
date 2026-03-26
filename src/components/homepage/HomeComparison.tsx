@@ -88,7 +88,7 @@ const HomeComparison: React.FC = () => {
 
         {/* Formula Badge */}
         <div
-          className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider mb-12 shadow-brutal-sm text-center transition-all duration-700 ${ text-center transition-all duration-700 ${
+          className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider mb-12 shadow-brutal-sm text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
