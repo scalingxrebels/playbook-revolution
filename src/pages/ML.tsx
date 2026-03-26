@@ -279,7 +279,7 @@ const ML: React.FC = () => {
               </div>
 
               {/* CTA */}
-              <div className="animate-slide-up mt-8" style={{ animationDelay: '0.5s' }}>
+              <div className="animate-slide-up" style={{ animationDelay: '0.5s' }}>
                 <Button
                   size="lg"
                   className="bg-gradient-accent text-accent-foreground font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow whitespace-nowrap"
