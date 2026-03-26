@@ -87,10 +87,10 @@ const HomeWorkWithUs: React.FC = () => {
 
               const card = (
                 <div
-                  className={`flex flex-col p-8 rounded-xl border-2 transition-all duration-500 h-full ${
+                  className={`flex flex-col p-8 border-2 transition-all duration-500 h-full ${
                     p.prominent
                       ? 'border-accent/50 bg-accent/10 hover:bg-accent/15 shadow-accent-glow'
-                      : 'border-border/50 bg-card hover:border-accent/40 hover:shadow-glow'
+                      : 'border-border bg-card hover:border-accent/40 hover:shadow-glow'
                   } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                   style={{ transitionDelay: `${(i + 1) * 120}ms` }}
                 >
