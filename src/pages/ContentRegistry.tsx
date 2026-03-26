@@ -158,42 +158,52 @@ const ContentRegistry: React.FC = () => {
                         <TableHeader>Titel</TableHeader>
                         <TableHeader>Typ</TableHeader>
                         <TableHeader>Tier</TableHeader>
-                        <TableHeader>Sichtbar</TableHeader>
-                        <TableHeader>Vorschau</TableHeader>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredSolutions.map((tile, i) => (
-                        <tr key={tile.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
-                          <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
-                          <td className="px-4 py-3">
-                            <span className="text-sm font-medium text-foreground">{tile.headlineDe}</span>
-                            <br />
-                            <span className="text-xs text-muted-foreground">{tile.slug}</span>
-                          </td>
-                          <td className="px-4 py-3">
-                            <Badge variant="outline" className="text-xs">{tile.solutionType}</Badge>
-                          </td>
-                          <td className="px-4 py-3 text-xs text-muted-foreground">
-                            {tile.transformationTier || '—'}
-                          </td>
-                          <td className="px-4 py-3">
-                            <Switch
-                              checked={!tile.hidden}
-                              onCheckedChange={(checked) => toggleVisibility('solution', tile.slug, !checked)}
-                            />
-                          </td>
-                          <td className="px-4 py-3">
-                            <div className="flex items-center gap-1.5">
-                              <button onClick={() => openPreview('card', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
-                                <Eye className="w-3 h-3" /> Kachel
-                              </button>
-                              <button onClick={() => openPreview('landing', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
-                                <Globe className="w-3 h-3" /> Landing
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
+                         <TableHeader>Featured</TableHeader>
+                         <TableHeader>Sichtbar</TableHeader>
+                         <TableHeader>Vorschau</TableHeader>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       {filteredSolutions.map((tile, i) => (
+                         <tr key={tile.id} className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors">
+                           <td className="px-4 py-3 text-xs text-muted-foreground">{i + 1}</td>
+                           <td className="px-4 py-3">
+                             <span className="text-sm font-medium text-foreground">{tile.headlineDe}</span>
+                             <br />
+                             <span className="text-xs text-muted-foreground">{tile.slug}</span>
+                           </td>
+                           <td className="px-4 py-3">
+                             <Badge variant="outline" className="text-xs">{tile.solutionType}</Badge>
+                           </td>
+                           <td className="px-4 py-3 text-xs text-muted-foreground">
+                             {tile.transformationTier || '—'}
+                           </td>
+                           <td className="px-4 py-3">
+                             <div className="flex items-center gap-1.5">
+                               <Switch
+                                 checked={tile.featured}
+                                 onCheckedChange={(checked) => toggleFeatured('solution', tile.slug, checked)}
+                               />
+                               {tile.featured && <Star className="w-3.5 h-3.5 text-accent fill-accent" />}
+                             </div>
+                           </td>
+                           <td className="px-4 py-3">
+                             <Switch
+                               checked={!tile.hidden}
+                               onCheckedChange={(checked) => toggleVisibility('solution', tile.slug, !checked)}
+                             />
+                           </td>
+                           <td className="px-4 py-3">
+                             <div className="flex items-center gap-1.5">
+                               <button onClick={() => openPreview('card', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                 <Eye className="w-3 h-3" /> Kachel
+                               </button>
+                               <button onClick={() => openPreview('landing', 'solution', tile)} className="inline-flex items-center gap-1 text-xs text-primary hover:underline">
+                                 <Globe className="w-3 h-3" /> Landing
+                               </button>
+                             </div>
+                           </td>
+                         </tr>
                       ))}
                     </tbody>
                   </table>

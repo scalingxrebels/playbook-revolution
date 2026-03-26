@@ -11,8 +11,10 @@ const SolutionFeatured: React.FC = () => {
   const { isHidden } = useContentVisibilityContext();
   const navigate = useNavigate();
 
+  const { isFeatured } = useContentVisibilityContext();
+
   const featuredTiles = solutionTiles
-    .filter(t => t.featured && !isHidden('solution', t.slug, t.hidden))
+    .filter(t => isFeatured('solution', t.slug, t.featured) && !isHidden('solution', t.slug, t.hidden))
     .slice(0, 7);
 
   if (featuredTiles.length === 0) return null;
