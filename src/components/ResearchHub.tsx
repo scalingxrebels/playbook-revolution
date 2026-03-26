@@ -99,9 +99,9 @@ const researchCards: ResearchCard[] = [
 
 const researchStats = [
   { 
-    value: '250,000+', 
-    label: { en: 'Words', de: 'Wörter' }, 
-    sublabel: { en: 'of research', de: 'Forschung' },
+    value: '62+', 
+    label: { en: 'Companies', de: 'Unternehmen' }, 
+    sublabel: { en: 'analyzed', de: 'analysiert' },
     color: 'primary' as const 
   },
   { 
@@ -117,9 +117,9 @@ const researchStats = [
     color: 'primary' as const 
   },
   { 
-    value: 'OPEN SOURCE', 
-    label: { en: 'Collaborative', de: 'Kollaborativ' }, 
-    sublabel: { en: 'not-peer-reviewed (yet)', de: 'noch nicht peer-reviewed' },
+    value: '2024–2026', 
+    label: { en: 'Period', de: 'Zeitraum' }, 
+    sublabel: { en: 'ongoing research', de: 'laufende Forschung' },
     color: 'accent' as const 
   },
 ];
