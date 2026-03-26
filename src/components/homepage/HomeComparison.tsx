@@ -107,10 +107,13 @@ const HomeComparison: React.FC = () => {
             <TableHeader>
               <TableRow className="border-border/30 bg-white/5">
                 <TableHead className="min-w-[180px]" />
-                <TableHead className="text-center text-muted-foreground font-medium">McKinsey</TableHead>
+                <TableHead className="text-center text-muted-foreground font-medium">McKinsey / BCG</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">Freelancer</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">
-                  {language === 'de' ? 'Intern' : 'Internal'}
+                  {language === 'de' ? 'Interner Hire' : 'Internal Hire'}
+                </TableHead>
+                <TableHead className="text-center text-muted-foreground font-medium">
+                  {language === 'de' ? 'DIY / Intern lösen' : 'DIY / Solve Internally'}
                 </TableHead>
                 <TableHead className="text-center font-bold text-accent border-l-2 border-accent/30 bg-accent/10">
                   {language === 'de' ? 'Wir' : 'Us'}
