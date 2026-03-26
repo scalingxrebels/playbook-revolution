@@ -268,7 +268,7 @@ const About: React.FC = () => {
             {de ? 'DAS TEAM' : 'THE TEAM'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? 'Drei Menschen. Ein System.' : 'Three people. One system.'}
+            {de ? <>Drei Menschen.<br />Ein System.</> : <>Three people.<br />One system.</>}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
