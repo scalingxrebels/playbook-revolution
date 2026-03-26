@@ -500,6 +500,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 12,
     slug: 'power-up-growth',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['growth-stalled'],
