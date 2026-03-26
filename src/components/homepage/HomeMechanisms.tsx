@@ -92,7 +92,7 @@ const HomeMechanisms: React.FC = () => {
         </h2>
 
         <p
-          className={`text-lg text-muted-foreground mb-6 transition-all duration-700 ${
+          className={`text-lg text-muted-foreground mb-6 text-center transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}
