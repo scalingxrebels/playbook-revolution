@@ -68,7 +68,7 @@ const HomeMechanisms: React.FC = () => {
       />
       <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-15" />
 
-      <div className="container max-w-5xl mx-auto px-6 relative z-10">
+      <div className="container max-w-5xl mx-auto px-6 relative z-10 text-center">
         {/* Overline */}
         <p
           className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
@@ -79,7 +79,7 @@ const HomeMechanisms: React.FC = () => {
         </p>
 
         <h2
-          className={`font-display text-3xl md:text-4xl lg:text-5xl mb-3 transition-all duration-700 ${
+          className={`font-display text-display-md mb-6 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '100ms' }}
@@ -92,7 +92,7 @@ const HomeMechanisms: React.FC = () => {
         </h2>
 
         <p
-          className={`text-lg text-muted-foreground mb-14 transition-all duration-700 ${
+          className={`text-lg text-muted-foreground mb-6 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}
