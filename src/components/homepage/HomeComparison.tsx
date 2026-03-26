@@ -54,7 +54,7 @@ const HomeComparison: React.FC = () => {
       {/* Theme-responsive background */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       <div className="absolute inset-0 bg-mesh opacity-30" />
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
