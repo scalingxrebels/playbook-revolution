@@ -1,29 +1,25 @@
 
 
-## Plan: Badge-Styling auf Home-Standard vereinheitlichen
+## Plan: Client-Ticker von Cases auf Home übernehmen
 
-### Ist-Zustand
+### Ansatz
 
-| Seite | Unterschiede zu Home |
-|---|---|
-| **Home** (Referenz) | `px-4 py-1.5 · text-xs · uppercase · tracking-[0.25em] · border border-accent/30 · rounded-full · bg-card · shadow-brutal-sm` |
-| **About** | `px-6 py-2 · text-sm · kein uppercase · tracking-wider · border-2 border-accent/40 · eckig · bg-accent/10 · font-mono · kein shadow` |
-| **Expertise** | `px-5 py-2.5 · text-sm · kein uppercase · tracking-wider · border-2 border-accent/40 · eckig · bg-accent/10 · kein shadow` |
-
-### Fix
-
-Beide Badges auf exakt dieselben Klassen wie Home setzen:
-
-```
-inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-card shadow-brutal-sm
-```
+Den Ticker-Code aus `Cases.tsx` (Z.98-127) als eigenständige Komponente extrahieren und auf der Home-Seite direkt unter `HomeHero` einfügen.
 
 ### Dateien
 
-| Datei | Zeile | Änderung |
-|---|---|---|
-| `src/pages/About.tsx` | Z.236 | Badge-Klassen ersetzen |
-| `src/components/expertise/ExpertiseHub.tsx` | Z.97 | Badge-Klassen ersetzen |
+| Datei | Änderung |
+|---|---|
+| `src/components/ClientTicker.tsx` | Neue Komponente: Ticker-Markup aus Cases extrahiert (clientNames-Array, Label, Marquee-Animation) |
+| `src/pages/Index.tsx` | Nach `<HomeHero />` einfügen: `<ClientTicker />` |
+| `src/pages/Cases.tsx` | Import + Nutzung von `<ClientTicker />` statt Inline-Code (optional, Refactor) |
 
-2 Dateien, je 1 Zeile.
+### Komponente `ClientTicker.tsx`
+
+- Übernimmt 1:1 das Layout aus Cases: statisches Label links ("Mit wem wir gearbeitet haben"), Marquee-Scroll rechts mit Fade-Mask
+- `clientNames`-Array wird in die Komponente verschoben
+- Styling: `border-y border-border py-4 bg-background/50`
+- Animation: `animate-marquee` (bereits in Tailwind config definiert)
+
+3 Dateien. 1 neue Komponente, 2 Imports.
 
