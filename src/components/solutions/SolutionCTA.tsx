@@ -59,15 +59,15 @@ const SolutionCTA: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-accent" />
-              {language === 'de' ? 'Unverbindlich' : 'No commitment'}
+              {language === 'de' ? 'Direkt mit Michel' : 'Directly with Michel'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-accent" />
+              {language === 'de' ? 'Kein Formular' : 'No form'}
             </span>
             <span className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-accent" />
               {language === 'de' ? '30 Minuten' : '30 minutes'}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-accent" />
-              {language === 'de' ? 'Konkrete nächste Schritte' : 'Concrete next steps'}
             </span>
           </div>
         </div>
