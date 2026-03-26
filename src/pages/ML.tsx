@@ -537,7 +537,7 @@ const ML: React.FC = () => {
             <Link to="/solutions" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
               <Layers className="h-4 w-4 mr-1.5" /> Solutions
             </Link>
-            <Link to="/insights" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
+            <Link to="/fix-growth-book" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
               <BookOpen className="h-4 w-4 mr-1.5" /> Fix Growth. Scale Faster.
             </Link>
           </div>
