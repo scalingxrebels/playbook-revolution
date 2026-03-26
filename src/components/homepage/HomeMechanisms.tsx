@@ -66,7 +66,7 @@ const HomeMechanisms: React.FC = () => {
         className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background transition-transform duration-100"
         style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
       />
-      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-15" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
 
       <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
