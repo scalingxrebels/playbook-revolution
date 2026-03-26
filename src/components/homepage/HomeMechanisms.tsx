@@ -31,7 +31,7 @@ const mechanisms = [
     titleEn: 'Functioning Synthesis',
     descDe: 'Wir bauen Systeme die tragen — vollständig, ohne Kompromiss.',
     descEn: 'We build systems that hold — complete, without compromise.',
-    href: '/expertise',
+    href: '/expertise/funktionierende-synthese',
   },
   {
     icon: Cpu,
