@@ -122,7 +122,7 @@ const Solutions: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8">
             {[
               { value: `${challenges.length - 1}`, labelDe: 'Challenges', labelEn: 'Challenges' },
-              { value: `${solutionTiles.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
+              { value: `${visibleTilesTotal.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
               { value: '15-80x', labelDe: 'Ø ROI', labelEn: 'Avg ROI' },
               { value: '92%', labelDe: 'Erfolgsrate', labelEn: 'Success Rate' },
             ].map((stat, idx) => (
