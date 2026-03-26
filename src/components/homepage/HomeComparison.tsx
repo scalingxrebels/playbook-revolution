@@ -96,7 +96,7 @@ const HomeComparison: React.FC = () => {
 
         {/* Comparison Table */}
         <div
-          className={`w-full overflow-x-auto rounded-xl border-2 border-border/50 bg-card/5 backdrop-blur-sm transition-all duration-700 ${
+          className={`w-full overflow-x-auto rounded-xl border-2 border-border/50 bg-card/10 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '400ms' }}
