@@ -85,9 +85,9 @@ const HomeMechanisms: React.FC = () => {
           style={{ transitionDelay: '100ms' }}
         >
           {language === 'de' ? (
-            <>Vier Mechanismen.<br />Einer fehlt immer.</>
+            <>Vier Mechanismen.<br />Einer <span className="italic text-gradient">fehlt immer.</span></>
           ) : (
-            <>Four mechanisms.<br />One is always missing.</>
+            <>Four mechanisms.<br />One is <span className="italic text-gradient">always missing.</span></>
           )}
         </h2>
 

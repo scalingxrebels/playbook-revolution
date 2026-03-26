@@ -507,8 +507,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>30 Minuten. Kein Pitch.<br />Direkt mit mir.</>
-              : <>30 minutes. No pitch.<br />Directly with me.</>}
+              ? <>30 Minuten. Kein Pitch.<br /><span className="italic text-gradient">Direkt mit mir.</span></>
+              : <>30 minutes. No pitch.<br /><span className="italic text-gradient">Directly with me.</span></>}
           </h2>
           <p className={`text-body-lg text-muted-foreground mb-4 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {de

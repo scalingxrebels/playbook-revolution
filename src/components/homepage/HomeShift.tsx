@@ -58,9 +58,9 @@ const HomeShift: React.FC = () => {
           }`}
         >
           {language === 'de' ? (
-            <>Die Welt hat sich verändert.<br />Deine Strategie noch nicht.</>
+            <>Die Welt hat sich verändert.<br />Deine Strategie <span className="italic text-gradient">noch nicht.</span></>
           ) : (
-            <>The world has changed.<br />Your strategy hasn't.</>
+            <>The world has changed.<br />Your strategy <span className="italic text-gradient">hasn't.</span></>
           )}
         </h2>
 
