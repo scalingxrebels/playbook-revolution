@@ -308,8 +308,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>Expertise × Speed = Impact.<br />Nicht als Slogan. Als Arbeitsweise.</>
-              : <>Expertise × Speed = Impact.<br />Not a slogan. A way of working.</>}
+              ? <>Expertise × Speed = Impact.<br />Nicht als Slogan. <span className="italic text-gradient">Als Arbeitsweise.</span></>
+              : <>Expertise × Speed = Impact.<br />Not a slogan. <span className="italic text-gradient">A way of working.</span></>}
           </h2>
 
           <div className="space-y-6">
