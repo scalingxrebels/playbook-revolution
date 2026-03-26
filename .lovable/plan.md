@@ -1,69 +1,30 @@
 
 
-## Plan: `italic text-gradient` Akzente auf alle Seiten anwenden
+## Plan: ROI-Calculator als Modal auf Home
 
-### Das Muster (von Solutions)
+### Ansatz
 
-Solutions nutzt `<span className="italic text-gradient">payoff</span>` um den "Payoff"-Teil einer Headline farbig hervorzuheben. Das ist der emotionale/wirkungsvolle Teil nach dem Setup.
+Den `ROICalculatorOptimized` (590 Zeilen, vollständiger interaktiver Kalkulator) in ein Modal wrappen, das vom Formula-CTA-Button geöffnet wird.
 
-### Vollständige Übersicht — was bekommt den Akzent
+### Änderungen
 
-Die Regel: Bei mehrteiligen Headlines bekommt der **Payoff** (zweite Phrase) den Gradient. Bei kurzen einzeiligen Headlines bleibt alles plain.
-
-```text
-SEITE / SECTION          IST                                                    WIRD (Gradient-Teil kursiv markiert)
-────────────────────────  ─────────────────────────────────────────────────────  ─────────────────────────────────────────────────
-HOME
-  Shift                  Die Welt hat sich verändert. / Deine Strategie nicht.  ...Deine Strategie *noch nicht.*
-  Mechanisms             Vier Mechanismen. / Einer fehlt immer.                 ...Einer *fehlt immer.*
-  Comparison             Warum wir.                                             ❌ kurz, bleibt plain
-  Formula                = Hypergrowth                                          ✅ bereits text-primary, → italic text-gradient
-  Cases                  Was passiert wenn / der Hebel stimmt.                  ...*der Hebel stimmt.*
-  WorkWithUs             Drei Wege. / Du wählst den richtigen.                  ...Du wählst *den richtigen.*
-  Team                   Die Menschen hinter ScalingX.                          ❌ kurz, bleibt plain
-
-ABOUT
-  S2 Team                Drei Menschen. / Ein System.                           ...*Ein System.*
-  S3 Mechanisms          Andere beraten. / Wir bauen.                           ...*Wir bauen.*
-  S4 Proof               Zahlen die für sich sprechen.                          ❌ kurz, bleibt plain
-  S5 Mission             Die Lücke zwischen... kostet Startups ihre Zukunft.    ...*ihre Zukunft.*
-  S6 CTA                 30 Min. Kein Pitch. / Direkt mit Michel.              ...*Direkt mit Michel.*
-
-EXPERTISE HUB
-  S2 System              Vier Mechanismen. Ein Multiplier. / Fucking fast.      ...*Fucking fast.*
-  S3 Mechanisms          Vier Mechanismen. / Einer erklärt die Lücke.           ...Einer davon *erklärt die Lücke.*
-  S4 Comparison          Viele haben Expertise. / Wenige haben ein System.      ...Wenige haben *ein System.*
-
-ML
-  S2 Formula             Expertise × Speed = Impact. / Nicht als Slogan...      ...Nicht als Slogan. *Als Arbeitsweise.*
-  S3 Story               Nicht Biographie. / Fähigkeit.                         ...*Fähigkeit.*
-  S6 Drive               Drei Momente. / Das ist warum ich tue, was ich tue.    ...*was ich tue.*
-  S7 CTA                 30 Min. Kein Pitch. / Direkt mit mir.                 ...*Direkt mit mir.*
-```
+| Datei | Änderung |
+|---|---|
+| `src/components/homepage/ROICalculatorModal.tsx` | **Neue Datei**: Dialog-Wrapper um den ROI-Calculator-Content. Extrahiert die innere Logik aus `ROICalculatorOptimized` als eigene Render-Funktion oder importiert die Komponente direkt in ein `Dialog`/`Sheet`-Overlay. Nutzt `Sheet` (side="bottom", fullscreen) oder `Dialog` (max-w-5xl) für genug Platz. |
+| `src/components/homepage/FormulaOptimized.tsx` | Z.55-57: `scrollToCalculator` → State `roiModalOpen` + setter. Z.140: `onClick={() => setRoiModalOpen(true)}`. Am Ende der Section: `<ROICalculatorModal open={roiModalOpen} onClose={() => setRoiModalOpen(false)} />` |
 
 ### Technisches Detail
 
-Jede betroffene Zeile wird so geändert:
-```tsx
-// Vorher:
-<>Die Welt hat sich verändert.<br />Deine Strategie noch nicht.</>
+- **Dialog vs Sheet**: Der ROI-Calculator braucht viel Platz (Slider, Cards, Ergebnisse). Ein `Dialog` mit `max-w-5xl max-h-[90vh] overflow-y-auto` passt am besten.
+- `ROICalculatorOptimized` wird direkt im Modal gerendert, aber ohne das `<section>`-Wrapper und Background — nur der innere Content.
+- Dafür wird `ROICalculatorOptimized` refactored: der innere Content wird als exportierte Unterkomponente (`ROICalculatorContent`) extrahiert, die sowohl standalone (auf /ai-native) als auch im Modal (auf Home) nutzbar ist.
 
-// Nachher:
-<>Die Welt hat sich verändert.<br />Deine Strategie <span className="italic text-gradient">noch nicht.</span></>
-```
+### Dateien
 
-### Betroffene Dateien
-
-| Datei | Anzahl Änderungen |
+| Datei | Art |
 |---|---|
-| `src/components/homepage/HomeShift.tsx` | 2 (DE + EN) |
-| `src/components/homepage/HomeMechanisms.tsx` | 2 |
-| `src/components/homepage/FormulaOptimized.tsx` | 2 (text-primary → italic text-gradient) |
-| `src/components/homepage/HomeCases.tsx` | 2 |
-| `src/components/homepage/HomeWorkWithUs.tsx` | 2 |
-| `src/pages/About.tsx` | 8 (4 Sections × DE+EN) |
-| `src/components/expertise/ExpertiseHub.tsx` | 6 (3 Sections × DE+EN) |
-| `src/pages/ML.tsx` | 8 (4 Sections × DE+EN) |
+| `src/components/homepage/ROICalculatorOptimized.tsx` | Refactor: Content in `ROICalculatorContent` extrahieren, Section-Wrapper bleibt als Default-Export |
+| `src/components/homepage/FormulaOptimized.tsx` | State + Modal-Trigger + Dialog mit `ROICalculatorContent` |
 
-8 Dateien. Reine Inline-Styling-Änderungen an bestehenden Headlines.
+2 Dateien.
 
