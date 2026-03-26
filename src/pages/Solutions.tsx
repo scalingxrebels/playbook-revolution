@@ -109,11 +109,24 @@ const Solutions: React.FC = () => {
             Growth Engines × Scaling Systems × AI ={' '}
             <span className="italic text-gradient">Hypergrowth</span>
           </h2>
-          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground text-center mb-6 max-w-2xl mx-auto">
             {language === 'de'
-              ? `${solutionTiles.length} Lösungen für ${challenges.length - 1} Challenges. Filtere nach Challenge, Solution Type oder Kategorie.`
-              : `${solutionTiles.length} solutions for ${challenges.length - 1} challenges. Filter by challenge, solution type or category.`}
+              ? 'Finde die richtige Lösung für deine Growth Challenge.'
+              : 'Find the right solution for your growth challenge.'}
           </p>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8">
+            {[
+              { value: `${challenges.length - 1}`, labelDe: 'Challenges', labelEn: 'Challenges' },
+              { value: `${solutionTiles.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
+              { value: '15-80x', labelDe: 'Ø ROI', labelEn: 'Avg ROI' },
+              { value: '92%', labelDe: 'Erfolgsrate', labelEn: 'Success Rate' },
+            ].map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <span className="text-xl font-bold text-foreground">{stat.value}</span>
+                <span className="ml-1.5 text-sm text-muted-foreground">{language === 'de' ? stat.labelDe : stat.labelEn}</span>
+              </div>
+            ))}
+          </div>
 
           {/* Filters */}
           <div className="space-y-6 bg-muted/30 border border-border rounded-lg p-6 mb-8">
