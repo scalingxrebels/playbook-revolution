@@ -239,7 +239,7 @@ const Solutions: React.FC = () => {
             </div>
           )}
 
-          <SolutionTileGrid tiles={filteredTiles} <SolutionTileGrid tiles={filteredTiles} maxVisible={50} /> />
+          <SolutionTileGrid tiles={filteredTiles} maxVisible={50} />
         </div>
       </section>
       
