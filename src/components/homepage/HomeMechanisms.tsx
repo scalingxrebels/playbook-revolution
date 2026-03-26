@@ -110,7 +110,7 @@ const HomeMechanisms: React.FC = () => {
               <Link
                 key={i}
                 to={m.href}
-                className={`group relative block p-8 rounded-xl border-2 border-border/50 bg-card/10 hover:border-accent/50 hover:shadow-glow transition-all duration-500 ${
+                className={`group relative block p-8 rounded-xl border-2 border-border/50 bg-card hover:border-accent/50 hover:shadow-glow transition-all duration-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${(i + 2) * 100}ms` }}
