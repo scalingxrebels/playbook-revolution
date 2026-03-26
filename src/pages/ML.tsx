@@ -254,7 +254,7 @@ const ML: React.FC = () => {
               </p>
 
               {/* Expertise Badges */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
+              <div className="flex flex-wrap gap-2 animate-slide-up" style={{ animationDelay: '0.35s' }}>
                 {badges.map((b) => (
                   <span key={b} className="text-xs text-muted-foreground border border-border px-3 py-1">
                     {b}
@@ -263,7 +263,7 @@ const ML: React.FC = () => {
               </div>
 
               {/* Result Badges */}
-              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+              <div className="flex flex-wrap gap-2 animate-slide-up" style={{ animationDelay: '0.4s' }}>
                 {['Rule of 40 +10 Pkt', 'EBITDA –€300k → +€150k', de ? '18 Jahre Operator' : '18 years Operator'].map((b) => (
                   <span key={b} className="text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1">
                     {b}
