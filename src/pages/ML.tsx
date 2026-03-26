@@ -180,11 +180,7 @@ const ML: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
-      <PageSEO
-        title="Michel Lason — Founder & CEO · ScalingX Hypergrowth"
-        description={de ? 'Hat €1,3M auf €13,7M ARR gebracht. In 2 Jahren. Findet den Hebel der wirklich zieht — und setzt ihn um.' : 'Grew €1.3M to €13.7M ARR. In 2 years. Finds the lever that actually works — and executes it.'}
-        path="/about/ml"
-      />
+      <PageSEO path="/about/ml" />
       <PersonSchema
         name="Michel Lason"
         jobTitle="Founder & CEO"
