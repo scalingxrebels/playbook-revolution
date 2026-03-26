@@ -218,7 +218,7 @@ const ML: React.FC = () => {
           <div className="grid md:grid-cols-[2fr_3fr] gap-12 items-center">
             {/* Photo */}
             <div className="flex justify-center md:justify-end animate-fade-in">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-glow">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-primary/30 shadow-glow">
                 <img
                   src="/images/ml-hero-new.png"
                   alt="Michel Lason"
@@ -270,6 +270,21 @@ const ML: React.FC = () => {
                 <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 bg-card shadow-brutal-sm">
                   EXPERTISE × SPEED = IMPACT
                 </span>
+              </div>
+
+              {/* CTA */}
+              <div className="animate-slide-up mt-8" style={{ animationDelay: '0.5s' }}>
+                <Button
+                  size="lg"
+                  className="bg-gradient-accent text-accent-foreground font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow whitespace-nowrap"
+                  onClick={() => setIsBookingOpen(true)}
+                >
+                  {de ? 'Kostenloses Gespräch buchen' : 'Book a free call'}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <p className="text-xs text-muted-foreground mt-3">
+                  {de ? '30 Minuten · Kein Pitch · Direkt mit Michel' : '30 minutes · No pitch · Directly with Michel'}
+                </p>
               </div>
             </div>
           </div>
@@ -336,6 +351,19 @@ const ML: React.FC = () => {
                 <p className="text-muted-foreground leading-relaxed">{s.body}</p>
               </div>
             ))}
+          </div>
+
+          {/* Second photo — Michel in action */}
+          <div
+            className={`max-w-lg mx-auto mt-12 rounded-2xl border-2 border-primary/30 overflow-hidden transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            style={{ transitionDelay: '800ms' }}
+          >
+            <img
+              src="/images/ml-speaking.png"
+              alt={de ? 'Michel Lason in Aktion' : 'Michel Lason in action'}
+              className="w-full h-auto object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </Section>
