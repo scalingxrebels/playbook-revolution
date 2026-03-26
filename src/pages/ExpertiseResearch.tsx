@@ -10,7 +10,7 @@ import { FilloutBookingModal } from '@/components/forms';
 
 const ExpertiseResearch: React.FC = () => {
   const { language } = useLanguage();
-  const t = (de: string, en: string) => (language === 'de' ? de : en);
+  const t = <T,>(de: T, en: T): T => (language === 'de' ? de : en);
   const [bookingOpen, setBookingOpen] = useState(false);
 
   const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation({ threshold: 0.1 });
