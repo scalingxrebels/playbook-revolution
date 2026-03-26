@@ -108,32 +108,40 @@ const FilloutEmbed: React.FC<FilloutEmbedProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Dynamically load Fillout script if not already present
-    if (!document.querySelector('script[src*="fillout.com/embed"]')) {
-      const script = document.createElement('script');
-      script.src = 'https://server.fillout.com/embed/v1/';
-      script.async = true;
-      document.body.appendChild(script);
-    }
-    
-    // Re-initialize Fillout embeds after script loads
-    const handleScriptLoad = () => {
-      // Fillout script auto-initializes data-fillout-id elements
+    const initializeEmbeds = () => {
       if ((window as any).Fillout) {
         (window as any).Fillout.initializeEmbeds();
       }
     };
-    
-    // Check if script already loaded
-    if ((window as any).Fillout) {
-      handleScriptLoad();
+
+    const existingScript = document.querySelector('script[src*="fillout.com/embed"]');
+
+    if (!existingScript) {
+      // Script not yet in DOM — inject and use onload
+      const script = document.createElement('script');
+      script.src = 'https://server.fillout.com/embed/v1/';
+      script.async = true;
+      script.onload = () => {
+        setTimeout(initializeEmbeds, 100);
+      };
+      document.body.appendChild(script);
+    } else if ((window as any).Fillout) {
+      // Script loaded and Fillout ready — init immediately
+      setTimeout(initializeEmbeds, 100);
     } else {
-      window.addEventListener('load', handleScriptLoad);
+      // Script in DOM but not yet initialized — poll
+      let attempts = 0;
+      const poll = setInterval(() => {
+        attempts++;
+        if ((window as any).Fillout) {
+          clearInterval(poll);
+          initializeEmbeds();
+        } else if (attempts > 50) {
+          clearInterval(poll);
+        }
+      }, 100);
+      return () => clearInterval(poll);
     }
-    
-    return () => {
-      window.removeEventListener('load', handleScriptLoad);
-    };
   }, [formId]);
   
   // Build parameters object with UTM from sessionStorage + source + custom params
