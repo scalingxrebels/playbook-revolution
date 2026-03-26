@@ -6,18 +6,21 @@ interface VisibilityOverride {
   content_type: string;
   content_id: string;
   hidden: boolean;
+  featured: boolean;
 }
 
 interface ContentVisibilityContextValue {
   overrides: VisibilityOverride[];
   isLoading: boolean;
   isHidden: (contentType: string, contentId: string, staticHidden?: boolean) => boolean;
+  isFeatured: (contentType: string, contentId: string, staticFeatured?: boolean) => boolean;
 }
 
 const ContentVisibilityContext = createContext<ContentVisibilityContextValue>({
   overrides: [],
   isLoading: true,
   isHidden: (_t, _id, staticHidden) => staticHidden ?? false,
+  isFeatured: (_t, _id, staticFeatured) => staticFeatured ?? false,
 });
 
 export const useContentVisibilityContext = () => useContext(ContentVisibilityContext);
@@ -28,7 +31,7 @@ export const ContentVisibilityProvider: React.FC<{ children: React.ReactNode }> 
     queryFn: async () => {
       const { data, error } = await supabase
         .from('content_visibility' as any)
-        .select('content_type, content_id, hidden');
+        .select('content_type, content_id, hidden, featured');
       if (error) throw error;
       return (data ?? []) as unknown as VisibilityOverride[];
     },
@@ -41,6 +44,10 @@ export const ContentVisibilityProvider: React.FC<{ children: React.ReactNode }> 
     isHidden: (contentType: string, contentId: string, staticHidden?: boolean) => {
       const override = overrides.find(o => o.content_type === contentType && o.content_id === contentId);
       return override ? override.hidden : (staticHidden ?? false);
+    },
+    isFeatured: (contentType: string, contentId: string, staticFeatured?: boolean) => {
+      const override = overrides.find(o => o.content_type === contentType && o.content_id === contentId);
+      return override ? override.featured : (staticFeatured ?? false);
     },
   }), [overrides, isLoading]);
 
