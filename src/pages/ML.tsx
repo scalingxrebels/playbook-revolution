@@ -235,7 +235,7 @@ const ML: React.FC = () => {
               <div className="flex items-center gap-4 animate-fade-in">
                 <span className="h-px w-12 bg-gradient-primary" />
                 <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
-                  {de ? 'GRÜNDER & CEO · SCALINGX HYPERGROWTH' : 'FOUNDER & CEO · SCALINGX HYPERGROWTH'}
+                  {de ? 'GRÜNDER & CEO · SCALINGX' : 'FOUNDER & CEO · SCALINGX'}
                 </span>
                 <span className="h-px w-12 bg-gradient-primary" />
               </div>
