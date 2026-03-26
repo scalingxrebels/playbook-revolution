@@ -110,20 +110,22 @@ const HomeWorkWithUs: React.FC = () => {
                   <p className="text-muted-foreground mb-6 flex-1">
                     {language === 'de' ? p.descDe : p.descEn}
                   </p>
-                  {p.prominent ? (
-                    <Button
-                      className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold w-full shadow-accent-glow"
-                      onClick={() => setIsBookingOpen(true)}
-                    >
-                      {language === 'de' ? p.ctaDe : p.ctaEn}
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  ) : (
-                    <span className="inline-flex items-center text-sm text-accent">
-                      {language === 'de' ? p.ctaDe : p.ctaEn}
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </span>
-                  )}
+                  <div className="mt-auto pt-4">
+                    {p.prominent ? (
+                      <Button
+                        className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold w-full shadow-accent-glow"
+                        onClick={() => setIsBookingOpen(true)}
+                      >
+                        {language === 'de' ? p.ctaDe : p.ctaEn}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    ) : (
+                      <span className="inline-flex items-center text-sm text-accent">
+                        {language === 'de' ? p.ctaDe : p.ctaEn}
+                        <ArrowRight className="ml-1 h-4 w-4" />
+                      </span>
+                    )}
+                  </div>
                 </div>
               );
 
