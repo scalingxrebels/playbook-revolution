@@ -90,7 +90,7 @@ const ExpertiseHub: React.FC = () => {
         variant="dark"
       >
         <div className="inline-block px-5 py-2.5 border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider">
-          EXPERTISE × SPEED = IMPACT
+          {t('WIE WIR DENKEN · NICHT WAS WIR WISSEN', 'HOW WE THINK · NOT WHAT WE KNOW')}
         </div>
       </SharedHero>
 
