@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { Badge } from '@/components/ui/badge';
 import { Switch } from '@/components/ui/switch';
-import { LayoutGrid, BookOpen, Lightbulb, FolderOpen, Loader2, Eye, Globe } from 'lucide-react';
+import { LayoutGrid, BookOpen, Lightbulb, FolderOpen, Loader2, Eye, Globe, Star } from 'lucide-react';
 import ContentPreviewModal, { type PreviewMode } from '@/components/registry/ContentPreviewModal';
 import { solutionTiles } from '@/data/solutionTiles';
 import { playbooks } from '@/data/playbooks';
