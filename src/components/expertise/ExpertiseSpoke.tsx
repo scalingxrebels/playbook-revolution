@@ -9,16 +9,22 @@ import MechanismFlowDiagram from './MechanismFlowDiagram';
 import type { SpokeData } from '@/data/expertise/types';
 
 /* ─── Section wrapper with alternating gradients ─── */
-const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = ({ children, gradient = 'a' }) => (
-  <section className="relative py-24 md:py-32 overflow-hidden">
-    <div className={`absolute inset-0 bg-gradient-to-b ${
-      gradient === 'a' ? 'from-background to-secondary/30' : 'from-secondary/30 to-background'
-    }`} />
-    <div className="absolute inset-0 bg-mesh opacity-40" />
-    <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
-    <div className="container max-w-5xl mx-auto px-6 relative z-10">{children}</div>
-  </section>
-);
+const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = ({ children, gradient = 'a' }) => {
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.12] });
+  return (
+    <section ref={containerRef as React.RefObject<HTMLElement>} className="relative py-24 md:py-32 overflow-hidden">
+      <div
+        className={`absolute inset-0 bg-gradient-to-b ${
+          gradient === 'a' ? 'from-background to-secondary/30' : 'from-secondary/30 to-background'
+        } transition-transform duration-100`}
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100" style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }} />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100" style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }} />
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">{children}</div>
+    </section>
+  );
+};
 
 const SectionHeader: React.FC<{ overline: string; headline: string }> = ({ overline, headline }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
