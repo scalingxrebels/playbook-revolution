@@ -1,34 +1,29 @@
 
 
-## Plan: Fix — Solutions-Seite scrollt nicht nach oben bei Navigation
+## Plan: Badge-Styling auf Home-Standard vereinheitlichen
 
-### Problem
+### Ist-Zustand
 
-`ScrollToTop` feuert `window.scrollTo(0,0)` beim Pathname-Wechsel, aber die Solutions-Seite wird per `lazy()` geladen. Bis der Content gerendert ist, hat der Scroll-Befehl bereits gefeuert — auf einer noch leeren/kurzen Seite. Nach dem Render landet der User mitten auf der Seite.
+| Seite | Unterschiede zu Home |
+|---|---|
+| **Home** (Referenz) | `px-4 py-1.5 · text-xs · uppercase · tracking-[0.25em] · border border-accent/30 · rounded-full · bg-card · shadow-brutal-sm` |
+| **About** | `px-6 py-2 · text-sm · kein uppercase · tracking-wider · border-2 border-accent/40 · eckig · bg-accent/10 · font-mono · kein shadow` |
+| **Expertise** | `px-5 py-2.5 · text-sm · kein uppercase · tracking-wider · border-2 border-accent/40 · eckig · bg-accent/10 · kein shadow` |
 
 ### Fix
 
-`ScrollToTop.tsx` um einen `requestAnimationFrame`-Wrapper erweitern, der den Scroll nach dem nächsten Paint ausführt. Zusätzlich als Fallback einen zweiten Scroll nach kurzem Timeout (50ms), um Lazy-Loading-Delays abzufangen.
+Beide Badges auf exakt dieselben Klassen wie Home setzen:
 
-### Änderung
-
-| Datei | Änderung |
-|---|---|
-| `src/components/ScrollToTop.tsx` | `window.scrollTo` in `requestAnimationFrame` + 50ms Fallback-Timeout wrappen |
-
-```typescript
-useEffect(() => {
-  window.history.scrollRestoration = 'manual';
-  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  requestAnimationFrame(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  });
-  const timeout = setTimeout(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-  }, 50);
-  return () => clearTimeout(timeout);
-}, [pathname]);
+```
+inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-card shadow-brutal-sm
 ```
 
-1 Datei, 1 Stelle.
+### Dateien
+
+| Datei | Zeile | Änderung |
+|---|---|---|
+| `src/pages/About.tsx` | Z.236 | Badge-Klassen ersetzen |
+| `src/components/expertise/ExpertiseHub.tsx` | Z.97 | Badge-Klassen ersetzen |
+
+2 Dateien, je 1 Zeile.
 
