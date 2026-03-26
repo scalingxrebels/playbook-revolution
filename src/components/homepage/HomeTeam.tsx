@@ -117,7 +117,7 @@ const HomeTeam: React.FC = () => {
           </div>
           <div className="flex items-center gap-4 p-5 border-2 border-border bg-card hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <img
-              src="/images/team-florian.png"
+              src="/images/team-florian-square.png"
               alt="Florian Metzger"
               className="w-10 h-10 rounded-full border border-accent/20 object-cover flex-shrink-0"
               loading="lazy"
