@@ -55,9 +55,7 @@ const HomeHero: React.FC = () => {
           <div className="flex items-center justify-center gap-4 mb-8 animate-fade-in">
             <span className="h-px w-12 bg-gradient-primary" />
             <span className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground">
-              {language === 'de'
-                ? 'Für CEOs von finanzierten Startups · Series A–B · DACH'
-                : 'For CEOs of funded startups · Series A–B · DACH'}
+              Expertise × Speed = Impact
             </span>
             <span className="h-px w-12 bg-gradient-primary" />
           </div>
@@ -91,7 +89,9 @@ const HomeHero: React.FC = () => {
           {/* Badge */}
           <div className="flex justify-center mb-10 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-accent/5 shadow-brutal-sm">
-              Expertise × Speed = Impact
+              {language === 'de'
+                ? 'Für CEOs von finanzierten Startups · Series A–B · DACH'
+                : 'For CEOs of funded startups · Series A–B · DACH'}
             </span>
           </div>
 
