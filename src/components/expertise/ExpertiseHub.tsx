@@ -267,7 +267,44 @@ const ExpertiseHub: React.FC = () => {
         </p>
       </Section>
 
-      {/* ── Section 6: CTA — matching Home buttons ── */}
+      {/* ── Section 6: Research Teaser ── */}
+      <Section gradient="b">
+        <SectionHeader
+          overline="AI-NATIVE SCALING RESEARCH"
+          headline={language === 'de' ? <>Die wissenschaftliche <span className="italic text-gradient">Basis.</span></> : <>The scientific <span className="italic text-gradient">foundation.</span></>}
+          sub={t('Drei Frameworks. 62+ Unternehmen. Eine klare Antwort.', 'Three frameworks. 62+ companies. One clear answer.')}
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {[
+            { abbr: 'AMF', titleDe: 'AI Maturity Framework', titleEn: 'AI Maturity Framework', qDe: 'Wie reif ist ein Unternehmen im Umgang mit AI?', qEn: 'How mature is a company in its use of AI?', href: '/expertise/amf' },
+            { abbr: 'ANST', titleDe: 'AI-Native Scaling Theory', titleEn: 'AI-Native Scaling Theory', qDe: 'Warum skalieren AI-native Unternehmen superlinear?', qEn: 'Why do AI-native companies scale superlinearly?', href: '/expertise/anst' },
+            { abbr: 'SST', titleDe: 'Scaling Stack Theory', titleEn: 'Scaling Stack Theory', qDe: 'Welche Schichten müssen zusammenspielen?', qEn: 'Which layers need to align?', href: '/expertise/sst' },
+          ].map((fw, i) => (
+            <Link
+              key={fw.abbr}
+              to={fw.href}
+              className="group block p-6 border-2 border-border bg-card hover:border-primary/50 hover:shadow-glow transition-all duration-300"
+            >
+              <span className="text-xs font-bold tracking-wider text-accent/60">{fw.abbr}</span>
+              <h3 className="font-display text-lg mt-2 mb-2 text-foreground">{t(fw.titleDe, fw.titleEn)}</h3>
+              <p className="text-sm text-muted-foreground mb-4">{t(fw.qDe, fw.qEn)}</p>
+              <span className="inline-flex items-center text-sm text-accent group-hover:gap-2 transition-all">
+                {t('Mehr erfahren', 'Learn more')} <ArrowRight className="ml-1 h-4 w-4" />
+              </span>
+            </Link>
+          ))}
+        </div>
+        <div className="text-center">
+          <Link
+            to="/expertise/research"
+            className="inline-flex items-center gap-2 text-sm font-medium text-accent hover:gap-3 transition-all"
+          >
+            {t('Zum Research Hub', 'Go to Research Hub')} <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </Section>
+
+      {/* ── Section 7: CTA — matching Home buttons ── */}
       <Section gradient="a">
         <div
           ref={ctaRef as React.RefObject<HTMLDivElement>}

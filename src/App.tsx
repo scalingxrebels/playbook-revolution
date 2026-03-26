@@ -26,6 +26,11 @@ const ExpertiseM1 = lazy(() => import("./pages/ExpertiseM1"));
 const ExpertiseM2 = lazy(() => import("./pages/ExpertiseM2"));
 const ExpertiseM3 = lazy(() => import("./pages/ExpertiseM3"));
 const ExpertiseM4 = lazy(() => import("./pages/ExpertiseM4"));
+const ExpertiseResearch = lazy(() => import("./pages/ExpertiseResearch"));
+const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
+const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
+const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
+const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
 const Impressum = lazy(() => import("./pages/Impressum"));
@@ -136,6 +141,11 @@ const AppContent = () => {
           <Route path="/solutions/tools" element={<SolutionCategoryLanding />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/expertise/research" element={<ExpertiseResearch />} />
+          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
+          <Route path="/expertise/anst" element={<ExpertiseANST />} />
+          <Route path="/expertise/sst" element={<ExpertiseSST />} />
+          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/expertise/hypothesen-maschine" element={<ExpertiseM1 />} />
           <Route path="/expertise/uebersetzungskompetenz" element={<ExpertiseM2 />} />
           <Route path="/expertise/funktionierende-synthese" element={<ExpertiseM3 />} />
