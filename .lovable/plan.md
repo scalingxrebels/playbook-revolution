@@ -1,39 +1,27 @@
 
 
-## Plan: Featured-Toggle in Content Registry
+## Plan: Scroll-to-Top Fix für alle Seiten
 
-### Ansatz
+### Problem
+Der Browser hat ein eingebautes "Scroll Restoration" Feature, das bei Navigation die vorherige Scroll-Position wiederherstellt — und damit den `ScrollToTop`-Effekt überschreibt. Besonders bei lazy-geladenen Seiten (alle Seiten nutzen `lazy()`) kann das Timing kollidieren.
 
-Die `content_visibility`-Tabelle hat bereits `content_type` + `content_id` + `hidden`. Statt eine neue Tabelle zu bauen, fügen wir eine `featured`-Spalte zur bestehenden `content_visibility`-Tabelle hinzu. Das gleiche Upsert-Pattern wie für `hidden` wird für `featured` verwendet.
+### Fix in `src/components/ScrollToTop.tsx`
 
-### Änderungen
+Eine Zeile hinzufügen: `window.history.scrollRestoration = 'manual'` — damit wird die Browser-eigene Scroll-Wiederherstellung deaktiviert und `ScrollToTop` hat volle Kontrolle.
 
-**1. DB-Migration** — `featured` Spalte hinzufügen:
-```sql
-ALTER TABLE public.content_visibility 
-ADD COLUMN featured boolean NOT NULL DEFAULT false;
+```typescript
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'; // NEU
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname]);
+
+  return null;
+};
 ```
 
-**2. `useContentVisibility.ts`** — erweitern:
-- Interface `VisibilityOverride` bekommt `featured: boolean`
-- Neue Funktion `toggleFeatured(contentType, contentId, featured)` analog zu `toggleVisibility`
-- Neue Hilfsfunktion `isFeatured(contentType, contentId, staticFeatured?)` — DB-Override gewinnt über statischen Wert
-
-**3. `ContentVisibilityContext.tsx`** — erweitern:
-- `isFeatured()` Funktion ins Context-Interface aufnehmen
-- Provider liest `featured` mit aus der DB-Query
-
-**4. `ContentRegistry.tsx` — Solutions-Tab** erweitern:
-- Neue Spalte "Featured" mit `Switch`-Toggle (zwischen "Sichtbar" und "Vorschau")
-- `toggleFeatured('solution', tile.slug, newValue)` beim Umschalten
-- Visuell: Star-Icon oder Badge zur Kennzeichnung
-
-**5. `SolutionFeatured.tsx`** — anpassen:
-- Statt `t.featured` (statisch aus `solutionTiles.ts`) die neue `isFeatured('solution', t.slug, t.featured)` Funktion nutzen
-- So überschreibt der Admin-Toggle die statischen Defaults
-
-### Was sich nicht ändert
-- RLS-Policies bleiben (Admins full access, Public read)
-- Alle anderen Tabs (Playbooks, Cases, Insights) bleiben unverändert
-- Die statischen `featured`-Flags in `solutionTiles.ts` bleiben als Fallback
+### Betroffene Seiten
+Dieser Fix gilt global für alle Routen — Solutions, Category-Landings, und alle anderen Seiten. Keine weiteren Dateien betroffen.
 
