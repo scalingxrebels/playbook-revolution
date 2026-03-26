@@ -99,9 +99,9 @@ const researchCards: ResearchCard[] = [
 
 const researchStats = [
   { 
-    value: '250,000+', 
-    label: { en: 'Words', de: 'Wörter' }, 
-    sublabel: { en: 'of research', de: 'Forschung' },
+    value: '62+', 
+    label: { en: 'Companies', de: 'Unternehmen' }, 
+    sublabel: { en: 'analyzed', de: 'analysiert' },
     color: 'primary' as const 
   },
   { 
