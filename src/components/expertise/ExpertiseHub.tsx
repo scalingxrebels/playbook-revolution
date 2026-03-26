@@ -168,7 +168,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="a">
         <SectionHeader
           overline={t('DER UNTERSCHIED', 'THE DIFFERENCE')}
-          headline={t('Viele haben Expertise. Wenige haben ein System.', 'Many have expertise. Few have a system.')}
+          headline={language === 'de' ? <>Viele haben Expertise.<br />Wenige haben ein System.</> : <>Many have expertise.<br />Few have a system.</>}
         />
         <div
           ref={tableRef as React.RefObject<HTMLDivElement>}

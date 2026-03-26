@@ -112,7 +112,7 @@ const Solutions: React.FC = () => {
             {language === 'de' ? 'Alle Solutions' : 'All Solutions'}
           </span>
           <h2 className="font-display text-display-md text-foreground text-center mb-4">
-            Growth Engines × Scaling Systems × AI ={' '}
+            Growth Engines × Scaling Systems × AI<br />={' '}
             <span className="italic text-gradient">Hypergrowth</span>
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-6 max-w-2xl mx-auto">
