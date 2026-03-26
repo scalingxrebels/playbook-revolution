@@ -461,8 +461,8 @@ const ML: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             {de
-              ? <>Drei Momente.<br />Das ist warum ich tue, was ich tue.</>
-              : <>Three moments.<br />That's why I do what I do.</>}
+              ? <>Drei Momente.<br />Das ist warum ich tue, <span className="italic text-gradient">was ich tue.</span></>
+              : <>Three moments.<br />That's why I do <span className="italic text-gradient">what I do.</span></>}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6 mb-16">
