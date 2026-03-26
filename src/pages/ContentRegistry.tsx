@@ -22,7 +22,7 @@ const TableHeader = ({ children }: { children: React.ReactNode }) => (
 
 const ContentRegistry: React.FC = () => {
   const { user, loading, isAdmin } = useAuth();
-  const { mergeVisibility, toggleVisibility, isLoading: visLoading } = useContentVisibility();
+  const { mergeVisibility, toggleVisibility, toggleFeatured, isLoading: visLoading } = useContentVisibility();
   const [activeTab, setActiveTab] = useState('solutions');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [previewModal, setPreviewModal] = useState<{
