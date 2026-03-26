@@ -1,4 +1,4 @@
-import type { MechanismCard, CasePreview } from './types';
+import type { MechanismCard } from './types';
 
 export const mechanismCards: MechanismCard[] = [
   {
@@ -74,13 +74,38 @@ export const comparisonRows: ComparisonRow[] = [
   { labelDe: 'Speed (30 Tage)', labelEn: 'Speed (30 Days)', berater: 'no', mckinsey: 'no', intern: 'no', scalingx: 'yes' },
 ];
 
-export const hubCases: CasePreview[] = [
+export interface HubCase {
+  tagDe: string;
+  tagEn: string;
+  mechanisms: string[];
+  titleDe: string;
+  titleEn: string;
+  bodyDe: string;
+  bodyEn: string;
+  metrics: { label: string; value: string }[];
+  investmentDe: string;
+  investmentEn: string;
+  ctaDe: string;
+  ctaEn: string;
+  href: string;
+}
+
+export const hubCases: HubCase[] = [
   {
     tagDe: 'Series B · B2B SaaS · DACH',
     tagEn: 'Series B · B2B SaaS · DACH',
     mechanisms: ['M1', 'M4'],
-    resultDe: 'CAC von €12k auf €5k in 30 Tagen.',
-    resultEn: 'CAC from €12k to €5k in 30 days.',
+    titleDe: 'CAC Crisis gelöst — €12k auf €5k in 30 Tagen.',
+    titleEn: 'CAC Crisis solved — €12k to €5k in 30 days.',
+    bodyDe: 'Sales war nicht das Problem. Der ICP war falsch. M1 hat den echten Hebel gefunden, M4 hat die Execution beschleunigt.',
+    bodyEn: 'Sales wasn\'t the problem. The ICP was wrong. M1 found the real lever, M4 accelerated execution.',
+    metrics: [
+      { label: 'CAC', value: '-58%' },
+      { label: 'Pipeline', value: '+340%' },
+      { label: 'Speed', value: '30d' },
+    ],
+    investmentDe: 'Investment: €18K · ROI: 47x',
+    investmentEn: 'Investment: €18K · ROI: 47x',
     ctaDe: 'Case lesen',
     ctaEn: 'Read case',
     href: '/cases/cac-crisis-turnaround',
@@ -89,8 +114,17 @@ export const hubCases: CasePreview[] = [
     tagDe: 'Series A · €8M ARR',
     tagEn: 'Series A · €8M ARR',
     mechanisms: ['M2', 'M3'],
-    resultDe: 'ARR +53% in 17 Monaten.',
-    resultEn: 'ARR +53% in 17 months.',
+    titleDe: 'Stage Transition gemeistert — von €5M auf €25M ARR.',
+    titleEn: 'Stage transition mastered — from €5M to €25M ARR.',
+    bodyDe: '18 Monate auf €5M ARR festgesteckt. Falscher ICP, fehlende GTM-Engine. M2 hat die Strategie übersetzt, M3 hat das System gebaut.',
+    bodyEn: '18 months stuck at €5M ARR. Wrong ICP, missing GTM engine. M2 translated the strategy, M3 built the system.',
+    metrics: [
+      { label: 'ARR', value: '+400%' },
+      { label: 'ARR/FTE', value: '+116%' },
+      { label: 'Raised', value: '€30M' },
+    ],
+    investmentDe: 'Investment: €250K · ROI: 12x',
+    investmentEn: 'Investment: €250K · ROI: 12x',
     ctaDe: 'Case lesen',
     ctaEn: 'Read case',
     href: '/cases/stage-transition-series-b-ready',
