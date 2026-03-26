@@ -41,8 +41,8 @@ const SolutionFeatured: React.FC = () => {
           </h2>
           <p className={`text-muted-foreground mb-12 text-sm transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             {language === 'de'
-              ? `Händisch kuratiert. Aktuell: ${featuredTiles.length} Solutions.`
-              : `Hand-curated. Currently: ${featuredTiles.length} solutions.`}
+              ? `Kuratiert für CEOs. ${featuredTiles.length} Solutions.`
+              : `Curated for CEOs. ${featuredTiles.length} solutions.`}
           </p>
         </div>
 
