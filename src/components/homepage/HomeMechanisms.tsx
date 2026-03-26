@@ -40,7 +40,7 @@ const mechanisms = [
     titleEn: 'AI Orchestration',
     descDe: 'Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer.',
     descEn: 'Not a feature. A multiplier on M1–M3. Makes everything faster, sharper, deeper.',
-    href: '/expertise',
+    href: '/expertise/ai-orchestration',
   },
 ];
 
