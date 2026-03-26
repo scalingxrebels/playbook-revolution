@@ -1,25 +1,24 @@
 
 
-## Plan: Client-Ticker von Cases auf Home übernehmen
+## Plan: Fix — Text überlappt Button in "Gespräch buchen" Karte
 
-### Ansatz
+### Problem
 
-Den Ticker-Code aus `Cases.tsx` (Z.98-127) als eigenständige Komponente extrahieren und auf der Home-Seite direkt unter `HomeHero` einfügen.
+In der "Book a call"-Karte (prominent card) in `HomeWorkWithUs.tsx` läuft der Beschreibungstext über den CTA-Button. Die Ursache: `flex-1` auf dem Beschreibungstext (Z.110) füllt den verfügbaren Raum, aber der Button hat kein `mt-auto` und der CTA-Text "KOSTENLOSES GESPRÄCH BUCHEN" (uppercase durch Button-Basis) ist lang.
 
-### Dateien
+### Fix in `src/pages/homepage/HomeWorkWithUs.tsx`
+
+1. **Z.110**: Beschreibung `flex-1` beibehalten (sorgt dafür, dass die nicht-prominenten Karten gleich hoch sind)
+2. **Z.113-120**: Button-Container mit `mt-auto` wrappen, damit der Button immer am unteren Rand sitzt und nie vom Text überlappt wird
+3. **Z.121-125**: Gleiches für den Nicht-prominent-CTA-Link
+
+Konkret: den CTA-Block (sowohl Button als auch span) in ein `<div className="mt-auto">` wrappen, damit er immer am Kartenboden bleibt — unabhängig von der Textlänge.
+
+### Datei
 
 | Datei | Änderung |
 |---|---|
-| `src/components/ClientTicker.tsx` | Neue Komponente: Ticker-Markup aus Cases extrahiert (clientNames-Array, Label, Marquee-Animation) |
-| `src/pages/Index.tsx` | Nach `<HomeHero />` einfügen: `<ClientTicker />` |
-| `src/pages/Cases.tsx` | Import + Nutzung von `<ClientTicker />` statt Inline-Code (optional, Refactor) |
+| `src/components/homepage/HomeWorkWithUs.tsx` | Z.113-126: CTA-Block in `mt-auto` Container wrappen |
 
-### Komponente `ClientTicker.tsx`
-
-- Übernimmt 1:1 das Layout aus Cases: statisches Label links ("Mit wem wir gearbeitet haben"), Marquee-Scroll rechts mit Fade-Mask
-- `clientNames`-Array wird in die Komponente verschoben
-- Styling: `border-y border-border py-4 bg-background/50`
-- Animation: `animate-marquee` (bereits in Tailwind config definiert)
-
-3 Dateien. 1 neue Komponente, 2 Imports.
+1 Datei, 1 Stelle.
 
