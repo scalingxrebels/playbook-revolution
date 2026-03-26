@@ -105,7 +105,7 @@ const HomeComparison: React.FC = () => {
         >
           <Table>
             <TableHeader>
-              <TableRow className="border-border/30 bg-white/5">
+              <TableRow className="border-border/30 bg-muted/30">
                 <TableHead className="min-w-[180px]" />
                 <TableHead className="text-center text-muted-foreground font-medium">McKinsey / BCG</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">Freelancer</TableHead>

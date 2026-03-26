@@ -115,7 +115,7 @@ const HomeTeam: React.FC = () => {
               <Linkedin className="h-4 w-4" />
             </a>
           </div>
-          <div className="flex items-center gap-4 p-5 rounded-xl border-2 border-border/40 bg-card/10 hover:border-accent/30 hover:shadow-glow transition-all duration-300">
+          <div className="flex items-center gap-4 p-5 border-2 border-border bg-card hover:border-accent/30 hover:shadow-glow transition-all duration-300">
             <img
               src="/images/team-florian.png"
               alt="Florian Metzger"
