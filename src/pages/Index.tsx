@@ -22,6 +22,7 @@ const Index = () => {
           <main>
             {/* SECTION 1: HERO */}
             <HomeHero />
+            <ClientTicker />
             {/* SECTION 2: THE SHIFT */}
             <HomeShift />
             {/* SECTION 3: WINNING MECHANISMS GRID */}
