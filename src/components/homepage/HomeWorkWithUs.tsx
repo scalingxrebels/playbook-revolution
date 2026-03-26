@@ -61,6 +61,13 @@ const HomeWorkWithUs: React.FC = () => {
         <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
 
         <div className="container max-w-5xl mx-auto px-6 relative z-10">
+          <p
+            className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            {language === 'de' ? 'Zusammenarbeit' : 'Working together'}
+          </p>
           <h2
             className={`font-display text-3xl md:text-4xl lg:text-5xl mb-14 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
