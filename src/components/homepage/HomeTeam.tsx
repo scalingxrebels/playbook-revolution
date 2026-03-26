@@ -45,8 +45,8 @@ const HomeTeam: React.FC = () => {
           style={{ transitionDelay: '100ms' }}
         >
           {language === 'de'
-            ? 'Die Menschen hinter ScalingX.'
-            : 'The people behind ScalingX.'}
+            ? <>Die Menschen hinter <span className="italic text-gradient">ScalingX.</span></>
+            : <>The people behind <span className="italic text-gradient">ScalingX.</span></>}
         </h2>
 
         {/* Michel — Primary */}
