@@ -47,7 +47,7 @@ const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = (
 
 const SectionHeader: React.FC<{
   overline: string;
-  headline: string;
+  headline: React.ReactNode;
   sub?: string;
 }> = ({ overline, headline, sub }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
