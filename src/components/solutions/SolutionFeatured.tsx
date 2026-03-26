@@ -38,8 +38,8 @@ const SolutionFeatured: React.FC = () => {
         </h2>
         <p className="text-muted-foreground text-center mb-12 text-sm">
           {language === 'de'
-            ? 'Händisch kuratiert. Aktuell: 7 Solutions.'
-            : 'Hand-curated. Currently: 7 solutions.'}
+            ? `Händisch kuratiert. Aktuell: ${featuredTiles.length} Solutions.`
+            : `Hand-curated. Currently: ${featuredTiles.length} solutions.`}
         </p>
 
         {/* Grid: 3+2+2 on desktop */}

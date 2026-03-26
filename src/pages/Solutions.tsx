@@ -38,6 +38,11 @@ const Solutions: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<CategoryId | 'all'>(categoryParam || 'all');
   const [searchQuery, setSearchQuery] = useState(searchParam);
 
+  const visibleTilesTotal = useMemo(() => 
+    solutionTiles.filter(t => !isHidden('solution', t.slug, t.hidden)),
+    [isHidden]
+  );
+
   const filteredTiles = useMemo(() => {
     const challenge = challengeFilter === 'all' ? null : challengeFilter;
     const type = solutionTypeFilter === 'all' ? null : solutionTypeFilter;
@@ -88,7 +93,7 @@ const Solutions: React.FC = () => {
       <Navigation />
       
       {/* S1 — Hero */}
-      <SolutionHero />
+      <SolutionHero visibleSolutionCount={visibleTilesTotal.length} />
       
       {/* S2 — Featured */}
       <SolutionFeatured />
@@ -117,7 +122,7 @@ const Solutions: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 mb-8">
             {[
               { value: `${challenges.length - 1}`, labelDe: 'Challenges', labelEn: 'Challenges' },
-              { value: `${solutionTiles.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
+              { value: `${visibleTilesTotal.length}`, labelDe: 'Solutions', labelEn: 'Solutions' },
               { value: '15-80x', labelDe: 'Ø ROI', labelEn: 'Avg ROI' },
               { value: '92%', labelDe: 'Erfolgsrate', labelEn: 'Success Rate' },
             ].map((stat, idx) => (
@@ -178,8 +183,8 @@ const Solutions: React.FC = () => {
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
                 {language === 'de'
-                  ? `Zeige ${filteredTiles.length} von ${solutionTiles.length} Solutions`
-                  : `Showing ${filteredTiles.length} of ${solutionTiles.length} solutions`}
+                  ? `Zeige ${filteredTiles.length} von ${visibleTilesTotal.length} Solutions`
+                  : `Showing ${filteredTiles.length} of ${visibleTilesTotal.length} solutions`}
               </p>
             </div>
           </div>
