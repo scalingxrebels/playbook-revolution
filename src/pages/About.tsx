@@ -268,7 +268,7 @@ const About: React.FC = () => {
             {de ? 'DAS TEAM' : 'THE TEAM'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? 'Drei Menschen. Ein System.' : 'Three people. One system.'}
+            {de ? <>Drei Menschen.<br />Ein System.</> : <>Three people.<br />One system.</>}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -346,7 +346,7 @@ const About: React.FC = () => {
             {de ? 'WARUM ES FUNKTIONIERT' : 'WHY IT WORKS'}
           </p>
           <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? 'Andere beraten. Wir bauen.' : 'Others advise. We build.'}
+            {de ? <>Andere beraten.<br />Wir bauen.</> : <>Others advise.<br />We build.</>}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -549,7 +549,7 @@ const About: React.FC = () => {
             {de ? 'NÄCHSTER SCHRITT' : 'NEXT STEP'}
           </p>
           <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
-            {de ? '30 Minuten. Kein Pitch. Direkt mit Michel.' : '30 minutes. No pitch. Directly with Michel.'}
+            {de ? <>30 Minuten. Kein Pitch.<br />Direkt mit Michel.</> : <>30 minutes. No pitch.<br />Directly with Michel.</>}
           </h2>
           <p className={`text-lg text-muted-foreground max-w-xl mx-auto mb-10 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
             {de

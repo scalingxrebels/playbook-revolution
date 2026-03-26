@@ -28,7 +28,7 @@ const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = (
   );
 };
 
-const SectionHeader: React.FC<{ overline: string; headline: string }> = ({ overline, headline }) => {
+const SectionHeader: React.FC<{ overline: string; headline: React.ReactNode }> = ({ overline, headline }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   return (
     <div ref={ref as React.RefObject<HTMLDivElement>} className="text-center">

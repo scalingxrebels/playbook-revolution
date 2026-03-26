@@ -47,7 +47,7 @@ const Section: React.FC<{ children: React.ReactNode; gradient?: 'a' | 'b' }> = (
 
 const SectionHeader: React.FC<{
   overline: string;
-  headline: string;
+  headline: React.ReactNode;
   sub?: string;
 }> = ({ overline, headline, sub }) => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
@@ -103,7 +103,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="a">
         <SectionHeader
           overline={t('DAS SYSTEM', 'THE SYSTEM')}
-          headline={t('Vier Mechanismen. Ein Multiplier. Fucking fast.', 'Four mechanisms. One multiplier. Fucking fast.')}
+          headline={language === 'de' ? <>Vier Mechanismen. Ein Multiplier.<br />Fucking fast.</> : <>Four mechanisms. One multiplier.<br />Fucking fast.</>}
           sub={t('M1–M3 sind die Mechanismen. M4 ist der Verstärker auf alle drei.', 'M1–M3 are the mechanisms. M4 is the amplifier on all three.')}
         />
         <MechanismFlowDiagram />
@@ -116,7 +116,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="b">
         <SectionHeader
           overline={t('DIE VIER MECHANISMEN', 'THE FOUR MECHANISMS')}
-          headline={t('Vier Mechanismen. Einer davon erklärt die Lücke.', 'Four mechanisms. One of them explains the gap.')}
+          headline={language === 'de' ? <>Vier Mechanismen.<br />Einer davon erklärt die Lücke.</> : <>Four mechanisms.<br />One of them explains the gap.</>}
         />
         <div ref={mechGridRef as React.RefObject<HTMLDivElement>} className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {mechanismCards.map((m, i) => {
@@ -168,7 +168,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="a">
         <SectionHeader
           overline={t('DER UNTERSCHIED', 'THE DIFFERENCE')}
-          headline={t('Viele haben Expertise. Wenige haben ein System.', 'Many have expertise. Few have a system.')}
+          headline={language === 'de' ? <>Viele haben Expertise.<br />Wenige haben ein System.</> : <>Many have expertise.<br />Few have a system.</>}
         />
         <div
           ref={tableRef as React.RefObject<HTMLDivElement>}

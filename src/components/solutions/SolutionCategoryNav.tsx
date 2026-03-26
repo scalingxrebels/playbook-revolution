@@ -25,9 +25,9 @@ const SolutionCategoryNav: React.FC = () => {
           </p>
           <h2 className={`font-display text-display-md text-foreground mb-12 transition-all duration-700 ${headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             {language === 'de' ? (
-              <>Sechs Situationen. Sechs Wege. <span className="italic text-gradient">Eine ist deine.</span></>
+              <>Sechs Situationen. Sechs Wege.<br /><span className="italic text-gradient">Eine ist deine.</span></>
             ) : (
-              <>Six situations. Six paths. <span className="italic text-gradient">One is yours.</span></>
+              <>Six situations. Six paths.<br /><span className="italic text-gradient">One is yours.</span></>
             )}
           </h2>
         </div>
