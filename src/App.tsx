@@ -20,6 +20,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
 const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
+const SolutionCategoryLanding = lazy(() => import("./pages/SolutionCategoryLanding"));
 const Expertise = lazy(() => import("./pages/Expertise"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
@@ -127,6 +128,12 @@ const AppContent = () => {
           <Route path="/playbooks" element={<Playbooks />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/revenue-architecture-system" element={<RevenueArchitectureSystem />} />
+          <Route path="/solutions/insights-and-levers" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/growth-engines" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/scaling-systems" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/ai-orchestration" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/translating-strategy" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/tools" element={<SolutionCategoryLanding />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
           <Route path="/insights" element={<Insights />} />

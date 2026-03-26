@@ -23,13 +23,13 @@ const SolutionCTA: React.FC = () => {
           <h2 className="font-display text-display-md text-foreground mb-6">
             {language === 'de' ? (
               <>
-                Noch nicht sicher, welche
-                <span className="block italic text-gradient">Lösung passt?</span>
+                Nicht sicher welche Situation
+                <span className="block italic text-gradient">deine ist?</span>
               </>
             ) : (
               <>
-                Still not sure which
-                <span className="block italic text-gradient">solution is right?</span>
+                Not sure which situation
+                <span className="block italic text-gradient">is yours?</span>
               </>
             )}
           </h2>
@@ -37,8 +37,8 @@ const SolutionCTA: React.FC = () => {
           {/* Subline */}
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
             {language === 'de' 
-              ? 'Buche einen kostenlosen Inflection Call. Wir identifizieren deinen Engpass in 30 Minuten und empfehlen den richtigen Weg.'
-              : 'Book a free Inflection Call. We\'ll identify your bottleneck in 30 minutes and recommend the right path.'
+              ? '30 Minuten. Kein Pitch. Wir finden gemeinsam den richtigen Hebel.'
+              : '30 minutes. No pitch. We\'ll find the right lever together.'
             }
           </p>
           
@@ -59,15 +59,15 @@ const SolutionCTA: React.FC = () => {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             <span className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-accent" />
-              {language === 'de' ? 'Unverbindlich' : 'No commitment'}
+              {language === 'de' ? 'Direkt mit Michel' : 'Directly with Michel'}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Check className="w-4 h-4 text-accent" />
+              {language === 'de' ? 'Kein Formular' : 'No form'}
             </span>
             <span className="flex items-center gap-1.5">
               <Check className="w-4 h-4 text-accent" />
               {language === 'de' ? '30 Minuten' : '30 minutes'}
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Check className="w-4 h-4 text-accent" />
-              {language === 'de' ? 'Konkrete nächste Schritte' : 'Concrete next steps'}
             </span>
           </div>
         </div>
