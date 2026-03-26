@@ -16,11 +16,9 @@ const Footer: React.FC = () => {
 
   const sitemapLinks = [
     { label: 'Home', href: '/' },
-    { label: 'Solutions', href: '/solutions' },
-    { label: 'Playbooks', href: '/playbooks' },
     { label: 'Insights', href: '/insights' },
+    { label: 'Solutions', href: '/solutions' },
     { label: 'Cases', href: '/cases' },
-    { label: 'Expertise', href: '/expertise' },
     { label: 'About', href: '/about' },
   ];
 
