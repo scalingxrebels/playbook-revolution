@@ -1,59 +1,78 @@
 
 
-## Plan: M1–M4 korrigieren + Vergleichstabelle als neue Sektion
+## Plan: Homepage visuell auf AI-Native Niveau heben
 
-### 3 Änderungen
+### Analyse: Was AI-Native besser macht
 
----
-
-### 1. `src/components/homepage/HomeMechanisms.tsx` — Grid-Daten ersetzen
-
-Ersetze die 4 Mechanismen (Zeilen 7–40) durch die korrekten M1–M4:
-
-| # | Icon | Titel DE | Beschreibung DE | Link |
-|---|---|---|---|---|
-| M1 | Eye | Hypothesen-Maschine | Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen. | /expertise |
-| M2 | ArrowRightLeft (neu importieren) | Übersetzungskompetenz | Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt. | /expertise |
-| M3 | Settings | Funktionierende Synthese | Wir bauen Systeme die tragen — vollständig, ohne Kompromiss. | /expertise |
-| M4 | Cpu | AI Orchestration | Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer. | /expertise |
-
-EN-Texte analog. M4 Beschreibung EN: "Not a feature. A multiplier on M1–M3. Makes everything faster, sharper, deeper."
-
----
-
-### 2. `src/components/homepage/HomeComparison.tsx` — Neue Komponente
-
-Neue Sektion unterhalb von HomeMechanisms mit der Vergleichstabelle aus dem Briefing:
+Die `/ai-native` Seite hat deutlich mehr visuelle Tiefe als die aktuelle Home:
 
 ```text
-OVERLINE: UNSER USP
-H2: Warum wir.
-SUBLINE: Nicht einer der vier Mechanismen allein. Die Kombination.
-
-FORMEL-BADGE: EXPERTISE × SPEED = IMPACT
-
-TABELLE (5 Zeilen × 5 Spalten):
-                        McKinsey    Freelancer    Intern    Wir
-M1 Hypothesen-Maschine     ✅           ⚠️           ❌       ✅
-M2 Übersetzungskompetenz   ✅           ⚠️           ⚠️       ✅
-M3 Funktionierende Synthese ❌          ⚠️           ✅       ✅
-M4 AI Orchestration         ❌          ❌           ❌       ✅
-Speed (30 Tage)             ❌          ⚠️           ❌       ✅
+ELEMENT                    AI-NATIVE          HOME (AKTUELL)
+─────────────────────────────────────────────────────────────
+Hero Background            GrowthTrails ✅     Fehlt ❌
+Deep Space Colors          #0A0A0F hardcoded   HSL vars (flacher)
+Section Backgrounds        Dark mesh + grid    Plain bg-background
+Card Style                 border-2 + glow     border thin, kein glow
+Stat Badges                shadow-brutal-sm    Fehlen
+Parallax Layers            Durchgängig         Nur Hero + Formel
+Hover Effects              shadow-glow          Keine
+Visual Density             Hoch (Icons, Badges) Niedrig (nur Text)
 ```
 
-Styling: Gleiche Section-Struktur wie HomeMechanisms (container, max-w-5xl, scroll-animation). Tabelle mit `bg-card/50 border border-border/50 backdrop-blur-sm rounded-xl`. "Wir"-Spalte visuell hervorgehoben (accent color). ✅ = grün, ⚠️ = gelb/amber, ❌ = rot/muted.
+### 8 Änderungen
 
 ---
 
-### 3. `src/pages/Index.tsx` — Neue Sektion einfügen
+### 1. `HomeHero.tsx` — GrowthTrails hinzufügen
+- `GrowthTrails` Import + Render (die animierten S-Kurven aus AI-Native)
+- Deep Space Farben von `hsl(var(--background))` auf `#0A0A0F` / `#0F0F1A` / `#1A1A2E` (wie HeroOptimized)
 
-Zwischen HomeMechanisms und FormulaOptimized einfügen:
+### 2. `HomeShift.tsx` — Dark Section mit visueller Tiefe
+- Von `bg-background` zu dark section mit mesh gradient + grid pattern + parallax
+- Subtile Akzentlinie links neben den Absätzen (editorial-border Stil)
+- Übergang mit `bg-gradient-to-b` für Tiefe
 
-```text
-Section 3: HomeMechanisms
-Section 3.5 (NEU): HomeComparison  ← hier
-Section 4: FormulaOptimized (unverändert)
-```
+### 3. `HomeMechanisms.tsx` — Cards upgraden
+- `bg-muted/30` → dark section mit mesh background
+- Cards: `border` → `border-2`, glow effect on hover (`shadow-glow`)
+- Icon-Container mit farbigem Background (`bg-accent/10`)
+- M-Nummer als Badge oben rechts (wie HowItWorksOptimized Nummern)
 
-FormulaOptimized bleibt komplett so wie sie ist.
+### 4. `HomeComparison.tsx` — Visuell aufwerten
+- Dark section mit mesh + grid pattern
+- Tabelle: stärkerer Kontrast, "Wir"-Spalte mit accent glow
+- Formula Badge prominenter gestaltet
+
+### 5. `HomeCases.tsx` — AI-Native Card-Stil
+- Dark section mit parallax mesh
+- Cards: `border-2`, hover glow (`shadow-accent-glow`)
+- Metriken-Werte in `text-accent` statt `text-foreground`
+- Tag als farbiger Badge (wie ProofOptimized)
+
+### 6. `HomeWorkWithUs.tsx` — Mehr visuelles Gewicht
+- Cards: `border-2`, glow effects
+- Weg 3 (prominent): `shadow-accent-glow` permanent subtle
+- Grid pattern im Hintergrund
+
+### 7. `HomeTeam.tsx` — Dark Section + visuelle Elemente
+- Dark section mit mesh gradient
+- Michel-Foto: größerer Rahmen mit accent border glow
+- Partner-Karten: `border-2` + subtiles hover
+- Dekorative Akzentlinien
+
+### 8. `Index.tsx` — Keine Änderung
+Sektionsreihenfolge bleibt identisch. Alle Änderungen sind rein visuell in den Komponenten.
+
+### Design-Konsistenz mit AI-Native
+
+Durchgängig angewandt:
+- **Deep Space Backgrounds**: Alternierende dark sections mit `#0A0A0F`-Palette, mesh overlays, grid patterns
+- **Parallax**: `useParallax` / `useParallaxLayers` in allen Sektionen
+- **Cards**: `border-2 border-border hover:border-accent/50` + `shadow-glow` / `shadow-accent-glow`
+- **Badges**: `shadow-brutal-sm` Stat-Badges auf Cards
+- **Scroll Animations**: `useScrollAnimation` mit staggered delays (bereits vorhanden)
+- **Noise Texture**: `noise` class auf dark sections
+
+### Keine inhaltlichen Änderungen
+Alle Texte, Links, CTAs, Daten bleiben exakt gleich. Nur visuelle Upgrades.
 
