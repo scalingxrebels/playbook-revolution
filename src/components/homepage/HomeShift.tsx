@@ -1,10 +1,12 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
 
 const HomeShift: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.15 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.15] });
 
   const deContent = [
     'Du hast eine Strategie. Sie sieht auf dem Slide Deck gut aus.',
@@ -25,10 +27,24 @@ const HomeShift: React.FC = () => {
   return (
     <section
       id="shift-section"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative py-24 md:py-32 bg-background"
+      ref={(el) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = el;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+      }}
+      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
     >
-      <div className="container max-w-3xl mx-auto px-6">
+      {/* Deep space background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1A] to-[#0A0A0F] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+
+      <div className="container max-w-3xl mx-auto px-6 relative z-10">
         <h2
           className={`font-display text-3xl md:text-4xl lg:text-5xl mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
@@ -43,15 +59,18 @@ const HomeShift: React.FC = () => {
 
         <div className="space-y-6">
           {content.map((paragraph, i) => (
-            <p
+            <div
               key={i}
-              className={`text-lg text-muted-foreground leading-relaxed transition-all duration-700 ${
+              className={`flex gap-4 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${(i + 1) * 150}ms` }}
             >
-              {paragraph}
-            </p>
+              <div className="w-0.5 flex-shrink-0 bg-accent/30 rounded-full" />
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            </div>
           ))}
         </div>
       </div>

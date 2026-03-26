@@ -47,9 +47,14 @@ const HomeComparison: React.FC = () => {
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className="relative py-24 md:py-32"
+      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
     >
-      <div className="container max-w-5xl mx-auto px-6">
+      {/* Deep space background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A2E] via-[#0F0F1A] to-[#0A0A0F]" />
+      <div className="absolute inset-0 bg-mesh opacity-30" />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-10" />
+
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
           className={`text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4 transition-all duration-700 ${
@@ -81,7 +86,7 @@ const HomeComparison: React.FC = () => {
 
         {/* Formula Badge */}
         <div
-          className={`inline-block px-4 py-2 rounded-full border border-accent/30 bg-accent/10 text-accent text-sm font-semibold tracking-wider mb-10 transition-all duration-700 ${
+          className={`inline-block px-5 py-2.5 rounded-full border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider mb-10 shadow-brutal-sm transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '300ms' }}
@@ -91,28 +96,28 @@ const HomeComparison: React.FC = () => {
 
         {/* Comparison Table */}
         <div
-          className={`w-full overflow-x-auto rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-700 ${
+          className={`w-full overflow-x-auto rounded-xl border-2 border-border/50 bg-card/5 backdrop-blur-sm transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '400ms' }}
         >
           <Table>
             <TableHeader>
-              <TableRow className="border-border/50 bg-muted/30">
+              <TableRow className="border-border/30 bg-white/5">
                 <TableHead className="min-w-[180px]" />
                 <TableHead className="text-center text-muted-foreground font-medium">McKinsey</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">Freelancer</TableHead>
                 <TableHead className="text-center text-muted-foreground font-medium">
                   {language === 'de' ? 'Intern' : 'Internal'}
                 </TableHead>
-                <TableHead className="text-center font-bold text-accent border-l-2 border-accent/30 bg-accent/5">
+                <TableHead className="text-center font-bold text-accent border-l-2 border-accent/30 bg-accent/10">
                   {language === 'de' ? 'Wir' : 'Us'}
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {rows.map((row, i) => (
-                <TableRow key={i} className="border-border/30">
+                <TableRow key={i} className="border-border/20">
                   <TableCell className="font-medium text-foreground text-sm">
                     {language === 'de' ? row.labelDe : row.labelEn}
                   </TableCell>

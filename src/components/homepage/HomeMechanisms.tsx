@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
 import { Eye, ArrowRightLeft, Settings, Cpu, ArrowRight } from 'lucide-react';
 
 const mechanisms = [
   {
     icon: Eye,
+    num: 'M1',
     titleDe: 'Hypothesen-Maschine',
     titleEn: 'Hypothesis Engine',
     descDe: 'Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen.',
@@ -15,6 +17,7 @@ const mechanisms = [
   },
   {
     icon: ArrowRightLeft,
+    num: 'M2',
     titleDe: 'Übersetzungskompetenz',
     titleEn: 'Translation Competence',
     descDe: 'Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt.',
@@ -23,6 +26,7 @@ const mechanisms = [
   },
   {
     icon: Settings,
+    num: 'M3',
     titleDe: 'Funktionierende Synthese',
     titleEn: 'Functioning Synthesis',
     descDe: 'Wir bauen Systeme die tragen — vollständig, ohne Kompromiss.',
@@ -31,6 +35,7 @@ const mechanisms = [
   },
   {
     icon: Cpu,
+    num: 'M4',
     titleDe: 'AI Orchestration',
     titleEn: 'AI Orchestration',
     descDe: 'Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer.',
@@ -42,13 +47,28 @@ const mechanisms = [
 const HomeMechanisms: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.12] });
 
   return (
     <section
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative py-24 md:py-32 bg-muted/30"
+      ref={(el) => {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = el;
+        (containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+      }}
+      className="dark-section relative py-24 md:py-32 overflow-hidden noise"
     >
-      <div className="container max-w-5xl mx-auto px-6">
+      {/* Deep space background */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-15" />
+
+      <div className="container max-w-5xl mx-auto px-6 relative z-10">
         {/* Overline */}
         <p
           className={`text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4 transition-all duration-700 ${
@@ -90,12 +110,18 @@ const HomeMechanisms: React.FC = () => {
               <Link
                 key={i}
                 to={m.href}
-                className={`group block p-8 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-accent/40 hover:bg-card/80 transition-all duration-500 ${
+                className={`group relative block p-8 rounded-xl border-2 border-border/50 bg-card/5 backdrop-blur-sm hover:border-accent/50 hover:shadow-glow transition-all duration-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${(i + 2) * 100}ms` }}
               >
-                <Icon className="h-6 w-6 text-accent mb-4" />
+                {/* M-number badge */}
+                <span className="absolute top-4 right-4 text-xs font-bold text-accent/60 tracking-wider">
+                  {m.num}
+                </span>
+                <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
+                  <Icon className="h-5 w-5 text-accent" />
+                </div>
                 <h3 className="font-display text-xl mb-2 text-foreground">
                   {language === 'de' ? m.titleDe : m.titleEn}
                 </h3>
