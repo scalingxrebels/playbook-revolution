@@ -79,8 +79,8 @@ const ExpertiseHub: React.FC = () => {
     <>
       {/* ── Section 1: Hero ── */}
       <SharedHero
-        overlineEn="HOW WE THINK · NOT WHAT WE KNOW"
-        overlineDe="WIE WIR DENKEN · NICHT WAS WIR WISSEN"
+        overlineEn="EXPERTISE × SPEED = IMPACT"
+        overlineDe="EXPERTISE × SPEED = IMPACT"
         headlineLine1En="Expertise is not a title."
         headlineLine1De="Expertise ist kein Titel."
         headlineLine2En="It's a system."
@@ -90,7 +90,7 @@ const ExpertiseHub: React.FC = () => {
         variant="dark"
       >
         <div className="inline-block px-5 py-2.5 border-2 border-accent/40 bg-accent/10 text-accent text-sm font-bold tracking-wider">
-          EXPERTISE × SPEED = IMPACT
+          {t('WIE WIR DENKEN · NICHT WAS WIR WISSEN', 'HOW WE THINK · NOT WHAT WE KNOW')}
         </div>
       </SharedHero>
 
