@@ -99,7 +99,7 @@ const HomeHero: React.FC = () => {
           <div className="animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <Button
               size="lg"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-base shadow-accent-glow"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-base shadow-accent-glow whitespace-nowrap"
               onClick={() => setIsBookingOpen(true)}
             >
               {language === 'de' ? 'Kostenloses Gespräch buchen' : 'Book a free call'}

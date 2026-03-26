@@ -130,7 +130,7 @@ const HomeCases: React.FC = () => {
             <Link
               key={i}
               to={c.slug}
-              className={`group block p-6 rounded-xl border-2 border-border/50 bg-card/5 backdrop-blur-sm hover:border-accent/50 hover:shadow-accent-glow transition-all duration-500 ${
+              className={`group block p-6 rounded-xl border-2 border-border/50 bg-card/10 hover:border-accent/50 hover:shadow-accent-glow transition-all duration-500 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${(i + 2) * 120}ms` }}
