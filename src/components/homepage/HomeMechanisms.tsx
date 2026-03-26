@@ -13,7 +13,7 @@ const mechanisms = [
     titleEn: 'Hypothesis Engine',
     descDe: 'Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen.',
     descEn: 'We find the right lever — before others even ask the question.',
-    href: '/expertise',
+    href: '/expertise/hypothesen-maschine',
   },
   {
     icon: ArrowRightLeft,
