@@ -129,7 +129,7 @@ const Solutions: React.FC = () => {
           </div>
 
           {/* Filters */}
-          <div className="space-y-6 bg-muted/30 border border-border <div className="space-y-6 bg-muted/30 border border-border p-6 mb-8">">
+          <div className="space-y-6 bg-muted/30 border border-border p-6 mb-8">
             {/* Search */}
             <div className="relative max-w-xl mx-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
