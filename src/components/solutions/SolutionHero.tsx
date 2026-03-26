@@ -1,14 +1,10 @@
 import React from 'react';
 import SharedHero from '@/components/shared/SharedHero';
 
-interface SolutionHeroProps {
-  visibleSolutionCount?: number;
-}
-
-const SolutionHero: React.FC<SolutionHeroProps> = ({ visibleSolutionCount = 6 }) => {
+const SolutionHero: React.FC = () => {
   const stats = [
     { value: '9', label: { en: 'Challenges', de: 'Challenges' }, color: 'accent' as const },
-    { value: visibleSolutionCount.toString(), label: { en: 'Solutions', de: 'Solutions' }, color: 'primary' as const },
+    { value: '6', label: { en: 'Solution Portfolios', de: 'Solution Portfolios' }, color: 'primary' as const },
     { value: '15-80x', label: { en: 'Avg ROI', de: 'Ø ROI' }, color: 'primary' as const },
     { value: '92%', label: { en: 'Success Rate', de: 'Erfolgsrate' }, color: 'accent' as const },
   ];
