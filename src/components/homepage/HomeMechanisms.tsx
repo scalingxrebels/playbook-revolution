@@ -13,7 +13,7 @@ const mechanisms = [
     titleEn: 'Hypothesis Engine',
     descDe: 'Wir finden den richtigen Hebel — bevor andere überhaupt die Frage stellen.',
     descEn: 'We find the right lever — before others even ask the question.',
-    href: '/expertise',
+    href: '/expertise/hypothesen-maschine',
   },
   {
     icon: ArrowRightLeft,
@@ -22,7 +22,7 @@ const mechanisms = [
     titleEn: 'Translation Competence',
     descDe: 'Wir übersetzen Strategie in das richtige Zielsystem — so dass sie tatsächlich wirkt.',
     descEn: 'We translate strategy into the right target system — so it actually works.',
-    href: '/expertise',
+    href: '/expertise/uebersetzungskompetenz',
   },
   {
     icon: Settings,
@@ -31,7 +31,7 @@ const mechanisms = [
     titleEn: 'Functioning Synthesis',
     descDe: 'Wir bauen Systeme die tragen — vollständig, ohne Kompromiss.',
     descEn: 'We build systems that hold — complete, without compromise.',
-    href: '/expertise',
+    href: '/expertise/funktionierende-synthese',
   },
   {
     icon: Cpu,
@@ -40,7 +40,7 @@ const mechanisms = [
     titleEn: 'AI Orchestration',
     descDe: 'Nicht als Feature. Als Multiplier auf M1–M3. Macht alles schneller, schärfer, tiefer.',
     descEn: 'Not a feature. A multiplier on M1–M3. Makes everything faster, sharper, deeper.',
-    href: '/expertise',
+    href: '/expertise/ai-orchestration',
   },
 ];
 

@@ -334,25 +334,25 @@ export const breadcrumbRegistry: Record<string, BreadcrumbItem[]> = {
     { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
   ],
-  '/expertise/amf': [
+  '/expertise/hypothesen-maschine': [
     { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
-    { name: 'Adaptive Maturity Framework', path: '/expertise/amf' },
+    { name: 'Hypothesen-Maschine', path: '/expertise/hypothesen-maschine' },
   ],
-  '/expertise/anst': [
+  '/expertise/uebersetzungskompetenz': [
     { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
-    { name: 'AI-Native Scaling Theory', path: '/expertise/anst' },
+    { name: 'Übersetzungskompetenz', path: '/expertise/uebersetzungskompetenz' },
   ],
-  '/expertise/sst': [
+  '/expertise/funktionierende-synthese': [
     { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
-    { name: 'Superlinear Scaling Theory', path: '/expertise/sst' },
+    { name: 'Funktionierende Synthese', path: '/expertise/funktionierende-synthese' },
   ],
-  '/expertise/unified-framework': [
+  '/expertise/ai-orchestration': [
     { name: 'Home', path: '/' },
     { name: 'Expertise', path: '/expertise' },
-    { name: 'Unified Framework', path: '/expertise/unified-framework' },
+    { name: 'AI Orchestration', path: '/expertise/ai-orchestration' },
   ],
 
   // =========================================================================
