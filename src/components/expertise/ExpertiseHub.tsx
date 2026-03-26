@@ -271,7 +271,7 @@ const ExpertiseHub: React.FC = () => {
       <Section gradient="b">
         <SectionHeader
           overline="AI-NATIVE SCALING RESEARCH"
-          headline={language === 'de' ? <>Die wissenschaftliche <span className="italic text-gradient">Basis.</span></> : <>The scientific <span className="italic text-gradient">foundation.</span></>}
+          headline={language === 'de' ? <>AI-Native Scaling <span className="italic text-gradient">wissenschaftlich</span> untersucht.</> : <>AI-Native Scaling <span className="italic text-gradient">scientifically</span> investigated.</>}
           sub={t('Drei Frameworks. 62+ Unternehmen. Eine klare Antwort.', 'Three frameworks. 62+ companies. One clear answer.')}
         />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
