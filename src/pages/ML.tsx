@@ -1,722 +1,532 @@
-import { useState, useMemo } from "react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ArrowRight, Calendar, Clock, Zap, Heart, Lightbulb, Target, Users, Sparkles, Quote, X, Smile, Eye, Rocket, Brain, Star, ChevronRight, Linkedin, BookOpen, Globe } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { useLanguage } from "@/contexts/LanguageContext";
-import FilloutBookingModal from "@/components/forms/FilloutBookingModal";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, Quote, X, Lightbulb, Target, Star, Linkedin, BookOpen, Layers } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
+import TwinklingStars from '@/components/TwinklingStars';
+import GrowthTrails from '@/components/GrowthTrails';
+import FilloutBookingModal from '@/components/forms/FilloutBookingModal';
+import PersonSchema from '@/components/seo/PersonSchema';
+import { PageSEO } from '@/components/seo';
 
-const STORAGE_KEY = 'scalingx_utm_params';
+/* ─────────────── SECTION WRAPPER (Home pattern) ─────────────── */
+const Section: React.FC<{
+  children: React.ReactNode;
+  dark?: boolean;
+  id?: string;
+}> = ({ children, dark, id }) => {
+  const { containerRef, offsets } = useParallaxLayers({ speeds: [0.05, 0.15] });
 
-function buildEmbedUrl(formSlug: string, source: string): string {
-  const baseUrl = `https://cal.scalingx.io/${formSlug}`;
-  const params = new URLSearchParams();
-  
-  try {
-    const stored = sessionStorage.getItem(STORAGE_KEY);
-    if (stored) {
-      const utmParams = JSON.parse(stored);
-      if (utmParams.utm_source) params.set('utm_source', utmParams.utm_source);
-      if (utmParams.utm_medium) params.set('utm_medium', utmParams.utm_medium);
-      if (utmParams.utm_campaign) params.set('utm_campaign', utmParams.utm_campaign);
-      if (utmParams.utm_content) params.set('utm_content', utmParams.utm_content);
-      if (utmParams.utm_term) params.set('utm_term', utmParams.utm_term);
-    }
-  } catch (e) {
-    console.warn('Failed to read UTM params:', e);
-  }
-  
-  params.set('source', source);
-  const queryString = params.toString();
-  return queryString ? `${baseUrl}?${queryString}` : baseUrl;
-}
+  return (
+    <section
+      id={id}
+      ref={containerRef as React.RefObject<HTMLElement>}
+      className={`relative py-24 md:py-32 overflow-hidden ${dark ? 'dark-section' : ''}`}
+    >
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[0]}px) scale(1.05)` }}
+      />
+      <div
+        className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100"
+        style={{ transform: `translateY(${offsets[1]}px) scale(1.05)` }}
+      />
+      <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
+      <div className="relative z-10">{children}</div>
+    </section>
+  );
+};
 
-const ML = () => {
-  const { t } = useLanguage();
-  const [selectedBooking, setSelectedBooking] = useState<'30min' | '60min'>('30min');
+/* ═══════════════════════════════════════════════════════════════ */
+/*  ML PAGE                                                       */
+/* ═══════════════════════════════════════════════════════════════ */
+const ML: React.FC = () => {
+  const { language } = useLanguage();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [popupBookingType, setPopupBookingType] = useState<'30min' | '60min'>('30min');
 
-  const testimonials = [
-    t('ml.testimonial1'), t('ml.testimonial2'), t('ml.testimonial3'), t('ml.testimonial4'),
-    t('ml.testimonial5'), t('ml.testimonial6'), t('ml.testimonial7'), t('ml.testimonial8')
+  const de = language === 'de';
+
+  /* ─── HERO ─── */
+  const heroRef = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+
+  const badges = ['Revenue Architecture', 'GTM Motions', 'AI Orchestration', 'Investor Readiness'];
+
+  /* ─── SECTION 2: DIE FORMEL ─── */
+  const s2 = useScrollAnimation({ threshold: 0.15 });
+  const formulaParagraphs = de
+    ? [
+        'Expertise ohne Speed ist Zeitverschwendung. Speed ohne Expertise ist Pfusch. Beides zusammen — das ist Impact.',
+        'Ich erfasse komplexe Zusammenhänge in Minuten. Was andere Wochen kostet, kostet mich Stunden. Nicht weil ich oberflächlich bin — sondern weil ich Muster erkenne die andere nicht sehen.',
+        'Das ist M1: Ich komme in jedes Gespräch mit einer Theorie. Nicht mit einer Frage.',
+      ]
+    : [
+        "Expertise without speed is a waste of time. Speed without expertise is shoddy work. Both together — that's impact.",
+        "I grasp complex relationships in minutes. What costs others weeks, costs me hours. Not because I'm superficial — but because I recognize patterns others don't see.",
+        "That's M1: I come into every conversation with a theory. Not with a question.",
+      ];
+
+  /* ─── SECTION 3: STORY ─── */
+  const s3 = useScrollAnimation({ threshold: 0.1 });
+  const stations = [
+    {
+      label: de ? 'DIE ERKENNTNIS' : 'THE INSIGHT',
+      title: de
+        ? 'Menschen können Dinge tun, die sie selbst nicht für möglich halten.'
+        : "People can do things they didn't think possible.",
+      body: de
+        ? 'Das ist die Grundüberzeugung die alles andere antreibt. Wenn du ihnen die richtigen Systeme gibst. Wenn du ihnen Vertrauen schenkst. Wenn du ihnen Wissen zugänglich machst. Das ist Leadership. Und das ist der Grund warum ich Systeme baue — nicht Slides.'
+        : "That's the core belief driving everything else. When you give them the right systems. When you give them trust. When you make knowledge accessible. That's leadership. And that's why I build systems — not slides.",
+    },
+    {
+      label: de ? 'DER BEWEIS' : 'THE PROOF',
+      title: de ? '€1,3M auf €13,7M ARR. In 2 Jahren.' : '€1.3M to €13.7M ARR. In 2 years.',
+      body: de
+        ? 'Bei smapOne habe ich gelernt was wirklich skaliert. Nicht Ideen. Nicht Strategien. Systeme. AI erkannt bevor ChatGPT kam. Marktleadership ausgebaut. Schneller gewachsen als der Markt. Rule of 40 +10 Punkte. EBITDA von –€300k auf +€150k. Das ist nicht Theorie. Das ist Erfahrung.'
+        : "At smapOne I learned what truly scales. Not ideas. Not strategies. Systems. Recognized AI before ChatGPT arrived. Expanded market leadership. Grew faster than the market. Rule of 40 +10 points. EBITDA from –€300k to +€150k. That's not theory. That's experience.",
+    },
+    {
+      label: de ? 'DIE KONSEQUENZ' : 'THE CONSEQUENCE',
+      title: de
+        ? 'ScalingX. Weil die Lücke zwischen Strategie und Realität zu gross ist.'
+        : 'ScalingX. Because the gap between strategy and reality is too wide.',
+      body: de
+        ? '2024: ScalingX gegründet. 2025: ScalingX Hypergrowth. Das Buch. 8 Kunden. 11 Projekte. Jedes Startup hat heute eine Strategie. Das Problem ist nicht die Strategie — es ist die Übersetzung in operative Realität. Das ist was wir tun. Nicht irgendwann. In 30 Tagen.'
+        : '2024: Founded ScalingX. 2025: ScalingX Hypergrowth. The book. 8 customers. 11 projects. Every startup has a strategy today. The problem isn\'t strategy — it\'s the translation into operational reality. That\'s what we do. Not someday. In 30 days.',
+    },
   ];
 
-  const principles = [
-    { letter: "P", title: t('ml.principle.p.title'), desc: t('ml.principle.p.desc') },
-    { letter: "R", title: t('ml.principle.r.title'), desc: t('ml.principle.r.desc') },
-    { letter: "I", title: t('ml.principle.i.title'), desc: t('ml.principle.i.desc') },
-    { letter: "C", title: t('ml.principle.c.title'), desc: t('ml.principle.c.desc') },
-    { letter: "E", title: t('ml.principle.e1.title'), desc: t('ml.principle.e1.desc') },
-    { letter: "P", title: t('ml.principle.p2.title'), desc: t('ml.principle.p2.desc') },
-    { letter: "L", title: t('ml.principle.l.title'), desc: t('ml.principle.l.desc') },
-    { letter: "A", title: t('ml.principle.a.title'), desc: t('ml.principle.a.desc') },
-    { letter: "Q", title: t('ml.principle.q.title'), desc: t('ml.principle.q.desc') },
-    { letter: "E", title: t('ml.principle.e2.title'), desc: t('ml.principle.e2.desc') },
+  /* ─── SECTION 4: TESTIMONIALS ─── */
+  const s4 = useScrollAnimation({ threshold: 0.1 });
+  const prominentTestimonials = [
+    {
+      text: de
+        ? 'Das Projekt war inspirierend, herausfordernd und strukturiert. Das Resultat war atemberaubend. Uneingeschränkte Empfehlung.'
+        : 'The project was inspiring, challenging and structured. The result was breathtaking. Unreserved recommendation.',
+    },
+    {
+      text: de
+        ? 'Du hast super viel bewegt und vor allem Professionalität reingebracht. Du bist ein echter Typ mit viel Empathie und hast eine Menge auf dem Kasten.'
+        : "You've accomplished a lot and above all brought professionalism. You're a genuine person with a lot of empathy and have a lot going for you.",
+    },
+    {
+      text: de
+        ? 'Deine Art zu begeistern, deine offene, freundliche und gewinnende Art zu kommunizieren — damit hast du mich eingenommen. Du hast Power ohne Ende und Wissen.'
+        : "Your way of inspiring, your open, friendly and winning way of communicating — that's what won me over. You have endless power and knowledge.",
+    },
+  ];
+  const secondaryTestimonials = [
+    de ? 'Du bist einer der brillantesten Redner, die ich je gesehen habe.' : 'You are one of the most brilliant speakers I have ever seen.',
+    de ? 'Durch deine Führung lerne ich, mir selbst zu vertrauen. Du bist Coach, Mentor und Vorbild — und gibst mir trotzdem immer das Gefühl von Augenhöhe.' : "Through your leadership I learn to trust myself. You are coach, mentor and role model — and yet you always make me feel like we're on the same level.",
+    de ? 'Tausendsassa. Erster Mentor. So möchte ich sein.' : "Jack of all trades. First mentor. That's who I want to be.",
+    de ? 'Ich habe an dir sehr geschätzt, dass du Business-Themen so nahbar gemacht hast. Du warst oft ein Fels der Vernunft.' : 'I really appreciated that you made business topics so approachable. You were often a voice of reason.',
   ];
 
-  const cantTolerate = [
-    { title: t('ml.section7.item1.title'), desc: t('ml.section7.item1.text') },
-    { title: t('ml.section7.item2.title'), desc: t('ml.section7.item2.text') },
-    { title: t('ml.section7.item3.title'), desc: t('ml.section7.item3.text') },
-    { title: t('ml.section7.item4.title'), desc: t('ml.section7.item4.text') },
-    { title: t('ml.section7.item5.title'), desc: t('ml.section7.item5.text') },
+  /* ─── SECTION 5: NOT ─── */
+  const s5 = useScrollAnimation({ threshold: 0.1 });
+  const nots = [
+    {
+      title: de ? 'Pfusch' : 'Shoddy Work',
+      body: de
+        ? 'Dinge oberflächlich machen weil der Aufwand scheut. Das ist nicht Effizienz. Das ist Respektlosigkeit.'
+        : "Doing things superficially because effort is avoided. That's not efficiency. That's disrespect.",
+    },
+    {
+      title: de ? 'Zeitverschwendung' : 'Wasting Time',
+      body: de
+        ? 'Falsche Entscheidungen. Verschleppte Themen. Dinge nicht tun, zu spät tun, falsch tun. Das kostet Startups ihre Zukunft.'
+        : "Wrong decisions. Delayed topics. Not doing things, doing them too late, doing them wrong. That costs startups their future.",
+    },
+    {
+      title: 'Change Resistance',
+      body: de
+        ? 'Startups sind per Design Unternehmen die sich konstant verändern müssen. Wer träge ist, ist am falschen Ort.'
+        : 'Startups are by design companies that must constantly change. Those who are sluggish are in the wrong place.',
+    },
   ];
 
-  // Build embed URL with UTM + source
-  const filloutUrl = useMemo(() => {
-    const slug = selectedBooking === '30min' ? 'ml-sync' : 'ml-deep-dive';
-    return buildEmbedUrl(slug, 'team-ml');
-  }, [selectedBooking]);
+  /* ─── SECTION 6: DRIVES ─── */
+  const s6 = useScrollAnimation({ threshold: 0.1 });
+  const moments = [
+    {
+      icon: Lightbulb,
+      title: de ? 'WENN JEMAND ES VERSTANDEN HAT' : 'WHEN SOMEONE GETS IT',
+      body: de
+        ? 'Der Moment wo Klarheit entsteht. Wo der CEO sieht: Das ist der Hebel.'
+        : 'The moment clarity emerges. When the CEO sees: This is the lever.',
+    },
+    {
+      icon: Target,
+      title: de ? 'WENN JEMAND ES ANGEWENDET HAT' : 'WHEN SOMEONE APPLIES IT',
+      body: de
+        ? 'Der Moment wo das System läuft. Nicht in der Theorie. In der Realität.'
+        : 'The moment the system runs. Not in theory. In reality.',
+    },
+    {
+      icon: Star,
+      title: de ? 'WENN JEMAND DAMIT ERFOLG HAT' : 'WHEN SOMEONE SUCCEEDS',
+      body: de
+        ? 'Und wir das gemeinsam feiern. Das ist der Grund für alles andere.'
+        : "And we celebrate it together. That's the reason for everything else.",
+    },
+  ];
+
+  /* ─── SECTION 7: CTA ─── */
+  const s7 = useScrollAnimation({ threshold: 0.1 });
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Navigation />
-      
-      {/* Animated Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-mesh opacity-50" />
-        <div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-pulse-slow"
-          style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.15) 0%, transparent 70%)' }}
+      <PageSEO
+        title="Michel Lason — Founder & CEO · ScalingX Hypergrowth"
+        description={de ? 'Hat €1,3M auf €13,7M ARR gebracht. In 2 Jahren. Findet den Hebel der wirklich zieht — und setzt ihn um.' : 'Grew €1.3M to €13.7M ARR. In 2 years. Finds the lever that actually works — and executes it.'}
+        path="/about/ml"
+      />
+      <PersonSchema
+        name="Michel Lason"
+        jobTitle="Founder & CEO"
+        description="Grew €1.3M to €13.7M ARR in 2 years. Expertise × Speed = Impact."
+        image="/images/ml-hero-new.png"
+        url="/about/ml"
+        sameAs={['https://www.linkedin.com/in/michellason']}
+      />
+
+      {/* ════════════════════ SECTION 1 — HERO ════════════════════ */}
+      <section
+        ref={heroRef.containerRef as React.RefObject<HTMLElement>}
+        className="dark-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise"
+      >
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+          style={{ transform: `translateY(${heroRef.offsets[0]}px) scale(1.1)` }}
         />
-        <div 
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full blur-3xl animate-pulse-slow"
-          style={{ background: 'radial-gradient(circle, hsl(var(--accent) / 0.12) 0%, transparent 70%)', animationDelay: '2s' }}
+        <div
+          className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+          style={{ transform: `translateY(${heroRef.offsets[0]}px) scale(1.1)` }}
         />
-        <div 
-          className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full blur-3xl animate-pulse-slow"
-          style={{ background: 'radial-gradient(circle, hsl(var(--primary) / 0.1) 0%, transparent 70%)', animationDelay: '4s' }}
+        <div className="absolute inset-0 transition-transform duration-100" style={{ transform: `translateY(${heroRef.offsets[1]}px)` }}>
+          <TwinklingStars />
+        </div>
+        <div className="absolute inset-0 transition-transform duration-100" style={{ transform: `translateY(${heroRef.offsets[1]}px)` }}>
+          <GrowthTrails />
+        </div>
+        <div
+          className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+          style={{ transform: `translateY(${heroRef.offsets[2]}px) scale(1.1)` }}
         />
-      </div>
 
-      {/* HERO SECTION */}
-      <section className="relative z-10 min-h-screen flex items-center justify-center px-4 pt-24 pb-12">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          {/* Hero Portrait */}
-          <div className="flex justify-center lg:justify-start order-1 lg:order-1">
-            <div className="relative aspect-[3/4] max-w-md w-full">
-              <img 
-                src="/images/ml-hero-new.png" 
-                alt="Michel Lason - AI-Native Renaissance Leader"
-                className="w-full h-full object-cover rounded-3xl border-2 border-accent/30 shadow-accent-glow"
-                style={{ objectPosition: 'center 10%' }}
-              />
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-accent rounded-2xl blur-2xl opacity-40" />
-            </div>
-          </div>
-
-          {/* Hero Content */}
-          <div className="space-y-8 order-2 lg:order-2">
-            {/* Overline - consistent with homepage */}
-            <div className="flex items-center gap-4 mb-8 animate-fade-in">
-              <span className="h-px w-12 bg-gradient-primary" />
-              <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
-                {t('ml.hero.badge')}
-              </span>
-              <span className="h-px w-12 bg-gradient-primary" />
-            </div>
-            
-            <h1 className="text-section font-display font-bold">
-              <span className="text-gradient">
-                {t('ml.hero.headline')}
-              </span>
-            </h1>
-            
-            <div className="space-y-3 text-body-lg text-muted-foreground">
-              <div className="flex items-center gap-3">
-                <Heart className="w-5 h-5 text-accent flex-shrink-0" />
-                {t('ml.hero.value1')}
-              </div>
-              <div className="flex items-center gap-3">
-                <Zap className="w-5 h-5 text-primary flex-shrink-0" />
-                {t('ml.hero.value2')}
-              </div>
-              <div className="flex items-center gap-3">
-                <Brain className="w-5 h-5 text-accent flex-shrink-0" />
-                {t('ml.hero.value3')}
-              </div>
-              <div className="flex items-center gap-3">
-                <Smile className="w-5 h-5 text-primary flex-shrink-0" />
-                {t('ml.hero.value4')}
-              </div>
-            </div>
-
-            {/* Booking Selection - Desktop only */}
-            <div className="hidden md:block space-y-4">
-              <p className="text-sm text-muted-foreground">{t('ml.booking.select')}</p>
-              <div className="flex gap-4">
-                <Button 
-                  onClick={() => setSelectedBooking('30min')} 
-                  className={`flex-1 ${selectedBooking === '30min' ? 'bg-gradient-accent text-white shadow-lg shadow-accent/25' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                >
-                  <Clock className="w-4 h-4 mr-2" />
-                  {t('ml.booking.30min')}
-                </Button>
-                <Button 
-                  onClick={() => setSelectedBooking('60min')} 
-                  className={`flex-1 ${selectedBooking === '60min' ? 'bg-gradient-primary text-primary-foreground shadow-lg shadow-primary/25' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {t('ml.booking.60min')}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BOOKING FILLOUT SECTION */}
-      <section className="relative z-10 py-12 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Booking Selection - Mobile only */}
-          <div className="md:hidden space-y-4 mb-8">
-            <p className="text-sm text-muted-foreground text-center">{t('ml.booking.select')}</p>
-            <div className="flex gap-4">
-              <Button 
-                onClick={() => setSelectedBooking('30min')} 
-                className={`flex-1 ${selectedBooking === '30min' ? 'bg-gradient-accent text-white shadow-lg shadow-accent/25' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-              >
-                <Clock className="w-4 h-4 mr-2" />
-                {t('ml.booking.30min')}
-              </Button>
-              <Button 
-                onClick={() => setSelectedBooking('60min')} 
-                className={`flex-1 ${selectedBooking === '60min' ? 'bg-gradient-primary text-primary-foreground shadow-lg shadow-primary/25' : 'bg-muted text-muted-foreground hover:bg-muted/80'}`}
-              >
-                <Calendar className="w-4 h-4 mr-2" />
-                {t('ml.booking.60min')}
-              </Button>
-            </div>
-          </div>
-          <div className="rounded-2xl overflow-hidden border border-border bg-card">
-            <iframe 
-              src={filloutUrl}
-              className="w-full h-[600px]"
-              title="Booking Calendar"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 1: WHO I AM */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient">
-                {t('ml.section1.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-xl text-foreground leading-relaxed">
-                <strong>{t('ml.section1.intro')}</strong>
-              </p>
-              <p className="text-muted-foreground">{t('ml.section1.text1')}</p>
-              <p className="text-muted-foreground">{t('ml.section1.text2')}</p>
-              <p className="text-muted-foreground">{t('ml.section1.text3')}</p>
-              
-              <div className="pt-6">
-                <p className="text-accent font-semibold text-lg mb-4">{t('ml.section1.superpower')}</p>
-                <ul className="space-y-2 text-foreground">
-                  <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-primary" />
-                    {t('ml.section1.skill1')}
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-primary" />
-                    {t('ml.section1.skill2')}
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <ChevronRight className="w-4 h-4 text-primary" />
-                    {t('ml.section1.skill3')}
-                  </li>
-                </ul>
-              </div>
-
-              <Card className="bg-card border-accent/30 p-6 mt-6">
-                <p className="text-muted-foreground">
-                  <strong className="text-accent">{t('ml.section1.why')}</strong><br />
-                  {t('ml.section1.whyAnswer')}
-                </p>
-              </Card>
-            </div>
-
-            {/* Speaking Image */}
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-primary/30">
-              <img 
-                src="/images/ml-speaking.png" 
-                alt="Michel Lason speaking on stage" 
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: WHAT DRIVES ME */}
-      <section className="relative z-10 py-24 px-4 bg-accent/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient-sunset">
-                {t('ml.section2.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Workshop Image */}
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-accent/30">
-              <img 
-                src="/images/ml-workshop.png" 
-                alt="Michel Lason in workshop with team" 
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-
-            <div className="space-y-6">
-              <p className="text-lg text-muted-foreground">{t('ml.section2.intro')}</p>
-              <p className="text-xl text-foreground font-medium">{t('ml.section2.key')}</p>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>{t('ml.section2.condition1')}</li>
-                <li>{t('ml.section2.condition2')}</li>
-                <li>{t('ml.section2.condition3')}</li>
-              </ul>
-              <p className="text-accent font-semibold">{t('ml.section2.definition')}</p>
-
-              <div className="grid gap-6 pt-6">
-                <Card className="bg-card border-accent/30 p-6">
-                  <h3 className="text-accent font-semibold mb-2 flex items-center gap-2">
-                    <Heart className="w-5 h-5" />
-                    {t('ml.section2.drive1.title')}
-                  </h3>
-                  <p className="text-muted-foreground">{t('ml.section2.drive1.text')}</p>
-                </Card>
-
-                <Card className="bg-card border-primary/30 p-6">
-                  <h3 className="text-primary font-semibold mb-2 flex items-center gap-2">
-                    <Lightbulb className="w-5 h-5" />
-                    {t('ml.section2.drive2.title')}
-                  </h3>
-                  <p className="text-muted-foreground">{t('ml.section2.drive2.text')}</p>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 3: MY FORMULAS */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient">
-                {t('ml.section3.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid gap-8">
-            {/* Formula 1 */}
-            <Card className="bg-card border-accent/30 p-8">
-              <div className="text-center mb-6">
-                <p className="text-2xl md:text-3xl font-mono font-bold text-accent">
-                  {t('ml.section3.formula1')}
-                </p>
-              </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto">
-                <p>{t('ml.section3.formula1.text1')}</p>
-                <p>{t('ml.section3.formula1.text2')}</p>
-                <p className="italic">{t('ml.section3.formula1.text3')}</p>
-                <p className="text-foreground font-semibold">{t('ml.section3.formula1.result')}</p>
-              </div>
-            </Card>
-
-            {/* Formula 2 */}
-            <Card className="bg-card border-primary/30 p-8">
-              <div className="text-center mb-6">
-                <p className="text-2xl md:text-3xl font-mono font-bold text-primary">
-                  {t('ml.section3.formula2')}
-                </p>
-              </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto">
-                <p>{t('ml.section3.formula2.text1')}</p>
-                <p>{t('ml.section3.formula2.text2')}</p>
-                <p className="text-primary font-semibold">{t('ml.section3.formula2.result')}</p>
-              </div>
-            </Card>
-
-            {/* Formula 3 */}
-            <Card className="bg-card border-accent/30 p-8">
-              <div className="text-center mb-6">
-                <p className="text-2xl md:text-3xl font-mono font-bold text-gradient-sunset">
-                  {t('ml.section3.formula3')}
-                </p>
-              </div>
-              <div className="space-y-4 text-muted-foreground max-w-2xl mx-auto">
-                <p>{t('ml.section3.formula3.text1')}</p>
-                <p>{t('ml.section3.formula3.text2')}</p>
-                <p className="text-accent font-semibold">{t('ml.section3.formula3.result')}</p>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: MY PRINCIPLES (PRICEPLAQE) */}
-      <section className="relative z-10 py-24 px-4 bg-primary/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-4">
-              <span className="text-gradient-sunset">
-                {t('ml.section4.title')}
-              </span>
-            </h2>
-            <p className="text-muted-foreground text-lg">{t('ml.section4.subtitle')}</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {principles.map((principle, index) => (
-              <Card key={index} className="bg-card border-border p-5 hover:border-accent/50 transition-colors">
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-sunset flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
-                    {principle.letter}
-                  </div>
-                  <div>
-                    <h3 className="text-foreground font-semibold mb-1">{principle.title}</h3>
-                    <p className="text-muted-foreground text-sm">{principle.desc}</p>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 5: MY JOURNEY */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient">
-                {t('ml.section5.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-8">
-              <div className="relative pl-8 border-l-2 border-accent/50">
-                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-accent"></div>
-                <h3 className="text-accent font-semibold text-lg mb-2">{t('ml.section5.origin.title')}</h3>
-                <p className="text-muted-foreground">{t('ml.section5.origin.text')}</p>
-              </div>
-
-              <div className="relative pl-8 border-l-2 border-primary/50">
-                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-primary"></div>
-                <h3 className="text-primary font-semibold text-lg mb-2">{t('ml.section5.evolution.title')}</h3>
-                <p className="text-muted-foreground">{t('ml.section5.evolution.text')}</p>
-              </div>
-
-              <div className="relative pl-8 border-l-2 border-accent/50">
-                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-accent"></div>
-                <h3 className="text-accent font-semibold text-lg mb-2">{t('ml.section5.breakthrough.title')}</h3>
-                <p className="text-muted-foreground">{t('ml.section5.breakthrough.text')}</p>
-              </div>
-
-              <div className="relative pl-8 border-l-2 border-primary/50">
-                <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-gradient-sunset"></div>
-                <h3 className="text-gradient-sunset font-semibold text-lg mb-2">{t('ml.section5.now.title')}</h3>
-                <p className="text-muted-foreground">{t('ml.section5.now.text')}</p>
-              </div>
-            </div>
-
-            {/* Contemplating Image */}
-            <div className="space-y-6">
-              <div className="aspect-square rounded-2xl overflow-hidden border border-primary/30">
-                <img 
-                  src="/images/ml-contemplating.png" 
-                  alt="Michel Lason contemplating" 
-                  className="w-full h-full object-cover object-center"
+        <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10">
+          <div className="grid md:grid-cols-[2fr_3fr] gap-12 items-center">
+            {/* Photo */}
+            <div className="flex justify-center md:justify-end animate-fade-in">
+              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-glow">
+                <img
+                  src="/images/ml-hero-new.png"
+                  alt="Michel Lason"
+                  className="w-full h-full object-cover"
+                  loading="eager"
                 />
               </div>
-
-              <Card className="bg-card border-accent/30 p-6">
-                <h4 className="text-accent font-semibold mb-4">{t('ml.section5.vision.title')}</h4>
-                <ul className="space-y-2 text-foreground">
-                  <li className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-accent" />
-                    {t('ml.section5.vision1')}
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-accent" />
-                    {t('ml.section5.vision2')}
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-accent" />
-                    {t('ml.section5.vision3')}
-                  </li>
-                </ul>
-                <p className="text-muted-foreground mt-4 text-sm italic">{t('ml.section5.visionText')}</p>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 6: WHAT PEOPLE SAY */}
-      <section className="relative z-10 py-24 px-4 bg-accent/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient-sunset">
-                {t('ml.section6.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((quote, index) => (
-              <Card key={index} className="bg-card border-border p-6 hover:border-accent/30 transition-colors">
-                <Quote className="w-8 h-8 text-accent/50 mb-4" />
-                <p className="text-muted-foreground italic">"{quote}"</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 7: WHAT I CAN'T TOLERATE */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6 text-destructive">
-              {t('ml.section7.title')}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cantTolerate.map((item, index) => (
-              <Card key={index} className="bg-card border-destructive/30 p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-destructive/20 flex items-center justify-center">
-                    <X className="w-5 h-5 text-destructive" />
-                  </div>
-                  <h3 className="text-destructive font-semibold">{item.title}</h3>
-                </div>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 8: WHAT BRINGS ME JOY */}
-      <section className="relative z-10 py-24 px-4 bg-primary/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient-sunset">
-                {t('ml.section8.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                  <Smile className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 1</h3>
-                  <p className="text-muted-foreground">{t('ml.section8.joy1')}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 2</h3>
-                  <p className="text-muted-foreground">{t('ml.section8.joy2')}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                  <Star className="w-6 h-6 text-green-500" />
-                </div>
-                <div>
-                  <h3 className="text-foreground font-semibold mb-1">{t('ml.section8.joyLabel')} 3</h3>
-                  <p className="text-muted-foreground whitespace-pre-line">{t('ml.section8.joy3')}</p>
-                </div>
-              </div>
-
-              <Card className="bg-gradient-to-br from-accent/20 to-primary/20 border-accent/30 p-6 mt-8">
-                <p className="text-xl text-foreground font-semibold mb-2">{t('ml.section8.motto')}</p>
-                <p className="text-muted-foreground">{t('ml.section8.mottoText')}</p>
-              </Card>
             </div>
 
-            {/* Joy/Shine Image */}
-            <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-accent/30">
-              <img 
-                src="/images/ml-shine.png" 
-                alt="Michel Lason expressing joy" 
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 9: MY VISION */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-section font-display font-bold mb-6">
-              <span className="text-gradient">
-                {t('ml.section9.title')}
-              </span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="bg-card border-primary/30 p-6 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-primary/20 flex items-center justify-center mx-auto mb-4">
-                <Brain className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-foreground font-semibold text-lg mb-2">{t('ml.section9.vision1.title')}</h3>
-              <p className="text-muted-foreground text-sm">{t('ml.section9.vision1.text')}</p>
-            </Card>
-
-            <Card className="bg-card border-accent/30 p-6 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-foreground font-semibold text-lg mb-2">{t('ml.section9.vision2.title')}</h3>
-              <p className="text-muted-foreground text-sm">{t('ml.section9.vision2.text')}</p>
-            </Card>
-
-            <Card className="bg-card border-primary/30 p-6 text-center">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-sunset flex items-center justify-center mx-auto mb-4">
-                <Rocket className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-foreground font-semibold text-lg mb-2">{t('ml.section9.vision3.title')}</h3>
-              <p className="text-muted-foreground text-sm">{t('ml.section9.vision3.text')}</p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CLOSING SECTION */}
-      <section className="relative z-10 py-24 px-4 bg-accent/5">
-        <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Closeup Image */}
-            <div className="aspect-[3/4] max-w-md mx-auto rounded-3xl overflow-hidden border-2 border-accent/30 shadow-accent-glow">
-              <img 
-                src="/images/ml-portrait-closeup.png" 
-                alt="Michel Lason - Closeup Portrait" 
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 5%' }}
-              />
-            </div>
-
-            <div className="space-y-8 text-center lg:text-left">
-              <h2 className="text-section font-display font-bold">
-                <span className="text-gradient">{t('ml.closing.title')}</span>
+            {/* Text */}
+            <div className="text-center md:text-left">
+              <p className="text-xs font-medium uppercase tracking-[0.3em] text-muted-foreground mb-3 animate-fade-in">
+                {de ? 'GRÜNDER & CEO · SCALINGX HYPERGROWTH' : 'FOUNDER & CEO · SCALINGX HYPERGROWTH'}
+              </p>
+              <h1 className="font-display text-hero-lg mb-4 animate-blur-in">
+                Michel Lason
+              </h1>
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4 animate-slide-up" style={{ animationDelay: '0.15s' }}>
+                {de ? 'Hat €1,3M auf €13,7M ARR gebracht.' : 'Grew €1.3M to €13.7M ARR.'}
+                <br />
+                {de ? 'In 2 Jahren.' : 'In 2 years.'}
               </h2>
-              <p className="text-2xl text-accent font-semibold">{t('ml.closing.together')}</p>
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {t('ml.closing.text')}
+              <p className="text-body-lg text-muted-foreground mb-6 animate-slide-up" style={{ animationDelay: '0.25s' }}>
+                {de
+                  ? 'Findet den Hebel der wirklich zieht. Setzt ihn um — fucking fast.'
+                  : 'Finds the lever that actually works. Executes it — fucking fast.'}
               </p>
 
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                <Button 
-                  onClick={() => {
-                    setPopupBookingType('30min');
-                    setIsBookingOpen(true);
-                  }}
-                  className="bg-gradient-accent text-white shadow-lg shadow-accent/25"
-                >
-                  <Clock className="w-4 h-4 mr-2" />
-                  {t('ml.booking.30min')}
-                </Button>
-                <Button 
-                  onClick={() => {
-                    setPopupBookingType('60min');
-                    setIsBookingOpen(true);
-                  }}
-                  className="bg-gradient-primary text-primary-foreground shadow-lg shadow-primary/25"
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {t('ml.booking.60min')}
-                </Button>
+              {/* Expertise Badges */}
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4 animate-slide-up" style={{ animationDelay: '0.35s' }}>
+                {badges.map((b) => (
+                  <span key={b} className="text-xs text-muted-foreground border border-border px-3 py-1">
+                    {b}
+                  </span>
+                ))}
               </div>
 
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start pt-4">
-                <a 
-                  href="/" 
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-                >
-                  <Globe className="w-4 h-4" />
-                  {t('ml.closing.cta.work')}
-                </a>
-                <a 
-                  href="https://www.amazon.de/dp/B0F2G7VT2F" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-                >
-                  <BookOpen className="w-4 h-4" />
-                  {t('ml.closing.cta.book')}
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/michellason/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-accent transition-colors"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  {t('ml.closing.cta.linkedin')}
-                </a>
+              {/* Result Badges */}
+              <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-6 animate-slide-up" style={{ animationDelay: '0.4s' }}>
+                {['Rule of 40 +10 Pkt', 'EBITDA –€300k → +€150k', de ? '18 Jahre Operator' : '18 years Operator'].map((b) => (
+                  <span key={b} className="text-xs font-semibold text-accent bg-accent/10 border border-accent/20 px-3 py-1">
+                    {b}
+                  </span>
+                ))}
+              </div>
+
+              {/* Formula Badge */}
+              <div className="animate-slide-up" style={{ animationDelay: '0.45s' }}>
+                <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 bg-card shadow-brutal-sm">
+                  EXPERTISE × SPEED = IMPACT
+                </span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ML FOOTER QUOTES */}
-      <section className="relative z-10 py-12 px-4 border-t border-border">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground italic">
-            <span>{t('ml.footer.quote1')}</span>
-            <span className="hidden md:inline">•</span>
-            <span>{t('ml.footer.quote2')}</span>
-            <span className="hidden md:inline">•</span>
-            <span>{t('ml.footer.quote3')}</span>
+      {/* ════════════════════ SECTION 2 — DIE FORMEL ════════════════════ */}
+      <Section>
+        <div
+          ref={s2.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-3xl mx-auto px-6"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${s2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'DIE FORMEL' : 'THE FORMULA'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de
+              ? <>Expertise × Speed = Impact.<br />Nicht als Slogan. Als Arbeitsweise.</>
+              : <>Expertise × Speed = Impact.<br />Not a slogan. A way of working.</>}
+          </h2>
+
+          <div className="space-y-6">
+            {formulaParagraphs.map((p, i) => (
+              <div
+                key={i}
+                className={`flex gap-4 transition-all duration-700 ${s2.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              >
+                <div className="w-0.5 flex-shrink-0 bg-accent/30 rounded-full" />
+                <p className="text-lg text-muted-foreground leading-relaxed">{p}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
+      </Section>
+
+      {/* ════════════════════ SECTION 3 — DIE STORY ════════════════════ */}
+      <Section>
+        <div
+          ref={s3.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-5xl mx-auto px-6"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'DIE STORY' : 'THE STORY'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? <>Nicht Biographie.<br />Fähigkeit.</> : <>Not biography.<br />Capability.</>}
+          </h2>
+
+          <div className="space-y-8 max-w-3xl mx-auto">
+            {stations.map((s, i) => (
+              <div
+                key={i}
+                className={`relative pl-8 border-l-2 border-accent/20 transition-all duration-700 ${s3.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 1) * 200}ms` }}
+              >
+                <div className="absolute left-[-7px] top-1 w-3 h-3 rounded-full bg-accent" />
+                <span className="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">
+                  {s.label}
+                </span>
+                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3">
+                  {s.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ════════════════════ SECTION 4 — TESTIMONIALS ════════════════════ */}
+      <Section>
+        <div
+          ref={s4.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-5xl mx-auto px-6"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${s4.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'STIMMEN' : 'VOICES'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s4.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'Was andere sagen.' : 'What others say.'}
+          </h2>
+
+          {/* 3 Prominent */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {prominentTestimonials.map((t, i) => (
+              <div
+                key={i}
+                className={`bg-card border-2 border-border p-6 md:p-8 transition-all duration-700 ${s4.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              >
+                <Quote className="h-5 w-5 text-accent/40 mb-4" />
+                <p className="text-foreground italic leading-relaxed">"{t.text}"</p>
+              </div>
+            ))}
+          </div>
+
+          {/* 4 Secondary */}
+          <div className="grid md:grid-cols-2 gap-4">
+            {secondaryTestimonials.map((t, i) => (
+              <div
+                key={i}
+                className={`border border-border p-4 transition-all duration-700 ${s4.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 4) * 120}ms` }}
+              >
+                <p className="text-sm text-muted-foreground italic">"{t}"</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ════════════════════ SECTION 5 — KLARHEIT ════════════════════ */}
+      <Section>
+        <div
+          ref={s5.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-5xl mx-auto px-6"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${s5.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'KLARHEIT' : 'CLARITY'}
+          </p>
+          <h2 className={`font-display text-display-md mb-4 text-center transition-all duration-700 ${s5.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'Womit ich nicht arbeite.' : "What I don't work with."}
+          </h2>
+          <p className={`text-muted-foreground text-center mb-12 transition-all duration-700 ${s5.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'Klare Grenzen machen bessere Partnerschaften.' : 'Clear boundaries make better partnerships.'}
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {nots.map((n, i) => (
+              <div
+                key={i}
+                className={`bg-card border-2 border-border p-6 md:p-8 transition-all duration-700 ${s5.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              >
+                <div className="w-10 h-10 rounded-lg bg-destructive/10 flex items-center justify-center mb-4">
+                  <X className="h-5 w-5 text-destructive" />
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground mb-2">{n.title}</h3>
+                <p className="text-sm text-muted-foreground">{n.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* ════════════════════ SECTION 6 — ANTRIEB ════════════════════ */}
+      <Section>
+        <div
+          ref={s6.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-5xl mx-auto px-6"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'ANTRIEB' : 'DRIVE'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de
+              ? <>Drei Momente.<br />Das ist warum ich tue, was ich tue.</>
+              : <>Three moments.<br />That's why I do what I do.</>}
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {moments.map((m, i) => {
+              const Icon = m.icon;
+              return (
+                <div
+                  key={i}
+                  className={`bg-card border-2 border-border p-6 md:p-8 text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+                >
+                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                    <Icon className="h-6 w-6 text-accent" />
+                  </div>
+                  <h3 className="font-display text-sm font-bold uppercase tracking-wider text-foreground mb-3">
+                    {m.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">{m.body}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Closing Quote */}
+          <div className={`text-center transition-all duration-700 ${s6.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '600ms' }}>
+            <p className="font-display text-2xl md:text-3xl text-muted-foreground italic">
+              "Happiness is a problem (solved)."
+            </p>
+            <p className="text-sm text-muted-foreground mt-2">— Michel Lason</p>
+          </div>
+        </div>
+      </Section>
+
+      {/* ════════════════════ SECTION 7 — FINAL CTA ════════════════════ */}
+      <Section id="final-cta">
+        <div
+          ref={s7.ref as React.RefObject<HTMLDivElement>}
+          className="container max-w-3xl mx-auto px-6 text-center"
+        >
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'NÄCHSTER SCHRITT' : 'NEXT STEP'}
+          </p>
+          <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de
+              ? <>30 Minuten. Kein Pitch.<br />Direkt mit mir.</>
+              : <>30 minutes. No pitch.<br />Directly with me.</>}
+          </h2>
+          <p className={`text-body-lg text-muted-foreground mb-4 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de
+              ? 'Wir schauen gemeinsam wo dein Engpass liegt. Du gehst mit 3 konkreten nächsten Schritten raus.'
+              : "We'll look together at where your bottleneck is. You leave with 3 concrete next steps."}
+          </p>
+
+          <div className={`transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            <Button
+              size="lg"
+              className="bg-gradient-accent text-accent-foreground font-bold px-10 py-7 text-cta uppercase tracking-wide shadow-accent-glow hover:shadow-glow whitespace-nowrap"
+              onClick={() => setIsBookingOpen(true)}
+            >
+              {de ? 'Kostenloses Gespräch buchen' : 'Book a free call'}
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+            <p className="text-xs text-muted-foreground mt-3">
+              {de ? 'Unverbindlich · Kein Formular · Direkt mit Michel' : 'No commitment · No form · Directly with Michel'}
+            </p>
+          </div>
+
+          {/* Secondary Links */}
+          <div className={`flex flex-wrap justify-center gap-4 mt-8 transition-all duration-700 ${s7.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '350ms' }}>
+            <a
+              href="https://www.linkedin.com/in/michellason"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors"
+            >
+              <Linkedin className="h-4 w-4 mr-1.5" /> LinkedIn
+            </a>
+            <Link to="/solutions" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
+              <Layers className="h-4 w-4 mr-1.5" /> Solutions
+            </Link>
+            <Link to="/insights" className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
+              <BookOpen className="h-4 w-4 mr-1.5" /> Fix Growth. Scale Faster.
+            </Link>
+          </div>
+        </div>
+      </Section>
 
       <Footer />
 
-      {/* Booking Modal */}
       <FilloutBookingModal
-        formSlug={popupBookingType === '30min' ? 'ml-sync' : 'ml-deep-dive'}
+        formSlug="ml-sync"
         source="team-ml"
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
-        title={popupBookingType === '30min' ? t('ml.booking.30min') : t('ml.booking.60min')}
       />
     </div>
   );
