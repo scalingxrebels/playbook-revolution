@@ -33,6 +33,7 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
+const InsightCategoryPage = lazy(() => import("./pages/InsightCategoryPage"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
