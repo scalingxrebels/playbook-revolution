@@ -1,22 +1,20 @@
 
 
-## Plan: LinkedIn-Icon hinter "M.A. HSG" setzen
+## Analyse: Name-Zeile "unruhig"
 
-`src/components/homepage/HomeTeam.tsx` Z.68 + Z.80-87:
+Das Problem: Drei visuell konkurrierende Elemente in einer Zeile — fetter Name (text-2xl), farbiges "M.A. HSG" (text-lg, accent-orange), LinkedIn-Icon. Unterschiedliche Größen, Farben und Gewichte erzeugen visuelle Unruhe.
 
-LinkedIn-Icon aus dem separaten Link unten entfernen und direkt in die h3-Zeile nach "M.A. HSG" einfügen:
+### Vorschlag: Hierarchie beruhigen
 
-```tsx
-// Z.68 neu:
-<h3 className="font-display text-2xl mb-1 text-foreground flex items-center gap-2">
-  Michel Lason <span className="text-accent text-lg font-normal">M.A. HSG</span>
-  <a href="https://www.linkedin.com/in/michellason/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="LinkedIn Michel Lason">
-    <Linkedin className="h-4 w-4" />
-  </a>
-</h3>
-```
+`src/components/homepage/HomeTeam.tsx` Z.68-73:
 
-Separaten LinkedIn-Link (Z.80-87) entfernen.
+| Element | Aktuell | Neu |
+|---|---|---|
+| M.A. HSG | `text-accent text-lg font-normal` | `text-muted-foreground text-base font-normal` — dezenter, gleiche Farbfamilie wie Fließtext |
+| LinkedIn-Icon | `text-muted-foreground` h-4 w-4 | `text-muted-foreground/50` h-3.5 w-3.5 — etwas kleiner und blasser |
+| Gap | `gap-2` | `gap-1.5` — etwas enger zusammen |
 
-1 Datei, 2 Stellen.
+Ergebnis: Name dominiert klar, "M.A. HSG" ist lesbar aber untergeordnet, LinkedIn-Icon ist dezent vorhanden. Eine ruhige Leserichtung statt drei gleichwertige Akzente.
+
+1 Datei, 1 Stelle.
 
