@@ -688,8 +688,8 @@ export const seoRegistry: Record<string, SEOData> = {
       en: 'Michel Lason — Founder & CEO ScalingX',
     },
     description: {
-      de: '18 Jahre Startups skalieren. Ex-Berater (Microsoft, XING), SaaS Executive (€1,3M → €13,7M ARR). Autor "Fix Growth. Scale Faster."',
-      en: '18 years scaling startups. Ex-consultant (Microsoft, XING), SaaS executive (€1.3M → €13.7M ARR). Author "Fix Growth. Scale Faster."',
+      de: '19 Jahre B2B SaaS GTM. Ex-Berater (Microsoft, XING), SaaS Executive (€3,3M → €10,2M ARR). Autor "Fix Growth. Scale Faster."',
+      en: '19 years B2B SaaS GTM. Ex-consultant (Microsoft, XING), SaaS executive (€3.3M → €10.2M ARR). Author "Fix Growth. Scale Faster."',
     },
   },
   '/ah': {
