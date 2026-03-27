@@ -33,6 +33,7 @@ const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
 const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
+const InsightCategoryPage = lazy(() => import("./pages/InsightCategoryPage"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
@@ -151,6 +152,12 @@ const AppContent = () => {
           <Route path="/expertise/funktionierende-synthese" element={<ExpertiseM3 />} />
           <Route path="/expertise/ai-orchestration" element={<ExpertiseM4 />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/insights-and-levers" element={<InsightCategoryPage />} />
+          <Route path="/insights/growth-engines" element={<InsightCategoryPage />} />
+          <Route path="/insights/scaling-systems" element={<InsightCategoryPage />} />
+          <Route path="/insights/ai-orchestration" element={<InsightCategoryPage />} />
+          <Route path="/insights/translating-strategy" element={<InsightCategoryPage />} />
+          <Route path="/insights/portfolio" element={<InsightCategoryPage />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
