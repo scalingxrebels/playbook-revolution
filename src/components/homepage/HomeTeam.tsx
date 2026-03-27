@@ -65,12 +65,7 @@ const HomeTeam: React.FC = () => {
             />
           </div>
           <div>
-            <h3 className="font-display text-2xl mb-1 text-foreground flex items-center gap-1.5">
-              Michel Lason <span className="text-muted-foreground text-base font-normal">M.A. HSG</span>
-              <a href="https://www.linkedin.com/in/michellason/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground/50 hover:text-accent transition-colors" aria-label="LinkedIn Michel Lason">
-                <Linkedin className="h-3.5 w-3.5" />
-              </a>
-            </h3>
+            <h3 className="font-display text-2xl mb-1 text-foreground">Michel Lason <span className="text-accent text-lg font-normal">M.A. HSG</span></h3>
             <p className="text-sm text-accent mb-4">Founder & CEO · ScalingX Hypergrowth</p>
             <p className="text-muted-foreground leading-relaxed max-w-xl mb-3 whitespace-pre-line">
               {language === 'de'
@@ -82,6 +77,15 @@ const HomeTeam: React.FC = () => {
                 ? 'Hauptmann a.D. Schweizer Armee, ehemaliger Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'
                 : 'Former Captain Swiss Army, former Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'}
             </p>
+            <a
+              href="https://www.linkedin.com/in/michellason/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
+              aria-label="LinkedIn Michel Lason"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
