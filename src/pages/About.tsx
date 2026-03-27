@@ -23,8 +23,8 @@ const teamMembers = [
     name: 'Michel Lason',
     role: { de: 'Gründer & CEO', en: 'Founder & CEO' },
     keyLine: {
-      de: 'Hat €1,3M auf €13,7M ARR gebracht — in 2 Jahren.',
-      en: 'Grew €1.3M to €13.7M ARR — in 2 years.',
+      de: 'Hat €3,3M auf €10,2M ARR gebracht — in 2 Jahren.',
+      en: 'Grew €3.3M to €10.2M ARR — in 2 years.',
     },
     body: {
       de: '19 Jahre Startups gebaut, skaliert und repariert. Findet den Hebel der wirklich zieht — und setzt ihn um. Autor „Fix Growth. Scale Faster."',
