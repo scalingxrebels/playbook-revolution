@@ -69,8 +69,8 @@ const HomeTeam: React.FC = () => {
             <p className="text-sm text-accent mb-4">Founder & CEO · ScalingX Hypergrowth</p>
             <p className="text-muted-foreground leading-relaxed max-w-xl mb-3 whitespace-pre-line">
               {language === 'de'
-                ? 'SaaS von €1,3M auf €13,7M ARR gebracht — in 2 Jahren.\n\n19 Jahre B2B SaaS Startups gebaut, skaliert und repariert. Als Operator, nicht als Berater. Baut den Mechanismus. Autor „Fix Growth. Scale Faster."'
-                : 'Scaled SaaS from €1.3M to €13.7M ARR — in 2 years.\n\n19 years building, scaling and fixing B2B SaaS startups. As an operator, not a consultant. Builds the mechanism. Author "Fix Growth. Scale Faster."'}
+                ? 'SaaS von €3,3M auf €10,2M ARR gebracht — in 2 Jahren.\n\n19 Jahre B2B SaaS Startups gebaut, skaliert und repariert. Als Operator, nicht als Berater. Baut den Mechanismus. Autor „Fix Growth. Scale Faster."'
+                : 'Scaled SaaS from €3.3M to €10.2M ARR — in 2 years.\n\n19 years building, scaling and fixing B2B SaaS startups. As an operator, not a consultant. Builds the mechanism. Author "Fix Growth. Scale Faster."'}
             </p>
             <p className="text-xs text-muted-foreground/60 mb-3">
               {language === 'de'
