@@ -1,14 +1,13 @@
 
 
-## Plan: ARR-Zahlen aktualisieren (€1,3M → €3,3M / €13,7M → €10,2M)
+## Plan: Bio-Text Michel kürzen (HomeTeam)
 
-3 Dateien, alle Stellen (DE + EN):
+`src/components/homepage/HomeTeam.tsx`:
 
-| Datei | Zeilen | Änderung |
+| Sprache | Alt | Neu |
 |---|---|---|
-| `src/components/homepage/HomeTeam.tsx` | 72-73 | `€1,3M auf €13,7M` → `€3,3M auf €10,2M` / `€1.3M to €13.7M` → `€3.3M to €10.2M` |
-| `src/pages/About.tsx` | 26-27 | `€1,3M auf €13,7M` → `€3,3M auf €10,2M` / `€1.3M to €13.7M` → `€3.3M to €10.2M` |
-| `src/pages/ML.tsx` | 86, 187, 246 | Alle 5 Stellen: gleiche Ersetzung (DE+EN+SEO Schema) |
+| DE | `19 Jahre B2B SaaS Startups gebaut, skaliert und repariert. Als Operator, nicht als Berater. Baut den Mechanismus.` | `19 Jahre B2B SaaS GTM, als Operator, nicht Berater. Baut den Mechanismus.` |
+| EN | `19 years building, scaling and fixing B2B SaaS startups. As an operator, not a consultant. Builds the mechanism.` | `19 years B2B SaaS GTM, as an operator, not a consultant. Builds the mechanism.` |
 
-3 Dateien, reine String-Ersetzung.
+1 Datei, 2 Strings.
 
