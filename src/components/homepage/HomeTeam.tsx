@@ -65,10 +65,10 @@ const HomeTeam: React.FC = () => {
             />
           </div>
           <div>
-            <h3 className="font-display text-2xl mb-1 text-foreground flex items-center gap-2">
-              Michel Lason <span className="text-accent text-lg font-normal">M.A. HSG</span>
-              <a href="https://www.linkedin.com/in/michellason/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="LinkedIn Michel Lason">
-                <Linkedin className="h-4 w-4" />
+            <h3 className="font-display text-2xl mb-1 text-foreground flex items-center gap-1.5">
+              Michel Lason <span className="text-muted-foreground text-base font-normal">M.A. HSG</span>
+              <a href="https://www.linkedin.com/in/michellason/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground/50 hover:text-accent transition-colors" aria-label="LinkedIn Michel Lason">
+                <Linkedin className="h-3.5 w-3.5" />
               </a>
             </h3>
             <p className="text-sm text-accent mb-4">Founder & CEO · ScalingX Hypergrowth</p>
