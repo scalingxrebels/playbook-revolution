@@ -1,15 +1,12 @@
 
 
-## Plan: Favicon-Problem beheben
+## Plan: Subline in HomeMechanisms sprachlich korrigieren
 
-### Ursache
+`src/components/homepage/HomeMechanisms.tsx` Z.101-102:
 
-`public/favicon.ico` existiert und enthält vermutlich das Lovable-Standard-Icon. Chrome fordert automatisch `/favicon.ico` an und zeigt dieses statt `favicon-sx.png`.
+| Sprache | Alt | Neu |
+|---|---|---|
+| DE | `Wir finden welcher — und bauen ihn.` | `Wir finden raus, welcher — und bauen ihn.` |
+| EN | `We find which one — and build it.` | `We find out which one — and build it.` |
 
-Zusätzlich existiert `public/favicon.png` — unklar ob das ScalingX oder ebenfalls Lovable ist.
-
-### Lösung
-
-1. **`public/favicon.ico` löschen** — das ist die Hauptursache
-2. **`public/favicon.png` löschen** (falls nicht gebraucht, vermeidet Verwirrung)
-3. **PWA-Manifest prüfen** — `site.webmanifest` und `vite.config.ts` verweisen bereits korrekt auf `favicon-sx.png`
+1
