@@ -23,9 +23,9 @@ const FunnelHero: React.FC<FunnelHeroProps> = ({ onBookClick }) => {
           {/* Headline */}
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground animate-blur-in">
             Deine Strategie funktioniert<br />
-            auf dem Slide Deck.
+            auf Slides.
             <span className="block text-gradient bg-gradient-primary italic mt-2">
-              In der Realität nicht.
+              Aber nicht in der Realität.
             </span>
           </h1>
 

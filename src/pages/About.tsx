@@ -219,7 +219,7 @@ const About: React.FC = () => {
           {/* H1 */}
           <h1 className={`font-display text-hero-lg mb-8 transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             <span className="block text-foreground">
-              {de ? 'Deine Strategie funktioniert auf dem Slide Deck.' : 'Your strategy works on the slide deck.'}
+              {de ? 'Deine Strategie funktioniert auf Slides.' : 'Your strategy works on the slide deck.'}
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary italic">
               {de ? 'Wir sorgen dafür, dass sie in der Realität funktioniert.' : 'We make it work in reality.'}
