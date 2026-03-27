@@ -83,7 +83,7 @@ const ML: React.FC = () => {
     },
     {
       label: de ? 'DER BEWEIS' : 'THE PROOF',
-      title: de ? '€1,3M auf €13,7M ARR. In 2 Jahren.' : '€1.3M to €13.7M ARR. In 2 years.',
+      title: de ? '€3,3M auf €10,2M ARR. In 2 Jahren.' : '€3.3M to €10.2M ARR. In 2 years.',
       body: de
         ? 'Bei smapOne habe ich gelernt was wirklich skaliert. Nicht Ideen. Nicht Strategien. Systeme. AI erkannt bevor ChatGPT kam. Marktleadership ausgebaut. Schneller gewachsen als der Markt. Rule of 40 +10 Punkte. EBITDA von –€300k auf +€150k. Das ist nicht Theorie. Das ist Erfahrung.'
         : "At smapOne I learned what truly scales. Not ideas. Not strategies. Systems. Recognized AI before ChatGPT arrived. Expanded market leadership. Grew faster than the market. Rule of 40 +10 points. EBITDA from –€300k to +€150k. That's not theory. That's experience.",
@@ -184,7 +184,7 @@ const ML: React.FC = () => {
       <PersonSchema
         name="Michel Lason"
         jobTitle="Founder & CEO"
-        description="Grew €1.3M to €13.7M ARR in 2 years. Expertise × Speed = Impact."
+        description="Grew €3.3M to €10.2M ARR in 2 years. Expertise × Speed = Impact."
         image="/images/ml-hero-new.png"
         url="/about/ml"
         sameAs={['https://www.linkedin.com/in/michellason']}
@@ -243,7 +243,7 @@ const ML: React.FC = () => {
                 Michel Lason
               </h1>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground animate-slide-up" style={{ animationDelay: '0.15s' }}>
-                {de ? 'Hat €1,3M auf €13,7M ARR gebracht.' : 'Grew €1.3M to €13.7M ARR.'}
+                {de ? 'Hat €3,3M auf €10,2M ARR gebracht.' : 'Grew €3.3M to €10.2M ARR.'}
                 <br />
                 {de ? 'In 2 Jahren.' : 'In 2 years.'}
               </h2>

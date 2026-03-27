@@ -69,12 +69,12 @@ const HomeHero: React.FC = () => {
             </span>
             <span className="block text-foreground">
               {language === 'de'
-                ? 'auf dem Slide Deck.'
+                ? 'auf Slides.'
                 : 'on the slide deck.'}
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary mt-2">
               {language === 'de'
-                ? 'In der Realität nicht.'
+                ? 'Aber nicht in der Realität.'
                 : 'Not in reality.'}
             </span>
           </h1>

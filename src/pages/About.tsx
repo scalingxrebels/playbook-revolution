@@ -23,8 +23,8 @@ const teamMembers = [
     name: 'Michel Lason',
     role: { de: 'Gründer & CEO', en: 'Founder & CEO' },
     keyLine: {
-      de: 'Hat €1,3M auf €13,7M ARR gebracht — in 2 Jahren.',
-      en: 'Grew €1.3M to €13.7M ARR — in 2 years.',
+      de: 'Hat €3,3M auf €10,2M ARR gebracht — in 2 Jahren.',
+      en: 'Grew €3.3M to €10.2M ARR — in 2 years.',
     },
     body: {
       de: '19 Jahre Startups gebaut, skaliert und repariert. Findet den Hebel der wirklich zieht — und setzt ihn um. Autor „Fix Growth. Scale Faster."',
@@ -219,7 +219,7 @@ const About: React.FC = () => {
           {/* H1 */}
           <h1 className={`font-display text-hero-lg mb-8 transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
             <span className="block text-foreground">
-              {de ? 'Deine Strategie funktioniert auf dem Slide Deck.' : 'Your strategy works on the slide deck.'}
+              {de ? 'Deine Strategie funktioniert auf Slides.' : 'Your strategy works on the slide deck.'}
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary italic">
               {de ? 'Wir sorgen dafür, dass sie in der Realität funktioniert.' : 'We make it work in reality.'}
