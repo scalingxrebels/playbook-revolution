@@ -184,7 +184,7 @@ const ML: React.FC = () => {
       <PersonSchema
         name="Michel Lason"
         jobTitle="Founder & CEO"
-        description="Grew €1.3M to €13.7M ARR in 2 years. Expertise × Speed = Impact."
+        description="Grew €3.3M to €10.2M ARR in 2 years. Expertise × Speed = Impact."
         image="/images/ml-hero-new.png"
         url="/about/ml"
         sameAs={['https://www.linkedin.com/in/michellason']}
