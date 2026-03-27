@@ -82,15 +82,6 @@ const HomeTeam: React.FC = () => {
                 ? 'Hauptmann a.D. Schweizer Armee, ehemaliger Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'
                 : 'Former Captain Swiss Army, former Management Consultant (XING, Microsoft, Swarovski, Haufe Group).'}
             </p>
-            <a
-              href="https://www.linkedin.com/in/michellason/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors"
-              aria-label="LinkedIn Michel Lason"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
           </div>
         </div>
 
