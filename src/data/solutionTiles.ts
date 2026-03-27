@@ -95,6 +95,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 1,
     slug: 'inflection-call',
+    featured: true,
     solutionType: 'insights',
     challenges: 'universal',
     price: 'Free',
@@ -499,6 +500,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 12,
     slug: 'power-up-growth',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['growth-stalled'],
@@ -635,6 +637,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 16,
     slug: 'power-up-ai-quick-wins',
+    featured: true,
     solutionType: 'transformation',
     transformationTier: 'power-up',
     challenges: ['ai-transformation'],
@@ -1296,6 +1299,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 35,
     slug: 'strategic-advisory',
+    featured: true,
     solutionType: 'advisory',
     challenges: 'universal',
     price: '€3.9K–€11K/Mo',
@@ -1540,6 +1544,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 43,
     slug: 'maxxeed',
+    featured: true,
     solutionType: 'tools',
     challenges: ['cac-crisis', 'growth-stalled'],
     price: '€135/User/Mo',
@@ -1582,6 +1587,7 @@ export const solutionTiles: SolutionTile[] = [
   {
     id: 44,
     slug: 'fix-growth-scale-faster',
+    featured: true,
     solutionType: 'insights',
     challenges: 'universal',
     price: '€4.29-€44.90',

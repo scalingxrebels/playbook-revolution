@@ -18,6 +18,7 @@ export type Database = {
         Row: {
           content_id: string
           content_type: string
+          featured: boolean
           hidden: boolean
           id: string
           updated_at: string
@@ -26,6 +27,7 @@ export type Database = {
         Insert: {
           content_id: string
           content_type: string
+          featured?: boolean
           hidden?: boolean
           id?: string
           updated_at?: string
@@ -34,6 +36,7 @@ export type Database = {
         Update: {
           content_id?: string
           content_type?: string
+          featured?: boolean
           hidden?: boolean
           id?: string
           updated_at?: string

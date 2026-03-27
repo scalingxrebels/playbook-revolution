@@ -36,7 +36,7 @@ const FilterOnboardingHint: React.FC = () => {
   return (
     <div
       className={cn(
-        'flex items-start gap-3 px-4 py-3 rounded-lg bg-primary/5 border border-primary/20 max-w-xl mx-auto transition-all duration-200',
+        'flex items-start gap-3 px-4 py-3 bg-primary/5 border border-primary/20 max-w-xl mx-auto transition-all duration-200',
         isAnimatingOut && 'opacity-0 scale-95'
       )}
     >

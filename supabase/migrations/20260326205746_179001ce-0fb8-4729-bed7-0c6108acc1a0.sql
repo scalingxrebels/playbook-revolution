@@ -1,0 +1,1 @@
+ALTER TABLE public.content_visibility ADD COLUMN featured boolean NOT NULL DEFAULT false;

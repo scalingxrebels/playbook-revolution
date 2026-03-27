@@ -5,177 +5,135 @@ import { PersonSchema } from '@/components/seo';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { 
-  ArrowRight, Linkedin, Mail, Target, Users, Code2, 
-  BookOpen, Rocket, TrendingUp, CheckCircle2, ExternalLink,
-  Zap, Handshake, PiggyBank
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useParallaxLayers } from '@/hooks/useParallax';
+import TwinklingStars from '@/components/TwinklingStars';
+import GrowthTrails from '@/components/GrowthTrails';
+import {
+  ArrowRight, Linkedin, Eye, ArrowRightLeft, Settings, Cpu,
+  ExternalLink, PiggyBank, Target, Zap, Handshake, ChevronDown,
 } from 'lucide-react';
-import SharedHero from '@/components/shared/SharedHero';
-
-// =============================================================================
-// INTERFACES
-// =============================================================================
-
-interface TeamMember {
-  name: string;
-  role: { de: string; en: string };
-  tagline: { de: string; en: string };
-  bio: { de: string; en: string };
-  highlight: { de: string; en: string };
-  expertise: string[];
-  image: string;
-  linkedin?: string;
-  profileLink?: string;
-}
-
-interface Value {
-  icon: React.ElementType;
-  title: { de: string; en: string };
-  description: { de: string; en: string };
-}
-
-interface Approach {
-  icon: React.ElementType;
-  title: { de: string; en: string };
-  description: { de: string; en: string };
-  link: { de: string; en: string };
-  href: string;
-}
 
 // =============================================================================
 // DATA
 // =============================================================================
 
-const teamMembers: TeamMember[] = [
+const teamMembers = [
   {
     name: 'Michel Lason',
     role: { de: 'Gründer & CEO', en: 'Founder & CEO' },
-    tagline: { de: 'Strategy. Scaling. Impact.', en: 'Strategy. Scaling. Impact.' },
-    bio: {
-      de: '18 Jahre Startups aufbauen, skalieren und reparieren. Ex-Berater (Microsoft, XING), SaaS Executive (€1,3M → €13,7M ARR in 2 Jahren). Autor "Fix Growth. Scale Faster."',
-      en: '18 years building, scaling, and fixing startups. Ex-consultant (Microsoft, XING), SaaS executive (€1.3M → €13.7M ARR in 2 years). Author "Fix Growth. Scale Faster."'
+    keyLine: {
+      de: 'Hat €1,3M auf €13,7M ARR gebracht — in 2 Jahren.',
+      en: 'Grew €1.3M to €13.7M ARR — in 2 years.',
     },
-    highlight: { 
-      de: 'Rule of 40 +10 Pkt, EBITDA –€300k → +€150k', 
-      en: 'Rule of 40 +10 pts, EBITDA –€300k → +€150k' 
+    body: {
+      de: '19 Jahre Startups gebaut, skaliert und repariert. Findet den Hebel der wirklich zieht — und setzt ihn um. Autor „Fix Growth. Scale Faster."',
+      en: '19 years building, scaling, and fixing startups. Finds the lever that actually moves — and pulls it. Author "Fix Growth. Scale Faster."',
     },
-    expertise: ['Revenue Architecture', 'AI/LCNC', 'GTM Motions', 'Investor Readiness'],
+    badge: { de: 'Rule of 40 +10 Pkt · EBITDA –€300k → +€150k', en: 'Rule of 40 +10 pts · EBITDA –€300k → +€150k' },
+    tags: ['Revenue Architecture', 'GTM Motions', 'AI Orchestration', 'Investor Readiness'],
     image: '/images/team-michel.png',
     linkedin: 'https://www.linkedin.com/in/michellason/',
-    profileLink: '/ml'
+    profileLink: '/about/ml',
   },
   {
     name: 'Alban Halili',
     role: { de: 'Partner', en: 'Partner' },
-    tagline: { de: 'Growth. AI Solutions. Automation.', en: 'Growth. AI Solutions. Automation.' },
-    bio: {
-      de: '10+ Jahre B2B Sales skalieren. Ex-CSO bei Elba (€8,5M ARR, RPA/AI), Enterprise Sales bei Telefónica (€7,7Mrd).',
-      en: '10+ years scaling B2B sales. Ex-CSO at Elba (€8.5M ARR, RPA/AI), Enterprise Sales at Telefónica (€7.7B).'
+    keyLine: {
+      de: 'Hat B2B Sales von 0 auf €8,5M ARR skaliert.',
+      en: 'Scaled B2B sales from 0 to €8.5M ARR.',
     },
-    highlight: { 
-      de: '3,8% Conversion, €14,5K Durchschnitts-Deals', 
-      en: '3.8% conversion, €14.5K avg. deals' 
+    body: {
+      de: '10+ Jahre Sales-Systeme gebaut die ohne den Gründer laufen. Baut AI Agents und Automations die Sales-Teams 10x produktiver machen. Kein Konzern-Berater. Operator.',
+      en: '10+ years building sales systems that run without the founder. Builds AI agents and automations that make sales teams 10x more productive. Not a consultant. Operator.',
     },
-    expertise: ['B2B Sales', 'AI Agents', 'Automation', 'Performance Analytics'],
+    badge: { de: '3,8% Conversion · €15K Durchschnitts-Deal', en: '3.8% Conversion · €15K Avg Deal' },
+    tags: ['B2B Sales', 'AI Agents', 'Automation', 'Performance Analytics'],
     image: '/images/team-alban.png',
     linkedin: 'https://www.linkedin.com/in/alban-halili/',
-    profileLink: '/ah'
+    profileLink: '/about/ah',
   },
   {
     name: 'Florian Metzger',
     role: { de: 'Partner', en: 'Partner' },
-    tagline: { de: 'RevOps. GTM. Venture Architect.', en: 'RevOps. GTM. Venture Architect.' },
-    bio: {
-      de: '4+ Jahre SaaS-Businesses aufbauen. Design Thinking (HPI), lasr.io Architekt. Co-Founder Mindset.',
-      en: '4+ years building SaaS businesses. Design Thinking (HPI), lasr.io architect. Co-founder mindset.'
+    keyLine: {
+      de: 'Baut die Systeme die Strategie in operative Realität übersetzen.',
+      en: 'Builds the systems that translate strategy into operational reality.',
     },
-    highlight: { 
-      de: 'Sales Cycle –30%, Lead Throughput optimiert', 
-      en: 'Sales cycle –30%, improved lead throughput' 
+    body: {
+      de: 'RevOps, GTM Engineering, Venture Architect — hands-on. Co-Founder Mindset: denkt wie ein Gründer, baut wie ein Engineer. Architekt von Fördermittelnavigator.',
+      en: 'RevOps, GTM engineering, venture architect — hands-on. Co-founder mindset: thinks like a founder, builds like an engineer. Architect of Fördermittelnavigator.',
     },
-    expertise: ['RevOps', 'GTM Engineering', 'Marketing Automation'],
+    badge: { de: 'Sales Cycle –30% · Lead Throughput optimiert', en: 'Sales Cycle –30% · Lead Throughput Optimized' },
+    tags: ['RevOps', 'GTM Engineering', 'Marketing Automation', 'Venturing'],
     image: '/images/team-florian-square.png',
     linkedin: 'https://www.linkedin.com/in/florianmetzger/',
-    profileLink: '/fm'
-  }
+    profileLink: '/about/fm',
+  },
 ];
 
-const approaches: Approach[] = [
+const mechanisms = [
   {
-    icon: BookOpen,
-    title: { de: 'Research-basiert', en: 'Research-Backed' },
-    description: {
-      de: 'Unsere Methodik basiert auf 4 Peer-Review-Papers und der Analyse von 22 Series A-D Unternehmen (Midjourney, Cursor, Perplexity). Keine Meinungen. Daten.',
-      en: 'Our methodology is based on 4 peer-reviewed papers and analysis of 22 Series A-D companies (Midjourney, Cursor, Perplexity). Not opinions. Data.'
+    icon: Eye,
+    num: 'M1',
+    label: { de: 'HYPOTHESEN-MASCHINE', en: 'HYPOTHESIS ENGINE' },
+    title: { de: 'Wir sehen den Hebel — bevor du ihn siehst.', en: 'We see the lever — before you do.' },
+    body: {
+      de: 'Durch die Kombination aus Marktverständnis, operativer Erfahrung und AI-Orchestration generieren wir Perspektiven die andere nicht haben. In 48 Stunden. Nicht in 3 Wochen.',
+      en: 'By combining market understanding, operational experience, and AI orchestration, we generate perspectives others don\'t have. In 48 hours. Not 3 weeks.',
     },
-    link: { de: 'Research lesen', en: 'Read the Research' },
-    href: '/expertise'
+    href: '/expertise/hypothesen-maschine',
+    amber: false,
   },
   {
-    icon: Rocket,
-    title: { de: 'Hands-On', en: 'Hands-On' },
-    description: {
-      de: 'Wir beraten nicht – wir bauen. 90-Tage-Sprints mit Ihrem Team. Tools, Playbooks und Systeme, die funktionieren.',
-      en: "We don't advise—we build. 90-day sprints with your team. Tools, playbooks, and systems that ship."
+    icon: ArrowRightLeft,
+    num: 'M2',
+    label: { de: 'ÜBERSETZUNGSKOMPETENZ', en: 'TRANSLATION COMPETENCE' },
+    title: { de: 'Strategie die auf dem Slide Deck bleibt, ist wertlos.', en: 'Strategy that stays on the slide deck is worthless.' },
+    body: {
+      de: 'Wir übersetzen Strategie in operative Realität — in Systeme, Prozesse und Teams die funktionieren. Nicht irgendwann. Jetzt.',
+      en: 'We translate strategy into operational reality — into systems, processes, and teams that work. Not someday. Now.',
     },
-    link: { de: 'Lösungen ansehen', en: 'See Our Solutions' },
-    href: '/solutions'
+    href: '/expertise/uebersetzungskompetenz',
+    amber: false,
   },
   {
-    icon: TrendingUp,
-    title: { de: 'Messbar', en: 'Measurable' },
-    description: {
-      de: 'Jedes Engagement hat klare KPIs: CAC -20-40%, Win Rate +50-100%, Rule of 40 +20-50pp. 80% Erfolgsrate.',
-      en: 'Every engagement has clear KPIs: CAC -20-40%, Win Rate +50-100%, Rule of 40 +20-50pp. 80% success rate.'
+    icon: Settings,
+    num: 'M3',
+    label: { de: 'FUNKTIONIERENDE SYNTHESE', en: 'FUNCTIONING SYNTHESIS' },
+    title: { de: 'Kein Slide Deck. Kein Abschlussbericht.', en: 'No slide deck. No final report.' },
+    body: {
+      de: 'Wir bauen Mechanismen die in der Realität funktionieren — nicht in der Präsentation. Strategie + Execution + Systeme in einem Zug.',
+      en: 'We build mechanisms that work in reality — not in the presentation. Strategy + execution + systems in one move.',
     },
-    link: { de: 'Case Studies ansehen', en: 'View Case Studies' },
-    href: '/cases'
-  }
+    href: '/expertise/funktionierende-synthese',
+    amber: false,
+  },
+  {
+    icon: Cpu,
+    num: 'M4',
+    label: { de: 'AI ORCHESTRATION', en: 'AI ORCHESTRATION' },
+    title: { de: 'AI macht M1–M3 10x schneller.', en: 'AI makes M1–M3 10x faster.' },
+    body: {
+      de: 'Wir sind AI Orchestrators — nicht AI User. Das ist kein Feature. Das ist Architektur. M1–M3 funktionieren. Mit M4 funktionieren sie schneller, schärfer, tiefer.',
+      en: 'We\'re AI orchestrators — not AI users. It\'s not a feature. It\'s architecture. M1–M3 work. With M4, they work faster, sharper, deeper.',
+    },
+    href: '/expertise/ai-orchestration',
+    amber: true,
+  },
 ];
 
-const values: Value[] = [
-  {
-    icon: Target,
-    title: { de: 'Wirkung zuerst', en: 'Impact First' },
-    description: {
-      de: 'Integrierte Strategie + Playbooks + AI-Agents in einem kohärenten Wirkungssystem. Geschwindigkeit mit Präzision.',
-      en: 'Integrated Strategy + Playbooks + AI-Agents in one cohesive impact system. Speed with precision.'
-    }
-  },
-  {
-    icon: Users,
-    title: { de: 'Empowerment by Design', en: 'Empowerment by Design' },
-    description: {
-      de: 'Wir bauen Fähigkeiten in Ihrem Team auf (Methoden, Playbooks, AI-Stacks), damit die Wirkung bleibt.',
-      en: "We build capabilities in your team (methods, playbooks, AI-stacks) so impact remains when we're gone."
-    }
-  },
-  {
-    icon: Code2,
-    title: { de: 'Clean Code Growth', en: 'Clean Code Growth' },
-    description: {
-      de: 'Wiederholbare Systeme statt Quick Fixes. Nachhaltiges Skalieren, keine Growth Hacks.',
-      en: 'Repeatable systems instead of quick fixes. Sustainable scaling, not growth hacks.'
-    }
-  }
+const stats = [
+  { value: '80+', label: { de: 'Unternehmen begleitet', en: 'Companies Supported' }, sub: { de: 'Series A–D · DACH · B2B SaaS', en: 'Series A–D · DACH · B2B SaaS' } },
+  { value: '140+', label: { de: 'Engagements', en: 'Engagements' }, sub: { de: 'Ø 1,75 Engagements pro Unternehmen', en: 'Avg 1.75 engagements per company' } },
+  { value: '€2.5B+', label: { de: 'Bewertung kumuliert', en: 'Cumulative Valuation' }, sub: { de: 'Stand März 2026', en: 'As of March 2026' }, accent: true },
+  { value: '90', label: { de: 'Tage bis Ergebnis', en: 'Days to Results' }, sub: { de: 'Garantiert oder Geld zurück', en: 'Guaranteed or money back' } },
 ];
 
-const caseStudies = [
-  {
-    title: { de: 'Series B SaaS (€15M ARR)', en: 'Series B SaaS (€15M ARR)' },
-    result: { de: 'CAC €12k → €5k (-58%) in 30 Tagen', en: 'CAC €12k → €5k (-58%) in 30 days' }
-  },
-  {
-    title: { de: 'Series C SaaS (€50M ARR)', en: 'Series C SaaS (€50M ARR)' },
-    result: { de: 'Rule of 40: 25 → 55 (+30pp) in 90 Tagen', en: 'Rule of 40: 25 → 55 (+30pp) in 90 days' }
-  },
-  {
-    title: { de: 'VC Portfolio (15 Unternehmen)', en: 'VC Portfolio (15 Companies)' },
-    result: { de: 'Bewertung +€150M (+30%) in 12 Monaten', en: 'Valuation +€150M (+30%) in 12 months' }
-  }
+const caseSnippets = [
+  { title: { de: 'Series B SaaS · €15M ARR', en: 'Series B SaaS · €15M ARR' }, result: { de: 'CAC €12k → €5k (–58%) in 30 Tagen', en: 'CAC €12k → €5k (–58%) in 30 days' } },
+  { title: { de: 'Series C SaaS · €50M ARR', en: 'Series C SaaS · €50M ARR' }, result: { de: 'Rule of 40: 25 → 55 (+30pp) in 90 Tagen', en: 'Rule of 40: 25 → 55 (+30pp) in 90 days' } },
+  { title: { de: 'VC Portfolio · 15 Unternehmen', en: 'VC Portfolio · 15 Companies' }, result: { de: 'Bewertung +€150M (+30%) in 12 Monaten', en: 'Valuation +€150M (+30%) in 12 months' } },
 ];
 
 // =============================================================================
@@ -184,444 +142,452 @@ const caseStudies = [
 
 const About: React.FC = () => {
   const { language } = useLanguage();
-  const lang = language as 'de' | 'en';
+  const de = language === 'de';
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  // Scroll-reveal refs
+  const heroAnim = useScrollAnimation({ threshold: 0.1 });
+  const teamAnim = useScrollAnimation({ threshold: 0.1 });
+  const mechAnim = useScrollAnimation({ threshold: 0.1 });
+  const proofAnim = useScrollAnimation({ threshold: 0.1 });
+  const missionAnim = useScrollAnimation({ threshold: 0.1 });
+  const ventureAnim = useScrollAnimation({ threshold: 0.1 });
+  const ctaAnim = useScrollAnimation({ threshold: 0.1 });
+
+  // Parallax
+  const heroParallax = useParallaxLayers({ speeds: [0.1, 0.3, 0.5] });
+  const teamParallax = useParallaxLayers({ speeds: [0.05, 0.12] });
+  const mechParallax = useParallaxLayers({ speeds: [0.05, 0.12] });
+
+  const scrollToNext = () => {
+    const hero = heroParallax.containerRef.current;
+    if (hero) {
+      const next = hero.nextElementSibling as HTMLElement;
+      next?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <PersonSchema name="Michel Lason" jobTitle="Founder & CEO" description="18 Jahre Startups skalieren. Autor Fix Growth. Scale Faster." image="/images/team-michel.png" url="/ml" sameAs={['https://www.linkedin.com/in/michellason/']} />
-      <PersonSchema name="Alban Halili" jobTitle="Partner" description="10+ Jahre B2B Sales skalieren. Ex-CSO Elba, Enterprise Sales Telefónica." image="/images/team-alban.png" url="/ah" sameAs={['https://www.linkedin.com/in/alban-halili/']} />
-      <PersonSchema name="Florian Metzger" jobTitle="Partner" description="4+ Jahre SaaS-Businesses aufbauen. Design Thinking HPI, RevOps." image="/images/team-florian-square.png" url="/fm" sameAs={['https://www.linkedin.com/in/florianmetzger/']} />
+      <PersonSchema name="Michel Lason" jobTitle="Founder & CEO" description="19 Jahre Startups skalieren. Autor Fix Growth. Scale Faster." image="/images/team-michel.png" url="/ml" sameAs={['https://www.linkedin.com/in/michellason/']} />
+      <PersonSchema name="Alban Halili" jobTitle="Partner" description="10+ Jahre B2B Sales skalieren." image="/images/team-alban.png" url="/ah" sameAs={['https://www.linkedin.com/in/alban-halili/']} />
+      <PersonSchema name="Florian Metzger" jobTitle="Partner" description="RevOps, GTM Engineering, Venture Architect." image="/images/team-florian-square.png" url="/fm" sameAs={['https://www.linkedin.com/in/florianmetzger/']} />
       <Navigation />
-      
-      {/* ================================================================= */}
-      {/* SECTION 1: HERO */}
-      {/* ================================================================= */}
-      <SharedHero
-        overlineEn="About ScalingX"
-        overlineDe="Über ScalingX"
-        headlineLine1En="Expertise × Speed"
-        headlineLine1De="Expertise × Speed"
-        headlineLine2En="= Impact"
-        headlineLine2De="= Impact"
-        subheadlineEn="We help Series A-D startups scale 3-5x faster. Not with slides. With systems that ship."
-        subheadlineDe="Wir helfen Series A-D Startups 3-5x schneller zu skalieren. Nicht mit Slides. Mit Systemen, die funktionieren."
-        stats={[
-          { value: '80+', label: { en: 'Companies Scaled', de: 'Unternehmen skaliert' } },
-          { value: '140+', label: { en: 'Engagements', de: 'Mandate' } },
-          { value: '€2.5B+', label: { en: 'Valuation', de: 'Bewertung' }, color: 'accent' },
-          { value: '90 Days', label: { en: 'Time to Results', de: 'Bis zu Ergebnissen' } }
-        ]}
-      />
-      
-      <main className="pt-6 md:pt-8 pb-20">
-        <div className="container max-w-7xl mx-auto px-4">
 
-          {/* ================================================================= */}
-          {/* SECTION 2: TEAM */}
-          {/* ================================================================= */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="border-accent text-accent mb-4">
-                {lang === 'de' ? 'Die Menschen hinter ScalingX' : 'The Humans Behind ScalingX'}
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                {lang === 'de' ? 'Expertise × Speed = Impact' : 'Expertise × Speed = Impact'}
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {lang === 'de' 
-                  ? 'Lernen Sie das Team kennen, das 80+ Unternehmen über 140+ Mandate skaliert hat—mit messbaren Ergebnissen in 90 Tagen.'
-                  : 'Meet the team that has scaled 80+ companies across 140+ engagements—with measurable results in 90 days.'
-                }
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-8">
-              {teamMembers.map((member) => (
-                <Card key={member.name} className="overflow-hidden group">
-                  {/* Image */}
-                  <div className="aspect-square bg-muted relative overflow-hidden">
-                    <img 
-                      src={member.image} 
-                      alt={member.name}
-                      className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-                        member.name === 'Alban Halili' ? 'object-top' : ''
-                      }`}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-4 gap-3">
-                      {member.linkedin && (
-                        <a 
-                          href={member.linkedin} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="p-2 bg-background/80 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-                        >
-                          <Linkedin className="w-5 h-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
-                    <p className="text-sm text-primary mb-1">{member.role[lang]}</p>
-                    <p className="text-xs text-accent mb-4 italic">{member.tagline[lang]}</p>
-                    <p className="text-sm text-muted-foreground mb-4">{member.bio[lang]}</p>
-                    
-                    {/* Expertise Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {member.expertise.map((skill) => (
-                        <Badge key={skill} variant="muted" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                    
-                    {/* Highlight */}
-                    <div className="flex items-start gap-2 p-3 bg-primary/5 rounded-lg">
-                      <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                      <p className="text-xs text-muted-foreground">{member.highlight[lang]}</p>
-                    </div>
-                    
-                    {/* Learn More Button */}
-                    {member.profileLink ? (
-                      <Link to={member.profileLink}>
-                        <Button variant="ghost" size="sm" className="w-full mt-4 group">
-                          {lang === 'de' ? 'Mehr erfahren' : 'Learn more'}
-                          <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </Link>
-                    ) : (
-                      <Button variant="ghost" size="sm" className="w-full mt-4 opacity-50 cursor-not-allowed" disabled>
-                        {lang === 'de' ? 'Bald verfügbar' : 'Coming soon'}
-                      </Button>
+      {/* ================================================================= */}
+      {/* SECTION 1: HERO — Deep Space, 3-Layer Parallax, min-h-screen */}
+      {/* ================================================================= */}
+      <section
+        ref={(el) => {
+          (heroAnim.ref as React.MutableRefObject<HTMLElement | null>).current = el;
+          (heroParallax.containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        }}
+        className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden noise dark-section"
+      >
+        {/* Layer 1: Deep Space */}
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-[#0A0A0F] via-[#0F0F1A] to-[#1A1A2E] transition-transform duration-100"
+          style={{ transform: `translateY(${heroParallax.offsets[0]}px) scale(1.1)` }}
+        />
+        <div
+          className="absolute inset-0 bg-mesh opacity-60 transition-transform duration-100"
+          style={{ transform: `translateY(${heroParallax.offsets[0]}px) scale(1.1)` }}
+        />
+        {/* Layer 2: Stars + Trails */}
+        <div className="absolute inset-0 transition-transform duration-100" style={{ transform: `translateY(${heroParallax.offsets[1]}px)` }}>
+          <TwinklingStars />
+        </div>
+        <div className="absolute inset-0 transition-transform duration-100" style={{ transform: `translateY(${heroParallax.offsets[1]}px)` }}>
+          <GrowthTrails />
+        </div>
+        {/* Layer 3: Grid */}
+        <div
+          className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20 transition-transform duration-100"
+          style={{ transform: `translateY(${heroParallax.offsets[2]}px) scale(1.1)` }}
+        />
+
+        <div className="container max-w-5xl mx-auto px-6 py-24 relative z-10 text-center">
+          {/* Overline */}
+          <div className={`flex items-center justify-center gap-4 mb-8 transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <span className="h-px w-12 bg-gradient-primary" />
+            <span className="text-sm font-medium uppercase tracking-[0.3em] text-accent">
+              EXPERTISE × SPEED = IMPACT
+            </span>
+            <span className="h-px w-12 bg-gradient-primary" />
+          </div>
+
+          {/* H1 */}
+          <h1 className={`font-display text-hero-lg mb-8 transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            <span className="block text-foreground">
+              {de ? 'Deine Strategie funktioniert auf dem Slide Deck.' : 'Your strategy works on the slide deck.'}
+            </span>
+            <span className="block text-gradient animate-gradient bg-gradient-primary italic">
+              {de ? 'Wir sorgen dafür, dass sie in der Realität funktioniert.' : 'We make it work in reality.'}
+            </span>
+          </h1>
+
+          {/* Subline */}
+          <p className={`text-body-lg text-muted-foreground max-w-2xl mx-auto mb-10 transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            {de ? 'Nicht mit Slides. Mit Systemen, die funktionieren. Fucking schnell.' : 'Not with slides. With systems that work. Fucking fast.'}
+          </p>
+
+          {/* Badge */}
+          <div className={`transition-all duration-700 ${heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
+            <span className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-accent border border-accent/30 rounded-full bg-card shadow-brutal-sm">
+              {de ? 'FÜR CEOS VON FINANZIERTEN STARTUPS · SERIES A–B · DACH' : 'FOR CEOS OF FUNDED STARTUPS · SERIES A–B · DACH'}
+            </span>
+          </div>
+        </div>
+
+        {/* Scroll Chevron */}
+        <button
+          onClick={scrollToNext}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce text-muted-foreground hover:text-foreground transition-colors"
+          aria-label="Scroll down"
+        >
+          <ChevronDown className="w-8 h-8" />
+        </button>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 2: DIE DREI MENSCHEN */}
+      {/* ================================================================= */}
+      <section
+        ref={(el) => {
+          (teamAnim.ref as React.MutableRefObject<HTMLElement | null>).current = el;
+          (teamParallax.containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        }}
+        className="relative py-24 md:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100" style={{ transform: `translateY(${teamParallax.offsets[0]}px) scale(1.05)` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background transition-transform duration-100" style={{ transform: `translateY(${teamParallax.offsets[1]}px) scale(1.05)` }} />
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
+
+        <div className="container max-w-6xl mx-auto px-6 relative z-10">
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'DAS TEAM' : 'THE TEAM'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de ? <>Drei Menschen.<br /><span className="italic text-gradient">Ein System.</span></> : <>Three people.<br /><span className="italic text-gradient">One system.</span></>}
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {teamMembers.map((m, i) => (
+              <div
+                key={m.name}
+                className={`border-2 border-border bg-card p-8 transition-all duration-500 hover:border-primary/50 hover:shadow-glow ${teamAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 2) * 100}ms` }}
+              >
+                {/* Photo + LinkedIn */}
+                <div className="flex items-center gap-4 mb-5">
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    className={`w-20 h-20 rounded-full object-cover ${m.name === 'Alban Halili' ? 'object-top' : ''}`}
+                  />
+                  <div>
+                    <h3 className="font-display text-xl text-foreground">{m.name}</h3>
+                    <p className="text-xs uppercase tracking-wider text-muted-foreground">{de ? m.role.de : m.role.en}</p>
+                    {m.linkedin && (
+                      <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="inline-block mt-1 text-muted-foreground hover:text-accent transition-colors">
+                        <Linkedin className="w-4 h-4" />
+                      </a>
                     )}
                   </div>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          {/* ================================================================= */}
-          {/* SECTION 3: APPROACH */}
-          {/* ================================================================= */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="border-accent text-accent mb-4">
-                {lang === 'de' ? 'Wie wir arbeiten' : 'How We Work'}
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                {lang === 'de' ? 'Research-basiert. Hands-On. Messbar.' : 'Research-Backed. Hands-On. Measurable.'}
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {lang === 'de' 
-                  ? 'Unsere Methodik basiert auf der Analyse von 22 AI-nativen Unternehmen. Keine Meinungen. Daten.'
-                  : 'Our methodology is based on analysis of 22 AI-native companies. Not opinions. Data.'
-                }
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {approaches.map((approach, idx) => (
-                <Card key={idx} className="p-6 hover:shadow-brutal transition-shadow">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                    <approach.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{approach.title[lang]}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{approach.description[lang]}</p>
-                  <a 
-                    href={approach.href} 
-                    className="inline-flex items-center text-sm text-primary hover:underline"
-                  >
-                    {approach.link[lang]}
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </a>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          {/* ================================================================= */}
-          {/* SECTION 4: VALUES */}
-          {/* ================================================================= */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="border-primary text-primary mb-4">
-                {lang === 'de' ? 'Unsere Non-Negotiables' : 'Our Non-Negotiables'}
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold">
-                {lang === 'de' 
-                  ? 'Was uns in einer Welt endloser Beratungszyklen unterscheidet'
-                  : 'What makes us different in a world of endless consulting cycles'
-                }
-              </h2>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {values.map((value, idx) => (
-                <Card key={idx} className="p-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                    <value.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2">{value.title[lang]}</h3>
-                  <p className="text-sm text-muted-foreground">{value.description[lang]}</p>
-                </Card>
-              ))}
-            </div>
-          </section>
-
-          {/* ================================================================= */}
-          {/* SECTION 5: PROOF */}
-          {/* ================================================================= */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="border-accent text-accent mb-4">
-                {lang === 'de' ? 'Bewährte Erfolgsbilanz' : 'Proven Track Record'}
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                {lang === 'de' ? 'Evidenz-basierte Ergebnisse' : 'Evidence-Based Results'}
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {lang === 'de' 
-                  ? 'Wir haben 80+ Unternehmen über 140+ Mandate skaliert und €2,5Mrd+ Bewertung verwaltet.'
-                  : "We've scaled 80+ companies across 140+ engagements, managing €2.5B+ in valuation."
-                }
-              </p>
-            </div>
-            
-            {/* Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              <Card className="p-6 text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">80+</p>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Unternehmen skaliert' : 'Companies Scaled'}
-                </p>
-              </Card>
-              <Card className="p-6 text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">140+</p>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Mandate' : 'Engagements'}
-                </p>
-              </Card>
-              <Card className="p-6 text-center">
-                <p className="text-3xl md:text-4xl font-bold text-accent">€2.5B+</p>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Bewertung verwaltet' : 'Valuation Managed'}
-                </p>
-              </Card>
-              <Card className="p-6 text-center">
-                <p className="text-3xl md:text-4xl font-bold text-primary">92%</p>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Erfolgsrate' : 'Success Rate'}
-                </p>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {lang === 'de' ? '(2 von 3 Outcomes)' : '(2 of 3 outcomes)'}
-                </p>
-              </Card>
-            </div>
-            
-            {/* Case Studies Teaser */}
-            <div className="grid md:grid-cols-3 gap-4 mb-8">
-              {caseStudies.map((cs, idx) => (
-                <Card key={idx} className="p-4 bg-muted/30">
-                  <p className="text-sm font-medium mb-1">{cs.title[lang]}</p>
-                  <p className="text-sm text-primary font-semibold">{cs.result[lang]}</p>
-                </Card>
-              ))}
-            </div>
-            
-            <div className="text-center">
-              <a href="/cases" className="inline-flex items-center text-primary hover:underline">
-                {lang === 'de' ? 'Alle Case Studies ansehen' : 'View All Case Studies'}
-                <ArrowRight className="w-4 h-4 ml-1" />
-              </a>
-            </div>
-          </section>
-
-          {/* ================================================================= */}
-          {/* SECTION 6: PORTFOLIO */}
-          {/* ================================================================= */}
-          <section className="mb-20">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="border-accent text-accent mb-4">
-                {lang === 'de' ? 'Was wir bauen' : 'What We Build'}
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-                {lang === 'de' ? 'Wir investieren in das, was wir skalieren helfen' : 'We invest in what we help scale'}
-              </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                {lang === 'de' 
-                  ? 'Zwei Ventures, die unsere AI-Native Philosophie verkörpern.'
-                  : 'Two ventures that embody our AI-Native philosophy.'
-                }
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* lasr.io */}
-              <Card className="p-6 hover:shadow-brutal transition-shadow">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <Rocket className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">lasr.io</h3>
-                    <p className="text-sm text-muted-foreground">AI-Native Execution Platform</p>
-                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {lang === 'de' 
-                    ? '12-Minuten-Assessment, KI-gestützte Playbooks, Echtzeit-Dashboards. Gebaut für Series A-D Startups.'
-                    : '12-minute assessment, AI-powered playbooks, real-time dashboards. Built for Series A-D startups.'
-                  }
-                </p>
-                <div className="flex items-center justify-between">
-                  <Badge variant="accent">Free</Badge>
-                  <a 
-                    href="https://lasr.io" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-primary hover:underline"
-                  >
-                    Visit lasr.io
-                    <ExternalLink className="w-3 h-3 ml-1" />
-                  </a>
-                </div>
-              </Card>
-              
-              {/* Pigtie */}
-              <Card className="p-6 hover:shadow-brutal transition-shadow">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center">
-                    <PiggyBank className="w-6 h-6 text-pink-500" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">Pigtie</h3>
-                    <p className="text-sm text-muted-foreground">The Agentic OS for Personal Finance.</p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {lang === 'de' 
-                    ? 'Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen.'
-                    : 'Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers.'
-                  }
-                </p>
-                <div className="flex items-center justify-between">
-                  <Badge variant="muted">Portfolio Company</Badge>
-                  <a 
-                    href="https://www.pigtie.de/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm text-primary hover:underline"
-                  >
-                    Visit Pigtie
-                    <ExternalLink className="w-3 h-3 ml-1" />
-                  </a>
-                </div>
-              </Card>
-            </div>
-          </section>
 
-          {/* ================================================================= */}
-          {/* SECTION 7: MISSION */}
-          {/* ================================================================= */}
-          <Card className="p-8 md:p-12 mb-20 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <div className="text-center mb-8">
-              <Badge variant="outline" className="border-primary text-primary mb-4">
-                {lang === 'de' ? 'Warum wir existieren' : 'Why We Exist'}
-              </Badge>
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
-                {lang === 'de' ? 'Unsere Mission' : 'Our Mission'}
-              </h2>
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-                {lang === 'de' 
-                  ? 'Wir glauben, die nächste Generation europäischer Unicorns wird AI-native sein. Unser Ziel ist es, bestehenden Scale-ups bei dieser Transformation zu helfen – bevor es ihre Wettbewerber tun.'
-                  : 'We believe the next generation of European unicorns will be AI-native. Our goal is to help existing scale-ups make this transition – before their competitors do.'
-                }
-              </p>
-              <p className="text-xl md:text-2xl font-display font-bold text-primary max-w-3xl mx-auto italic">
-                "{lang === 'de' 
-                  ? 'Die Frage ist nicht, ob KI Ihr Unternehmen transformieren wird, sondern wer diese Transformation anführen wird.'
-                  : 'The question is not if AI will transform your business, but who will lead that transformation.'
-                }"
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center p-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-semibold mb-1">Execution-First</h4>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Wir liefern Systeme, keine Slides.' : 'We ship systems, not slides.'}
+                {/* Key Line */}
+                <p className="font-semibold text-foreground mb-3">
+                  {de ? m.keyLine.de : m.keyLine.en}
                 </p>
+
+                {/* Body */}
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                  {de ? m.body.de : m.body.en}
+                </p>
+
+                {/* Result Badge */}
+                <span className="inline-block text-xs px-3 py-1 border border-accent/30 bg-accent/10 text-accent rounded-full mb-4">
+                  {de ? m.badge.de : m.badge.en}
+                </span>
+
+                {/* Tags */}
+                <p className="text-xs text-muted-foreground mb-4">
+                  {m.tags.join(' · ')}
+                </p>
+
+                {/* Link */}
+                <Link to={m.profileLink} className="inline-flex items-center text-sm text-muted-foreground hover:text-accent transition-colors">
+                  {de ? `Mehr über ${m.name.split(' ')[0]}` : `More about ${m.name.split(' ')[0]}`}
+                  <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
               </div>
-              <div className="text-center p-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
-                  <Zap className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-semibold mb-1">Speed Matters</h4>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? '90 Tage, nicht 12 Monate.' : '90 days, not 12 months.'}
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-2 mx-auto">
-                  <Handshake className="w-6 h-6 text-primary" />
-                </div>
-                <h4 className="font-semibold mb-1">Partnership</h4>
-                <p className="text-sm text-muted-foreground">
-                  {lang === 'de' ? 'Wir sind Co-Pilots, keine Consultants.' : "We're co-pilots, not consultants."}
-                </p>
-              </div>
-            </div>
-          </Card>
-
-          {/* ================================================================= */}
-          {/* SECTION 8: CTA */}
-          {/* ================================================================= */}
-          <section className="text-center">
-            <Card className="p-8 md:p-12 bg-card border-border">
-              <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">
-                {lang === 'de' ? "Let's Talk" : "Let's Talk"}
-              </h2>
-              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-                {lang === 'de'
-                  ? 'Buche einen kostenlosen 30-minütigen Inflection Call. Wir identifizieren deinen Bottleneck und geben dir 3 nächste Schritte.'
-                  : "Book a free 30-minute Inflection Call. We'll identify your bottleneck and give you 3 next steps."
-                }
-              </p>
-              <div className="flex flex-wrap justify-center gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-primary text-primary-foreground shadow-brutal-sm hover-brutal"
-                  onClick={() => setIsBookingModalOpen(true)}
-                >
-                  {lang === 'de' ? 'Kostenlosen Call buchen' : 'Book Free Call'}
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href="/solutions">
-                    {lang === 'de' ? 'Lösungen erkunden' : 'Explore Solutions'}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </a>
-                </Button>
-              </div>
-            </Card>
-          </section>
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 3: WARUM WIR ANDERS SIND — M1–M4 */}
+      {/* ================================================================= */}
+      <section
+        ref={(el) => {
+          (mechAnim.ref as React.MutableRefObject<HTMLElement | null>).current = el;
+          (mechParallax.containerRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        }}
+        className="relative py-24 md:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-mesh opacity-40 transition-transform duration-100" style={{ transform: `translateY(${mechParallax.offsets[0]}px) scale(1.05)` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20 transition-transform duration-100" style={{ transform: `translateY(${mechParallax.offsets[1]}px) scale(1.05)` }} />
+        <div className="absolute inset-0 bg-grid-pattern bg-grid-lg opacity-20" />
+
+        <div className="container max-w-5xl mx-auto px-6 relative z-10">
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'WARUM ES FUNKTIONIERT' : 'WHY IT WORKS'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de ? <>Andere beraten.<br /><span className="italic text-gradient">Wir bauen.</span></> : <>Others advise.<br /><span className="italic text-gradient">We build.</span></>}
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {mechanisms.map((m, i) => {
+              const Icon = m.icon;
+              const accentColor = m.amber ? 'text-amber-500' : 'text-accent';
+              const bgColor = m.amber ? 'bg-amber-500/10' : 'bg-accent/10';
+              const borderHover = m.amber ? 'hover:border-amber-500/50' : 'hover:border-primary/50';
+              return (
+                <Link
+                  key={m.num}
+                  to={m.href}
+                  className={`group relative block p-8 border-2 border-border bg-card ${borderHover} hover:shadow-glow transition-all duration-500 ${mechAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                  style={{ transitionDelay: `${(i + 2) * 100}ms` }}
+                >
+                  <span className={`absolute top-4 right-4 text-[10px] font-bold uppercase tracking-wider ${accentColor} opacity-60`}>
+                    {m.num} — {de ? m.label.de : m.label.en}
+                  </span>
+                  <div className={`w-10 h-10 flex items-center justify-center mb-4 ${bgColor}`}>
+                    <Icon className={`h-5 w-5 ${accentColor}`} />
+                  </div>
+                  <h3 className="font-display text-xl mb-2 text-foreground">
+                    {de ? m.title.de : m.title.en}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                    {de ? m.body.de : m.body.en}
+                  </p>
+                  <span className={`inline-flex items-center text-sm ${accentColor} opacity-70 group-hover:opacity-100 group-hover:gap-2 transition-all`}>
+                    {de ? 'Wie das funktioniert' : 'How it works'}
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 4: BEWEIS */}
+      {/* ================================================================= */}
+      <section
+        ref={proofAnim.ref as React.RefObject<HTMLElement>}
+        className="relative py-24 md:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-mesh opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background" />
+
+        <div className="container max-w-5xl mx-auto px-6 relative z-10">
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 text-center transition-all duration-700 ${proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'EVIDENZ' : 'EVIDENCE'}
+          </p>
+          <h2 className={`font-display text-display-md mb-12 text-center transition-all duration-700 ${proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de ? 'Zahlen die für sich sprechen.' : 'Numbers that speak for themselves.'}
+          </h2>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            {stats.map((s, i) => (
+              <div
+                key={i}
+                className={`p-6 border-2 border-border bg-card text-center transition-all duration-500 ${proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 2) * 100}ms` }}
+              >
+                <span className={`font-mono text-3xl md:text-4xl font-bold ${s.accent ? 'text-accent' : 'text-primary'}`}>
+                  {s.value}
+                </span>
+                <span className="block text-sm text-foreground mt-2">
+                  {de ? s.label.de : s.label.en}
+                </span>
+                <span className="block text-xs text-muted-foreground mt-1">
+                  {de ? s.sub.de : s.sub.en}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Case Snippets */}
+          <div className="grid md:grid-cols-3 gap-4 mb-8">
+            {caseSnippets.map((c, i) => (
+              <div
+                key={i}
+                className={`p-5 border-2 border-border bg-card transition-all duration-500 ${proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(i + 6) * 100}ms` }}
+              >
+                <p className="text-sm font-medium text-foreground mb-1">{de ? c.title.de : c.title.en}</p>
+                <p className="text-sm font-semibold text-accent">{de ? c.result.de : c.result.en}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className={`text-center transition-all duration-700 ${proofAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '900ms' }}>
+            <Link to="/cases" className="inline-flex items-center text-sm text-accent hover:underline">
+              {de ? 'Alle Cases ansehen' : 'View All Cases'}
+              <ArrowRight className="w-4 h-4 ml-1" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 5: WAS UNS ANTREIBT / MISSION */}
+      {/* ================================================================= */}
+      <section
+        ref={missionAnim.ref as React.RefObject<HTMLElement>}
+        className="relative py-24 md:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-mesh opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/20 to-background" />
+
+        <div className="container max-w-4xl mx-auto px-6 relative z-10 text-center">
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'WARUM WIR EXISTIEREN' : 'WHY WE EXIST'}
+          </p>
+          <h2 className={`font-display text-display-md mb-8 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de
+              ? <>Die Lücke zwischen Strategie und Realität kostet Startups <span className="italic text-gradient">ihre Zukunft.</span></>
+              : <>The gap between strategy and reality costs startups <span className="italic text-gradient">their future.</span></>}
+          </h2>
+
+          <p className={`text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            {de
+              ? 'Jedes Startup hat heute eine Strategie. Das Problem ist nicht die Strategie — es ist die Lücke zur Realität. Wir existieren um diese Lücke zu schließen. Schneller als jeder andere. Mit Systemen die bleiben.'
+              : 'Every startup has a strategy today. The problem isn\'t the strategy — it\'s the gap to reality. We exist to close that gap. Faster than anyone. With systems that last.'}
+          </p>
+
+          {/* Quote */}
+          <blockquote className={`text-xl md:text-2xl font-display italic text-accent/80 max-w-3xl mx-auto mb-16 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
+            „{de
+              ? 'Die Frage ist nicht ob du eine Strategie hast. Die Frage ist ob sie in der Realität funktioniert.'
+              : 'The question is not whether you have a strategy. The question is whether it works in reality.'}"
+            <span className="block text-sm text-muted-foreground mt-3 not-italic">— Michel Lason</span>
+          </blockquote>
+
+          {/* 3 Values */}
+          <div className={`grid md:grid-cols-3 gap-8 transition-all duration-700 ${missionAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
+            {[
+              { icon: Target, title: 'Impact-First', desc: { de: 'Funktionierende Systeme, nicht Slides.', en: 'Functioning systems, not slides.' } },
+              { icon: Zap, title: 'Speed Matters', desc: { de: '30 Tage, nicht 6 Monate.', en: '30 days, not 6 months.' } },
+              { icon: Handshake, title: 'Partnership', desc: { de: 'Co-Pilots, nicht Consultants.', en: 'Co-pilots, not consultants.' } },
+            ].map((v, i) => (
+              <div key={i} className="text-center">
+                <div className="w-12 h-12 bg-accent/10 flex items-center justify-center mb-3 mx-auto">
+                  <v.icon className="w-6 h-6 text-accent" />
+                </div>
+                <h4 className="font-display text-lg font-semibold mb-1">{v.title}</h4>
+                <p className="text-sm text-muted-foreground">{de ? v.desc.de : v.desc.en}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 5.5: PIGTIE VENTURE */}
+      {/* ================================================================= */}
+      <section
+        ref={ventureAnim.ref as React.RefObject<HTMLElement>}
+        className="relative py-16 md:py-20 overflow-hidden"
+      >
+        <div className="container max-w-3xl mx-auto px-6 relative z-10">
+          <div className={`border-2 border-border bg-card p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 transition-all duration-700 ${ventureAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="w-12 h-12 bg-pink-500/10 flex items-center justify-center flex-shrink-0">
+              <PiggyBank className="w-6 h-6 text-pink-500" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-display text-lg font-semibold mb-1">Pigtie</h3>
+              <p className="text-xs uppercase tracking-wider text-muted-foreground mb-2">The Agentic OS for Personal Finance · Portfolio Company</p>
+              <p className="text-sm text-muted-foreground">
+                {de
+                  ? 'Unterstützt Menschen mit KI-gesteuerter Finanzberatung und ermöglicht Banken, ihre Kunden besser zu bedienen.'
+                  : 'Empowering individuals with AI-driven financial guidance, and enabling banks to better serve their customers.'}
+              </p>
+            </div>
+            <a
+              href="https://www.pigtie.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-sm text-accent hover:underline whitespace-nowrap"
+            >
+              Visit Pigtie
+              <ExternalLink className="w-3 h-3 ml-1" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================= */}
+      {/* SECTION 6: FINAL CTA */}
+      {/* ================================================================= */}
+      <section
+        ref={ctaAnim.ref as React.RefObject<HTMLElement>}
+        className="relative py-24 md:py-32 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-mesh opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/20" />
+
+        <div className="container max-w-3xl mx-auto px-6 relative z-10 text-center">
+          <p className={`text-sm font-semibold uppercase tracking-widest text-accent mb-4 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            {de ? 'NÄCHSTER SCHRITT' : 'NEXT STEP'}
+          </p>
+          <h2 className={`font-display text-display-md mb-6 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '100ms' }}>
+            {de ? <>30 Minuten. Kein Pitch.<br /><span className="italic text-gradient">Direkt mit Michel.</span></> : <>30 minutes. No pitch.<br /><span className="italic text-gradient">Directly with Michel.</span></>}
+          </h2>
+          <p className={`text-lg text-muted-foreground max-w-xl mx-auto mb-10 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '200ms' }}>
+            {de
+              ? 'Wir schauen gemeinsam wo dein Engpass liegt. Du gehst mit 3 konkreten nächsten Schritten raus.'
+              : 'We look together at where your bottleneck is. You leave with 3 concrete next steps.'}
+          </p>
+
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-4 transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '300ms' }}>
+            <button
+              onClick={() => setIsBookingModalOpen(true)}
+              className="px-8 py-4 bg-gradient-accent text-white font-semibold shadow-accent-glow hover:shadow-lg transition-all whitespace-nowrap inline-flex items-center gap-2"
+            >
+              {de ? 'Kostenloses Gespräch buchen' : 'Book Free Conversation'}
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <Link
+              to="/solutions"
+              className="px-6 py-3 border-2 border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all inline-flex items-center gap-2 text-sm"
+            >
+              {de ? 'Solutions ansehen' : 'Explore Solutions'}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <p className={`text-xs text-muted-foreground transition-all duration-700 ${ctaAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
+            {de ? 'Unverbindlich · Kein Formular · Direkt mit Michel' : 'No commitment · No form · Directly with Michel'}
+          </p>
+        </div>
+      </section>
 
       <Footer />
-      
+
       <FilloutBookingModal
         formSlug="inflection-call"
         source="about"
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
-        title={lang === 'de' ? 'Inflection Call buchen' : 'Book Inflection Call'}
+        title={de ? 'Inflection Call buchen' : 'Book Inflection Call'}
       />
     </div>
   );

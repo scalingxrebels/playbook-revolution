@@ -1,68 +1,80 @@
 
 
-## Briefing-Check: Landing Page v2.0 vs. aktuelle IndexV2
+## Plan: /insights Redesign nach Solutions-Muster
 
-### Ergebnis: Das ist eine komplett neue Seite — kein Update der IndexV2
+### Ansatz
 
-Die v2.0 hat eine grundlegend andere Architektur, anderen Content und eine andere Conversion-Strategie als die aktuelle IndexV2. Die bestehenden Komponenten können nicht wiederverwendet werden.
+Die bestehende /insights-Seite wird nach dem exakten Muster der /solutions-Seite umgebaut: SharedHero, Featured Section, CategoryNav (6 Kacheln), Filter-Grid mit Category-Chips, und CTA. Alle bestehenden Design-Tokens bleiben erhalten (League Spartan, DM Sans, bg-card, text-gradient, shadow-brutal, etc.).
 
 ---
 
-### Vergleich: Was ändert sich
+### Architektur (spiegelt Solutions)
 
 ```text
-AKTUELL (IndexV2)                    BRIEFING v2.0
-─────────────────────────────────    ─────────────────────────────────
-Navigation ✅                        Keine Navigation ❌
-HeroWithChart (ARR-Chart)            Hero + Video-Embed (90s)
-ProblemOptimized (3 Cards)           Schmerz (Prosa, emotional)
-SolutionOptimized (3 Cards)          —
-HowItWorksOptimized (4 Areas)        —
-FormulaOptimized (GE×SS×AI)          —
-ProofOptimized (Midjourney etc.)     Proof (3 anonyme Cases)
-GrowthCurveOptimized (Interaktiv)    —
-ROICalculatorOptimized               —
-FinalCTAOptimized (Form+Benefits)    Final CTA (nur Kalender)
-—                                    Reframe (Zone 3) NEU
-—                                    Lösung: Finden/Bauen/Umsetzen NEU
-—                                    Founder Michel Lason (Zone 5B) NEU
-—                                    Für wen / Nicht für wen (Zone 6) NEU
-Footer ✅                            Kein Footer ❌
+/insights (Hub Page)
+├── S1 — Hero (SharedHero, Briefing-Copy, keine CTAs)
+├── S2 — Category Navigation (6 Kacheln, 3×2 Grid — wie SolutionCategoryNav)
+├── S3 — Featured Article (1 grosser, wie SolutionFeatured)
+├── S4 — Artikel-Grid mit Category-Chips + ?category= URL-State
+└── S5 — Weicher CTA (wie SolutionCTA, Briefing-Copy)
 ```
 
-### Was gebaut werden muss (7 neue Sektionen)
+---
 
-| Zone | Komponente | Status |
-|------|-----------|--------|
-| 1 | `FunnelHero` — Headline, Subline, Video-Embed, CTA, Micro-Copy | **Neu** |
-| 2 | `FunnelPain` — Emotionaler Schmerz-Text (Prosa, keine Cards) | **Neu** |
-| 3 | `FunnelReframe` — Strategie ≠ Engpass, AI-Multiplier | **Neu** |
-| 4 | `FunnelSolution` — 3-Step (Finden/Bauen/Umsetzen) | **Neu** |
-| 5 | `FunnelProof` — 3 anonyme Cases mit Quotes/Zahlen | **Neu** |
-| 5B | `FunnelFounder` — Michel Lason Bio + Foto | **Neu** |
-| 6 | `FunnelQualification` — Für wen / Nicht für wen | **Neu** |
-| 7 | `FunnelCTA` — Headline + Kalender-Embed (Fillout) | **Neu** |
+### Schritt 1: Daten aktualisieren
+
+**`src/data/insights.ts`**
+- Kategorien 8 → 6 (Solutions-aligned): `insights-and-levers`, `growth-engines`, `scaling-systems`, `ai-orchestration`, `translating-strategy`, `portfolio`
+- Neue `insightCategoryTiles`-Datenstruktur (analog `solutionCategories`): id, labelEn/De, headlineEn/De, bodyEn/De, route, icon, accentColor
+- AI Orchestration bekommt `text-amber-500` als Akzent, alle anderen `text-primary`
+- Sample-Artikel re-taggen auf neue Kategorien
+- Events und Case Studies bleiben im Type-System, werden aber auf der Hub-Page nicht gerendert
+
+### Schritt 2: Hub-Page Komponenten
+
+| Datei | Art | Vorlage |
+|---|---|---|
+| `src/components/insights/InsightsHero.tsx` | Anpassen | SharedHero ohne CTAs, Briefing-Copy |
+| `src/components/insights/InsightsCategoryNav.tsx` | **Neu** | Kopie von `SolutionCategoryNav` — 6 Kacheln mit icon, headline, body, Artikel-Count, Arrow-Link |
+| `src/components/insights/InsightsFeatured.tsx` | **Neu** | Kopie von `SolutionFeatured` — 1 Featured Article (border-left Akzent statt Card) |
+| `src/components/insights/InsightsFilterSection.tsx` | Refactor | Tabs entfernen → nur Category-Chips (6+All), gleicher Chip-Style wie Solutions |
+| `src/components/insights/InsightsGrid.tsx` | Refactor | Nur Articles rendern, kein Datum zeigen |
+| `src/components/insights/InsightArticleCard.tsx` | Refactor | Footer: Lesezeit + "Artikel lesen →", kein Datum |
+| `src/components/insights/InsightsCTA.tsx` | Anpassen | Briefing-Copy (weicher Ton), + Ghost-Button "Solutions ansehen" → /solutions |
+| `src/pages/Insights.tsx` | Refactor | 5-Section Architektur, `useSearchParams` für `?category=` |
+
+### Schritt 3: Kategorie-Seiten
+
+| Datei | Art | Vorlage |
+|---|---|---|
+| `src/pages/InsightCategoryPage.tsx` | **Neu** | Kopie von `SolutionCategoryLanding` — SharedHero + gefiltertes Grid + CTA mit Solutions-Link |
+| `src/App.tsx` | Routes | 6 neue Routes: `/insights/insights-and-levers`, `/insights/growth-engines`, etc. → `InsightCategoryPage` |
+
+---
 
 ### Design-Entscheidungen
 
-1. **Keine Navigation, kein Footer** — reiner Conversion-Funnel, eine Aktion
-2. **Video-Embed** — Platzhalter mit Play-Button (Video-URL muss noch geliefert werden)
-3. **CTA-Buttons** — öffnen `FilloutBookingModal` mit `formSlug="inflection-call"` und `source="funnel-v2"`
-4. **Kalender in Zone 7** — `FilloutEmbed` mit `formId="inflection-call"`, `domain="cal.scalingx.io"`
-5. **Styling** — Deep Space Design Pattern (Dark Section, Parallax, Grid), konsistent mit bestehendem Design-System
-6. **Nur Deutsch** — Briefing ist rein deutsch, EN-Fallbacks trotzdem eingebaut
+- **Exakte Tokens wie Solutions**: `bg-card border-2 border-border`, `bg-mesh opacity-40`, `bg-grid-pattern`, `text-display-md`, `italic text-gradient`, `shadow-brutal-sm`, `useScrollAnimation`
+- **Kacheln**: `bg-card border-2 border-border hover:border-primary/50 p-6` (wie `SolutionCategoryNav`)
+- **AI Orchestration**: `text-amber-500` statt `text-primary` (Multiplier-Signal)
+- **Keine hardcoded Hex-Farben** — alles über Theme-Tokens
+- **Artikel-Detail-Seiten**: Phase 2 (kein Body-Content vorhanden)
 
-### Technische Umsetzung
+### Dateien-Übersicht
 
-- **Neue Seite:** `src/pages/FunnelV2.tsx` (oder IndexV2 ersetzen — muss geklärt werden)
-- **7-8 neue Komponenten** unter `src/components/funnel/`
-- **Route:** Noch zu klären — eigene Route (z.B. `/go`) oder IndexV2 ersetzen?
-- **Keine neuen Dependencies** — nutzt bestehende UI-Komponenten, FilloutEmbed, FilloutBookingModal
+| Datei | Art |
+|---|---|
+| `src/data/insights.ts` | Refactor |
+| `src/components/insights/InsightsHero.tsx` | Anpassen |
+| `src/components/insights/InsightsCategoryNav.tsx` | **Neu** |
+| `src/components/insights/InsightsFeatured.tsx` | **Neu** |
+| `src/components/insights/InsightsFilterSection.tsx` | Refactor |
+| `src/components/insights/InsightsGrid.tsx` | Refactor |
+| `src/components/insights/InsightArticleCard.tsx` | Refactor |
+| `src/components/insights/InsightsCTA.tsx` | Anpassen |
+| `src/pages/Insights.tsx` | Refactor |
+| `src/pages/InsightCategoryPage.tsx` | **Neu** |
+| `src/App.tsx` | Routes hinzufügen |
 
-### Offene Fragen
-
-1. **Route:** Soll die neue Seite die IndexV2 ersetzen oder unter einer eigenen URL leben (z.B. `/go`, `/call`)?
-2. **Video-URL:** Welche Video-URL soll eingebettet werden? YouTube/Vimeo/selbstgehostet?
-3. **Michel Lason Foto:** Welches Bild soll verwendet werden? Gibt es eine URL?
-4. **Kalender-Widget:** Soll Zone 7 den `inflection-call` Fillout-Slug nutzen?
+11 Dateien (3 neu, 8 geändert). Umsetzung in 2-3 Schritten wegen Umfang.
 

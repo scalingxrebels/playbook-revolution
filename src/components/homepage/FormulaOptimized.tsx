@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Rocket, Cpu, Zap } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useParallax } from '@/hooks/useParallax';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
+import { ROICalculatorContent } from '@/components/homepage/ROICalculatorOptimized';
 
 const components = [
   {
@@ -51,10 +53,7 @@ const FormulaOptimized: React.FC = () => {
   const { language } = useLanguage();
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const parallax = useParallax({ speed: 0.25, direction: 'down' });
-
-  const scrollToCalculator = () => {
-    document.getElementById('roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const [roiModalOpen, setRoiModalOpen] = useState(false);
 
   return (
     <section 
@@ -77,7 +76,7 @@ const FormulaOptimized: React.FC = () => {
           </span>
           <h2 className="font-display text-display-md text-foreground mb-4">
             <span className="block">Growth Engines × Scaling Systems × AI</span>
-            <span className="block text-primary">= Hypergrowth</span>
+            <span className="block italic text-gradient">= Hypergrowth</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {language === 'de' 
@@ -98,34 +97,25 @@ const FormulaOptimized: React.FC = () => {
                 className={`group relative bg-card border-2 ${isAccent ? 'border-accent/30 hover:border-accent' : 'border-primary/30 hover:border-primary'} p-8 transition-all duration-400 animate-slide-up`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {/* Icon */}
                 <div className={`w-14 h-14 rounded-lg ${isAccent ? 'bg-accent/10 group-hover:bg-accent/20' : 'bg-primary/10 group-hover:bg-primary/20'} flex items-center justify-center mb-6 transition-colors`}>
                   <Icon className={`w-7 h-7 ${isAccent ? 'text-accent' : 'text-primary'}`} />
                 </div>
-
-                {/* Content */}
                 <h3 className="font-sans text-xl font-bold text-foreground mb-3">
                   {language === 'de' ? item.titleDe : item.titleEn}
                 </h3>
                 <p className="text-muted-foreground mb-4">
                   {language === 'de' ? item.descDe : item.descEn}
                 </p>
-
-                {/* Details */}
                 <div className="mb-4 space-y-1">
                   {(language === 'de' ? item.detailsDe : item.detailsEn).split('\n').map((line, i) => (
                     <p key={i} className="text-sm text-muted-foreground">{line}</p>
                   ))}
                 </div>
-
-                {/* Warning */}
                 <div className={`pt-4 border-t border-border`}>
                   <span className={`text-xs font-semibold uppercase tracking-widest ${isAccent ? 'text-accent' : 'text-primary'}`}>
                     {language === 'de' ? item.warningDe : item.warningEn}
                   </span>
                 </div>
-
-                {/* Glow Effect on Hover */}
                 <div className={`absolute inset-0 ${isAccent ? 'shadow-accent-glow' : 'shadow-glow'} opacity-0 group-hover:opacity-50 transition-opacity pointer-events-none`} />
               </div>
             );
@@ -137,7 +127,7 @@ const FormulaOptimized: React.FC = () => {
           <Button 
             variant="outline"
             size="lg"
-            onClick={scrollToCalculator}
+            onClick={() => setRoiModalOpen(true)}
             className="border-2 border-foreground/20 hover:border-foreground/40 font-semibold px-8 py-6"
           >
             {language === 'de' ? 'Deine Roadmap zu Hypergrowth' : 'Your Roadmap to Hypergrowth'}
@@ -145,6 +135,14 @@ const FormulaOptimized: React.FC = () => {
           </Button>
         </div>
       </div>
+
+      {/* ROI Calculator Modal */}
+      <Dialog open={roiModalOpen} onOpenChange={setRoiModalOpen}>
+        <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+          <DialogTitle className="sr-only">ROI Calculator</DialogTitle>
+          <ROICalculatorContent />
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

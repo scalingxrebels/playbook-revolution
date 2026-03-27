@@ -20,9 +20,20 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Playbooks = lazy(() => import("./pages/Playbooks"));
 const Solutions = lazy(() => import("./pages/Solutions"));
 const SolutionCategory = lazy(() => import("./pages/SolutionCategory"));
+const SolutionCategoryLanding = lazy(() => import("./pages/SolutionCategoryLanding"));
 const Expertise = lazy(() => import("./pages/Expertise"));
+const ExpertiseM1 = lazy(() => import("./pages/ExpertiseM1"));
+const ExpertiseM2 = lazy(() => import("./pages/ExpertiseM2"));
+const ExpertiseM3 = lazy(() => import("./pages/ExpertiseM3"));
+const ExpertiseM4 = lazy(() => import("./pages/ExpertiseM4"));
+const ExpertiseResearch = lazy(() => import("./pages/ExpertiseResearch"));
+const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
+const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
+const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
+const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Community = lazy(() => import("./pages/Community"));
 const Insights = lazy(() => import("./pages/Insights"));
+const InsightCategoryPage = lazy(() => import("./pages/InsightCategoryPage"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
 const AGB = lazy(() => import("./pages/AGB"));
@@ -90,15 +101,12 @@ const PlaybookOperatingSystems = lazy(() => import("./pages/PlaybookOperatingSys
 const PlaybookBoardGovernance = lazy(() => import("./pages/PlaybookBoardGovernance"));
 const PlaybookPortfolioTransformation = lazy(() => import("./pages/PlaybookPortfolioTransformation"));
 const PlaybookAINativeScaling = lazy(() => import("./pages/PlaybookAINativeScaling"));
-const ExpertiseAMF = lazy(() => import("./pages/ExpertiseAMF"));
-const ExpertiseANST = lazy(() => import("./pages/ExpertiseANST"));
-const ExpertiseSST = lazy(() => import("./pages/ExpertiseSST"));
-const ExpertiseUnifiedFramework = lazy(() => import("./pages/ExpertiseUnifiedFramework"));
 const Glossar = lazy(() => import("./pages/Glossar"));
 const IndexV2 = lazy(() => import("./pages/IndexV2"));
 const ContentRegistry = lazy(() => import("./pages/ContentRegistry"));
 const RevenueArchitectureSystem = lazy(() => import("./pages/RevenueArchitectureSystem"));
 const FunnelV2 = lazy(() => import("./pages/FunnelV2"));
+const AINativeHome = lazy(() => import("./pages/AINativeHome"));
 
 const queryClient = new QueryClient();
 
@@ -126,9 +134,30 @@ const AppContent = () => {
           <Route path="/playbooks" element={<Playbooks />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/solutions/revenue-architecture-system" element={<RevenueArchitectureSystem />} />
+          <Route path="/solutions/insights-and-levers" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/growth-engines" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/scaling-systems" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/ai-orchestration" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/translating-strategy" element={<SolutionCategoryLanding />} />
+          <Route path="/solutions/tools" element={<SolutionCategoryLanding />} />
           <Route path="/solutions/:category" element={<SolutionCategory />} />
           <Route path="/expertise" element={<Expertise />} />
+          <Route path="/expertise/research" element={<ExpertiseResearch />} />
+          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
+          <Route path="/expertise/anst" element={<ExpertiseANST />} />
+          <Route path="/expertise/sst" element={<ExpertiseSST />} />
+          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
+          <Route path="/expertise/hypothesen-maschine" element={<ExpertiseM1 />} />
+          <Route path="/expertise/uebersetzungskompetenz" element={<ExpertiseM2 />} />
+          <Route path="/expertise/funktionierende-synthese" element={<ExpertiseM3 />} />
+          <Route path="/expertise/ai-orchestration" element={<ExpertiseM4 />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/insights-and-levers" element={<InsightCategoryPage />} />
+          <Route path="/insights/growth-engines" element={<InsightCategoryPage />} />
+          <Route path="/insights/scaling-systems" element={<InsightCategoryPage />} />
+          <Route path="/insights/ai-orchestration" element={<InsightCategoryPage />} />
+          <Route path="/insights/translating-strategy" element={<InsightCategoryPage />} />
+          <Route path="/insights/portfolio" element={<InsightCategoryPage />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
@@ -197,14 +226,11 @@ const AppContent = () => {
           <Route path="/playbooks/board-governance" element={<PlaybookBoardGovernance />} />
           <Route path="/playbooks/portfolio-transformation" element={<PlaybookPortfolioTransformation />} />
           <Route path="/playbooks/ai-native-scaling" element={<PlaybookAINativeScaling />} />
-          <Route path="/expertise/amf" element={<ExpertiseAMF />} />
-          <Route path="/expertise/anst" element={<ExpertiseANST />} />
-          <Route path="/expertise/sst" element={<ExpertiseSST />} />
-          <Route path="/expertise/unified-framework" element={<ExpertiseUnifiedFramework />} />
           <Route path="/glossar" element={<Glossar />} />
           <Route path="/home-v2" element={<IndexV2 />} />
           <Route path="/content-registry" element={<ContentRegistry />} />
           <Route path="/go" element={<FunnelV2 />} />
+          <Route path="/ai-native" element={<AINativeHome />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

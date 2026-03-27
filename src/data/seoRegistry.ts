@@ -599,57 +599,57 @@ export const seoRegistry: Record<string, SEOData> = {
   },
 
   // =========================================================================
-  // EXPERTISE / RESEARCH
+  // EXPERTISE
   // =========================================================================
   '/expertise': {
     title: {
-      de: 'Research — Forschungsbasierte Scaling-Methodik | ScalingX',
-      en: 'Research — Research-Backed Scaling Methodology | ScalingX',
+      de: 'Expertise — ScalingX Hypergrowth',
+      en: 'Expertise — ScalingX Hypergrowth',
     },
     description: {
-      de: 'Die wissenschaftliche Basis unserer Methodik: AMF, ANST, SST, Unified Framework. Analyse von 22 AI-nativen Unternehmen.',
-      en: 'The scientific basis of our methodology: AMF, ANST, SST, unified framework. Analysis of 22 AI-native companies.',
+      de: 'Vier Mechanismen. Kombiniert mit Speed. Das ist warum es funktioniert.',
+      en: 'Four mechanisms. Combined with speed. That\'s why it works.',
     },
     ogImage: '/images/og/expertise.png',
   },
-  '/expertise/amf': {
+  '/expertise/hypothesen-maschine': {
     title: {
-      de: 'Adaptive Maturity Framework (AMF) | ScalingX',
-      en: 'Adaptive Maturity Framework (AMF) | ScalingX',
+      de: 'M1 — Die Hypothesen-Maschine · ScalingX Expertise',
+      en: 'M1 — The Hypothesis Engine · ScalingX Expertise',
     },
     description: {
-      de: 'Das Adaptive Maturity Framework misst Skalierungsreife über 12 Dimensionen. Peer-reviewed Research für Series A-D.',
-      en: 'The Adaptive Maturity Framework measures scaling maturity across 12 dimensions. Peer-reviewed research for Series A-D.',
+      de: 'Wir kommen in jedes Gespräch mit einer Theorie — bevor das Gespräch beginnt.',
+      en: 'We enter every conversation with a theory — before the conversation begins.',
     },
   },
-  '/expertise/anst': {
+  '/expertise/uebersetzungskompetenz': {
     title: {
-      de: 'AI-Native Scaling Theory (ANST) | ScalingX',
-      en: 'AI-Native Scaling Theory (ANST) | ScalingX',
+      de: 'M2 — Übersetzungskompetenz · ScalingX Expertise',
+      en: 'M2 — Translation Competence · ScalingX Expertise',
     },
     description: {
-      de: 'Die AI-Native Scaling Theory erklärt, warum AI-native Unternehmen 10-30x schneller skalieren. Aus 22 Unternehmensanalysen.',
-      en: 'AI-Native Scaling Theory explains why AI-native companies scale 10-30x faster. From 22 company analyses.',
+      de: 'Strategie die nicht übersetzt wird, ist Meinung.',
+      en: 'Strategy that isn\'t translated is opinion.',
     },
   },
-  '/expertise/sst': {
+  '/expertise/funktionierende-synthese': {
     title: {
-      de: 'Superlinear Scaling Theory (SST) | ScalingX',
-      en: 'Superlinear Scaling Theory (SST) | ScalingX',
+      de: 'M3 — Funktionierende Synthese · ScalingX Expertise',
+      en: 'M3 — Functioning Synthesis · ScalingX Expertise',
     },
     description: {
-      de: 'Die Superlinear Scaling Theory: Wie SaaS-Unternehmen von linearem zu superlinearem Wachstum wechseln.',
-      en: 'Superlinear Scaling Theory: how SaaS companies switch from linear to superlinear growth.',
+      de: 'Konzept × operative Realität = es funktioniert wirklich.',
+      en: 'Concept × operational reality = it actually works.',
     },
   },
-  '/expertise/unified-framework': {
+  '/expertise/ai-orchestration': {
     title: {
-      de: 'Unified Scaling Framework — AMF + ANST + SST | ScalingX',
-      en: 'Unified Scaling Framework — AMF + ANST + SST | ScalingX',
+      de: 'M4 — AI Orchestration als struktureller Vorteil · ScalingX Expertise',
+      en: 'M4 — AI Orchestration as Structural Advantage · ScalingX Expertise',
     },
     description: {
-      de: 'Das Unified Scaling Framework vereint AMF, ANST und SST zu einem kohärenten System für AI-Native Scaling.',
-      en: 'The Unified Scaling Framework combines AMF, ANST and SST into a coherent system for AI-native scaling.',
+      de: 'M4 ist kein vierter Mechanismus. Es ist der Verstärker auf M1, M2 und M3.',
+      en: 'M4 is not a fourth mechanism. It\'s the amplifier on M1, M2 and M3.',
     },
   },
 
