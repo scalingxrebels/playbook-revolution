@@ -1,15 +1,15 @@
 
 
-## Plan: Hero-Headline von 3 auf 2 Zeilen reduzieren
+## Plan: Favicon-Problem beheben
 
-`src/components/homepage/HomeHero.tsx` Z.64-80:
+### Ursache
 
-Die ersten beiden `<span className="block">` werden zu einem zusammengefasst:
+`public/favicon.ico` existiert und enthält vermutlich das Lovable-Standard-Icon. Chrome fordert automatisch `/favicon.ico` an und zeigt dieses statt `favicon-sx.png`.
 
-| Zeilen | Alt | Neu |
-|---|---|---|
-| Z.65-74 | 2 separate spans: `Deine Strategie funktioniert` + `auf Slides.` | 1 span: `Deine Strategie funktioniert auf Slides.` / `Your strategy works on the slide deck.` |
-| Z.75-79 | Bleibt | `Aber nicht in der Realität.` / `Not in reality.` |
+Zusätzlich existiert `public/favicon.png` — unklar ob das ScalingX oder ebenfalls Lovable ist.
 
-1 Datei, Headline-Block vereinfachen.
+### Lösung
 
+1. **`public/favicon.ico` löschen** — das ist die Hauptursache
+2. **`public/favicon.png` löschen** (falls nicht gebraucht, vermeidet Verwirrung)
+3. **PWA-Manifest prüfen** — `site.webmanifest` und `vite.config.ts` verweisen bereits korrekt auf `favicon-sx.png`
