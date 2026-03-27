@@ -152,6 +152,12 @@ const AppContent = () => {
           <Route path="/expertise/funktionierende-synthese" element={<ExpertiseM3 />} />
           <Route path="/expertise/ai-orchestration" element={<ExpertiseM4 />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/insights/insights-and-levers" element={<InsightCategoryPage />} />
+          <Route path="/insights/growth-engines" element={<InsightCategoryPage />} />
+          <Route path="/insights/scaling-systems" element={<InsightCategoryPage />} />
+          <Route path="/insights/ai-orchestration" element={<InsightCategoryPage />} />
+          <Route path="/insights/translating-strategy" element={<InsightCategoryPage />} />
+          <Route path="/insights/portfolio" element={<InsightCategoryPage />} />
           <Route path="/community" element={<Community />} />
           <Route path="/cases" element={<Cases />} />
           <Route path="/cases/:slug" element={<CaseDetail />} />
