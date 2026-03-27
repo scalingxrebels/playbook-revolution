@@ -1,13 +1,15 @@
 
 
-## Plan: Bio-Text Michel kürzen (HomeTeam)
+## Plan: Hero-Headline von 3 auf 2 Zeilen reduzieren
 
-`src/components/homepage/HomeTeam.tsx`:
+`src/components/homepage/HomeHero.tsx` Z.64-80:
 
-| Sprache | Alt | Neu |
+Die ersten beiden `<span className="block">` werden zu einem zusammengefasst:
+
+| Zeilen | Alt | Neu |
 |---|---|---|
-| DE | `19 Jahre B2B SaaS Startups gebaut, skaliert und repariert. Als Operator, nicht als Berater. Baut den Mechanismus.` | `19 Jahre B2B SaaS GTM, als Operator, nicht Berater. Baut den Mechanismus.` |
-| EN | `19 years building, scaling and fixing B2B SaaS startups. As an operator, not a consultant. Builds the mechanism.` | `19 years B2B SaaS GTM, as an operator, not a consultant. Builds the mechanism.` |
+| Z.65-74 | 2 separate spans: `Deine Strategie funktioniert` + `auf Slides.` | 1 span: `Deine Strategie funktioniert auf Slides.` / `Your strategy works on the slide deck.` |
+| Z.75-79 | Bleibt | `Aber nicht in der Realität.` / `Not in reality.` |
 
-1 Datei, 2 Strings.
+1 Datei, Headline-Block vereinfachen.
 
