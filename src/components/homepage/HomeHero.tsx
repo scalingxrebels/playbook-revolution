@@ -74,7 +74,7 @@ const HomeHero: React.FC = () => {
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary mt-2">
               {language === 'de'
-                ? 'In der Realität nicht.'
+                ? 'Aber nicht in der Realität.'
                 : 'Not in reality.'}
             </span>
           </h1>
