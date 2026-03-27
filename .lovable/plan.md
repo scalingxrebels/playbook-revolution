@@ -1,13 +1,22 @@
 
 
-## Plan: Bio-Text anpassen
+## Plan: LinkedIn-Icon hinter "M.A. HSG" setzen
 
-`src/components/homepage/HomeTeam.tsx` Z.72-73:
+`src/components/homepage/HomeTeam.tsx` Z.68 + Z.80-87:
 
-| Sprache | Alt | Neu |
-|---|---|---|
-| DE | `Findet den Hebel, der wirklich zieht — und setzt ihn um.` | `Baut den Mechanismus.` |
-| EN | `Finds the lever that truly moves the needle — and executes.` | `Builds the mechanism.` |
+LinkedIn-Icon aus dem separaten Link unten entfernen und direkt in die h3-Zeile nach "M.A. HSG" einfügen:
 
-1 Datei, 2 Strings.
+```tsx
+// Z.68 neu:
+<h3 className="font-display text-2xl mb-1 text-foreground flex items-center gap-2">
+  Michel Lason <span className="text-accent text-lg font-normal">M.A. HSG</span>
+  <a href="https://www.linkedin.com/in/michellason/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors" aria-label="LinkedIn Michel Lason">
+    <Linkedin className="h-4 w-4" />
+  </a>
+</h3>
+```
+
+Separaten LinkedIn-Link (Z.80-87) entfernen.
+
+1 Datei, 2 Stellen.
 
