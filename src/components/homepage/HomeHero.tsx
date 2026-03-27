@@ -69,7 +69,7 @@ const HomeHero: React.FC = () => {
             </span>
             <span className="block text-foreground">
               {language === 'de'
-                ? 'auf dem Slide Deck.'
+                ? 'auf Slides.'
                 : 'on the slide deck.'}
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary mt-2">
