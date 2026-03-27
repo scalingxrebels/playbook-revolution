@@ -1,12 +1,14 @@
 
 
-## Plan: Headline-Text auf Deutsch anpassen (3 Dateien)
+## Plan: ARR-Zahlen aktualisieren (€1,3M → €3,3M / €13,7M → €10,2M)
 
-| Datei | Zeile | Alt (DE) | Neu (DE) |
-|---|---|---|---|
-| `src/components/homepage/HomeHero.tsx` | 67+72+77 | `Deine Strategie funktioniert` / `auf dem Slide Deck.` / `In der Realität nicht.` | `Deine Strategie funktioniert` / `auf Slides.` / `Aber nicht in der Realität.` |
-| `src/pages/About.tsx` | 222 | `Deine Strategie funktioniert auf dem Slide Deck.` | `Deine Strategie funktioniert auf Slides.` |
-| `src/components/funnel/FunnelHero.tsx` | 25-28 | `Deine Strategie funktioniert` / `auf dem Slide Deck.` / `In der Realität nicht.` | `Deine Strategie funktioniert` / `auf Slides.` / `Aber nicht in der Realität.` |
+3 Dateien, alle Stellen (DE + EN):
 
-Englische Texte bleiben unverändert. 3 Dateien, nur DE-Strings.
+| Datei | Zeilen | Änderung |
+|---|---|---|
+| `src/components/homepage/HomeTeam.tsx` | 72-73 | `€1,3M auf €13,7M` → `€3,3M auf €10,2M` / `€1.3M to €13.7M` → `€3.3M to €10.2M` |
+| `src/pages/About.tsx` | 26-27 | `€1,3M auf €13,7M` → `€3,3M auf €10,2M` / `€1.3M to €13.7M` → `€3.3M to €10.2M` |
+| `src/pages/ML.tsx` | 86, 187, 246 | Alle 5 Stellen: gleiche Ersetzung (DE+EN+SEO Schema) |
+
+3 Dateien, reine String-Ersetzung.
 
