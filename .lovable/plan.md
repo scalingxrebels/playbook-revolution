@@ -1,15 +1,12 @@
 
 
-## Plan: Hero-Headline von 3 auf 2 Zeilen reduzieren
+## Plan: Subline in HomeMechanisms sprachlich korrigieren
 
-`src/components/homepage/HomeHero.tsx` Z.64-80:
+`src/components/homepage/HomeMechanisms.tsx` Z.101-102:
 
-Die ersten beiden `<span className="block">` werden zu einem zusammengefasst:
-
-| Zeilen | Alt | Neu |
+| Sprache | Alt | Neu |
 |---|---|---|
-| Z.65-74 | 2 separate spans: `Deine Strategie funktioniert` + `auf Slides.` | 1 span: `Deine Strategie funktioniert auf Slides.` / `Your strategy works on the slide deck.` |
-| Z.75-79 | Bleibt | `Aber nicht in der Realität.` / `Not in reality.` |
+| DE | `Wir finden welcher — und bauen ihn.` | `Wir finden raus, welcher — und bauen ihn.` |
+| EN | `We find which one — and build it.` | `We find out which one — and build it.` |
 
-1 Datei, Headline-Block vereinfachen.
-
+1
