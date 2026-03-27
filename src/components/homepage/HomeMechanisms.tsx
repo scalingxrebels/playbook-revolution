@@ -98,8 +98,8 @@ const HomeMechanisms: React.FC = () => {
           style={{ transitionDelay: '200ms' }}
         >
           {language === 'de'
-            ? 'Wir finden welcher — und bauen ihn.'
-            : 'We find which one — and build it.'}
+            ? 'Wir finden raus, welcher — und bauen ihn.'
+            : 'We find out which one — and build it.'}
         </p>
 
         {/* 2×2 Grid */}
