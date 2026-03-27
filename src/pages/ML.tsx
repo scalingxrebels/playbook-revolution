@@ -243,7 +243,7 @@ const ML: React.FC = () => {
                 Michel Lason
               </h1>
               <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground animate-slide-up" style={{ animationDelay: '0.15s' }}>
-                {de ? 'Hat €1,3M auf €13,7M ARR gebracht.' : 'Grew €1.3M to €13.7M ARR.'}
+                {de ? 'Hat €3,3M auf €10,2M ARR gebracht.' : 'Grew €3.3M to €10.2M ARR.'}
                 <br />
                 {de ? 'In 2 Jahren.' : 'In 2 years.'}
               </h2>
