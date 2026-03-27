@@ -64,13 +64,8 @@ const HomeHero: React.FC = () => {
           <h1 className="font-display text-hero-lg mb-8 animate-blur-in">
             <span className="block text-foreground">
               {language === 'de'
-                ? 'Deine Strategie funktioniert'
-                : 'Your strategy works'}
-            </span>
-            <span className="block text-foreground">
-              {language === 'de'
-                ? 'auf Slides.'
-                : 'on the slide deck.'}
+                ? 'Deine Strategie funktioniert auf Slides.'
+                : 'Your strategy works on the slide deck.'}
             </span>
             <span className="block text-gradient animate-gradient bg-gradient-primary mt-2">
               {language === 'de'
