@@ -6,6 +6,9 @@
   <!-- Solutions Hub -->
   <url><loc>https://playbook-revolution.lovable.app/solutions</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 
+  <!-- Revenue Architecture System -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/revenue-architecture-system</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
   <!-- Power-Ups -->
   <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/cac-crisis</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/solutions/power-up/growth-momentum</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -51,6 +54,9 @@
   <url><loc>https://playbook-revolution.lovable.app/solutions/keynote</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/solutions/expert-session</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <!-- GTM Stack Map -->
+  <url><loc>https://playbook-revolution.lovable.app/solutions/gtm-stack-map</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Playbooks -->
   <url><loc>https://playbook-revolution.lovable.app/playbooks</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/playbooks/growth-engines</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
@@ -71,8 +77,17 @@
   <url><loc>https://playbook-revolution.lovable.app/playbooks/board-governance/exit-ma</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/playbooks/portfolio/excellence</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Expertise / Research -->
+  <!-- Expertise Hub -->
   <url><loc>https://playbook-revolution.lovable.app/expertise</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Expertise Mechanisms -->
+  <url><loc>https://playbook-revolution.lovable.app/expertise/hypothesen-maschine</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/uebersetzungskompetenz</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/funktionierende-synthese</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://playbook-revolution.lovable.app/expertise/ai-orchestration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Expertise Research -->
+  <url><loc>https://playbook-revolution.lovable.app/expertise/research</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/expertise/amf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/expertise/anst</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://playbook-revolution.lovable.app/expertise/sst</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -89,6 +104,9 @@
 
   <!-- Insights -->
   <url><loc>https://playbook-revolution.lovable.app/insights</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Community -->
+  <url><loc>https://playbook-revolution.lovable.app/community</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <!-- Tools & Book -->
   <url><loc>https://playbook-revolution.lovable.app/tools/maxxeed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

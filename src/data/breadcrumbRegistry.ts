@@ -355,6 +355,33 @@ export const breadcrumbRegistry: Record<string, BreadcrumbItem[]> = {
     { name: 'AI Orchestration', path: '/expertise/ai-orchestration' },
   ],
 
+  // RESEARCH
+  '/expertise/amf': [
+    { name: 'Home', path: '/' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'AMF', path: '/expertise/amf' },
+  ],
+  '/expertise/anst': [
+    { name: 'Home', path: '/' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'ANST', path: '/expertise/anst' },
+  ],
+  '/expertise/sst': [
+    { name: 'Home', path: '/' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'SST', path: '/expertise/sst' },
+  ],
+  '/expertise/unified-framework': [
+    { name: 'Home', path: '/' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'Unified Framework', path: '/expertise/unified-framework' },
+  ],
+  '/expertise/research': [
+    { name: 'Home', path: '/' },
+    { name: 'Expertise', path: '/expertise' },
+    { name: 'Research', path: '/expertise/research' },
+  ],
+
   // =========================================================================
   // CASES
   // =========================================================================
