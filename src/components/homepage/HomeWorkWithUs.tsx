@@ -40,7 +40,7 @@ const HomeWorkWithUs: React.FC = () => {
       titleEn: 'Book a call',
       descDe: 'Wir finden gemeinsam wo der Hebel liegt.',
       descEn: "Together we'll find where the lever is.",
-      ctaDe: 'Kostenloses Gespräch buchen',
+      ctaDe: 'Kostenlos buchen',
       ctaEn: 'Book a free call',
       href: '#booking',
       prominent: true,
