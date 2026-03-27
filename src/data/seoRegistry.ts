@@ -816,6 +816,74 @@ export const seoRegistry: Record<string, SEOData> = {
   // =========================================================================
   // GTM STACK MAP 2026
   // =========================================================================
+  // =========================================================================
+  // REVENUE ARCHITECTURE SYSTEM
+  // =========================================================================
+  '/solutions/revenue-architecture-system': {
+    title: {
+      de: 'Revenue Architecture System — GTM systematisieren | ScalingX',
+      en: 'Revenue Architecture System — Systematize GTM | ScalingX',
+    },
+    description: {
+      de: 'Dein GTM greift nicht systematisch? Das Revenue Architecture System baut in 6 Wochen eine funktionierende Revenue-Architektur. Ab €4.9k.',
+      en: 'Your GTM doesn\'t work systematically? The Revenue Architecture System builds a functioning revenue architecture in 6 weeks. From €4.9k.',
+    },
+  },
+
+  // =========================================================================
+  // EXPERTISE RESEARCH
+  // =========================================================================
+  '/expertise/research': {
+    title: {
+      de: 'Research — Forschungsbasierte Scaling-Methodik | ScalingX',
+      en: 'Research — Research-Based Scaling Methodology | ScalingX',
+    },
+    description: {
+      de: 'Die wissenschaftliche Basis hinter ScalingX: AMF, ANST, SST und Unified Framework. Forschung aus 22 AI-nativen Unternehmen.',
+      en: 'The scientific foundation behind ScalingX: AMF, ANST, SST and Unified Framework. Research from 22 AI-native companies.',
+    },
+  },
+  '/expertise/amf': {
+    title: {
+      de: 'Adaptive Maturity Framework (AMF) | ScalingX Research',
+      en: 'Adaptive Maturity Framework (AMF) | ScalingX Research',
+    },
+    description: {
+      de: 'Das Adaptive Maturity Framework: Wie AI-native Unternehmen Reifegradstufen überspringen und 3-5x schneller skalieren.',
+      en: 'The Adaptive Maturity Framework: How AI-native companies skip maturity stages and scale 3-5x faster.',
+    },
+  },
+  '/expertise/anst': {
+    title: {
+      de: 'AI-Native Scaling Theory (ANST) | ScalingX Research',
+      en: 'AI-Native Scaling Theory (ANST) | ScalingX Research',
+    },
+    description: {
+      de: 'AI-Native Scaling Theory: Warum AI-native Unternehmen fundamental anders skalieren. Forschung aus 22 Unternehmen.',
+      en: 'AI-Native Scaling Theory: Why AI-native companies scale fundamentally differently. Research from 22 companies.',
+    },
+  },
+  '/expertise/sst': {
+    title: {
+      de: 'Superlinear Scaling Theory (SST) | ScalingX Research',
+      en: 'Superlinear Scaling Theory (SST) | ScalingX Research',
+    },
+    description: {
+      de: 'Superlinear Scaling Theory: Wie Unternehmen überproportionales Wachstum erzielen. Die Mathematik hinter Hypergrowth.',
+      en: 'Superlinear Scaling Theory: How companies achieve disproportionate growth. The mathematics behind hypergrowth.',
+    },
+  },
+  '/expertise/unified-framework': {
+    title: {
+      de: 'Unified Scaling Framework | ScalingX Research',
+      en: 'Unified Scaling Framework | ScalingX Research',
+    },
+    description: {
+      de: 'Das Unified Scaling Framework vereint AMF, ANST und SST zu einem integrierten Scaling-Modell für Series A-D.',
+      en: 'The Unified Scaling Framework combines AMF, ANST and SST into an integrated scaling model for Series A-D.',
+    },
+  },
+
   '/solutions/gtm-stack-map': {
     title: {
       de: 'GTM Stack Map 2026 — Kostenlos für B2B SaaS Teams | ScalingX',
